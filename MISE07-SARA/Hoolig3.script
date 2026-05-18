@@ -1,0 +1,20 @@
+enemy_az_po_panice_hovno
+wait 100
+enemy_podvadim_jak Tretera
+
+dim_flt 1
+dim_act 3
+findactor 0, "Tommy"
+findactor 1
+findactor 2, "Sara"
+enemy_playanim "Gesto_02a.I3D"
+enemy_vidim 0
+wait 1000
+act_setstate -1, inactive
+wait 1500
+enemy_vidim 1
+
+label 1
+wait 1000000022
+goto 1
+

@@ -1,0 +1,9 @@
+label 2
+detector_waitforuse 07970002
+dim_act 1
+findactor 0, "Ralph"
+label 1
+setevent 0, 1, 1
+debug_text "detector_Ralph: event sent to Ralph"
+act_setstate -1, inactive
+goto 2

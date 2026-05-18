@@ -1,0 +1,29 @@
+dim_act 11
+
+commandblock 1
+findactor 0, "Enemy08K"
+findactor 1, "Enemy10K"
+findactor 2, "Enemy04K"
+findactor 3, "Enemy11K2"
+findactor 4, "Enemy09K"
+findactor 5, "Enemy10K2"
+findactor 6, "Enemy08K3"
+findactor 10, "shot"
+commandblock 0
+
+setplayerfireevent 10, 1
+
+
+label 1
+goto 1
+
+event 1
+detector_setsignal -1, 1
+setevent 0, 5, -1
+setevent 1, 5, -1
+setevent 2, 5, -1
+setevent 3, 5, -1
+setevent 4, 5, -1
+setevent 5, 5, -1
+setevent 6, 5, -1
+end

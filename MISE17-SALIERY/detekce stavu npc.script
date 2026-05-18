@@ -1,0 +1,26 @@
+dim_flt 1
+dim_act 6
+findactor 0, "SalieriHIGH"
+findactor 1, "VincenzoHIGH"
+findactor 2, "Luigi"
+findactor 3, "Ralph"
+findactor 4, "load mise17-mesto"
+findactor 5, "load mise17-mesto dvere"
+
+label 1
+getenemyaistate 0, 0
+if flt[0] = 3, 2, -1
+
+getenemyaistate 1, 0
+if flt[0] = 3, 2, -1
+
+getenemyaistate 2, 0
+if flt[0] = 3, 2, -1
+
+getenemyaistate 3, 0
+if flt[0] = 4, 2, 1
+
+label 2
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 100, off

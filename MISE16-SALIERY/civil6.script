@@ -1,0 +1,77 @@
+dim_flt 1
+dim_act 3
+dim_frm 9
+findactor 0, ""
+findactor 1, "civil5"
+findactor 2, "spol4"
+findframe 0, "chlapek kouri 3"
+findframe 1, "chlapek mrtvy 3"
+findframe 2, "civil3.neck"
+findframe 3, "2sklinka10"
+findframe 4, "2sklinka11"
+findframe 5, "2sklinka12"
+findframe 6, "2sklinka13"
+findframe 7, "spol44"
+findframe 8, "spol4"
+
+human_returnfrompanic 0, 1
+setnoanimhit 0, 1
+
+actor_setplacement 0, 0
+
+{ down
+label 1
+enemy_playanim "ustolunapitise.i3d"
+wait 1000
+commandblock 1
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 1
+frm_seton 6, 1
+commandblock 0
+wait 5000
+commandblock 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 0
+frm_seton 6, 0
+commandblock 0
+wait 1500
+enemy_playanim "ustolustativ.i3d"
+wait 3000
+enemy_playanim "ustoluvysvetlovani02.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustolustativ.i3d"
+wait 3000
+goto 1
+}
+
+actor_setplacement 0, 1
+enemy_playanim "mise zidle01 panika.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika stativ.i3d"
+
+label 2
+human_getproperty 0, 0, energy
+if flt[0] < 99, -1, 2
+
+enemy_playanim "mise zidle01 panika smrt.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika smrt stativ.i3d"
+end
+
+event enemy_to_ai
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+event_use_cb 1
+act_setstate 2, off
+frm_seton 7, 0
+frm_seton 8, 0
+commandblock 0
+return

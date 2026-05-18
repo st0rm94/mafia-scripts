@@ -1,0 +1,22 @@
+dim_act 2
+findactor 0,"hlidac_parkoviste"
+findactor 1,"Tommy"
+
+human_changeanim 0,"walk1.i3d","ChuzeRuceZaZady1.I3D"
+
+human_addweapon 0,6,6,30
+human_holster 0
+
+{ up
+label 101
+enemy_move 1
+enemy_move 2
+enemy_move 3
+enemy_move 4
+goto 101
+}
+
+event ZATKNI
+human_changeanim 0,"walk1.i3d"
+enemy_arrest_player
+return

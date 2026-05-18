@@ -1,0 +1,61 @@
+dim_frm 3
+dim_act 5
+dim_flt 1
+findactor 0,"Tommy"
+findactor 1,"Detektiv3"
+findactor 2,"polimFor"
+findactor 3,"pol2"
+findactor 4,"policie1_dest"
+
+findframe 0,"policie1_dest"
+findframe 1,"policie1"
+findframe 2,"Detektiv3"
+
+car_enableus 2,0
+
+human_addweapon 1, 9, 7, 14
+human_addweapon 3, 9, 7, 14
+
+frm_seton 2,0
+act_setstate -1,inactive
+frm_seton 2,1
+
+act_setstate 3,active
+
+actor_setplacement 2,1
+human_force_settocar 1,2,0
+human_force_settocar 3,2,1
+
+debug_text "*******************Polda 01 vyjel"
+act_setstate 4,active
+{ down
+enemy_car_moveto 2,0
+}
+setevent 3,201,-1
+enemy_usecar
+
+enemy_vidim 1
+
+enemy_look 3
+enemy_wait
+enemy_playanim "GestSklOtoceni.I3D"
+human_talk 1, 09990291,1
+enemy_wait
+enemy_stopanim
+wait 2000
+enemy_playanim "GestSklOtoceni.I3D"
+human_talk 1, 09990311,1
+enemy_wait
+enemy_stopanim
+
+label 101
+enemy_move 6, run
+goto 101
+
+event 201
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 1
+commandblock 0
+return

@@ -1,0 +1,100 @@
+wait 0
+wait 0
+commandblock 1
+zatmyse 1,1
+dim_act 6
+dim_frm 10
+dim_flt 1
+findactor 0,"Tommy"
+findactor 1,"TOMMYHO AUTO"
+findactor 2,"detector_music"
+findactor 3,"pes"
+findactor 4,"GodzMan9"
+findactor 5,"Paulie"
+
+findframe 0,"tommy_start"
+findframe 1,"load z mise04-mesto"
+findframe 2,"ukryt_proauto"
+
+findframe 3,"Tommy"
+findframe 4,"Paulie"
+
+findframe 5,"Enemy11K"
+findframe 6,"Enemy09K"
+
+findframe 7,"paulie_hide"
+findframe 8,"placement_pauliestart"
+findframe 9,"Box66"
+
+// ulozeni energie playera
+human_getproperty 0,0,Energy
+
+human_getowner 0,1
+car_forcestop 1
+act_setstate 3,inactive
+
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+frm_seton 6,0
+frm_seton 9,0
+
+actor_setplacement 5,7
+
+loaddifferences "dif04d.chg"
+recloadfull "record04d.rep"
+recclear
+recaddactor 1,"car0"
+recload "record04d.rep"
+commandblock 0
+PLAYER_LOCKCONTROLS 1
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+human_fromcar 0,0
+actor_setplacement 1,1
+act_setstate 1,active
+wait 100
+actor_setplacement 5,8
+frm_seton 4,1
+
+person_stopanim 0
+person_playanim 0,"breath01a.I3D"
+
+act_setstate 3,active
+act_setstate 4,active
+
+human_activateweapon 0,8
+frm_seton 3,1
+frm_seton 5,1
+frm_seton 6,1
+frm_seton 9,1
+
+zatmyse 0
+commandblock 0
+PLAYER_LOCKCONTROLS 0
+
+// obnoveni energie
+human_setproperty 0,flt[0],Energy
+
+// MUSIC PLAY
+setevent 2,551,-1
+
+car_enableus 1,0
+
+{ down
+label LOOP
+detector_waitforuse 2003
+human_talk 0,04990311
+human_talk 0,04990321
+goto LOOP
+}
+
+car_enableus 1,1
+end
+
+event 201
+return

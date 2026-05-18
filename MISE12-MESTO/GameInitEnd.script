@@ -1,0 +1,7 @@
+policemanager_on 980000, 2
+policemanager_add "Tommy"
+police_speed_factor 0.45
+enablemap 1
+citymusic_off
+
+

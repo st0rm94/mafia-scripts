@@ -1,0 +1,8 @@
+label 1
+actor_setplacement 0,0
+enemy_playanim "MechSroubovani.I3D"
+wait 10000
+actor_setplacement 0,0
+enemy_playanim "MechSroubovani2.I3D"
+wait 10000
+goto 1

@@ -1,0 +1,8 @@
+dim_act 1
+findactor 0, ""
+
+human_addweapon 0, 3, 0, 0
+human_holster 0
+human_addweapon 0, 6, 6, 6
+
+act_setstate 100, inactive

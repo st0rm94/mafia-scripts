@@ -1,0 +1,21 @@
+dim_flt 1
+dim_act 3
+//GARAGE_ADDCARidx 1
+//GARAGE_GENERATECARS
+
+FINDACTOR 0, "Paulie"
+FINDACTOR 1, "cordca"
+FINDACTOR 2, "Tommy"
+ACT_SETSTATE 100, inactive
+
+LABEL DETECT
+detector_inrange 0, 25
+if flt[0] > 1,-1, DETECT
+//debug_text ">0 JSOU V DOSAHU DETECTORU (next check in 10s)"
+
+COMPAREOWNERWITHEX 2, 1, -1, DETECT
+//debug_text "Tommy je v aute..."
+ENEMY_FORCESCRIPT 0
+GOTO DETECT
+LABEL FINISH
+//debug_text "car_detector: SCRIPT FINISHED"

@@ -1,0 +1,9 @@
+act_setstate -1, inactive
+
+dim_act 2
+dim_frm 1
+
+findactor 0, "mumlacka1"
+findactor 1, "kasel"
+
+findframe 0, "mumlacka2"

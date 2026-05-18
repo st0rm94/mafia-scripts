@@ -1,0 +1,5 @@
+mission_objectivesclear
+act_setstate -1, inactive
+mission_objectives 07960002
+wait 5000
+mission_objectives 07960003

@@ -1,0 +1,8 @@
+dim_frm 3
+findframe 0,"particle_kominbouda"
+findframe 1,"particle_horicibarel"
+findframe 2,"particle_ralph"
+
+emitparticle 0,5
+emitparticle 1,9
+emitparticle 2,6

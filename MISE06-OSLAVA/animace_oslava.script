@@ -1,0 +1,16 @@
+commandblock 1
+zatmyse 1,1
+player_lockcontrols 1
+loaddifferences "dif06c.chg"
+recloadfull "record06c.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+setmissionnumber 1
+player_lockcontrols 0
+commandblock 0
+change_mission "mise06-mesto","placement_2load",-1

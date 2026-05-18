@@ -1,0 +1,66 @@
+act_setstate -1,inactive
+
+dim_act 4
+dim_frm 1
+dim_flt 1
+findactor 0,"Letadlo"
+findactor 1,"Tommy"
+findactor 2,"merced500K"
+findactor 3,"obojek_end"
+
+mission_objectivesclear
+mission_objectives 22930004
+
+findframe 0,"peep"
+frm_seton 0,0
+
+act_setstate 3,active
+wait 2000
+airplane_start 0,10,40
+
+label 101
+commandblock 0
+
+getactorsdist 0,1,0
+if flt[0]>200,BOOM,-1
+
+commandblock 1
+iffltinrange flt[0],160,200,NEXT01
+iffltinrange flt[0],120,160,NEXT02
+iffltinrange flt[0],80,120,NEXT03
+iffltinrange flt[0],40,80,NEXT04
+iffltinrange flt[0],0,40,NEXT04
+
+
+label NEXT01
+  wait 0
+  frm_seton 0,1
+  goto 101
+
+label NEXT02
+  wait 10
+  frm_seton 0,1
+  goto 101
+
+label NEXT03
+  wait 100
+  frm_seton 0,1
+  goto 101
+
+label NEXT04
+  wait 200
+  frm_seton 0,1
+  goto 101
+
+label NEXT05
+  wait 500
+  frm_seton 0,1
+  goto 101
+
+label BOOM
+
+frm_seton 0,0
+car_explosion 2
+mission_objectivesclear
+wait 3000
+endofmission 0,22980001

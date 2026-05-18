@@ -1,0 +1,50 @@
+commandblock 1
+dim_flt 2
+dim_act 2
+findactor 0,"Tommy"
+findactor 1,"Salieri"
+
+human_addweapon 1,9,7,35
+human_holster 1
+let flt[1]=0
+commandblock 0
+
+{ up
+if flt[1]=1,102,-1
+enemy_playanim "Mise zidle01st.I3D",0
+label 101
+wait 30000
+goto 101
+label 102
+}
+
+{ up
+label C01
+enemy_look 0
+wait 2000
+goto C01
+}
+end
+
+
+event use_ab,10970004
+human_looktoactor 1,0,1
+rnd 0,3
+  if flt[0]=0,-1,113
+  enemy_talk 00950000
+  label 113
+  if flt[0]=1,-1,114
+  enemy_talk 00950001
+  label 114
+  if flt[0]=2,-1,115
+  enemy_talk 00950002
+  label 115
+enemy_wait
+human_looktoactor 1
+return
+
+event 1000
+label BLBOST
+enemy_action_fire 0
+wait 5000
+goto BLBOST

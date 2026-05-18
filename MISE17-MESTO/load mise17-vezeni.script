@@ -1,0 +1,25 @@
+dim_flt 2
+dim_act 5
+findactor 0, "hozeni delnika do kanalu"
+findactor 1, "Delnik"
+//findactor 2, "zjisteni auta"
+findactor 3, "zjisteni prenasenyho auta"
+findactor 4, "Tommy"
+
+detector_waitforuse
+
+detector_issignal 0, -1, 2
+let flt[1] = flt[1] + 1
+
+label 2
+human_getproperty 1, 0, energy
+if flt[0] = 0, -1, 3
+let flt[1] = flt[1] + 1
+
+label 3
+zatmyse 1
+wait 500
+setmissionnumber flt[1]
+get_remote_actor 2, 3, 1
+human_force_settocar 4, 2, 0
+change_mission "mise17-vezeni", "load z mise17-mesto", -1

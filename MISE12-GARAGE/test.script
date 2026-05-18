@@ -1,0 +1,23 @@
+act_setstate -1, off
+dim_act 2
+findactor 0, "Paulie"
+findactor 1, "Sam"
+
+dim_flt 1
+
+label DETECT
+wait 5000
+human_isweapon 0, 0, 7
+if flt[0] = 1, -1, NEMA
+debug_text "Paulie ma magnum..."
+label SAM
+human_isweapon 1, 0, 11
+if flt[0] = 1, -1, NEMA2
+debug_text "Sam ma brokarnu..."
+goto DETECT
+label NEMA
+debug_text "Paulie nema magnum..."
+goto SAM
+label NEMA2
+debug_text "Sam nema brokarnu..."
+goto DETECT

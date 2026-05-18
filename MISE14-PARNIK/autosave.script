@@ -1,0 +1,8 @@
+dim_act 1
+findactor 0, "TommySAILOR"
+
+mission_objectivesclear
+mission_objectives 14960001
+
+character_pop 0
+autosavegame 5340

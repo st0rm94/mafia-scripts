@@ -1,0 +1,39 @@
+dim_act 5
+dim_frm 3
+findactor 0, "Tommy"
+findactor 1, "deuseJco"
+findactor 2, "mam krast auto"
+findactor 3, "1potvrzeni navstevy gunshopu"
+findactor 4, "1potvrzeni vyzvednuti paulieho"
+
+findframe 0, "1prijeti k pauliemu"
+findframe 1, "1dvere u peteho"
+findframe 2, "1prijeti k bance"
+
+act_setstate 100, inactive
+
+label 1
+wait 500
+compareownerwithex 0, 1, -1, 1
+
+mission_objectivesclear
+
+detector_issignal 4, -1, 2
+mission_objectives 19960006
+setcompass 2
+goto 4
+
+label 2
+detector_issignal 3, -1, 3
+mission_objectives 19960008
+setcompass 0
+goto 4
+
+label 3
+mission_objectives 19960007
+setcompass 1
+
+label 4
+detector_setsignal 2, 0
+act_setstate 100, off
+

@@ -1,0 +1,41 @@
+dim_act 1
+dim_flt 1
+
+findactor 0, "Tommy"
+
+human_addweapon 0,9,7,21
+human_holster 0
+
+garage_enablesteal A
+garage_enablesteal B
+garage_enablesteal C
+garage_enablesteal D
+garage_enablesteal E
+garage_enablesteal F
+garage_enablesteal G
+garage_enablesteal H
+garage_enablesteal I
+garage_enablesteal J
+garage_enablesteal K
+garage_enablesteal L
+garage_enablesteal M
+garage_enablesteal N
+garage_enablesteal O
+garage_enablesteal P
+garage_enablesteal Q
+garage_enablesteal R
+garage_enablesteal S
+garage_enablesteal T
+garage_enablesteal U
+garage_enablesteal V
+garage_enablesteal W
+garage_enablesteal X
+garage_enablesteal Y
+garage_enablesteal Z
+
+label 101
+human_getproperty 0,0,Energy
+if flt[0] = 0, -1,101
+
+endofmission 0,  00980004
+end

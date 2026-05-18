@@ -1,0 +1,44 @@
+dim_flt 1
+dim_frm 2
+dim_act 9
+findactor 0, "Paulie"
+findactor 1, "Ridic1"
+findactor 2, "Ridic2"
+findactor 3, "detector_corka"
+findactor 5, "Vratpr3"
+findactor 6,  "Vratpr"
+findactor 7, "TruckB"
+findactor 8, "Sam"
+
+findframe 0, "TruckB"
+findframe 1, "TruckB.bocnice"
+
+act_setstate -1, inactive
+
+label DETECT
+detector_inrange 0, 40
+if flt[0] = 2, -1, DETECT
+
+autosavegamefull 5497
+
+commandblock 1
+// Oddelani Samova indikatoru
+wingman_delindicator 8, 1
+// Natvrdo zakaze nastoupeni ke spolujezdci dokud nebude nakladak bez ridice
+door_lock 5, 0
+door_lock 6, 0
+door_open 5, 1
+door_open 6, 1
+door_lock 5, 1
+door_lock 6, 1
+frm_seton 1, 0
+setcompass 0
+commandblock 0
+
+// Povoluje detector_corka
+car_disable_uo 7, 1, 0
+
+label SEND
+setevent 0, 2, SEND
+act_setstate 1, active
+act_setstate 3, active

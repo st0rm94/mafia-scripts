@@ -1,0 +1,75 @@
+dim_flt 2
+dim_act 7
+dim_frm 3
+findactor 0, "Enemy"
+findactor 1, "merced500K"
+findactor 2, ""
+findactor 3, "Tommy"
+findactor 4, "Enemy"
+findactor 5, "PoliceMan"
+findactor 6, "PoliceMan2"
+findframe 0, "navadeni poldu"
+findframe 1, "xkniha "
+findframe 2, "tuzkanim"
+
+enemy_podvadim_jak Tretera
+
+enemy_group_new 1
+enemy_group_add 1, 2
+enemy_group_add 1, 4
+enemy_group_add 1, 5
+enemy_group_add 1, 6
+
+frm_seton 1, 0
+frm_seton 2, 0
+
+act_setstate 100, inactive
+
+human_force_settocar 2, 1, 0
+enemy_car_moveto 1, 0
+
+setevent 0, 1, -1
+
+//enemy_move 11
+//enemy_lookto 1
+//enemy_wait
+
+//enemy_playanim "kurakloop.i3d"
+
+//{ down
+//label 1
+//wait 1000000
+//goto 1
+//}
+
+//enemy_playanim "kurakzahozeni.i3d", 0, simple
+//let flt[0] = flt[0] - 323
+//wait flt[0]
+//enemy_stopanim
+
+//enemy_move 1
+
+//setevent 0, 1, -1
+
+enemy_move 2
+
+setevent 0, 1, -1
+
+label 2
+enemy_move 5
+enemy_lookto 6
+enemy_wait
+frm_seton 1, 1
+frm_seton 2, 1
+enemy_playanim "polohl02.i3d", 0, simple
+wait 9500
+enemy_playanim "polblok02.i3d"
+wait 5000
+goto 2
+
+event 1
+event_use_cb 1
+return
+
+event 2
+enemy_naserse 3

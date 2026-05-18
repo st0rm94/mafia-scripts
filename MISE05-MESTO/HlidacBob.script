@@ -1,0 +1,278 @@
+dim_flt 3
+let flt[2]=0
+dim_act 15
+dim_frm 6
+findactor 1,"detector_autodrom"
+findactor 2,"HlidacBob"
+findactor 3,"Tommy"
+findactor 4,"Box05"
+findactor 5,"Box837"
+findactor 6,"detector_auto"
+findactor 7,"alfa2"
+findactor 8,"detector_getowner"
+findactor 9,"Box08"
+findactor 10,"autbudk03"
+findactor 11,"detector_bertone"
+findactor 12,"nedovol_odjet"
+findactor 13, "odemykani"
+findactor 14, "cigo"
+
+findframe 0,"detector_bertone"
+findframe 1,"detector_konecmise"
+findframe 2,"2cigaro"
+findframe 3,"HlidacBob.neck"
+findframe 4,"alfa2"
+findframe 5, "zavora_open"
+
+door_enableus 9,0
+
+frm_seton 2,0
+enemy_move 4
+enemy_lookto 3
+enemy_wait
+enemy_playanim "SezSed.i3d",0
+let flt[0]=flt[0]-323
+wait flt[0]
+enemy_playanim "SezToCteni.i3d",0
+let flt[0]=flt[0]-400
+wait flt[0]
+enemy_playanim "SezCteni.i3d"
+{ down
+label 101
+wait 30000
+goto 101
+}
+
+enemy_playanim "SezCteniToN.i3d",0
+let flt[0]=flt[0]-450
+wait flt[0]
+enemy_playanim "SezVst.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+enemy_move 1
+
+{ down
+label 102
+enemy_look 3
+wait 1000
+goto 102
+}
+
+human_eraseab 2
+
+mission_objectivesclear
+//aktivuje nedovol_odjet
+act_setstate 12,active
+human_looktoactor 2,3,1
+enemy_playanim "GestikulaceNew01.i3d"
+enemy_talk 05990111
+enemy_wait
+enemy_stopanim
+enemy_talk 3,05990121
+enemy_wait
+enemy_playanim "GestikulaceNew02.i3d"
+enemy_talk 05990131
+enemy_wait 
+human_looktoactor 2
+
+enemy_move 7
+enemy_lookto 8
+enemy_wait
+enemy_playanim "zavora start.i3d",0
+wait 1500
+frm_seton 5, 1
+door_lock 9,0
+door_open 9,1
+let flt[0]=flt[0]-2100
+wait flt[0]
+act_setstate 1,active
+label 104
+enemy_action_follow 3,2
+enemy_usecar
+detector_issignal 1,-1,104
+setcompass -1
+ACT_SETSTATE 1,off
+enemy_talk 05990141
+enemy_move 2
+enemy_look 7
+enemy_wait
+act_setstate 13, active
+enemy_playanim "KradeniAuta.i3d"
+wait 6000
+door_lock 4,0
+door_lock 5,0
+enemy_playanim "OteviraniDveriR.i3d"
+wait 500
+door_open 4,1
+door_open 5,1
+wait 800
+ACT_SETSTATE 6,active
+
+{ down
+label 103
+enemy_look 3
+wait 1000
+goto 103
+}
+
+label 110
+{ down
+enemy_playanim "KurakZapaleni.i3d",0
+wait 10000
+frm_seton 2,1
+wait 2000
+emitparticle 3,25
+let flt[0]=flt[0]-12700
+wait flt[0]
+label 107
+enemy_playanim "KurakLoop.i3d",0
+wait 7000
+enemy_playanim "KurakPotahnuti.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+emitparticle 3,25
+goto 107 
+}
+
+event 203
+DIALOG_BEGIN 2,2
+PLAYER_LOCKCONTROLS 1
+human_reset 3
+enemy_look 3
+enemy_wait
+actor_setdir 3,4
+person_playanim 3,"breath01a.i3d"
+dialog_camswitch 2,3
+enemy_talk 3,05990171
+enemy_wait
+dialog_camswitch 3,2
+human_looktoactor 2,3,1
+enemy_playanim "GestikulaceNew01.i3d"
+enemy_talk 05990181
+enemy_wait
+enemy_talk 05990182
+enemy_wait
+dialog_camswitch 2,3
+enemy_stopanim
+enemy_talk 3,05990191
+enemy_wait
+dialog_camswitch 3,2
+enemy_playanim "GestikulaceNew07.i3d"
+enemy_talk 05990201
+enemy_wait
+enemy_talk 05990202
+enemy_wait
+enemy_talk 05990203
+enemy_wait
+dialog_camswitch 2,3
+enemy_stopanim
+enemy_talk 3,05990211
+enemy_wait
+human_looktoactor 2
+person_stopanim 3
+DIALOG_END
+PLAYER_LOCKCONTROLS 0
+act_setstate 11,active
+enemy_move 5
+enemy_lookto 6
+enemy_wait
+let flt[2]=1
+return
+
+event 204
+setcompass -1
+mission_objectivesclear
+act_setstate 14, active
+enemy_playanim "KurakZahozeni.i3d",0
+wait 3000
+emitparticle 3,25
+wait 1000
+DIALOG_BEGIN 2,2
+PLAYER_LOCKCONTROLS 1
+human_reset 3
+person_playanim 3,"breath01a.i3d"
+actor_setdir 3,3
+dialog_camswitch 3,2
+frm_seton 2,0
+let flt[0]=flt[0]-5000
+wait flt[0]
+
+human_looktoactor 2,3,1
+enemy_playanim "GestikulaceNew01.i3d"
+enemy_talk 05990251
+enemy_wait
+dialog_camswitch 2,3
+enemy_stopanim
+enemy_talk 3,05990261
+enemy_wait
+dialog_camswitch 3,2
+enemy_playanim "GestikulaceNew02.i3d"
+enemy_talk 05990271
+enemy_wait
+dialog_camswitch 2,3
+enemy_stopanim
+enemy_talk 3,05990281
+enemy_wait
+dialog_camswitch 3,2
+enemy_playanim "GestikulaceNew07.i3d"
+enemy_talk 05990521
+enemy_wait
+dialog_camswitch 2,3
+enemy_stopanim
+enemy_talk 3,05990531
+enemy_wait
+dialog_camswitch 3,2
+enemy_playanim "GestikulaceNew02.i3d"
+enemy_talk 05990541
+enemy_wait
+dialog_camswitch 2,3
+enemy_stopanim
+enemy_talk 3,05990551
+enemy_wait
+human_looktoactor 2
+person_stopanim 3
+DIALOG_END
+PLAYER_LOCKCONTROLS 0
+// FULLSAVE
+autosavegamefull 5090
+
+human_eraseab 2
+
+mission_objectivesclear
+mission_objectives 05960005
+
+car_enableus 7,0
+cardamagevisible 0
+
+setcompass 1
+wait 20000
+enemy_move 2
+enemy_look 7
+enemy_wait
+door_open 4,0
+door_open 5,0
+enemy_move 4
+enemy_lookto 3
+enemy_wait
+enemy_playanim "SezSed.i3d",0
+let flt[0]=flt[0]-323
+wait flt[0]
+enemy_playanim "SezToCteni.i3d",0
+let flt[0]=flt[0]-400
+wait flt[0]
+enemy_playanim "SezCteni.i3d"
+label 333
+wait 100000
+goto 333
+return
+
+event 201
+return
+
+event 202
+enemy_talk 05990132
+setcompass 4
+return
+
+event use_ab,05970001
+return

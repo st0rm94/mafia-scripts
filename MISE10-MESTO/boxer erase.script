@@ -1,0 +1,20 @@
+dim_act 1
+dim_frm 1
+dim_flt 1
+findactor 0, "Boxer"
+findframe 0, "Lucas"
+
+label 1
+wait 250
+human_getproperty 0, 0, energy
+if flt[0] < 100, -1, 1
+human_eraseab 0
+setevent 0, 2, -1
+
+label 2
+wait 250
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 2
+mission_objectivesclear
+setcompass 0
+mission_objectives 10960009

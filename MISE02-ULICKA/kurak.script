@@ -1,0 +1,29 @@
+dim_frm 2
+dim_flt 1
+dim_act 2
+findactor 0,"kurak"
+findactor 1,"TommyTAXIDRIVER"
+findframe 0,"kurak.neck"
+findframe 1,"cigaro02"
+
+enemy_vidim 0
+
+{ up
+enemy_move 6
+enemy_lookto 7
+enemy_wait
+label 101
+human_looktoactor 0,1,1
+enemy_playanim "KurakLoop.i3d"
+wait 5000
+human_looktoactor 0
+enemy_playanim "KurakPotahnuti.i3d", 0
+let flt[0]=flt[0]-83
+wait flt[0]
+emitparticle 0,25
+goto 101
+}
+
+event 201
+enemy_action_runaway 1,100
+end

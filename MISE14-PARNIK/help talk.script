@@ -1,0 +1,14 @@
+dim_act 1
+findactor 0, "LifeG"
+
+label 1
+wait 60000
+goto 1
+
+event 1
+label 2
+human_talk 0, 14990271
+wait 6000
+human_talk 0, 14990272
+wait 6000
+goto 2

@@ -1,0 +1,16 @@
+dim_act 2
+findactor 0, ""
+findactor 1, "TruckA5pristav"
+
+enemy_vidim 0
+
+human_force_settocar 0, 1, 1
+
+act_setstate 100, inactive
+wait 2000
+
+label 1
+enemy_usecar
+compareownerwith 1, 1, -1
+
+enemy_vidim 1

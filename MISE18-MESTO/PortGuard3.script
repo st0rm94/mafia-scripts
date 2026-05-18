@@ -1,0 +1,34 @@
+dim_act 1
+findactor 0
+findactor 1, "Tommy"
+dim_frm 1
+findframe 0, "18_song"
+dim_flt 1
+human_addweapon 0, 7, 6, 30
+human_holster 0
+human_addweapon 0,10, 50, 200
+
+label GUARD
+enemy_move 15
+gosub LOOK
+enemy_move 12
+gosub LOOK
+enemy_move 13
+gosub LOOK
+enemy_move 14
+gosub LOOK
+goto GUARD
+
+
+label LOOK
+frm_seton 0, 1
+//enemy_action_backlook 3000
+//enemy_action_sidelook 1, 3000
+return
+
+event ENEMY_TO_AI
+enemy_getstate 0
+if flt[0] > 1, -1, RET
+frm_seton 0, 0
+label RET
+return

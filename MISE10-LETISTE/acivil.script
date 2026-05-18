@@ -1,0 +1,20 @@
+enemy_vidim 0
+dim_act 4
+dim_frm 1
+findactor 0, "range1"
+findactor 1, "TruckA"
+findactor 2, "Tommy"
+findactor 3, "acivil"
+findframe 0, "bod"
+human_addweapon 3, 25, 0, 0
+
+enemy_move_to_car 1, 0
+enemy_usecar 1, 0
+label 1
+detector_issignal 0, -1, 1
+enemy_car_moveto 1, 0
+wait 2000
+enemy_usecar
+label 2
+human_talk 3, 01940062, 1
+enemy_vidim 1

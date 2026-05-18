@@ -1,0 +1,26 @@
+enemy_vidim 0
+dim_act 2
+findactor 0, "fordtpi"
+findactor 1, ""
+
+frm_seton 100, 0
+act_setstate 100, inactive
+
+frm_seton 100, 1
+enemy_move 13, run
+
+human_force_settocar 1, 0, 1
+
+wait 20000
+
+label 2
+enemy_usecar
+compareownerwith 0, 2, -1
+
+enemy_vidim 1
+
+enemy_move 12, run
+
+frm_seton 100, 0
+act_setstate 100, off
+

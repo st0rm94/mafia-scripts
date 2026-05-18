@@ -1,0 +1,5 @@
+dim_frm 2
+findframe 0,"racing_driver0"
+findframe 1,"kour"
+model_stopanim 0
+frm_linkto 1,-1

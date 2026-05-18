@@ -1,0 +1,44 @@
+//krysy v kanale
+
+DIM_FRM 3
+DIM_FLT 2
+
+FINDFRAME 0, "krysa1"
+FINDFRAME 1, "krysa2"
+FINDFRAME 2, "krysa3"
+
+label DETECT
+detector_inrange 0, 3
+wait 1000
+if flt[0] ! 0, -1, DETECT
+
+wait 1900
+frm_seton 0, 1
+wait 3500
+frm_seton 2, 1
+wait 2500
+frm_seton 1, 1
+wait 4000
+frm_seton 0, 1
+
+label 10
+  rnd 0, 8  
+  let flt[0] = flt[0] * 1550 
+  let flt[0] = flt[0] + 3800
+  wait flt[0]
+ rnd 1, 12
+ IFFLTINRANGE 1, 0, 3, 2
+ IFFLTINRANGE 1, 4, 7, 3
+ IFFLTINRANGE 1, 8, 11, 4
+
+label 2
+ FRM_SETON 0, 1
+goto 10
+
+label 3
+ FRM_SETON 1, 1
+goto 10
+
+label 4
+ FRM_SETON 2, 1
+goto 10

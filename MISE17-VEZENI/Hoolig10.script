@@ -1,0 +1,27 @@
+enemy_vidim 0
+dim_flt 10
+dim_act 4
+dim_frm 2
+findactor 0, ""
+findactor 2, "zabr_vez"
+findactor 3, "prepnuti modelu"
+findframe 0, "poloha padajiciho"
+findframe 1, "flyboy"
+
+setnoanimhit 0, 1
+
+vect_set 0, 20.580, 16.400, -16.115
+vect_set 3, 0, 0, -50
+
+frm_seton 100, 0
+act_setstate 100, inactive
+
+act_setstate 3, active
+
+actor_setplacement 0, 0
+enemy_playanim "reditelhotelusmrtpodledana.i3d"
+wait 400
+frm_seton 1, 1
+phobj_impuls 2, 0, 3
+wait 1780
+human_forcefall 0

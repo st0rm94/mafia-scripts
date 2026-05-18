@@ -1,0 +1,47 @@
+dim_flt 1
+dim_act 3
+findactor 0, "cad_ford"
+findactor 1, "civil"
+
+enemy_vidim 0
+
+act_setstate 100, inactive
+
+label 1
+enemy_playanim "x radni kecy stativ.i3d"
+wait 3000
+enemy_playanim "x radni kecy_A.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x radni kecy stativ.i3d"
+wait 2000
+enemy_playanim "x radni kecy_B.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0] 
+enemy_playanim "x radni kecy stativ.i3d"
+wait 5000
+enemy_playanim "x radni kecy_C.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x radni kecy stativ.i3d"
+wait 4000
+enemy_playanim "x radni kecy_D.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+goto 1
+
+event 1
+wait 1000
+enemy_playanim "x panika drep dolu.i3d", 0
+let flt[0] = flt[0] - 323 
+wait flt[0]
+enemy_playanim "x panika drep stativ.i3d"
+wait 4000 
+enemy_move_to_car 0, 3, run
+
+label 2
+enemy_usecar 0, 3
+compareownerwith 0, -1, 2
+
+label 3
+setevent 1, 1, 3

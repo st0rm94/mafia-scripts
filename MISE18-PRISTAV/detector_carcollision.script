@@ -1,0 +1,69 @@
+commandblock 1
+dim_flt 2
+dim_act 2
+dim_frm 3
+findactor 0, "TruckB"
+findactor 1, "Tommy"
+findframe 0, "TruckB.Object02"
+findframe 1, "TruckB.Object01"
+findframe 2, "TruckB.bocnice"
+//frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 0
+let flt[1] = 0
+commandblock 0
+
+label DETECT
+wait 500
+fuckingbox_getnumdest 1, 0
+if flt[0]  = 0, FINISH, -1
+compareownerwithex 1, 0, VYPNI, ZAPNI
+goto DETECT
+
+label VYPNI
+if flt[1] = 0, DETECT, -1
+//zatmyse 1
+//wait 500
+commandblock 1
+car_setspeccoll 0, 0
+frm_seton 0, 1
+//frm_seton 1, 1
+frm_seton 2, 0
+//zatmyse 0
+//wait 500
+let flt[1] = 0
+commandblock 0
+goto DETECT
+
+label ZAPNI
+if flt[1] = 1, DETECT, -1
+fuckingbox_getnumdest 1, 0
+if flt[0] = 0, DETECT, -1
+wait 2700
+//zatmyse 1
+//wait 500
+commandblock 1
+frm_seton 0, 0
+//frm_seton 1, 0
+frm_seton 2, 1
+car_setspeccoll 0, 1
+let flt[1] = 1
+//zatmyse 0
+//wait 500
+commandblock 0
+goto DETECT
+
+label FINISH
+wait 200
+compareownerwithex 1, 0, -1, FINISH
+//zatmyse 1
+//wait 500
+commandblock 1
+car_setspeccoll 0, 0
+frm_seton 0, 1
+//frm_seton 1, 1
+frm_seton 2, 0
+commandblock 0
+//zatmyse 0
+//wait 500
+end

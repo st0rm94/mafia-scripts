@@ -1,0 +1,244 @@
+//[debug_me]
+commandblock 1
+dim_act 11
+dim_flt 3
+dim_frm 4
+findactor 0, "Tommy"
+findactor 1, "detector_prestrelka"
+//nechat actora 2 FREE !!!
+findactor 3, "detector_parkovistepristav"
+findactor 4
+findactor 5, "detector_corka"
+findactor 6, "objectives"
+findactor 7, "Ridic1"
+setnullactor 8
+findactor 9, "Sam"
+findactor 10, "detector_ujizdi_pauliemu"
+findframe 0, "cil_Paulie"
+findframe 1, "player_v_pristavu"
+findframe 2, "detector_prestrelka"
+findframe 3, "Prijezd_pristav"
+// Aby na AB rikal DEFAULT
+let flt[1] = 0
+enemy_followplayer yes
+commandblock 0
+
+wait 3000
+enemy_Talk 18990111
+label FOLLOW
+enemy_action_follow 0, 4, CROUCH, NONEXT
+// target, 2
+//detector_issignal 1, -1, FOLLOW
+//enemy_usecar
+//enemy_move 2
+
+//{ DOWN
+//label WAIT
+//enemy_look 0
+//enemy_wait
+//wait 1000
+//goto WAIT
+//}
+// Objectives
+act_setstate 6, active
+// Detector parkoviste pristav
+act_setstate 3, active
+// detector_ujizdi_pauliemu
+act_setstate 10, active
+human_holster 4
+
+enemy_action_follow 0, 4, CROUCH, NONEXT
+// vypnuti detector_ujizdi_pauliemu
+label VYPNITO
+setevent 10, 1, VYPNITO
+// Oddelani WINGMANINDICATORU PRO PAULIEHO
+wingman_delindicator 4, 0
+// Aby uz na AB rikal neco jineho
+let flt[1] = 1
+
+enemy_usecar
+
+// Vezmu si z "detector_ujizdi_pauliemu" posledniho playerovyho ownera
+get_remote_actor 2, 10, 4
+// Zkontroluji si jestli neni null
+compareactors 2, 8, 0
+if flt[0] = 1, PESKY, -1
+// Jestli je pojizdnej
+iscarusable 2, 0
+if flt[0] = 1, -1, PESKY
+// A pokusim se jet (zde mozno dat compact block jestli se pohl 
+// aby mohl vystoupit a jit o5 pesky)
+label NASTUP2
+enemy_move_to_car 2, 0
+enemy_usecar 2, 0
+compareownerwith 2, -1, NASTUP2
+enemy_car_moveto 2, 0
+enemy_usecar
+label PESKY
+enemy_move 3
+enemy_look 9
+enemy_wait
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+act_setstate 6, active
+wait 1500
+human_looktoactor 4, 0, 1
+enemy_talk 4, 18990331, 2
+enemy_wait
+human_looktoactor 4
+event_use_cb 0
+return
+
+event 3
+human_looktoactor 4, 0, 1
+enemy_talk 4, 18990341, 1
+enemy_wait
+human_looktoactor 4
+event_use_cb 0
+//human_addweapon 0, 21, 0, 0
+return
+
+event 4
+act_setstate 6, active
+act_setstate 10, off
+human_looktoactor 4, 0, 1
+enemy_talk 4, 18990361, 1
+enemy_wait
+human_looktoactor 4
+event_use_cb 0
+let flt[0] = 1
+enemy_forcescript 4
+setcompass 1
+return
+
+event 5
+human_looktoactor 4, 0, 1
+enemy_talk 4, 18990351, 1
+enemy_wait
+human_looktoactor 0, 7, 1
+enemy_talk 0, 18990701
+enemy_wait
+human_looktoactor 0
+human_looktoactor 4
+event_use_cb 0
+return
+
+event 6
+debug_text "Paulie: BRAINWASH + ACTIONSCLEAR"
+enemy_brainwash
+enemy_actionsclear
+event_use_cb 0
+enemy_stopanim
+return
+
+event 7
+debug_text "Paulie: Jsme v Pristavu - rusim TARGET na follow"
+let flt[0] = 2
+enemy_forcescript 4
+event_use_cb 0
+return
+
+event USE_AB, 7970005
+human_eraseab 4
+human_stoptalk 4
+if flt[1] ! 1, DEFAULT, -1
+label RERAND
+commandblock 1
+rnd 0, 4
+let flt[0] = flt[0] + 1
+if flt[0] = flt[2], RERAND, -1
+human_looktoactor 4, 0, 1
+human_looktoactor 0, 4, 1
+commandblock 0
+goto flt[0]
+label 1
+enemy_talk 4, 950005
+goto RET
+label 2
+enemy_talk 4, 950006
+goto RET
+label 3
+enemy_talk 4, 950007
+goto RET
+label 4
+enemy_talk 4, 950008
+label RET
+enemy_wait
+commandblock 1
+human_looktoactor 4
+human_looktoactor 0
+let flt[2] = flt[0]
+human_createab 4
+commandblock 0
+return
+
+label DEFAULT
+commandblock 1
+rnd 0, 5
+let flt[0] = flt[0] + 5
+if flt[0] = flt[2], DEFAULT, -1
+human_looktoactor 4, 0, 1
+human_looktoactor 0, 4, 1
+commandblock 0
+goto flt[0]
+label 5
+enemy_talk 4, 950026
+goto RET2
+label 6
+enemy_talk 4, 950027
+goto RET2
+label 7
+enemy_talk 4, 950028
+goto RET2
+label 8
+enemy_talk 4, 950029
+goto RET2
+label 9
+enemy_talk 4, 950030
+label RET2
+enemy_wait
+commandblock 1
+human_looktoactor 4
+human_looktoactor 0
+let flt[2] = flt[0]
+human_createab 4
+event_use_cb 0
+commandblock 0
+return
+
+event HIT_FROM_PLAYER
+commandblock 1
+human_eraseab 4
+human_looktoactor 4, 0, 1
+human_stoptalk 4
+label RERAND2
+commandblock 1
+rnd 0, 3
+let flt[0] = flt[0] + 18
+commandblock 0
+if flt[0] = flt[2], RERAND2, -1
+goto flt[0]
+label 18
+enemy_talk 4, 00950094
+goto RET3
+label 19
+enemy_talk 4, 00950095
+goto RET3
+label 20
+enemy_talk 4, 00950096
+label RET3
+enemy_wait
+commandblock 1
+let flt[2] = flt[0]
+human_looktoactor 4
+event_use_cb 0
+human_createab 4
+commandblock 0
+return
+
+label FINISH

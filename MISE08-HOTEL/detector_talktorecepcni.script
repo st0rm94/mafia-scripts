@@ -1,0 +1,7 @@
+dim_act 1
+findactor 0,"recep"
+
+label 101
+detector_waitforuse 08970001
+setevent 0,201,101
+goto 101

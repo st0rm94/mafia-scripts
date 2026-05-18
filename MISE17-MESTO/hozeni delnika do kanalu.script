@@ -1,0 +1,45 @@
+dim_flt 1
+dim_act 3 
+dim_frm 4
+findactor 0, "Delnik"
+findactor 1, ""
+findactor 2, "Tommy"
+findframe 0, "Delnik"
+findframe 1, "poloha delnika po animaci"
+findframe 2, "poloha tommyho po animaci"
+findframe 3, "Tommy"
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+wait 3000
+
+actor_setplacement 1, 0
+
+detector_waitforuse 17970001
+
+zatmyse 1
+wait 500
+commandblock 1
+player_lockcontrols 1
+frm_seton 0, 0
+frm_seton 3, 0
+loaddifferences "dif17b.chg"
+recloadfull "record17b"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+actor_setplacement 0, 1
+actor_setplacement 2, 2
+frm_seton 0, 1
+frm_seton 3, 1
+player_lockcontrols 0
+detector_setsignal 100, 1
+commandblock 0
+zatmyse 0

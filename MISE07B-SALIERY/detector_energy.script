@@ -1,0 +1,63 @@
+//[debug_me]
+dim_flt 1
+dim_act 8
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Salieri"
+findactor 3, "VincenzoHIGH"
+findactor 4, "Luigi"
+findactor 5, "frank"
+findactor 6, "Sam"
+findactor 7, "Ralph"
+
+label CHECK
+wait 1000
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, PAULIEDEATH, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, SALIERYDEATH, -1
+human_getproperty 3, 0, Energy
+if flt[0] = 0, VINCENZODEATH, -1
+human_getproperty 4, 0, Energy
+if flt[0] = 0, LUIGIDEATH, -1
+human_getproperty 5, 0, Energy
+if flt[0] = 0, FRANKDEATH, -1
+human_getproperty 6, 0, Energy
+if flt[0] = 0, SAMDEATH, -1
+human_getproperty 7, 0, Energy
+if flt[0] = 0, RALPHDEATH, CHECK
+
+label TOMMYDEATH
+endofmission 0, 07980004
+goto FINISH
+
+label PAULIEDEATH
+endofmission 0, 07980001
+goto FINISH
+
+label SALIERYDEATH
+endofmission 0, 7980012
+goto FINISH
+
+label VINCENZODEATH
+endofmission 0, 7980011
+goto FINISH
+
+label  LUIGIDEATH
+endofmission 0, 07980009
+goto FINISH
+
+label FRANKDEATH
+endofmission 0, 07980010
+goto FINISH
+
+label SAMDEATH
+endofmission 0, 07980006
+goto FINISH
+
+label RALPHDEATH
+endofmission 0, 07980013
+label FINISH
+end

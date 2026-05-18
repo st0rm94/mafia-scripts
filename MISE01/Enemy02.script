@@ -1,0 +1,13 @@
+commandblock 1
+dim_act 2
+findactor 0,"Enemy02"
+findactor 1,"enemy_car"
+
+human_addweapon 0,9,7,100
+commandblock 0
+
+act_setstate -1,inactive
+
+label 101
+wait 60000
+goto 101

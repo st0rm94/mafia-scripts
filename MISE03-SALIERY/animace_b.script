@@ -1,0 +1,35 @@
+commandblock 1
+zatmyse 1,1
+loaddifferences "dif03a.chg"
+recloadfull "record03a.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+commandblock 1
+loaddifferences "dif03b.chg"
+recloadfull "record03b.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+commandblock 1
+loaddifferences "dif03c.chg"
+recloadfull "record03c.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+change_mission "mise03-morello","",-1

@@ -1,0 +1,11 @@
+dim_act 1
+findactor 0, "chemaFor"
+
+enemy_vidim 0
+wait 20500
+enemy_move 15, run
+enemy_lookto 16
+enemy_wait
+enemy_vidim 1
+label 1
+goto 1

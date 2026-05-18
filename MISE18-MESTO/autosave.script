@@ -1,0 +1,26 @@
+autosavegame 5495
+commandblock 1
+dim_act 3
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findactor 2, "Tommy"
+
+human_set8slot 2, 1
+human_set8slot 0, 1
+human_set8slot 1, 1
+
+inventory_pop 2
+character_pop 0
+character_pop 1
+character_pop 2
+
+human_addweapon 0, 10, 50, 300
+human_addweapon 1, 10, 50, 300
+
+human_holster 2
+human_holster 0
+human_holster 1
+
+debug_text "autosave: Save po prvnim hrani mise"
+commandblock 0
+end

@@ -1,0 +1,47 @@
+dim_flt 1
+dim_act 5
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 3, "VincenzoHIGH"
+findactor 4, "Salieri"
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, 2, -1
+
+wait 1000
+human_getproperty 1, 0, energy
+if flt[0] = 0, 3, -1
+
+wait 1000
+human_getproperty 2, 0, energy
+if flt[0] = 0, 4, -1
+
+wait 1000
+human_getproperty 3, 0, energy
+if flt[0] = 0, 5, -1
+
+wait 1000
+human_getproperty 4, 0, energy
+if flt[0] = 0, 6, 1
+
+label 2
+endofmission 0, 16980002 
+end
+
+label 3
+endofmission 0, 15980000
+end
+
+label 4
+endofmission 0, 16980000
+end
+
+label 5
+endofmission 0, 16980003
+end
+
+label 6
+endofmission 0, 15980002

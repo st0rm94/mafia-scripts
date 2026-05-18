@@ -1,0 +1,10 @@
+//pravidelny zvonek
+
+dim_frm 1
+FindFrame 0
+
+label 10
+  wait 60000
+  frm_seton 0, 1
+goto 10
+end

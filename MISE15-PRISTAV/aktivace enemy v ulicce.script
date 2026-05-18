@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 4
+findactor 0, "aktivace enemy v ulicce1"
+findactor 1, "PortGuard15"
+findactor 2, "PortGuard16"
+findactor 3, "PortGuard17"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 10
+if flt[0] = 1, -1, 1
+
+detector_setsignal 100, 1
+
+act_setstate 0, off
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active

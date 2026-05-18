@@ -1,0 +1,37 @@
+dim_act 3
+dim_flt 2
+dim_frm 2
+findactor 0, "Tommy"
+findactor 1
+findactor 2, "TruckB2"
+findframe 0, "Delnik4.neck"
+findframe 1, "2cigaro"
+frm_seton 0, 1
+{ DOWN
+label WAIT
+rnd 1, 5
+let flt[1] = flt[1] * 2300
+enemy_playanim "KoureniAutoStativ.I3D", 0
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] + flt[1]
+wait flt[0]
+enemy_playanim "KoureniAutoPotahnuti.I3D", 0
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] / 3
+wait flt[0]
+wait flt[0]
+emitparticle 0, 25
+wait flt[0]
+goto WAIT
+}
+frm_seton 1, 0
+enemy_move_to_car 2, 1
+enemy_usecar 2,1
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINSIH
+debug_text "Delnik4: SCRIPT FINISHED"

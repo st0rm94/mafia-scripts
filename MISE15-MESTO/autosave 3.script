@@ -1,0 +1,4 @@
+label 1
+autosavegame 5390
+
+act_setstate 100, off

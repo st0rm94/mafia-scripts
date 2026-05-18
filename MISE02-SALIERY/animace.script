@@ -1,0 +1,13 @@
+commandblock 1
+zatmyse 1,1
+loaddifferences "dif02c.chg"
+recloadfull "record02c.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+change_mission "mise03-saliery","",-1

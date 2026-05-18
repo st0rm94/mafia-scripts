@@ -1,0 +1,21 @@
+dim_act 2
+dim_frm 1
+findactor 0,"driver01"
+findactor 1,"ForAde"
+findframe 0,"dummy-driver"
+
+enemy_vidim 0
+
+human_force_settocar 0,1,0
+
+{ down
+label 101
+wait 30000
+goto 101
+}
+
+enemy_car_moveto 1,0
+end
+
+event 201
+return

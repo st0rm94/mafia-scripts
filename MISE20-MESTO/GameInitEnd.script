@@ -1,0 +1,286 @@
+dim_flt 1
+dim_act 26
+dim_frm 81
+findactor 0, "Czena"
+findactor 1, "cordca"
+findactor 2, "pes"
+findactor 3, "pes2"
+findactor 4, "pes3"
+findactor 5, "pes4"
+findactor 6, "forVro"
+findactor 7, "TruckA"
+findactor 8, "fordtpi"
+findactor 9, "blackha2"
+findactor 10, "blackha"
+findactor 11, "pontFor"
+findactor 12, "chemaTud"
+findactor 13, "chemaTud2"
+findactor 14, "buikFor"
+findactor 15, "1ProdZ"
+findactor 16, "1AsisPZ"
+findactor 17, "merced500K"
+findactor 18, "deuseJco"
+findactor 19, "speedster"
+findactor 20, "Box24"
+findactor 21, "gRectangle01"
+findactor 22, "vypinac"
+findactor 23, "k_hotel00.Mesh02"
+findactor 24, "4build506.Object03"
+findactor 25, "polimTud"
+
+findframe 0, "Czena"
+
+findframe 2, "pes"
+findframe 3, "pes2"
+findframe 4, "pes3"
+findframe 5, "pes4"
+findframe 6, "1ProdZ"
+findframe 7, "1AsisPZ"
+findframe 8, "2shotgun"
+findframe 9, "2shotgun2"
+findframe 10, "2shotgun3"
+findframe 11, "2shotgun4"
+findframe 12, "2tommy"
+findframe 13, "2c"
+findframe 14, "2coltds"
+findframe 15, "&& chodba"
+findframe 16, "&& schodiste"
+findframe 17, "&& hala"
+findframe 18, "gunBox02"
+findframe 19, "gLoft01"
+findframe 20, "light07"
+findframe 21, "light08"
+findframe 22, "light05"
+findframe 23, "light06"
+findframe 24, "light09"
+findframe 25, "light03"
+findframe 26, "light04"
+findframe 27, "light01"
+findframe 28, "xsvetlo 02 on01.glow"
+findframe 29, "xsvetlo 02 on02.glow"
+findframe 30, "xsvetlo 01 on.glow"
+findframe 31, "xsvetlo 02 on00.glow"
+findframe 32, "xsvetlo 02 on3.glow"
+findframe 33, "xsvetlo 02 on2.glow"
+findframe 34, "Box27"
+findframe 35, "polick	"
+findframe 36, "Box40"
+findframe 37, "plot1"
+findframe 38, "plot2"
+findframe 39, "gLoft03"
+findframe 40, "xbedna 19"
+findframe 41, "xbedna 20"
+findframe 42, "xbedna 21"
+findframe 43, "xbedna 22"
+findframe 44, "bedn_s21"
+findframe 45, "bedn_s19"
+findframe 46, "bedn_s26"
+findframe 47, "bedn_s16"
+findframe 48, "bedn_s14"
+findframe 49, "bedn_s15"
+findframe 50, "bedn_s40"
+findframe 51, "bedn_s36"
+findframe 52, "bedn_s41"
+findframe 53, "bedn_s22"
+findframe 54, "bedn_s23"
+findframe 55, "bedn_s24"
+findframe 56, "bedn_s18"
+findframe 57, "bedn_s20"
+findframe 58, "bedn_s27"
+findframe 59, "bedn_s17"
+findframe 60, "bedn_s25"
+findframe 61, "bedn_s35"
+findframe 62, "bedn_s31"
+findframe 63, "bedn_s32"
+findframe 64, "bedn_s33"
+findframe 65, "bedn_s37"
+findframe 66, "bedn_s38"
+findframe 67, "bedn_s29"
+findframe 68, "bedn_s30"
+findframe 69, "bedn_s34"
+findframe 70, "bedn_s09"
+findframe 71, "bedn_s28"
+findframe 72, "xhasicak00"
+findframe 73, "Box101"
+findframe 74, "light02"
+findframe 75, "xsvetlo 02 on01.zarovka"
+findframe 76, "xsvetlo 02 on02.zarovka"
+findframe 77, "xsvetlo 01 on.Sphere01"
+findframe 78, "xsvetlo 02 on00.zarovka"
+findframe 79, "xsvetlo 02 on3.zarovka"
+findframe 80, "xsvetlo 02 on2.zarovka"
+
+enablemap 1
+policemanager_on 980000, 2
+police_speed_factor 0.8
+mission_objectivesclear
+mission_objectives 20960006
+door_enableus 20, 0
+door_enableus 21, 0
+door_enableus 23, 0
+door_enableus 24, 0
+car_muststeal 25, 1
+
+getmissionnumber 0
+if flt[0] = 1, 1, -1
+if flt[0] = 2, 2, -1
+
+act_setstate 0, inactive
+frm_seton 0, 0
+
+act_setstate 22, off
+
+frm_seton 13, 0
+car_muststeal 1, 1
+car_muststeal 6, 1
+car_muststeal 7, 1
+car_muststeal 8, 1
+car_muststeal 9, 1
+car_muststeal 10, 1
+car_muststeal 11, 1
+car_muststeal 12, 1
+car_muststeal 13, 1
+car_muststeal 14, 1
+car_muststeal 17, 1
+car_muststeal 18, 1
+car_muststeal 19, 1
+human_addweapon 16, 9, 7, 30
+end
+
+label 1
+act_setstate 0, inactive
+frm_seton 0, 0
+
+act_setstate 2, inactive
+act_setstate 3, inactive
+act_setstate 4, inactive
+act_setstate 5, inactive
+act_setstate 22, off
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 13, 0
+car_muststeal 1, 1
+car_muststeal 6, 1
+car_muststeal 7, 1
+car_muststeal 8, 1
+car_muststeal 9, 1
+car_muststeal 10, 1
+car_muststeal 11, 1
+car_muststeal 12, 1
+car_muststeal 13, 1
+car_muststeal 14, 1
+car_muststeal 17, 1
+car_muststeal 18, 1
+car_muststeal 19, 1
+human_addweapon 15, 12, 2, 30
+human_holster 15
+human_addweapon 16, 9, 7, 30
+end
+
+label 2
+act_setstate 0, inactive
+frm_seton 0, 0
+
+act_setstate 2, inactive
+act_setstate 3, inactive
+act_setstate 4, inactive
+act_setstate 5, inactive
+act_setstate 15, off
+act_setstate 16, off
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 14, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+frm_seton 27, 0
+frm_seton 28, 0
+frm_seton 29, 0
+frm_seton 30, 0
+frm_seton 31, 0
+frm_seton 32, 0
+frm_seton 33, 0
+frm_seton 40, 0
+frm_seton 41, 0
+frm_seton 42, 0
+frm_seton 43, 0
+frm_seton 44, 0
+frm_seton 45, 0
+frm_seton 46, 0
+frm_seton 47, 0
+frm_seton 48, 0
+frm_seton 49, 0
+frm_seton 50, 0
+frm_seton 51, 0
+frm_seton 52, 0
+frm_seton 53, 0
+frm_seton 54, 0
+frm_seton 55, 0
+frm_seton 56, 0
+frm_seton 57, 0
+frm_seton 58, 0
+frm_seton 59, 0
+frm_seton 60, 0
+frm_seton 61, 0
+frm_seton 62, 0
+frm_seton 63, 0
+frm_seton 64, 0
+frm_seton 65, 0
+frm_seton 66, 0
+frm_seton 67, 0
+frm_seton 68, 0
+frm_seton 69, 0
+frm_seton 70, 0
+frm_seton 71, 0
+frm_seton 72, 0
+frm_seton 74, 0
+frm_seton 75, 0
+frm_seton 76, 0
+frm_seton 77, 0
+frm_seton 78, 0
+frm_seton 79, 0
+frm_seton 80, 0
+
+setlmlevel 15, 1
+setlmlevel 16, 1
+setlmlevel 17, 1
+setlmlevel 18, 1
+setlmlevel 19, 1
+setlmlevel 34, 1
+setlmlevel 35, 1
+setlmlevel 36, 1
+setlmlevel 37, 1
+setlmlevel 38, 1
+setlmlevel 39, 1
+setlmlevel 73, 1
+
+car_muststeal 1, 1
+car_muststeal 6, 1
+car_muststeal 7, 1
+car_muststeal 8, 1
+car_muststeal 9, 1
+car_muststeal 10, 1
+car_muststeal 11, 1
+car_muststeal 12, 1
+car_muststeal 13, 1
+car_muststeal 14, 1
+car_muststeal 17, 1
+car_muststeal 18, 1
+car_muststeal 19, 1
+createweaponfromframe 13, 9, 7, 0
+end

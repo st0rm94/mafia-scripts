@@ -1,0 +1,25 @@
+dim_flt 4
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "Kasar"
+findactor 2, "Radni"
+wait 2000
+human_talk 0, 11990102
+
+label 1
+human_getproperty 0, 0, energy
+human_getproperty 1, 1, energy
+human_getproperty 2, 2, energy
+if flt[0] = 0, 2, -1
+if flt[2] = 0, 3, -1
+if flt[1] = 0, -1, 1
+wait 3000
+endofmission 0, 11980000
+
+label 2
+wait 3000
+endofmission 0, 13980002
+
+label 3
+wait 3000
+endofmission 0, 11980002

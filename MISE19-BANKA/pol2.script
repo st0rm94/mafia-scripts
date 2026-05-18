@@ -1,0 +1,46 @@
+dim_act 5
+dim_frm 3
+findactor 0, "poli2"
+findactor 1, ""
+findactor 2, "pol8"
+findactor 3, "Tommy"
+findactor 4, "zatceni playera"
+findframe 0, "1zastaveni pred bankou"
+findframe 1, "1zastaveni pred bankou 5"
+findframe 2, "poli2.WHR0"
+
+enemy_vidim 0
+
+human_addweapon 1, 11, 8, 30
+human_addweapon 1, 8, 6, 30
+
+act_setstate 100, inactive
+
+wait 4000
+
+//enemy_car_escape 0, 3, 0
+enemy_car_escape 0, 3, 1, 30, 1, 1
+
+setevent 2, 1, -1
+
+label 2
+enemy_usecar
+compareownerwith 0, 2, -1
+
+enemy_move_to_frame 2, 1.5, run
+enemy_lookto 47
+enemy_wait
+
+enemy_lockstate fight_guard
+
+enemy_vidim 1
+act_setstate 4, active
+enemy_talk 1, 19992011, 1
+
+label 3
+wait 1000000
+goto 3
+
+event 1
+enemy_naserse 3
+return

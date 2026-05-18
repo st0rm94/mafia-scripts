@@ -1,0 +1,18 @@
+//nepouziva se - kdyz ridil wingman
+act_setstate -1, off
+dim_flt 2
+dim_act 2
+findactor 0, "fsdfwdgfsdwersdfg"
+findactor 1, "Paulie"
+act_setstate -1, inactive
+
+label DETECT
+detector_inrange 0, 10
+if flt[0] ! 0, -1, DETECT
+// Event aby si Paulie vypl target na follow modu
+//label SEND
+//setevent 1, X, SEND
+//debug_text "Paulie: Driving disabled"
+
+
+

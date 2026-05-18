@@ -1,0 +1,105 @@
+dim_flt 2
+dim_frm 2
+dim_act 11
+findframe 0, "Vrata01b"
+findframe 1, "sperhak"
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "branka"
+findactor 3, "zed5b20"
+findactor 4, ""
+findactor 5, "distancemetr"
+findactor 6, "damagemetr"
+findactor 7, "hlasky"
+findactor 8, "branka"
+human_returnfrompanic 0, 1
+
+label 1
+{ down
+enemy_playanim "Vyhlizeni01.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "Vyhlizeni02.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "Vyhlizeni03.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "Vyhlizeni04.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+goto 1
+}
+{ down
+label 67
+enemy_action_follow 1, 1.5, -1, RETURN
+human_getowner 1, 9
+compareownerwith 9, -1, 67
+wingman_setindicator 4, 4, 0
+act_setstate 5, active
+setcompass -1
+human_talk 0, 11990041, 2
+enemy_wait
+human_talk 0, 11990051, 2
+enemy_wait
+label 4
+act_setstate 6, active
+setcompass 0
+mission_objectivesclear
+mission_objectives 11960002
+act_setstate 7, active
+label 10
+enemy_action_follow 1, 3, nonext
+}
+{ up
+goto 10
+}
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+enemy_forcescript 4
+enemy_stop
+return
+
+event 3
+event_use_cb 0
+human_talk 1, 11990101, 2
+wait 1000
+vlvp 1
+if flt[1] = 1, -1, 41
+human_talk 1, 00950224, 2
+label 41
+return
+
+event use_ab, 10970010
+event_use_cb 0
+enemy_forcescript 4
+detector_issignal 2, -1, 3
+human_eraseab 0
+human_talk 1, 11990571
+enemy_wait
+enemy_look 1
+enemy_wait
+enemy_talk 11990581
+enemy_wait
+enemy_move 1
+enemy_lookto 2
+enemy_wait
+enemy_playanim "KradeniAuta.i3d", 0
+let flt[0] = flt[0] - 300
+wait 1000
+frm_seton 1, 1
+wait flt[0]
+enemy_look 1
+enemy_wait
+enemy_talk 11990591
+door_lock 2, 0
+detector_setsignal 2, 0
+label 64
+setevent 8, 1, 64
+label 3
+return

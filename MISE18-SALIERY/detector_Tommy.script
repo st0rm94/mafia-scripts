@@ -1,0 +1,16 @@
+dim_act 3
+dim_flt 1
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findactor 2, "door_zbrX01"
+act_setstate -1, inactive
+
+label DETECT
+wait 1000
+detector_inrange 0, 20
+if flt[0] ! 1, -1, DETECT
+label SEND
+setevent 0, 1, SEND
+label SEND2
+setevent 1, 1, SEND2
+debug_text "detector_Tommy: SCRIPT FINISHED"

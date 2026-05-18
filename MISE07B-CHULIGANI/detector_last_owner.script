@@ -1,0 +1,68 @@
+//[debug_me]
+dim_act 7
+dim_flt 1
+getactiveplayer 0
+setnullactor 1
+// 2 free pro temporary
+// 3 posledni validni owner
+findactor 4
+findactor 5, "detector_konec"
+findactor 6, "Billy"
+
+label POSLEDNIOWNER
+wait 100
+human_getowner 0, 2
+compareactors 2, 1, 0
+if flt[0] = 1, POSLEDNIOWNER, -1
+compareactors 2, 3, 0
+// Takze owner neni null a nerovna se tomu poslednimu
+if flt[0] = 1, POSLEDNIOWNER, -1
+iscarusable 2, 0
+if flt[0] = 0, WAITUSABILITY, -1
+label CARUSEABLE
+debug_text "detector_last_owner: novy validni owner = %a", 2
+// No a je pojizdny, takze si ho zkopiruju
+set_remote_actor 2, 4,3
+// No a updatnu to: detector_konec
+set_remote_actor 3, 5, 0
+
+// Tohle jede az po honicce
+if flt[1] = 0, POSLEDNIOWNER, -1
+// Billy - ridic musi vedet s jakym autem jede player, ale nema cas to zjistovat
+// flt[1] = 0 = CADILAC
+// flt[1] = 1 = FORDA, Chevrolet Six
+// flt[1] = 2 = FORDT
+getcarlinenumfromtable 3, 0
+iffltinrange 0, 1, 6, SET_FORDT
+iffltinrange 0, 7, 14, SET_FORDA
+iffltinrange 0, 22, 23, SET_FORDA
+if flt[0] = 37, SET_CADILLAC, SET_CADILLAC
+// Nezname auto!
+goto POSLEDNIOWNER
+
+label SET_FORDT
+let flt[0] = 2
+set_remote_float 0, 6, 1
+debug_text "Billymu nastaven FORDT !"
+goto POSLEDNIOWNER
+
+label SET_FORDA
+let flt[0] = 1
+set_remote_float 0, 6, 1
+debug_text "Billymu nastaven FORDA !"
+goto POSLEDNIOWNER
+
+label SET_CADILLAC
+let flt[0] = 0
+set_remote_float 0, 6, 1
+debug_text "Billymu nastaven CADILLAC !"
+goto POSLEDNIOWNER
+
+label WAITUSABILITY
+wait 5000
+iscarusable 2, 0
+if flt[0] = 0, POSLEDNIOWNER, CARUSEABLE
+
+event 1
+let flt[1] = 1
+return

@@ -1,0 +1,50 @@
+act_setstate -1,inactive
+dim_frm 2
+dim_flt 4
+dim_act 4
+findactor 0,"boom"
+findactor 1,"explosive_end"
+findactor 2,"detector_explosive"
+findactor 3,"explosive_car"
+
+findframe 0,"explosive_car"
+findframe 1,"boom"
+
+act_setstate 1,active
+mission_objectivesclear
+mission_objectives 22930023
+
+timeron 0,0,0,240
+settimeoutevent 2,201
+
+wait 10000
+act_setstate 0,active
+
+label 101
+wait 3000
+frm_getpos 0,0
+wait 50
+frm_setpos 1,0
+setevent 0,201,-1
+getcardamage 3,3
+if flt[3]=0,-1,101 
+
+settimeoutevent -1,201
+timeroff
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+
+event 202
+act_setstate 0,off
+settimeoutevent -1,201
+timeroff
+end
+
+event 201
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+

@@ -1,0 +1,47 @@
+dim_frm 9
+findframe 0, "position_FordA"
+findframe 1, "position_Truck"
+findframe 2, "xprkna 2"
+findframe 3, "xprkna 3"
+findframe 4, "xprkna 4"
+findframe 5, "xprkna 5"
+findframe 6, "xprkna 6"
+findframe 7, "civil3"
+findframe 8, "Czena"
+
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+
+dim_act 5
+findactor 0, "fordtco"
+findactor 1, "TruckA"
+findactor 2, "civil3"
+findactor 3, "Czena"
+findactor 4, "krade_nam_auto"
+car_invisible 0, 1
+car_invisible 1, 1
+
+act_setstate -1, inactive
+
+actor_setplacement 0, 0
+actor_setplacement 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+car_invisible 0, 0
+car_invisible 1, 0
+car_calm 0
+car_calm 1
+
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active

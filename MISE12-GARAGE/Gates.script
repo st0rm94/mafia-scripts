@@ -1,0 +1,16 @@
+dim_act 5
+findactor 0
+findactor 1, "GatesMan"
+findactor 2, "GatesMan2"
+findactor 3, "GatesMan3"
+findactor 4, "GatesMan4"
+dim_flt 1
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+
+human_addweapon 0, 7, 6, 90
+human_holster 0

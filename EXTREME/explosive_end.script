@@ -1,0 +1,39 @@
+dim_act 4
+dim_flt 1
+dim_frm 2
+findactor 0,"detector_explosive"
+findactor 1,"explosive_bonuscar"
+findactor 2,"Tommy"
+findactor 3,"explosive_car"
+
+findframe 0,"explosive_bonuscar"
+findframe 1,"explosive_end"
+
+frm_seton 0,0
+car_enableus 1,0
+car_invisible 1,1
+
+act_setstate -1,inactive
+
+frm_seton 0,1
+car_invisible 1,0
+setcompass 1
+
+label 101
+wait 1000
+detector_inrange 0,35
+if flt[0]=1,-1,101
+compareownerwithex 2,3,-1,101
+
+setevent 0,202,-1
+setcompass -1
+car_enableus 1,1
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar K
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590

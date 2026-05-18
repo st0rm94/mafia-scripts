@@ -1,0 +1,32 @@
+dim_flt 2
+dim_act 3
+findactor 0,"Tommy"
+findactor 1,"NULL"
+
+label 101
+wait 1000
+detector_inrange 0,10
+if flt[0]=1,-1,101
+
+vlvp 0
+if flt[0]=1,-1,POLICIE_NEVIDI
+if flt[1]=0,-1,101
+human_talk 0,00950223
+let flt[1]=1
+goto 101
+
+label POLICIE_NEVIDI
+
+compareownerwithex 0,1,LOAD,-1
+human_getowner 0,2
+car_getspeed 2,0
+if flt[0]<5,-1,101
+
+label LOAD
+timeroff
+setcompass -1
+
+change_mission "mise06-autodrom", "", -1
+debug_text "LOAD AUTODROM"
+
+

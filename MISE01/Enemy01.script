@@ -1,0 +1,39 @@
+commandblock 1
+dim_act 3
+dim_flt 1
+findactor 0,"enemy_car"
+findactor 1,"Sam"
+findactor 2,"Enemy01"
+
+enemy_vidim 0
+// 0=robertek   1=bokovka
+let flt[0]=0
+commandblock 0
+
+act_setstate -1,inactive
+
+{ up
+label 101
+if flt[0]=0,-1,BOKOVKA
+enemy_car_hunt 0,1,robertek
+wait 1000
+goto 101
+
+label BOKOVKA
+enemy_car_hunt 0,1,bokovka
+wait 1000
+goto 101
+}
+
+event 201
+commandblock 1
+enemy_forcescript 2
+car_remove_driver 0
+if flt[0]=0,-1,SKIP
+let flt[0]=1
+goto RET
+label SKIP
+let flt[0]=0
+label RET
+commandblock 0
+return

@@ -1,0 +1,33 @@
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+
+
+enemy_playanim "x barman stativ.i3d"
+{ up
+label 1
+getactorsdist 0, 1, 0
+if flt[0] < 3, -1, 2
+human_looktoactor 0, 1, 1
+goto 1
+label 2
+human_looktoactor 0
+goto 1
+}
+
+event use_ab
+enemy_talk 0, 11990761
+enemy_wait
+enemy_talk 0, 11990762
+enemy_wait
+enemy_talk 0, 11990763
+enemy_wait
+return
+
+event 1000
+enemy_action_fire 1, 3
+return
+
+event enemy_to_script
+end

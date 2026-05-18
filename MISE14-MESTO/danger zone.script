@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 3
+findactor 0, "Guard2"
+findactor 1, "Guard"
+findactor 2, "gard range"
+
+label 1
+DETECTOR_INRANGE 0, 3
+if flt[0] = 1, -1, 1
+act_setstate 2, off
+label 2
+setevent 0, 2, 2
+setevent 1, 2, 2

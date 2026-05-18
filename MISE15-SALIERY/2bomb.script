@@ -1,0 +1,27 @@
+dim_flt 1
+dim_act 2
+dim_frm 2
+findactor 0, "Tommy"
+findactor 1, ""
+findframe 0, ""
+findframe 1, "grab"
+
+label 1
+detector_waitforuse 15970100
+getactorsdist 0, 1, 0
+if flt[0] > 1.4, 1, -1
+player_lockcontrols 1
+frm_seton 1, 1
+person_playanim 0, "sbirani zurovne.i3d"
+wait 400
+human_linktohand 0, 0
+wait 600
+commandblock 1
+human_addweapon 0, 22, 0, 0
+frm_seton 0, 0
+human_unlinkfromhand 0, 0
+commandblock 0
+wait 200
+person_stopanim 0
+player_lockcontrols 0
+detector_setsignal 100, 1

@@ -1,0 +1,39 @@
+dim_flt 1
+dim_act 7
+dim_frm 5
+findactor 0, "chemaForpristav"
+findactor 1, "Enemy04K"
+findactor 2, "Enemy08K"
+findactor 3, "Enemy12K"
+findactor 4, "Enemy10K"
+findactor 5, "load mise15-mesto1"
+findactor 6, "load mise15-mesto2"
+
+findframe 0, "chemaForpristav"
+findframe 1, "Enemy04K"
+findframe 2, "Enemy08K"
+findframe 3, "Enemy12K"
+findframe 4, "Enemy10K"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 80
+if flt[0] = 1, -1, 1
+
+car_invisible 0, 0
+
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+
+act_setstate 100, off

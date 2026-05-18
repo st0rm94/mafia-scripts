@@ -1,0 +1,59 @@
+//[debug_me]
+dim_act 7
+dim_flt 2
+dim_frm 1
+findframe 0, "skupinka2"
+frm_seton 0, 1
+findactor 0
+findactor 1, "buikFor2"
+findactor 2, "Tommy"
+findactor 3, "City_Guard4"
+findactor 4, "City_Guard6"
+findactor 5, "Tommy"
+findactor 6, "Organizator"
+human_addweapon 0, 11, 8, 32
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+enemy_group_add 0, 7, CAST
+enemy_group_addcar 0, 1
+car_muststeal 1, 1
+
+{ DOWN
+label FREESTATE
+rnd 1, 5
+enemy_playanim "gesto2 gun1a.I3D", 0
+let flt[1] =flt[1] * 3400
+wait flt[1]
+enemy_playanim "gesto2 gun1b.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+rnd 1, 5
+enemy_playanim "gesto2 gun1a.I3D", 0
+let flt[1] =flt[1] * 3400
+wait flt[1]
+enemy_playanim "gesto2 gun1d.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+goto FREESTATE
+}
+goto FINISH
+
+event 100
+enemy_naserse 5
+enemy_action_fire 5
+event_use_cb 0
+return
+
+event ENEMY_TO_AI
+enemy_getstate 0
+if flt[0] > 1, -1, RET
+event_use_cb 1
+frm_seton 0, 0
+return
+label RET
+event_use_cb 0
+return
+
+label FINSIH

@@ -1,0 +1,388 @@
+# .dnc extraction summary
+# source        : MISE13-ZRADCE.dnc  (11280 bytes, main)
+# source        : MISE13-ZRADCE-InitScripts.dnc  (179 bytes, init)
+# actors_total  : 38
+# init_records  : 1
+# scripts_found : 21
+
+# main-container actor type-code distribution
+#   type    5  count=10  script
+#   type    6  count=9  
+#   type   27  count=10  human (scripted NPC)
+#   type   35  count=9  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 68
+# total invocations: 453
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    41  findactor
+    40  wait
+    34  label
+    25  let
+    20  if
+    16  dim_flt
+    16  goto
+    15  human_talk
+    14  dim_act
+    13  findframe    [casings: FindFrame, findframe]
+    12  enemy_vidim
+    12  enemy_wait
+    12  event
+    11  enemy_playanim
+    11  return
+    11  setevent
+    10  commandblock
+     9  dim_frm
+     9  enemy_move
+     9  frm_seton
+     7  act_setstate
+     7  human_getproperty
+     6  end
+     5  enemy_lookto
+     5  enemy_talk
+     5  event_use_cb
+     4  door_lock
+     4  enemy_group_add
+     4  human_addweapon
+     4  human_looktoactor
+     4  player_lockcontrols
+     3  actor_setplacement
+     3  enemy_action_fire
+     3  zatmyse
+     2  cleardifferences
+     2  detector_inrange
+     2  detector_waitforuse
+     2  door_open
+     2  endofmission
+     2  enemy_look
+     2  enemy_stopanim
+     2  loaddifferences
+     2  person_playanim
+     2  recloadfull
+     2  recunload
+     2  recwaitforend
+     2  rnd
+     2  soundfade
+     2  stream_play
+     1  autosavegame
+     1  change_mission
+     1  character_pop
+     1  door_enableus
+     1  enemy_forcescript
+     1  enemy_group_new
+     1  enemy_stop
+     1  garage_show
+     1  getactorsdist
+     1  human_createab
+     1  human_eraseab
+     1  mission_objectivesclear
+     1  person_stopanim
+     1  playsound
+     1  setplayerfireevent
+     1  stream_create
+     1  wingman_setindicator
+     1  {
+     1  }
+
+# ---- per-script command listing ----
+
+[CarlZen]  type=27  lines=18  commands=13
+    dim_flt
+    dim_frm
+    enemy_playanim
+    enemy_vidim
+    event
+    findframe
+    goto
+    if
+    label
+    let
+    playsound
+    return
+    wait
+
+[Carlo]  type=27  lines=22  commands=14
+    dim_act
+    dim_flt
+    enemy_forcescript
+    enemy_lookto
+    enemy_move
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    goto
+    if
+    label
+    let
+    return
+
+[Czena]  type=27  lines=25  commands=12
+    dim_flt
+    dim_frm
+    enemy_lookto
+    enemy_playanim
+    enemy_wait
+    findframe
+    frm_seton
+    goto
+    if
+    label
+    let
+    wait
+
+[Czena2]  type=27  lines=28  commands=12
+    dim_act
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    goto
+    human_talk
+    label
+    setevent
+    wait
+
+[Hoolig]  type=27  lines=21  commands=15
+    dim_act
+    dim_flt
+    door_lock
+    door_open
+    enemy_action_fire
+    enemy_move
+    enemy_vidim
+    event
+    findactor
+    goto
+    if
+    label
+    let
+    return
+    wait
+
+[Hoolig2]  type=27  lines=25  commands=14
+    dim_act
+    dim_flt
+    enemy_action_fire
+    enemy_group_add
+    enemy_group_new
+    enemy_move
+    enemy_vidim
+    event
+    findactor
+    goto
+    if
+    label
+    let
+    return
+
+[Hoolig3]  type=27  lines=17  commands=12
+    dim_act
+    dim_flt
+    enemy_action_fire
+    enemy_move
+    enemy_vidim
+    event
+    findactor
+    goto
+    if
+    label
+    let
+    return
+
+[Salieri]  type=27  lines=105  commands=31
+    act_setstate
+    commandblock
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_look
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_stop
+    enemy_stopanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_createab
+    human_eraseab
+    human_looktoactor
+    human_talk
+    if
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[autosave]  type=5  lines=1  commands=1
+    autosavegame
+
+[chuligani]  type=5  lines=77  commands=26
+    act_setstate
+    change_mission
+    cleardifferences
+    commandblock
+    dim_act
+    dim_flt
+    dim_frm
+    door_lock
+    end
+    findactor
+    findframe
+    frm_seton
+    garage_show
+    human_addweapon
+    human_getproperty
+    human_talk
+    if
+    label
+    loaddifferences
+    mission_objectivesclear
+    recloadfull
+    recunload
+    recwaitforend
+    setevent
+    wait
+    zatmyse
+
+[civil]  type=27  lines=5  commands=4
+    enemy_playanim
+    goto
+    label
+    wait
+
+[civil3]  type=27  lines=13  commands=6
+    dim_flt
+    enemy_playanim
+    goto
+    label
+    let
+    wait
+
+[dialog 1]  type=5  lines=12  commands=8
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+
+[dvere]  type=5  lines=25  commands=16
+    act_setstate
+    actor_setplacement
+    detector_waitforuse
+    dim_act
+    dim_frm
+    door_enableus
+    door_lock
+    door_open
+    findactor
+    findframe
+    person_playanim
+    player_lockcontrols
+    setevent
+    setplayerfireevent
+    soundfade
+    wait
+
+[energymetr]  type=5  lines=23  commands=12
+    dim_act
+    dim_flt
+    end
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+    stream_create
+    stream_play
+    wait
+    wingman_setindicator
+
+[gameinitend]  type=init  lines=8  commands=6
+    actor_setplacement
+    character_pop
+    dim_act
+    dim_frm
+    findactor
+    findframe
+
+[go out]  type=5  lines=17  commands=10
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    goto
+    human_talk
+    if
+    label
+    let
+    wait
+
+[kasel]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[po vniknuti]  type=5  lines=8  commands=7
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+
+[skok]  type=5  lines=25  commands=19
+    act_setstate
+    actor_setplacement
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    getactorsdist
+    goto
+    if
+    label
+    let
+    person_playanim
+    person_stopanim
+    player_lockcontrols
+    setevent
+    wait

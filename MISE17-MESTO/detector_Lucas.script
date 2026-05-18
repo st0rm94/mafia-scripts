@@ -1,0 +1,29 @@
+act_setstate -1, inactive
+dim_act 2
+dim_flt 1
+dim_frm 1
+findactor 0, "Lucas"
+findactor 1, "Postava"
+findframe 0, ""
+
+setcompass 0
+timeroff
+
+label DETECT
+wait 250
+detector_inrange 0, 20
+if flt[0] = 2, -1, DETECT
+
+//getactorsdist 0, 1, 0
+//if flt[0] < 20, -1, DETECT
+
+setcompass -1
+
+label SEND
+setevent 0, 1, SEND
+
+label SEND2
+setevent 1, 1, SEND2
+
+wait 100
+enemy_forcescript 1

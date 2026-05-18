@@ -1,0 +1,75 @@
+dim_flt 3
+enemy_playanim "zidlesed03.i3d"
+dim_act 7
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "Paulie"
+findactor 3, "Sam"
+findactor 4, "Luigi"
+findactor 5, "Ralph"
+findactor 6, "VincenzoHIGH"
+
+enemy_group_new 2
+enemy_group_add 2, 0
+enemy_group_add 2, 2
+enemy_group_add 2, 3
+enemy_group_add 2, 4
+enemy_group_add 2, 5
+enemy_group_add 2, 6
+
+let flt[1] = 2
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event use_ab, 15970000
+human_looktoactor 0, 1, 1
+goto flt[1]
+
+label 2
+let flt[1] = flt[1] + 1
+enemy_talk 16991011
+enemy_wait
+getactorsdist 0, 1, 0
+if flt[0] > 5, 6, -1
+enemy_talk 16991012
+enemy_wait
+getactorsdist 0, 1, 0
+if flt[0] > 5, 6, -1
+enemy_talk 1, 16991021
+enemy_wait
+getactorsdist 0, 1, 0
+if flt[0] > 5, 6, -1
+enemy_talk 16991031
+enemy_wait
+goto 6
+
+label 3
+enemy_talk 00950000
+enemy_wait
+let flt[1] = flt[1] + 1
+goto 6
+
+label 4
+enemy_talk 00950001
+enemy_wait
+let flt[1] = flt[1] + 1
+goto 6
+
+label 5
+enemy_talk 00950002
+enemy_wait
+let flt[1] = 3
+
+label 6
+wait 1000
+human_looktoactor 0
+return
+
+event 1000
+label 1000
+enemy_action_fire 1
+goto 1000

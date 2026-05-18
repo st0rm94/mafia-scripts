@@ -1,0 +1,44 @@
+label 1
+autosavegame 5355
+zatmyse 1, 1
+commandblock 1
+dim_act 2
+dim_frm 5
+findactor 0, "SalieriHIGH2"
+findactor 1, "VincenzoHIGH2"
+findframe 0, "SalieriHIGH2"
+findframe 1, "VincenzoHIGH2"
+findframe 2, "Tommy"
+findframe 3, "9pult"
+findframe 4, "2bomb"
+
+act_setstate 0, inactive
+act_setstate 1, inactive
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+player_lockcontrols 1
+
+loaddifferences "dif15c.chg"
+recloadfull "record15c"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences 
+
+act_setstate 0, active
+act_setstate 1, active
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+player_lockcontrols 0
+commandblock 0
+wait 500
+zatmyse 0

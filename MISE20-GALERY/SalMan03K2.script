@@ -1,0 +1,11 @@
+enemy_lockstate fight_guard, 20
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event 1
+enemy_lockstate fight_guard, 20, unlock
+return

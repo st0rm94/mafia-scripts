@@ -1,0 +1,27 @@
+enemy_vidim 0
+dim_act 4
+dim_frm 5
+findactor 0, "cad_ford"
+findactor 1, "load mise15-pristav"
+//findactor 2, "zjisteni auta"
+findactor 3, "Tommy"
+
+findframe 0, "navadeni do pristavu"
+findframe 1, "navadeni sergia"
+findframe 2, "navadeni sergia 1"
+findframe 3, "navadeni sergia 2"
+findframe 4, ""
+
+act_setstate 100, inactive
+
+setcompass 4
+
+police_speed_factor 0.5
+
+//enemy_car_escape 0, 3, 2, -1, 65, 70, 0.9
+//enemy_car_escape 0, 3, 3, -1, 65, 70, 0.9
+enemy_car_escape 0, 3, 1, -1, 70, 70, 0.9
+act_setstate 1, active
+enemy_car_escape 0, 3, 0, -1, 70, 70, 1
+wait 3000
+endofmission 0, 15980008

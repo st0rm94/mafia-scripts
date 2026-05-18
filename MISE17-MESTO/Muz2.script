@@ -1,0 +1,94 @@
+dim_flt 1
+dim_act 7
+findactor 0, "Tommy"
+findactor 1, "Muz"
+findactor 2, ""
+findactor 3, "Bguard"
+findactor 4, "Guard"
+findactor 5, "detekce kradeni auta"
+findactor 6, "hartmann"
+
+act_setstate 100, inactive
+
+enemy_playanim "gesto_2a.i3d"
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+{ down
+enemy_stopanim
+enemy_look 0
+enemy_wait
+human_looktoactor 2, 0, 1
+
+label 2
+wait 1000000
+goto 2
+}
+
+human_looktoactor 2
+wait 500
+enemy_vidim 1
+enemy_move 16
+enemy_lookto 15
+enemy_wait
+
+label 3
+wait 1000000
+goto 3
+
+event 1
+event_use_cb 1
+return
+
+event 2
+enemy_action_runaway 0, 20
+
+label 4
+wait 1000000
+goto 4
+
+event 3
+human_stoptalk 1
+human_stoptalk 2
+wait 500
+enemy_move 20, run
+enemy_look 6
+enemy_wait
+enemy_playanim "pozorzlodejr.i3d", 0, simple
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_stopanim
+
+label 8
+setevent 3, 1, 8
+
+label 9
+setevent 4, 1, 9
+
+enemy_look 0
+enemy_wait
+
+label 10
+wait 1000000
+goto 10
+
+event hit_from_player
+commandblock 1
+human_stoptalk 1
+human_stoptalk 2
+act_setstate 5, off
+
+label 5
+setevent 1, 2, 5
+
+label 6
+setevent 3, 1, 6
+
+label 7
+setevent 4, 1, 7
+commandblock 0
+enemy_action_runaway 0, 20

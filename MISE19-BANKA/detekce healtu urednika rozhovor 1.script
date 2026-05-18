@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 2
+findactor 0, "1Bclerk2"
+findactor 1, "1Paulie"
+
+act_setstate 100, inactive
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+debug_text "urednik death"
+
+label 2
+setevent 1, 4, 2
+act_setstate 100, off

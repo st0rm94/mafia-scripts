@@ -1,0 +1,33 @@
+dim_flt 2
+dim_act 1
+findactor 0, "Tommy"
+
+{ up
+label 1
+detector_waitforuse 17970002
+}
+
+if flt[0] = 1, 2, -1
+
+human_talk 0, 00950101
+wait 10000
+goto 1
+
+label 2
+if flt[1] = 1, 3, -1
+human_talk 0, 00950246
+wait 1000
+goto 1
+
+
+label 3
+change_mission "mise17-mesto", "load z mise17-saliery dvere", -1
+end
+
+event 1
+let flt[0] = 1
+return
+
+event 2
+let flt[1] = 1
+return

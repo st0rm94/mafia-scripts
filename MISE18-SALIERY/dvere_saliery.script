@@ -1,0 +1,9 @@
+dim_act 1
+findactor 0, "detector_hlasky"
+
+label WAIT
+detector_waitforuse 7970007
+label SEND
+setevent 0, 100, SEND
+wait 5000
+goto WAIT

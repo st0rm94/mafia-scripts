@@ -1,0 +1,16 @@
+dim_act 2
+findactor 0,"Paulie"
+findactor 1,"dummy_timer"
+
+ACT_SETSTATE -1,inactive
+
+timeron 9,30,0,600
+settimeoutevent 1,201
+
+label 101
+wait 121000
+setevent 0,207,101
+goto 101
+
+event 201
+endofmission 0,01980004

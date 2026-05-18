@@ -1,0 +1,20 @@
+dim_flt 3
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "Salieri"
+stream_create 2, "sounds\music\13 - Game Over.mp3"
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+human_getproperty 1, 1, energy
+if flt[0] = 0, 2, -1
+if flt[1] = 0, 3, 1
+
+label 2
+stream_play 2
+endofmission 0, 13980002
+
+label 3
+stream_play 2
+endofmission 0, 13980001

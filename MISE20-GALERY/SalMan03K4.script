@@ -1,0 +1,29 @@
+enemy_vidim 0
+enemy_podvadim_jak "Tretera"
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+human_looktoactor 0, 1, 1
+
+frm_seton 100, 1
+
+{ down
+enemy_move 29, run
+
+enemy_vidim 0
+setnoanimhit 0, 1
+enemy_playanim "zradcezokna.i3d"
+wait 1700
+enemy_look 1
+enemy_wait
+setnoanimhit 0, 0
+human_looktoactor 0
+
+enemy_vidim 1
+enemy_naserse 1
+}
+
+label 2
+wait 1000000
+goto 2

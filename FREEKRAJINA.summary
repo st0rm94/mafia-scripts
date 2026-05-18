@@ -1,0 +1,271 @@
+# .dnc extraction summary
+# source        : FREEKRAJINA.dnc  (18921 bytes, main)
+# source        : FREEKRAJINA-InitScripts.dnc  (53 bytes, init)
+# actors_total  : 223
+# init_records  : 1
+# scripts_found : 21
+
+# main-container actor type-code distribution
+#   type    5  count=20  script
+#   type   12  count=1  
+#   type   35  count=202  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 34
+# total invocations: 237
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    28  label
+    23  let
+    17  dim_flt    [casings: DIM_FLT, dim_flt]
+    17  goto
+    17  wait
+    16  findframe    [casings: FINDFRAME, FindFrame]
+    16  frm_seton    [casings: FRM_SETON, frm_seton]
+    15  rnd
+    11  dim_frm    [casings: DIM_FRM, dim_frm]
+    10  end
+     9  iffltinrange    [casings: IFFLTINRANGE]
+     6  commandblock
+     6  if
+     4  findactor
+     4  freeride_scoreadd
+     4  freeride_scoreget
+     4  human_addweapon
+     3  change_mission
+     3  detector_inrange
+     3  dim_act
+     3  human_holster
+     3  setmissionnumber
+     2  autosavegamefull
+     2  freeride_scoreon
+     2  freeride_scoreset
+     1  [break]
+     1  car_getspeed
+     1  compareownerwithex
+     1  endofmission
+     1  freeride_traffsetup
+     1  getmissionnumber
+     1  human_getowner
+     1  human_getproperty
+     1  human_set8slot
+
+# ---- per-script command listing ----
+
+[EnergyMeter]  type=5  lines=11  commands=8
+    dim_act
+    dim_flt
+    end
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+
+[GameInitStart]  type=init  lines=1  commands=1
+    freeride_traffsetup
+
+[bonus_speed]  type=5  lines=18  commands=11
+    car_getspeed
+    compareownerwithex
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreadd
+    goto
+    human_getowner
+    if
+    label
+    wait
+
+[kaceni3]  type=5  lines=25  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[kohout]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[letadlo2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[load mesto01]  type=5  lines=13  commands=10
+    change_mission
+    commandblock
+    detector_inrange
+    dim_flt
+    freeride_scoreadd
+    freeride_scoreget
+    if
+    label
+    setmissionnumber
+    wait
+
+[load mesto02]  type=5  lines=14  commands=11
+    [break]
+    change_mission
+    commandblock
+    detector_inrange
+    dim_flt
+    freeride_scoreadd
+    freeride_scoreget
+    if
+    label
+    setmissionnumber
+    wait
+
+[load mesto03]  type=5  lines=13  commands=10
+    change_mission
+    commandblock
+    detector_inrange
+    dim_flt
+    freeride_scoreadd
+    freeride_scoreget
+    if
+    label
+    setmissionnumber
+    wait
+
+[load_z_mesta01]  type=5  lines=1  commands=0
+
+[load_z_mesta02]  type=5  lines=1  commands=0
+
+[load_z_mesta03]  type=5  lines=1  commands=0
+
+[orel1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[orel2]  type=5  lines=30  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[orel5]  type=5  lines=26  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[pes1]  type=5  lines=13  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[sekera1]  type=5  lines=25  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[start]  type=5  lines=30  commands=15
+    autosavegamefull
+    dim_act
+    dim_flt
+    end
+    findactor
+    freeride_scoreget
+    freeride_scoreon
+    freeride_scoreset
+    getmissionnumber
+    human_addweapon
+    human_holster
+    human_set8slot
+    if
+    label
+    let
+
+[strom1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[vrz1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait

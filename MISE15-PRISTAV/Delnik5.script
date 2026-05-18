@@ -1,0 +1,9 @@
+enemy_podvadim_jak tretera
+dim_act 1
+findactor 0, "Tommy"
+
+enemy_vidim 0
+enemy_move 9, run
+enemy_vidim 1
+enemy_look 0
+enemy_wait

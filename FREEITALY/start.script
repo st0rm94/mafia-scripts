@@ -1,0 +1,22 @@
+commandblock 1
+dim_act 1
+dim_flt 1
+
+findactor 0,"Tommy"
+human_set8slot 0,1
+
+human_addweapon 0,9,7,21
+human_holster 0
+human_addweapon 0,7,6,18
+human_holster 0
+human_addweapon 0,12,2,20
+human_holster 0
+human_addweapon 0,10,50,100
+commandblock 0
+
+autosavegamefull 5570,0
+freeride_scoreon 1
+mission_objectivesclear
+mission_objectives 22930029
+end
+

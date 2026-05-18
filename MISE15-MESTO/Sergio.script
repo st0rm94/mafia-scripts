@@ -1,0 +1,103 @@
+dim_flt 5
+dim_act 9
+dim_frm 1
+findactor 0, "dvere rainbow1"
+findactor 1, ""
+findactor 2, "Enemy08K2"
+findactor 3, "Enemy04K2"
+findactor 4, "Enemy11K2"
+findactor 5, "Enemy12K3"
+findactor 6, "Enemy7"
+findactor 7, "priblizeni se k morellovi"
+findactor 8, "prijeti k rainbow garden"
+
+findframe 0, "skupinka"
+
+enemy_group_new 2
+enemy_group_add 2, 1
+enemy_group_add 2, 2
+enemy_group_add 2, 3
+enemy_group_add 2, 4
+enemy_group_add 2, 5
+enemy_group_add 2, 6
+
+enemy_playanim "gestikulacenew05.i3d"
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+act_setstate 7, off
+frm_seton 0, 0
+event_use_cb 1
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 1
+enemy_actionsclear
+commandblock 0
+enemy_move 4, run
+door_lock 0, 0
+door_open 0, 1
+enemy_move 5, run
+enemy_lookto 4
+enemy_wait
+door_open 0, 0
+door_lock 0, 1
+if flt[3] = 1, 2, -1
+wait 10000
+detector_issignal 8, 2, -1
+endofmission 0, 15980004
+
+label 2
+act_setstate 100, off
+
+event 1
+commandblock 1
+act_setstate 7, off
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 1
+enemy_actionsclear
+let flt[3] = 1
+commandblock 0
+return
+
+event enemy_to_ai
+if flt[3] = 1, 3, -1
+if flt[4] = 1, 3, -1
+commandblock 1
+act_setstate 7, off
+frm_seton 0, 0
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 1
+enemy_actionsclear
+detector_issignal 8, 5, -1
+act_setstate 8, off
+label 5
+commandblock 0
+let flt[4] = 1
+label 3
+return
+
+event 2
+if flt[3] = 1, 4, -1
+if flt[4] = 1, 4, -1
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 1
+enemy_actionsclear
+detector_issignal 8, 6, -1
+act_setstate 8, off
+label 6
+commandblock 0
+let flt[4] = 1
+label 4
+return

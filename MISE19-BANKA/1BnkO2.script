@@ -1,0 +1,58 @@
+dim_act 6
+findactor 0, ""
+findactor 1, "Box31"
+findactor 2, "vykopnuti dveri"
+findactor 3, "Tommy"
+findactor 4, "Box329"
+findactor 5, "guard do ai"
+
+human_addweapon 0, 8, 6, 30
+enemy_playanim "breath07a.i3d"
+enemy_vidim 0
+
+enemy_narohysevyser
+enemy_podvadim_jak Tretera
+
+{ down
+act_setstate 100, inactive
+
+frm_seton 100, 1
+enemy_move 6, run
+enemy_lookto 58
+enemy_wait
+door_open 4, 1
+wait 500
+enemy_move 59, run
+enemy_lookto 58
+enemy_wait
+detector_issignal 2, 2, -1
+act_setstate 2, off
+enemy_move 57, run
+enemy_lookto 58
+enemy_wait
+door_lock 1, 0
+door_open 1, 1
+label 2
+act_setstate 2, off
+act_setstate 5, active
+enemy_move 66, run
+enemy_lookto 28
+enemy_wait
+act_setstate 5, off
+}
+
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3
+
+event 1
+commandblock 1
+frm_seton 100, 1
+enemy_forcescript 0
+enemy_stop
+event_use_cb 1
+enemy_naserse 3
+commandblock 0
+return

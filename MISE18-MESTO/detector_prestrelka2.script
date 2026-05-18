@@ -1,0 +1,182 @@
+//[debug_me]
+dim_frm 3
+dim_flt 3
+// flt[2] = 1 na poprve, bez prestrelky
+
+dim_act 19
+findactor 0
+findactor 1, "buikFor"
+findactor 2, "buikFor2"
+findactor 3, "Guard2"
+findactor 4, "Guard3"
+findactor 5, "Guard5"
+findactor 6, "Guard4"
+findactor 7, "Paulie2"
+findactor 8, "Sam2"
+findactor 9, "Guard6"
+findactor 10, "Guard"
+findactor 11, "Tommy"
+findactor 12, "detector_energy2"
+setnullactor 13
+findactor 14, "objectives2"
+findactor 15, "GuardSpec"
+findactor 16, "GuardSpec2"
+// 17 nechat free slouzi pro testovani zda enemac sedi v aute
+findactor 18, "dialog_po_prestrelce"
+
+findframe 0
+findframe 1, "position_car"
+findframe 2, "position_car2"
+findframe 3, "smazane_auto1"
+findframe 4, "smazane_auto2"
+setcompass 0
+
+label DETECT
+wait 200
+detector_inrange 0, 30
+if flt[0] = 1, -1, DETECT
+debug_text "Aktivuji Sam2 a Paulie2 !!!"
+
+label SEND5
+   setevent 7, 1, SEND5
+label SEND6
+   setevent 8, 1, SEND6
+
+// Indikatory
+wingman_setindicator 7, 1, 0
+wingman_setindicator 8, 2, 1
+setcompass -1
+
+wait 5000
+
+label DETECT2
+let flt[2] = flt[2] + 1
+detector_issignal 12, 7, -1
+getactorsdist 11, 10, 0, -1
+if flt[0] < 0, 2, -1
+if flt[0] < 70, -1, 2
+compareownerwithex 10, 13, TESTPESKY, -1
+human_getowner 10, 17
+iscarusable 17, 0
+if flt[0] = 0, 2, -1
+car_getspeed 17, 0
+if flt[0] < 5, 2, DETECT2
+label TESTPESKY
+enemy_gethostilestate 10, 0
+if flt[0] = 0, DETECT2, 2
+
+label 2
+getactorsdist 11, 3, 0, -1
+if flt[0] < 0, 3, -1
+if flt[0] < 70, -1, 3
+compareownerwithex 3, 13, TESTPESKY2, -1
+human_getowner 3, 17
+iscarusable 17, 0
+if flt[0] = 0, 3, -1
+car_getspeed 17, 0
+if flt[0] < 5, 3, DETECT2
+label TESTPESKY2
+enemy_gethostilestate 3, 0
+if flt[0] = 0, DETECT2, 3
+
+label 3
+getactorsdist 11, 4, 0, -1
+if flt[0] < 0, 4, -1
+if flt[0] < 70, -1, 4
+compareownerwithex 4, 13, TESTPESKY3, -1
+human_getowner 4, 17
+iscarusable 17, 0
+if flt[0] = 0, 4, -1
+car_getspeed 17, 0
+if flt[0] < 5, 4, DETECT2
+label TESTPESKY3
+enemy_gethostilestate 4, 0
+if flt[0] = 0, DETECT2, 4
+
+label 4
+getactorsdist 11, 6, 0, -1
+if flt[0] < 0, 5, -1
+if flt[0] < 70, -1, 5
+compareownerwithex 6, 13, TESTPESKY4, -1
+human_getowner 6, 17
+iscarusable 17, 0
+if flt[0] = 0, 5, -1
+car_getspeed 17, 0
+if flt[0] < 5, 5, DETECT2
+label TESTPESKY4
+enemy_gethostilestate 6, 0
+if flt[0] = 0, DETECT2, 5
+
+label 5
+getactorsdist 11, 5, 0, -1
+if flt[0] < 0, 6, -1
+if flt[0] < 70, -1, 6
+compareownerwithex 5, 13, TESTPESKY5, -1
+human_getowner 5, 17
+iscarusable 17, 0
+if flt[0] = 0, 6, -1
+car_getspeed 17, 0
+if flt[0] < 5, 6, DETECT2
+label TESTPESKY5
+enemy_gethostilestate 5, 0
+if flt[0] = 0, DETECT2, 6
+
+label 6
+getactorsdist 11, 9, 0, -1
+if flt[0] < 0, 7, -1
+if flt[0] < 70, -1, 7
+compareownerwithex 9, 13, TESTPESKY6, -1
+human_getowner 9, 17
+iscarusable 17, 0
+if flt[0] = 0, 7, -1
+car_getspeed 17, 0
+if flt[0] < 5, 7, DETECT2
+label TESTPESKY6
+enemy_gethostilestate 9, 0
+if flt[0] = 0, DETECT2, 7
+
+label 7
+getactorsdist 11, 15, 0, -1
+if flt[0] < 0, 8, -1
+if flt[0] < 70, -1, 8
+compareownerwithex 15, 13, TESTPESKY7, -1
+human_getowner 15, 17
+iscarusable 17, 0
+if flt[0] = 0, 8, -1
+car_getspeed 17, 0
+if flt[0] < 5, 8, DETECT2
+label TESTPESKY7
+enemy_gethostilestate 15, 0
+if flt[0] = 0, DETECT2, 8
+
+label 8
+getactorsdist 11, 16, 0, -1
+if flt[0] < 0, 9, -1
+if flt[0] < 70, -1, 9
+compareownerwithex 16, 13, TESTPESKY8, -1
+human_getowner 16, 17
+iscarusable 17, 0
+if flt[0] = 0, 9, -1
+car_getspeed 17, 0
+if flt[0] < 5, 9, DETECT2
+label TESTPESKY8
+enemy_gethostilestate 16, 0
+if flt[0] = 0, DETECT2, 9
+
+label 9
+if flt[2] = 1, BEZPRESTRELKY, FINISH
+
+
+label BEZPRESTRELKY
+wait 200
+compareownerwithex 11, 13, -1, BEZPRESTRELKY
+label CHECK3
+wait 250
+getactorsdist 11, 7, 0
+if flt[0] < 10, -1, CHECK3
+human_talk 11, 18990641
+human_talk 7, 18990651
+
+label FINISH
+// dialog_po_prestrelce
+act_setstate 18, active

@@ -1,0 +1,18 @@
+dim_act 3
+dim_flt 1
+findactor 0,"Paulie"
+findactor 1,"Tommy"
+findactor 2,"Good-End"
+
+act_setstate -1,inactive
+
+label 100
+wait 1000
+detector_inrange 0,1
+if flt[0]=1,-1,100
+
+getactorsdist 0,1,0
+if flt[0]>9,-1,SKIP
+act_setstate 2,inactive
+human_talk 0,09990321,1
+act_setstate 2,active

@@ -1,0 +1,469 @@
+commandblock 1
+dim_flt 2
+dim_act 13
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "BnkO2"
+findactor 3, "kontrola playera v dosahu"
+findactor 4, "load mise19-mesto"
+findactor 5, "load mise19-mesto 1"
+findactor 6, "load mise19-mesto 2"
+findactor 7, "load mise19-mesto 3"
+findactor 8, "pozdrav poldy"
+findactor 9, "open door 1"
+findactor 10, "open door 2"
+findactor 11, "detekce playera v dosahu venku"
+findactor 12, "spusteni rozhovoru"
+
+autosavegame 5520
+
+inventory_pop 1
+human_holster 1
+human_eraseab 1
+commandblock 0
+
+enemy_move 22
+enemy_wait
+enemy_move 1
+enemy_wait
+enemy_lookto 2
+enemy_wait
+
+detector_issignal 3, -1, 1
+gosub 51
+
+label 1
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+enemy_playanim "gestikulacenew01.i3d"
+enemy_talk 19990061
+enemy_wait
+
+detector_issignal 3, -1, 2
+gosub 51
+
+label 2
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 2, 1
+enemy_talk 19990062
+enemy_wait
+human_looktoactor 1, 0, 1
+
+detector_issignal 3, -1, 3
+gosub 51
+
+label 3
+human_looktoactor 0, 1, 1
+enemy_talk 19990063
+enemy_wait
+
+detector_issignal 3, -1, 4
+gosub 51
+
+label 4
+human_looktoactor 0, 1, 1
+enemy_talk 19990064
+enemy_wait
+
+detector_issignal 3, -1, 5
+gosub 51
+
+label 5
+human_looktoactor 0, 1, 1
+enemy_talk 19990065
+enemy_wait
+
+detector_issignal 3, -1, 6
+gosub 51
+
+label 6
+human_looktoactor 0, 1, 1
+enemy_talk 19990066
+enemy_wait
+
+detector_issignal 3, -1, 7
+gosub 51
+
+label 7
+human_looktoactor 0, 1, 1
+enemy_talk 19990067
+enemy_wait
+
+detector_issignal 3, -1, 8
+gosub 51
+
+label 8
+human_looktoactor 0, 1, 1
+enemy_talk 19990068
+enemy_wait
+
+detector_issignal 3, -1, 9
+gosub 51
+
+label 9
+human_looktoactor 0, 1, 1
+enemy_talk 19990069
+enemy_wait
+enemy_talk 19990071
+enemy_wait
+
+//detector_issignal 3, -1, 12
+//gosub 51
+
+//label 12
+//enemy_talk 19990072
+//enemy_wait
+
+detector_issignal 3, -1, 13
+gosub 51
+
+label 13
+human_looktoactor 0, 1, 1
+enemy_talk 19990073
+enemy_wait
+
+detector_issignal 3, -1, 14
+gosub 51
+
+label 14
+human_looktoactor 0, 1, 1
+enemy_talk 19990074
+enemy_wait
+enemy_stopanim
+
+detector_issignal 3, -1, 15
+gosub 51
+
+label 15
+human_looktoactor 0, 1, 1
+detector_setsignal 12, 1
+enemy_talk 0, 19990091
+enemy_wait
+
+detector_issignal 3, -1, 16
+gosub 51
+
+label 16
+human_looktoactor 0, 1, 1
+enemy_talk 19990101
+enemy_wait
+human_looktoactor 1
+human_looktoactor 0
+act_setstate 8, active
+enemy_move 40
+
+commandblock 1
+detector_issignal 10, 10, -1
+enemy_use_detector 10
+
+label 10
+commandblock 0
+
+enemy_move 41
+
+commandblock 1
+detector_issignal 9, 52, -1
+enemy_use_detector 9
+
+label 52
+commandblock 0
+
+enemy_move 8
+enemy_wait
+enemy_move 24
+enemy_wait
+enemy_lookto 25
+enemy_wait
+
+human_looktoactor 1, 0, 1 
+
+detector_issignal 11, -1, 27
+gosub 50
+
+label 27
+human_looktoactor 0, 1, 1
+enemy_playanim "gestikulacenew03.i3d"
+wait 2000
+enemy_talk 19990111
+wait 4000
+enemy_playanim "gestikulacenew04.i3d"
+wait 2000
+enemy_talk 19990112
+wait 3000
+enemy_playanim "gestikulacenew05.i3d"
+wait 1500
+
+detector_issignal 11, -1, 28
+gosub 50
+
+label 28
+human_looktoactor 0, 1, 1
+enemy_talk 19990113
+enemy_wait
+
+detector_issignal 11, -1, 29
+gosub 50
+
+label 29
+human_looktoactor 0, 1, 1
+enemy_talk 19990114
+enemy_wait
+
+detector_issignal 11, -1, 30
+gosub 50
+
+label 30
+human_looktoactor 0, 1, 1
+enemy_talk 19990115
+enemy_wait
+
+detector_issignal 11, -1, 31
+gosub 50
+
+label 31
+human_looktoactor 0, 1, 1
+enemy_talk 19990116
+enemy_wait
+
+detector_issignal 11, -1, 32
+gosub 50
+
+label 32
+human_looktoactor 0, 1, 1
+enemy_talk 0, 19990131
+enemy_wait
+
+detector_issignal 11, -1, 33
+gosub 50
+
+label 33
+human_looktoactor 0, 1, 1
+enemy_talk 19990141
+enemy_wait
+
+detector_issignal 11, -1, 53
+gosub 50
+
+label 53
+human_looktoactor 0, 1, 1
+enemy_talk 19990142
+enemy_wait
+
+detector_issignal 11, -1, 54
+gosub 50
+
+label 54
+human_looktoactor 0, 1, 1
+enemy_talk 19990143
+enemy_wait
+
+detector_issignal 11, -1, 55
+gosub 50
+
+label 55
+human_looktoactor 0, 1, 1
+enemy_talk 19990144
+enemy_wait
+
+detector_issignal 11, -1, 56
+gosub 50
+
+label 56
+human_looktoactor 0, 1, 1
+enemy_talk 19990145
+enemy_wait
+
+detector_issignal 11, -1, 34
+gosub 50
+
+label 34
+human_looktoactor 0, 1, 1
+enemy_talk 0, 19990151
+enemy_wait
+
+detector_issignal 11, -1, 57
+gosub 50
+
+label 57
+human_looktoactor 0, 1, 1
+enemy_talk 19990161
+enemy_wait
+
+detector_issignal 11, -1, 58
+gosub 50
+
+label 58
+human_looktoactor 0, 1, 1
+enemy_talk 19990162
+enemy_wait
+
+detector_issignal 11, -1, 35
+gosub 50
+
+label 35
+human_looktoactor 0, 1, 1
+enemy_talk 0, 19990171
+enemy_wait
+
+detector_issignal 11, -1, 59
+gosub 50
+
+label 59
+human_looktoactor 0, 1, 1
+enemy_talk 19990181
+enemy_wait
+
+detector_issignal 11, -1, 60
+gosub 50
+
+label 60
+human_looktoactor 0, 1, 1
+enemy_talk 19990182
+enemy_wait
+
+detector_issignal 11, -1, 61
+gosub 50
+
+label 61
+human_looktoactor 0, 1, 1
+enemy_talk 19990183
+enemy_wait
+
+detector_issignal 11, -1, 62
+gosub 50
+
+label 62
+human_looktoactor 0, 1, 1
+enemy_talk 19990184
+enemy_wait
+
+detector_issignal 11, -1, 63
+gosub 50
+
+label 63
+human_looktoactor 0, 1, 1
+enemy_talk 19990185
+enemy_wait
+
+detector_issignal 11, -1, 64
+gosub 50
+
+label 64
+human_looktoactor 0, 1, 1
+enemy_talk 19990186
+enemy_wait 
+
+detector_issignal 11, -1, 65
+gosub 50
+
+label 65
+human_looktoactor 0, 1, 1
+enemy_talk 19990187
+enemy_wait
+
+detector_issignal 11, -1, 36
+gosub 50
+
+label 36
+human_looktoactor 0, 1, 1
+enemy_talk 0, 19990191
+enemy_wait
+
+detector_issignal 11, -1, 66
+gosub 50
+
+label 66
+human_looktoactor 0, 1, 1
+enemy_talk 0, 19990192
+enemy_wait
+
+detector_issignal 11, -1, 67
+gosub 50
+
+label 67
+human_looktoactor 0, 1, 1
+enemy_talk 19990201
+enemy_wait
+
+detector_issignal 11, -1, 68
+gosub 50
+
+label 68
+human_looktoactor 0, 1, 1
+enemy_talk 19990202
+enemy_wait
+
+detector_issignal 11, -1, 69
+gosub 50
+
+label 69
+human_looktoactor 0, 1, 1
+enemy_talk 19990203
+enemy_wait
+
+commandblock 1
+mission_objectivesclear
+mission_objectives 19960001
+human_createab 1
+detector_setsignal 4, 1
+detector_setsignal 5, 1
+detector_setsignal 6, 1
+detector_setsignal 7, 1
+human_looktoactor 1
+human_looktoactor 0
+commandblock 0
+
+{ up
+enemy_move 25
+label 100
+}
+
+human_eraseab 1
+
+enemy_move 49
+
+human_createab 1
+
+{ up
+enemy_move 36
+label 101
+}
+
+act_setstate 100, off
+
+label 50
+human_looktoactor 0
+
+label 71
+detector_issignal 11, 71, -1
+return
+
+label 51
+human_looktoactor 0
+enemy_stopanim
+
+label 70
+detector_issignal 3, 70, -1
+enemy_playanim "gestikulacenew01.i3d"
+return
+
+event use_ab
+event_use_cb 1
+enemy_forcescript 1
+enemy_stop
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+enemy_talk 19990183
+enemy_wait
+enemy_talk 19990184
+enemy_wait
+enemy_talk 19990185
+enemy_wait
+enemy_talk 19990186
+enemy_wait
+enemy_talk 19990187
+enemy_wait
+human_looktoactor 1
+return 
+

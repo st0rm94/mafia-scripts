@@ -1,0 +1,246 @@
+//[debug_me]
+commandblock 1
+dim_act 9
+dim_frm 9
+dim_flt 4
+findactor 0, "TruckB"
+findactor 1
+findactor 2, "Ridic2"
+findactor 3, "objectives"
+findactor 4, "Delnik"
+findactor 5, "detector_corka"
+findactor 6, "hlasky_Ridic"
+findactor 7, "detector_zatmy_prepni"
+findactor 8, "detector_konec_dojel"
+
+findframe 0, "prijeti_hala"
+findframe 1, "prijezd_brana"
+findframe 2, "couvani_1"
+findframe 3, "couvani_2"
+findframe 4, "prijezd_brana2"
+findframe 5, "prijeti_pristav"
+findframe 6, "couvani_3"
+findframe 7, "couvani_4"
+findframe 8, "prijezd_predhalu"
+
+car_calm 0
+enemy_shut_up yes
+human_shutup 1, 1
+human_force_settocar 1, 0, 0
+human_returnfrompanic 1, 1
+human_addweapon 1, 21, 1, 0
+enemy_vidim 0
+commandblock 0
+
+act_setstate -1, inactive
+
+label START
+// KDYZ V SUBRUTINE -> ZPOMALI KDYZ JE V COMMANDBLOCKU
+fuckingbox_add 0, "bednakl0"
+fuckingbox_add 0, "bednakl"
+fuckingbox_add 0, "bednakl1"
+fuckingbox_add 0, "bednakl2"
+fuckingbox_add 0, "bednakl3"
+fuckingbox_add 0, "bednakl4"
+fuckingbox_add 0, "bednakl5"
+fuckingbox_add 0, "bednakl6"
+fuckingbox_add 0, "bednakl7"
+fuckingbox_add 0, "bednakl8"
+fuckingbox_add 0, "bednakl9"
+fuckingbox_add 0, "bednakl10"
+
+fuckingbox_add_dest 0, "TruckB.dest01"
+fuckingbox_add_dest 0, "TruckB.dest02"
+fuckingbox_add_dest 0, "TruckB.dest03"
+fuckingbox_add_dest 0, "TruckB.dest04"
+fuckingbox_add_dest 0, "TruckB.dest05"
+fuckingbox_add_dest 0, "TruckB.dest06"
+fuckingbox_add_dest 0, "TruckB.dest07"
+fuckingbox_add_dest 0, "TruckB.dest08"
+fuckingbox_add_dest 0, "TruckB.dest09"
+fuckingbox_add_dest 0, "TruckB.dest10"
+fuckingbox_add_dest 0, "TruckB.dest11"
+fuckingbox_add_dest 0, "TruckB.dest12"
+
+fuckingbox_recompile
+
+{ DOWN
+dim_flt 1
+fuckingbox_getnumbox 0, 0
+label SKLADEJ
+fuckingbox_move 0
+let flt[0] = flt[0] - 1
+if flt[0] = 0, -1, SKLADEJ
+debug_text "Ridic1: Bedny naskladany"
+
+// ZACATEK VSUVKA2
+// KDYZ V SUBRUTINE -> ZPOMALI PROTOZE JE V COMMANDBLOCKU
+fuckingbox_add 1, "bednakl0"
+fuckingbox_add 1, "bednakl"
+fuckingbox_add 1, "bednakl1"
+fuckingbox_add 1, "bednakl2"
+fuckingbox_add 1, "bednakl3"
+fuckingbox_add 1, "bednakl4"
+fuckingbox_add 1, "bednakl5"
+fuckingbox_add 1, "bednakl6"
+fuckingbox_add 1, "bednakl7"
+fuckingbox_add 1, "bednakl8"
+fuckingbox_add 1, "bednakl9"
+fuckingbox_add 1, "bednakl10"
+
+fuckingbox_add_dest 1, "dest1"
+fuckingbox_add_dest 1, "dest2"
+fuckingbox_add_dest 1, "dest3"
+fuckingbox_add_dest 1, "dest4"
+fuckingbox_add_dest 1, "dest5"
+fuckingbox_add_dest 1, "dest6"
+fuckingbox_add_dest 1, "dest7"
+fuckingbox_add_dest 1, "dest8"
+fuckingbox_add_dest 1, "dest9"
+fuckingbox_add_dest 1, "dest10"
+fuckingbox_add_dest 1, "dest11"
+fuckingbox_add_dest 1, "dest12"
+
+fuckingbox_recompile
+debug_text "CreateBoxes2: FINISHED!"
+// KONEC VSUVKA2
+
+enemy_car_moveto 0, 1, stop
+let flt[2] = 0
+label WAITKONTROLA
+wait 200
+if flt[2] = 0, WAITKONTROLA, -1
+enemy_car_moveto 0, 8
+commandblock 1
+compareownerwithex 1, 0, SKIPOWNER, -1
+   // Aby se update-nul objective
+   // act_setstate 3, active
+   let flt[0] = 1
+commandblock 0
+goto UPRK
+
+label SKIPOWNER
+commandblock 0
+enemy_car_moveto 0, 0, natvrdo
+compareownerwithex 1, 0, SKIPOWNER2, -1
+   // Aby se update-nul objective
+   // act_setstate 3, active
+   let flt[0] = 1
+commandblock 0
+goto UPRK
+
+label SKIPOWNER2
+//#########################
+//#  V Y L O Z E N I  N A K L A D U  #
+//#########################
+
+// Zapinam: detector_zatmy_prepni
+act_setstate 7, active
+
+// Aby mi nahodou nekdy nepokracoval ve skriptu pokud uz ma jenom zdrhat
+//if flt[1] = 1, UPRK, -1
+
+label SEND
+setevent 4, 1, SEND
+let flt[2] = 0
+
+// Aby mi nahodou nekdy nepreskladal bedny pokud uz se o auto uz nema starat
+if flt[1] = 1, UPRK, -1
+
+label WAITVYLOZ
+fuckingbox_getnumbox 1, 0
+if flt[0] = 0, -1, WAITVYLOZ
+wait 1000
+debug_text "Ridic1: Bedny vylozeny"
+// Zapinam: detector_zatmy_prepni
+act_setstate 7, active
+
+wait 5000
+
+//#########################
+//#  N A K L A D  V Y L O Z E N   !!!  #
+//#########################
+enemy_car_moveto 0, 2, vzad
+enemy_car_moveto 0, 3, vzad
+label OBJ
+if flt[0] = 0, OBJECTIVE, -1
+enemy_car_moveto 0, 4, stop
+let flt[2] = 0
+label WAITKONTROLA2
+wait 200
+if flt[2] = 0, WAITKONTROLA2, -1
+enemy_car_moveto 0, 5, stop
+enemy_car_moveto 0, 6, vzad
+enemy_car_moveto 0, 7, vzad
+//act_setstate 8, active
+wait 10000
+}
+if flt[1] = 1, UPRK, START
+
+label OBJECTIVE
+//act_setstate 3, active
+let flt[0] = 1
+goto OBJ
+
+label UPRK
+{ UP
+enemy_move 11, run
+}
+human_shutup 1, 0
+enemy_shut_up no
+enemy_vidim 1
+enemy_setstate FREEZE
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 0
+let flt[2] = 1
+return
+
+event 100
+// Reakce na ztratu ownera -> vysila detector_corka
+event_use_cb 1
+let flt[1] = 1
+debug_text "Ridic1: event 100 received"
+//fuckingbox_getnumbox 1, 0
+//if flt[0] < 12, -1, RET3
+//label SEND3
+//setevent 5, 10, SEND3
+//label RET3
+return
+
+event 200
+// Reakce na vystrel -> vysila detector_corka
+event_use_cb 1
+let flt[1] = 1
+debug_text "Ridic1: event 200 received"
+car_remove_driver 0
+enemy_usecar
+//fuckingbox_getnumbox 1, 0
+//if flt[0] < 12, -1, RET2
+//label SEND4
+//setevent 5, 10, SEND4
+//label RET2
+return
+
+event HIT_FROM_PLAYER
+detector_issignal 5, -1, RET
+let flt[3] = flt[3] + 1
+if flt[3] = 5, THROW, -1
+//label SEND2
+setevent 6, 1, -1
+goto RET
+label THROW
+human_activateweapon 1, 21
+human_throwitem 1, 21
+human_delweapon 1, 21
+label RET
+event_use_cb 1
+return
+
+label FINISH
+debug_text "Ridic: Script finished"

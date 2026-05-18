@@ -1,0 +1,4 @@
+wait 1000
+enemy_playanim "ZidleSed02.i3d"
+label 1
+goto 1

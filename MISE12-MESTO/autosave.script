@@ -1,0 +1,14 @@
+autosavegame 5295
+commandblock 1
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+// cucamstaty z minule mise
+inventory_pop 0
+character_pop 2
+character_pop 1
+character_pop 0
+wingman_setindicator 1, 1, 0
+wingman_setindicator 2, 2, 1
+end

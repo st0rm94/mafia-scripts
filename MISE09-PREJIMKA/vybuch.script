@@ -1,0 +1,54 @@
+dim_flt 1
+dim_frm 1
+dim_act 8
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2,"SalMan01K"
+findactor 4,"SalMan02K"
+findactor 5,"Enemy07+"
+findactor 6,"Enemy08K2"
+findactor 7,"prava_prestrelka"
+
+findframe 0,"vybuch"
+
+act_setstate -1,inactive
+
+label 101
+wait 1000
+detector_inrange 0,80
+if flt[0] = 1,-1,101
+
+//Aktivace prestrelky a vybuch auta
+act_setstate 7,active
+act_setstate 5,active
+act_setstate 6,active
+
+human_setproperty 2,900,Energy
+human_setproperty 4,900,Energy
+human_setproperty 5,900,Energy
+human_setproperty 6,900,Energy
+
+act_setstate -1,inactive
+
+human_setproperty 2,100,Energy
+human_setproperty 4,100,Energy
+human_setproperty 5,100,Energy
+human_setproperty 6,100,Energy
+
+wait 1000
+explosion 3,100
+emitparticle 0, 6
+wait 500
+setevent 1,1,-1
+
+label FIRE
+wait 2000
+detector_inrange 0,2
+if flt[0]=1,-1,FIRE
+human_getproperty 0,0,Energy
+let flt[0]=flt[0]-20
+if flt[0]<0,-1,JMP1
+let flt[0]=0
+label JMP1
+human_setproperty 0,flt[0],Energy
+goto FIRE

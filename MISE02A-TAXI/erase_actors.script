@@ -1,0 +1,67 @@
+dim_act 9
+findactor 0, "A1"
+findactor 1, "A2"
+findactor 2, "A3"
+findactor 3, "A4"
+findactor 4, "A5"
+findactor 5, "A6"
+findactor 6, "A7"
+findactor 7, "A8"
+findactor 8, "A9"
+dim_frm 9
+findframe 0, "A1"
+findframe 1, "A2"
+findframe 2, "A3"
+findframe 3, "A4"
+findframe 4, "A5"
+findframe 5, "A6"
+findframe 6, "A7"
+findframe 7, "A8"
+findframe 8, "A9"
+dim_flt 2
+wait 5000
+
+label DETECT
+detector_inrange 0,190
+if flt[0] = 0, -1, DETECT
+if flt[1] = 0, -1, 1
+commandblock 1
+act_setstate 0, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 5, off
+act_setstate 6, off
+frm_seton 0, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 5, 0
+frm_seton 6, 0
+let flt[1] = flt[1] + 1
+debug_text "ERASER: Group1 ERASED !"
+commandblock 0
+goto WAIT
+
+label 1
+if flt[1] = 1, -1, 2
+commandblock 1
+act_setstate 1, off
+act_setstate 4, off
+act_setstate 7, off
+act_setstate 8, off
+frm_seton 1, 0
+frm_seton 4, 0
+frm_seton 7, 0
+frm_seton 8, 0
+let flt[1] = flt[1] + 1
+debug_text "ERASER: Group2 ERASED !"
+commandblock 0
+goto WAIT
+
+label 2
+debug_text "ERASER: NOTHING TO ERASE! -bug"
+end
+
+label WAIT
+wait 1000
+detector_inrange 0, 190
+if flt[0] ! 1, WAIT, DETECT

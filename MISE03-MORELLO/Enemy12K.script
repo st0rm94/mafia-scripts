@@ -1,0 +1,35 @@
+dim_act 2
+findactor 0,"Enemy12K"
+findactor 1,"Tommy"
+
+human_addweapon 0,8,6,18
+human_holster 0
+
+{ down
+enemy_playanim "GestikulaceNew02.i3d"
+label 101
+wait 30000
+goto 101
+}
+{ up
+enemy_podvadim_jak tretera
+enemy_naserse 1
+label 111
+wait 50000
+goto 111
+}
+end
+
+event enemy_to_ai
+return
+
+event 203
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 0
+enemy_block_checkpoint 20
+return
+
+event 201
+return
+

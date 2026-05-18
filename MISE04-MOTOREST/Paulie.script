@@ -1,0 +1,26 @@
+enemy_vidim 0
+dim_act 2
+dim_flt 1
+findactor 0,"Paulie"
+findactor 1,"load z mise04-mesto"
+
+setnoanimhit 0,1
+
+{ up
+enemy_playanim "SamZrSedS.i3d"
+label 101
+wait 30000
+goto 101
+}
+
+event use_ab
+if flt[0]=0,-1,SKIP
+enemy_talk 04990301
+enemy_wait
+label SKIP
+return
+
+event 201
+enemy_use_detector 1
+let flt[0]=1
+return

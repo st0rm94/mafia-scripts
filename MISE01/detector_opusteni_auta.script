@@ -1,0 +1,47 @@
+dim_flt 3
+dim_act 4
+findactor 0,"TommyTAXIDRIVER"
+findactor 1,"taxi"
+findactor 2,"Paulie"
+findactor 3,"Sam"
+
+act_setstate -1,inactive
+
+//priznak pronasledovani
+let flt[1]=0
+
+detector_setsignal -1,0
+
+{ up
+label 101
+wait 500
+compareownerwithex 0,1,101,-1
+ if flt[1]=0,-1, 102
+  //wait 2000
+  label 204
+  setevent 2,204,204
+  goto 103
+  label 102
+  //wait 2000
+  label 205
+  setevent 2,205,205
+ label 103
+detector_setsignal -1,1
+let flt[2]=0
+label 163
+wait 250
+compareownerwithex 0,1,164,-1
+let flt[2]=flt[2]+1
+if flt[2]=20,-1,163
+endofmission 0,01980002
+end
+}
+
+label 164
+setevent 2,206,164
+detector_setsignal -1,0
+goto 101
+
+event 201
+let flt[1]=1
+return

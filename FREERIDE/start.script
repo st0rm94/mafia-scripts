@@ -1,0 +1,34 @@
+dim_act 1
+dim_flt 1
+
+findactor 0,"Tommy"
+human_set8slot 0,1
+
+getmissionnumber 0
+freeride_scoreset flt[0]
+
+if flt[0]>0,MNUMBER1,-1
+
+commandblock 1
+human_addweapon 0,9,7,21
+human_holster 0
+human_addweapon 0,7,6,18
+human_holster 0
+human_addweapon 0,12,2,20
+human_holster 0
+human_addweapon 0,10,50,100
+commandblock 0
+autosavegamefull 5570,0
+freeride_scoreon 1
+mission_objectivesclear
+mission_objectives 22930029
+end
+
+label MNUMBER1
+freeride_scoreget 0
+let flt[0]=flt[0]-1
+freeride_scoreset flt[0]
+autosavegamefull 5570,0
+freeride_scoreon 1
+end
+

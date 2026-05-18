@@ -1,0 +1,117 @@
+dim_flt 2
+dim_frm 9
+dim_act 11
+findframe 0,"detector_island"
+findframe 1,"vypalne02"
+findframe 2,"detector_hoboken"
+findframe 3,"vypalne02"
+findframe 4,"load mise04-motorest"
+findframe 5,"lidi_okno"
+findframe 6,"wingman_island"
+findframe 7,"wingman_hoboken"
+findframe 8,"wingman_motorest"
+
+findactor 0,"Paulie"
+findactor 2,"cekani_na_nasednuti"
+findactor 3,"Box01xxx"
+findactor 4,"Object01xxx"
+findactor 5,"civil"
+findactor 6,"detector_hoboken"
+findactor 7,"9pomp.Box01"
+findactor 8,"Tommy"
+findactor 9,"load mise04-motorest"
+findactor 10,"Sam"
+
+door_enableus 3,0
+door_enableus 4,0
+door_enableus 7,0
+
+enemy_talk 04990141
+setcompass 0
+frm_seton 1,0
+frm_seton 3,0
+
+//enemy_action_follow 8,3,nonext,target,6
+enemy_action_follow 8,3,nonext
+
+enemy_vidim 0
+
+enemy_usecar
+enemy_move 1
+door_open 3,1
+door_open 4,1
+wait 1000
+enemy_move 2
+door_open 3,0
+door_open 4,0
+enemy_move 3
+frm_seton 1,1
+wait 20000
+label 102
+setevent 5,201,102
+wait 10000
+enemy_move 2
+door_open 3,1
+door_open 4,1
+enemy_move 1
+door_open 3,0
+door_open 4,0
+human_getowner 8,1
+compareownerwithex 0,1,-1,117
+// ja pesky nejdu
+enemy_talk 00950014
+enemy_wait
+label 118
+human_getowner 8,1
+compareownerwithex 0,1,118,-1
+label 117
+ACT_SETSTATE 2,active
+setevent 10,202,-1
+
+enemy_vidim 1
+
+//enemy_action_follow 8,3,target,7
+enemy_action_follow 8,3,nonext
+
+enemy_vidim 0
+
+enemy_usecar
+enemy_move 8
+door_open 7,1
+wait 1000
+enemy_move 9
+door_open 7,0
+frm_seton 3,1
+wait 4500
+frm_seton 5,1
+wait 15500
+enemy_lookto 8
+door_open 7,1
+enemy_move 8 
+door_open 7,0
+human_getowner 8,1
+compareownerwithex 0,1,-1,119
+// ja pesky nejdu
+enemy_talk 00950049
+enemy_wait
+label 120
+human_getowner 8,1
+compareownerwithex 0,1,120,-1
+label 119
+ACT_SETSTATE 2,active
+setevent 10,202,-1
+
+enemy_vidim 1
+
+//enemy_action_follow 8,3,nonext,target,8
+enemy_action_follow 8,3,nonext
+
+end
+
+
+event 222
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 0
+return

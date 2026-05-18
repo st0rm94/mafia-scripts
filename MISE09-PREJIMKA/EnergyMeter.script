@@ -1,0 +1,21 @@
+dim_act 2
+dim_flt 2
+findactor 0, "Paulie"
+findactor 1, "Samblood"
+
+label 1
+human_getproperty 0,0,Energy
+human_getproperty 1,1,Energy
+if flt[0] = 0,3,2
+
+label 2
+if flt[1] = 0,4,1
+
+label 3
+endofmission 0, 09980002
+end
+
+label 4
+endofmission 0, 09980003
+end
+

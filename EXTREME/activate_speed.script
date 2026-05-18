@@ -1,0 +1,47 @@
+dim_act 5
+dim_frm 1
+dim_flt 2
+findactor 0,"Speed_truck"
+findactor 1,"speed_timer"
+findactor 2,"speed_end"
+findactor 3,"activate_speed"
+findactor 4,"AKTIVNI_SUBQUEST"
+
+findframe 0,"speed_end"
+
+car_enableus 0,0
+frm_seton 0,0
+enemy_vidim 0
+
+label START
+{ down
+label 101
+enemy_playanim "Mavani01.I3D"
+wait 30000
+goto 101
+}
+detector_issignal 4,START,-1
+
+detector_setsignal 4,1
+
+car_enableus 0,1
+
+act_setstate 1,active
+act_setstate 2,active
+setcompass 0
+
+human_eraseab 3
+enemy_stopanim
+label 102
+wait 50000
+goto 102
+end
+
+event use_ab,10970007
+detector_issignal 2,NELZE,-1
+autosavegamefull 5590
+goto JMP01
+label NELZE
+console_addtext 3474
+label JMP01
+return

@@ -1,0 +1,114 @@
+enemy_vidim 0
+commandblock 1
+dim_flt 2
+dim_frm 1
+findframe 0, "2shotgun2"
+frm_seton 0, 1
+dim_act 3
+findactor 0, "Vratny"
+findactor 1, "Tommy"
+findactor 2, "detector_zbrane"
+enemy_brainwash
+enemy_actionsclear
+enemy_playanim "SezCteni.I3D", 0
+commandblock 0
+enemy_vidim 1
+
+{ DOWN
+label FREESTATE
+wait 2000
+goto FREESTATE
+}
+if flt[1] = 1, ATACK, -1
+
+{ DOWN
+human_looktoactor 0, 1, 1
+enemy_playanim "SezVst.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_vidim 0
+enemy_move 1
+enemy_vidim 1
+enemy_lookto 3
+enemy_wait
+
+label CHECK
+getactorsdist 0, 1, 0
+if flt[0] < 10, -1, CHECK
+getangleactortoactor 1, 0, 0
+if flt[0] < 30, -1, CHECK
+label NEXT
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+enemy_playanim "Gestikulace03.I3D", 0
+enemy_talk 12990011
+enemy_wait
+enemy_stopanim
+wait 2000
+human_looktoactor 1
+wait 2000
+human_looktoactor 0
+enemy_vidim 0
+enemy_move 2
+enemy_vidim 1
+human_looktoactor 0
+enemy_lookto 3
+
+
+label FREESTATE2
+enemy_playanim "Vyhlizeni02.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Vyhlizeni03.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "VyhlizeniStativ.I3D", 0
+wait 10000
+goto FREESTATE2
+}
+if flt[1] = 1, -1, FINISH
+label ATTACK
+setnoanimhit 0, 1
+enemy_move 18, run
+actor_setdir 0, 0
+enemy_playanim "sbirani zurovne.I3D", 0, SIMPLE
+let flt[0] = flt[0] - 266
+let flt[0] = flt[0] / 3
+wait flt[0]
+enemy_stopanim
+frm_seton 0, 0
+human_addweapon 0, 11, 2, 32
+setnoanimhit 0, 0
+//label SEND
+//setevent 2, 1, SEND
+enemy_vidim 1
+enemy_naserse 1
+//enemy_playanim "x panika drep stativ.I3D"
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+return
+
+event ENEMY_TO_AI
+if flt[1] = 1, RET2, -1
+enemy_getstate 0
+if flt[0] > 1, -1, RET2
+let flt[1] = 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 0
+goto RET
+label RET2
+event_use_cb 0
+label RET
+return
+
+label FINISH
+debug_text "Vratny: SCRIPT FINISHED"

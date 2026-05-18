@@ -1,0 +1,29 @@
+dim_flt 1
+dim_act 8
+findactor 0, "Hoolig5"
+findactor 1, "Hoolig6"
+findactor 2, "aktivace poslednich chlapku"
+findactor 3, "chuligan bezi pro pomoc"
+findactor 4, "Homeless4"
+findactor 5, "vykopnuti dveri"
+findactor 6, "aktivace posil"
+findactor 7, "aktivace chlapa"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 1
+if flt[0] = 1, -1, 1
+
+commandblock 1
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+commandblock 0
+
+act_setstate 100, off

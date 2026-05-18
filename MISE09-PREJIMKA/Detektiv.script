@@ -1,0 +1,13 @@
+dim_act 2
+dim_frm 1
+findactor 0,"Detektiv"
+findactor 1,"Tommy"
+findframe 0,"Detektiv"
+
+human_addweapon 0, 9, 7, 21
+
+frm_seton 0,0
+act_setstate -1,inactive
+frm_seton 0,1
+
+enemy_action_fire 1

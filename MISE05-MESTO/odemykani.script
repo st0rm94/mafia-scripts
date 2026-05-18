@@ -1,0 +1,7 @@
+act_setstate -1, inactive
+
+dim_frm 1
+findframe 0, "odemykani"
+
+wait 3000
+frm_seton 0, 1

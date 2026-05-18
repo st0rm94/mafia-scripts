@@ -1,0 +1,12 @@
+enemy_vidim 0
+
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+
+enemy_lockstate dog_fight
+
+wait 4000
+
+human_addweapon 0,9,7,30
+enemy_action_fire 1,400

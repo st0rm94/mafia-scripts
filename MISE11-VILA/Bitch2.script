@@ -1,0 +1,26 @@
+dim_act 3
+dim_flt 1
+findactor 0, "vypinac30"
+findactor 1, "Bitch2"
+findactor 2, "devka"
+
+enemy_vidim 0
+setnoanimhit 1, 1
+wait 5000
+enemy_use_detector 0
+{ up
+enemy_playanim "ZidleSed02.i3d"
+label 1
+detector_issignal 2, -1, 1
+human_talk 1, 11950001
+label 2
+human_getproperty 1, 0, energy
+if flt[0] ! 100, -1, 2
+enemy_playanim "Mise zidle01 panika smrt stativ.I3D"
+label 3
+goto 3
+}
+
+event 1
+event_use_cb 1
+return

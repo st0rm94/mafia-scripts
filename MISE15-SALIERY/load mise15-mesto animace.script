@@ -1,0 +1,6 @@
+player_lockcontrols 1
+debug_text "PLACE FOR ANIMATION"
+
+wait 5000
+player_lockcontrols 0
+change_mission "mise15-mesto", "load z mise15-saliery", -1

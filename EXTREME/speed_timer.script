@@ -1,0 +1,30 @@
+act_setstate -1,inactive
+
+dim_flt 1
+dim_act 2
+dim_frm 1
+findactor 0,"Speed_truck"
+findactor 1,"Tommy"
+
+findframe 0,"cam_speed"
+
+mission_objectivesclear
+mission_objectives 22930003
+
+player_lockcontrols 1
+camera_lock 0
+citycaching_tick
+wait 5000
+camera_unlock
+citycaching_tick
+player_lockcontrols 0
+
+wait 30000
+
+label 102
+wait 500
+car_getspeed 0,0
+if flt[0]<55,-1,102
+
+car_explosion 0
+mission_objectivesclear

@@ -1,0 +1,12 @@
+enemy_vidim 0
+dim_act 1
+findactor 0, ""
+human_addweapon 0, 9, 7, 30
+human_holster 0
+enemy_lockstate fight_guard, 1
+
+act_setstate 100, inactive
+
+enemy_vidim 1
+
+

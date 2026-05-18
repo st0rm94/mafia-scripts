@@ -1,0 +1,21 @@
+act_setstate -1, inactive
+dim_flt 3
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "Salieri"
+
+label 1
+human_getproperty 0, 0, energy
+human_getproperty 1, 1, energy
+if flt[0] = 0, 2, -1
+if flt[1] = 0, 3, 1
+
+label 2
+wait 4000
+endofmission 0, 13980002
+end
+
+label 3
+wait 4000
+endofmission 0, 13980001
+end

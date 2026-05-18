@@ -1,0 +1,581 @@
+dim_flt 1
+dim_act 91
+dim_frm 83
+
+findactor 2, "kontrola playera v dosahu"
+findactor 3, "pozdrav poldy"
+findactor 4, "opruzovani u chlapku"
+findactor 5, "BnkO"
+findactor 6, "BnkO2"
+findactor 7, "Bclerk2"
+findactor 8, "Paulie"
+findactor 9, "Bclerk"
+findactor 10, "1Czena"
+findactor 11, "Bclerk3"
+findactor 12, "Czena6"
+findactor 13, "civil"
+findactor 14, "civil2"
+findactor 15, "civil3"
+findactor 16, "civil4"
+findactor 17, "poli"
+findactor 18, "poli2"
+findactor 19, "poli3"
+findactor 20, "pol"
+findactor 21, "pol2"
+findactor 22, "pol3"
+findactor 23,  "polimFor"
+findactor 24, "pol4"
+findactor 25, "1reakce 1"
+findactor 26, "1reakce 2"
+findactor 27, "1Paulie"
+findactor 28, "1BnkO1"
+findactor 29, "1civil"
+findactor 30, "1Bclerk"
+findactor 31, "BnkO3"
+findactor 32, "1Bclerk2"
+findactor 33, "1ReditelB"
+findactor 34, "1prijiti do kancelare reditele"
+findactor 35, "1interni timer"
+findactor 36, "1Czena"
+findactor 37, "1BnkO2"
+findactor 38, "load animation 19.2""
+findactor 39, "1odchod od trezoru"
+findactor 40, "poli"
+findactor 41, "poli2"
+findactor 42, "poli3"
+findactor 43, "polimFor"
+findactor 44, "pol"
+findactor 45, "pol2"
+findactor 46, "pol3"
+findactor 47, "pol4"
+findactor 48, "Czena"
+findactor 49, "BnkO5"
+findactor 50, "BnkO4"
+findactor 51, "BnkO6"
+findactor 52, "detekce healtu paulieho a playera"
+findactor 53, "detekce healtu paulieho1 a playera"
+findactor 54, "merced500K"
+findactor 55, "Box262"
+findactor 56, "Box61"
+findactor 57, "Box198"
+findactor 58, "open door 1"
+findactor 59, "open door 2"
+findactor 60, "civil5"
+findactor 61, "Czena2"
+findactor 62, "civil6"
+findactor 63, "Czena3"
+findactor 64, "Czena4"
+findactor 65, "prijiti do haly"
+findactor 66, "spusteni rozhovoru"
+findactor 67, "detekce delani bordelu"
+findactor 68, "Prokur"
+findactor 69, "detekce playera v dosahu venku"
+findactor 70, "banka tr49"
+findactor 71, "pol5"
+findactor 72, "pol6"
+findactor 73, "pol7"
+findactor 74, "pol8"
+findactor 75, "vylekani chlapka"
+findactor 76, "Bclerk4"
+findactor 77, "autosave"
+findactor 78, "autosave 1"
+findactor 79, "detekce healtu Czena3"
+findactor 80, "detekce healtu civil"
+findactor 81, "detekce healtu Czena2"
+findactor 82, "detekce healtu civil2"
+findactor 83, "detekce healtu civil3"
+findactor 84, "detekce healtu Czena4"
+findactor 85, "detekce healtu Prokur"
+findactor 86, "vykopnuti dveri"
+findactor 87, "spusteni alarmu"
+findactor 88, "ab chlapek"
+findactor 89, "detekce skel"
+findactor 90, "guard do ai"
+
+findframe 1, "BnkO"
+findframe 2, "BnkO2"
+findframe 3, "Bclerk2"
+findframe 4, "Paulie"
+findframe 5, "Bclerk"
+findframe 6, "1Czena"
+findframe 7, "Bclerk3"
+findframe 8, "Czena6"
+findframe 9, "civil"
+findframe 10, "civil2"
+findframe 11, "civil3"
+findframe 12, "civil4"
+findframe 13, "poli"
+findframe 14, "poli2"
+findframe 15, "poli3"
+findframe 16, "pol"
+findframe 17, "pol2"
+findframe 18, "pol3"
+findframe 19, "polimFor"
+findframe 20, "pol4"
+findframe 21, "1Czena"
+findframe 21, "1Paulie"
+findframe 22, "1BnkO1"
+findframe 23, "1civil"
+findframe 24, "1Bclerk"
+findframe 25, "tuzkanim3"
+findframe 26, "1Bclerk2"
+findframe 27, "1ReditelB"
+findframe 28, "poli"
+findframe 29, "poli2"
+findframe 30, "poli3"
+findframe 31, "polimFor"
+findframe 32, "pol"
+findframe 33, "pol2"
+findframe 34, "pol3"
+findframe 35, "pol4"
+findframe 36, "Czena"
+findframe 37, "BnkO5"
+findframe 38, "BnkO4"
+findframe 39, "BnkO6"
+findframe 40, "merced500K"
+findframe 41, "ambitown1"
+findframe 42, "mesto_door"
+findframe 43, "utlumena hlavni hala"
+findframe 44, "hlavnisal_door"
+findframe 45, "hlavni sal"
+findframe 46, "mesto"
+findframe 47, "civil5"
+findframe 48, "Czena2"
+findframe 49, "civil6"
+findframe 50, "Czena3"
+findframe 51, "xkniha 33"
+findframe 52, "xkniha 34"
+findframe 53, "Czena4"
+findframe 54, "Prokur"
+findframe 55, "pol5"
+findframe 56, "pol6"
+findframe 57, "pol7"
+findframe 58, "pol8"
+findframe 59, "Bclerk4"
+findframe 60, "hodiny"
+findframe 61, "klic1"
+findframe 62, "plac1"
+findframe 63, "plac2"
+findframe 64, "klic2"
+findframe 65, "9klic2"
+findframe 66, "9klic"
+findframe 67, "sejmuta krava"
+findframe 68, "xkniha 35"
+findframe 69, "xkniha 36"
+findframe 70, "1BnkO2"
+findframe 71, "tuzkanim"
+findframe 72, "tuzkanim2"
+findframe 73, "FMV BT-Open"
+findframe 74, "krik1"
+findframe 75, "Box64"
+findframe 76, "ambient_prepadeni"
+findframe 77, "vyrazeni_dveri"
+findframe 78, "zvonek_poplach"
+findframe 79, "xnatahnuti"
+findframe 80, "sirena1"
+findframe 81, "sirena2"
+findframe 82, "sirene3"
+
+frm_seton 41, 0
+soundfade 42, 1, 0, 0.3 
+frm_seton 43, 0
+soundfade 44, 1, 0, 0.5
+soundfade 45, 1, 0, 0.3
+soundfade 46, 1, 0, 0.4 
+soundfade 60, 1, 0, 0.2
+frm_seton 61, 0
+frm_seton 62, 0
+frm_seton 63, 0
+frm_seton 64, 0
+
+frm_seton 51, 0
+frm_seton 52, 0
+frm_seton 65, 1
+frm_seton 66, 1
+frm_seton 67, 0
+frm_seton 68, 0
+frm_seton 69, 0
+frm_seton 70, 0
+frm_seton 71, 0
+frm_seton 73, 0
+frm_seton 74, 0
+sound_setvolume 76, 0
+frm_seton 77, 0
+frm_seton 78, 0
+frm_seton 79, 0
+frm_seton 80, 0
+frm_seton 81, 0
+frm_seton 82, 0
+
+getmissionnumber 0
+if flt[0] = 1, 1, -1
+if flt[0] = 2, 2, -1
+if flt[0] = 3, 3, -1
+
+act_setstate 7, off
+act_setstate 25, off
+act_setstate 26, off
+act_setstate 27, off
+act_setstate 28, off
+act_setstate 29, off
+act_setstate 30, off
+act_setstate 31, off
+act_setstate 32, off
+act_setstate 33, off
+act_setstate 34, off
+act_setstate 35, off
+act_setstate 36, off
+act_setstate 37, off
+act_setstate 38, off
+act_setstate 39, off
+act_setstate 40, off
+act_setstate 41, off
+act_setstate 42, off
+act_setstate 43, off
+act_setstate 44, off
+act_setstate 45, off
+act_setstate 46, off
+act_setstate 47, off
+act_setstate 48, off
+act_setstate 10, off
+act_setstate 49, off
+act_setstate 50, off
+act_setstate 51, off
+act_setstate 53, off
+act_setstate 54, off
+act_setstate 60, off
+act_setstate 62, off
+act_setstate 71, off
+act_setstate 72, off
+act_setstate 73, off
+act_setstate 74, off
+act_setstate 75, off
+act_setstate 76, off
+act_setstate 78, off
+act_setstate 86, off
+act_setstate 87, off
+act_setstate 90, off
+
+frm_seton 3, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 24, 0
+
+frm_seton 26, 0
+frm_seton 27, 0
+frm_seton 28, 0
+frm_seton 29, 0
+frm_seton 30, 0
+frm_seton 31, 0
+frm_seton 32, 0
+frm_seton 33, 0
+frm_seton 34, 0
+frm_seton 35, 0 
+frm_seton 36, 0
+frm_seton 6, 0
+frm_seton 37, 0
+frm_seton 38, 0
+frm_seton 39, 0
+frm_seton 40, 0
+frm_seton 47, 0
+frm_seton 49, 0
+frm_seton 55, 0
+frm_seton 56, 0
+frm_seton 57, 0
+frm_seton 58, 0
+frm_seton 59, 0
+
+human_addweapon 5, 6, 6, 30
+human_addweapon 6, 6, 6, 30
+human_holster 5
+human_holster 6
+wingman_setindicator 8, 1, 0
+door_enableus 55, 0
+door_enableus 56, 0
+detector_setsignal 58, 1
+detector_setsignal 59, 1
+mission_objectivesclear
+mission_objectives 19960000
+
+setmissionnumber 1
+end
+
+label 1
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, inactive
+act_setstate 11, off
+act_setstate 12, off
+act_setstate 13, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, inactive
+act_setstate 18, inactive
+act_setstate 19, inactive
+act_setstate 23, inactive
+act_setstate 52, off
+act_setstate 58, off
+act_setstate 59, off
+act_setstate 61, off
+act_setstate 63, off
+act_setstate 64, off
+act_setstate 65, off
+act_setstate 66, off
+act_setstate 67, off
+act_setstate 68, off
+act_setstate 69, off
+act_setstate 77, off
+act_setstate 79, off
+act_setstate 80, off
+act_setstate 81, off
+act_setstate 82, off
+act_setstate 83, off
+act_setstate 84, off
+act_setstate 85, off
+act_setstate 88, off
+act_setstate 89, off
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 25, 0
+frm_seton 48, 0
+frm_seton 50, 0
+frm_seton 53, 0
+frm_seton 54, 0
+frm_seton 55, 0
+frm_seton 56, 0
+frm_seton 57, 0
+frm_seton 58, 0
+frm_seton 72, 0
+
+human_force_settocar 24, 23, 0
+human_force_settocar 22, 19, 0
+human_force_settocar 20, 17, 0
+human_force_settocar 21, 18, 0
+human_force_settocar 71, 23, 1
+human_force_settocar 72, 19, 1
+human_force_settocar 73, 17, 1
+human_force_settocar 74, 18, 1
+
+wingman_setindicator 27, 1, 0
+
+door_enableus 57, 0
+door_enableus 70, 0
+
+disablecolls 75
+
+setmissionnumber 2
+mission_objectivesclear
+mission_objectives 19960002
+end
+
+label 2
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, inactive
+act_setstate 11, off
+act_setstate 12, off
+act_setstate 13, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, inactive
+act_setstate 18, inactive
+act_setstate 19, inactive
+act_setstate 23, inactive
+act_setstate 52, off
+act_setstate 58, off
+act_setstate 59, off
+act_setstate 61, off
+act_setstate 63, off
+act_setstate 64, off
+act_setstate 65, off
+act_setstate 66, off
+act_setstate 67, off
+act_setstate 68, off
+act_setstate 69, off
+act_setstate 77, off
+act_setstate 79, off
+act_setstate 80, off
+act_setstate 81, off
+act_setstate 82, off
+act_setstate 83, off
+act_setstate 84, off
+act_setstate 85, off
+act_setstate 88, off
+act_setstate 89, off
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 25, 0
+frm_seton 48, 0
+frm_seton 50, 0
+frm_seton 53, 0
+frm_seton 54, 0
+frm_seton 55, 0
+frm_seton 56, 0
+frm_seton 57, 0
+frm_seton 58, 0
+frm_seton 72, 0
+
+human_force_settocar 24, 23, 0
+human_force_settocar 22, 19, 0
+human_force_settocar 20, 17, 0
+human_force_settocar 21, 18, 0
+human_force_settocar 71, 23, 1
+human_force_settocar 72, 19, 1
+human_force_settocar 73, 17, 1
+human_force_settocar 74, 18, 1
+
+wingman_setindicator 27, 1, 0
+
+door_enableus 57, 0
+door_enableus 70, 0
+
+disablecolls 75
+
+setmissionnumber 3
+mission_objectivesclear
+mission_objectives 19960002
+end
+
+label 3
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, inactive
+act_setstate 11, off
+act_setstate 12, off
+act_setstate 13, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, inactive
+act_setstate 18, inactive
+act_setstate 19, inactive
+act_setstate 23, inactive
+act_setstate 52, off
+act_setstate 58, off
+act_setstate 59, off
+act_setstate 61, off
+act_setstate 63, off
+act_setstate 64, off
+act_setstate 65, off
+act_setstate 66, off
+act_setstate 67, off
+act_setstate 68, off
+act_setstate 69, off
+act_setstate 77, off
+act_setstate 79, off
+act_setstate 80, off
+act_setstate 81, off
+act_setstate 82, off
+act_setstate 83, off
+act_setstate 84, off
+act_setstate 85, off
+act_setstate 88, off
+act_setstate 89, off
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 25, 0
+frm_seton 48, 0
+frm_seton 50, 0
+frm_seton 53, 0
+frm_seton 54, 0
+frm_seton 55, 0
+frm_seton 56, 0
+frm_seton 57, 0
+frm_seton 58, 0
+frm_seton 72, 0
+
+human_force_settocar 24, 23, 0
+human_force_settocar 22, 19, 0
+human_force_settocar 20, 17, 0
+human_force_settocar 21, 18, 0
+human_force_settocar 71, 23, 1
+human_force_settocar 72, 19, 1
+human_force_settocar 73, 17, 1
+human_force_settocar 74, 18, 1
+
+wingman_setindicator 27, 1, 0
+
+door_enableus 57, 0
+door_enableus 70, 0
+
+disablecolls 75
+
+setmissionnumber 4
+mission_objectivesclear
+mission_objectives 19960002
+end

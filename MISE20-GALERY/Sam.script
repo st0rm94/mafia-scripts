@@ -1,0 +1,414 @@
+enemy_vidim 0
+enemy_podvadim_jak Tretera
+dim_flt 4
+dim_act 16
+dim_frm 14
+findactor 0, ""
+findactor 1, "SalMan01K6"
+findactor 2, "Mesh213"
+findactor 3, "load animation 20.5"
+findactor 4, "sam ai"
+findactor 5, "sam ai 1"
+findactor 6, "sam ai 2"
+findactor 7, "sam ai 3"
+findactor 8, "sam ai 4"
+findactor 9, "sam ai 5"
+findactor 10, "sam ai 6"
+findactor 11, "sam ai 7"
+findactor 12, "utek sama"
+findactor 13, "utek sama 1"
+findactor 14, "Tommy"
+findactor 15, "load animation 20.5 1"
+
+findframe 0, "poloha sama v mistnosti"
+findframe 1, "poloha sama nahore"
+findframe 2, "poloha sama na konci"
+findframe 3, "poloha sama schovany"
+
+findframe 4, "2krevgal4"
+findframe 5, "2krevgal5"
+findframe 6, "2krevgal6"
+findframe 7, "2krevgal7"
+findframe 8, "2krevgal8"
+
+findframe 9, "2krevgal"
+findframe 10, "2krevgal2"
+findframe 11, "2krevgal3"
+findframe 12, "2krevgal9"
+findframe 13, "2krevgal10"
+
+human_addweapon 0, 10, 50, 100000
+human_holster 0
+
+enemy_lockstate fight_guard_stand, 1
+
+let flt[1] = 2
+let flt[3] = 24
+
+frm_seton 100, 0
+act_setstate 100, inactive
+
+//enemy_move 24, run
+
+actor_setplacement 0, 0
+frm_seton 100, 1
+act_setstate 100, inactive
+
+enemy_move 9, run
+enemy_move 10, run
+enemy_look 1
+enemy_wait
+
+act_setstate 100, inactive
+
+enemy_move 23, run
+
+frm_seton 100, 0
+actor_setplacement 0, 1
+human_setproperty 0, 100, energy
+
+human_activateweapon 0, 10
+
+act_setstate 100, inactive
+frm_seton 100, 1
+
+label 10
+{ down
+commandblock 1
+goto flt[3]
+
+label 21
+act_setstate 6, active
+act_setstate 7, active
+goto 30
+
+label 22
+act_setstate 10, active
+act_setstate 11, active
+goto 30
+
+label 23
+act_setstate 8, active
+act_setstate 9, active
+goto 30
+
+label 24
+act_setstate 4, active
+act_setstate 5, active
+goto 30
+
+label 25
+act_setstate 10, active
+act_setstate 11, active
+goto 30
+
+label 26
+act_setstate 6, active
+act_setstate 7, active
+goto 30
+
+label 27
+act_setstate 4, active
+act_setstate 5, active
+goto 30
+
+label 28
+act_setstate 8, active
+act_setstate 9, active
+
+label 30
+enemy_lockstate fight_guard_stand, 1
+commandblock 0
+
+enemy_vidim 1
+
+label 1
+wait 1000000
+goto 1
+}
+
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+commandblock 0
+
+goto  flt[2]
+
+label 11
+enemy_move 42, run
+enemy_lookto 34
+enemy_wait
+goto 10
+
+label 12
+enemy_move 34, run
+enemy_lookto 33
+enemy_wait
+goto 10
+
+label 13
+enemy_move 36, run
+enemy_lookto 37
+enemy_wait
+goto 10
+
+label 14
+enemy_move 11, run
+enemy_lookto 36
+enemy_wait
+goto 10
+
+label 15
+enemy_move 34, run
+enemy_lookto 33
+enemy_wait
+goto 10
+
+label 16
+enemy_move 42, run
+enemy_lookto 34
+enemy_wait
+goto 10
+
+label 17
+enemy_move 11, run
+enemy_lookto 36
+enemy_wait
+goto 10
+
+label 18
+enemy_move 36, run
+enemy_lookto 11
+enemy_wait
+goto 10
+
+label 41
+enemy_move 44, run
+frm_seton 100, 0
+actor_setplacement 0, 3
+act_setstate 12, active
+act_setstate 13, active
+goto 50
+
+label 42
+enemy_move 40, run
+frm_seton 100, 0
+act_setstate 3, active
+act_setstate 15, active
+actor_setplacement 0, 2
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+goto 52
+
+label 43
+enemy_move 41, run
+frm_seton 100, 0
+act_setstate 3, active
+act_setstate 15, active
+actor_setplacement 0, 2
+frm_seton 9, 1
+frm_seton 10, 1
+frm_seton 11, 1
+frm_seton 12, 1
+frm_seton 13, 1
+goto 52
+
+label 44
+enemy_move 43, run
+frm_seton 100, 0
+actor_setplacement 0, 3
+act_setstate 12, active
+act_setstate 13, active
+
+label 50
+detector_issignal 12, -1, 51
+actor_setplacement 0, 2
+act_setstate 3, active
+act_setstate 15, active
+act_setstate 12, off
+act_setstate 13, off
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+goto 52
+
+label 51
+detector_issignal 13, -1, 50
+actor_setplacement 0, 2
+act_setstate 3, active
+act_setstate 15, active
+act_setstate 12, off
+act_setstate 13, off
+frm_seton 9, 1
+frm_seton 10, 1
+frm_seton 11, 1
+frm_seton 12, 1
+frm_seton 13, 1
+
+label 52
+detector_issignal 3, 54, -1
+detector_issignal 15, 55, 52
+
+label 54
+frm_seton 100, 1
+
+enemy_move 45, run
+enemy_look 14
+enemy_wait
+
+enemy_vidim 1
+
+label 53
+wait 1000000
+goto 53
+
+label 55
+frm_seton 100, 1
+
+enemy_move 46, run
+enemy_look 14
+enemy_wait
+
+enemy_vidim 1
+
+label 56
+wait 1000000
+goto 56
+
+event 1
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 3
+let flt[2] = 11
+let flt[3] = 21
+commandblock 0
+return
+
+event 2
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 5
+let flt[2] = 12
+let flt[3] = 22
+commandblock 0
+return
+
+event 3
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 4
+let flt[2] = 13
+let flt[3] = 23
+commandblock 0
+return
+
+event 4
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 2
+let flt[2] = 14
+let flt[3] = 24
+commandblock 0
+return
+
+event 5
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 5
+let flt[2] = 15
+let flt[3] = 25
+commandblock 0
+return
+
+event 6
+event_use_cb 1
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 3
+let flt[2] = 16
+let flt[3] = 26
+commandblock 0
+return
+
+event 7
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 2
+let flt[2] = 17
+let flt[3] = 27
+commandblock 0
+return
+
+event 8
+commandblock 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+let flt[1] = 4
+let flt[2] = 18
+let flt[3] = 28
+commandblock 0
+return
+
+event 9
+event_use_cb 1
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+commandblock 0
+
+goto flt[1]
+
+label 2
+let flt[2] = 41
+return
+
+label 3
+let flt[2] = 42
+return
+
+label 4
+let flt[2] = 43
+return
+
+label 5
+let flt[2] = 44
+return

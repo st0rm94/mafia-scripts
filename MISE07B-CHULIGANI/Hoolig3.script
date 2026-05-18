@@ -1,0 +1,46 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 3
+findactor 0
+findactor 1, "Tommy"
+findactor 2, "civil"
+HUMAN_ADDWEAPON 0, 4, 0, 0
+
+{ DOWN
+LABEL FREESTATE
+enemy_playanim "Gestikulace04.I3D", 0, 1
+LET flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "Gestikulace07.I3D", 0, 1
+LET flt[0] = flt[0] - 83
+wait flt[0]
+GOTO  FREESTATE
+}
+enemy_talk 0, 4940019, 1
+enemy_playanim "GestoPojdSem01.I3D", 0, 1
+LET flt[0] = flt[0] - 83
+wait flt[0]
+enemy_move 12, WALK
+enemy_wait
+enemy_talk 0, 4940023, 1
+enemy_playanim "boj basb z RH.I3D", 0, 1
+LET flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "boj basb z LS.I3D", 0, 1
+LET flt[0] = flt[0] - 83
+wait flt[0]
+LABEL 1
+setevent 2, 2, 1
+enemy_talk 0, 4940007, 1
+enemy_move 14,  run
+//enemy_brainwash
+enemy_vidim 1
+enemy_naserse 1, 70
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH
+debug_text "Hoolig3: SCRIPT FINSHED"

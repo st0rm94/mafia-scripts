@@ -1,0 +1,73 @@
+dim_flt 3
+dim_act 5
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "#dum06b00.Mesh01"
+findactor 3, "polozeni bomby"
+findactor 4, "spusteni animace 15.4"
+
+human_addweapon 0, 9, 7, 30
+human_holster 0
+human_addweapon 0, 11, 8, 10
+
+{ up
+frm_seton 100, 0
+enemy_vidim 0
+act_setstate 100, inactive
+wait 100
+}
+
+
+event 1
+event_use_cb 1
+let flt[2] = 1
+return
+
+event 2
+frm_seton 100, 1
+event_use_cb 1
+if flt[2] = 1, 2, -1
+
+act_setstate 3, off
+act_setstate 4, off
+
+enemy_move 1
+door_lock 2, 0
+door_open 2, 1
+enemy_move 2, run
+door_open 2, 0
+door_lock 2, 1
+enemy_vidim 1
+enemy_action_fire 1
+end
+
+
+label  2
+
+act_setstate 3, off
+act_setstate 4, off
+
+enemy_move 1
+door_lock 2, 0
+door_open 2, 1
+enemy_move 2, run
+door_open 2, 0
+door_lock 2, 1
+
+enemy_vidim 1
+
+enemy_move 7
+enemy_lookto 10
+enemy_wait
+wait 2000
+enemy_lookto 9
+enemy_wait 
+wait 10000
+enemy_move 13
+let flt[2] = 0
+return
+
+event 3
+event_use_cb 1
+let flt[2] = 0
+return

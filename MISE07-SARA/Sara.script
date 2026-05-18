@@ -1,0 +1,483 @@
+commandblock 1
+zatmyse 1, 0
+player_lockcontrols 1
+
+dim_flt 7
+// flt[5] znaci pokud se Sara schovava aby mi to event_use_cb 1 cely nerozmrdal
+// flt[6] = sara nebude reagovat na zasahy od playera
+
+dim_act 21
+dim_frm 4
+getactiveplayer 0
+findactor 1, "Sara"
+human_eraseab 1
+findactor 2, "Hoolig"
+findactor 3, "Hoolig3"
+findactor 4, "Hoolig2"
+findactor 5, "detector_haraseni"
+findactor 6, "Billy"
+findactor 7, "Hoolig4"
+findactor 8, "dialog_1"
+findactor 9, "dialog_2"
+findactor 10, "Hoolig6"
+findactor 11, "Hoolig7"
+findactor 12, "Hoolig5"
+findactor 13, "PortGuard"
+findactor 14, "sara_hlasky"
+findactor 15, "detector_end"
+findactor 17, "detector_zustan_v_panice"
+findactor 18, "detector_bij_Saru"
+findactor 19, "player_na_dvorku"
+findactor 20, "detector_sara_AB"
+
+findframe 0, "position_1"
+findframe 1, "position_2"
+findframe 2, "camera"
+findframe 3, "Sara"
+human_addweapon 2, 3, 0, 0
+human_addweapon 3, 2, 0, 0
+human_addweapon 4, 2, 0, 0
+human_addweapon 6, 2, 0, 0
+human_addweapon 11, 4, 0, 0
+human_holster 2
+human_holster 3
+human_holster 4
+human_holster 6
+enemy_changeanim "walk1.I3D", "walk woman1.I3D"
+enemy_vidim 0
+wingman_setindicator 1, 5, 0
+actor_setdir 0, 3
+commandblock 0
+enemy_shut_up yes
+person_playanim 0, "breath01a.I3D"
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+zatmyse 0
+wait 500
+enemy_talk 07990051
+human_looktoactor 0, 1, 1
+enemy_wait
+enemy_talk 0, 07990061
+enemy_wait
+
+label KONECKECU
+human_looktoactor 0
+human_looktoactor 1
+enemy_changeanim "breath01a.I3D", "Game SaraStativ.I3D"
+player_lockcontrols 0
+
+{ UP
+enemy_move 1
+}
+{ UP
+enemy_move 2
+}
+{ UP
+enemy_move 3
+}
+label BEZDOM
+{ UP
+if flt[2] = 4, PANIKA, -1
+enemy_move 4
+}
+{ UP
+enemy_move 5
+}
+{ UP
+label ROZHLIDNISE
+enemy_move 100
+enemy_lookto 6
+enemy_wait
+enemy_changeanim "breath01a.I3D", "Game SaraStativ.I3D"
+label WAITAUTO
+human_looktoactor 1
+findnearactor 1, 10, CAR
+getactorsdist 1, 10, 0
+if flt[0] > 30, JDIDAL, -1
+car_getspeed 10, 0
+if flt[0] < 3, -1, WAITAUTO
+label JDIDAL
+debug_text "Sara: Zadny auto v dosahu 30m nebo jede <3km/h - jdu na to :)"
+enemy_changeanim "breath01a.I3D"
+enemy_move 6
+}
+{ UP
+enemy_move 7
+}
+{ UP
+enemy_move 8
+}
+act_setstate 15, off
+label CIL
+goto FINISH
+//if flt[2] =1, FINISH, -1
+
+//##############
+//##  P A N I K A   ##
+//##############
+label PANIKA
+// Aby mi ten event co vola detector odchodu z range neposral comandblockem celou misi
+let flt[5] = 1
+// Aby si Sara nepamatovala rany, ktere ji ted hrac ubali
+let flt[6] = 1
+enemy_changeanim "walk1.I3D", "walk woman1.I3D"
+player_lockcontrols 0
+zatmyse 0
+enemy_talk 07990201
+enemy_playanim "Game SaraRuce.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+enemy_move 14, run
+enemy_look 0
+enemy_wait
+enemy_talk 07990221
+enemy_playanim "Game SaraRuce.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+enemy_move 17, run
+enemy_talk 07990211
+enemy_playanim "Game SaraBack.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+//enemy_move 16, run
+act_setstate 13, active
+enemy_talk 07990211
+enemy_playanim "Game SaraRuce.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_move 20, run
+enemy_lookto 15
+enemy_wait
+setevent 7, 2, -1
+enemy_talk 07990221
+enemy_playanim "Game SaraRuce.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_stopanim
+let flt[2] = 0
+let flt[0] = 0
+// Aktivace detecktoru haraseni
+act_setstate 5, active
+// Aktivace rvani sary
+act_setstate 14, active
+// Aktiva automatu na biti sary "detector_bij_Saru"
+act_setstate 18, active
+
+label WAIT
+  { UP
+    if flt[0] > 0, -1, SKOK
+// 323 + 166 za predchozi radky
+    let flt[0] = flt[0] - 489
+    wait flt[0]
+    enemy_stopanim
+    let flt[0] = 0
+    label SKOK
+    wait 200
+    if flt[2] = 5, HARASENI, -1
+    if flt[2] = 3, STATEWAIT, -1
+    detector_issignal 19, STATEWAIT, -1
+  }
+goto WAIT
+
+//##################
+//##   H A R A S E N I    ##
+//##################
+label HARASENI
+{ DOWN
+  commandblock 1
+  getenemyaistate 6, 0
+  if flt[0] > 1, STATEWAIT, -1
+  getenemyaistate 7, 0
+  if flt[0] > 1, STATEWAIT, -1
+  human_looktoactor 1, 6, 1
+  human_looktoactor 6, 1, 1
+  human_looktoactor 7, 1, 1
+  enemy_talk 6, 07990231, 1
+  commandblock 0
+  enemy_wait
+  enemy_talk 7, 07990241, 1
+  enemy_wait
+  enemy_talk 6, 07990251, 1
+  enemy_wait
+  enemy_talk 7, 07990252, 1
+  enemy_wait
+  label STOPHARASENI
+}
+  commandblock 1
+  human_looktoactor 1
+  human_looktoactor 6
+  human_looktoactor 7
+  commandblock 0
+debug_text "Sara: STOP HARASENI!"
+//########################
+//##   KONEC  H A R A S E N I !! ##
+//########################
+
+label STATEWAIT
+// #######################
+// #  Z A C A T E K   K R Y T U  !! #
+// #######################
+  let flt[2] = 0
+  commandblock 0
+  enemy_playanim "DoKryti.I3D", 0
+  let flt[0] = flt[0] - 323
+  wait flt[0]
+  setnoanimhit 1, 1
+  enemy_playanim "KrytiLoop.I3D", 0
+// Zapinam detector ktery vytvori Sare AB
+act_setstate 20, active
+
+label WAIT2
+   getenemyaistate 4, 0
+   if flt[0] = 4, SKIPHIM, -1
+       iffltinrange 0, 2, 3, WAIT2
+       getactorsdist 1, 4, 0, -1
+       iffltinrange 0, 0, 15, WAIT2
+   label SKIPHIM
+   getenemyaistate 3, 0
+   if flt[0] = 4, SKIPHIM2, -1
+       iffltinrange 0, 2, 3, WAIT2
+       getactorsdist 1, 3, 0, -1
+       iffltinrange 0, 0, 15, WAIT2
+   label SKIPHIM2
+   getenemyaistate 2, 0
+   if flt[0] = 4, SKIPHIM3, -1
+       iffltinrange 0, 2, 3, WAIT2
+       getactorsdist 1, 2, 0, -1
+       iffltinrange 0, 0, 15, WAIT2
+   label SKIPHIM3
+   getenemyaistate 6, 0
+   if flt[0] = 4, SKIPHIM4, -1
+       iffltinrange 0, 2, 3, WAIT2
+       getactorsdist 1, 6, 0, -1
+       iffltinrange 0, 0, 15, WAIT2
+   label SKIPHIM4
+   getenemyaistate 7, 0
+   if flt[0] = 4, SKIPHIM5, -1
+       iffltinrange 0, 2, 3, WAIT2
+       getactorsdist 1, 7, 0, -1
+       iffltinrange 0, 0, 15, WAIT2
+   label SKIPHIM5
+   getenemyaistate 11, 0
+   if flt[0] = 4, SKIPHIM6, -1
+       iffltinrange 0, 2, 3, WAIT2
+       getactorsdist 1, 11, 0, -1
+       iffltinrange 0, 0, 15, WAIT2
+   label SKIPHIM6
+
+label KONECKRYTU
+// ###################
+// #  K O N E C   K R Y T U  #
+// ###################
+  act_setstate 14, off
+  enemy_playanim "KrytiKonec.I3D", 0
+  let flt[0] = flt[0] -120
+  wait flt[0]
+  setnoanimhit 1, 0
+  enemy_changeanim "breath01a.I3D"
+  human_looktoactor 1, 0, 1
+// ################
+// #  C E K A  N A  AB   #
+// ################
+// Deaktivace automatu na biti sary "detector_bij_Saru"
+act_setstate 18, off
+// Aby si Sara pamatovala rany, ktere ji ted hrac ubali
+let flt[6] = 0
+label INITAB
+human_createab 1
+let flt[2] = 0
+{ DOWN
+label WAIT_AB
+   wait 10000
+goto WAIT_AB
+}
+// I ted muze Sara dostat od Hoolig4 event ze je konec haraseni, proto pojistka
+if flt[2] = 3, INITAB, -1
+
+  human_eraseab 1
+// Prepnuti detektoru vzdalenosti
+  label SEND5
+     setevent 15, 1, SEND5
+  enemy_action_follow 0, 2, RETURN
+  enemy_look 0
+  enemy_wait
+  enemy_talk 1, 07990261
+  human_looktoactor 1, 0, 1
+  human_looktoactor 0, 1, 1
+  enemy_wait
+  enemy_talk 0, 07990271
+  enemy_wait
+  enemy_talk 1, 07990281
+  enemy_wait  
+  human_looktoactor 0
+  human_looktoactor 1
+//Znaci, ze uz mame vsechno za sebou:)
+  let flt[2] = 1
+// Aby detector na odchod z range zacal zase fungovat
+  let flt[5] = 0
+//enemy_changeanim "walk1.I3D"
+enemy_changeanim "walk1.I3D", "walk woman1.I3D"
+goto BEZDOM
+
+label HLASKA
+  enemy_look 0
+  enemy_wait
+  human_looktoactor 1, 0, 1
+  let flt[1] = flt[1] +1
+  if flt[1] = 1,-1, P
+  enemy_talk 1, 07990011, 1
+  goto BACK
+label P
+  if flt[1] = 2,-1, P2
+  enemy_talk 1, 07990021, 1
+  goto BACK
+label P2
+  enemy_talk 1, 07990031, 1
+  debug_text "TED`S TO POSRAL"
+  getgametime 4
+  let flt[4] = flt[4] + 5000
+  label POSLEDNISANCE
+  getactorsdist 0, 1, 0
+  if flt[0] < 10, BACK, -1
+  getgametime 0
+  if flt[0] < flt[4], POSLEDNISANCE, -1 
+  endofmission 0, 07980005
+label BACK
+  wait 5000
+  human_looktoactor 1
+  event_use_cb 0
+return
+
+label BIJESARU
+endofmission 0, 07980000
+end
+
+event 3
+// Zjevne dostane od chuligana, konec obirani
+  event_use_cb 1
+  let flt[2] = 3
+return
+
+event 4
+  event_use_cb 1
+  let flt[2] = 4
+  debug_text "Sara: Dostala jsem 4ku event! - ZACATEK PRVNI ANIMACE"
+  enemy_forcescript 1
+return
+
+event 5
+  let flt[2] = 5
+  event_use_cb 1
+  debug_text "Sara: Dostala jsem 5ku event! - HARASENI START"
+return
+
+event 10
+   debug_text "Sara: Tommy odchazi z range..."
+   // Vypnuti dialogovych detectoru
+   act_setstate 8, inactive
+   act_setstate 9, inactive
+   // Aby Tommy a Sara prestali mluvit...
+   human_stoptalk 0
+   human_stoptalk 1
+   if flt[5] = 0, -1, NOFSCRIPT
+   enemy_forcescript 1
+   label NOFSCRIPT
+   enemy_look 0
+   getangleactortoactor 0, 1, 0
+   if flt[0] > 45, 3, -1
+   label RERAND
+      rnd 0, 4
+      let flt[0] = flt[0] + 1
+      if flt[0] = 3, RERAND, -1
+      human_looktoactor 0, 1, 1
+      human_looktoactor 1, 0, 1
+   goto flt[0]
+   label 1
+      // Sara: "Kam to jdete?"
+      enemy_talk 1, 7990011
+      enemy_wait
+   goto RET_ODCHAZI
+   label 2
+      // Sara: "Haloo ja jsem tady"
+      enemy_talk 1, 7990021
+      enemy_wait
+   goto RET_ODCHAZI
+   label 3
+      // Tommy: "Dnes mam na praci neco jineho"
+      enemy_talk 0, 7990041, 4
+      enemy_wait
+   goto RET_ODCHAZI
+   label 4
+      // Sara: "hmm, nevychovanec!"
+      enemy_talk 1, 7990031
+      enemy_wait
+   label RET_ODCHAZI
+   human_looktoactor 0
+   human_looktoactor 1
+   // Znovu aktivuji detector_end
+   act_setstate 15, active
+   // Zapnuti dialogovych detectoru
+   act_setstate 8, active
+   act_setstate 9, active
+   if flt[5] = 0, -1, NOCB
+   event_use_cb 1
+return
+label NOCB
+   event_use_cb 0
+return
+
+event HIT_FROM_PLAYER
+// Aby to Sarah nedelala pri bitce
+   if flt[6] ! 0, -1, CONT
+   event_use_cb 0
+   return
+label CONT
+   commandblock 1
+   human_stoptalk 0
+   human_stoptalk 1
+   getangleactortoactor 0, 1, 0
+// Vypnuti dialogovych detectoru
+   act_setstate 8, inactive
+   act_setstate 9, inactive
+// hit se pocita jenom kdyz se player na ni diva
+   commandblock 0
+   if flt[0] < 60, -1, RET
+   rnd 0, 3
+   let flt[0] = flt[0] + 9
+   let flt[3] = flt[3] + 1
+//   debug_text "Au...udelas to 3x a skoncil's!"
+   if flt[3] = 3, BIJESARU, -1
+   goto flt[0]
+   label 9
+      enemy_talk 1, 7990731
+      goto RET
+   label 10
+      enemy_talk 1, 7990741
+      goto RET
+   label 11
+      enemy_talk 1, 7990731
+   label RET
+   act_setstate 8, active
+   act_setstate 9, active
+   event_use_cb 0
+return
+
+event USE_AB, 7970009
+   event_use_cb 1
+return
+
+event 100
+  human_looktoactor 1, 0, 1
+  human_looktoactor 0, 1, 1
+  enemy_talk 7990821
+  enemy_wait
+  event_use_cb 0
+  human_looktoactor 1
+  human_looktoactor 0
+return
+
+label FINISH
+wait 1000
+enemy_move 31
+goto FINISH

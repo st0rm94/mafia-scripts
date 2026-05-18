@@ -1,0 +1,23 @@
+dim_flt 1
+dim_frm 4
+dim_act 4
+findactor 0, "delnas"
+findactor 1, "TruckA"
+findactor 2, "civil"
+findactor 3, ""
+findframe 0, "delnas"
+findframe 1, "TruckA"
+findframe 2, "pos truck"
+findframe 3, "pos truck2"
+human_force_settocar 0, 1, 0
+frm_seton 0, 0
+actor_setplacement 1, 2
+frm_seton 1, 0
+act_setstate 3, inactive
+
+label 1
+detector_inrange 0, 35
+if flt[0] = 1, -1, 1
+setevent 0, 1, -1
+setevent 2, 1, -1
+end

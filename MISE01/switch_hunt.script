@@ -1,0 +1,22 @@
+dim_act 2
+dim_flt 1
+findactor 0,"taxi"
+findactor 1,"Enemy01"
+
+
+label 101
+wait 1000
+car_getspeed 0,0
+if flt[0]>15,-1,101
+
+label EV201
+setevent 1,201,EV201
+
+label 102
+wait 1000
+car_getspeed 0,0
+if flt[0]<15,-1,102
+
+label EV201
+setevent 1,201,EV201
+goto 101

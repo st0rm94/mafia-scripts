@@ -1,0 +1,66 @@
+//host2
+dim_flt 4
+dim_act 4
+findactor 0, ""
+findactor 1, "TommySAILOR"
+findactor 2, "NPC2"
+findactor 3, "tleskej"
+
+{ down
+label 1
+enemy_playanim "GestSklStativ.I3D"
+wait 3000
+enemy_playanim "GestSkl01.I3D", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "GestSklStativ.I3D"
+wait 3000
+enemy_playanim "GestSkl02.I3D", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "GestSklStativ.I3D"
+wait 3000
+enemy_playanim "GestSklNapitise.I3D", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+goto 1
+}
+enemy_playanim "GestSklStativ.I3D"
+wait 119000
+wait 18000
+wait 50000
+end
+
+event 7
+event_use_cb 1
+return
+
+event use_ab, 14970002
+event_use_cb 0
+getenemyaistate 0, 2
+if flt[2] ! 0, 2, -1
+detector_issignal 2, 2, -1
+if flt[1] = 1, 2, -1
+human_looktoactor 0, 1, 1
+enemy_playanim "GestSkl01.I3D"
+if flt[3] = 0, 3, -1
+if flt[3] = 1, 4, -1
+enemy_talk 14950037
+let flt[3] = 0
+goto 5
+label 3
+enemy_talk 14950038
+let flt[3] = 1
+goto 5
+label 4
+enemy_talk 14950039
+let flt[3] = 2
+label 5
+enemy_wait
+human_looktoactor 0
+label 2
+return
+
+event 12
+enemy_setstate runaway
+return

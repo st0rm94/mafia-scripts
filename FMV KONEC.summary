@@ -1,0 +1,38 @@
+# .dnc extraction summary
+# source        : FMV KONEC.dnc  (323 bytes, main)
+# actors_total  : 1
+# init_records  : 0
+# scripts_found : 1
+
+# main-container actor type-code distribution
+#   type    5  count=1  script
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 10
+# total invocations: 15
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     4  commandblock
+     2  subtitle_add
+     2  wait
+     1  cleardifferences
+     1  endofmission
+     1  loaddifferences
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[load animace end]  type=5  lines=17  commands=10
+    cleardifferences
+    commandblock
+    endofmission
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    subtitle_add
+    wait
+    zatmyse

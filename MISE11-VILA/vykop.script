@@ -1,0 +1,24 @@
+dim_flt 2
+dim_act 5
+findactor 0, "Box532"
+findactor 1, "Tommy"
+findactor 2, "Kasar"
+findactor 3, "vykop"
+findactor 4, "vykop2"
+
+door_enableus 0, 0
+label 1
+detector_waitforuse 2000
+human_isweapon 1, 1, 16
+if flt[1] = 1, -1, 2
+door_lock 0, 0
+door_open 0, 1
+door_enableus 0, 1
+act_setstate 4, off
+detector_setsignal 3, 1
+label 3
+goto 3
+
+label 2
+door_open 0, 1
+goto 1

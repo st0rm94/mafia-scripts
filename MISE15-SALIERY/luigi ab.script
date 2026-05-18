@@ -1,0 +1,57 @@
+dim_flt 2
+dim_act 2
+findactor 0, "Luigi"
+findactor 1, "Tommy"
+
+let flt[1] = 2
+
+label 1
+detector_waitforuse 15970009
+
+human_looktoactor 0, 1, 1
+
+goto flt[1]
+
+label 2
+let flt[1] = flt[1] + 1
+human_looktoactor 1, 0, 1
+human_talk 0, 15992011
+getactorsdist 0, 1, 0
+if flt[0] > 4, 6, -1
+human_talk 0, 15992012
+getactorsdist 0, 1, 0
+if flt[0] > 4, 6, -1
+human_talk 0, 15992013
+getactorsdist 0, 1, 0
+if flt[0] > 4, 6, -1
+human_talk 0, 15992014
+getactorsdist 0, 1, 0
+if flt[0] > 4, 6, -1
+human_talk 0, 15992015
+getactorsdist 0, 1, 0
+if flt[0] > 4, 6, -1
+human_talk 1, 15992016
+getactorsdist 0, 1, 0
+if flt[0] > 5, 6, -1
+human_talk 1, 15992017
+goto 6
+
+label 3
+human_talk 0, 00950060
+let flt[1] = flt[1] + 1
+goto 6
+
+label 4
+human_talk 0, 00950061
+let flt[1] = flt[1] + 1
+goto 6
+
+label 5
+human_talk 0, 00950062
+let flt[1] = 3
+
+label 6
+human_looktoactor 1
+wait 2000
+human_looktoactor 0
+goto 1

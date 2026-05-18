@@ -1,0 +1,33 @@
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "Detektiv"
+
+enemy_lockstate fight_guard, 4
+{ down
+label 1
+goto 1
+}
+{ down
+  human_talk 1, 21940062, 1
+  wait 1000
+  enemy_move 25, run
+}
+enemy_lockstate fight_guard, 10
+enemy_vidim 1
+label 2
+goto 2
+
+
+event 1
+event_use_cb 1
+enemy_lockstate fight_dogfight
+enemy_brainwash
+enemy_vidim 0
+return
+
+event 2
+enemy_forcescript 1
+event_use_cb 1
+enemy_stop
+enemy_look 0
+return

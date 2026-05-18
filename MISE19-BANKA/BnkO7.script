@@ -1,0 +1,21 @@
+enemy_vidim 0
+dim_act 3
+findactor 0, ""
+findactor 1, "Box60"
+findactor 2, "Tommy"
+
+enemy_narohysevyser
+enemy_podvadim_jak Tretera
+
+human_addweapon 0, 7, 6, 30
+
+act_setstate 100, inactive
+
+enemy_move 64, run
+enemy_lookto 65
+enemy_wait
+
+door_lock 1, 0
+door_open 1, 1
+
+enemy_vidim 1

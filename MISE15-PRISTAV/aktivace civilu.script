@@ -1,0 +1,39 @@
+dim_flt 1
+dim_act 9
+dim_frm 2
+findactor 0, "civil17"
+findactor 1, "civil16"
+findactor 2, "vypnuti aktivace civilu"
+findactor 3, "aktivace enemy v ulicce"
+findactor 4, "aktivace enemy v ulicce1"
+findactor 5, "aktivace rozkopnuti vrat"
+findactor 6, "aktivace rozkopnuti vrat1"
+findactor 7, "aktivace chlapka u okna"
+findactor 8, "PortGuard10"
+
+findframe 0, "civil17"
+findframe 1, "civil16"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 30
+if flt[0] = 1, -1, 1
+
+act_setstate 0, active
+act_setstate 1, active
+wait 1000
+playsound "man_panic4.wav", 0, 100, 1
+wait 1500
+playsound "man_panic6.wav", 1, 100, 1
+act_setstate 2, off
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+
+label 2
+setevent 8, 1, 2
+
+act_setstate 100, off

@@ -1,0 +1,22 @@
+dim_flt 1
+dim_act 1
+findactor 0, "civil5"
+
+act_setstate 100, inactive
+
+label 1
+wait 5000
+commandblock 1
+human_getproperty 0, 0, energy
+if flt[0] < 2, 2, -1
+let flt[0] = flt[0] - 1
+human_setproperty 0, flt[0], energy
+commandblock 0
+goto 1
+
+label 2
+commandblock 0
+wait 5000
+human_setproperty 0, 0, energy
+
+act_setstate 100, off

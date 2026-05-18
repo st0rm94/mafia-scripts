@@ -1,0 +1,36 @@
+commandblock 1
+dim_act 7
+dim_frm 2
+
+findactor 6,"zmena_pocasi2"
+
+findframe 0,"Ambivitr"
+findframe 1,"ambidest_1"
+commandblock 0
+
+sound_setvolume 0, 0.2
+sound_setvolume 1, 1
+
+
+act_setstate -1,inactive
+debug_text "ZMENA POCASI 1"
+act_setstate 6,active
+
+soundfade 0,13000,0.2,0.6
+soundfade 1,15000,1,0
+
+wait 5000
+
+findactor 0,"vitr1"
+findactor 1,"dest1"
+findactor 2,"efekt6"
+findactor 3,"efekt4"
+findactor 4,"efekt1"
+findactor 5,"efekt5"
+
+act_setstate 0,active
+act_setstate 1,active
+act_setstate 2,active
+act_setstate 3,active
+act_setstate 4,active
+act_setstate 5,active

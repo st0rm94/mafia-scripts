@@ -1,0 +1,20 @@
+dim_flt 1
+dim_act 5
+findactor 0, "SalMan01K3"
+findactor 1, "Enemy04K"
+findactor 2, "Enemy"
+findactor 3, "aktivace granatu"
+findactor 4, "aktivace sebehnuti chlapku2"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 3
+if flt[0] = 1, -1, 1
+
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, off
+act_setstate 100, off

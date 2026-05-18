@@ -1,0 +1,13 @@
+dim_act 2
+dim_flt 1
+findactor 0, "Guard2"
+findactor 1, "gard range"
+
+label 1
+wait 130
+human_getproperty 0, 0, energy
+if flt[0] < 100, -1, 1
+label 2
+act_setstate 1, off
+setevent 0, 4, 2
+end

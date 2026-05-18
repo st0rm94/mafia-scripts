@@ -1,0 +1,4 @@
+enemy_lockstate panic_freeze
+
+wait 1000
+enemy_playanim "zidlesed02.i3d"

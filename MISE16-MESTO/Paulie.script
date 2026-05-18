@@ -1,0 +1,35 @@
+commandblock 1
+dim_act 7
+dim_frm 1
+findactor 0, ""
+findactor 1, "Sam"
+findactor 3, "Tommy"
+//findactor 4, "zjisteni auta"
+findactor 5, "Bguard3"
+findactor 6, "MorelloLOW"
+findframe 0, "MorelloLOW"
+
+human_getowner 3, 4
+human_force_settocar 0, 4, 1
+human_force_settocar 1, 4, 2
+wingman_setindicator 0, 1, 1
+wingman_setindicator 1, 2, 2
+
+autosavegame 5415
+
+inventory_pop 1
+inventory_pop 0
+human_set8slot 0, 1
+human_set8slot 1, 1
+human_holster 0
+human_holster 1
+human_holster 5
+setcompass 0
+commandblock 0
+
+enemy_naserse 6
+
+label 1
+enemy_followplayer yes
+enemy_action_follow 3, 3, nonext
+goto 1

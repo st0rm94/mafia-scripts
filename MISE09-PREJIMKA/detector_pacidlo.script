@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 2
+findactor 0,"Paulie"
+findactor 1,"vrata"
+
+label 101
+wait 100
+detector_inrange 0,1
+if flt[0]=1,-1,101
+
+setevent 0,202,-1
+act_setstate 1,active
+end

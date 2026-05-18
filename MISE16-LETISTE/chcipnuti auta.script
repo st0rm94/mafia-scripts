@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 3
+findactor 0, "Paulie"
+//findactor 1, "zjisteni auta"
+findactor 2, "Tommy"
+
+label 1
+detector_inrange 0, 20
+if flt[0] = 1, -1, 1
+
+wait 2000
+
+human_getowner 2, 1
+car_breakmotor 1, 1
+
+label 2
+setevent 0, 1, 2
+
+act_setstate 100, off

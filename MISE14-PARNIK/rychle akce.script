@@ -1,0 +1,10 @@
+dim_flt 1
+dim_act 2
+findactor 0, "akce proslov"
+findactor 1, "LifeG"
+
+label 1
+wait 2000
+human_getproperty 1, 0, energy
+if flt[0] = 0, -1, 1
+setevent 0, 1, -1

@@ -1,0 +1,43 @@
+enemy_vidim 0
+dim_flt 2
+dim_frm 1
+dim_act 2
+findframe 0, "Bookmaker.base"
+findactor 0, "Bookmaker"
+findactor 1, "Tommy"
+
+enemy_changeanim "walk1.i3d", "ChuzeRuceZaZady2.i3d"
+
+label 1
+let flt[1] = flt[1] + 1
+if flt[1] = 15, 2, -1
+enemy_move 22
+enemy_move 23
+enemy_move 24
+enemy_move 25
+goto 1
+
+label 2
+enemy_changeanim "walk1.i3d"
+enemy_move 26
+enemy_lookto 27
+enemy_wait
+enemy_playanim "ChcaniVyndani.I3D", 0
+let flt[0]=flt[0]-323
+wait flt[0]
+enemy_playanim "ChcaniLoop.i3d", 0
+//emitparticle 0, 26, 0
+wait 9000
+enemy_playanim "ChcaniZandani.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+let flt[1] = 0
+enemy_changeanim "walk1.i3d", "ChuzeRuceZaZady2.i3d"
+goto 1
+
+event 1
+enemy_changeanim "walk1.i3d"
+enemy_vidim 1
+human_talk 0, 10991051, 2
+label 3
+goto 3

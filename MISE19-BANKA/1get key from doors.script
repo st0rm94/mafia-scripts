@@ -1,0 +1,41 @@
+dim_flt 1
+dim_act 8
+dim_frm 3
+findactor 0, "Tommy"
+findactor 1, "Box190"
+findactor 2, "Box60"
+findactor 3, "Cylinder000"
+findactor 4, "Cylinder00"
+findactor 5, "BnkO5"
+findactor 6, "BnkO4"
+findactor 7, "Cylinder12"
+
+findframe 0, "poloha playera pri sebrani klice od dveri"
+findframe 1, "9klic2"
+findframe 2, "klic1"
+
+door_enableus 4, 0
+
+detector_waitforuse 8970003
+actor_setplacement 0, 0
+player_lockcontrols 1
+person_playanim 0, "sbirani zvrchu.i3d"
+wait 600
+commandblock 1
+frm_seton 1, 0
+frm_seton 2, 1
+human_addweapon 0, 16, 0, 0
+commandblock 0
+wait 1500
+person_stopanim 0
+player_lockcontrols 0
+commandblock 1
+door_lock 1, 0
+door_lock 2, 0
+door_lock 3, 0
+door_lock 4, 0
+door_lock 7, 0
+act_setstate 5, active
+act_setstate 6, active
+commandblock 0
+detector_setsignal 100, 1

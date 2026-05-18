@@ -1,0 +1,9 @@
+dim_act 2
+findactor 0, "polCad"
+findactor 1, ""
+enemy_vidim 0
+
+label 1
+human_force_settocar 1, 0, 1
+compareownerwith 0, -1, 1
+end

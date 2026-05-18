@@ -1,0 +1,28 @@
+dim_flt 1
+dim_act 3
+findactor 0,"Tommy"
+findactor 1,"Lucas"
+findactor 2,"polimTud"
+car_enableus 2,0
+
+{ up
+label 101
+enemy_playanim "ZidleSed03.i3d"
+wait 60000
+goto 101
+}
+
+
+event use_ab,10970006
+getenemyaistate 1,0
+iffltinrange 0,2,5,SKIP
+
+human_looktoactor 1,0,1
+enemy_talk 9990612
+enemy_wait
+human_looktoactor 1
+
+label SKIP
+return
+
+

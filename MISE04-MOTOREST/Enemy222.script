@@ -1,0 +1,56 @@
+commandblock 1
+dim_act 7
+dim_frm 3
+dim_flt 1
+findactor 0,"cad_ford"
+findactor 1,"Box395"
+findactor 2,"Box66"
+findactor 3,"Enemy222"
+findactor 4,"Tommy"
+findactor 5,"detector_enemyattack"
+findactor 6,"load mise04-krajina"
+enemy_vidim 0
+
+findframe 0,"detector_fugitive"
+findframe 1,"placement_fugitive"
+findframe 2,"load mise04-krajina"
+
+human_addweapon 3,9,7,35
+human_holster 3
+
+commandblock 0
+
+{ down
+label 101
+wait 30000
+goto 101
+}
+iscarusable 0,0
+if flt[0]=0,-1,POJIZDNE
+act_setstate 6,off
+actor_setplacement 3,1
+enemy_vidim 1
+label JMP1
+enemy_action_fire 4
+wait 50000
+goto JMP1
+
+label POJIZDNE
+human_force_settocar 3,0,0
+act_setstate 5,active
+setcompass 2
+enemy_car_moveto 0,0
+end
+
+event 201
+return
+
+event 202
+enemy_forcescript 3
+enemy_usecar
+enemy_vidim 1
+label JMP1
+enemy_action_fire 4
+wait 50000
+goto JMP1
+return

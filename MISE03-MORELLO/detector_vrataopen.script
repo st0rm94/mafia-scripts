@@ -1,0 +1,11 @@
+act_setstate -1,inactive
+dim_act 2
+findactor 0,"Box21vdfvd"
+findactor 1,"Box21vdfvd01"
+
+door_enableus 0,0
+door_enableus 1,0
+
+detector_waitforuse 10970000
+door_open 0,1
+door_open 1,1

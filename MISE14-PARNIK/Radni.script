@@ -1,0 +1,99 @@
+dim_flt 2
+dim_act 6
+dim_frm 1
+findactor 0, ""
+findactor 1, "TommySAILOR"
+findactor 2, "Bguard"
+findactor 3, "Bguard2"
+findactor 4, "Box313"
+findactor 5, "tleskej"
+findframe 0, "14_applaus"
+human_candie 0
+
+{ down
+label 1
+wait 30000
+goto 1
+}
+{ down
+enemy_talk 1, 14990351
+enemy_playanim "x radni kecy stativ.I3D"
+enemy_talk 14990361
+enemy_wait
+//CZ enemy_talk 14990362
+//CZ enemy_wait
+enemy_talk 14990363
+enemy_wait
+enemy_talk 14990364
+enemy_wait
+enemy_talk 14990365
+enemy_wait
+enemy_talk 14990366
+enemy_wait
+enemy_talk 14990367
+enemy_wait
+enemy_talk 14990368
+enemy_wait
+enemy_talk 14990369
+enemy_wait
+enemy_talk 14990371
+enemy_wait
+enemy_talk 14990372
+enemy_wait
+enemy_talk 14990373
+enemy_wait
+enemy_talk 14990374
+enemy_wait
+enemy_talk 14990375
+enemy_wait
+enemy_talk 14990376
+enemy_wait
+enemy_talk 14990377
+enemy_wait
+enemy_talk 14990378
+enemy_wait
+enemy_talk 14990379
+enemy_wait
+enemy_talk 14990381
+enemy_wait
+enemy_talk 14990382
+enemy_wait
+enemy_talk 14990383
+enemy_wait
+enemy_talk 14990384
+enemy_wait
+enemy_talk 14990385
+enemy_wait
+enemy_talk 14990386
+enemy_wait
+enemy_talk 14990387
+enemy_wait
+wait 1000
+frm_seton 0, 1
+wait 2500
+detector_setsignal 5, 1
+wait 10000
+setevent 2, 3, -1
+setevent 3, 1, -1
+door_lock 4, 0
+}
+{
+enemy_move 25
+enemy_wait
+enemy_move 24
+enemy_wait
+door_open 4, 0
+getenemyaistate 2, 1
+if flt[1] > 1, 53, -1
+door_lock 4, 1
+label 53
+wait 5000
+human_talk 1, 14990411
+wait 4000
+endofmission 0, 14980000
+end
+}
+
+event 7
+event_use_cb 1
+return

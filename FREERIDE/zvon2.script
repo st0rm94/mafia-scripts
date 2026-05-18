@@ -1,0 +1,15 @@
+//pravidelny (za 1 min)
+
+dim_frm 1
+dim_flt 1
+FindFrame 0
+
+label 10
+  wait 300000
+  rnd 0, 9
+  let flt[0] = flt[0] + 1
+  let flt[0] = flt[0] * 4875
+  frm_seton 0, 1
+  wait flt[0]
+  soundfade 0, 1000, 1, 0
+goto 10

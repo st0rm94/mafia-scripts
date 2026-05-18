@@ -1,0 +1,261 @@
+dim_act 61
+dim_frm 49
+
+findactor 0, "Delnik"
+findactor 1, "Delnik2"
+findactor 2, "Delnik3"
+findactor 3, "Delnik4"
+findactor 4, "PortGuard4"
+findactor 5, "Delnik7"
+findactor 6, "Delnik6"
+findactor 7, "Delnik5"
+findactor 8, "PortGuard"
+findactor 9, "PortGuard2"
+findactor 10, "PortGuard3"
+findactor 11, "PortGuard5"
+findactor 12, "PortGuard6"
+findactor 13, "PortGuard7"
+findactor 14, "Delnik9"
+findactor 15, "Delnik8"
+findactor 16, "hudcoupristav"
+findactor 17, "Sergio"
+findactor 18, "Delnik7"
+findactor 19, "TruckApristav"
+findactor 20, "Delnik13"
+
+findactor 22, "Delnik14"
+findactor 23, "Delnik15"
+findactor 24, "PortGuard8"
+findactor 25, "PortGuard9"
+findactor 26, "PortGuard11"
+findactor 27, "PortGuard10"
+findactor 28, "Box269"
+findactor 29, "Box131"
+findactor 30, "Tommy"
+findactor 31, "PortGuard13"
+findactor 32, "cad_fordpristav"
+findactor 33, "PortGuard14"
+findactor 34, "PortGuard12"
+findactor 35, "chemaForpristav"
+findactor 36, "Enemy04K"
+findactor 37, "Enemy08K"
+findactor 38, "Enemy12K"
+findactor 39, "Enemy10K"
+findactor 40, "chemaFor2pristav"
+findactor 41, "chemaFor3pristav"
+findactor 42, "Enemy08K2"
+findactor 43, "Enemy11K"
+findactor 44, "Enemy04K2"
+findactor 45, "Enemy04K3"
+findactor 46, "Enemy08K3"
+findactor 47, "Enemy10K3"
+findactor 48, "Enemy12K2"
+findactor 49, "PortGuard15"
+findactor 50, "PortGuard16"
+findactor 51, "PortGuard17"
+findactor 52, "dvirkax3.Box663"
+findactor 53, "dvirkax3.Box664"
+findactor 54, "dvirkax4.Box663"
+findactor 55, "dvirkax4.Box664"
+findactor 56, "PortGuard18"
+findactor 57, "Delnik16"
+findactor 58, "Enemy10K2"
+findactor 59, "PortGuard19"
+findactor 60, "PortGuard20"
+
+findframe 0, "chemaForpristav"
+findframe 1, "Enemy04K"
+findframe 2, "Enemy08K"
+findframe 3, "Enemy12K"
+findframe 4, "Enemy10K"
+findframe 5, "chemaFor2pristav"
+findframe 6, "chemaFor3pristav"
+findframe 7, "Enemy08K2"
+findframe 8, "Enemy11K"
+findframe 9, "Enemy10K2"
+findframe 10, "Enemy04K2"
+findframe 11, "Enemy04K3"
+findframe 12, "Enemy08K3"
+findframe 13, "Enemy10K3"
+findframe 14, "Enemy12K2"
+findframe 15, "vratpr"
+findframe 16, "vratpr2"
+findframe 17, "vratpr5"
+findframe 18, "klinpr2"
+findframe 19, "klinpr4"
+findframe 20, "~barel54"
+findframe 21, "vagon1"
+findframe 22, "vagon2"
+findframe 23, "csii1"
+findframe 24, "csii2"
+findframe 25, "naraz1"
+findframe 26, "csii4"
+findframe 27, "csii3"
+findframe 28, "naraz2"
+findframe 29, "vrata1"
+findframe 30, "vrata2"
+findframe 31, "kricici_muz2"
+findframe 32, "kricici_muz1"
+findframe 33, "fmv 15icist"
+findframe 34, "vratpr3"
+findframe 35, "2cpristav"
+findframe 36, "racek1"
+findframe 37, "racek2"
+findframe 38, "racek3"
+findframe 39, "prace2"
+findframe 40, "prace4"
+findframe 41, "sirena"
+findframe 42, "naraz1"
+findframe 43, "naraz2"
+findframe 44, "agon1"
+findframe 45, "agon2"
+findframe 46, "horici_wagon"
+findframe 47, "horici_wagon2"
+findframe 48, "horici_vrata"
+
+human_addweapon 0, 13, 5, 30
+human_addweapon 1, 13, 5, 30
+human_addweapon 2, 13, 5, 30
+human_addweapon 3, 13, 5, 30
+human_addweapon 4, 13, 5, 30
+human_addweapon 5, 11, 8, 4
+human_addweapon 6, 11, 8, 8
+human_addweapon 7, 11, 8, 0
+human_addweapon 7, 6, 6, 6
+human_addweapon 8, 10, 50, 50
+human_addweapon 8, 6, 6, 30
+human_addweapon 9, 11, 8, 0
+human_addweapon 9, 6, 6, 18 
+human_addweapon 10, 11, 8, 4
+human_addweapon 10, 9, 7, 30
+human_addweapon 11, 11, 8, 6
+human_addweapon 12, 11, 8, 0
+human_addweapon 13, 11, 8, 0
+human_addweapon 14, 11, 8, 4
+human_addweapon 15, 7, 6, 30
+human_addweapon 17, 10, 50, 200
+human_addweapon 18, 11, 8, 20 
+
+human_addweapon 20, 11, 8, 20
+
+human_addweapon 22, 9, 7, 14
+human_addweapon 23, 8, 6, 6
+human_addweapon 24, 11, 8, 4
+human_addweapon 25, 11, 8, 8
+human_addweapon 26, 11, 8, 8
+human_addweapon 27, 11, 8, 0
+human_addweapon 27, 9, 0, 7
+human_addweapon 31, 9, 3, 14
+human_addweapon 33, 11, 8, 0
+human_addweapon 33, 6, 6, 18
+human_addweapon 34, 11, 8, 16
+human_addweapon 34, 6, 6, 18
+human_addweapon 36, 9, 7, 21
+human_addweapon 37, 10, 50, 200
+human_addweapon 38, 9, 7, 21
+human_addweapon 39, 9, 7, 21
+human_addweapon 42, 9, 7, 21
+human_addweapon 43, 9, 7, 21
+human_addweapon 44, 9, 7, 21
+human_addweapon 45, 10, 50, 200
+human_addweapon 45, 6, 6, 30
+human_addweapon 46, 9, 7, 21
+human_addweapon 47, 9, 7, 21
+human_addweapon 48, 9, 7, 21
+human_addweapon 49, 6, 6, 18
+human_addweapon 50, 6, 6, 6
+human_addweapon 51, 6, 6, 12
+human_addweapon 56, 11, 8, 8
+human_addweapon 56, 6, 6, 18
+human_addweapon 57, 11, 8, 0
+human_addweapon 57, 6, 6, 24
+human_addweapon 58, 10, 50, 200
+human_addweapon 58, 6, 6, 18
+
+act_setstate 11, inactive
+act_setstate 12, inactive
+act_setstate 13, inactive
+act_setstate 14, inactive
+act_setstate 15, inactive
+
+act_setstate 36, inactive
+act_setstate 37, inactive
+act_setstate 38, inactive
+act_setstate 39, inactive
+act_setstate 42, inactive
+act_setstate 43, inactive
+act_setstate 44, inactive
+act_setstate 45, inactive
+act_setstate 46, inactive
+act_setstate 47, inactive
+act_setstate 48, inactive
+act_setstate 58, inactive
+
+door_enableus 52, 0
+door_enableus 53, 0
+door_enableus 54, 0
+door_enableus 55, 0
+
+car_invisible 16, 1
+car_invisible 19, 1
+car_invisible 35, 1
+car_invisible 40, 1
+car_invisible 41, 1
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+frm_seton 27, 0
+frm_seton 28, 0
+frm_seton 29, 0
+frm_seton 30, 0
+frm_seton 31, 0
+frm_seton 32, 0
+frm_seton 33, 0
+frm_seton 34, 0
+frm_seton 36, 0
+frm_seton 37, 0
+frm_seton 38, 0
+frm_seton 39, 0
+frm_seton 40, 0
+frm_seton 41, 0
+frm_seton 42, 0
+frm_seton 43, 0
+frm_seton 44, 0
+frm_seton 45, 0
+frm_seton 46, 0
+frm_seton 47, 0
+frm_seton 48, 0
+
+createweaponfromframe 35, 9, 7, 0
+
+mission_objectivesclear
+mission_objectives 15960004
+
+car_muststeal 32, 1
+door_enableus 28, 0
+door_enableus 29, 0

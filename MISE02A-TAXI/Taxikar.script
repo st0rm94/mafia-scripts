@@ -1,0 +1,17 @@
+dim_act 3
+dim_frm 1
+findframe 0, "odvoz"
+findactor 0, "taxi2"
+findactor 1, "civil"
+findactor 2, "Czena"
+
+label 1
+wait 250
+compareownerwithex 1, 0,-1, 1
+label 2
+wait 250
+compareownerwithex 2, 0,-1, 2
+
+debug_text "JEDEME !!!"
+wait 4500
+enemy_car_moveto 0, 0

@@ -1,0 +1,26 @@
+dim_flt 1
+dim_act 3
+dim_frm 2
+findactor 0, "Box313"
+findactor 1, "Bguard2"
+findactor 2, "load mise15-saliery"
+findframe 0, "xclun"
+findframe 1, "Paulie"
+
+door_enableus 0, 0
+
+label 1
+detector_waitforuse 2000
+human_isweapon 1, 0, 16
+if flt[0] = 0, 2, -1
+door_open 0, 1
+goto 1
+
+label 2
+door_lock 0, 0
+door_open 0, 1
+door_enableus 0, 1
+frm_seton 0, 1
+frm_seton 1, 1
+act_setstate 2, active
+end

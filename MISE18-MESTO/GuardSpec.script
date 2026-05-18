@@ -1,0 +1,87 @@
+commandblock 1
+//[debug_me]
+enemy_vidim 0
+dim_act 12
+dim_frm 2
+dim_flt 5
+findactor 0, "Guard4"
+findactor 1, "buikFor2"
+findactor 2, "Guard5"
+findactor 3, "Guard6"
+findactor 4, "Tommy"
+findactor 5, "GuardSpec_car"
+findactor 6
+findactor 7, "GuardSpec2"
+findactor 8, "Guard"
+findactor 9, "buikFor"
+findactor 10, "Guard2"
+findactor 11, "Guard3"
+
+findframe 0, "GuardSpec_car_position"
+findframe 1, "prijezd_brana2"
+human_addweapon 6, 9, 7, 35
+human_addweapon 7, 11, 8, 32
+human_holster 6
+human_holster 7
+
+human_force_settocar 6, 5, 0
+human_force_settocar 7, 5, 1
+
+actor_setplacement 5, 0
+car_calm 5
+
+// Pro grupu guardu 1, 2, 3, 4,5,6
+let flt[0] = 0
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 8
+enemy_group_add 0, 10
+enemy_group_add 0, 11
+
+// Ted my
+enemy_group_add 0, 6
+enemy_group_add 0, 7
+enemy_group_addcar 0, 5
+commandblock 0
+
+{ DOWN
+label WAIT
+wait 1000
+debug_text "GuardSpec: waiting..."
+goto WAIT
+}
+
+commandblock 1
+enemy_group_chcipni_hajzle 0,4
+setevent 0, 2, -1
+setevent 2, 2, -1
+setevent 3, 2, -1
+setevent 8, 2, -1
+setevent 10, 2, -1
+setevent 11, 2, -1
+commandblock 0
+//enemy_car_moveto 5, 1, stop
+//enemy_usecar
+enemy_vidim 1
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+debug_text "GuardSpec: adding cars to groups on event from autosave2"
+if flt[3] = 0, NEXT, -1
+enemy_group_addcar 0, 1
+debug_text "GuardSpec: BuickFor2 - added"
+label NEXT
+if flt[4] = 0, NEXT2, -1
+enemy_group_addcar 0, 9
+debug_text "GuardSpec: BuickFor - added"
+label NEXT2
+event_use_cb 0
+return
+
+label FINISH

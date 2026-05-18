@@ -1,0 +1,19 @@
+dim_act 2
+dim_frm 2
+findactor 0, "speedster"
+findactor 1, "Tommy"
+findframe 0, "speedster"
+findframe 1, "load mise16-saliery"
+
+act_setstate 100, inactive
+
+setcompass 0
+
+label 1
+compareownerwithex 1, 0, -1, 1
+
+setcompass -1
+mission_objectivesclear
+mission_objectives 17960001
+setcompass 1
+act_setstate 100, off

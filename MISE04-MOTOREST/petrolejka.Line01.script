@@ -1,0 +1,28 @@
+dim_frm 5
+dim_act 2
+dim_flt 1
+findframe 0,"petrolejka"
+findframe 1,"firebar03"
+findframe 2,"firebar02"
+findframe 3,"lampicka"
+findframe 4,"horici bar"
+
+findactor 0,"fire_death03"
+findactor 1,"petrolejka.Line01"
+soundfade 4,1,1,0
+
+
+detector_waitforhit
+frm_seton 3, 1
+
+emitparticle 0,11,1
+create_physicalobject 0,1,1,2
+
+emitparticle 1,9
+soundfade 4,1500,0,0.5
+act_setstate 0,active
+detector_setsignal -1,1
+stopparticle flt[0]
+
+wait 1000
+emitparticle 2,9

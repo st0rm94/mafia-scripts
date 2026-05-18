@@ -1,0 +1,45 @@
+# .dnc extraction summary
+# source        : MISE02-SALIERY.dnc  (2593 bytes, main)
+# source        : MISE02-SALIERY-InitScripts.dnc  (419 bytes, init)
+# actors_total  : 29
+# init_records  : 2
+# scripts_found : 3
+
+# main-container actor type-code distribution
+#   type    5  count=1  script
+#   type    6  count=10  
+#   type   35  count=18  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 10
+# total invocations: 19
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     7  settraffsectorsnd    [casings: SetTraffSectorSnd]
+     4  commandblock
+     1  callsubroutine
+     1  change_mission
+     1  cleardifferences
+     1  loaddifferences
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[GameInitStart]  type=init  lines=1  commands=1
+    callsubroutine
+
+[TraffSndSect]  type=init  lines=10  commands=1
+    settraffsectorsnd
+
+[animace]  type=5  lines=13  commands=8
+    change_mission
+    cleardifferences
+    commandblock
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse

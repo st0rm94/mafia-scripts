@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 1
+findactor 0, "Lucas"
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+label 2
+setevent 0, 3, 2
+act_setstate 100, off

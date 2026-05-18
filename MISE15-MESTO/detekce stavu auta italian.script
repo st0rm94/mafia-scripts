@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 3
+findactor 0, "buikFor"
+findactor 1, ""
+findactor 2, "Delnik"
+
+label 1
+wait 500
+getactorsdist 0, 1, 0
+if flt[0] > 0.5, 2, -1
+wait 500
+getcardamage 0, 0
+if flt[0] < 1, -1, 1
+
+label 2
+setevent 2, 1, 2
+act_setstate 100, off
+
+

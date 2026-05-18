@@ -1,0 +1,20 @@
+act_setstate -1,inactive
+
+dim_frm 1
+dim_act 2
+dim_flt 2
+findframe 0,"candle06"
+findactor 0,"candle07"
+findactor 1,"candle_end"
+
+emitparticle 0,90,1
+
+label 101
+wait 500
+detector_inrange 0,15
+if flt[0]=1,-1,101
+
+act_setstate 0,active
+stopparticle 1
+setevent 1,201,-1
+end

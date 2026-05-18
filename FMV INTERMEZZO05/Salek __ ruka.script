@@ -1,0 +1,11 @@
+dim_frm 2
+
+commandblock 1
+
+findframe 0,"FMV salek"
+findframe 1,"FMV salek2"
+
+frm_seton 0,0
+frm_seton 1,1
+
+commandblock 0

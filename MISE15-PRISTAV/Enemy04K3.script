@@ -1,0 +1,23 @@
+enemy_vidim 0
+dim_act 2
+findactor 0, ""
+findactor 1, "chemaFor3pristav"
+
+human_force_settocar 0, 1, 3
+
+wait 5000
+
+label 2
+enemy_usecar 
+compareownerwith 1, 2, -1
+
+enemy_move 32, run
+
+enemy_lookto 17
+enemy_wait
+
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3

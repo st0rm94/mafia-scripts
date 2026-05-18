@@ -1,0 +1,51 @@
+dim_act 5
+dim_frm 3
+findactor 0,"Tommy"
+findactor 1,"Sam"
+findactor 2,"Paulie"
+findactor 3,"NULL"
+findactor 4,"NULL"
+
+findframe 0,"wingman_island"
+findframe 1,"wingman_hoboken"
+findframe 2,"wingman_motorest"
+
+//enemy_action_follow 0,2,nonext, target,0
+enemy_action_follow 0,2,nonext
+
+compareownerwithex 1,3,-1,CEKEJ01
+enemy_move 10
+enemy_lookto 11
+enemy_wait
+
+label CEKEJ01
+{ down
+label 101
+wait 50000
+goto 101
+}
+
+//enemy_action_follow 0,2,nonext, target,1
+enemy_action_follow 0,2,nonext
+
+compareownerwithex 1,3,-1,CEKEJ02
+enemy_move 12
+enemy_lookto 13
+enemy_wait
+
+label CEKEJ02
+{ down
+label 102
+wait 50000
+goto 102
+}
+
+//enemy_action_follow 0,2,nonext, target,2
+enemy_action_follow 0,2,nonext
+
+event 201
+enemy_forcescript 1
+return
+
+event 202
+return

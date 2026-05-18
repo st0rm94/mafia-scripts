@@ -1,0 +1,11 @@
+// Car Traffic Sound Sectors
+// ------------------------------------
+
+SetTraffSectorSnd "Primary sector"
+SetTraffSectorSnd "sector && prah04"
+SetTraffSectorSnd "sector && prah05"
+SetTraffSectorSnd "sector && chodba"
+SetTraffSectorSnd "sector moto2"
+SetTraffSectorSnd "sector moto3"
+SetTraffSectorSnd "sector tunelmnh"
+SetTraffSectorSnd "sector Rectangle01xx"

@@ -1,0 +1,9 @@
+dim_frm 1
+findframe 0, "ParnikBasa"
+model_playanim 0, "kapela Basa.i3d"
+
+wait 1000
+enemy_playanim "kapela Basista.i3d"
+
+label 1
+goto 1

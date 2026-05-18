@@ -1,0 +1,32 @@
+commandblock 1
+dim_flt 1
+dim_frm 1
+dim_act 4
+findactor 0,"Tommy"
+findactor 1,"Guard2"
+findactor 2,"Bguard4"
+findactor 3,"zakernak"
+commandblock 0
+
+//cekani az se priradi do druhe grupy
+act_setstate -1,inactive
+enemy_group_new 0
+enemy_group_add 0,2
+enemy_group_add 0,3
+enemy_group_add 0,1
+ 
+human_addweapon 1, 12, 2, 10
+human_holster 1
+//human_addweapon 1, 6, 6, 20
+//human_holster 1
+
+label 100
+enemy_move 23
+enemy_move 24
+enemy_move 25
+enemy_move 26
+goto 100
+
+
+
+

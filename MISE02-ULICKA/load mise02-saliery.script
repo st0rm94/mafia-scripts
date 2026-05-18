@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 2
+findactor 0,"animace"
+findactor 1,"dvere_frontX"
+
+door_enableus 1,0
+
+label 101
+wait 250
+detector_inrange 0,10
+if flt[0]=1,-1,101
+
+act_setstate 0,active

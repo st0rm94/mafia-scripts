@@ -1,0 +1,59 @@
+commandblock 1
+dim_act 27
+findactor 0, "blackha"
+findactor 1, "chemaFor"
+findactor 2, "ForAca"
+findactor 3, "chev2"
+findactor 4, "ForAro"
+findactor 5, "ForAcou"
+findactor 6, "chev"
+findactor 7, "fordtFor"
+findactor 8, "blackha3"
+findactor 9, "chev3"
+findactor 10, "airflFor"
+findactor 11, "ForAde"
+findactor 12, "ForAcou3"
+findactor 13, "ForAcou6"
+findactor 14, "chev5"
+findactor 15, "fordtco9"
+findactor 16, "ForAca4"
+findactor 17, "chemaFor5"
+findactor 18, "fordtco8"
+findactor 19, "blackha4"
+findactor 20, "ForAcou5"
+findactor 21, "ForAca2"
+findactor 22, "chemaFor4"
+findactor 23, "chev4"
+findactor 24, "fordtFor2"
+findactor 25, "ForAcou4"
+findactor 26, "ForApic"
+
+car_muststeal 0, 1
+car_muststeal 1, 1
+car_muststeal 2, 1
+car_muststeal 3, 1
+car_muststeal 4, 1
+car_muststeal 5, 1
+car_muststeal 6, 1
+car_muststeal 7, 1
+car_muststeal 8, 1
+car_muststeal 9, 1
+car_muststeal 10, 1
+car_muststeal 11, 1
+car_muststeal 12, 1
+car_muststeal 13, 1
+car_muststeal 14, 1
+car_muststeal 15, 1
+car_muststeal 16, 1
+car_muststeal 17, 1
+car_muststeal 18, 1
+car_muststeal 19, 1
+car_muststeal 20, 1
+car_muststeal 21, 1
+car_muststeal 22, 1
+car_muststeal 23, 1
+car_muststeal 24, 1
+car_muststeal 25, 1
+car_calm 26
+debug_text "horni_auta: Auta zaknuta!"
+commandblock 0

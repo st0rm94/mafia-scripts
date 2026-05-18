@@ -1,0 +1,92 @@
+dim_flt 1
+dim_act 12
+dim_frm 6
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+
+findactor 2, "Detektiv3"
+findactor 3, "Detektiv4"
+findactor 4, "pol2"
+findactor 5, "pol"
+
+findactor 6, "TruckA"
+findactor 7,"polimTud"
+findactor 8,"polimFor"
+findactor 9,"paulie_pomoc"
+findactor 10,"NULL"
+findactor 11,"zmena_pocasi2"
+
+
+findframe 0,"Tommy"
+findframe 1,"Paulie"
+findframe 2,"TruckA"
+findframe 3,"polimTud"
+findframe 4,"polimFor"
+findframe 5,"Good-End"
+
+
+
+act_setstate -1,inactive
+
+label 101
+wait 500
+detector_inrange 0,10
+if flt[0] = 2,-1,101
+
+
+human_getproperty 2,0,Energy
+if flt[0]=0,NEXT01,-1
+getenemyaistate 2,0
+if flt[0]=3,101,-1
+
+label NEXT01
+human_getproperty 3,0,Energy
+if flt[0]=0,NEXT02,-1
+getenemyaistate 3,0
+if flt[0]=3,101,-1
+
+label NEXT02
+human_getproperty 4,0,Energy
+if flt[0]=0,NEXT03,-1
+getenemyaistate 4,0
+if flt[0]=3,101,-1
+
+label NEXT03
+human_getproperty 5,0,Energy
+if flt[0]=0,NEXT04,-1
+getenemyaistate 5,0
+if flt[0]=3,101,-1
+
+label NEXT04
+
+act_setstate 9,off
+act_setstate 11,active
+
+zatmyse 1
+wait 500
+commandblock 1
+PLAYER_LOCKCONTROLS 1
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+act_setstate 1,off
+act_setstate 6,off
+loaddifferences "dif09d.chg"
+recloadfull "record09d.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 0,1
+debug_text "LOAD NEXT MISSION"
+
+setmissionnumber 1
+PLAYER_LOCKCONTROLS 0
+compareownerwithex 0,10,SKIP01,-1
+human_fromcar 0,5
+label SKIP01
+commandblock 0
+change_mission "mise09-krajina", "placement_start", -1

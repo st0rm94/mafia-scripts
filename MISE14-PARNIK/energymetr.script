@@ -1,0 +1,31 @@
+dim_flt 3
+dim_act 3
+dim_frm 1
+findactor 0, "TommySAILOR"
+findactor 1, "civil5"
+findactor 2, "Paulie"
+findframe 0, "dav"
+
+label 1
+human_getproperty 2, 0, energy
+if flt[0] = 0, 46, -1
+human_getproperty 0, 0, energy
+getenemyaistate 1, 1
+if flt[1] ! 0, 2, -1
+if flt[0] = 0, -1, 1
+wait 5000
+endofmission 0, 13980002
+
+label 2
+frm_seton 0, 0
+label 3
+human_getproperty 2, 0, energy
+if flt[0] = 0, 46, -1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 3
+wait 5000
+label 46
+endofmission 0, 13980002
+
+event 1
+endofmission 0, 13980002

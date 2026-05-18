@@ -1,0 +1,63 @@
+dim_flt 1
+dim_act 6
+dim_frm 12
+findactor 0, "vagcisterna4"
+findactor 1, "aktivace vagonu 2"
+findactor 2, "load animace 15.9"
+findactor 3, "vrch"
+findactor 4, "csii2"
+findactor 5, "csii4"
+
+findframe 1, "Vrata01"
+findframe 2, "vratpr3"
+findframe 3, "klinpr"
+findframe 4, "klinpr2"
+findframe 5, "vagon1"
+findframe 8, "Vrata03"
+findframe 9, "vratpr5"
+findframe 10, "zarazka1"
+findframe 11, "vagoncutka1"
+
+wagon_setevent 0, 1
+
+detector_waitforuse 15970005
+frm_seton 10, 1
+commandblock 1
+frm_seton 3, 0
+frm_seton 4, 1
+commandblock 0
+wait 500
+act_setstate 0, active
+act_setstate 4, active
+act_setstate 5, active
+
+soundfade 5, 3000, 0, 1
+
+label 2
+wait 1000000
+goto 2
+
+event 1
+wagon_getlastnode 0, 0
+if flt[0] = 7, -1, 2
+commandblock 1
+frm_seton 1, 0
+frm_seton 2, 1
+frm_seton 5, 0
+commandblock 0
+act_setstate 2, active
+detector_setsignal 100, 1
+return
+
+label 2
+if flt[0] = 35, -1, 3
+commandblock 1
+frm_seton 8, 0
+frm_seton 9, 1
+commandblock 0
+
+label 3
+frm_seton 11, 1
+frm_seton 5, 0
+act_setstate 1, active
+return

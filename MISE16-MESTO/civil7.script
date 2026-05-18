@@ -1,0 +1,94 @@
+enemy_vidim 0
+dim_flt 2
+dim_act 17
+dim_frm 7
+findactor 0, "MorelloLOW"
+findactor 1, "arrow"
+findactor 2, "load mise16-krajina"
+findactor 3, "rozhodnuti cesty morella"
+findactor 4, ""
+findactor 5, "detekce vzdalenosti playera od morella"
+findactor 6, "Bguard2"
+findactor 7, "Bguard3"
+findactor 11, "load animation 16.4"
+findactor 12, "Tommy"
+findactor 13, "brana R01"
+findactor 14, "brana R"
+findactor 15, "Enemy04K"
+findactor 16, "Enemy09K"
+
+findframe 0, "navadeni morella podkopcem"
+findframe 1, "navadeni morella domu"
+findframe 2, "navadeni morella krajina"
+findframe 3, "navadeni morella krajina 1"
+findframe 4, "navadeni morella domu 1"
+findframe 5, "Enemy04K"
+findframe 6, "Enemy09K"
+
+carlight_main 1, 0
+
+act_setstate 100, inactive
+
+{ down
+wait 10000
+
+carlight_main 1, 2
+
+enemy_car_moveto 1, 2
+//enemy_car_moveto 1, 0
+
+//commandblock 1
+//door_open 13, 1
+//door_open 14, 1
+//act_setstate 3, off
+//act_setstate 11, active
+//act_setstate 15, active
+//act_setstate 16, active
+//frm_seton 5, 1
+//frm_seton 6, 1
+//commandblock 0
+
+//enemy_car_moveto 1, 1
+//act_setstate 11, off
+endofmission 0, 16980005
+end
+}
+
+car_remove_driver 1
+enemy_forcescript 4
+carlight_main 1, 2
+enemy_car_escape 1, 12, 4, 65, 80, 0.8
+enemy_car_escape 1, 12, 0, 65, 80, 0.8
+
+commandblock 1
+door_open 13, 1
+door_open 14, 1
+act_setstate 3, off
+act_setstate 11, active
+act_setstate 15, active
+act_setstate 16, active
+frm_seton 5, 1
+frm_seton 6, 1
+commandblock 0
+
+enemy_car_escape 1, 12, 1, 30, 40, 0.6
+wait 5000
+act_setstate 11, off
+endofmission 0, 16980005
+end
+
+event 1
+act_setstate 2, active
+car_remove_driver 1
+enemy_forcescript 4
+enemy_car_escape 1, 12, 3, 65, 90, 1
+
+enemy_car_escape 1, 12, 2, 65, 90, 0.5
+//enemy_car_escape 1, 12, 1, 30, 40, 0.6
+wait 3000
+endofmission 0, 16980005
+end
+
+event 2
+event_use_cb 1
+return

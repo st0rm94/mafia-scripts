@@ -1,0 +1,52 @@
+dim_flt 1
+dim_act 5
+dim_frm 4
+findactor 0,"rediteluv stul"
+findactor 1,"Tommy"
+findactor 2,"Box469"
+findactor 3,"Box473"
+findactor 4,"detector_music"
+
+findframe 0,"Tommy"
+findframe 1,"placement_Tommy_misa"
+findframe 2,"Box469"
+findframe 3,"Box473"
+
+door_enableus 2,0
+
+detector_waitforuse 10970000,1
+
+mission_objectivesremove 08960003
+label 101
+setevent 0, 202, 101
+// MUSIC FADEDOWN
+setevent 4,554,-1
+enemy_block
+zatmyse 1
+wait 500
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+frm_seton 0,0
+frm_seton 2,0
+frm_seton 3,0
+actor_setplacement 1,1
+loaddifferences "dif08b.chg"
+recloadfull "record08b.rep"
+commandblock 0
+recwaitforend
+recunload
+cleardifferences
+commandblock 1
+frm_seton 0,1
+frm_seton 2,1
+frm_seton 3,1
+door_enableus 2,1
+door_open 2,0
+door_lock 2,1
+PLAYER_LOCKCONTROLS 0
+enemy_unblock
+zatmyse 0
+commandblock 0
+// MUSIC FADEUP
+setevent 4,555,-1
+end

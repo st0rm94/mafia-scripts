@@ -1,0 +1,54 @@
+dim_act 14
+dim_frm 3
+
+findframe 0, "@rstul"
+findframe 1, "@rstul2"
+findframe 2, "@zidle4"
+findactor 0, "Tommy"
+findactor 1, "Salieri"
+findactor 2, "Enemy04K"
+findactor 3, "Enemy10K2"
+findactor 4, "Enemy08K"
+findactor 5, "Enemy10K"
+findactor 6, "Enemy12K"
+findactor 7, "Enemy11K"
+findactor 8, "Enemy12K2"
+findactor 9, "chemaFor"
+findactor 10, "forVco"
+findactor 11, "cad_phaeton2"
+findactor 12, "Enemy12K3"
+findactor 13, "Enemy12K4"
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+character_pop 1
+wingman_setindicator 1, 3, 0
+
+act_setstate 1, inactive
+act_setstate 2, inactive
+act_setstate 3, inactive
+act_setstate 4, inactive
+act_setstate 5, inactive
+act_setstate 6, inactive
+act_setstate 7, inactive
+act_setstate 8, inactive
+
+human_activateweapon 0, 9
+human_addweapon 1, 7, 6, 666
+  human_addweapon 2, 11, 8, 16
+  human_addweapon 3, 10, 50, 50
+human_addweapon 4, 9, 7, 14
+human_addweapon 5, 11, 8, 16
+  human_addweapon 6, 11, 8, 16
+human_addweapon 7, 10, 50, 50
+  human_addweapon 8, 10, 50, 50
+human_addweapon 12, 10, 50, 50
+human_addweapon 13, 10, 50, 50
+
+settankhitcount 9, 5000
+settankhitcount 10, 5000
+settankhitcount 11, 5000
+car_enableus 9, 0
+car_enableus 10, 0
+car_enableus 11, 0

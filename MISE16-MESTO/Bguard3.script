@@ -1,0 +1,19 @@
+enemy_vidim 0
+dim_act 1
+findactor 0, "arrow"
+
+act_setstate 100, inactive
+
+enemy_move 35
+enemy_lookto 34
+enemy_wait
+
+label 1
+enemy_usecar 0, 3
+compareownerwith 0, -1, 1
+
+enemy_vidim 1
+
+label 2
+wait 1000000
+goto 2

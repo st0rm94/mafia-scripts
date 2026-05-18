@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Enemy12K2""
+findactor 1, "Guard2"
+
+act_setstate 100, inactive
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, 2, -1 
+
+label 2
+human_getproperty 1, 0, energy
+if flt[0] = 0, 2, 1
+
+label 2
+wait 5000
+endofmission 0, 15980001

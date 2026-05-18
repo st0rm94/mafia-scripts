@@ -1,0 +1,6 @@
+dim_act 2
+findactor 0,"Enemy"
+findactor 1,"cad_ford"
+
+human_force_settocar 0,1,0
+car_setspeed 1,40

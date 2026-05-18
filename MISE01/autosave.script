@@ -1,0 +1,82 @@
+commandblock 1
+dim_act 9
+dim_frm 10
+findactor 0,"taxi"
+findactor 1,"TommyTAXIDRIVER"
+findactor 2,"Paulie"
+findactor 3,"Sam"
+findactor 4,"supervisor"
+
+findactor 5,"enemy_car"
+findactor 6,"Enemy01"
+findactor 7,"Enemy02"
+findactor 8,"Enemy03"
+
+findframe 0,"TommyTAXIDRIVER"
+findframe 1,"Paulie"
+findframe 2,"Sam"
+findframe 3,"Enemy01"
+findframe 4,"Enemy02"
+findframe 5,"Enemy03"
+findframe 6,"enemy_car"
+findframe 7,"placement_hidetaxi"
+findframe 8,"placement_starttaxi"
+findframe 9,"taxi"
+zatmyse 1,1
+PLAYER_LOCKCONTROLS 1
+commandblock 0
+
+autosavegame 5000
+
+subtitle_add 7200
+wait 5000
+
+commandblock 1
+setcitytrafficvisible 0
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+frm_seton 6,0
+frm_seton 9,0
+
+car_invisible 0,1
+
+//actor_setplacement 0,7
+
+loaddifferences "dif01a.chg"
+recloadfull "record01a.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+setcitytrafficvisible 1
+act_setstate 2,active
+frm_seton 0,1
+frm_seton 1,1
+frm_seton 2,1
+frm_seton 3,1
+frm_seton 4,1
+frm_seton 5,1
+frm_seton 6,1
+frm_seton 9,1
+
+car_invisible 0,0
+
+human_force_settocar 1,0,0
+human_force_settocar 2,0,2
+human_force_settocar 3,0,1
+
+human_force_settocar 6,5,0
+human_force_settocar 7,5,1
+human_force_settocar 8,5,2
+
+//actor_setplacement 0,8
+PLAYER_LOCKCONTROLS 0
+commandblock 0
+zatmyse 0

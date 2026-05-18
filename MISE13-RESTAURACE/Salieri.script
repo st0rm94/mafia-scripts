@@ -1,0 +1,3 @@
+enemy_lockstate fight_guard, 1
+label 1
+goto 1

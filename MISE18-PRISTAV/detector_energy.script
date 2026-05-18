@@ -1,0 +1,53 @@
+dim_act 5
+dim_flt 2
+findactor 0, "Tommy"
+findactor 1, "TruckB"
+findactor 2, "Delnik2"
+findactor 3, "Delnik3"
+findactor 4, "Organizator"
+
+label DETECT
+wait 1000
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+iscarusable 1, 0
+if flt[0] = 0, TRUCK, -1
+getcardamage 1, 0
+if flt[0] < 0.25, TRUCKHNED, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, DELNIK2, -1
+label NEXT
+human_getproperty 3, 0, Energy
+if flt[0] = 0, DELNIK3, DETECT
+
+
+label TOMMYDEATH
+wait 3000
+endofmission 0, 18980050
+end
+
+label TRUCK
+wait 5000
+iscarusable 1, 0
+if flt[0] = 0, -1, DETECT
+label TRUCKHNED
+endofmission 0, 18980055
+end
+
+label DELNIK2
+if flt[1] = 3, DETECT, -1
+if flt[1] = 1, NEXT, -1
+let flt[0] = 0
+set_remote_float 0, 4, 6
+debug_text "detector_energy: Delnik2 dead nastavuji jeho float Organizatorovi na 0"
+let flt[1] = flt[1] + 1
+goto NEXT
+
+label DELNIK3
+if flt[1] = 3, DETECT, -1
+if flt[1] = 2, DETECT, -1
+let flt[0] = 0
+set_remote_float 0, 4, 7
+debug_text "detector_energy: Delnik3 dead nastavuji jeho float Organizatorovi na 0"
+let flt[1] = flt[1] + 2
+goto DETECT

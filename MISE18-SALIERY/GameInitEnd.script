@@ -1,0 +1,11 @@
+//garage_generatecars
+dim_act 2
+dim_frm 2
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findframe 0, "praskani"
+findframe 1, "music"
+wingman_setindicator 0, 1, 0
+wingman_setindicator 1, 2, 1
+frm_seton 0, 0
+frm_seton 1, 0

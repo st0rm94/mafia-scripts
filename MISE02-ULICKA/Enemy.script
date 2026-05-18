@@ -1,0 +1,5 @@
+enemy_vidim 0
+enemy_playanim "ZidleSed04.I3D"
+label 100
+wait 10000
+goto 100

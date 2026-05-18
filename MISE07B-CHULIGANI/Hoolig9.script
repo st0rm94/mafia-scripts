@@ -1,0 +1,6 @@
+act_setstate -1, inactive
+dim_act 1
+findactor 0
+enemy_talk 0, 2940009. 1
+human_addweapon 0, 25, 0, 0
+enemy_move 14, run

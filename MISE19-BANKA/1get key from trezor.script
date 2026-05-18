@@ -1,0 +1,39 @@
+dim_flt 1
+dim_act 4
+dim_frm 5
+findactor 0, "Tommy"
+findactor 1, "load animation 19.2""
+findactor 2, "dvirka"
+findactor 3, "BnkO3"
+findframe 0, "9klic"
+findframe 1, "poloha playera u skrinky"
+findframe 2, "klic2"
+findframe 3, "9klic3"
+findframe 4, "poloha guarda nahore"
+
+door_enableus 2, 0
+
+detector_waitforuse 8970003
+player_lockcontrols 1
+actor_setplacement 0, 1
+door_open 2, 1
+person_playanim 0, "sbirani zvrchu.i3d"
+wait 600
+commandblock 1
+frm_seton 0, 0
+frm_seton 3, 0
+human_addweapon 0, 16, 0, 0
+frm_seton 2, 1
+commandblock 0
+wait 600
+person_stopanim 0
+player_lockcontrols 0
+act_setstate 1, active
+detector_setsignal 100, 1
+
+human_getproperty 3, 0, energy
+if flt[0] = 0, 2, -1
+
+actor_setplacement 3, 4
+
+label 2

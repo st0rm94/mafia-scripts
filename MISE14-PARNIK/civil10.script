@@ -1,0 +1,94 @@
+// zena1
+
+dim_flt 4
+dim_frm 1
+dim_act 6
+findactor 0, ""
+findactor 1, "TommySAILOR"
+findactor 2, "waiter2"
+findactor 3, "Czena5"
+findactor 4, "NPC1"
+findactor 5, "tleskej"
+findframe 0, "civil10.neck"
+
+{ down
+label 1
+enemy_playanim "KoureniAutoStativ.I3D"
+emitparticle 0, 25
+wait 7500
+enemy_playanim "KoureniAutoPotahnuti.I3D", 0
+let flt[0] = flt[0] - 350
+wait flt[0]
+goto 1
+}
+enemy_playanim "xMavani01s.I3D"
+enemy_playanim "xMavani01s.I3D"
+enemy_playanim "xMavani01s.I3D"
+label 13
+detector_issignal 5, -1, 13
+wait 800
+enemy_playanim "xTleskani01c.I3D"
+wait 18000
+enemy_playanim "xMavani01s.I3D"
+wait 50000
+end
+
+event 1
+event_use_cb 0
+human_looktoactor 0, 2, 1
+wait 3000
+human_looktoactor 0
+return
+
+event 7
+event_use_cb 1
+return
+
+event use_ab, 14970003
+event_use_cb 0
+getenemyaistate 0, 2
+if flt[2] ! 0, 6, -1
+human_looktoactor 0, 1, 1
+if flt[3] = 0, 2, -1
+if flt[3] = 1, 3, -1
+enemy_talk 14950075
+let flt[3] = 0
+goto 6
+label 2
+enemy_talk 14950076
+let flt[3] = 1
+goto 6
+label 3
+enemy_talk 14950077
+let flt[3] = 2
+label 6
+enemy_wait
+human_looktoactor 0
+return
+
+//********NPC dialogue
+event 2
+event_use_cb 0
+enemy_playanim "KoureniAutoStativ.I3D"
+enemy_talk 14950078
+enemy_wait
+wait 400
+human_talk 3, 14950079
+enemy_wait
+wait 400
+enemy_talk 14950080
+enemy_wait
+wait 400
+human_talk 3, 14950081
+enemy_wait
+wait 400
+enemy_talk 14950082
+enemy_wait
+wait 400
+detector_setsignal 4, 0
+act_setstate 4, off
+return
+
+event 12
+enemy_setstate runaway
+return

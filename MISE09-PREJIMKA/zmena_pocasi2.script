@@ -1,0 +1,38 @@
+commandblock 1
+dim_frm 3
+dim_act 2
+weather_setparam MAX_CNT,5000
+weather_setparam MAX_CNT,7000
+weather_setparam LEN,0.8
+weather_setparam WIDTH,0.03
+
+findframe 0,"ambidest_2"
+findframe 1,"strecha4"
+findframe 2,"Ambivitr"
+
+findactor 0,"dest1"
+findactor 1,"vitr1"
+
+sound_setvolume 0,0
+sound_setvolume 1,0.3
+commandblock 0
+
+act_setstate -1,inactive
+
+debug_text "ZMENA POCASI 2"
+
+wait 10000
+weather_setparam MAX_CNT,7000
+weather_setparam LEN,0.9
+weather_setparam WIDTH,0.04
+
+soundfade 0,11000,0,0.5
+
+act_setstate -1,inactive
+
+act_setstate 0,off
+act_setstate 1,off
+soundfade 2,4000,0.6,0.2
+soundfade 0,5000,0.5,0.3
+soundfade 1,4000,0.3,0.1
+

@@ -1,0 +1,350 @@
+commandblock 1
+dim_flt 3
+dim_act 43
+dim_frm 2
+
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "1BnkO1"
+findactor 3, "1reakce 1"
+findactor 4, "1reakce 2"
+findactor 5, "1reakce 3"
+findactor 6, "1civil"
+findactor 7, "1Bclerk"
+findactor 8, "1interni timer"
+findactor 9, "1BnkO2"
+findactor 10, "load mise19-mesto"
+findactor 11, "load mise19-mesto 1"
+findactor 12, "load mise19-mesto 2"
+findactor 13, "load mise19-mesto 3"
+findactor 14, "Box31"
+findactor 15, "BnkO7"
+
+findactor 20, "1detekce healtu guardu"
+findactor 21, "1detekce healtu civila 1"
+findactor 22, "1detekce healtu civila 2"
+findactor 23, "1detekce healtu civila 3"
+findactor 24, "1detekce healtu civila 4"
+findactor 25, "1detekce healtu civila 5"
+findactor 26, "1detekce healtu civila 6"
+findactor 27, "1detekce healtu civila 7" 
+findactor 28, "1detekce healtu civila 1x"
+findactor 29, "1detekce healtu civila 2x"
+findactor 30, "1detekce healtu civila 3x"
+findactor 31, "1detekce healtu civila 4x"
+findactor 32, "1detekce healtu civila 5x"
+findactor 33, "1detekce healtu civila 6x"
+findactor 34, "1detekce healtu civila 7x"
+findactor 35, "1get key from trezor"
+findactor 36, "1get key from doors"
+findactor 37, "1detekce healtu guardu"
+findactor 38, "detekce healtu urednika rozhovor"
+findactor 39, "detekce healtu urednika rozhovor 1"
+//findactor 40, "zjisteni auta"
+findactor 41, "null"
+findactor 42, "1interni timer"
+
+findframe 0, "load z mise19-mesto"
+findframe 1, "natahnuti"
+
+compareownerwithex 1, 41, 8, -1
+human_getowner 1, 40
+human_fromcar 1, 0
+car_calm 40
+
+label 8
+human_addweapon 0, 9, 7, 30
+human_holster 0
+
+npc_shutup 1
+commandblock 0
+
+autosavegame 5535
+
+enemy_move 28
+enemy_lockstate fight_guard, 1
+enemy_lookto 5
+enemy_wait
+detector_issignal 3, 11, -1
+enemy_talk 0, 19990561, 1
+detector_setsignal 3, 1
+frm_seton 1, 1
+enemy_playanim "gun01 stoj on.i3d", 0, simple
+let flt[0] = flt[0] - 323
+let flt[0] = flt[0] / 2
+wait flt[0]
+human_activateweapon 0, 9
+wait flt[0] 
+enemy_playanim "breath02a.i3d"
+wait 400
+human_looktoactor 0, 6, 1
+
+label 11
+human_activateweapon 0, 9
+enemy_talk 0, 19990562, 1
+wait 1000
+detector_setsignal 4, 1
+human_looktoactor 0
+wait 1000
+human_looktoactor 0, 6, 1
+wait 500
+enemy_talk 0, 19990563, 1
+wait 1000
+enemy_lookto 2
+enemy_wait
+enemy_playanim "breath02a.i3d"
+enemy_talk 0, 19990564, 1
+wait 2000
+act_setstate 8, active
+human_looktoactor 0, 1, 1
+enemy_talk 19990565
+act_setstate 37, active
+act_setstate 9, active
+act_setstate 15, active
+human_looktoactor 0
+
+{ up
+label 3
+if flt[2] = 1, -1, 3
+}
+
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+commandblock 0
+
+wait 2000
+human_activateweapon 0, 9
+enemy_move 28, run
+enemy_look 1
+enemy_wait
+enemy_playanim "pritakani01.i3d"
+enemy_talk 19990571
+wait 1600
+enemy_stopanim
+enemy_wait
+enemy_look 7
+enemy_wait
+enemy_playanim "gesto2 nogun1d.i3d"
+enemy_talk 19990572
+wait 2200
+enemy_stopanim
+enemy_wait
+enemy_move 31, run
+enemy_lookto 4
+enemy_wait
+
+detector_issignal 25, -1, 4
+
+enemy_move 19, run
+enemy_lookto 20
+enemy_wait
+act_setstate 38, off
+act_setstate 39, active
+
+detector_issignal 27, -1, 4
+
+enemy_look 1
+enemy_wait
+
+getactorsdist 0, 1, 0
+if flt[0] < 10, -1, 5
+
+human_looktoactor 0, 1, 1
+enemy_playanim "gestikulace03.i3d"
+enemy_talk 19990651
+enemy_wait
+enemy_talk 19990652
+enemy_wait
+enemy_talk 19990653
+enemy_wait
+human_looktoactor 0
+goto 5
+
+label 4
+{ down
+act_setstate 38, active
+enemy_playanim "breath02a.i3d"
+enemy_talk 19990581
+enemy_wait 3000
+enemy_talk 7, 19990591
+wait 2500
+enemy_talk 7, 19990592
+wait 2500
+enemy_playanim "gesto2 nogun1c.i3d", 0, simple
+enemy_talk 0, 19990601, 1
+wait 1400
+enemy_stopanim
+enemy_wait
+enemy_talk 7, 19990611
+wait 2500
+act_setstate 38, off
+act_setstate 39, off
+
+getactorsdist 0, 1, 0
+if flt[0] < 10, -1, 5
+
+let flt[0] = 0
+detector_issignal 35, -1, 6
+let flt[0] = 1 + 1
+
+label 6
+detector_issignal 36, -1, 7
+let flt[0] = 1 + 1
+
+label 7
+if flt[0] = 2, 5, -1
+
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_talk 19990621
+enemy_wait
+enemy_talk 19990622
+enemy_wait
+human_createab 7
+human_looktoactor 0
+}
+
+label 5
+commandblock 1
+act_setstate 20, inactive
+act_setstate 21, inactive
+act_setstate 22, inactive
+act_setstate 23, inactive
+act_setstate 24, inactive
+act_setstate 25, inactive
+act_setstate 26, inactive
+act_setstate 27, inactive
+act_setstate 28, active
+act_setstate 29, active
+act_setstate 30, active
+act_setstate 31, active
+act_setstate 32, active
+act_setstate 33, active
+act_setstate 34, active
+act_setstate 38, off
+commandblock 0
+
+{ up
+enemy_move 28, run
+enemy_wait
+
+enemy_lookto 2
+enemy_wait
+enemy_playanim "breath02a.i3d"
+
+label 1
+if flt[1] = 1, -1, 1
+}
+
+enemy_vidim 1
+
+{ up
+entity_action_follow 1, 2, nonext
+
+enemy_move 56, run
+enemy_lookto 40
+enemy_wait
+enemy_lockstate fight_guard, 1
+
+label 10
+wait 1000000
+goto 10
+}
+
+event 1
+enemy_move 34, run
+enemy_wait
+enemy_lookto 35
+enemy_wait
+enemy_playanim "breath02a.i3d"
+wait 1000
+return
+
+event 2
+event_use_cb 1
+enemy_forcescript 0
+enemy_stop
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_talk 19990631
+enemy_wait
+enemy_talk 19990632
+enemy_wait
+enemy_talk 19990633
+enemy_wait
+human_looktoactor 0
+commandblock 1
+act_setstate 28, off
+act_setstate 29, off
+act_setstate 30, off
+act_setstate 31, off
+act_setstate 32, off
+act_setstate 33, off
+act_setstate 34, off
+commandblock 0
+return
+
+event 3
+human_looktoactor 0, 1, 1
+enemy_look 1
+enemy_wait
+
+detector_issignal 8, 9, -1
+enemy_talk 19990741
+
+label 9
+detector_setsignal 10, 1
+detector_setsignal 11, 1
+detector_setsignal 12, 1
+detector_setsignal 13, 1
+let flt[1] = 1
+return
+
+event 4
+event_use_cb 1
+enemy_forcescript 0
+enemy_stop
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_talk 19990651
+enemy_wait
+enemy_talk 19990652
+enemy_wait
+enemy_talk 19990653
+enemy_wait
+human_looktoactor 0
+return
+
+event 5
+event_use_cb 1
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+commandblock 0
+let flt[2] = 1
+return
+
+event 6
+enemy_vidim 1
+return
+
+event 7
+enemy_vidim 1
+enemy_forcescript 0
+return
+
+event 8
+event_use_cb 1
+return
+
+event enemy_to_ai
+event_use_cb 1
+return

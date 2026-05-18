@@ -1,0 +1,39 @@
+dim_act 5
+dim_flt 2
+findactor 0, "SalieriHIGH"
+findactor 1, "Luigi"
+findactor 2, "Hoolig"
+findactor 3, "Ralph"
+findactor 4, "Tommy"
+
+enemy_group_new 1
+enemy_group_add 1, 0
+enemy_group_add 1, 1
+enemy_group_add 1, 2
+
+
+enemy_playanim "UrednikPsani.I3D"
+label 1
+goto 1
+
+event use_ab, 10970004
+if flt[0] = 0, 2, -1
+if flt[0] = 1, 3, -1
+enemy_talk 00950000
+enemy_wait
+let flt[0] = 0
+return
+label 2
+enemy_talk 00950001
+enemy_wait
+let flt[0] = 1
+return
+label 3
+enemy_talk 00950002
+enemy_wait
+let flt[0] = 2
+return
+
+event 1000
+enemy_action_fire 4, 3
+return

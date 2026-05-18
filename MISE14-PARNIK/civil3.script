@@ -1,0 +1,30 @@
+dim_flt 4
+dim_act 2
+dim_frm 1
+findactor 0, ""
+findactor 1, "TommySAILOR"
+findframe 0, "obed1"
+frm_seton 0, 0
+
+label 1
+frm_seton 0, 1
+enemy_playanim "ZidleJedeniPolevky.I3D"
+wait 30000
+goto 1
+
+event use_ab, 14970002
+getenemyaistate 0, 2
+if flt[2] ! 0, 6, -1
+if flt[1] = 1, 6, -1
+human_looktoactor 0, 1, 1
+if flt[3] = 0, 2, -1
+enemy_talk 14950018
+let flt[3] = 0
+goto 6
+label 2
+enemy_talk 14950017
+let flt[3] = 1
+label 6
+enemy_wait
+human_looktoactor 0
+return

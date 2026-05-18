@@ -1,0 +1,80 @@
+enemy_vidim 0
+enemy_podvadim_jak Tretera
+enemy_naprdelivaute yes
+dim_flt 3
+dim_act 7
+findactor 0, "hudfor"
+findactor 1, "Tommy"
+//findactor 2, "zjisteni auta"
+findactor 3, ""
+findactor 4, "detekce playera v aute rainbow"
+findactor 5, "Enemy11K"
+findactor 6, "Enemy4"
+
+wait 1000
+enemy_talk 3, 07940042, 1
+
+{ up
+label 10
+if flt[2] = 2, -1, 10
+}
+
+act_setstate 4, active
+
+label 9
+{ down
+label 3
+enemy_car_hunt 0, 1, bokovka, 30, 0.5
+goto 3
+}
+
+car_remove_driver 0
+
+{ down
+enemy_vidim 1
+label 11
+wait 1000000
+goto 11
+}
+
+let flt[1] = 0
+
+label 4
+compareownerwithex 5, 0, 5, -1
+human_getproperty 5, 0, energy
+if flt[0] = 0, -1, 4
+let flt[1] = flt[1] + 1
+
+label 5
+compareownerwithex 6, 0, 6, -1
+human_getproperty 6, 0, energy
+if flt[0] = 0, -1, 5
+let flt[1] = flt[1] + 1
+
+label 6
+if flt[1] = 2, -1, 9
+
+label 7
+enemy_usecar
+compareownerwith 0, 7, -1
+
+enemy_vidim 1
+enemy_action_fire 1
+
+label 8
+wait 1000000
+goto 8
+
+
+event 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 3
+return
+
+event 2
+event_use_cb 1
+let flt[2] = flt[2] + 1
+return

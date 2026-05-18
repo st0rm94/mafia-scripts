@@ -1,0 +1,25 @@
+dim_flt 3
+dim_frm 2
+dim_act 4
+findframe 0, "point"
+findframe 1, "Czena"
+findactor 0, "Tommy"
+findactor 1, "Czena"
+findactor 2, "Salieri"
+findactor 3, "skok"
+
+label 2
+getactorsdist 0, 3, 2
+if flt[2] < 3.2, -1, 2
+player_lockcontrols 1
+actor_setplacement 0, 0
+person_playanim 0, "ZradceZOkna.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+person_stopanim 0
+player_lockcontrols 0
+act_setstate 1, off
+frm_seton 1, 0
+setevent 2, 4, -1
+end
+goto 1

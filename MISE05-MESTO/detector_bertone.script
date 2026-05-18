@@ -1,0 +1,106 @@
+dim_flt 1
+dim_act 7
+dim_frm 7
+findframe 0,"detector_formula"
+findframe 2,"detector_hidealfa"
+findframe 3,"Bertone"
+findframe 4,"Tommy"
+findframe 5,"detector_bertone"
+findframe 6,"ForAfo"
+
+findactor 0,"detector_formula"
+findactor 1,"detector_hlidac"
+findactor 2,"Tommy"
+findactor 3,"alfa2"
+findactor 4,"detector_music"
+findactor 5,"supervisor"
+findactor 6,"HlidacBob"
+
+ACT_SETSTATE -1,inactive
+
+autosavegamefull 5080
+human_eraseab 6
+
+settimeoutevent 1,202
+car_switchshowenergy 3,2
+
+mission_objectivesclear
+mission_objectives 05960002
+
+cardamagevisible 1
+
+label 102
+wait 100
+compareownerwithex 2,3,-1,102
+
+act_setstate 4, active
+setcompass 5
+
+// MUSIC PLAY
+wait 100
+setevent 4,551,-1
+
+label 101
+detector_inrange 0,10
+if flt[0]=1,-1,101
+compareownerwithex 2,3,-1,101
+
+zatmyse 1
+wait 500
+
+// MUSIC STOP
+label S552
+setevent 4,552,S552
+
+getcardamage 3,0
+if flt[0]<0.01, CRASCH, -1
+
+timeroff
+PLAYER_LOCKCONTROLS 1
+
+car_forcestop 3
+actor_setplacement 3,2
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 6,0
+
+commandblock 1
+loaddifferences "dif05b.chg"
+recloadfull "record05b.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+actor_setplacement 3,5
+frm_seton 3,1
+frm_seton 4,1
+frm_seton 6,1
+zatmyse 0
+commandblock 0
+PLAYER_LOCKCONTROLS 0
+wait 500
+autosavegamefull 5085
+human_eraseab 6
+
+// MUSIC  PLAY
+label S551
+setevent 4,551,S551
+
+mission_objectivesclear
+mission_objectives 05960003
+setcompass 0
+act_setstate 0, active
+act_setstate 1,off
+
+car_switchshowenergy 3,2
+cardamagevisible 1
+
+end
+
+label CRASCH
+act_setstate 5,inactive
+endofmission 0,05980004
+end

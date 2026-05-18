@@ -1,0 +1,34 @@
+dim_act 3
+dim_flt 1
+findactor 0, "Paulie"
+findactor 1, "Tommy"
+findactor 2, "Biff"
+
+LABEL CHECK
+wait 5000
+HUMAN_GETPROPERTY 0, 0, Energy
+if flt[0] = 0, ENDPAULIE, -1
+HUMAN_GETPROPERTY 1, 0, Energy
+if flt[0] = 0, ENDTOMMY, -1
+HUMAN_GETPROPERTY 2, 0, Energy
+if flt[0] = 0, ENDBIFF, CHECK
+
+label ENDTOMMY
+endofmission 0, 07980000
+GOTO FINISH
+
+label ENDPAULIE
+endofmission 0, 07980001
+GOTO FINISH
+
+label ENDBIFF
+endofmission 0, 10980000
+goto FINISH
+
+event 1
+enemy_forcescript 0
+LABEL SEND
+setevent 0, 3, SEND
+return
+
+label FINISH

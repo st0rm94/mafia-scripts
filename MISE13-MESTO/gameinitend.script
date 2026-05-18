@@ -1,0 +1,15 @@
+dim_act 3
+dim_frm 1
+findactor 0, "Tommy"
+findactor 1, "Salieri"
+findactor 2, "cad_phaeton"
+findframe 0, "load mise13-restaurace"
+
+policemanager_on 00980000, 1
+police_speed_factor 0.57
+enablemap 1
+
+human_addweapon 0, 9, 7, 14
+human_holster 0
+human_force_settocar 1, 2, 1
+setcompass 0

@@ -1,0 +1,36 @@
+dim_flt 2
+dim_act 5
+findactor 0, "cad_road"
+findactor 1, "Enemy12K2"
+findactor 2, "Guard2"
+findactor 3, "polozeni bomby"
+findactor 4, ""
+
+act_setstate 100, inactive
+
+setplayerfireevent 4, 1
+
+{ up
+label 1
+wait 500
+if flt[1] = 1, 4, -1
+getcardamage 0, 0
+if flt[0] < 1, -1, 1
+}
+
+label 4
+act_setstate 3, off
+
+label 2
+setevent 1, 2, 2
+setevent 2, 2, 2
+end
+
+event 1
+event_use_cb 1
+detector_inrange 0, 30
+if flt[0] = 1, -1, 3
+let flt[1] = 1
+
+label 3
+return

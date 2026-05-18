@@ -1,0 +1,118 @@
+dim_flt 3
+dim_act 2
+dim_frm 6
+findactor 0,"Tommy"
+findactor 1,"VincenzoHIGH"
+findframe 0,"sw10"
+findframe 1,"colt1911"
+findframe 2,"VincenzoHIGH"
+findframe 3, "Vinc_put2"
+findframe 4, "Vinc_put1"
+findframe 5, "colt"
+
+frm_seton 0, 1
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+
+let flt[1]=0
+human_eraseab 1
+
+human_set8slot 1,1
+human_addweapon 1,12,2,10
+human_holster 1
+enemy_lockstate fight_guard
+
+human_linktohand 1,1,left
+
+enemy_move 8
+enemy_lookto 7
+enemy_wait
+
+enemy_playanim "VincSezeniStativ.i3d"
+{ up
+if flt[1]=1,102,-1
+label 101
+wait 30000
+goto 101
+label 102
+}
+{ up
+label C01
+enemy_look 0
+wait 2000
+goto C01
+}
+end
+
+event 201
+DIALOG_BEGIN 0,2
+PLAYER_LOCKCONTROLS 1
+actor_setdir 0,2
+person_playanim 0,"breath01a.i3d"
+dialog_camswitch 1,0
+enemy_talk 0, 04990011
+enemy_wait
+dialog_camswitch 0,1
+frm_seton 4, 1
+enemy_playanim "VincVstani.i3d", 0, sipmle
+wait 3000
+human_unlinkfromhand 1,1
+enemy_talk 04990021
+wait 3500
+human_looktoactor 1,0,1
+let flt[0]=flt[0]-6823
+wait flt[0]
+//enemy_talk 04990022
+frm_seton 3, 1
+enemy_playanim "VincPodaniPistole.i3d", 0, simple
+wait 1000
+human_looktoactor 1
+wait 1500
+human_linktohand 1,0,right
+wait 2500
+playsound "s_put9.wav", 0, 7, 1,2
+wait 500
+//human_unlinkfromhand 1,0
+commandblock 1
+frm_seton 0,0
+frm_seton 5,1
+createweaponfromframe 5,8,6,12
+commandblock 0
+wait 500
+human_looktoactor 1,0,1
+let flt[0]=flt[0]-6500
+wait flt[0]
+enemy_playanim "VincStativ.i3d"
+enemy_talk 0, 04990031
+enemy_wait
+DIALOG_END
+PLAYER_LOCKCONTROLS 0
+human_looktoactor 1
+enemy_move 11
+enemy_lookto 12
+enemy_wait
+enemy_playanim "PolBlok02.I3D"
+human_linktohand 1,1,left
+
+return
+
+event 202
+rnd 0,3
+  if flt[0]=0,-1,113
+  enemy_talk 00950235
+  label 113
+  if flt[0]=1,-1,114
+  enemy_talk 00950236
+  label 114
+  if flt[0]=2,-1,115
+  enemy_talk 00950237
+  label 115
+enemy_wait
+return
+
+event 1000
+label BLBOST
+enemy_action_fire 0
+wait 5000
+goto BLBOST

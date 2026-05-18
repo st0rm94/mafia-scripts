@@ -1,0 +1,126 @@
+# .dnc extraction summary
+# source        : FMV INTERMEZZO05.dnc  (1709 bytes, main)
+# source        : FMV INTERMEZZO05-InitScripts.dnc  (2563 bytes, init)
+# actors_total  : 7
+# init_records  : 14
+# scripts_found : 15
+
+# main-container actor type-code distribution
+#   type    5  count=1  script
+#   type    8  count=1  
+#   type   12  count=1  
+#   type   18  count=4  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 14
+# total invocations: 118
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    34  findframe
+    34  frm_seton
+    27  commandblock
+    13  dim_frm
+     1  change_mission
+     1  cleardifferences
+     1  loaddifferences
+     1  noanimpreload    [casings: NOANIMPRELOAD]
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  subtitle_add
+     1  wait
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[Begining]  type=init  lines=24  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[Foto>>Norman_ruka]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Foto>>Stul1]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Foto>>Stul2]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Foto>>Tomy_ruka]  type=init  lines=8  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[GameInitStart]  type=init  lines=1  commands=1
+    noanimpreload
+
+[Prohoz tuzky 1->2]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Prohoz tuzky 2->1]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Ruka >> salek]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Salek >> ruka]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Tuzka ruka->stul]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Tuzka ruka->stul2]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Tuzka ruka->stul3]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[Tuzka stul->ruka2]  type=init  lines=11  commands=4
+    commandblock
+    dim_frm
+    findframe
+    frm_seton
+
+[load intermezzo 5]  type=5  lines=14  commands=10
+    change_mission
+    cleardifferences
+    commandblock
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    subtitle_add
+    wait
+    zatmyse

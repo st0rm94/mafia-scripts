@@ -1,0 +1,54 @@
+//[debug_me]
+dim_act 12
+dim_flt 1
+findactor 0, "Tommy"
+findactor 1, "SalMan"
+findactor 2, "Bookmaker"
+findactor 3, "Sarah"
+findactor 4, "Guard"
+findactor 5, "Delnik"
+findactor 6, "Taxikar"
+findactor 7, "Czena"
+findactor 8, "civil"
+findactor 9, "SalMan2"
+findactor 10, "Bookmaker2"
+findactor 11, "Guard2"
+
+label CHECK
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 3, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 4, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 5, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 6, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 7, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 8, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 9, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 10, 0, Energy
+if flt[0] = 0, GAMEOVER, -1
+human_getproperty 11, 0, Energy
+if flt[0] = 0, GAMEOVER, CHECK
+
+label TOMMYDEATH
+endofmission 0, 02980001
+end
+label GAMEOVER
+// Zabiti civilisty
+endofmission 0, 2980050
+end
+
+event 1
+// You run out of time
+endofmission 0, 2980051
+end

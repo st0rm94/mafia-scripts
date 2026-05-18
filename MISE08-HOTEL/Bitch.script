@@ -1,0 +1,25 @@
+ENEMY_CHANGEANIM  "walk1.I3D" , "walk woman1.I3D"
+ENEMY_CHANGEANIM  "run1.I3D" , "panika run01a.I3D"
+
+dim_act 1
+findactor 0
+
+dim_frm 1
+FINDFRAME  0
+FRM_SETON  0, 0
+
+ACT_SETSTATE 0, inactive
+
+label 1
+goto 1
+
+event 1
+enemy_move 14, run
+enemy_wait
+
+event 2
+enemy_move 10, run
+enemy_wait
+enemy_move 15, run
+enemy_wait
+

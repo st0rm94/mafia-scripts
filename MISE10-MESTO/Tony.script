@@ -1,0 +1,91 @@
+dim_flt 4
+dim_act 7
+dim_frm 5
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "Joe"
+findactor 3, "kamos1"
+findactor 4, "kamos 2"
+findactor 5, "detector u Joa"
+findactor 6, "save u Joa"
+findframe 0, "Joe"
+findframe 1, "Tommy"
+findframe 2, "kamos1"
+findframe 3, "kamos 2"
+findframe 4, "Tony.neck"
+
+label 1
+{ up
+label 5
+RND 0, 10
+LET flt[0] = flt[0] * 500
+LET flt[0] = flt[0] + 2500
+ENEMY_PLAYANIM "KurakLoop.I3D"
+WAIT flt[0]
+ENEMY_PLAYANIM "KurakPotahnuti.I3D", 0
+LET flt[0] = flt[0] - 250
+WAIT flt[0]
+emitparticle 4, 25
+goto 5
+}
+
+event use_ab, 10970013
+event_use_cb 1
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+if flt[1] = 1, 2, -1
+if flt[3] = 1, 11, -1
+enemy_talk 0, 10990151
+enemy_wait
+enemy_talk 0, 10990152
+enemy_wait
+enemy_talk 0, 10990153
+enemy_wait
+wait 300
+GETACTORSDIST 0, 1, 0
+if flt[0] > 2, 10, -1
+label 11
+enemy_playanim "Gestikulace01.I3D"
+enemy_talk 10990161
+enemy_wait
+enemy_talk 10990162
+enemy_wait
+enemy_talk 10990163
+enemy_wait
+enemy_talk 10990164
+enemy_wait
+enemy_talk 10990165
+enemy_wait
+enemy_talk 10990166
+enemy_wait
+GETACTORSDIST 0, 1, 0
+if flt[0] > 2, 12, -1
+enemy_talk 0, 10990171
+enemy_wait 
+human_looktoactor 1
+
+label 12
+let flt[1] = 1
+setcompass 0
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+frm_seton 0, 1
+frm_seton 2, 1
+frm_seton 3, 1
+return
+
+label 2
+enemy_playanim "Gestikulace01.I3D"
+enemy_talk 10990181
+enemy_wait
+human_looktoactor 1
+return
+
+label 10
+let flt[3] = 1
+human_looktoactor 1
+return

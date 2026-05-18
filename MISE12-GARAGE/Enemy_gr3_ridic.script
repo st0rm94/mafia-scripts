@@ -1,0 +1,64 @@
+commandblock 1
+enemy_vidim 0
+dim_flt 1
+dim_act 7
+dim_frm 1
+findactor 0
+findactor 1, "AUTO"
+findactor 2, "Enemy_gr3_3"
+findactor 3, "Enemy_gr3_4"
+findactor 4, "Enemy_gr3_2"
+findactor 5, "detector_playerAUTO"
+findactor 6, "car_checker"
+
+let flt[0] = 0
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+
+findframe 0, "cil_AUTO"
+human_force_settocar 0, 1, 0
+human_addweapon 0, 9, 7, 50
+human_holster 0
+carlight_main 1, 0
+carlight_light 1, 0
+carlight_indic_r 1, 0
+carlight_indic_l 1, 0
+car_breakmotor 1, 1
+commandblock 0
+act_setstate -1, inactive
+car_breakmotor 1, 0
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+enemy_blastfire
+{ DOWN
+enemy_car_moveto 1, 0
+act_setstate 6, off
+}
+if flt[0] = 1, -1, SKIPREMOVE
+car_remove_driver 1
+label SKIPREMOVE
+
+label SEND
+setevent 2, 100, SEND
+label SEND2
+setevent 3, 100, SEND2
+label SEND3
+setevent 4, 100, SEND3
+enemy_usecar
+
+enemy_vidim 1
+enemy_move 9, run
+
+goto FINISH
+
+event 1
+let flt[0] = 1
+return
+
+label FINISH

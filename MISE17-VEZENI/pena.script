@@ -1,0 +1,18 @@
+dim_frm 12
+findframe 0
+findframe 1,"pena2"
+findframe 2,"pena3"
+findframe 3,"pena4"
+findframe 4,"pena5"
+findframe 5,"pena6"
+findframe 6,"pena7"
+findframe 7,"pena8"
+
+emitparticle 0, 42
+emitparticle 1, 42
+emitparticle 2, 42
+emitparticle 3, 42
+emitparticle 4, 42
+emitparticle 5, 41
+emitparticle 6, 41
+emitparticle 7, 41

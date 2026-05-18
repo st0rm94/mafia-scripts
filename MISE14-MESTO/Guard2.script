@@ -1,0 +1,121 @@
+enemy_vidim 0
+dim_flt 3
+dim_act 10
+dim_frm 4
+commandblock 1
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "prevlek"
+findactor 6, "danger zone"
+findactor 7, "on off"
+findactor 8, "gard range"
+findframe 0, ""
+findframe 1, "pos Tommy"
+findframe 2, "pos x"
+findframe 3, "pos camera1"
+commandblock 0
+
+label 1
+{ up
+enemy_move 3
+enemy_lookto 6
+enemy_wait
+}
+{ up
+enemy_playanim "x hlidka stativ.i3d"
+label 4
+goto 4
+}
+
+event 1
+event_use_cb 1
+player_lockcontrols 1
+detector_issignal 2, 2, -1
+actor_setdir 1, 0
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+dialog_begin 0, 2
+setevent 7, 1, -1
+dialog_camswitch 1, 0
+enemy_playanim "GestikulaceNew03.I3D", -1, simple
+enemy_talk 14990041
+enemy_wait
+enemy_talk 14990042
+enemy_wait
+wait 800
+dialog_camswitch 0, 1
+enemy_playanim "GestikulaceNew05.I3D"
+person_playanim 1, "GestikulaceNew06.I3D"
+enemy_talk 1, 14990051
+enemy_wait
+wait 800
+dialog_camswitch 1, 0
+person_stopanim 1
+enemy_talk 14990061
+enemy_wait
+dialog_end
+human_looktoactor 0
+human_looktoactor 1
+enemy_stopanim
+player_lockcontrols 0
+setevent 7, 2, -1
+return
+// *********mam oblek***********
+label 2
+setevent 7, 1, -1
+//player_lockcontrols 1
+getactiveplayer 1
+actor_setplacement 1, 1
+camera_lock 3
+person_playanim 1, "x host prohlidka.i3d", 1
+wait 500
+enemy_playanim "prohlidka.i3d", -1, simple
+let flt[1] = flt[1] - 1290
+let flt[1] = flt[1] / 2
+wait flt[1]
+human_anyweaponininventory 1, 2
+if flt[2] = 0, -1, 5
+wait flt[1]
+person_stopanim 1
+camera_unlock
+act_setstate 6, off
+act_setstate 8, off
+setevent 7, 2, -1
+player_lockcontrols 0
+human_looktoactor 0, 1, 1
+enemy_talk 14990081
+enemy_wait
+human_looktoactor 0
+return
+
+event 2
+enemy_look 1
+enemy_wait
+enemy_talk 14990071
+enemy_vidim 1
+enemy_action_fire 1
+return
+
+// TY MAS ZBRAN !!!
+label 5
+person_stopanim 1
+enemy_stopanim
+camera_unlock
+player_lockcontrols 0
+setevent 7, 2, -1
+human_looktoactor 0, 1, 1
+enemy_talk 14990082
+enemy_wait
+human_looktoactor 0
+return
+
+// VOLAJI CIVILOVE PRI KONTROLE
+event 3
+enemy_playanim "x hlidka prohlidka.i3d"
+wait 4000
+return
+
+event 4
+enemy_vidim 1
+enemy_naserse 1
+return

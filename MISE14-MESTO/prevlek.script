@@ -1,0 +1,25 @@
+dim_act 2
+dim_frm 4
+findactor 0, "Tommy"
+findactor 1, "load mise14-parnik"
+findframe 0, "xkosile"
+findframe 1, "pos camera2"
+findframe 2, "pos tom"
+findframe 3, "oblek"
+frm_seton 0, 1
+
+detector_waitforuse
+player_lockcontrols 1
+zatmyse 1
+wait 500
+human_changemodel 0, "TommySAILOR.i3d"
+frm_seton 3, 1
+frm_seton 0, 0
+wait 8000
+zatmyse 0
+wait 500
+player_lockcontrols 0
+act_setstate 1, active
+detector_setsignal -1, 1
+label 1
+goto 1

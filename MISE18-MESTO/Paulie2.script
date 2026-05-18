@@ -1,0 +1,46 @@
+commandblock 1
+//[debug_me]
+dim_act 6
+dim_flt 1
+findactor 0
+findactor 1, "Sam2"
+getactiveplayer 2
+findactor 3, "TruckBx"
+findactor 4, "finalni_animace"
+findactor 5, "objectives"
+
+human_addweapon 0, 10, 50, 200
+human_addweapon 1, 10, 50, 200
+enemy_vidim 0
+commandblock 0
+
+{ DOWN
+label WAIT
+wait 1000
+goto WAIT
+}
+enemy_brainwash
+enemy_vidim 1
+debug_text "Paulie2: Akce!"
+enemy_action_follow 2, 5, CROUCH, NONEXT
+
+debug_text "Paulie2: Je po dialogu - jdu do auta"
+enemy_brainwash
+enemy_actionsclear
+label NASEDAM
+enemy_move_to_car 3, 1
+enemy_usecar 3, 1
+compareownerwith 3, -1, NASEDAM
+label TEST
+wait 200
+compareownerwithex 2, 3, -1, TEST
+goto FINISH
+
+
+event 1
+event_use_cb 1
+return
+
+label FINISH
+enemy_action_follow 2, 5, CROUCH, NONEXT
+[break]

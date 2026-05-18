@@ -1,0 +1,56 @@
+commandblock 1
+dim_act 2
+dim_flt 2
+findactor 0
+getactiveplayer 1
+human_addweapon 0, 7, 6, 30
+commandblock 0
+
+
+{ DOWN
+label FREESTATE
+rnd 1, 5
+enemy_playanim "Gesto_02a.I3D", 0
+let flt[1] =flt[1] * 4800
+wait flt[1]
+enemy_playanim "Gesto_02b.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+rnd 1, 5
+enemy_playanim "Gesto_02a.I3D", 0
+let flt[1] =flt[1] * 3400
+wait flt[1]
+enemy_playanim "Gesto_02c.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto FREESTATE
+}
+if flt[1] = 1, -1, HONICKA
+goto FINISH
+
+label HONICKA
+debug_text "Guard2: activating..."
+enemy_look 1
+enemy_wait
+goto FINISH
+
+event 1
+event_use_cb 1
+let flt[1] = 1
+enemy_naserse 2
+return
+
+event 2
+event_use_cb 1
+let flt[1] = 0
+return
+
+event 4
+[break]
+enemy_brainwash
+enemy_actionsclear
+enemy_vidim 1
+event_use_cb 0
+return
+
+label FINISH

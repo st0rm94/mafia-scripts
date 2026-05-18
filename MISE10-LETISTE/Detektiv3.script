@@ -1,0 +1,25 @@
+commandblock 1
+dim_act 4
+dim_flt 1
+dim_frm 1
+findactor 0, "Detektiv2"
+findactor 1, "Detektiv3"
+findactor 2, "Tommy"
+findactor 3, "cad_ford"
+findframe 0, "sem"
+commandblock 0
+
+enemy_vidim 0
+wait 5000
+human_talk 1, 00940002, 1
+
+enemy_car_escape 3, 2, 0
+//enemy_car_moveto 3, 0
+act_setstate 3, off
+end
+label 1
+label 2
+
+
+
+

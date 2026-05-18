@@ -1,0 +1,41 @@
+dim_act 3
+dim_flt 2
+dim_frm 1
+findframe 0, "skupinka2"
+frm_seton 0, 1
+findactor 0
+findactor 1, "buikFor2"
+findactor 2, "Guard5"
+human_addweapon 0, 10, 50, 200
+
+{ DOWN
+label FREESTATE
+rnd 1, 5
+enemy_playanim "gesto2 gun1a.I3D", 0
+let flt[1] =flt[1] * 4800
+wait flt[1]
+enemy_playanim "gesto2 gun1b.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+rnd 1, 5
+enemy_playanim "gesto2 gun1a.I3D", 0
+let flt[1] =flt[1] * 3400
+wait flt[1]
+enemy_playanim "gesto2 gun1d.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+goto FREESTATE
+}
+goto FINISH
+
+event ENEMY_TO_AI
+enemy_getstate 0
+if flt[0] > 1, -1, RET
+event_use_cb 1
+frm_seton 0, 0
+return
+label RET
+event_use_cb 0
+return
+
+label FINISH

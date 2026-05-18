@@ -1,0 +1,43 @@
+dim_frm 1
+dim_flt 3
+dim_act 4
+commandblock 1
+findactor 0, "Salieri"
+findactor 1, "Tommy"
+findactor 2, "NULL"
+findactor 3, ""
+findframe 0, "Tommy"
+commandblock 0
+
+label 1
+DETECTOR_INRANGE 0, 20
+if flt[0] = 1, -1, 1
+vlvp 1
+if flt[1] = 1, 2, -1
+policeitchforplayer 1
+if flt[1] = 1, 2, -1
+zatmyse 1
+wait 500
+mission_objectivesclear
+character_push 0
+human_fromcar 1, 0
+actor_setplacement 3, 0
+change_mission "mise13-restaurace", "load z mise13-mesto", 0
+
+label 2
+if flt[2] = 1, 3, -1
+if flt[2] = 2, 4, -1
+human_talk 1, 00950225, 2
+wait 3000
+let flt[2] = 1
+goto 1
+label 3
+human_talk 1, 00950224, 2
+wait 3000
+let flt[2] = 2
+goto 1
+label 4
+human_talk 1, 00950223, 2
+wait 3000
+let flt[2] = 0
+goto 1

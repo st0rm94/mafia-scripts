@@ -1,0 +1,39 @@
+dim_flt 2
+dim_act 3
+findactor 0, "SalMan2"
+findactor 1, "SalMan"
+findactor 2, "taxi"
+dim_frm 2
+findframe 0, "SalMan2"
+findframe 1, "SalMan"
+let flt[1] = 0
+
+label DETECT
+wait 200
+detector_inrange 0, 50
+if flt[0] ! 0, -1, DETECT
+act_setstate 0, active
+debug_text "detector_salman: SalMan2 ACTIVE !"
+
+label DETECT2
+wait 200
+detector_inrange 0, 190
+if flt[0] = 0, -1, DETECT2
+human_getseatidx 1, 0
+if flt[0] ! -1, DETECT2, -1
+getgametime 0
+
+if flt[1] ! 0, SKIPINIT, -1
+   let flt[1] = flt[0] + 20000
+   goto DETECT2
+
+label SKIPINIT
+if flt[0] > flt[1], -1, DETECT2
+
+act_setstate 0, off
+frm_seton 0, 0
+debug_text "detector_salman: SalMan2 OFF !"
+act_setstate 1, off
+frm_seton 1, 0
+debug_text "detector_salman: SalMan OFF !"
+end

@@ -1,0 +1,125 @@
+[debug_me]
+dim_act 10
+dim_frm 1
+dim_flt 2
+
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 3, "ForApic"
+findactor 4, "PICA"
+findactor 5, "detector_tommy"
+findactor 6, "detector_energy"
+findactor 7, "objectives"
+findactor 8, "music"
+findactor 9, "detector_dialog_po_vystrileni"
+findframe 0, "position_Gates"
+
+label FOLLOW
+//enemy_vidim 1
+enemy_action_follow 0, 4, CROUCH
+//enemy_vidim 0
+//enemy_brainwash
+detector_issignal 6, -1, FOLLOW
+
+act_setstate 8, active
+act_setstate 9, active
+
+enemy_action_follow 0, 4, CROUCH, NOLINK, NONEXT
+
+act_setstate 5, active
+wait 2000
+enemy_vidim 1
+detector_setsignal 6, 0
+label NASTUP
+{ UP
+//enemy_move 8
+car_enableus 4, 1
+enemy_move_to_car 4, 0
+enemy_usecar 4, 0
+}
+compareownerwith 4, -1, NASTUP
+car_enableus 4, 0
+goto FINISH
+
+event 1
+enemy_talk 1, 12990071
+event_use_cb 1
+return
+
+event 2
+enemy_talk 1, 12990081
+event_use_cb 1
+return
+
+event 3
+enemy_talk 1, 12990091
+event_use_cb 1
+return
+
+event 4
+enemy_talk 1, 12990101
+event_use_cb 1
+return
+
+event 5
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 2
+return
+
+event 6
+debug_text "Sam: Dialog!"
+enemy_brainwash
+enemy_actionsclear
+return
+
+event 100
+enemy_shut_up yes
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+debug_text "Sam: VIDIM 0"
+return
+
+event 101
+enemy_vidim 1
+enemy_shut_up no
+debug_text "Sam: VIDIM 1"
+return
+
+event USE_AB, 7970003
+rnd 0, 3
+let flt[0] = flt[0] + 1
+human_looktoactor 2, 0, 1
+goto flt[0]
+label 1
+enemy_talk 950154
+goto RET
+label 2
+enemy_talk 950162
+goto RET
+label 3
+enemy_talk 950163
+label RET
+enemy_wait
+human_looktoactor 2
+event_use_cb 0
+return
+
+event HIT_FROM_PLAYER
+human_looktoactor 2, 0, 1
+human_stoptalk 2
+rnd 0, 3
+let flt[0] = flt[0] + 18
+label 18
+enemy_talk 00950199
+goto RET2
+label 19
+enemy_talk 00950200
+label RET2
+event_use_cb 0
+human_looktoactor 2
+return
+
+label FINISH

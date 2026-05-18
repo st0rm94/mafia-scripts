@@ -1,0 +1,20 @@
+dim_flt 1
+dim_act 5
+findactor 0, "1pol2"
+findactor 1, "1pol"
+findactor 2, ""
+findactor 3, "2pol2"
+findactor 4, "Tommy"
+
+human_addweapon 2, 8, 6, 30
+human_holster 2
+
+wait 500
+
+label 1
+setevent 0, 1, 1
+setevent 1, 1, 1
+
+label 2
+wait 1000000
+goto 2

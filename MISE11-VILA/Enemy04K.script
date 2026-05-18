@@ -1,0 +1,22 @@
+dim_act 3
+findactor 0, "Enemy04K"
+findactor 1, "Enemy11K2"
+findactor 2, "Tommy"
+
+human_set8slot 0, 1
+human_addweapon 0, 11, 6, 0
+
+enemy_playanim "gesto2 gun1a.i3d"
+{ down
+label 1
+wait 6000
+goto 1
+}
+enemy_vidim 0
+enemy_brainwash
+enemy_action_fire 2
+
+
+event 5
+event_use_cb 1
+return

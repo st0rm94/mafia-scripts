@@ -1,0 +1,5 @@
+dim_act 1
+findactor 0, ""
+
+enemy_lockstate fight_guard,1
+human_addweapon 0,6,6,30

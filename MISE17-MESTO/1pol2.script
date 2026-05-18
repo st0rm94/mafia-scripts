@@ -1,0 +1,136 @@
+commandblock 1
+dim_flt 4
+dim_act 17
+dim_frm 2
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "1pol"
+findactor 3, "detekce vzdalenosti poldu od playera"
+findactor 4, "1detekce uteku playera od poldu"
+findactor 5, "polimFor"
+findactor 6, "polimTud"
+findactor 11, "1Delnik"
+findactor 10, "null"
+findactor 13, "detekce healtu poldy"
+findactor 14, "2pol"
+findactor 15, "2pol2"
+findactor 16, "detekce stavu poldy"
+
+findframe 0, "Tommy"
+findframe 1, ""
+
+human_addweapon 0, 8, 6, 30
+human_holster 0
+commandblock 0
+
+{ up
+label 1
+if flt[1] = 1, 6, 1
+}
+
+event 1
+let flt[1] = 1
+return
+
+event 2
+playsound "21940005.wav", -1, 50, 1
+
+label 7
+setevent 2, 2, 7
+
+label 11
+setevent 11, 1, 11
+
+act_setstate 13, off
+
+label 8
+enemy_naserse 1
+goto 8
+
+label 6
+{ down
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+wait 500
+label 13
+enemy_action_follow 1, 1, return
+detector_issignal 16, 9, -1
+compareownerwithex 1, 10, -1, 13
+commandblock 1
+human_looktoactor 1, 0, 1
+player_lockcontrols 1
+actor_setdir 0, 0
+actor_setdir 1, 1
+dialog_begin 0, 2
+dialog_camswitch 1, 0
+commandblock 0
+enemy_playanim "gestikulacenew01.i3d"
+enemy_talk 17990151
+enemy_wait
+enemy_stopanim
+enemy_talk 17990152
+enemy_wait
+enemy_look 1
+enemy_wait
+enemy_playanim "prohlidka.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+player_lockcontrols 0
+dialog_end
+human_looktoactor 1
+human_anyweaponininventory 1, 0
+if flt[0] = 1, -1, 4
+enemy_talk 17990171
+enemy_wait
+enemy_talk 17990172
+enemy_wait
+
+act_setstate 13, off
+
+human_activateweapon 0, 6
+detector_setsignal 16, 1
+enemy_arrest_player
+
+label 3
+wait 1000000
+goto 3
+
+label 4
+act_setstate 4, off
+enemy_talk 17990161
+enemy_wait
+human_looktoactor 0
+
+act_setstate 13, off
+
+enemy_move 4
+enemy_wait
+enemy_lookto 5
+enemy_wait
+
+label 5
+setevent 2, 3, 5
+}
+label 9
+wait 1000000
+goto 9
+
+event 3
+act_setstate 13, off
+
+human_activateweapon 0, 6
+detector_setsignal 16, 1
+enemy_arrest_player
+
+label 10
+wait 1000000
+goto 10
+
+event 4
+enemy_naserse 1
+
+label 12
+wait 1000000
+goto 12

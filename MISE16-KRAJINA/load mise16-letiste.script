@@ -1,0 +1,25 @@
+dim_flt 2
+dim_act 4
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findactor 2, "null"
+findactor 3, "Tommy"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 20
+if flt[0] = 1, -1, 1
+
+compareownerwithex 3, 2, -1, 2
+if flt[1] = 1, 1, -1
+human_talk 0, 00950013, 1
+let flt[1] = 1
+goto 1
+
+label 2
+inventory_push 0
+inventory_push 1
+character_push 0
+character_push 1
+change_mission "mise16-letiste", "load z mise16-krajina", -1

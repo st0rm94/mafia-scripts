@@ -1,0 +1,51 @@
+dim_frm 1
+dim_flt 3
+findframe 0
+frm_seton 0, 0
+dim_act 2
+findactor 0
+findactor 1, "Tommy"
+findactor 2, "Sara"
+enemy_vidim 0
+act_setstate -1, inactive
+frm_seton 0, 1
+enemy_action_follow 1, 5, RETURN
+enemy_vidim 1
+
+{ UP
+if flt[2] = 1, FINISH, -1
+label HOME
+enemy_action_follow 2, 3, RETURN
+goto HOME
+}
+
+goto FINISH
+
+event ENEMY_TO_AI
+rnd 0, 2
+let flt[0] = flt[0] + 1
+if flt[1] > 0, -1, SKIP
+human_addweapon 0, 6, 6, 30
+let flt[1] = 2
+label SKIP
+goto flt[0]
+label 1
+playsound "poli_fife2.wav", 0, 15, 1
+return
+label 2
+playsound "poli_fife3.wav", 0, 15, 1
+event_use_cb 0
+if flt[1] = 2, SKIP2, -1
+let flt[1] = 1
+label SKIP2
+return
+
+event 1
+let flt[2]  = 1
+event_use_cb 1
+return
+
+label FINISH
+enemy_brainwash
+enemy_actionsclear
+enemy_move 50

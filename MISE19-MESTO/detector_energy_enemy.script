@@ -1,0 +1,28 @@
+dim_act 4
+dim_flt 1
+
+findactor 0, "Enemy"
+findactor 1, "Enemy2"
+findactor 2, "Enemy3"
+findactor 3, "Hoolig"
+
+act_setstate 100, inactive
+
+label 1
+wait 500
+human_getproperty 0, 0, Energy
+if flt[0] = 0, -1, 1
+
+wait 500
+human_getproperty 1, 0, Energy
+if flt[0] = 0, -1, 1
+
+wait 500
+human_getproperty 2, 0, Energy
+if flt[0] = 0, -1, 1
+
+label 2
+setevent 3, 100, 2
+wait 300
+enemy_forcescript 3
+end

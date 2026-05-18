@@ -1,0 +1,40 @@
+[debug_me]
+dim_frm 3
+findframe 0, "prostor_Sam"
+findframe 1
+dim_act 5
+findactor 0, "Sam"
+findactor 1, "nesahat_chemaFor"
+findactor 2
+// Nalezeny nejblizsi actor
+setnullactor 4
+dim_flt 3
+
+act_setstate -1, inactive
+
+// Detekuje jestli neni v rangi nejaky civilni auto
+label DETECT
+   commandblock 1
+   findnearactor 2, 3, CAR
+   compareactors 3, 4, 0
+   if flt[0] = 1, PREMISTI, -1
+      getframefromactor 2, 3
+      frm_getpos 2, 0
+      ispointinarea 0, 0, 0
+      if flt[0] = 1, -1, PREMISTI 
+      commandblock 0
+      debug_text "position_Sam: Auto v rangi musim pockat"
+      wait 100
+      goto DETECT
+
+label PREMISTI
+   commandblock 0
+   debug_text "Sam: Valim za Tommem a seru uz na vsechny vokolo !"
+   car_remove_driver 1
+   car_forcestop 1
+   actor_setplacement 1, 1
+   car_calm 1
+   label SEND
+      setevent 0, 5, SEND
+   debug_text "position_Sam: Sam premisten a event 5 odeslan"
+end

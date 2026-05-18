@@ -1,0 +1,20 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "Lucas"
+
+label 1
+wait 1500
+human_getproperty 0, 0, energy
+if flt[0] = 0, 2, -1
+
+human_getproperty 1, 0, energy
+if flt[0] = 0, 3, 1
+
+label 2
+endofmission 0, 16980002
+end
+
+label 3
+endofmission 0, 15980005
+end

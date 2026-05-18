@@ -1,0 +1,17 @@
+dim_flt 1
+dim_frm 1
+dim_act 3
+findactor 0, "Bguard"
+findactor 1, "LifeG"
+findactor 2, "TommySAILOR"
+findframe 0, "2coltds"
+
+label 1
+wait 500
+detector_inrange 0, 1
+if flt[0] = 1, -1, 1
+human_talk 2, 14950074
+createweaponfromframe 0, 6, 6, 0
+label 2
+setevent 1, 3, 2
+end

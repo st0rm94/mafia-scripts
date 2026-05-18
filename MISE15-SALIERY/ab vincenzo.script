@@ -1,0 +1,18 @@
+dim_act 3
+findactor 0, "pritomnost playera u vincenza"
+findactor 1, "VincenzoHIGH"
+findactor 2, "Paulie"
+
+act_setstate 100, inactive
+
+detector_waitforuse 15970008
+
+act_setstate 0, off
+
+label 1
+setevent 1, 2, 1
+
+label 2
+setevent 2, 2, 2
+
+act_setstate 100, off

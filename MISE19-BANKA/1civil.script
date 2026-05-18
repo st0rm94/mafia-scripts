@@ -1,0 +1,31 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 2
+findactor 0, "1reakce 1"
+findactor 1, "1reakce 2"  
+
+enemy_playanim "recepcniletistestativ.i3d"
+
+label 1
+detector_issignal 0, -1, 1
+
+wait 1000
+enemy_lookto 30
+enemy_wait
+wait 500
+enemy_playanim "rucevzhuru02.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "rucevzhuru02loop.i3d"
+
+label 2
+detector_issignal 1, -1, 2
+
+wait 3000
+enemy_playanim "rucevzhuru02down.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x panika leh dolu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x panika leh stativ.i3d"

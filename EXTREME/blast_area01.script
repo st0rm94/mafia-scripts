@@ -1,0 +1,49 @@
+act_setstate -1, inactive
+
+dim_frm 1
+dim_flt 7
+
+findframe 0,"blast_area01"
+frm_getpos 0,1
+
+dim_act 1
+findactor 0,"zeppelin_end"
+act_setstate 0,active
+
+label 100
+wait 100
+detector_inrange 0,25
+if flt[0]>0,-1,100
+findactor 0,"blast_area02"
+act_setstate 0,active
+
+label 101
+wait 100
+
+commandblock 1
+rnd 4,13
+rnd 6,13
+
+rnd 5,2
+if flt[5]=0,-1,JMP01
+ let flt[4]=flt[1]+flt[4]
+ goto JMP02
+ label JMP01
+ let flt[4]=flt[1]-flt[4]
+label JMP02
+
+rnd 5,2
+if flt[5]=0,-1,JMP03
+ let flt[6]=flt[3]+flt[6]
+ goto JMP04
+ label JMP03
+ let flt[6]=flt[3]-flt[6]
+label JMP04
+
+let flt[5]=flt[2]
+commandblock 0
+
+frm_setpos 0,4
+explosion 10,100
+goto 101
+

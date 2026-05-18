@@ -1,0 +1,93 @@
+//[debug_me]
+dim_act 3
+dim_flt 5
+// flt[1] = Na jakou vzdalenost se ma merit
+// flt[2] = Uz jsem upozornoval x-krat
+// flt[3] = Druha vzdalenost mezi Sarou a Tomem, slouzi k druhemu porovnani vzdalenosti
+// flt[4] = Posledni gametime posledni hlasky
+findactor 0, "Tommy"
+findactor 1, "Sara"
+findactor 2, "NEEEEEEEXIIIISTUJJICI"
+// Zapnu detekci kratke vzdalenosti
+let flt[1] = 1
+
+label DETECT
+wait 1000
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, SARADEATH, -1
+compareownerwithex 0, 2, -1, DROBEKJEPERO
+
+getactorsdist 0, 1, 0
+if flt[1] = 1, -1, SKIP
+if flt[0] > 25, OUTOFRANGE2, -1
+if flt[0] > 15, OUTOFRANGE, -1
+      getgametime 4
+      let flt[4] = flt[4] + 20000
+goto DETECT
+
+label SKIP
+   if flt[0] > 60, OUTOFRANGE2, -1
+      getgametime 4
+      let flt[4] = flt[4] + 20000
+goto DETECT
+
+label OUTOFRANGE
+   label SEND
+   setevent 1, 10, SEND
+   if flt[2] > 3, -1, UPDATE
+   getgametime 0
+   if flt[0] < flt[4], NEZABI, -1
+      endofmission 0, 07980005
+      end
+   label UPDATE
+   getgametime 4
+   let flt[4] = flt[4] + 20000
+   label NEZABI
+   act_setstate -1, inactive
+   let flt[2] = flt[2] + 1
+   let flt[3] = flt[0] + 5
+   wait 2000
+   getactorsdist 0, 1, 0
+   if flt[0] > flt[3], OUTOFRANGE22, -1
+goto DETECT
+
+label OUTOFRANGE2
+   if flt[2] = 0, OUTOFRANGE, -1
+   getangleactortoactor 0, 1, 0
+   if flt[0] < 45, OUTOFRANGE, -1
+      wait 2000
+      label OUTOFRANGE22
+      getangleactortoactor 0, 1, 0
+      if flt[0] < 45, OUTOFRANGE, -1
+         endofmission 0, 07980005
+end
+
+label DROBEKJEPERO
+   getangleactortoactor 0, 1, 0
+   if flt[0] < 45, OUTOFRANGE, -1
+      wait 2000
+      getangleactortoactor 0, 1, 0
+      if flt[0] < 45, OUTOFRANGE, -1
+         endofmission 0, 07980005
+end
+
+
+label TOMMYDEATH
+endofmission 0, 07980000
+end
+
+label SARADEATH
+endofmission 0, 07980003
+end
+
+event 1
+// Dostane od Sary, ze uz je po bitce....
+let flt[1] = 1
+return
+
+event 2
+// Dostane od Sary, ze je bitka....
+let flt[1] = 0
+return

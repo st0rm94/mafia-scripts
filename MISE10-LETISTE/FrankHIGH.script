@@ -1,0 +1,206 @@
+enemy_vidim 0 
+dim_frm 21
+dim_flt 4
+dim_act 18
+
+commandblock 1
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "Animace 10.5"
+findactor 3, "March"
+findactor 4, "Alice"
+findactor 5, "load mise10-mesto"
+findactor 6, "zep d2"
+findactor 7, "Detektiv2"
+findactor 8, "Detektiv4"
+findactor 9, "Detektiv"
+findactor 10, "Detektiv7"
+findactor 11, "unik2"
+findactor 12, "enemy energymetr"
+findactor 13, "prd"
+findactor 14, "NULL"
+findactor 15, "slapa ulice"
+findactor 16, "energymetr"
+findactor 17, "film"
+
+findframe 0, "pos 2"
+findframe 1, "Tommy"
+findframe 2, "FrankHIGH"
+findframe 3, "March"
+findframe 4, "Alice"
+findframe 5, "pos 6"
+findframe 6, "pos 7"
+findframe 7, "pos 8"
+findframe 8, "pos 9"
+findframe 9, "xtaska 9"
+findframe 10, "xtaska 8"
+findframe 11, "pos 3"
+findframe 12, "pol"
+findframe 13, "pouta"
+findframe 14, "camera2"
+findframe 15, "pouta2"
+findframe 16, "amplion1"
+findframe 17, "pouta3"
+findframe 18, "xForAca2"
+findframe 19, "xblackha5"
+findframe 20, "TruckA"
+frm_seton 15, 0
+frm_seton 17, 0
+commandblock 0
+
+human_eraseab 1
+//enemy_vidim 0
+{ down
+enemy_usecar
+enemy_move 20, run
+enemy_playanim "x panika drep dolu.I3D", 0
+wait flt[0]
+enemy_playanim "x panika drep stativ.I3D"
+label 100
+goto 100
+}
+{ down
+player_lockcontrols 1
+camera_lock 14
+human_looktoactor 0, 1, 1
+enemy_move 27, run
+setevent 7, 1, -1
+setevent 8, 1, -1
+setevent 9, 1, -1
+setevent 10, 1, -1
+wait 1000
+human_looktoactor 0
+camera_unlock
+player_lockcontrols 0
+wait 1500
+enemy_move 24, run
+act_setstate 11, active
+enemy_playanim "x panika drep dolu.I3D", 0
+wait flt[0]
+enemy_playanim "x panika drep stativ.I3D"
+label 101
+goto 101
+}
+
+setevent 10, 1, -1
+setevent 7, 1, -1
+setevent 8, 1, -1
+enemy_move 5, run
+act_setstate 12, active
+enemy_playanim "x panika drep dolu.I3D", 0
+wait flt[0]
+enemy_playanim "x panika drep stativ.I3D"
+{ down
+label 1
+goto 1
+}
+
+{ down
+label 2
+commandblock 1
+frm_seton 15, 1
+frm_seton 17, 1
+setnoanimhit 1, 1
+act_setstate 13, active
+enemy_playanim "frank sloup stativ.i3d"
+commandblock 0
+label 91
+enemy_playanim "frank sloup stativ.i3d"
+wait 3000
+enemy_playanim "frank sloup zozhlizeni.i3d", 0
+let flt[0] = flt[0] - 350
+wait flt[0]
+goto 91
+}
+{ down
+commandblock 1
+frm_seton 15, 0
+frm_seton 17, 0
+setnoanimhit 1, 0
+act_setstate 13, off
+act_setstate 2, active
+commandblock 0
+enemy_action_follow 0, 3
+}
+{ up
+enemy_playanim "VyhlizeniStativ.i3d"
+label 10
+goto 10
+}
+
+// *************************************************
+event 1
+event_use_cb 1
+actor_setplacement 1, 0
+return
+
+event 2
+event_use_cb 1
+enemy_forcescript 1
+enemy_move 10
+enemy_look 3
+enemy_wait
+return
+
+event use_ab, 10970005
+if flt[1] = 1, 4, -1
+player_lockcontrols 1
+actor_setplacement 0, 8
+human_holster 0
+human_talk 0, 10991251
+commandblock 1
+inventory_push 0
+inventory_clear 0
+commandblock 0
+person_playanim 0, "game10TomPouta.I3D", 0, simple
+frm_seton 13, 1
+let flt[0] = flt[0] - 350
+wait flt[0]
+inventory_pop 0
+player_lockcontrols 0
+event_use_cb 1
+let flt[1] = 1
+human_eraseab 1
+return
+
+label 4
+human_isweapon 0, 3, 26
+if flt[3] = 1, 6, -1
+human_looktoactor 1, 0, 1
+if flt[2] = 0, 7, -1
+if flt[2] = 1, 8, -1
+if flt[2] = 2, 5, -1
+enemy_talk 10990651
+enemy_wait
+let flt[2] = 0
+human_looktoactor 1
+return
+label 7
+enemy_talk 10990621
+enemy_wait
+let flt[2] = 1
+human_looktoactor 1
+return
+label 8
+enemy_talk 10990641
+enemy_wait
+let flt[2] = 2
+human_looktoactor 1
+return
+label 5
+enemy_talk 10990641
+enemy_wait
+let flt[2] = 3
+human_looktoactor 1
+return
+
+label 6
+player_lockcontrols 1
+zatmyse 1
+wait 500
+act_setstate 17, active
+end
+
+event 10
+event_use_cb 1
+return

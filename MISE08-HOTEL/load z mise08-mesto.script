@@ -1,0 +1,8 @@
+commandblock 1
+dim_act 1
+dim_frm 1
+findactor 0,"Tommy"
+findframe 0,"load z mise08-mesto"
+
+actor_setplacement 0,0
+commandblock 0

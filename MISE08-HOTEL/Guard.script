@@ -1,0 +1,48 @@
+dim_act 3
+findactor 0,"Tommy"
+findactor 1,"Guard"
+findactor 2,"waiter"
+
+enemy_lockstate panic_runaway,15
+
+DIM_FLT 2
+HUMAN_LOOKTOACTOR 1
+
+LABEL 1
+RND 0, 10
+LET flt[0] = flt[0] * 700
+LET flt[0] = flt[0] + 3000
+ENEMY_PLAYANIM "Mise zidle02st.I3D"
+WAIT flt[0] + 3000
+ENEMY_PLAYANIM "Mise zidle02e.I3D", 0
+wait flt[0] + 83
+
+RND 0, 10
+LET flt[0] = flt[0] * 700
+LET flt[0] = flt[0] + 3000
+ENEMY_PLAYANIM "Mise zidle02st.I3D"
+WAIT flt[0] + 5000
+ENEMY_PLAYANIM "Mise zidle02c.I3D", 0
+wait flt[0] - 500
+GOTO 1
+
+event 1
+HUMAN_LOOKTOACTOR 1, 2, 1
+debug_text "Hej ty. Pojd sem !"
+wait 4500
+debug_text "Nejake vytrznosti ?"
+wait 4500
+debug_text "OK. Jinak bych musel vstanout."
+wait 5000
+HUMAN_LOOKTOACTOR 1
+return
+
+event use_ab,10970007
+getenemyaistate 1,1
+iffltinrange 1,2,5,120
+HUMAN_LOOKTOACTOR 1, 0, 1
+enemy_talk 08950010
+enemy_wait
+HUMAN_LOOKTOACTOR 1
+label 120
+return

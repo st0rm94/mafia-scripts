@@ -1,0 +1,11 @@
+dim_act 2
+dim_flt 1
+findactor 0, "Detektiv5"
+findactor 1, "Enemy12K2"
+
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+
+act_setstate -1, inactive
+enemy_move 17, run

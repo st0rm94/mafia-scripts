@@ -1,0 +1,506 @@
+# .dnc extraction summary
+# source        : MISE16-LETISTE.dnc  (20512 bytes, main)
+# source        : MISE16-LETISTE-InitScripts.dnc  (632 bytes, init)
+# actors_total  : 67
+# init_records  : 1
+# scripts_found : 28
+
+# main-container actor type-code distribution
+#   type    4  count=1  
+#   type    5  count=22  script
+#   type    6  count=12  
+#   type   22  count=1  
+#   type   27  count=5  human (scripted NPC)
+#   type   35  count=26  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 87
+# total invocations: 691
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    64  frm_seton    [casings: FRM_SETON, frm_seton]
+    62  label
+    60  findactor
+    56  wait
+    39  findframe    [casings: FINDFRAME, FindFrame, findframe]
+    28  act_setstate
+    25  commandblock
+    24  goto
+    20  dim_act
+    19  dim_flt    [casings: DIM_FLT, dim_flt]
+    19  if
+    18  let
+    15  enemy_vidim
+    14  dim_frm    [casings: DIM_FRM, dim_frm]
+    13  rnd
+    12  iffltinrange    [casings: IFFLTINRANGE]
+     9  setevent
+     7  detector_inrange
+     7  end
+     7  human_force_settocar
+     6  enemy_talk
+     6  event
+     6  getactorsdist
+     5  compareownerwith
+     5  endofmission
+     5  enemy_actionsclear
+     5  enemy_brainwash
+     5  enemy_forcescript
+     5  enemy_usecar
+     5  enemy_wait
+     5  human_getowner
+     5  {
+     5  }
+     4  human_addweapon
+     4  human_talk
+     4  player_lockcontrols
+     4  return
+     3  actor_setplacement
+     3  airplane_start2
+     3  compareownerwithex
+     3  enemy_car_moveto
+     3  event_use_cb
+     3  human_fromcar
+     3  human_getproperty
+     3  human_holster
+     2  airplaneshowdamage
+     2  car_breakmotor
+     2  car_enableus
+     2  car_setspeed
+     2  character_pop
+     2  character_push
+     2  cleardifferences
+     2  enemy_action_fire
+     2  enemy_action_follow
+     2  enemy_naprdelivaute
+     2  enemy_nevyhazuj
+     2  human_set8slot
+     2  inventory_pop
+     2  inventory_push
+     2  loaddifferences
+     2  mission_objectives
+     2  mission_objectivesclear
+     2  recloadfull
+     2  recunload
+     2  recwaitforend
+     2  soundfade
+     2  wingman_setindicator
+     2  zatmyse
+     1  airplane_isdestroyed
+     1  airplane_start
+     1  autosavegame
+     1  car_calm
+     1  car_forcestop
+     1  car_remove_driver
+     1  change_mission
+     1  enemy_car_escape
+     1  enemy_look
+     1  enemy_move
+     1  enemy_playanim
+     1  human_looktoactor
+     1  setmissionnumber
+     1  sound_setvolume
+     1  stream_create
+     1  stream_destroy
+     1  stream_play
+     1  stream_setloop
+     1  stream_stop
+
+# ---- per-script command listing ----
+
+[GameInitEnd]  type=init  lines=27  commands=11
+    car_setspeed
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    human_addweapon
+    human_force_settocar
+    mission_objectives
+    mission_objectivesclear
+    setmissionnumber
+
+[Guard]  type=27  lines=24  commands=15
+    compareownerwith
+    dim_act
+    enemy_action_fire
+    enemy_nevyhazuj
+    enemy_usecar
+    enemy_vidim
+    event
+    event_use_cb
+    findactor
+    goto
+    label
+    return
+    wait
+    {
+    }
+
+[MorelloLOW]  type=27  lines=21  commands=14
+    act_setstate
+    compareownerwith
+    dim_act
+    dim_flt
+    enemy_move
+    enemy_playanim
+    enemy_usecar
+    enemy_vidim
+    event
+    findactor
+    frm_seton
+    goto
+    label
+    wait
+
+[Paulie]  type=27  lines=142  commands=42
+    act_setstate
+    actor_setplacement
+    autosavegame
+    car_breakmotor
+    character_pop
+    commandblock
+    compareownerwith
+    compareownerwithex
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_action_follow
+    enemy_actionsclear
+    enemy_brainwash
+    enemy_car_moveto
+    enemy_forcescript
+    enemy_look
+    enemy_talk
+    enemy_usecar
+    enemy_vidim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    getactorsdist
+    human_addweapon
+    human_force_settocar
+    human_getowner
+    human_holster
+    human_looktoactor
+    human_set8slot
+    human_talk
+    if
+    inventory_pop
+    label
+    let
+    player_lockcontrols
+    return
+    setevent
+    wait
+    wingman_setindicator
+
+[Sam]  type=27  lines=80  commands=22
+    commandblock
+    compareownerwith
+    dim_act
+    dim_flt
+    enemy_action_follow
+    enemy_actionsclear
+    enemy_brainwash
+    enemy_forcescript
+    enemy_naprdelivaute
+    enemy_usecar
+    enemy_vidim
+    event
+    event_use_cb
+    findactor
+    goto
+    human_force_settocar
+    human_getowner
+    label
+    return
+    wait
+    {
+    }
+
+[casove spusteni letadla]  type=5  lines=11  commands=4
+    act_setstate
+    dim_act
+    findactor
+    wait
+
+[chcipnuti auta]  type=5  lines=19  commands=11
+    act_setstate
+    car_breakmotor
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    human_getowner
+    if
+    label
+    setevent
+    wait
+
+[civil]  type=27  lines=30  commands=14
+    car_enableus
+    compareownerwith
+    dim_act
+    dim_frm
+    enemy_action_fire
+    enemy_car_escape
+    enemy_car_moveto
+    enemy_nevyhazuj
+    enemy_usecar
+    enemy_vidim
+    findactor
+    findframe
+    label
+    setevent
+
+[detekce healtu vsech]  type=5  lines=26  commands=8
+    dim_act
+    dim_flt
+    end
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+
+[hodiny]  type=5  lines=10  commands=7
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    wait
+
+[jeste mam praci]  type=5  lines=13  commands=9
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    goto
+    human_talk
+    if
+    label
+    wait
+
+[jeste mam praci2]  type=5  lines=13  commands=9
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    goto
+    human_talk
+    if
+    label
+    wait
+
+[lana1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[lano3]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[letadlo start]  type=5  lines=13  commands=5
+    act_setstate
+    airplane_start
+    airplaneshowdamage
+    dim_act
+    findactor
+
+[load animation 16.2]  type=5  lines=113  commands=38
+    act_setstate
+    actor_setplacement
+    airplane_isdestroyed
+    airplaneshowdamage
+    car_calm
+    car_enableus
+    car_forcestop
+    car_remove_driver
+    cleardifferences
+    commandblock
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    endofmission
+    findactor
+    findframe
+    frm_seton
+    getactorsdist
+    human_fromcar
+    human_getowner
+    if
+    label
+    loaddifferences
+    mission_objectives
+    mission_objectivesclear
+    player_lockcontrols
+    recloadfull
+    recunload
+    recwaitforend
+    setevent
+    stream_create
+    stream_destroy
+    stream_play
+    stream_setloop
+    stream_stop
+    wait
+    zatmyse
+
+[load mise16-krajina]  type=5  lines=17  commands=10
+    act_setstate
+    change_mission
+    character_push
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    inventory_push
+    label
+
+[load z mise16-krajina]  type=5  lines=12  commands=8
+    actor_setplacement
+    car_setspeed
+    commandblock
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    human_getowner
+
+[lod1]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[odstartovani letadla pri priblizeni]  type=5  lines=101  commands=17
+    act_setstate
+    airplane_start2
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    endofmission
+    event
+    findactor
+    findframe
+    frm_seton
+    getactorsdist
+    goto
+    if
+    label
+    wait
+
+[odstartovani letadla pri vyprseni limitu]  type=5  lines=7  commands=5
+    act_setstate
+    airplane_start2
+    dim_act
+    findactor
+    wait
+
+[paulieho hlaska]  type=5  lines=14  commands=6
+    act_setstate
+    dim_act
+    findactor
+    human_talk
+    player_lockcontrols
+    wait
+
+[prijeti paulieho]  type=5  lines=14  commands=8
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+
+[prijiti na plochu]  type=5  lines=13  commands=7
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+
+[stozar1]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[stozar3]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[vitr]  type=5  lines=21  commands=11
+    dim_flt
+    dim_frm
+    end
+    findframe
+    goto
+    label
+    let
+    rnd
+    sound_setvolume
+    soundfade
+    wait
+
+[vlajka1]  type=5  lines=36  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait

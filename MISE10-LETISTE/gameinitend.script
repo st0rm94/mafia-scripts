@@ -1,0 +1,106 @@
+dim_frm 8
+dim_flt 1
+dim_act 31
+findactor 0, "Detektiv2"
+findactor 1, "Detektiv3"
+findactor 2, "Detektiv"
+findactor 3, "Detektiv4"
+findactor 4, "Enemy12K3"
+findactor 5, "Enemy04K2"
+findactor 6, "Enemy04K"
+findactor 7, "Enemy12K"
+findactor 8, "Detektiv5"
+findactor 9, "Enemy12K2"
+findactor 10, "Detektiv6"
+findactor 11, "Tommy"
+findactor 12, "cad_ford"
+findactor 13, "FrankHIGH"
+findactor 14, "xblackha2"
+findactor 15, "xchev2"
+findactor 16, "xblackha"
+findactor 18, "xtaxi2"
+findactor 19, "xforVro"
+findactor 20, "xtaxi"
+findactor 21, "xchemaFor"
+findactor 22, "xForAca2"
+findactor 23, "xblackha5"
+findactor 25, "Enemy11K"
+findactor 26, "Enemy08+"
+findactor 27, "pol"
+findactor 28, "xforVro2"
+findactor 29, "Detektiv8"
+findactor 30, "Detektiv7"
+
+findframe 1, "xtaska 9"
+findframe 2, "xtaska 8"
+findframe 3, "xtaska "
+findframe 4, "xtaska 2"
+findframe 5, "houkacka1"
+findframe 6, "houkacka2"
+findframe 7, "houkacka3"
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+
+human_addweapon 0, 10, 50, 0
+human_addweapon 0, 6, 6, 30
+
+human_addweapon 1, 8, 6, 24
+human_addweapon 1, 6, 6, 30
+
+human_addweapon 2, 10, 50, 0
+human_addweapon 2, 7, 6, 12
+
+human_addweapon 3, 10, 50, 0
+human_addweapon 3, 9, 7, 35
+
+human_addweapon 4, 9, 7, 14
+human_addweapon 4, 8, 6, 6
+
+human_addweapon 5, 10, 50, 0
+human_addweapon 5, 8, 6, 18
+
+human_addweapon 6, 10, 50, 0
+human_addweapon 6, 8, 6, 18
+
+human_addweapon 7, 10, 50, 0
+human_addweapon 7, 7, 5, 0
+
+human_addweapon 8, 7, 6, 30
+
+human_addweapon 9, 9, 7, 35
+
+human_addweapon 10, 8, 6, 18
+
+human_addweapon 25, 9, 7, 14
+
+human_addweapon 26, 8, 6, 6
+
+human_addweapon 29, 13, 5, 20
+human_addweapon 30, 10, 50, 50
+
+human_force_settocar 0, 12, 1
+human_force_settocar 1, 12, 0
+human_force_settocar 3, 12, 2
+human_force_settocar 13, 12, 3
+car_muststeal 12, 1
+car_muststeal 14, 1
+car_muststeal 15, 1
+car_muststeal 16, 1
+car_muststeal 17, 1
+car_muststeal 18, 1
+car_muststeal 19, 1
+car_muststeal 20, 1
+car_muststeal 21, 1
+car_muststeal 22, 1
+car_muststeal 23, 1
+car_muststeal 28, 1
+car_enableus 21, 0
+
+getmissionnumber 0
+setmissionnumber flt[0]

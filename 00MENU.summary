@@ -1,0 +1,32 @@
+# .dnc extraction summary
+# source        : 00MENU.dnc  (205 bytes, main)
+# source        : 00MENU-InitScripts.dnc  (47 bytes, init)
+# actors_total  : 2
+# init_records  : 1
+# scripts_found : 2
+
+# main-container actor type-code distribution
+#   type    5  count=1  script
+#   type   34  count=1  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 5
+# total invocations: 5
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     1  dim_flt
+     1  noanimpreload    [casings: NoAnimPreload]
+     1  stream_create
+     1  stream_play
+     1  stream_setloop
+
+# ---- per-script command listing ----
+
+[GameInitStart]  type=init  lines=1  commands=1
+    noanimpreload
+
+[music]  type=5  lines=4  commands=4
+    dim_flt
+    stream_create
+    stream_play
+    stream_setloop

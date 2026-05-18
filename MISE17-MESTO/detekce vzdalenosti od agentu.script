@@ -1,0 +1,51 @@
+dim_flt 1
+dim_act 6
+dim_frm 5
+findactor 0, "Tommy"
+findactor 1, "Detektiv"
+findactor 2, "Detektiv2"
+findactor 3, "Detektiv3"
+findactor 4, "Detektiv4"
+findactor 5, "nesahat_police_car"
+
+findframe 0, "Detektiv"
+findframe 1, "Detektiv2"
+findframe 2, "Detektiv3"
+findframe 3, "Detektiv4"
+findframe 4, "nesahat_police_car"
+
+act_setstate 100, inactive
+
+label 1
+wait 1000
+getactorsdist 0, 1, 0
+if flt[0] > 200, -1, 1
+
+wait 1000
+getactorsdist 0, 2, 0
+if flt[0] > 200, -1, 1
+
+wait 1000
+getactorsdist 0, 3, 0
+if flt[0] > 200, -1, 1
+
+wait 1000
+getactorsdist 0, 4, 0
+if flt[0] > 200, -1, 1
+
+wait 1000
+getactorsdist 0, 5, 0
+if flt[0] > 200, -1, 1
+
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off 
+act_setstate 5, off
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+
+act_setstate 100, off

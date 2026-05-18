@@ -1,0 +1,37 @@
+commandblock 1
+dim_act 3
+dim_flt 1
+findactor 0, "Guard"
+findactor 1, "ForAro"
+findactor 2, "Guard2"
+commandblock 0
+human_force_settocar 2, 1, 0
+
+act_setstate -1, inactive
+
+enemy_usecar
+enemy_move 14, run
+enemy_look 0
+enemy_wait
+//commandblock 1
+//enemy_playanim "podani ruky.I3D", 0
+//person_playanim 0, "podani ruky.I3D"
+//commandblock 0
+//let flt[0] = flt[0] - 83
+//wait flt[0]
+commandblock 1
+enemy_playanim "Gestikulace03.I3D"
+person_playanim 0, "GestStativToZam.I3D", 0
+commandblock 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+person_playanim 0, "GestZam01.I3D", 0
+
+debug_text "Guard2: FINISHED !"
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

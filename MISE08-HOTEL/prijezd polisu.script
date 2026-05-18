@@ -1,0 +1,19 @@
+act_setstate -1,inactive
+
+dim_frm 3
+dim_flt 1
+
+findframe 0, "prijezd policie1"
+findframe 1, "polidoor1" 
+findframe 2, "polidoor2"
+
+label DETECT
+detector_inrange 0, 6
+if flt[0]=1,-1, DETECT
+
+frm_seton 0, 1
+wait 5500
+frm_seton 1, 1
+wait 3500 
+frm_seton 2, 1
+end

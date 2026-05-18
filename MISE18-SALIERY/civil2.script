@@ -1,0 +1,15 @@
+dim_frm 1
+findframe 0, "stolovnici"
+
+enemy_lockstate PANIC_FREEZE
+wait 100
+enemy_playanim "ZidleJedeniPolevky.I3D"
+goto FINISH
+
+event ENEMY_TO_AI
+frm_seton 0, 0
+return
+
+label FINISH
+wait 15488463
+goto FINISH

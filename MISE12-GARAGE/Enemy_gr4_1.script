@@ -1,0 +1,10 @@
+dim_frm 1
+findframe 0
+frm_seton 0, 0
+act_setstate -1, inactive
+frm_seton 0, 1
+dim_act 1
+findactor 0
+human_addweapon 0, 7, 6, 30
+human_holster 0
+human_addweapon 0, 10, 50, 200

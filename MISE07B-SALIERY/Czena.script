@@ -1,0 +1,32 @@
+dim_flt 1
+dim_act 2
+dim_frm 4
+findactor 0
+findactor 1, "Tommy"
+findframe 0, "2cigspic"
+findframe 1, "Czena.r_hand"
+findframe 2, "Czena.neck"
+findframe 3, "at_uz_kurva_ta_zenska_sedi_nodmalne"
+frm_linkto 0, 1
+
+label FREESTATE
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 2500
+enemy_playanim "UStoluStativ.I3D"
+actor_setpos 0, 3
+wait flt[0]
+enemy_playanim "UStoluToKoureni.I3D", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "UStoluPotahnuti.I3D", 0
+let flt[0] = flt[0]  - 
+wait flt[0]
+emitparticle 2, 25
+enemy_playanim "UStoluOHlavyStativ.I3D", 0
+emitparticle 0, 24
+wait 4000
+enemy_playanim "UStoluOHlavyToStativ.I3D", 0
+let flt[0] = flt[0]  - 390
+wait flt[0]
+goto FREESTATE

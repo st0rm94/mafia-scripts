@@ -1,0 +1,15 @@
+dim_act 4
+findactor 0,"Tommy"
+findactor 1,"Paulie"
+findactor 2,"auto"
+findactor 3,"Enemy13C"
+
+human_candie 3
+
+human_force_settocar 0,2,0
+human_force_settocar 1,2,1
+
+policemanager_on
+enablemap 1
+
+police_speed_factor 0.5

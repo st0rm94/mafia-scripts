@@ -1,0 +1,41 @@
+commandblock 1
+dim_flt 6
+// flt[0] - flt[2] vektor pozice
+// flt[3] = Jestli uz Sam poslal event
+// flt[4] = temp
+// flt[5] = signal ano/ne
+
+dim_frm 5
+findframe 0
+findframe 1, "skladiste"
+findframe 2, "Sam"
+findframe 3, "Tommy"
+findframe 4, "Paulie"
+setcompass 0
+commandblock 0
+
+act_setstate -1, inactive
+
+label DETECT
+wait 100
+frm_getworldpos 2, 0
+ispointinarea 0, 1, 4
+if flt[4] ! 0, -1, VYPNI
+frm_getworldpos 3, 0
+ispointinarea 0, 1, 4
+if flt[4] ! 0, -1, VYPNI
+frm_getworldpos 4, 0
+ispointinarea 0, 1, 4
+if flt[4] ! 0, -1, VYPNI
+if flt[5] = 0, -1, DETECT
+detector_setsignal -1, 1
+let flt[5] = 1
+debug_text "detector_skladiste: %n", 4
+goto DETECT
+
+label VYPNI
+if flt[5] = 1, -1, DETECT
+detector_setsignal -1, 0
+let flt[5] = 0
+debug_text "detector_skladiste: %n", 4
+goto DETECT

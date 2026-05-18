@@ -1,0 +1,33 @@
+# .dnc extraction summary
+# source        : INTERMEZZO4.dnc  (1507 bytes, main)
+# actors_total  : 5
+# init_records  : 0
+# scripts_found : 1
+
+# main-container actor type-code distribution
+#   type    5  count=1  script
+#   type   18  count=4  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 7
+# total invocations: 8
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     2  wait
+     1  change_mission
+     1  loaddifferences
+     1  recloadfull
+     1  recwaitforend
+     1  subtitle_add
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[fmv]  type=5  lines=8  commands=7
+    change_mission
+    loaddifferences
+    recloadfull
+    recwaitforend
+    subtitle_add
+    wait
+    zatmyse

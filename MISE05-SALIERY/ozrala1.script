@@ -1,0 +1,8 @@
+dim_flt 1
+
+enemy_vidim 0
+
+enemy_playanim "ZidleSed05.I3D",0
+label 101
+wait 30000
+goto 101

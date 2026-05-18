@@ -1,0 +1,90 @@
+enemy_vidim 0
+dim_act 24
+dim_frm 1
+
+
+commandblock 1
+findframe 0, "po retry"
+findactor 0, "po retry"
+findactor 1, "vypinac6"
+findactor 2, "vypinac7"
+findactor 3, "vypinac9"
+findactor 4, "vypinac12"
+findactor 5, "vypinac13"
+findactor 6, "vypinac14"
+findactor 7, "vypinac16"
+findactor 8, "vypinac18"
+findactor 9, "vypinac19"
+findactor 10, "vypinac20"
+findactor 11, "vypinac24"
+findactor 12, "vypinac25"
+findactor 13, "vypinac26"
+findactor 14, "vypinac27"
+findactor 15, "vypinac30"
+findactor 16, "vypinac32"
+findactor 17, "vypinac48"
+findactor 18, "vypinac34"
+findactor 19, "vypinac35"
+findactor 20, "vypinac46"
+findactor 21, "vypinac45"
+findactor 22, "vypinac3"
+findactor 23, "vypinac43"
+commandblock 0
+
+frm_seton 0, 0
+act_setstate 0, inactive
+
+zatmyse 1
+wait 500
+commandblock 1
+enemy_use_detector 1
+enemy_use_detector 2
+enemy_use_detector 3
+enemy_use_detector 4
+enemy_use_detector 5
+enemy_use_detector 6
+enemy_use_detector 7
+enemy_use_detector 8
+enemy_use_detector 9
+enemy_use_detector 10
+enemy_use_detector 11
+enemy_use_detector 12
+enemy_use_detector 13
+enemy_use_detector 14
+enemy_use_detector 15
+enemy_use_detector 16
+enemy_use_detector 17
+enemy_use_detector 18
+enemy_use_detector 19
+enemy_use_detector 20
+enemy_use_detector 21
+enemy_use_detector 22
+enemy_use_detector 23
+commandblock 0
+wait 1000
+commandblock 1
+enemy_use_detector 1
+enemy_use_detector 2
+enemy_use_detector 3
+enemy_use_detector 4
+enemy_use_detector 5
+enemy_use_detector 6
+enemy_use_detector 7
+enemy_use_detector 8
+enemy_use_detector 9
+enemy_use_detector 10
+enemy_use_detector 11
+enemy_use_detector 12
+enemy_use_detector 13
+enemy_use_detector 14
+enemy_use_detector 15
+enemy_use_detector 16
+enemy_use_detector 17
+enemy_use_detector 18
+enemy_use_detector 19
+enemy_use_detector 20
+enemy_use_detector 21
+enemy_use_detector 22
+enemy_use_detector 23
+commandblock 0
+zatmyse 0

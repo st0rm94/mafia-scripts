@@ -1,0 +1,48 @@
+dim_flt 1
+dim_act 4
+findactor 0,"detector_dovezlauto"
+findactor 1,"Tommy"
+findactor 2,"detector_subquest"
+findactor 3,"load do mise07-sara2"
+
+act_setstate -1, inactive
+act_setstate 0,active
+act_setstate 3,active
+
+label 101
+detector_waitforuse 02970001
+vlvp 0
+if flt[0]=1,-1,POLICIE_NEVIDI
+rnd 0,3
+  if flt[0]=0,-1,113
+  human_talk 1,00950223
+  label 113
+  if flt[0]=1,-1,114
+  human_talk 1,00950224
+  label 114
+  if flt[0]=2,-1,115
+  human_talk 1,00950225
+  label 115
+goto 101
+
+label POLICIE_NEVIDI
+garage_show
+zatmyse 1
+wait 500
+detector_issignal 0,-1,NE
+human_talk 1,06990101
+change_mission "mise07-saliery", "", -1
+debug_text "LOAD"
+end
+
+label NE
+detector_issignal 2,NEDOVEZL,-1
+human_talk 1,06990111
+change_mission "mise07-saliery", "", -1
+debug_text "LOAD"
+end
+
+label NEDOVEZL
+change_mission "mise07-saliery", "", -1
+debug_text "LOAD"
+end

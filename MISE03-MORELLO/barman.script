@@ -1,0 +1,15 @@
+dim_flt 1
+enemy_lockstate panic_freeze
+
+label 101
+enemy_playanim "x barman stativ.i3d"
+wait 7000
+enemy_playanim "x barman stul.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+enemy_playanim "x barman stativ.i3d"
+wait 7000
+enemy_playanim "x barman umyvani.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101

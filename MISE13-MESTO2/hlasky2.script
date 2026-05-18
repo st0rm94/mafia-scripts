@@ -1,0 +1,9 @@
+dim_act 1
+findactor 0, "Salieri"
+
+wait 300000
+label 2
+setevent 0, 1, 2
+wait 120000
+goto 2
+

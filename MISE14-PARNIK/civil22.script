@@ -1,0 +1,10 @@
+wait 1000
+label 2
+enemy_playanim "kapela buben 01.i3d"
+wait 4000
+enemy_playanim "kapela buben 02.i3d"
+wait 4000
+goto 2
+
+label 1
+goto 1

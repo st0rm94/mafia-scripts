@@ -1,0 +1,42 @@
+dim_flt 2
+dim_frm 5
+dim_act 6
+findframe 0,"detector_island"
+findframe 1,"vypalne02"
+findframe 2,"detector_hoboken"
+findframe 3,"vypalne02"
+findframe 4,"load mise04-motorest"
+
+findactor 0,"Paulie"
+findactor 1,"Tommy"
+findactor 2,"auto kde sedi tommy"
+findactor 3,"detector_hoboken"
+findactor 4,"load mise04-motorest"
+findactor 5,"NULL"
+
+act_setstate -1,inactive
+label 101
+wait 400
+compareownerwithex 1,5,101,-1
+human_getowner 1,2
+compareownerwithex 0,2,-1,101
+frm_seton 1,0
+setcompass 2
+human_talk 0,04990151
+mission_objectivesclear 04960001
+mission_objectives 04960002
+ACT_SETSTATE 3,active
+
+act_setstate -1,inactive
+label 102
+wait 400
+compareownerwithex 1,5,102,-1
+human_getowner 1,2
+compareownerwithex 0,2,-1,102
+setcompass 4
+frm_seton 3,0
+human_talk 0,04990251
+mission_objectivesclear 04960002
+mission_objectives 04960003
+ACT_SETSTATE 4,active
+

@@ -1,0 +1,7 @@
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_move 36, run
+enemy_lookto 37
+enemy_wait
+enemy_vidim 1

@@ -1,0 +1,42 @@
+dim_act 2
+dim_flt 1
+findactor 0,"Enemy10K"
+findactor 1,"Tommy"
+
+setaipriority 100
+human_addweapon 0,8,6,18
+human_holster 0
+
+
+{ down
+label 101
+enemy_playanim "KoureniAutoStativ.i3d",0
+wait 7000
+enemy_playanim "KoureniAutoPotahnuti.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101
+}
+
+{ up
+enemy_podvadim_jak tretera
+enemy_naserse 1
+label 111
+wait 50000
+goto 111
+}
+end
+
+event enemy_to_ai
+return
+
+event 203
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 0
+enemy_block_checkpoint 20
+return
+
+event 201
+return
+

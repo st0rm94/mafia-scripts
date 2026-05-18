@@ -1,0 +1,50 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+human_looktoactor 0, 1, 1
+enemy_playanim "chuligan04stativ.i3d"
+let flt[0] = 2
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event use_ab, 15970007
+event_use_cb 1
+enemy_talk 00950112
+enemy_wait
+garage_carmanager
+return
+
+event hit_from_player
+event_use_cb 1
+goto flt[0]
+
+label 2
+human_looktoactor 0, 1, 1
+enemy_talk 00950118
+enemy_wait
+let flt[0] = flt[0] + 1
+return
+
+label 3
+human_looktoactor 0, 1, 1
+enemy_talk 00950119
+enemy_wait
+let flt[0] = flt[0] + 1
+return
+
+label 4
+human_looktoactor 0, 1, 1
+enemy_talk 00950120
+enemy_wait
+let flt[0] = flt[0] + 1
+return
+
+label 5
+enemy_talk 00950113
+enemy_action_runaway 1, 15

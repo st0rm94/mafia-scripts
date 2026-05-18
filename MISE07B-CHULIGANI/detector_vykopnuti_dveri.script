@@ -1,0 +1,36 @@
+dim_frm 2
+dim_flt 1
+dim_act 3
+getactiveplayer 0
+findactor 1, "Paulie"
+findactor 2, "vrata02"
+findframe 0, "position_Tommy_vykopava"
+findframe 1, "7b_kickout"
+
+act_setstate -1, inactive
+
+detector_waitforuse 19970000
+label SEND
+setevent 1, 200, SEND
+commandblock 1
+// Po RETRY dela problem actor registr s dverama
+findactor 2, "vrata02"
+enemy_block
+player_lockcontrols 1
+actor_setplacement 0, 0
+commandblock 0
+person_playanim 0, "VykopnutiDveri.I3D", 0
+let flt[0] = flt[0] - 323
+let flt[0] = flt[0] / 2
+wait flt[0]
+commandblock 1
+frm_seton 1, 1
+door_lock 2, 0
+door_open 2, 1
+door_enableus 2, 0
+commandblock 0
+wait flt[0]
+person_stopanim 0
+player_lockcontrols 0
+enemy_unblock
+end

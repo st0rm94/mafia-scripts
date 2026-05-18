@@ -1,0 +1,15 @@
+dim_frm 1
+dim_act 2
+findactor 0, "Enemy12K"
+findactor 1, "Tommy"
+findframe 0, "Enemy12K"
+
+frm_seton 0,0
+act_setstate -1,inactive
+
+human_addweapon 0,11,8,32
+
+label 101
+enemy_move 5,run
+wait 3000
+goto 101

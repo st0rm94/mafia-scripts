@@ -1,0 +1,46 @@
+dim_act 11
+dim_flt 2
+dim_frm 1
+findactor 0,"Tommy"
+findactor 1,"zakernak2"
+findactor 2,"zakernak"
+findactor 3,"supervisor"
+findactor 4,"Enemy"
+findactor 5,"ReditelH"
+findactor 6,"detector_bitch1"
+findactor 7,"detector_bitch2"
+findactor 8,"detector_talktorecepcni"
+findactor 9,"detector_music"
+findactor 10,"civil2"
+
+findframe 0,"2knife"
+createweaponfromframe 0,3
+
+setplayerfireevent 3,201
+
+mission_objectivesclear
+mission_objectives 08960002
+mission_objectives 08960003
+mission_objectives 08960004
+
+{ up
+label 100
+human_getproperty 5,0,Energy
+if flt[0]<25,-1,102
+setevent 5,202,-1
+label 102
+goto 100
+}
+end
+
+event 201
+// PLAY MUSIC
+setevent 9,551,-1
+act_setstate 6,active
+act_setstate 7,active
+setevent 2,202,-1
+setevent 1,202,-1
+setplayerfireevent -1,201
+act_setstate 8,off
+setevent 10,201,-1
+return

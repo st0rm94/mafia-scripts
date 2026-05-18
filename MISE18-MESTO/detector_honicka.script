@@ -1,0 +1,34 @@
+//[debug_me]
+dim_flt 1
+dim_act 6
+findactor 0, "Vratny2"
+findactor 1, "GuardSpec"
+getactiveplayer 2
+human_getowner 2, 3
+findactor 4, "Vratny2"
+findactor 5, "GuardSpec2"
+
+{ DOWN
+label WAIT
+wait 200
+human_getproperty 0, 0, Energy
+if flt[0] < 100,  ALARM, -1
+getenemyaistate 0, 0
+if flt[0] > 1, ALARM, -1
+car_getspeed 3, 0
+if flt[0] > 3, ALARM, WAIT
+label ALARM
+}
+debug_text "detector_honicka: ALARM!!!"
+commandblock 1
+setevent 1, 1, -1
+setevent 5, 1, -1
+commandblock 0
+label SEND2
+setevent 4, 50, SEND2
+enemy_forcescript 4
+end
+
+event 1
+event_use_cb 1
+return

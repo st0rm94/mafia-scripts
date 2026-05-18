@@ -1,0 +1,14 @@
+policemanager_on
+enablemap 1
+taxidriver_enable 1
+police_speed_factor 0.57
+
+dim_flt 4
+dim_frm 1
+findframe 0,"dvere1"
+
+let flt[1]= -707.319
+let flt[2]= 5.202
+let flt[3]= 87.960
+
+frm_setpos 0,1

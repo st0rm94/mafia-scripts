@@ -1,0 +1,44 @@
+dim_flt 1
+dim_frm 1
+dim_act 7
+findactor 0, "pol3"
+findactor 1, "pol2"
+findactor 2, "pol4"
+findactor 3, "pol"
+findactor 4, "pol5"
+findactor 5, "pol6"
+findactor 6, "civil6"
+findframe 0, "Sluchatko"
+
+//human_candie 6
+enemy_playanim "TelStativ.i3d"
+enemy_vidim 0
+label 1
+wait 3000
+goto 1
+
+event 1
+enemy_talk 10950001
+enemy_playanim "TelStativ.i3d"
+wait 2000
+enemy_playanim "TelOtVlevo.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "TelStativ.i3d"
+wait 2000
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+enemy_playanim "TelZaveseni.i3d", 0
+let flt[0] = flt[0] - 400
+wait flt[0]
+frm_seton 0, 0
+enemy_move 3, run
+enemy_brainwash
+enemy_vidim 1
+label 2
+goto 2
+

@@ -1,0 +1,63 @@
+commandblock 1
+enemy_vidim 0
+dim_flt 2
+dim_act 5
+findactor 0,"civil2"
+findactor 1,"TommyTAXIDRIVER"
+findactor 2,"Enemy08K"
+findactor 3,"Enemy09K"
+findactor 4,"detector_music"
+commandblock 0
+
+act_setstate -1, inactive
+person_playanim 0,"SezLehL.i3d"
+human_looktoactor 0,1,1
+
+human_talk 2,02990011,1
+// MUSIC PLAY
+setevent 4,551,-1
+
+wait 1000
+human_talk 1,02990101,2
+human_talk 1,02990102,2
+human_talk 1,02990103,2
+
+label 111
+wait 10000
+rnd 0,7
+
+human_getproperty 2,1,Energy
+if flt[1]=0,103,-1
+
+if flt[0]=0,-1,100
+human_talk 2,02990021,1
+label 100
+if flt[0]=1,-1,101
+human_talk 2,02990031,1
+label 101
+if flt[0]=2,-1,102
+//hlaska byla zrusena
+label 102
+if flt[0]=3,-1,103
+human_talk 2,02990051,1
+label 103
+
+human_getproperty 3,1,Energy
+if flt[1]=0,106,-1
+
+if flt[0]=4,-1,104
+human_talk 3,02990061,1
+label 104
+if flt[0]=5,-1,105
+human_talk 3,02990071,1
+label 105
+if flt[0]=6,-1,106
+human_talk 3,02990081,1
+label 106
+
+goto 111
+
+event 201
+enemy_talk 1, 02990091
+return
+

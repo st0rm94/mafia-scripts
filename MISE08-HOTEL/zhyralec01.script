@@ -1,0 +1,31 @@
+dim_act 2
+dim_flt 1
+findactor 0,"slapka01"
+findactor 1,"zhyralec01"
+
+{ up
+label 1
+rnd 0, 10
+let flt[0] = flt[0] * 700
+let flt[0] = flt[0] + 3000
+enemy_playanim "Mise zidle01a.I3D"
+wait flt[0] + 3000
+enemy_playanim "Mise zidle01a.I3D", 0
+wait flt[0] + 83
+
+rnd 0, 10
+let flt[0] = flt[0] * 700
+let flt[0] = flt[0] + 3000
+enemy_playanim "Mise zidle01a.I3D"
+wait flt[0] + 5000
+enemy_playanim "Mise zidle01a.I3D", 0
+wait flt[0] - 500
+goto 1
+}
+
+event 201
+human_looktoactor 1, 0, 1
+wait 1500
+human_looktoactor 1
+enemy_action_follow 0,1
+return

@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 1
+findactor 0,"randechlap"
+
+label 101
+wait 100
+detector_inrange 0,5
+if flt[0]=1,-1,101
+
+human_talk 0,02950001
+end

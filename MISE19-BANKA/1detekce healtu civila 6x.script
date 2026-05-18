@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 3
+findactor 0, "1Bclerk1"
+findactor 1, "1Paulie"
+findactor 2, "1interni timer"
+
+act_setstate 100, inactive
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+detector_issignal 2, 3, -1
+
+label 2
+setevent 1, 2, 2
+
+label 3
+act_setstate 100, off

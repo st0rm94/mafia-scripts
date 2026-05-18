@@ -1,0 +1,26 @@
+dim_act 3
+dim_flt 1
+dim_frm 1
+getactiveplayer 0
+findactor 1, "Paulie"
+findactor 2, "detector_2"
+findframe 0
+
+// Aktivuje mne Hoolig5
+act_setstate -1, inactive
+
+getactorsdist 1, 2, 0
+if flt[0] < 30, GOON, -1
+getangleactortoactor 0, 1, 0
+if flt[0] > 45, -1, GOON
+actor_setplacement 1, 0
+actorupdateplacement 1
+label GOON
+commandblock 1
+human_delweapon 1, 9
+human_addweapon 1, 9, 7, 250
+human_activateweapon 1, 9
+commandblock 0
+wait 2000
+human_talk 1, 07990551, 1
+end

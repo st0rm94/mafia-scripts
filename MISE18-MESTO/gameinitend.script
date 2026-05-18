@@ -1,0 +1,199 @@
+//[debug_me]
+garage_enablesteal B
+enablemap 1
+dim_act 60
+dim_flt 1
+dim_frm 18
+
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findactor 2, "nesahat_cad_ford"
+findactor 3, "detector_stop"
+findactor 4, "load mise18-pristav"
+findactor 5, "detector_warning"
+findactor 6, "detector_corka"
+findactor 7, "detector_prepadeni"
+findactor 8, "Ridic1"
+findactor 9, "TruckB"
+findactor 10, "detector_parkovistepristav"
+findactor 11, "detector_pristav"
+findactor 12, "hala"
+setnullactor 13
+findactor 14, "objectives"
+findactor 15, "Tommy"
+findactor 16, "Sam2"
+findactor 17, "Paulie2"
+findactor 18, "Vratpr3"
+findactor 19, "Vratpr"
+findactor 20, "Vratny"
+findactor 21, "Vratny2"
+findactor 22, "detector_honicka"
+findactor 23, "detector_prestrelka"
+findactor 24, "detector_prestrelka2"
+findactor 25, "detector_zavreni"
+findactor 26, "detector_energy"
+findactor 27, "detector_energy2"
+findactor 28, "skladiste"
+findactor 29, "hlasky_Ridic"
+findactor 30, "PortGuard"
+findactor 31, "Mesh03x"
+findactor 32, "Mesh02x"
+findactor 33, "PortGuard2"
+findactor 34, "PortGuard3"
+findactor 35, "Delnik"
+findactor 36, "Delnik2"
+findactor 37, "player_v_hale2"
+findactor 38, "player_v_hale"
+findactor 39, "Hala_eraser"
+findactor 40, "PortGuard_eraser"
+findactor 41, "TruckBx"
+findactor 42, "objectives2"
+findactor 43, "autosave"
+findactor 44, "autosave2"
+findactor 45, "finalni_animace"
+findactor 46, "music_1"
+findactor 47, "detector_zatmy_prepni"
+findactor 48, "detector_Paulie_dontshoot"
+findactor 49, "detector_vypni_Sama"
+findactor 50, "Guard4"
+findactor 51, "Guard5"
+findactor 52, "Guard6"
+findactor 53, "Guard"
+findactor 54, "Guard3"
+findactor 55, "Guard2"
+findactor 56, "GuardSpec"
+findactor 57, "GuardSpec2"
+findactor 58, "GuardSpec_car"
+findactor 59, "dialog_po_prestrelce"
+
+findframe 0, "position_cadillac"
+findframe 1, "Paulie"
+findframe 2, "Sam"
+findframe 3, "Ridic1"
+findframe 4, "TruckBx.bocnice"
+findframe 6, "Vratny"
+findframe 7, "Sam2"
+findframe 8, "Paulie2"
+findframe 9, "Vratny2"
+findframe 10, "2shotgun"
+findframe 11, "TruckB"
+findframe 12, "PortGuard"
+findframe 13, "load z mise18-pristav"
+findframe 14, "load z mise 18-saliery"
+getactorframe 56, 15
+getactorframe 57, 16
+getactorframe 58, 17
+
+//####################
+//## PREPINANI ACTORU ##
+//####################
+
+getmissionnumber 0
+// ODDELAT
+//let flt[0] = 18
+//human_force_settocar 15, 41, 0
+//actor_setplacement 41, 13
+//car_calm 41
+// End of Oddelat
+
+if flt[0] > 17, -1, KONEC
+debug_text "vracime se z pristavu !!!"
+
+// Cadilac pro Sama2
+actor_setplacement 2, 0
+car_calm 2
+
+door_open 18, 1
+door_open 19, 1
+
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+// TruckB
+act_setstate 9, off
+act_setstate 10, off
+act_setstate 11, off
+act_setstate 12, off
+act_setstate 14, off
+act_setstate 20, off
+act_setstate 23, off
+act_setstate 26, off
+act_setstate 29, off
+act_setstate 30, off
+act_setstate 33, off
+act_setstate 34, off
+act_setstate 35, off
+act_setstate 36, off
+act_setstate 37, off
+act_setstate 38, off
+act_setstate 39, off
+act_setstate 40, off
+act_setstate 43, off
+act_setstate 46, off
+act_setstate 47, off
+act_setstate 48, off
+act_setstate 49, off
+
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 6,0
+frm_seton 12,0
+frm_seton 10,1
+frm_seton 11,0
+// Zavreni dveri u haly
+door_enableus 31, 0
+door_enableus 32, 0
+door_open 31, 0
+door_open 32, 0
+createweaponfromframe 10, 11, 8, 32
+
+policemanager_on 980000, 2
+policemanager_add "Tommy"
+police_speed_factor 0.6
+end
+
+
+label KONEC
+debug_text "mise se hraje poprve !!!"
+act_setstate 16, off
+act_setstate 17, off
+act_setstate 21, off
+act_setstate 22, off
+act_setstate 24, off
+act_setstate 25, off
+act_setstate 27, off
+act_setstate 28, off
+act_setstate 42, off
+act_setstate 44, off
+// Oddelat
+act_setstate 45, off
+act_setstate 56, off
+act_setstate 57, off
+act_setstate 58, off
+act_setstate 59, off
+
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+// Zakazani dveri u haly
+door_enableus 31, 0
+door_enableus 32, 0
+
+//Posazeni panaku je v Samovi!!!
+wingman_setindicator 0, 1, 0
+wingman_setindicator 1, 2, 1
+policemanager_on 980000, 2
+policemanager_add "Tommy"
+police_speed_factor 0.6
+end

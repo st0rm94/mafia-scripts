@@ -1,0 +1,16 @@
+dim_act 1
+dim_frm 2
+findactor 0, "Vrata02x01"
+findframe 0, "zampr2b2"
+findframe 1, "visaci1"
+
+detector_waitforhit
+detector_waitforhit
+
+door_lock 0, 0
+create_physicalobject 0, 0, 1, 1
+wait 900
+frm_seton 1, 1
+
+
+act_setstate 100, off

@@ -1,0 +1,82 @@
+commandblock 1
+//[debug_me]
+autosavegame 5505
+dim_frm 5
+findframe 0, "TruckBx.bocnice"
+findframe 1, "buikFor2"
+findframe 2, "Pont_ford2"
+findframe 3, "buikFor"
+findframe 4, "Pont_ford"
+frm_seton 0, 0
+frm_seton 2, 0
+frm_seton 4, 0
+dim_act 11
+findactor 0, "Tommy"
+findactor 1, "Vratny2"
+findactor 2, "Guard4"
+findactor 3, "Guard5"
+findactor 4, "Guard6"
+findactor 5, "Guard"
+findactor 6, "Guard3"
+findactor 7, "Guard2"
+findactor 8, "buikFor"
+findactor 9, "buikFor2"
+findactor 10, "GuardSpec"
+dim_flt 1
+
+// Cucam guardy z pristavu a playera
+// Vratny2
+character_pop 1
+// Guardi z pristavu
+character_pop 4
+character_pop 3
+character_pop 2
+character_pop 6
+character_pop 7
+character_pop 5
+human_setproperty 4, 80, Aggresivity
+human_setproperty 3, 80, Aggresivity
+human_setproperty 2, 80, Aggresivity
+human_setproperty 6, 80, Aggresivity
+human_setproperty 7, 80, Aggresivity
+human_setproperty 5, 80, Aggresivity
+// Player
+character_pop 0
+// Inventar...
+inventory_pop 0
+
+// No a tohle je preneseni znicenych aut z pristavu
+// BuickFor2
+floatreg_pop 0
+if flt[0] = 0, -1, NEXT
+   frm_seton 1, 0
+   frm_seton 2, 1
+   car_breakmotor 9, 1
+   car_enableus 9, 0
+   act_setstate 9, off
+label NEXT
+if flt[0] > 0, -1, SKIPSAVE
+   set_remote_float 0, 10, 3
+label SKIPSAVE
+debug_text "autosave2: float pro BuickFor2 = %n", 0
+
+// BuickFor
+floatreg_pop 0
+if flt[0] = 0, -1, NEXT2
+   frm_seton 3, 0
+   frm_seton 4, 1
+   car_breakmotor 8, 1
+   car_enableus 8, 0
+   act_setstate 8, off
+label NEXT2
+if flt[0] > 0, -1, SKIPSAVE2
+   set_remote_float 0, 10, 4
+label SKIPSAVE2
+debug_text "autosave2: float pro BuickFor = %n", 0
+commandblock 0
+
+label PRIDEJAUTA
+   setevent 10, 2, PRIDEJAUTA
+
+debug_text "autosave: Save po druhem hrani mise - navrat z pristavu"
+end

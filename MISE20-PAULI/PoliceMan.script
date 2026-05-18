@@ -1,0 +1,18 @@
+dim_act 3
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "detekce playera v byte"
+
+human_addweapon 0, 6, 6, 18
+human_holster 0
+
+act_setstate 100, inactive
+
+wait 2000
+
+enemy_move 12
+act_setstate 2, active
+enemy_lookto 9
+enemy_wait
+human_looktoactor 0, 1, 1
+

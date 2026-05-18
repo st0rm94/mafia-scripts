@@ -1,0 +1,9 @@
+{ up
+enemy_move 12
+enemy_lookto 14
+enemy_wait
+enemy_playanim "Homeless02.i3d"
+label 101
+wait 30000
+goto 101
+}

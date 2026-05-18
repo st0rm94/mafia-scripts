@@ -1,0 +1,30 @@
+enemy_vidim 0
+dim_act 9
+dim_flt 1
+findactor 0
+findactor 1, "Enemy2"
+findactor 2, "Enemy3"
+findactor 3, "Enemy4"
+findactor 4, "Enemy5"
+findactor 5, "Enemy6"
+findactor 6, "Enemy7"
+findactor 7, "Enemy8"
+findactor 8, "Enemy9"
+
+// Protoze grupa 0 jsou borci co orijedou v aute
+let flt[0] = 1
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+enemy_group_add 0, 5
+enemy_group_add 0, 6
+enemy_group_add 0, 7
+enemy_group_add 0, 8
+
+act_setstate -1, inactive
+enemy_blastfire
+enemy_vidim 1
+

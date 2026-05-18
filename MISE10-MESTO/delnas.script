@@ -1,0 +1,14 @@
+dim_act 1
+dim_frm 2
+findactor 0, "TruckA"
+findframe 0, "stavba2"
+findframe 1, "stavba3"
+
+
+label 1
+goto 1
+
+event 1
+enemy_car_moveto 0, 0
+wait 9000
+enemy_car_moveto 0, 1

@@ -1,0 +1,185 @@
+dim_act 9
+dim_flt 8
+dim_frm 2
+findactor 1, "SalieriHIGH"
+findactor 2, "VincenzoHIGH"
+findactor 3, "Luigi"
+findactor 5, "Ralph"
+findactor 7, "Tommy"
+findactor 8
+findframe 0, "salieriho doupe"
+findframe 1, "Tommy"
+
+label INIT
+{ DOWN
+setplayerfireevent 8, 1
+label DETECT
+getenemyaistate 1, 0
+if flt[0] > 1, NASERTESE, -1
+getenemyaistate 2, 0
+if flt[0] > 1, NASERTESE, -1
+getenemyaistate 3, 0
+if flt[0] > 1, NASERTESE, -1
+getenemyaistate 5, 0
+if flt[0] > 1, NASERTESE, DETECT
+}
+getgametime flt[0]
+let flt[0] = flt[0] - flt[3]
+if flt[2] = 4, NASERTESE, -1
+//if flt[0] > 1500, -1, INIT
+human_looktoactor 1, 7, 1
+human_looktoactor 2, 7, 1
+human_looktoactor 3, 7, 1
+human_looktoactor 5, 7, 1
+let flt[2] = flt[2] + 1
+
+
+getactorsdist 3, 7, 0
+if flt[0] < 7, LUIGI, -1
+getactorsdist 1, 7, 0
+if flt[0] < 6, SALIERI, -1
+getactorsdist 2, 7, 0
+if flt[0] < 8, VINCENZO, -1
+getactorsdist 5, 7, 0
+if flt[0] < 10, -1, 22
+frm_getworldpos 1, 4
+ispointinarea 4, 0, 7
+if flt[7] = 1, SALIERI, RALPH
+
+label 22
+let flt[2] = flt[2] - 1
+goto INIT
+
+label LUIGI
+rnd 0, 3
+let flt[0] = flt[0] +1
+if flt[1] = flt[0], LUIGI, -1
+human_stoptalk 3
+goto flt[0]
+label 1
+human_talk 3, 950064
+goto RET
+label 2
+human_talk 3, 950065
+goto RET
+label 3
+human_talk 3, 950066
+goto RET
+
+label SALIERI
+rnd 0, 3
+let flt[0] = flt[0] + 7
+if flt[1] = flt[0], SALIERI, -1
+human_stoptalk 1
+goto flt[0]
+label 7
+human_talk 1, 950148
+goto RET
+label 8
+human_talk 1, 950149
+goto RET
+label 9
+human_talk 1, 950150
+goto RET
+
+label VINCENZO
+rnd 0, 3
+let flt[0] = flt[0] + 10
+if flt[1] = flt[0], VINCENZO, -1
+human_stoptalk 2
+goto flt[0]
+label 10
+human_talk 2, 950240
+goto RET
+label 11
+human_talk 2, 950241
+goto RET
+label 12
+human_talk 2, 950242
+goto RET
+
+label RALPH
+rnd 0, 3
+let flt[0] = flt[0] + 13
+if flt[1] = flt[0], RALPH, -1
+human_stoptalk 5
+goto flt[0]
+label 13
+human_talk 5, 950115, 1
+goto RET
+label 14
+human_talk 5, 950116, 1
+goto RET
+label 15
+human_talk 5, 950117, 1
+goto RET
+
+label FRANK
+rnd 0, 3
+let flt[0] = flt[0] + 19
+if flt[1] = flt[0], FRANK, -1
+human_stoptalk 4
+goto flt[0]
+label 19
+human_talk 4, 950056
+goto RET
+label 20
+human_talk 4, 950057
+goto RET
+label 21
+human_talk 4, 950058
+goto RET
+
+
+label SAM
+rnd 0, 3
+let flt[0] = flt[0] + 16
+if flt[1] = flt[0], SAM, -1
+human_stoptalk 6
+goto flt[0]
+label 16
+human_talk 6, 950196
+goto RET
+label 17
+human_talk 6, 950197
+goto RET
+label 18
+human_talk 6, 950198
+goto RET
+
+label PAULIE
+rnd 0, 3
+let flt[0] = flt[0] + 4
+if flt[1] = flt[0], PAULIE, -1
+human_stoptalk 0
+goto flt[0]
+label 4
+human_talk 0, 950091
+goto RET
+label 5
+human_talk 0, 950092
+goto RET
+label 6
+human_talk 0, 950093
+goto RET
+
+label RET
+let flt[1] = flt[0]
+getgametime 3
+human_looktoactor 1
+human_looktoactor 2
+human_looktoactor 3
+human_looktoactor 5
+goto INIT
+
+label NASERTESE
+setevent 1, 1000, -1
+setevent 2, 1000, -1
+setevent 3, 1000, -1
+setevent 5, 1000, -1
+end
+
+event 1
+setplayerfireevent 8, -1
+event_use_cb 1
+return

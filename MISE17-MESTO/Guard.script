@@ -1,0 +1,43 @@
+dim_flt 1
+dim_act 2
+findactor 0
+findactor 1, "Tommy"
+human_addweapon 0, 7, 6, 30
+human_holster 0
+
+act_setstate 100, inactive
+
+{ up
+enemy_lookto 21
+enemy_wait
+label FREESTATE
+enemy_playanim "GestZamStativ.I3D"
+rnd 0, 5
+let flt[0] = flt[0] * 3000
+wait flt[0]
+enemy_playanim "GestZam03.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "GestZamOtoceni.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto FREESTATE
+}
+
+event 1
+wait 2000
+enemy_action_fire 1
+
+label 2
+wait 1000000
+goto 2
+
+event 2
+event_use_cb 1
+enemy_stopanim
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+wait 3000
+human_looktoactor 0
+return

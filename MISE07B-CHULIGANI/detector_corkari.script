@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Hoolig12"
+findactor 1, "Hoolig13"
+act_setstate -1, inactive
+
+label DETECT
+detector_inrange 0, 7
+if flt[0] ! 0, -1, DETECT
+
+label SEND
+setevent 0, 1, SEND
+label SEND2
+setevent 1,1 , SEND2
+
+debug_text "detector_corkari: event chuliganum odeslan!"

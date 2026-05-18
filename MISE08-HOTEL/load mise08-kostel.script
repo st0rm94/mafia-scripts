@@ -1,0 +1,34 @@
+dim_flt 1
+dim_frm 2
+findframe 0,"Tommy"
+findframe 1,"zebrik01"
+
+label 101
+wait 100
+detector_inrange 0,4
+if flt[0]=1,-1,101
+
+enemy_block
+zatmyse 1
+setcitytrafficvisible 0
+wait 500
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+frm_seton 0,0
+frm_seton 1,0
+loaddifferences "dif08d.chg"
+recloadfull "record08d.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 0,1
+frm_seton 1,1
+PLAYER_LOCKCONTROLS 0
+commandblock 0
+
+change_mission "mise08-kostel", "load z mise08-hotel", -1
+//change_mission "mise08-kostel", "", -1

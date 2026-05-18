@@ -1,0 +1,88 @@
+//[debug_me]
+dim_flt 4
+dim_act 4
+getactiveplayer 0
+findactor 1, "Paulie"
+findactor 2, "Sam"
+setnullactor 3
+
+dim_frm 3
+findframe 0
+setcompass 0
+
+
+let flt[3] = 7000
+// flt[1] = idx posledne recene hlasky
+// flt[2] = dalsi game time pro hlasku
+// flt[3] = pro frequenci hlasek, zvysuje se automaticky
+
+label DETECT
+detector_inrange 0, 6
+if flt[0] = 3, -1, DETECT
+gosub CHECKSVESTKY
+get_pm_numpredators 0, 0
+if flt[0] = 0, -1, DETECT
+compareownerwithex 0, 3, -1, DETECT
+compareownerwithex 1, 3, -1, DETECT
+compareownerwithex 2, 3, -1, DETECT
+enemy_forcescript 2
+end
+
+
+label CHECKSVESTKY
+get_pm_numpredators 0, 0
+if flt[0] = 0, RET, -1
+
+getgametime 0
+if flt[0] > flt[1], -1, RET
+let flt[2] = flt[0] + flt[3]
+// S kazdou hlaskou se dalsi posouva o 2 sec
+let flt[3] = flt[3] + 2000
+
+label JDOUPONAS
+// Paulie 950072-74
+// Sam 950182-83
+// Tommy 950223-25
+rnd 0, 8
+let flt[0] = flt[0] + 1
+if flt[0] = flt[1], JDOUPONAS, -1
+goto flt[0]
+label 1
+human_looktoactor 1, 0, 1
+human_looktoactor 0, 1, 1
+human_talk 1, 950072
+goto RET
+label 2
+human_looktoactor 1, 0, 1
+human_looktoactor 0, 1, 1
+human_talk 1, 950073
+goto RET
+label 3
+human_looktoactor 1, 0, 1
+human_looktoactor 0, 1, 1
+human_talk 1, 950074
+goto RET
+label 4
+human_looktoactor 2, 0, 1
+human_looktoactor 0, 2, 1
+human_talk 2, 950182
+goto RET
+label 5
+human_looktoactor 2, 0, 1
+human_looktoactor 0, 2, 1
+human_talk 2, 950183
+goto RET
+label 6
+human_talk 0, 950223
+goto RET
+label 7
+human_talk 0, 950224
+goto RET
+label 8
+human_talk 0, 950225
+label RET
+let flt[1] = flt[0]
+human_looktoactor 0
+human_looktoactor 1
+human_looktoactor 2
+return

@@ -1,0 +1,269 @@
+dim_frm 3
+dim_flt 6
+dim_act 8
+commandblock 1
+findframe 0, "detector u franka"
+findframe 1, "polCad"
+findframe 2, "polpos2"
+findactor 0, "Tommy"
+findactor 1, "kamos1"
+findactor 2, "kamos 2"
+findactor 3, ""
+findactor 4, "detector u franka"
+findactor 5, "polCad"
+findactor 6, "energymetr"
+findactor 7, "detector u Joa"
+commandblock 0
+enemy_vidim 0
+human_candie 3
+
+label 1
+let flt[1] = 0
+{ down
+wait 10000
+enemy_playanim "Gestikulace06.I3D", 0
+label 27
+goto 27
+}
+
+label 17
+if flt[5] = 1, 73, -1
+if flt[1] = 1, 1, 17 
+
+// kdyz se priblizim
+event 1
+event_use_cb 1
+enemy_stopanim
+enemy_look 0
+enemy_wait
+human_looktoactor 3, 0, 1
+return
+
+// kdyz se vzdalim
+event 2
+event_use_cb 1
+human_looktoactor 3
+let flt[1] = 1
+enemy_lookto 1
+enemy_wait
+return
+//*********************************************************
+event use_ab, 10970007
+event_use_cb 1
+act_setstate 7, off
+setcompass -1
+setevent 1, 3, -1
+setevent 2, 3, -1
+enemy_look 0
+enemy_wait
+enemy_playanim "VincStativ.i3d"
+human_looktoactor 3, 0, 1
+
+if flt[2] > 5, 74, -1
+if flt[2] = 1, 3, -1
+if flt[2] = 2, 4, -1
+if flt[2] = 3, 5, -1
+if flt[2] = 4, 6, -1
+if flt[2] = 5, 7, -1
+label 74
+if flt[2] = 6, 8, -1
+if flt[2] = 7, 9, -1
+if flt[2] = 8, 10, -1
+if flt[2] = 9, 11, -1
+if flt[2] =10, 12, -1
+
+enemy_talk 0, 10990191
+  enemy_wait
+  wait 700
+  enemy_talk 10990201
+  enemy_wait
+  let flt[2] = 1
+  human_looktoactor 3
+  return
+label 3
+  enemy_talk 0, 10990211
+  enemy_wait
+  wait 500
+  enemy_talk 10990221
+  enemy_wait
+  let flt[2] = 2
+  human_looktoactor 3
+  return
+label 4
+  enemy_talk 0, 10990231
+  enemy_wait
+  wait 700
+  enemy_talk 10990241
+  enemy_wait
+  let flt[2] = 3
+  human_looktoactor 3
+  return
+label 5
+  enemy_talk 0, 10990251
+  enemy_wait
+  wait 700
+  enemy_talk 10990261
+  enemy_wait
+  let flt[2] = 4
+  human_looktoactor 3
+  return
+label 6
+  enemy_talk 0, 10990271
+  enemy_wait
+  wait 700
+  enemy_talk 10990281
+  enemy_wait
+  let flt[2] = 5
+  human_looktoactor 3
+  return
+label 7
+  enemy_talk 0, 10990291
+  enemy_wait
+  wait 700
+  enemy_talk 10990301
+  enemy_wait
+  enemy_talk 10990302
+  enemy_wait
+  enemy_talk 10990303
+  enemy_wait
+  let flt[2] = 6
+  human_looktoactor 3
+  return
+label 8
+  enemy_talk 0, 10990311
+  enemy_wait
+  wait 700
+  enemy_talk 10990321
+  enemy_wait
+  let flt[2] = 7
+  human_looktoactor 3
+  return
+label 9
+  enemy_talk 0, 10990331
+  enemy_wait
+  wait 700
+  enemy_talk 10990341
+  enemy_wait
+  enemy_talk 10990342
+  enemy_wait
+  let flt[2] = 8
+  human_looktoactor 3
+  return
+label 10
+  enemy_talk 0, 10990351
+  enemy_wait
+  wait 700
+  enemy_talk 10990361
+  enemy_wait
+  let flt[2] = 9
+  human_looktoactor 3
+  return
+label 11
+  enemy_talk 0, 10990371
+  enemy_wait
+//cz  enemy_talk 0, 10990372
+//cz  enemy_wait
+//cz  wait 700
+//cz  enemy_talk 10990381
+//cz  enemy_wait
+  let flt[2] = 10
+  human_looktoactor 3
+  return
+label 12
+  rnd 0, 3
+  if flt[0] = 0, 13, -1
+  if flt[0] = 1, 14, -1
+  enemy_talk 0, 10990391
+  enemy_wait
+  goto 15
+  label 13
+  enemy_talk 0, 10990401
+  enemy_wait
+  goto 15
+  label 14
+  enemy_talk 0, 10990411
+  enemy_wait
+  label 15
+  rnd 0, 3
+  if flt[0] = 0, 16, -1
+  if flt[0] = 1, 35, -1
+  enemy_talk 10990421
+  enemy_wait
+  human_looktoactor 3
+  return
+  label 16
+  enemy_talk 10990431
+  enemy_wait
+  human_looktoactor 3
+  return
+  label 35
+  enemy_talk 10990441
+  enemy_wait
+  human_looktoactor 3
+  return
+
+label 73
+//  detector_setsignal 6, 1
+  enemy_action_runaway 0, 10
+
+
+//******************************
+event 3
+//if flt[2] > 7, -1, 58
+setnoanimhit 3, 1
+enemy_forcescript 3
+wait 50
+enemy_playanim "DoKryti.i3d"
+wait 500
+enemy_talk 10990481
+enemy_playanim "DoKryti.i3d"
+wait 6250
+enemy_playanim "KrytiLoop.i3d"
+enemy_talk 10990482
+enemy_wait
+enemy_talk 0, 10990491
+enemy_wait
+enemy_talk 10990501
+enemy_wait
+enemy_talk 10990502
+enemy_wait
+enemy_talk 10990503
+enemy_wait
+enemy_playanim "KrytiKonec.i3d", -1, simple
+setnoanimhit 3, 0
+enemy_talk 10990504
+enemy_wait
+enemy_look 0
+enemy_wait
+human_looktoactor 3, 0, 1
+enemy_talk 10990505
+enemy_wait
+human_looktoactor 3
+SETCOMPASS 0
+actor_setplacement 5, 2
+frm_seton 1, 1
+detector_setsignal 4, 1
+detector_setsignal 6, 1
+human_talk 0, 10990511
+label 58
+enemy_action_runaway 0, 15
+return
+
+event 4
+  human_eraseab 3
+  human_looktoactor 3
+  enemy_forcescript 3
+  rnd 0, 3
+  if flt[0] = 0, 111, -1
+  if flt[0] = 1, 112, -1
+//  enemy_talk 10990451
+  let flt[5] = 1
+  return
+  label 111
+//  enemy_talk 10990461
+  let flt[5] = 1
+  return
+  label 112
+//  enemy_talk 10990471
+  let flt[5] = 1
+  return

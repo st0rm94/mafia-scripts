@@ -1,0 +1,29 @@
+dim_flt 1
+dim_act 8
+
+findactor 0, "Sam"
+findactor 1, "SalMan05K2"
+findactor 2, "SalMan03K5"
+findactor 3, "SalMan03K6"
+findactor 4, "aktivace schovanych chlapku"
+findactor 5, "SalMan02K6"
+findactor 6, "SalMan03K6"
+findactor 7, "Mesh213"
+
+door_enableus 7, 0
+
+act_setstate 100, inactive
+
+detector_waitforuse 2000, 1
+
+commandblock 1
+door_open 7, 1
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+commandblock 0
+act_setstate 100, off

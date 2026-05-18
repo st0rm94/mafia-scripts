@@ -1,0 +1,17 @@
+act_setstate -1, inactive
+dim_act 2
+findactor 0, "PoliceMan"
+findactor 1, "player_na_dvorku"
+dim_flt 1
+rnd 0, 10
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 5000
+wait flt[0]
+label TRYACTIVATE
+detector_issignal 1, -1, WAIT
+debug_text "svestka_activator: Svestka activated !"
+act_setstate 0, active
+end
+label WAIT
+wait 1000
+goto TRYACTIVATE

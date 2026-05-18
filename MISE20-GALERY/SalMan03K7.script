@@ -1,0 +1,11 @@
+enemy_vidim 0
+dim_act 1
+findactor 0, ""
+
+human_addweapon 0, 9, 3, 21
+enemy_lockstate fight_guard, 5
+
+enemy_move 21, run
+enemy_lookto 22
+enemy_wait
+enemy_vidim 1

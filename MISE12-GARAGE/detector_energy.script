@@ -1,0 +1,197 @@
+//[debug_me]
+dim_act 38
+dim_flt 7
+dim_frm 4
+findframe 0, "prijezd1"
+findframe 1, "prijezd2"
+findframe 2, "garage_predposledni_patro"
+getactivecamera 3
+frm_seton 0, 0
+frm_seton 1, 0
+
+getactiveplayer 0
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 3, "Enemy1"
+findactor 4, "Enemy2"
+findactor 5, "Enemy3"
+findactor 6, "Enemy4"
+findactor 7, "Enemy5"
+findactor 8, "Enemy6"
+findactor 9, "Enemy7"
+findactor 10, "Enemy8"
+findactor 11, "Enemy9"
+findactor 12, "Gates"
+findactor 13, "Enemy_gr2_1"
+findactor 14, "Enemy_gr2_2"
+findactor 15, "Enemy_gr2_3"
+findactor 16, "Enemy_gr2_4"
+findactor 17, "Enemy_gr3_ridic"
+findactor 18, "Enemy_gr3_2"
+findactor 19, "Enemy_gr3_3"
+findactor 20, "Enemy_gr3_4"
+findactor 21, "AUTO_start"
+findactor 22, "detector_garage"
+findactor 23, "detector_vstup"
+findactor 24, "ForApic"
+findactor 25, "Enemy_gr4_1"
+findactor 26, "Enemy_gr4_2"
+findactor 27, "Enemy_gr4_3"
+findactor 28, "Enemy_gr4_4"
+findactor 29, "detector_Enemy_gr4"
+findactor 30, "posledni_grupa_Enemy"
+findactor 31, "posledni_grupa_Enemy2"
+findactor 32, "posledni_grupa_Enemy3"
+findactor 33, "posledni_grupa_Enemy4"
+findactor 34, "detector_posledni_grupa"
+findactor 35, "posledni_grupa_Enemy5"
+findactor 36, "posledni_grupa_Enemy6"
+findactor 37, "music"
+
+label DETECT
+wait 1000
+iscarusable 24, 0
+if flt[0] = 0, -1, SKIP
+gosub CARISLOST
+
+label SKIP
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, PAULIEDEATH, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, SAMDEATH, -1
+human_getproperty 3, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 4, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 5, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 6, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 7, 0, Energy
+if flt[0] = 0, -1, DETECT
+
+if flt[6] = 0, -1, NEXT2
+frm_getworldpos 3, 3
+ispointinarea 3, 2, 0
+if flt[0] = 0, -1, NEXT2
+// Zapne skupinku v plotene ohrade
+frm_seton 1, 1
+act_setstate 29, active
+let flt[6] = 1
+// Zapne prijizdejici auto
+goto SETON
+
+label NEXT2
+human_getproperty 8, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 9, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 10, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 11, 0, Energy
+if flt[0] = 0, -1, DETECT
+
+label NEXT
+human_getproperty 17, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 18, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 19, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 20, 0, Energy
+if flt[0] = 0, -1, DETECT
+debug_text "detector_energy: Enemies are death !!!"
+label DETECT2
+wait 1000
+iscarusable 24, 0
+if flt[0] = 0, -1, SKIP2
+gosub CARISLOST
+label SKIP2
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, PAULIEDEATH, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, SAMDEATH, -1
+if flt[2] = 1, DETECT2, -1
+human_getproperty 13, 0, Energy
+if flt[0] = 0, -1, DETECT2
+human_getproperty 14, 0, Energy
+if flt[0] = 0, -1, DETECT2
+human_getproperty 15, 0, Energy
+if flt[0] = 0, -1, DETECT2
+human_getproperty 16, 0, Energy
+if flt[0] = 0, -1, DETECT2
+human_getproperty 25, 0, Energy
+if flt[0] = 0, -1, DETECT2
+human_getproperty 26, 0, Energy
+if flt[0] = 0, -1, DETECT2
+human_getproperty 27, 0, Energy
+if flt[0] = 0, -1, DETECT2
+human_getproperty 28, 0, Energy
+if flt[0] = 0, -1, DETECT2
+//debug_text "detector_energy: Group2 is death ! Last grupa activated..."
+//act_setstate 34, active
+label DETECT3
+wait 1000
+iscarusable 24, 0
+if flt[0] = 0, -1, SKIP3
+gosub CARISLOST
+label SKIP3
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, PAULIEDEATH, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, SAMDEATH, -1
+human_getproperty 30, 0, Energy
+if flt[0] = 0, -1, DETECT3
+human_getproperty 31, 0, Energy
+if flt[0] = 0, -1, DETECT3
+human_getproperty 32, 0, Energy
+if flt[0] = 0, -1, DETECT3
+human_getproperty 33, 0, Energy
+if flt[0] = 0, -1, DETECT3
+human_getproperty 35, 0, Energy
+if flt[0] = 0, -1, DETECT3
+human_getproperty 36, 0, Energy
+if flt[0] = 0, -1, DETECT3
+debug_text "detector_energy: Posledni grupa is death..."
+act_setstate 22, active
+act_setstate 23, active
+detector_setsignal -1, 1
+debug_text "detector_energy: SCRIPT FINISHED player detectors activated!"
+label EVENTSAM
+setevent 2, 5, EVENTSAM
+label EVENTPAULIE
+setevent 1, 2, EVENTPAULIE
+act_setstate 37, active
+let flt[2] = 1
+goto DETECT2
+
+label TOMMYDEATH
+wait 2000
+endofmission 0, 12980003
+end
+label PAULIEDEATH
+endofmission 0, 12980004
+end
+label SAMDEATH
+endofmission 0, 12980005
+end
+label CARISLOST
+wait 3000
+iscarusable 24, 0
+if flt[0] = 1, -1, CARISLOST2
+return
+label CARISLOST2
+endofmission 0, 12980000
+end
+
+label SETON
+frm_seton 0, 1
+act_setstate 21, active
+let flt[1] = 1
+goto NEXT2

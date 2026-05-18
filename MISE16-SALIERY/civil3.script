@@ -1,0 +1,79 @@
+dim_flt 1
+dim_act 1
+dim_frm 3
+findactor 0, ""
+findframe 0, "chlapek kouri 1"
+findframe 1, "chlapek mrtvy 1"
+findframe 2, "civil3.neck"
+
+human_returnfrompanic 0, 1
+setnoanimhit 0, 1
+
+actor_setplacement 0, 0
+
+{ down
+label 1
+enemy_playanim "ustolutokoureni.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustolukourenitostativ.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+emitparticle 2, 25
+enemy_playanim "ustoluoprenise.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustoluoprenystativ.i3d"
+wait 5000
+enemy_playanim "ustoluoprenytostativ.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustoluvysvetlovani01.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustolutokoureni.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustolukourenitostativ.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+emitparticle 2, 25
+enemy_playanim "ustoluoprenise.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustoluoprenystativ.i3d"
+wait 5000
+enemy_playanim "ustoluoprenytostativ.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "ustoluvysvetlovani02.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+goto 1
+}
+
+actor_setplacement 0, 1
+enemy_playanim "mise zidle01 panika.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika stativ.i3d"
+
+label 2
+human_getproperty 0, 0, energy
+if flt[0] < 99, -1, 2
+
+enemy_playanim "mise zidle01 panika smrt.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika smrt stativ.i3d"
+end
+
+event enemy_to_ai
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+event_use_cb 1
+commandblock 0
+return

@@ -1,0 +1,31 @@
+dim_act 6
+dim_flt 1
+dim_frm 1
+findactor 0, "Tommy"
+findactor 1, "Enemy1"
+findactor 2, "Enemy5"
+findactor 3, "Sam"
+findactor 4,  "detector_skladiste"
+setnullactor 5
+findframe 0, "Tommy"
+
+// Tady cekam dokud neposle Sam event, nebo player nevysoupi...
+{ DOWN
+label DETECT
+wait 100
+compareownerwithex 0, 5, DETECT, -1
+}
+
+// ODDELAT !!!!
+setevent 1, 1, -1
+setevent 2, 1, -1
+act_setstate 4, active
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH
+debug_text "detector_honicka_start: Script finished"
+end

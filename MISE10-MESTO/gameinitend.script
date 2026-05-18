@@ -1,0 +1,111 @@
+dim_flt 1
+dim_frm 17
+dim_act 27
+findactor 0, "load mise10-letiste"
+findactor 1, "Biff"
+findactor 2, "start"
+findactor 3, "Tony"
+findactor 4, "Joe"
+findactor 5, "detector u Joa"
+findactor 6, "kamos1"
+findactor 7, "kamos 2"
+findactor 8, "detector u franka"
+findactor 9, "polCad"
+findactor 10, "frank"
+findactor 11, "Detektiv2"
+findactor 12, "Detektiv"
+findactor 13, "energymetr"
+findactor 14, "TruckA"
+findactor 15, "stavba"
+findactor 16, "delnas"
+findactor 17, "civil"
+findactor 18, "joe test"
+findactor 19, "Bookmaker"
+findactor 20, "merced500K3"
+findactor 21, "load mise11-saliery"
+findactor 22, "cordse"
+findactor 23, "steal detector"
+findactor 24, "chemaTud"
+findactor 25, "utokgard"
+findactor 26, "save u Joa"
+
+findframe 0, "Biff"
+findframe 1, "Tony"
+findframe 2, "Joe"
+findframe 3, "kamos1"
+findframe 4, "kamos 2"
+findframe 5, "polCad"
+findframe 6, "frank"
+findframe 7, "Detektiv2"
+findframe 8, "Detektiv"
+findframe 9, "TruckA"
+findframe 10, "delnas"
+findframe 11, "civil"
+findframe 12, "Boxer"
+findframe 13, "Bookmaker"
+findframe 14, "merced500K3"
+findframe 15, "do banky"
+findframe 16, "proauto"
+
+frm_seton 12, 0
+policemanager_on 00980000, 1
+police_speed_factor 0.51
+car_muststeal 22, 1
+car_enableus 24, 0
+enablemap 1
+getmissionnumber 0
+if flt[0] = 0, 1, -1
+
+
+// cesta z letiste do banky
+
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, off
+act_setstate 11, off
+act_setstate 12, off
+//act_setstate 13, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, off
+act_setstate 18, off
+act_setstate 26, off
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+setcompass 15
+actor_setplacement 9, 16
+end
+
+// cesta na letiste
+label 1
+//mission_objectivesclear
+//mission_objectives 10960001
+act_setstate 23, off
+act_setstate 25, off
+act_setstate 19, off
+frm_seton 13, 0
+act_setstate 20, off
+frm_seton 14, 0
+act_setstate 21, off
+act_setstate 0, inactive
+act_setstate 26, inactive
+end

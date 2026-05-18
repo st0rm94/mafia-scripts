@@ -1,0 +1,22 @@
+dim_act 2
+dim_frm 1
+findactor 0,"pol13"
+findactor 1,"Tommy"
+findframe 0,"pol13"
+
+human_addweapon 0,6,6,50
+
+enemy_vidim 0
+frm_seton 0,0
+act_setstate -1,inactive
+frm_seton 0,1
+
+enemy_move 41,run
+//enemy_lockstate fight_guard
+enemy_vidim 1
+
+label 100
+enemy_action_fire 1
+goto 100
+end
+

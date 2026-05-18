@@ -1,0 +1,16 @@
+act_setstate -1, inactive
+
+dim_act 1
+dim_flt 1
+findactor 0,"pol_tompson01"
+human_setproperty 0,50,Shooting
+
+label 101
+wait 500
+human_getproperty 0,0,Energy
+if flt[0]<98,SUPERSHOOTING,-1
+detector_inrange 0,3
+if flt[0]=1,-1,101
+
+label SUPERSHOOTING
+human_setproperty 0,100,Shooting

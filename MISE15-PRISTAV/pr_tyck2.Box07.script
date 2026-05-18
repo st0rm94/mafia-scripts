@@ -1,0 +1,17 @@
+dim_frm 3
+dim_act 1
+findframe 0, "pr_tyck2"
+findframe 1, "hit tycka 3"
+findframe 2, "hit tycka 4"
+findactor 0, "dvirkax"
+
+detector_waitforhit
+
+//create_physicalobject 0, 0, 1, 100
+commandblock 1
+frm_seton 0, 0
+emitparticle 1, 4
+emitparticle 2, 4
+commandblock 0
+door_open 0, 1
+act_setstate 100, off

@@ -1,0 +1,16 @@
+dim_act 2
+dim_frm 2
+
+findactor 0,"Tommy"
+findactor 1,"Cop01"
+
+findframe 0,"Tommy"
+findframe 1,"Cop01"
+
+human_addweapon 1, 10, 50, 150 
+
+frm_seton 1,0
+act_setstate 1,inactive
+
+enemy_vidim 0
+enemy_action_fire 0

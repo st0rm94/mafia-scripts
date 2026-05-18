@@ -1,0 +1,6 @@
+dim_act 1
+findactor 0, "VincenzoHIGH"
+
+detector_waitforuse 15970008
+
+detector_setsignal 100, 1

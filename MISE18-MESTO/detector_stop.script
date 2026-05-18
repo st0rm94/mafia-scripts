@@ -1,0 +1,55 @@
+//[debug_me]
+dim_act 4
+dim_flt 1
+dim_frm 2
+findframe 0
+findframe 1, "Position_Vratny"
+findactor 0, "Tommy"
+findactor 2, "DSFSGSGSGSASRESSR"
+findactor 3, "Vratny"
+
+// Pro pripad ze uz tam byl pockam az vypadne
+label INIT
+detector_inrange 0, 18
+if flt[0] ! 0, INIT, -1
+
+{ DOWN
+label DETECT
+detector_inrange 0, 10
+if flt[0] = 1, -1, DETECT
+compareownerwithex 0, 2, DETECT, -1
+zatmyse 1
+label SEND
+setevent 3, 100, SEND
+wait 500
+commandblock 1
+{ DOWN
+   actor_setplacement 3, 1
+   human_getowner 0, 1
+   car_forcestop 1
+   actor_setplacement 1, 0
+   car_calm 1
+   car_breakmotor 1, 1
+   car_setdestroymotor 1,1
+   zatmyse 0
+commandblock 0
+wait 500
+
+label WAIT
+wait 1000
+goto WAIT
+}
+
+commandblock 1
+//   human_getowner 0, 1
+   car_breakmotor 1, 0
+   car_setdestroymotor 1, 0
+commandblock 0
+
+goto INIT
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

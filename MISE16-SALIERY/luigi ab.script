@@ -1,0 +1,27 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Luigi"
+findactor 1, "Tommy"
+
+let flt[1] = 1
+
+act_setstate 100, inactive
+
+detector_waitforuse 15970009
+
+goto flt[1]
+
+label 1
+human_talk 0, 00950060
+let flt[1] = 2
+return
+
+label 2
+human_talk 0, 00950061
+let flt[1] = 3
+return
+
+label 3
+human_talk 0, 00950062
+let flt[1] = 1
+return

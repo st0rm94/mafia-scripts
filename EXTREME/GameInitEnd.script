@@ -1,0 +1,57 @@
+dim_frm 15
+dim_act 6
+findframe 0,"tel01"
+findframe 1,"tel02"
+findframe 2,"tel03"
+findframe 3,"tel04"
+findframe 4,"tel05"
+findframe 5,"tel06"
+findframe 6,"light"
+findframe 7,"slunko2"
+
+findframe 8,"UfoPanak"
+
+findframe 9,"watercity.RED1"
+findframe 10,"watercity.RED2"
+findframe 11,"watercity.RED3"
+findframe 12,"watercity.RED4"
+findframe 13,"watercity.RED5"
+findframe 14,"watercity.RED6"
+
+frm_seton 9,0
+frm_seton 10,0
+frm_seton 11,0
+frm_seton 12,0
+frm_seton 13,0
+frm_seton 14,0
+
+findactor 0,"Andromeda"
+findactor 1,"formule01"
+findactor 2,"formule02"
+findactor 3,"formule03"
+findactor 4,"fov_car"
+findactor 5,"bugatti"
+
+car_setaxis 1
+car_setaxis 2
+car_setaxis 3
+car_setaxis 4
+car_setaxis 5
+
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+
+frm_seton 6,1
+frm_seton 7,0
+
+frm_seton 8,0
+
+setnoanimhit 0,1
+mission_objectivesclear
+
+//policemanager_on
+enablemap 1

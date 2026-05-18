@@ -1,0 +1,7 @@
+dim_act 3
+findactor 0, "SalMan"
+findactor 1, "nesahat merced500K"
+findactor 2, "Salieri"
+
+human_addweapon 2, 9, 7, 49
+human_holster 2

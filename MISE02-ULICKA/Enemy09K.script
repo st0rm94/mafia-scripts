@@ -1,0 +1,32 @@
+act_setstate -1, inactive
+
+commandblock 1
+dim_flt 2
+dim_act 3
+findactor 0,"Enemy09K"
+findactor 1,"TommyTAXIDRIVER"
+findactor 2,"Enemy08K"
+
+enemy_group_new 1
+enemy_group_add 2,0
+enemy_group_add 2,2
+
+human_addweapon 0,4,0,0
+let flt[0]=0
+enemy_shut_up yes
+enemy_podvadim_jak tretera
+commandblock 0
+
+enemy_naserse 1
+
+{ up
+label 101
+wait 60000
+goto 101
+}
+
+event 201
+human_delweapon 0,4
+human_addweapon 0,9,7,28
+human_setproperty 0,100,Shooting
+return

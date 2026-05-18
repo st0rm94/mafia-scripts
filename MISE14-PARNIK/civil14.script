@@ -1,0 +1,76 @@
+dim_frm 1
+DIM_FLT 5
+dim_act 3
+findframe 0, "civil14.neck"
+findactor 0, ""
+findactor 1, "TommySAILOR"
+findactor 2, "tleskej"
+
+ENEMY_PLAYANIM "KurakZapaleni.I3D", 0
+LET flt[0] = flt[0] - 500
+WAIT flt[0]
+{ down
+LABEL 1
+ENEMY_PLAYANIM "KurakLoop.I3D"
+emitparticle 0, 25
+WAIT 6000
+ENEMY_PLAYANIM "KurakPotahnuti.I3D", 0
+LET flt[0] = flt[0] + 83
+WAIT flt[0]
+LET flt[1] = flt[1] + 1
+IF flt[1] = 20, -1, 1
+ENEMY_PLAYANIM "KurakZahozeni.I3D", 0
+WAIT flt[0]
+enemy_stopanim
+wait 10000
+ENEMY_PLAYANIM "KurakZapaleni.I3D", 0
+LET flt[0] = flt[0] - 500
+WAIT flt[0]
+GOTO 1
+}
+enemy_playanim "GestikulaceNew05.I3D"
+label 13
+detector_issignal 2, -1, 13
+wait 800
+enemy_playanim "xTleskani01c.I3D"
+wait 18000
+enemy_playanim "GestikulaceNew05.I3D"
+wait 50000
+end
+
+event 7
+event_use_cb 1
+return
+
+event use_ab, 14970002
+event_use_cb 0
+getenemyaistate 0, 3
+if flt[3] ! 0, 2, -1
+if flt[2] = 1, 2, -1
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_playanim "GestSkl01.I3D"
+if flt[4] = 0, 3, -1
+if flt[4] = 1, 4, -1
+enemy_talk 14950037
+let flt[4] = 0
+goto 5
+label 3
+enemy_talk 14950038
+let flt[4] = 1
+goto 5
+label 4
+enemy_talk 14950039
+let flt[4] = 2
+label 5
+enemy_wait
+human_looktoactor 0
+enemy_lookto 21
+enemy_wait
+label 2
+return
+
+event 12
+enemy_setstate runaway
+return

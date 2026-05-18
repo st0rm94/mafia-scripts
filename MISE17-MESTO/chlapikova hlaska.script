@@ -1,0 +1,12 @@
+dim_act 2
+findactor 0, "Postava"
+findactor 1, "null"
+
+act_setstate 100, inactive
+
+label 1
+wait 1000
+compareownerwithex 0, 1, 1, -1
+
+human_talk 0, 17990261, 2
+act_setstate 100, off

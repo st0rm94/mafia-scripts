@@ -1,0 +1,17 @@
+dim_act 2
+dim_frm 1
+dim_flt 1
+findactor 0, "Tommy"
+findactor 1, "load mise10-letiste"
+findframe 0, "Tommy"
+
+label 2
+wait 20000
+detector_issignal -1, -1, 2
+label 1
+wait 250
+detector_inrange 0, 25
+if flt[0] = 1, -1, 1
+actor_setplacement 1, 0
+setmissionnumber 1
+change_mission "mise10-letiste", "load z mise10-mesto", 1

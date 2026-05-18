@@ -1,0 +1,8 @@
+enemy_vidim 0
+enemy_lockstate fight_guard, 1
+dim_act 1
+findactor 0, ""
+human_addweapon 0, 10, 50, 200
+wait 2000
+enemy_move 30, run
+enemy_vidim 1

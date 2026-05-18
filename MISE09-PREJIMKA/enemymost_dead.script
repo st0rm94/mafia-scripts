@@ -1,0 +1,14 @@
+dim_act 3
+dim_flt 1
+findactor 0,"Paulie"
+findactor 1,"Enemy08K2"
+findactor 2,"Enemy07+"
+
+label 101
+wait 1000
+human_getproperty 1,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 2,0,Energy
+if flt[0]=0,-1,101
+
+setevent 0,205,-1

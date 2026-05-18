@@ -1,0 +1,35 @@
+commandblock 1
+dim_act 2
+dim_frm 2
+dim_flt 2
+findactor 0, "civil10"
+findactor 1, "Czena5"
+findframe 0, "civil10"
+findframe 1, "Czena5"
+commandblock 0
+
+version_is_germany 1
+if flt[1] = 1, 2, -1
+
+enemy_vidim 0
+enemy_playanim "Obejmuti01Loop.i3d"
+label 1
+human_getproperty 0, 0, energy
+if flt[0] < 100, -1, 1
+enemy_stopanim
+wait 1500
+enemy_look 0
+enemy_wait
+enemy_vidim 1
+label 3
+goto 3
+
+label 2
+frm_seton 0, 0
+frm_seton 1, 0
+act_setstate 0, off
+end
+
+event 1
+enemy_playanim "Obejmuti01Loop.i3d"
+return

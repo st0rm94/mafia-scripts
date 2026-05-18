@@ -1,0 +1,31 @@
+dim_flt 1
+dim_act 6
+dim_frm 5
+findactor 0, "Delnik"
+
+findactor 2, "civil"
+findactor 3, "xbedna 8"
+findactor 4, "xbedna 9"
+findactor 5, "xbedna 7"
+
+findframe 1, "civil"
+findframe 2, "xbedna 8"
+findframe 3, "xbedna 9"
+findframe 4, "xbedna 7"
+
+label 1
+detector_inrange 0, 7
+if flt[0] = 1, -1, 1
+
+label 2
+setevent 0, 1, 2
+
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0

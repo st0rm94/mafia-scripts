@@ -1,0 +1,8 @@
+dim_frm 1
+findframe 0, "radio"
+
+detector_waitforhit
+
+frm_seton 0, 0
+
+act_setstate 100, off

@@ -1,0 +1,2 @@
+act_setstate -1,inactive
+enemy_lockstate panic_freeze

@@ -1,0 +1,17 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Paulie"
+findactor 1, "Sam"
+
+label 1
+detector_inrange 0, 35
+if flt[0] = 1, -1, 1
+
+inventory_push 0
+inventory_push 1
+character_push 0
+character_push 1
+
+setmissionnumber 1
+change_mission "mise16-mesto", "load z mise16-krajina", -1
+

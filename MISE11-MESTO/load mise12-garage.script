@@ -1,0 +1,5 @@
+detector_waitforuse 10970000
+zatmyse 1
+wait 500
+garage_show
+change_mission "mise12-saliery", "", 0

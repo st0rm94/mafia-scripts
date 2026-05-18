@@ -1,0 +1,12 @@
+commandblock 1
+dim_act 2
+dim_frm 1
+findactor 0, "Tommy"
+findactor 1, "zjisteni auta"
+findframe 0, ""
+
+human_getowner 0, 1
+
+actor_setplacement 1, 0
+
+car_setspeed 1, 30

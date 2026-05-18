@@ -1,0 +1,16 @@
+debug_text "objectives: ACTIVATED (ty pred vjetim do pristaviste)"
+mission_objectivesclear
+mission_objectives 18960000
+act_setstate -1, inactive
+mission_objectivesremove 18960000
+mission_objectives 18960001
+act_setstate -1, inactive
+mission_objectivesremove 18960001
+mission_objectives 18960002
+act_setstate -1, inactive
+mission_objectivesremove 18960002
+mission_objectives 18960003
+act_setstate -1, inactive
+mission_objectivesremove 18960003
+mission_objectives 18960004
+end

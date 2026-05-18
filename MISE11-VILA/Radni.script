@@ -1,0 +1,45 @@
+dim_act 5
+dim_frm 2
+dim_flt 1
+findactor 0, ""
+findactor 1, "arrow"
+findactor 2, "Box39"
+findactor 3, "vypinac43"
+findactor 4, "arrow detector"
+findframe 0, "unik"
+findframe 1, "unik2"
+
+{ down
+act_setstate -1, inactive
+enemy_move 323
+door_open 2, 1
+enemy_move 322
+enemy_use_detector 3
+door_open 2, 0
+enemy_move 224
+enemy_move 225
+label 1
+goto 1
+}
+label 2
+goto 2
+
+event 1
+enemy_forcescript 0
+enemy_vidim 0
+enemy_brainwash
+event_use_cb 1
+enemy_talk 11990221, 1
+enemy_move_to_car 1, 0, run
+enemy_usecar 1, 0
+car_enableus 1, 0
+
+compareownerwithex 0, 1, -1, SKIP
+setevent 4, 1000, -1
+label SKIP
+
+enemy_car_moveto 1, 0, vzad
+wait 1000
+enemy_car_moveto 1, 1
+wait 1000
+return

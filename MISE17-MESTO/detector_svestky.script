@@ -1,0 +1,15 @@
+dim_act 1
+findactor 0, "aktivace agentu"
+
+act_setstate 100, inactive
+
+wait 275000
+act_setstate 0, active
+
+label 1
+wait 1000000
+goto 1
+
+event 1
+timeroff
+act_setstate 100, off

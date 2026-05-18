@@ -1,0 +1,20 @@
+dim_act 3
+dim_flt 1
+
+findactor 0,"enemy_switchstate04"
+findactor 1,"Enemy04K"
+findactor 2,"enemy_switchstate02"
+
+label 101
+wait 105
+detector_inrange 0,3
+if flt[0]>0,-1,101
+getactorsdist 0,1,0
+if flt[0]<3,-1,101
+
+wait 1000
+
+setevent 1,201,-1
+act_setstate 2,off
+
+debug_text "SWITCHANIM02"

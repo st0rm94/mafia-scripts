@@ -1,0 +1,24 @@
+dim_flt 1
+dim_act 5
+dim_frm 1
+findactor 0, "1Paulie"
+findactor 1, "1vraceni k pauliemu"
+findactor 2, "1Czena"
+findactor 3, "plac2"
+findactor 4, "plac1"
+findframe 0, "sejmuta krava"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+act_setstate 1, active
+
+frm_seton 0, 1
+human_death 2
+
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 100, off

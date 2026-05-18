@@ -1,0 +1,24 @@
+dim_act 2
+dim_frm 5
+findactor 0, "Tommy"
+findactor 1, "banka.Object02"
+findframe 0, "Tommy"
+findframe 1, "tommy bank"
+findframe 2, "pos bankout"
+findframe 3, "load mise11-saliery"
+findframe 4, "sem"
+
+act_setstate -1, inactive
+human_talk 0, 10991241, 4
+human_talk 0, 10991242, 4
+human_holster 0
+human_addweapon 0, 19, 0, 0
+actor_setdir 0, 4
+commandblock 1
+camera_unlock
+frm_seton 0, 1
+commandblock 0
+player_lockcontrols 0
+mission_objectivesclear
+mission_objectives 10960007
+end

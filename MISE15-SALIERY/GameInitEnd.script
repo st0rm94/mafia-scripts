@@ -1,0 +1,230 @@
+dim_flt 1
+dim_act 31
+dim_frm 37
+
+findactor 0, "Tommy"
+findactor 1, "VincenzoHIGH"
+findactor 2, "prijiti k vincenzovi"
+findactor 3, "Paulie"
+findactor 4, "pritomnost playera u vincenza"
+findactor 5, "obsazeni check 3"
+findactor 6, "hudforsal"
+findactor 7, "Ralph"
+findactor 8, "load mise15-mesto animace"
+findactor 9, "load mise15-mesto"
+findactor 10, "1load mise15-mesto"
+findactor 11, "dvere_frontX"
+findactor 12, "Object28"
+findactor 13, "SalieriHIGH"
+findactor 14, "VincenzoHIGH2"
+findactor 15, "SalieriHIGH2"
+findactor 16, "nesahat_forVco"
+findactor 17, "Ralph2"
+findactor 18, "load animation 15.1"
+findactor 19, "load animation 15.3"
+findactor 20, "door_dvuX01"
+findactor 21, "door_dvuX"
+findactor 22, "Luigi"
+findactor 23, "detekce healtu vsech"
+findactor 24, "1detekce healtu vsech"
+findactor 25, "detekce bordelu"
+findactor 26, "detekce bordelu 1"
+findactor 27, "2bomb"
+findactor 28, "xradio "
+findactor 29, "presouvani ab"
+findactor 30, "luigi ab"
+
+findframe 0, "Tommy"
+findframe 1, "VincenzoHIGH"
+findframe 2, "Paulie"
+findframe 3, "Ralph"
+findframe 4, "hudforsal"
+findframe 5, "poloha playera v druhe casti"
+findframe 6, "SalieriHIGH"
+findframe 7, "VincenzoHIGH2"
+findframe 8, "SalieriHIGH2"
+findframe 9, "xplechovka7"
+findframe 10, "xplechovka8"
+findframe 11, "nesahat_forVco"
+findframe 12, "Ralph2"
+findframe 13, "nesahat_forVco.WHL0"
+findframe 14, "9cih"
+findframe 15, "9cih2"
+findframe 16, "9cih3"
+findframe 17, "2tommy"
+findframe 18, "9pistl1lw"
+findframe 19, "noviny-slozene"
+findframe 20, "salek"
+findframe 21, "Luigi"
+findframe 22, "ubrou_s3"
+findframe 23, "xpopelnik3"
+findframe 24, "zapad"
+findframe 25, "2tommy2"
+findframe 26, "2bomb"
+findframe 27, "@zidle"
+findframe 28, "@zidle02"
+findframe 29, "grab"
+findframe 30, "music"
+findframe 31, "vinc_sroub"
+findframe 32, "FMVcigara"
+findframe 33, "umyvani"
+findframe 34, "2c2"
+findframe 35, "zapalovac"
+findframe 36, "zahozeni"
+
+door_enableus 11, 0
+door_enableus 12, 0
+garage_generatecars
+frm_seton 25, 0
+frm_seton 33, 0
+frm_seton 34, 0
+
+human_addweapon 0, 6, 6, 0
+human_holster 0
+
+getmissionnumber 0
+let flt[0] = flt[0] + 1
+goto flt[0]
+
+label 1
+act_setstate 8, off
+act_setstate 10, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, off
+act_setstate 19, off
+
+act_setstate 24, off
+act_setstate 26, off
+act_setstate 27, off
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 26, 0
+frm_seton 28, 0
+frm_seton 29, 0
+disablecolls 28
+mission_objectivesclear
+mission_objectives 15960000
+
+human_addweapon 1, 12, 2, 30
+human_addweapon 22, 12, 2, 30
+human_addweapon 13, 9, 7, 30
+human_addweapon 3, 6, 6, 30
+human_addweapon 7, 6, 6, 30
+human_holster 1
+human_holster 22
+human_holster 13
+human_holster 3
+human_holster 7
+garage_nezahazuj 6
+end
+
+label 2
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 13, off
+act_setstate 18, off
+
+act_setstate 23, off
+act_setstate 25, off
+act_setstate 28, off
+act_setstate 29, off
+act_setstate 30, off
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 6, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 13, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 25, 0
+frm_seton 27, 0
+frm_seton 30, 0
+frm_seton 31, 0
+frm_seton 35, 0
+frm_seton 36, 0
+disablecolls 27
+human_addweapon 14, 12, 2, 30
+human_addweapon 15, 9, 7, 30
+human_addweapon 22, 12, 2, 30
+human_addweapon 0, 8, 6, 30
+human_addweapon 17, 6, 6, 30
+human_holster 0
+human_holster 14
+human_holster 15
+human_holster 22
+human_holster 17
+actor_setplacement 0, 5
+setmissionnumber 1
+car_enableus 16, 0
+mission_objectivesclear
+mission_objectives 15960002
+door_lock 20, 1
+door_lock 21, 1
+end
+
+label 3
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 9, off
+act_setstate 10, off
+act_setstate 13, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, off
+act_setstate 18, off
+
+//frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 19, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+
+player_lockcontrols 1
+setmissionnumber 2
+end

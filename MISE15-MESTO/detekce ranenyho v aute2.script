@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 3
+findactor 0, "civil6"
+//findactor 1, "zjisteni auta"
+findactor 2, "civil5"
+
+act_setstate 100, inactive
+
+human_getowner 0, 1
+
+label 1
+wait 100
+compareownerwithex 0, 1, 1, -1
+
+wait 7000
+
+detector_setsignal 100, 1
+
+human_setproperty 2, 0, energy

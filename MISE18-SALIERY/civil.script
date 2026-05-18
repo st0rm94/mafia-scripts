@@ -1,0 +1,10 @@
+enemy_lockstate PANIC_FREEZE
+dim_flt 1
+label FREESTATE
+enemy_playanim "ZidleJedeniPriborem2.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "ZidleJedeniPriborem.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto FREESTATE

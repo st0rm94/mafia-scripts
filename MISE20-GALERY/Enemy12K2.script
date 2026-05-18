@@ -1,0 +1,14 @@
+enemy_vidim 0
+dim_act 1
+findactor 0, ""
+
+human_addweapon 0, 11, 8, 16
+human_addweapon 0, 6, 6, 18
+
+enemy_lockstate fight_guard_stand, 1
+frm_seton 100, 0
+act_setstate 100, inactive
+frm_seton 100, 1
+wait 10000
+enemy_move 16
+enemy_vidim 1

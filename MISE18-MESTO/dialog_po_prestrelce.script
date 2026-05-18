@@ -1,0 +1,139 @@
+//[debug_me]
+dim_act 6
+dim_frm 1
+dim_flt 5
+// flt[1] = label posledni hlasky
+// flt[2] = dalsi check na svestky
+// flt[3] = Sli po nas svestky ?
+// flt[4] = label posledniho upozorneni
+
+findframe 0, "finalni_animace"
+findactor 0, "Paulie2"
+findactor 1, "Sam2"
+getactiveplayer 2
+findactor 3, "TruckBx"
+findactor 4, "finalni_animace"
+findactor 5, "objectives2"
+
+// Aktivuje mne detector_prestrelka2
+act_setstate -1, inactive
+debug_text "dialog_po_prestrelce: Activated"
+let flt[0] = 0
+group_disband 0
+label WAIT2
+getactorsdist 1, 0, 0
+if flt[0]  < 10, -1, WAIT2
+getactorsdist 0, 2, 0
+if flt[0]  < 10, -1, WAIT2
+getactorsdist 1, 2, 0
+if flt[0]  < 10, -1, WAIT2
+
+human_looktoactor 0, 2, 1
+human_looktoactor 1, 0, 1
+human_looktoactor 2, 0, 1
+human_talk 0, 18990601
+human_looktoactor 0
+human_looktoactor 1
+human_looktoactor 2
+
+setcompass 0
+// Objectives
+act_setstate 5, active
+// Finalni animace
+act_setstate 4, active
+
+// Sam
+enemy_forcescript 1
+label SEND
+setevent 1, 1, SEND
+// Smazani indikatoru
+wingman_delindicator 1, 1
+
+// Paulie
+enemy_forcescript 0
+
+label TESTAUTO
+compareownerwithex 0, 3, -1, TESTAUTO
+compareownerwithex 2, 3, -1, TESTAUTO
+
+gosub CHECKSVESTKY
+human_talk 0, 18990611, 2
+wait 40000
+gosub CHECKSVESTKY
+human_talk 2, 18990661, 2
+gosub CHECKSVESTKY
+human_talk 0, 18990671, 2
+gosub CHECKSVESTKY
+human_talk 2, 18990681, 2
+gosub CHECKSVESTKY
+human_talk 0, 18990691, 2
+end
+
+label CHECKSVESTKY
+get_pm_numpredators 2, 0
+//if flt[0] ! 0, -1, RETFINAL
+// Anglani jsou sulini, tohle neproslo :(
+if flt[0] ! 0, CHECKSVESTKY, RETFINAL
+//----------------------------------------------------------
+if flt[3] = 0, -1, SKIPUPOZORNENI
+// Tommy 950229-31
+label RERAND2
+   rnd 0, 3
+   let flt[0] = flt[0] + 7
+   if flt[0] = flt[4], RERAND2, -1
+   goto flt[0]
+   label 7
+      let flt[4] = flt[0]
+      human_talk 2, 950229
+      goto SKIPUPOZORNENI
+   label 8
+      let flt[4] = flt[0]
+      human_talk 2, 950230
+      goto SKIPUPOZORNENI
+   label 9
+      let flt[4] = flt[0]
+      human_talk 2, 950231
+label SKIPUPOZORNENI
+   // Paulie 950072-74
+   // Tommy 950223-25
+   getgametime 0
+   if flt[0] > flt[2], -1, CHECKSVESTKY
+   label RERAND
+      rnd 0, 6
+      let flt[0] = flt[0] + 1
+      if flt[0] = flt[1], RERAND, -1
+      goto flt[0]
+   label 1
+      human_looktoactor 0, 2, 1
+      human_looktoactor 2, 0, 1
+      human_talk 0, 950072
+      goto RET
+   label 2
+      human_looktoactor 0, 2, 1
+      human_looktoactor 2, 0, 1
+      human_talk 0, 950073
+      goto RET
+   label 3
+      human_looktoactor 0, 2, 1
+      human_looktoactor 2, 0, 1
+      human_talk 0, 950074
+      goto RET
+   label 4
+      human_talk 2, 950223, 4
+      goto RET
+   label 5
+      human_talk 2, 950224, 4
+      goto RET
+   label 6
+      human_talk 2, 950225, 4
+   label RET
+      let flt[1] = flt[0]
+      human_looktoactor 0
+      human_looktoactor 2
+      getgametime 2
+      let flt[2] = flt[2] + 7000
+      let flt[3] = 1
+      goto CHECKSVESTKY
+label RETFINAL
+      let flt[3] = 0
+return

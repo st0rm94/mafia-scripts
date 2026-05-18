@@ -1,0 +1,63 @@
+[debug_me]
+dim_flt 2
+dim_act 7
+findactor 0, "Vincenzo"
+findactor 1, "Ralph"
+findactor 2, "Tommy"
+findactor 3, "GDFGEFGIJEFGEGEJGFG"
+findactor 4, "detector_hlasky"
+findactor 5, "Paulie"
+findactor 6, "Sam"
+label 1
+detector_inrange 0, 4
+if flt[0] = 1, -1, 1
+if flt[1] = 0, 3, -1
+if flt[1] = 1, 5, -1
+if flt[1] = 2, 6, -1
+if flt[1] = 3, 4, 1
+
+label 3
+debug_text "FIRST GO TO VINCENZO FOR WEAPONS AND TO RALPH FOR A CAR"
+label SEND
+setevent 4, 100, SEND
+wait 6000
+goto 1
+
+label 5
+debug_text "FIRST GO TO RALPH FOR CADDDDILACCCCC :)"
+label SEND2
+setevent 4, 100, SEND2
+wait 6000
+goto 1
+
+label 6
+debug_text "FIRST GO TO VINCENZO FOR WEAPONS"
+label SEND3
+setevent 4, 100, SEND3
+wait 6000
+goto 1
+
+label 4
+compareownerwithex 2, 3, 5, -1
+compareownerwithex 5, 3, 1, -1
+compareownerwithex 6, 3, 1, -1
+commandblock 1
+zatmyse 1, 1
+inventory_push 2
+character_push 2
+character_push 6
+character_push 5
+debug_text "Load mise 18 mesto"
+change_mission "mise18-mesto", "load z mise 18-saliery", 1 
+commandblock 0
+goto FINISH
+
+event 1
+let flt[1] = flt[1] + 1
+return
+
+event 2
+let flt[1] = flt[1] + 2
+return
+
+label FINISH

@@ -1,0 +1,7 @@
+act_setstate -1, inactive
+
+dim_frm 1
+findframe 0,"zahozeni"
+
+wait 4200
+frm_seton 0, 1

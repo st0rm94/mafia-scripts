@@ -1,0 +1,7 @@
+dim_act 1
+findactor 0, "xletadlo17413"
+
+act_setstate 100, inactive
+
+wait 60000
+airplane_start2 0

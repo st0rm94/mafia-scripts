@@ -1,0 +1,51 @@
+dim_flt 3
+dim_act 3
+dim_frm 2
+findactor 0, "1AsisPZ"
+findactor 1, "1prichod do mistnosti u peteho"
+findactor 2, "Tommy"
+findframe 0, "buseni"
+findframe 1, "poloha playera u dveri"
+
+let flt[2] = 4
+
+label 3
+detector_waitforuse 19970002
+
+policeitchforplayer 1
+if flt[1] = 1, -1, 1
+goto flt[2]
+
+label 4
+human_talk 2, 00950223, 4
+let flt[2] = flt[2] + 1
+goto 3
+
+label 5
+human_talk 2, 00950224, 4
+let flt[2] = flt[2] + 1
+goto 3
+
+label 6
+human_talk 2, 00950225, 4
+let flt[2] = 4
+goto 3
+
+label 1
+commandblock 1
+setcompass -1
+player_lockcontrols 1
+actor_setplacement 2, 1
+act_setstate 0, active
+frm_seton 0, 1
+commandblock 0
+person_playanim 2, "buseninadvere02.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_stopanim 2
+player_lockcontrols 0
+
+label 2
+setevent 0, 1, 2
+act_setstate 1, active
+act_setstate 100, off

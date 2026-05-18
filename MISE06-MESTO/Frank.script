@@ -1,0 +1,33 @@
+dim_flt 1
+dim_act 2
+dim_frm 1
+findactor 0,"Frank"
+findactor 1,"Tommy"
+
+findframe 0,"Frank"
+
+setcompass 0
+timeron 11,35,0,300
+settimeoutevent 0, 201
+
+label 1
+rnd 0, 10
+let flt[0] = flt[0] * 700
+let flt[0] = flt[0] + 3000
+enemy_playanim "Gestikulace04.I3D"
+wait flt[0]
+enemy_playanim "Gestikulace05.I3D"
+rnd 0, 10
+let flt[0] = flt[0] * 700
+let flt[0] = flt[0] + 3000
+wait flt[0]
+enemy_playanim "Gestikulace06.I3D", 0
+let flt[0] = flt[0] - 2000
+wait flt[0]
+goto 1
+
+
+event 201
+endofmission 0, 06980001
+end
+

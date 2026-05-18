@@ -1,0 +1,70 @@
+              //blok pro pripravu registru// 
+dim_frm 8
+  findframe 0,"lighting"
+  findframe 1,"lighting2"
+  findframe 2,"lighting3"
+  findframe 3,"p_thunder"
+  findframe 4,"2lighting"
+  findframe 5,"2lighting2"
+  findframe 6,"2lighting3"
+  findframe 7,"2lighting4"
+dim_flt 3
+                                          //konec bloku pro pripravu registru//
+
+                                          //blok pro pozhasinani svetel, blesku  a vypnuti zvuku//
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+
+                                           //konec bloku pro pozhasinani svetel, blesku a vypnuti zvuku//
+label 1
+rnd 2, 3                               //volba pozice blesku//
+rnd 0, 20000                       //vypocet casu pro prodlevu mezi blesky//
+let flt[0] = flt[0] + 10000       //nastaveni offsetu prodlevy mezi blesky//
+wait flt[0]                             //prodleva mezi blesky//
+let flt[2] = flt[2] + 3                //uprava nastaveni pozice blesku//
+goto flt[2]
+label 2
+frm_seton 0, 1                     //blok zapinani svetel//  
+wait 50
+frm_seton 1, 1
+wait 25
+frm_seton 2, 1
+frm_seton 1, 0
+wait 75
+frm_seton 2, 0
+wait 50
+frm_seton 0, 0                     //konec bloku zapinani svetel//
+
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0                     //zhasnuti blesku//
+
+rnd 1, 1000                         //volba prodlevy mezi bleskem a zahrmenim//
+let flt[1] = flt[1] + 1000         //nastaveni offsetu prodlevy mezi bleskem a zahrmenim//
+wait flt[1]                             //prodleva mezi bleskem a zahrmenim//
+playsoundex 3, 119            //prehrani zvuku hrmeni//
+wait 10000
+frm_seton 3, 0                    //vypnuti zvuku// 
+goto 1
+label 3
+frm_seton 4, 1                     //zobrazeni blesku// 
+goto 2
+
+label 4
+frm_seton 5, 1                     //zobrazeni blesku//
+goto 2
+
+label 5 
+frm_seton 6, 1                     //zobrazeni blesku// 
+goto 2
+
+label 6
+frm_seton 7, 1                     //zobrazeni blesku// 
+goto 2

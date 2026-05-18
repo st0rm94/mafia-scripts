@@ -1,0 +1,80 @@
+//[debug_me]
+dim_act 2
+dim_flt 3
+dim_frm 2
+findactor 0
+findactor 1, "Tommy"
+findframe 0, "utirani1"
+findframe 1, "utirani2"
+human_addweapon 0, 9, 105, 7
+human_holster 0
+frm_seton 0, 0
+frm_seton 1, 0
+enemy_shut_up yes
+enemy_vidim 0
+goto SKIP
+
+{ UP
+label FREESTATE
+enemy_move 6
+enemy_lookto 7
+enemy_wait
+label SKIP
+frm_seton 0, 1
+enemy_playanim "!M3_E_SaraSMycka.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+enemy_move 4
+enemy_lookto 5
+enemy_wait
+frm_seton 1, 1
+enemy_playanim "!M3_E_SaraNaToma.I3D", 0
+let flt[0] = flt[0] -83
+wait flt[0]
+goto FREESTATE
+}
+
+event USE_AB, 07970004
+enemy_look 1
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+enemy_stopanim
+enemy_talk 07990711
+enemy_wait
+human_eraseab 0
+human_looktoactor 0
+human_looktoactor 1
+event_use_cb 1
+return
+
+event HIT_FROM_PLAYER
+enemy_stopanim
+if flt[2] > 3, RET2, -1
+human_looktoactor 0, 1, 1
+let flt[2] = flt[2] +1
+human_stoptalk 0
+human_getproperty 0, 0, Energy
+if flt[0] < 40, NASERSE, -1
+if flt[2] = 1, 18, -1
+if flt[2] = 2, 19, NASERSE
+label RERAND
+label 18
+enemy_talk 00950067
+goto RET2
+label 19
+enemy_talk 00950068
+goto RET2
+label NASERSE
+enemy_shut_up no
+human_looktoactor 0
+enemy_vidim 1
+enemy_naserse 1
+label RET2
+event_use_cb 0
+return
+
+event 1000
+enemy_shut_up no
+enemy_vidim 1
+enemy_naserse 1
+return

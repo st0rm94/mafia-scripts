@@ -1,0 +1,50 @@
+dim_act 4
+dim_flt 2
+findactor 0,"detector_loadmesto"
+findactor 2,"Tommy"
+findactor 3,"NULL"
+let flt[1]=0
+
+{ up
+label 101
+detector_inrange 0, 5
+if flt[0]=1,-1,101
+if flt[1]=1,-1,102
+}
+
+compareownerwithex 2,3,-1,LOAD
+
+findnearactor 0,1,car
+getactorsdist 0,1,0
+if flt[0]<5,-1,LOAD
+
+label LOOP
+wait 500
+compareownerwithex 2,1,-1,LOOP
+
+label LOAD
+debug_text "LOAD MESTO"
+change_mission "mise05-mesto", "start" , 4
+end
+
+label 102
+rnd 0,3
+  if flt[0]=0,-1,120
+  human_talk 2,00950246
+  goto 104
+  label 120
+  if flt[0]=1,-1,121
+  human_talk 2,00950247
+  goto 104
+  label 121
+  if flt[0]=2,-1,122
+  human_talk 2,00950248
+  label 122
+label 104
+wait 500
+detector_inrange 0, 6
+if flt[0]=1,104,101
+
+event 201
+let flt[1]=1
+return

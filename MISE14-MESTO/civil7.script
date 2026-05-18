@@ -1,0 +1,44 @@
+dim_flt 1
+dim_frm 2
+dim_act 4
+findactor 0, ""
+findactor 2, "Guard2"
+findframe 0, "xpenis10"
+findframe 1, "xpenis2"
+frm_seton 0, 0
+wait 4000
+enemy_playanim "GestikulaceNew02.I3D"
+
+
+label 1
+wait 500
+if flt[0] = 1, -1, 1
+wait 800
+enemy_move 12
+enemy_lookto 2
+wait 5000
+enemy_move 2
+label 2
+setevent 2, 3, 2
+enemy_lookto 3
+wait 1000
+enemy_playanim "x host listek.i3d", 0
+frm_seton 0, 1
+wait 950
+frm_seton 0, 0
+frm_seton 1, 1
+wait 950
+enemy_playanim "x host listek.i3d"
+wait 750
+frm_seton 0, 1
+frm_seton 1, 0
+wait 1150
+frm_seton 0, 0
+label 3
+setevent 3, 1, 3
+enemy_move 7
+act_setstate 0, off
+
+event 1
+let flt[0] = 1
+return

@@ -1,0 +1,34 @@
+act_setstate -1,inactive
+
+mission_objectivesclear
+mission_objectives 22930023
+
+dim_flt 1
+dim_act 2
+findactor 0, "fov_det01"
+act_setstate 0,active
+findactor 0, "fov_car"
+findactor 1, "detector_fov"
+
+timeron 0,0,0,240
+settimeoutevent 1,201
+
+label 1
+car_getspeed 0, 0
+let flt[0] = 75 + flt[0]
+if flt[0] > 170, 2, -1
+label 3
+camera_setfov flt[0]
+commandblock 0
+commandblock 1
+goto 1
+
+label 2
+let flt[0] = 170
+goto 3
+
+event 201
+commandblock 0
+mission_objectivesclear
+endofmission 0,22980001
+end

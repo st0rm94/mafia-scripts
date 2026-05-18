@@ -1,0 +1,14 @@
+//nahodny dvorek4
+
+dim_flt 1
+dim_frm 1
+FindFrame 0, "dvorek4"
+
+label 10
+  rnd 0, 6                   
+  let flt[0] = flt[0] * 8547
+  let flt[0] = flt[0] + 12354 
+  wait flt[0]
+  frm_seton 0, 1
+goto 10
+end

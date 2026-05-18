@@ -1,0 +1,481 @@
+dim_frm 26
+dim_flt 6
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+commandblock 1
+findframe 0, "utirani"
+findframe 1, "umyvani"
+findframe 2, "9hadra"
+findframe 3, "2sklinka11"
+findframe 4, "9hadra2"
+findframe 5, "2sklinka"
+findframe 6, "2sklinka2"
+findframe 7, "2sklinka3"
+findframe 8, "2sklinka4"
+findframe 9, "2sklinka5"
+findframe 10, "2sklinka6"
+findframe 11, "2sklinka7"
+findframe 12, "2sklinka8"
+findframe 13, "2sklinka9"
+findframe 14, "2sklinka10"
+findframe 15, "2sklinka12"
+findframe 16, "2sklinka13"
+findframe 17, "2sklinka14"
+findframe 18, "2sklinka15"
+findframe 19, "2sklinka16"
+findframe 20, "2sklinka17"
+findframe 21, "2sklinka18"
+findframe 22, "2sklinka19"
+findframe 23, "2sklinka20"
+findframe 24, "2sklinka21"
+findframe 25, "2sklinka22"
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+
+let flt[1] = 2
+
+commandblock 0
+
+label 1
+enemy_move 11
+enemy_lookto 13
+enemy_wait
+enemy_playanim "breath-barman.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x barman stativ.i3d"
+wait 3000
+frm_seton 0, 1
+enemy_playanim "x barman stul.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x barman stativ.i3d"
+wait 5000
+enemy_playanim "barman-breath.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+
+
+if flt[2] = 1, 7, -1
+
+{ up
+enemy_move 12
+enemy_lookto 14
+enemy_wait
+frm_seton 1, 1
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 2, 0
+frm_seton 4, 1
+commandblock 0
+wait 1300
+commandblock 1
+frm_seton 3, 1
+frm_seton 5, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 22, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 6, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 23, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 7, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 24, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 8, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 19, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 9, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 18, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 10, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 17, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 11, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 16, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 12, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 21, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 13, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 15, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 3, 1
+frm_seton 14, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 20, 1
+frm_seton 25, 0
+commandblock 0
+wait 1500
+commandblock 1
+frm_seton 1, 0
+frm_seton 2, 1
+frm_seton 4, 0
+commandblock 0
+enemy_stopanim
+let flt[2] = 1
+goto 1
+}
+
+label 7
+{ up
+enemy_move 12
+enemy_lookto 14
+enemy_wait
+frm_seton 1, 1
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 2, 0
+frm_seton 4, 1
+commandblock 0
+wait 1300
+commandblock 1
+frm_seton 25, 1
+frm_seton 22, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 22, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 23, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 23, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 24, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 24, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 19, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 19, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 18, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 18, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 14, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 17, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 16, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 16, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 21, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 21, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 15, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 15, 1
+frm_seton 25, 0
+commandblock 0
+wait 300
+commandblock 1
+frm_seton 25, 1
+frm_seton 20, 0
+commandblock 0
+wait 2500
+enemy_playanim "x barman umyvani.i3d"
+commandblock 1
+frm_seton 1, 0
+frm_seton 1, 1
+frm_seton 3, 0
+frm_seton 25, 1
+commandblock 0
+wait 1000
+commandblock 1
+frm_seton 20, 1
+frm_seton 25, 0
+commandblock 0
+wait 1500
+commandblock 1
+frm_seton 1, 0
+frm_seton 2, 1
+frm_seton 4, 0
+commandblock 0
+enemy_stopanim
+frm_seton 1, 0
+goto 1
+}
+
+event 1000
+enemy_action_fire 1

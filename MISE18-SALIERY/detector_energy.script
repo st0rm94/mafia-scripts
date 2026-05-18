@@ -1,0 +1,43 @@
+dim_act 6
+findactor 0, "Tommy"
+findactor 1, "Sam"
+findactor 2, "Paulie"
+findactor 3, "Salieri"
+findactor 4, "Ralph"
+findactor 5, "Luigi"
+
+dim_flt 1
+
+label DETECT
+wait 500
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, SAMDEATH, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, PAULIEDEATH, -1
+human_getproperty 3, 0, Energy
+if flt[0] = 0, SALIERIDEATH, -1
+human_getproperty 4, 0, Energy
+if flt[0] = 0, RALPHDEATH, -1
+human_getproperty 5, 0, Energy
+if flt[0] = 0, LUIGIDEATH, DETECT
+
+label TOMMYDEATH
+endofmission 0, 18980050
+end
+label SAMDEATH
+endofmission 0, 18980051
+end
+label PAULIEDEATH
+endofmission 0, 18980052
+end
+label SALIERIDEATH
+endofmission 0, 18980053
+end
+label RALPHDEATH
+endofmission 0, 18980054
+end
+label LUIGIDEATH
+endofmission 0, 07980009
+end

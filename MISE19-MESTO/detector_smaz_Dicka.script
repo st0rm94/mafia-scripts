@@ -1,0 +1,17 @@
+act_setstate -1, inactive
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "Hoolig"
+human_holster 1
+dim_flt 1
+dim_frm 1
+findframe 0, "Hoolig"
+
+label CHECK
+getactorsdist 0, 1, 0
+if flt[0] = 200, -1, CHECK
+
+act_setstate 1, off
+frm_seton 0, 0
+debug_text "detector_smaz_Dicka: Dick smazan !"
+end

@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 1
+findactor 0, "1odchod od peteho 3"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 2 
+if flt[0] = 1, -1, 1
+
+detector_setsignal 100, 1
+act_setstate 0, active
+act_setstate 100, off

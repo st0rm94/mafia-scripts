@@ -1,0 +1,19 @@
+enemy_vidim 0
+dim_act 2
+findactor 0
+findactor 1, "Enemy1"
+human_addweapon 0, 11, 8, 32
+
+{ DOWN
+label WAIT
+//debug_text "Enemy3: waiting..."
+goto WAIT
+}
+enemy_vidim 1
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

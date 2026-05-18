@@ -1,0 +1,30 @@
+dim_flt 1
+dim_act 9
+findactor 0, "Enemy10K2"
+findactor 1, "Enemy04K"
+findactor 2, "Enemy08K"
+findactor 3, "Enemy10K"
+findactor 4, "Enemy12K"
+findactor 5, "Enemy12K2"
+findactor 6, "Enemy11K"
+findactor 7, "Enemy12K3"
+findactor 8, "Enemy12K4"
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+human_getproperty 1, 0, energy
+if flt[0] = 0, -1, 1
+human_getproperty 2, 0, energy
+if flt[0] = 0, -1, 1
+human_getproperty 3, 0, energy
+if flt[0] = 0, -1, 1
+human_getproperty 4, 0, energy
+if flt[0] = 0, -1, 1
+human_getproperty 5, 0, energy
+if flt[0] = 0, -1, 1
+human_getproperty 6, 0, energy
+if flt[0] = 0, -1, 1
+human_getproperty 7, 0, energy
+if flt[0] = 0, -1, 1
+setevent 8, 1, -1

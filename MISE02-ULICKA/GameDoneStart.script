@@ -1,0 +1,3 @@
+dim_frm 1
+findframe 0,"shooting S&W"
+frm_seton 0,0

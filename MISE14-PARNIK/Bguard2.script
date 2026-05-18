@@ -1,0 +1,143 @@
+commandblock 1
+dim_flt 6
+dim_act 37
+findactor 0, "Bguard2"
+findactor 1, "TommySAILOR"
+findactor 2, "Bguard"
+findactor 3, "civil13"
+findactor 5, "Czena6"
+findactor 6, "civil12"
+findactor 7, "civil14"
+findactor 8, "civil6"
+findactor 9, "civil7"
+findactor 10, "civil10"
+findactor 11, "Czena5"
+findactor 12, "waiter2"
+findactor 13, "civil"
+findactor 14, "civil2"
+findactor 15, "civil4"
+findactor 16, "waiter"
+findactor 17, "civil5"
+findactor 18, "civil3"
+findactor 19, "Czena7"
+findactor 20, "civil15"
+findactor 21, "civil16"
+findactor 22, "civil17"
+findactor 23, "Czena3"
+findactor 24, "Czena4"
+findactor 25, "Czena2"
+findactor 26, "civil18"
+findactor 27, "civil19"
+findactor 28, "civil9"
+findactor 29, "Czena"
+findactor 30, "civil11"
+findactor 31, "civil20"
+findactor 32, "civil21"
+findactor 33, "civil22"
+findactor 34, "civil23"
+findactor 35, "civil24"
+findactor 36, "Radni"
+
+// 1 patro group
+enemy_group_new 2
+enemy_group_add 2, 0
+enemy_group_add 2, 2
+enemy_group_add 2, 3
+enemy_group_add 2, 4
+enemy_group_add 2, 5
+enemy_group_add 2, 6
+enemy_group_add 2, 7
+enemy_group_add 2, 8
+enemy_group_add 2, 9
+enemy_group_add 2, 10
+enemy_group_add 2, 11
+enemy_group_add 2, 12
+enemy_group_add 2, 36
+// bar group
+enemy_group_new 3
+enemy_group_add 3, 0
+enemy_group_add 3, 2
+enemy_group_add 3, 3
+enemy_group_add 3, 13
+enemy_group_add 3, 14
+enemy_group_add 3, 15
+enemy_group_add 3, 16
+enemy_group_add 3, 17
+enemy_group_add 3, 18
+// 2 patr group
+enemy_group_new 4
+enemy_group_add 4, 0
+enemy_group_add 4, 2
+enemy_group_add 4, 3
+enemy_group_add 4, 19
+enemy_group_add 4, 20
+enemy_group_add 4, 21
+enemy_group_add 4, 22
+enemy_group_add 4, 23
+enemy_group_add 4, 24
+enemy_group_add 4, 25
+enemy_group_add 4, 26
+enemy_group_add 4, 27
+enemy_group_add 4, 28
+enemy_group_add 4, 29
+enemy_group_add 4, 30
+enemy_group_add 4, 31
+enemy_group_add 4, 32
+enemy_group_add 4, 33
+enemy_group_add 4, 34
+enemy_group_add 4, 35
+commandblock 0
+
+human_addweapon 0, 8, 6, 30
+human_addweapon 0, 16, 0, 0
+human_holster 0
+{ up
+enemy_playanim "x hlidka stativ02.I3D"
+label 10
+if flt[1] = 1, 11, 10
+label 11
+enemy_move 25
+enemy_wait
+enemy_move 26
+enemy_lookto 3
+enemy_wait
+label 17
+goto 17
+}
+
+event 1
+let flt[1] = 1
+return
+
+event 4
+enemy_forcescript 0
+enemy_brainwash
+human_activateweapon 0, 8
+enemy_action_fire 1, 7
+return
+
+event use_ab, 14970002
+event_use_cb 1
+getenemyaistate 0, 5
+if flt[5] ! 0, 6, -1
+human_looktoactor 0, 1, 1
+if flt[0] = 0, 2, -1
+if flt[0] = 2, 7, -1
+enemy_talk 14950006
+let flt[0] = 0
+goto 6
+label 2
+enemy_talk 14950007
+let flt[0] = 2
+goto 6
+label 7
+enemy_talk 14950008
+let flt[0] = 1
+label 6
+enemy_wait
+human_looktoactor 0
+return
+
+event 12
+enemy_naserse 1
+return

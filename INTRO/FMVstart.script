@@ -1,0 +1,20 @@
+commandblock 1
+
+recloadfull "record00.rep"
+
+commandblock 0
+
+
+play_avi_intro
+
+recwaitforend 
+
+
+commandblock 1
+
+recunload
+
+commandblock 0
+
+zatmyse 1,0
+endofmission 1,0

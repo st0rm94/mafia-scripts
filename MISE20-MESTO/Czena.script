@@ -1,0 +1,175 @@
+enemy_vidim 0
+dim_flt 2
+dim_act 11
+dim_frm 3
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "player nasel ukryt"
+findactor 3, "detekce vzdalenosti playera od zeny"
+findactor 4, "k_hotel00.Mesh02"
+findactor 5, "4build506.Object03"
+findactor 6, "detekce healtu zeny"
+findactor 7, "detekce tramvaje"
+findactor 8, "rozhlidnuti doleva"
+findactor 9, "rozhlidnuti doprava"
+findactor 10, "detekce tramvaje 1"
+
+findframe 0, "load mise20-galery"
+
+enemy_changeanim "walk1.i3d", "walk woman1.i3d"
+
+act_setstate 6, active
+
+door_open 4, 1
+
+enemy_move 28
+
+door_open 4, 0
+
+enemy_vidim 1
+
+{ up
+enemy_move 19
+label 104
+}
+
+{ up
+enemy_move 23
+label 103
+}
+
+{ up
+enemy_move 24
+label 106
+}
+
+{ up
+enemy_move 22
+label 109
+}
+
+{ up
+enemy_move 25
+label 110
+}
+
+{ up
+enemy_move 26
+label 107
+}
+
+{ up
+enemy_move 27
+label 108
+}
+
+{ up
+act_setstate 3, active
+enemy_move 21
+act_setstate 3, off
+enemy_lookto 29
+enemy_wait
+act_setstate 2, active
+door_open 5, 1
+wait 500
+enemy_move 30
+enemy_lookto 29
+enemy_wait
+door_open 5, 0
+label 102
+}
+
+wait 3000
+act_setstate 6, off
+frm_seton 100, 0
+act_setstate 100, off
+
+event 1
+event_use_cb 1
+if flt[1] = 5, 4, -1
+if flt[1] = 4, 3, -1
+if flt[1] = 3, 2, -1
+human_looktoactor 0, 1, 1
+enemy_forcescript 0
+enemy_stop
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+wait 1000
+getangleactortoactor 1, 0, 0
+if flt[0] < 70, -1, 5
+let flt[1] = 3
+act_setstate 3, active
+return
+
+label 5
+human_looktoactor 0
+let flt[1] = flt[1] + 1
+act_setstate 3, active
+return
+
+label 2
+enemy_forcescript 0
+enemy_stop
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_talk 0, 20990321, 1
+enemy_wait
+let flt[1] = flt[1] + 1
+act_setstate 3, active
+return
+
+label 3
+enemy_forcescript 0
+enemy_stop
+enemy_look 1
+enemy_wait
+enemy_talk 0, 20990322, 1
+policemanager_forcearrest 1, 1
+enemy_playanim "game sarastativ.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+human_looktoactor 0, 1, 1
+
+getactorsdist 0, 1, 0
+if flt[0] < 10, -1, 6
+
+wait 3000
+
+getactorsdist 0, 1, 0
+if flt[0] < 10, 4, -1
+
+label 6
+policemanager_forcearrest 1, 0
+let flt[1] = flt[1] + 1
+act_setstate 3, active
+return
+
+label 4
+enemy_forcescript 0
+enemy_stop
+enemy_look 1
+enemy_wait
+enemy_talk 0, 20990323, 1
+policemanager_forcearrest 1, 1
+enemy_playanim "game saramavnuti.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+
+label 8
+setevent 3, 1, 8
+
+mission_objectivesclear
+mission_objectives 20960004
+wait 4000
+mission_objectivesclear
+mission_objectives 20960000
+setcompass 0
+act_setstate 6, off
+
+label 7
+enemy_action_runaway 1, 300
+goto 7

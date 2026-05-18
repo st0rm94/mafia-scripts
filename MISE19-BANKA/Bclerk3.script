@@ -1,0 +1,19 @@
+[debug_me]
+dim_flt 1
+
+enemy_playanim "urednikpsani.i3d"
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event use_ab, 19970004
+event_use_cb 1
+enemy_playanim "urednikpodivanir.i3d", 0, simple
+wait 1000
+enemy_talk 1995000
+wait 3000
+enemy_playanim "urednikpsani.i3d"
+return

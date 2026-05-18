@@ -1,0 +1,36 @@
+dim_flt 1
+dim_act 7
+findactor 0, "1AsisPZ"
+findactor 1, "vyhodnoceni gunshopu"
+findactor 2, "detekce healtu asistenta"
+findactor 3, "prezkoceni dedka"
+findactor 4, "Box24"
+findactor 5, "1ProdZ"
+findactor 6, "1potvrzeni navstevy gunshopu"
+
+act_setstate 100, inactive
+
+{ up
+label 1
+getenemyaistate 0, 0
+if flt[0] > 2, 2, -1
+getenemyaistate 5, 0
+if flt[0] > 2, -1, 1
+}
+
+label 2
+detector_issignal 6, 4, -1
+endofmission 0, 19980003
+
+label 4
+setevent 1, 1, 4
+
+label 3
+setevent 0, 3, 3
+
+door_lock 4, 0
+door_open 4, 1
+
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 100, off

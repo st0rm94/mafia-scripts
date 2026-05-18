@@ -1,0 +1,14 @@
+//nahodny dog1,mise5
+
+dim_flt 1
+dim_frm 1
+FindFrame 0
+
+label 10
+  rnd 0, 10                   
+  let flt[0] = flt[0] * 3000 
+  let flt[0] = flt[0] + 3500 
+  wait flt[0]
+  frm_seton 0, 1
+goto 10
+end

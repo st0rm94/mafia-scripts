@@ -1,0 +1,43 @@
+zatmyse 1,1
+mission_objectivesclear
+dim_frm 6
+findframe 0,"Tommy"
+findframe 1,"Luigizabarem"
+findframe 2,"telefonx"
+findframe 3,"Sluchatkox"
+findframe 4,"dvere_frontX"
+findframe 5,"slunicko"
+dim_act 1
+findactor 0,"Luigizabarem"
+
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+loaddifferences "dif06a.chg"
+recloadfull "record06a.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 0,1
+frm_seton 1,1
+frm_seton 2,1
+frm_seton 3,1
+frm_seton 4,1
+frm_seton 5,1
+PLAYER_LOCKCONTROLS 0
+act_setstate 0,active
+zatmyse 0
+commandblock 0
+
+wait 500
+mission_objectives 06960001
+

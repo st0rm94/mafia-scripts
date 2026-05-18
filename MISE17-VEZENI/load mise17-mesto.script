@@ -1,0 +1,118 @@
+label 100
+autosavegame 5465
+player_lockcontrols 1
+commandblock 1
+dim_flt 5
+dim_act 5
+dim_frm 8
+findactor 0, "detekce vystrelu na vezi"
+findactor 1, "Tommy"
+findactor 2, "vrat dvr"
+//findactor 3, "zjisteni auta"
+findactor 4, "null"
+
+findframe 0, "poloha playera pri paceni zamku"
+findframe 1, "zampr2b"
+findframe 2, "poloha kamery pri paceni"
+findframe 3, "poloha playera v kanale"
+findframe 4, "paceni"
+findframe 5, "poloha kamery u kanalu"
+findframe 6, "17_tomout"
+findframe 7, "poloha playera u kanalu"
+
+frm_seton 1, 1
+
+compareownerwithex 1, 4, 6, -1
+human_getowner 1, 3
+human_fromcar 1, 3
+car_calm 3
+goto 7
+
+label 6
+actor_setplacement 1, 3
+
+label 7
+inventory_push 1
+inventory_clear 1
+camera_lock 5
+player_lockcontrols 1
+frm_seton 6, 1
+person_playanim 1, "tlezzkan.i3d", 0, simple
+commandblock 0
+
+let flt[0] = flt[0] - 83
+wait flt[0]
+commandblock 1
+person_stopanim 1
+player_lockcontrols 0
+camera_unlock
+actor_setplacement 1, 7
+inventory_pop 1
+commandblock 0
+
+let flt[0] = 0
+
+label 1
+{ up
+detector_waitforuse 17970004
+}
+
+if flt[0] = 1, 2, -1
+human_talk 1, 00950203
+goto 1
+
+label 2
+if flt[2] = 1, 4, -1
+human_isweapon 1, 3, 25
+if flt[3] = 1, -1, 3
+
+commandblock 1
+player_lockcontrols 1
+human_activateweapon 1, 25
+actor_setplacement 1, 0
+camera_lock 2
+commandblock 0
+frm_seton 4, 1
+person_playanim 1, "pacenidveri.i3d", 4, simple
+wait 7500
+create_physicalobject 1, 0, 1, 1
+wait 2000
+person_stopanim 1
+camera_unlock
+player_lockcontrols 0
+let flt[2] = 1
+goto 1
+
+label 3
+door_open 2, 1
+wait 500
+goto 1
+
+label 4
+//detector_issignal 0, -1, 5
+//let flt[1] = flt[1] + 3
+
+label 5
+getmissionnumber 0
+let flt[0] = flt[0] + flt[1]
+let flt[0] = flt[0] + 1
+setmissionnumber flt[0]
+door_lock 2, 0
+door_open 2, 1
+wait 500
+
+zatmyse 1
+wait 500
+human_force_settocar 1, 3, 0
+change_mission "mise17-mesto", "load z mise17-vezeni", -1
+end
+
+event 1
+event_use_cb 1
+let flt[0] = 1
+return
+
+event 2
+event_use_cb 1
+let flt[2] = 1
+return

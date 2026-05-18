@@ -1,0 +1,7 @@
+enemy_changeanim "walk1.i3d", "chuzerucezazady2.i3d"
+
+act_setstate 100, inactive
+
+enemy_move 40
+enemy_lookto 41
+enemy_wait 

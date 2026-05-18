@@ -1,0 +1,71 @@
+dim_flt 2
+dim_frm 19
+dim_act 11
+findframe 0, "vybuch vagonu"
+findframe 1, "vybuch vagonu 1"
+findframe 2, "~barel50"
+findframe 3, "~barel53"
+findframe 4, "~barel52"
+findframe 5, "~barel51"
+findframe 6, "xkont 13378"
+findframe 7, "Delnik4"
+
+findframe 12, "~barel54"
+findframe 13, "ohen na vagonu"
+findframe 14, "ohen na vagonu 1"
+
+findframe 18, "agon1"
+
+findactor 0, "~barel50"
+findactor 1, "~barel53"
+findactor 2, "~barel52"
+findactor 3, "~barel51"
+findactor 4, "Delnik4"
+
+findactor 6, "PortGuard20"
+findactor 7, "PortGuard19"
+findactor 8, "vybuch sudu"
+findactor 9, "Delnik3"
+findactor 10, "rev chlapku"
+
+detector_waitforhit
+
+commandblock 1
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 2, off
+frm_seton 18, 1
+emitparticle 0, 52
+human_setproperty 6, 10000, energy
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 12, 1
+disablecolls 6
+create_physicalobject 12, 0, 0, 64
+create_physicalobject 6, 0, 0, 135
+actor_setplacement 3, 3
+commandblock 0
+
+explosion 50, 1000
+wait 2000
+
+playsound "expl1.wav", 1, 200, 1
+emitparticle 1, 52
+
+human_setproperty 4, 0, energy
+human_setproperty 9, 0, energy
+
+label 2
+setevent 6, 1, 3
+
+label 3
+setevent 7, 1, 4
+
+act_setstate 10, active
+
+label 4
+emitparticle 13, 6
+emitparticle 14, 6
+act_setstate 8, active

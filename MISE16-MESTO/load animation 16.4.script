@@ -1,0 +1,66 @@
+dim_flt 2
+dim_act 9
+dim_frm 9
+findactor 0, "Tommy"
+//findactor 1, "zjisteni auta"
+findactor 2, "Paulie"
+findactor 3, "Sam"
+findactor 4, "civil7"
+findactor 5, "MorelloLOW"
+findactor 6, "null"
+findactor 7, "Enemy09K"
+findactor 8, "Enemy04K"
+
+findframe 0, "Tommy"
+findframe 1, "Paulie"
+findframe 2, "Sam"
+//findframe 1, "zjisteni auta"
+findframe 2, "Paulie""
+findframe 3, "Sam"
+findframe 4, "arrow"
+findframe 5, "civil7"
+findframe 6, "MorelloLOW"
+findframe 7, "Enemy09K"
+findframe 8, "Enemy04K"
+
+act_setstate 100, inactive
+
+label 1
+wait 250
+detector_inrange 0, 30
+if flt[0] = 1, -1, 1
+
+compareownerwithex 0, 6, 1, -1
+
+commandblock 1
+player_lockcontrols 1
+human_getowner 0, 1
+getactorframe 1, 1
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 7, off
+act_setstate 8, off
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+stream_stop 1
+loaddifferences "dif16d.chg"
+recloadfull "record16d"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+endofmission 0, 16980001

@@ -1,0 +1,6 @@
+act_setstate -1, inactive
+dim_act 1
+findactor 0
+wait 3000
+enemy_talk 0, 1940060, 1
+enemy_move 16, run

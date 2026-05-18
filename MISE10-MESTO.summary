@@ -1,0 +1,1382 @@
+# .dnc extraction summary
+# source        : MISE10-MESTO.dnc  (79794 bytes, main)
+# source        : MISE10-MESTO-InitScripts.dnc  (2351 bytes, init)
+# actors_total  : 382
+# init_records  : 1
+# scripts_found : 86
+
+# main-container actor type-code distribution
+#   type    4  count=5  
+#   type    5  count=70  script
+#   type    6  count=1  
+#   type    8  count=29  
+#   type   12  count=1  
+#   type   18  count=5  
+#   type   20  count=2  
+#   type   21  count=1  
+#   type   25  count=3  
+#   type   27  count=15  human (scripted NPC)
+#   type   35  count=250  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 113
+# total invocations: 2307
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+   210  label
+   175  let    [casings: LET, let]
+   144  wait    [casings: WAIT, wait]
+   142  findframe    [casings: FINDFRAME, FindFrame, findframe]
+   126  findactor
+   122  frm_seton    [casings: FRM_SETON, frm_seton]
+   103  enemy_wait
+   103  goto
+   102  if
+    81  enemy_talk
+    77  dim_flt    [casings: DIM_FLT, dim_flt]
+    65  dim_frm    [casings: DIM_FRM, dim_frm]
+    59  rnd    [casings: RND, rnd]
+    53  end
+    51  act_setstate
+    50  return
+    42  human_looktoactor
+    41  enemy_playanim    [casings: ENEMY_PLAYANIM, enemy_playanim]
+    41  human_talk
+    36  commandblock
+    33  dim_act
+    26  event
+    26  iffltinrange    [casings: IFFLTINRANGE]
+    21  dialog_camswitch
+    19  setevent
+    18  setcompass    [casings: SETCOMPASS, setcompass]
+    15  human_getproperty
+    15  sound_setvolume
+    14  enemy_look
+    13  mission_objectives
+    12  mission_objectivesclear
+    12  player_lockcontrols
+    11  enemy_move
+    11  event_use_cb
+    11  {
+    11  }
+    10  enemy_vidim
+     9  endofmission
+     7  detector_inrange    [casings: DETECTOR_INRANGE, detector_inrange]
+     7  enemy_action_runaway
+     7  enemy_lookto
+     7  getactorsdist    [casings: GETACTORSDIST, getactorsdist]
+     6  actor_setplacement
+     6  detector_issignal
+     6  person_playanim
+     6  person_stopanim
+     6  sound_getvolume
+     5  detector_setsignal
+     5  enemy_car_escape
+     5  getmissionnumber
+     5  human_eraseab
+     4  dialog_begin
+     4  dialog_end
+     4  enemy_changeanim
+     4  frm_getworldpos
+     4  getticktime
+     4  human_force_settocar
+     4  ispointinarea
+     4  soundfade
+     4  zatmyse
+     3  autosavegamefull
+     3  car_enableus
+     3  car_muststeal
+     3  change_mission
+     3  compareownerwithex
+     3  detector_waitforuse
+     3  enemy_forcescript
+     3  human_isweapon
+     3  inventory_clear
+     3  inventory_pop
+     3  inventory_push
+     3  vlvp
+     2  autosavegame
+     2  compareownerwith
+     2  enemy_car_moveto
+     2  garage_show
+     2  getactivecamera
+     2  setnoanimhit
+     1  [debug_me]
+     1  actor_setdir
+     1  camera_lock
+     1  camera_unlock
+     1  car_calm
+     1  car_forcestop
+     1  car_setspeed
+     1  cleardifferences
+     1  console_addtext
+     1  door_enableus
+     1  emitparticle
+     1  enablemap
+     1  enemy_actionsclear
+     1  enemy_brainwash
+     1  enemy_stopanim
+     1  garage_carmanager
+     1  garage_enablesteal
+     1  get_pm_numpredators
+     1  getangleactortoactor
+     1  getframefromactor
+     1  human_addweapon
+     1  human_anyweaponinhand
+     1  human_candie
+     1  human_createab
+     1  human_getowner
+     1  human_holster
+     1  ifplayerstealcar
+     1  loaddifferences
+     1  police_speed_factor
+     1  policemanager_forcearrest
+     1  policemanager_on
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  setmissionnumber
+
+# ---- per-script command listing ----
+
+[Biff]  type=27  lines=61  commands=23
+    act_setstate
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_look
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_looktoactor
+    if
+    label
+    let
+    return
+    setcompass
+    wait
+    {
+    }
+
+[Bookmaker]  type=27  lines=43  commands=18
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_changeanim
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    findframe
+    goto
+    human_talk
+    if
+    label
+    let
+    wait
+
+[Boxer]  type=27  lines=83  commands=34
+    act_setstate
+    dialog_begin
+    dialog_camswitch
+    dialog_end
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    enemy_action_runaway
+    enemy_actionsclear
+    enemy_brainwash
+    enemy_forcescript
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_looktoactor
+    human_talk
+    if
+    label
+    let
+    mission_objectives
+    mission_objectivesclear
+    player_lockcontrols
+    return
+    setcompass
+    {
+    }
+
+[Detektiv]  type=27  lines=9  commands=7
+    compareownerwith
+    dim_act
+    end
+    enemy_vidim
+    findactor
+    human_force_settocar
+    label
+
+[Detektiv2]  type=27  lines=30  commands=15
+    [debug_me]
+    actor_setplacement
+    compareownerwith
+    dim_act
+    dim_frm
+    enemy_car_escape
+    enemy_vidim
+    event
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_force_settocar
+    label
+    wait
+
+[Joe]  type=27  lines=269  commands=37
+    act_setstate
+    actor_setplacement
+    commandblock
+    detector_setsignal
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_action_runaway
+    enemy_forcescript
+    enemy_look
+    enemy_lookto
+    enemy_playanim
+    enemy_stopanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_candie
+    human_eraseab
+    human_looktoactor
+    human_talk
+    if
+    label
+    let
+    return
+    rnd
+    setcompass
+    setevent
+    setnoanimhit
+    wait
+    {
+    }
+
+[Lucas]  type=27  lines=213  commands=47
+    act_setstate
+    autosavegamefull
+    car_enableus
+    car_muststeal
+    commandblock
+    console_addtext
+    detector_issignal
+    dialog_begin
+    dialog_camswitch
+    dialog_end
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_look
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    findactor
+    findframe
+    frm_seton
+    garage_enablesteal
+    get_pm_numpredators
+    getmissionnumber
+    goto
+    human_createab
+    human_eraseab
+    human_getproperty
+    human_isweapon
+    human_looktoactor
+    human_talk
+    if
+    inventory_clear
+    inventory_pop
+    inventory_push
+    label
+    let
+    mission_objectives
+    mission_objectivesclear
+    person_playanim
+    person_stopanim
+    player_lockcontrols
+    return
+    setcompass
+    wait
+
+[Ralph]  type=27  lines=50  commands=19
+    dim_act
+    dim_flt
+    enemy_action_runaway
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    garage_carmanager
+    goto
+    human_looktoactor
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[Tony]  type=27  lines=91  commands=26
+    act_setstate
+    dim_act
+    dim_flt
+    dim_frm
+    emitparticle
+    enemy_look
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    getactorsdist
+    goto
+    human_looktoactor
+    if
+    label
+    let
+    return
+    rnd
+    setcompass
+    wait
+    {
+    }
+
+[autosave]  type=5  lines=12  commands=6
+    autosavegame
+    dim_flt
+    end
+    getmissionnumber
+    if
+    label
+
+[box det]  type=5  lines=13  commands=10
+    act_setstate
+    detector_setsignal
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    if
+    label
+    setevent
+    wait
+
+[boxer erase]  type=5  lines=20  commands=14
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    human_eraseab
+    human_getproperty
+    if
+    label
+    mission_objectives
+    mission_objectivesclear
+    setcompass
+    setevent
+    wait
+
+[civil]  type=27  lines=7  commands=5
+    enemy_playanim
+    event
+    goto
+    label
+    return
+
+[delnas]  type=27  lines=14  commands=9
+    dim_act
+    dim_frm
+    enemy_car_moveto
+    event
+    findactor
+    findframe
+    goto
+    label
+    wait
+
+[detector u Joa]  type=5  lines=26  commands=9
+    dim_act
+    dim_flt
+    findactor
+    getactorsdist
+    goto
+    if
+    label
+    setevent
+    wait
+
+[detector u franka]  type=5  lines=104  commands=35
+    act_setstate
+    actor_setplacement
+    car_calm
+    car_forcestop
+    car_setspeed
+    cleardifferences
+    commandblock
+    detector_inrange
+    detector_issignal
+    detector_setsignal
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    getframefromactor
+    human_getowner
+    human_getproperty
+    human_talk
+    if
+    label
+    loaddifferences
+    mission_objectives
+    mission_objectivesclear
+    player_lockcontrols
+    policemanager_forcearrest
+    recloadfull
+    recunload
+    recwaitforend
+    setcompass
+    setevent
+    wait
+    zatmyse
+
+[detekce healtu ralpha]  type=5  lines=10  commands=8
+    dim_act
+    dim_flt
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+    wait
+
+[dite1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[dite2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[do banky]  type=5  lines=50  commands=22
+    act_setstate
+    camera_lock
+    commandblock
+    detector_waitforuse
+    dim_act
+    dim_flt
+    dim_frm
+    door_enableus
+    end
+    findactor
+    findframe
+    frm_seton
+    getmissionnumber
+    goto
+    human_talk
+    if
+    label
+    let
+    player_lockcontrols
+    setcompass
+    vlvp
+    wait
+
+[ef_ark1.2]  type=5  lines=25  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_ark3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_down1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_down2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_down3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob1]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_hob2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob4]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_z1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_z2]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_z3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_z4]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_z5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[energymetr]  type=5  lines=68  commands=15
+    commandblock
+    detector_issignal
+    dim_act
+    dim_flt
+    end
+    endofmission
+    event
+    findactor
+    goto
+    human_getproperty
+    if
+    label
+    let
+    setevent
+    wait
+
+[frank]  type=27  lines=8  commands=6
+    dim_act
+    end
+    enemy_vidim
+    findactor
+    human_force_settocar
+    label
+
+[gameinitend]  type=init  lines=111  commands=18
+    act_setstate
+    actor_setplacement
+    car_enableus
+    car_muststeal
+    dim_act
+    dim_flt
+    dim_frm
+    enablemap
+    end
+    findactor
+    findframe
+    frm_seton
+    getmissionnumber
+    if
+    label
+    police_speed_factor
+    policemanager_on
+    setcompass
+
+[horn1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn4]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn6]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[joe test]  type=5  lines=9  commands=7
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    if
+    label
+    setevent
+
+[kamos 2]  type=27  lines=60  commands=20
+    dim_act
+    dim_flt
+    enemy_look
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    goto
+    human_looktoactor
+    if
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[kamos1]  type=27  lines=61  commands=20
+    dim_act
+    dim_flt
+    enemy_look
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    goto
+    human_looktoactor
+    if
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[load mise10-letiste]  type=5  lines=17  commands=13
+    actor_setplacement
+    change_mission
+    detector_inrange
+    detector_issignal
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    if
+    label
+    setmissionnumber
+    wait
+
+[load mise11-saliery]  type=5  lines=48  commands=15
+    change_mission
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    garage_show
+    goto
+    human_isweapon
+    human_talk
+    if
+    label
+    let
+    vlvp
+    wait
+    zatmyse
+
+[load mise11-saliery2]  type=5  lines=50  commands=15
+    change_mission
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    garage_show
+    goto
+    human_isweapon
+    human_talk
+    if
+    label
+    let
+    vlvp
+    wait
+    zatmyse
+
+[lod_sirena]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[lucas det]  type=5  lines=7  commands=6
+    detector_inrange
+    detector_setsignal
+    dim_flt
+    if
+    label
+    wait
+
+[mesto-krajina]  type=5  lines=70  commands=15
+    commandblock
+    dim_flt
+    dim_frm
+    findframe
+    frm_getworldpos
+    getactivecamera
+    getticktime
+    goto
+    if
+    ispointinarea
+    label
+    let
+    sound_getvolume
+    sound_setvolume
+    wait
+
+[nadr1]  type=5  lines=21  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    soundfade
+    wait
+
+[nadr2]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[nadr4]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[nadr6]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[oakhill-mesto]  type=5  lines=50  commands=15
+    commandblock
+    dim_flt
+    dim_frm
+    findframe
+    frm_getworldpos
+    getactivecamera
+    getticktime
+    goto
+    if
+    ispointinarea
+    label
+    let
+    sound_getvolume
+    sound_setvolume
+    wait
+
+[objectives]  type=5  lines=13  commands=7
+    dim_flt
+    end
+    getmissionnumber
+    if
+    label
+    mission_objectives
+    mission_objectivesclear
+
+[pes1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes6]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[police1]  type=5  lines=69  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[posledni obectives]  type=5  lines=13  commands=10
+    compareownerwithex
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    label
+    mission_objectives
+    mission_objectivesclear
+    setcompass
+    wait
+
+[save u Joa]  type=5  lines=9  commands=8
+    autosavegamefull
+    detector_inrange
+    dim_flt
+    end
+    if
+    label
+    mission_objectives
+    mission_objectivesclear
+
+[sem]  type=5  lines=1  commands=0
+
+[slepa ulice]  type=5  lines=27  commands=10
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    goto
+    human_talk
+    if
+    label
+    let
+    wait
+
+[slepa ulice2]  type=5  lines=27  commands=10
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    goto
+    human_talk
+    if
+    label
+    let
+    wait
+
+[start]  type=5  lines=34  commands=9
+    act_setstate
+    dim_act
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    setcompass
+    wait
+
+[stavba]  type=5  lines=23  commands=14
+    act_setstate
+    actor_setplacement
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    human_force_settocar
+    if
+    label
+    setevent
+
+[stavba1.2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[stavba3.2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[stavba_nova2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[steal detector]  type=5  lines=50  commands=20
+    act_setstate
+    compareownerwithex
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    getactorsdist
+    getangleactortoactor
+    human_anyweaponinhand
+    if
+    ifplayerstealcar
+    label
+    mission_objectives
+    mission_objectivesclear
+    setcompass
+    setevent
+    wait
+
+[tommy bank]  type=27  lines=24  commands=16
+    act_setstate
+    actor_setdir
+    camera_unlock
+    commandblock
+    dim_act
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    human_addweapon
+    human_holster
+    human_talk
+    mission_objectives
+    mission_objectivesclear
+    player_lockcontrols
+
+[utokgard]  type=5  lines=9  commands=8
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    if
+    label
+    setevent
+    wait
+
+[vychodef1.1]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[vychodef2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[vychodef3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[zapadef1.1]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[zapadef2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[zapadef3.1]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[zapadef4]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[zvon2]  type=5  lines=20  commands=9
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    soundfade
+    wait

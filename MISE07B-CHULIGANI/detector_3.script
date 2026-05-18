@@ -1,0 +1,36 @@
+//[debug_me]
+// oddelat!!!!
+act_setstate -1, inactive
+
+dim_flt 1
+dim_act 3
+findactor 0, "animace_v_Service_station"
+findactor 1, "Billy"
+findactor 2, "Johny"
+
+LABEL DETECT
+human_getproperty 1, 0, Energy
+if flt[0] < 100, EVENT_BILLY, -1
+human_getproperty 2, 0, Energy
+if flt[0] < 100, EVENT_JOHNY, -1
+detector_inrange 0, 5
+if flt[0] ! 0, NORMAL, DETECT
+
+label EVENT_BILLY
+commandblock 1
+human_setproperty 1, 100, Energy
+goto NORMAL
+
+label EVENT_JOHNY
+commandblock 1
+human_setproperty 2, 100, Energy
+goto NORMAL
+
+label NORMAL
+commandblock 1
+act_setstate 0, active
+commandblock 0
+debug_text "detector3: animace_v_Service_station - activated"
+human_getproperty 1, 0, Energy
+human_getproperty 2, 0, Energy
+end

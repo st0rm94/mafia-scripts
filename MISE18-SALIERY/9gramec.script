@@ -1,0 +1,40 @@
+//[debug_me]
+commandblock 1
+dim_flt 2
+dim_act 1
+findactor 0, "Tommy"
+dim_frm 4
+findframe 0
+findframe 1, "zap"
+findframe 2, "praskani"
+findframe 3, "music"
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+commandblock 0
+
+label ACTION
+detector_waitforuse 99970000
+player_lockcontrols 1
+actor_setdir 0, 0
+person_playanim 0, "Vypinac01.I3D", 0
+let flt[0] = flt[0] - 250
+let flt[0] = flt[0] / 2
+wait flt[0]
+frm_seton 1, 1
+wait flt[0]
+person_stopanim 0
+player_lockcontrols 0
+if flt[1] = 0, -1, VYPNOUT
+wait 1500
+frm_seton 2, 1
+wait 2200
+frm_seton 3, 1
+let flt[1] = 1
+goto ACTION
+
+label VYPNOUT
+frm_seton 2, 0
+frm_seton 3, 0
+let flt[1] = 0
+goto ACTION

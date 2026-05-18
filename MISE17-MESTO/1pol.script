@@ -1,0 +1,44 @@
+dim_flt 2
+dim_act 2
+dim_frm 1
+findactor 0, ""
+findactor 1, "Tommy"
+
+findframe 0, ""
+
+human_addweapon 0, 8, 6, 30
+human_holster 0
+
+{ up
+label 1
+if flt[1] = 1, -1, 1
+}
+
+playsound "poli_fife2.wav", 0, 50, 1
+
+label 2
+enemy_naserse 1
+goto 2
+
+event 1
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+return
+
+event 2
+event_use_cb 1
+let flt[1] = 1
+return
+
+event 3
+enemy_lookto 5
+enemy_wait
+return
+
+event 4
+enemy_naserse 1
+
+label 4
+wait 1000000
+goto 4

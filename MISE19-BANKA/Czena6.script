@@ -1,0 +1,15 @@
+dim_flt 1
+
+{ up
+enemy_playanim "urednikpsani.i3d"
+label 1
+goto 1
+}
+
+event use_ab
+enemy_playanim "urednikpodivanir.i3d", 0, simple
+let flt[0] = flt[0] - 350
+wait flt[0]
+return
+
+

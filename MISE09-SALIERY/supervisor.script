@@ -1,0 +1,24 @@
+dim_act 4
+dim_flt 1
+
+findactor 0, "Tommy"
+findactor 1, "frank"
+findactor 2, "SalieriHIGH"
+findactor 3, "Ralph"
+
+label 101
+wait 1000
+human_getproperty 0,0,Energy
+if flt[0] = 0,102,-1
+human_getproperty 1,0,Energy
+if flt[0] = 0,102,-1
+human_getproperty 2,0,Energy
+if flt[0] = 0,102,-1
+human_getproperty 3,0,Energy
+if flt[0] = 0,102,-1
+goto 101
+
+
+label 102
+endofmission 0,  09980005
+end

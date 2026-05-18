@@ -1,0 +1,14 @@
+dim_flt 1
+
+label 1
+enemy_playanim "gesto_02b.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "gesto_02a.i3d"
+wait 5000
+enemy_playanim "gesto_02c.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "gesto_02a.i3d"
+wait 5000
+goto 1

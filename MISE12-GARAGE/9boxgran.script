@@ -1,0 +1,54 @@
+//[debug_me]
+dim_act 2
+getactiveplayer 0
+dim_frm 5
+findframe 0
+findframe 1, "2grenade"
+findframe 2, "2grenade2"
+findframe 3, "2grenade3"
+findframe 4, "2grenade4"
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+dim_flt 3
+let flt[1] = 4
+act_setstate -1, inactive
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+
+label INIT
+detector_waitforuse 18970000
+enemy_block
+player_lockcontrols 1
+actor_setdir 0, 0
+person_playanim 0, "SbiraniZeme01.I3D", 2
+let flt[2] = flt[2] - 581
+let flt[2] = flt[2] / 2
+wait flt[2]
+let flt[1] = flt[1] - 1
+goto flt[1]
+label 3
+frm_seton 4, 0
+goto ADD
+label 2
+frm_seton 3, 0
+goto ADD
+label 1
+frm_seton 2, 0
+goto ADD
+label 0
+frm_seton 1, 0
+label ADD
+playsound "p_pull2.wav", 0, 10, 1
+human_addweapon 0, 15, 0, 0
+wait flt[2]
+person_stopanim 0
+enemy_unblock
+player_lockcontrols 0
+if flt[1] !0, INIT, -1
+end

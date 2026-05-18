@@ -1,0 +1,9 @@
+dim_act 1
+dim_frm 1
+findactor 0, "luigi ab"
+findframe 0, "Luigi"
+
+label 1
+wait 1000
+actor_setplacement 0, 0
+goto 1

@@ -1,0 +1,26 @@
+dim_frm 2
+dim_flt 1
+dim_act 2
+findactor 0,"Hoolig"
+findactor 1,"TommyTAXIDRIVER"
+findframe 0,"Hoolig.base"
+findframe 1,"chcani"
+
+frm_seton 1,0
+enemy_vidim 0
+act_setstate -1,inactive
+
+enemy_playanim "ChcaniLoop.i3d", 0
+emitparticle 0,26
+frm_seton 1,1
+wait 13000
+frm_seton 1,0
+enemy_playanim "ChcaniZandani.i3d", 0
+let flt[0]=flt[0]-83
+wait flt[0]
+enemy_move 3
+end
+
+event 201
+enemy_action_runaway 1,100
+

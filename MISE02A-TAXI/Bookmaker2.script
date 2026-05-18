@@ -1,0 +1,41 @@
+commandblock 1
+dim_act 1
+dim_flt 1
+findactor 0, "Bookmaker"
+commandblock 0
+act_setstate -1, inactive
+
+{ DOWN
+label FREESTATE
+enemy_playanim "NudaStativ.I3D", 0
+rnd 1, 3
+let flt[0] = flt[0] * flt[1]
+wait flt[0]
+enemy_playanim "Nuda01.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto FREESTATE
+}
+enemy_stopanim
+enemy_look 0
+enemy_wait
+commandblock 1
+enemy_playanim "podani ruky.I3D", 0
+person_playanim 0, "podani ruky.I3D"
+commandblock 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "GestikulaceNEW03.I3D", 0
+person_playanim 0, "GestikulaceNEW06.I3D"
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "GestikulaceNEW04.I3D", 0
+
+debug_text "Bookmaker2: FINISHED !"
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

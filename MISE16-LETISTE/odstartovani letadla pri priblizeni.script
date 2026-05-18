@@ -1,0 +1,101 @@
+dim_flt 1
+dim_act 3
+dim_frm 4
+findactor 0,  "xletadlo17413"
+findactor 1, "Paulie"
+findactor 2, "Tommy"
+findframe 0, "xletadlo17413.glow"
+findframe 1, "xletadlo17413.glow01"
+findframe 2, "xletadlo17413.glow03"
+findframe 3, "xletadlo17413.glow02"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 50
+if flt[0] = 1, -1, 1
+
+airplane_start2 0
+
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+frm_seton 2, 1
+wait 25
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+wait 25
+frm_seton 2, 0
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+
+wait 1000
+
+frm_seton 0, 1
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+wait 25
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+frm_seton 0, 0
+frm_seton 1, 1
+wait 25
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+wait 25
+frm_seton 1, 0
+
+wait 700
+
+endofmission 0, 16980005
+end
+
+event 1
+
+label 2
+getactorsdist 0, 1, 0
+if flt[0] < 75, -1, 2
+
+airplane_start2 0
+
+label 3
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+frm_seton 2, 1
+wait 25
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+wait 25
+frm_seton 2, 0
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+
+wait 1000
+
+frm_seton 0, 1
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+wait 25
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+frm_seton 0, 0
+frm_seton 1, 1
+wait 25
+frm_seton 3, 1
+wait 25
+frm_seton 3, 0
+wait 25
+frm_seton 1, 0
+
+wait 700
+goto 3

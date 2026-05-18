@@ -1,0 +1,12 @@
+dim_act 1
+findactor 0, ""
+
+human_set8slot 0, 1
+human_addweapon 0, 10, 50, 200
+human_holster 0
+wait 1000
+enemy_playanim "zidlesed02.i3d"
+
+label 1
+wait 1000000
+goto 1

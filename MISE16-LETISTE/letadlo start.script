@@ -1,0 +1,13 @@
+dim_act 4
+findactor 0, "xletadlo17413"
+findactor 1, "prijeti paulieho"
+findactor 2, "odstartovani letadla pri priblizeni"
+findactor 3, "odstartovani letadla pri vyprseni limitu"
+
+act_setstate 100, inactive
+
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+airplane_start 0, 5, 0
+airplaneshowdamage 0, 1

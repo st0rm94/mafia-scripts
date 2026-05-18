@@ -1,0 +1,28 @@
+dim_flt 1
+dim_act 4
+dim_frm 1
+findactor 0, "SalMan02K2"
+findactor 1, "SalMan01K5"
+findactor 2, "SalMan03K2"
+findactor 3, "aktivace sebehnuti chlapku"
+findframe 0, "poloha tomsonare"
+
+label 1
+detector_inrange 0, 4
+if flt[0] = 1, -1, 1
+
+act_setstate 0, active
+act_setstate 3, active
+
+actor_setplacement 0, 0
+
+label 4
+setevent 0, 1, 4
+
+label 2
+setevent 1, 1, 2
+
+label 3
+setevent 2, 1, 3
+
+act_setstate 100, off

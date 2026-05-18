@@ -1,0 +1,11 @@
+dim_flt 1
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 3
+if flt[0] = 1, -1, 1
+
+setplayerfireevent -1, 10
+
+act_setstate 100, off

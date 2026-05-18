@@ -1,0 +1,90 @@
+zatmyse 1
+dim_act 7
+dim_frm 3
+dim_flt 6
+findactor 0, "Tommy"
+findactor 1, "Kasar"
+findactor 2, "prenasec aut"
+findactor 3, "NULL"
+findactor 4, "NULL"
+findactor 5, "NULL"
+findactor 6, "2x load mise11-mesto2"
+findframe 0, "load z mise11-mesto"
+findframe 1, "auto"
+findframe 2, "Tommy"
+human_getowner 0, 3
+actor_setplacement 3, 1
+human_fromcar 0, 0
+zatmyse 0
+
+label 1
+detector_waitforuse 2000
+if flt[1] = 1, -1, 3
+human_isweapon 0, 3, 19
+getactorsdist 0, 1, 0, 1
+if flt[3] = 0, 6, -1
+if flt[0] > 15, 2, -1
+character_push 1
+zatmyse 1
+wait 500
+//human_getowner 0, 4
+compareownerwithex 0, 5, -1, 8
+actor_setplacement 3, 2
+human_force_settocar 0, 3, 0
+label 8
+human_getproperty 1, 5, energy
+if flt[5] = 0, 36, -1
+change_mission "mise11-mesto", "2x load z mise11-vila", 1
+end
+
+label 2
+human_talk 0, 11990331
+wait 7000
+goto 1
+
+label 6
+human_talk 0, 11990371
+wait 7000
+goto 1
+
+label 3
+if flt[2] = 0, 4, -1
+if flt[2] = 1, 5, -1
+human_talk 0, 00950203
+wait 4000
+let flt[2] = 0
+goto 1
+label 4
+human_talk 0, 00950204
+wait 4000
+let flt[2] = 1
+goto 1
+label 5
+human_talk 0, 00950202
+wait 4000
+let flt[2] = 2
+goto 1
+
+event 1
+let flt[1] = 1
+return
+
+event 2
+zatmyse 1
+wait 500
+//human_getowner 0, 4
+compareownerwithex 0, 5, -1, 9
+actor_setplacement 3, 2
+human_force_settocar 0, 3, 0
+human_addweapon 0, 3, -1, -1
+label 9
+actor_setplacement 6, 2
+wait 100
+human_getproperty 1, 5, energy
+if flt[5] = 0, 36, -1
+change_mission "mise11-mesto", "load z mise11-vila", 1
+end
+
+label 36
+endofmission 0, 11980000
+end

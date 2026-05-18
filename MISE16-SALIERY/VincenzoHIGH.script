@@ -1,0 +1,164 @@
+dim_flt 3
+dim_act 7
+dim_frm 9
+findactor 0, ""
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 3, "Tommy"
+findactor 4, "load mise16-mesto"
+findactor 5, "aktivace vincenza"
+findactor 6, "ab vincenzo"
+
+findframe 0, "2tommy"
+findframe 1, "2tommy2"
+findframe 2, "2sawoff"
+findframe 3, "poloha playera u vincenza"
+findframe 4, "2tommy3"
+findframe 5, "2tommy4"
+findframe 6, "2sawoff2"
+findframe 7, "poloha paulieho u vincenza"
+findframe 8, "poloha sama u vincenza"
+
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+
+human_eraseab 0
+
+label 2
+detector_issignal 5, 4, -1
+enemy_playanim "koureniautopotahnuti.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "koureniautostativ.i3d"
+wait 2500
+goto 2
+
+label 4
+enemy_playanim "koureniautotonormal.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+enemy_move 3
+enemy_lookto 1
+enemy_wait
+human_looktoactor 0, 3, 1
+
+act_setstate 6, active
+
+label 1
+if flt[1] = 1, -1, 1
+
+dialog_begin 0, 3
+commandblock 1
+player_lockcontrols 1
+actor_setplacement 3, 3
+actor_setplacement 1, 7
+actor_setplacement 2, 8
+dialog_camswitch 0, 1
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+human_looktoactor 3, 0, 1
+human_reset 3
+commandblock 0
+person_playanim 1, "gestikulacenew01.i3d"
+enemy_talk 1, 16990011
+enemy_wait
+person_stopanim 1
+dialog_camswitch 3, 0
+enemy_playanim "gestikulacenew03.i3d"
+enemy_talk 16990021
+wait 2000
+enemy_stopanim
+human_looktoactor 0
+enemy_move 4
+enemy_playanim "sbiranistul01.i3d"
+wait 600
+human_linktohand 0, 0
+wait 600
+human_looktoactor 0, 3, 1
+enemy_move 3
+enemy_lookto 6
+enemy_wait
+enemy_playanim "sbiranistul01.i3d"
+wait 600
+playsound "s_put1.wav", 0, 5, 1
+frm_seton 0, 0
+frm_seton 4, 1
+wait 600
+human_looktoactor 0
+enemy_move 4
+enemy_playanim "sbiranistul01.i3d"
+wait 600
+human_linktohand 0, 1
+wait 600
+human_looktoactor 0, 3, 1
+enemy_move 5
+enemy_lookto 6
+enemy_wait
+enemy_playanim "sbiranistul01.i3d"
+wait 600
+playsound "s_put1.wav", 1, 5, 1
+frm_seton 1, 0
+frm_seton 5, 1
+wait 600
+enemy_talk 16990031
+human_looktoactor 0
+enemy_move 4
+enemy_playanim "sbiranistul01.i3d"
+wait 600
+human_linktohand 0, 2
+wait 600
+human_looktoactor 0, 3, 1
+enemy_move 16
+enemy_lookto 6
+enemy_wait
+enemy_playanim "sbiranistul01.i3d"
+wait 600
+playsound "s_put4.wav", 2, 5, 1
+frm_seton 2, 0
+frm_seton 6, 1
+wait 600
+enemy_stopanim
+
+commandblock 1
+human_looktoactor 1
+human_looktoactor 2
+human_looktoactor 3
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 4, 0
+frm_seton 5, 0
+createweaponfromframe 6, 12, 2, 18
+human_addweapon 1, 10, 50, 200
+human_addweapon 2, 10, 50, 200 
+player_lockcontrols 0
+detector_setsignal 4, 1
+
+label 3
+setevent 1, 1, 3
+setevent 2, 1, 3
+commandblock 0
+dialog_end
+
+human_createab 0
+
+label 10
+wait 1000000
+goto 10
+
+event 1
+let flt[1] = 1
+return
+
+event use_ab, 15970008
+enemy_look 3
+enemy_wait
+human_looktoactor 0, 3, 1
+enemy_talk 00950235
+enemy_wait
+human_looktoactor 0
+return
+
+event 1000
+enemy_action_fire 3

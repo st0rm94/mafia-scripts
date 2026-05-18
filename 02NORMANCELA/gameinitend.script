@@ -1,0 +1,7 @@
+dim_act 1
+findactor 0, "chemaTud"
+car_setprojector 0, 15, 15, 15
+
+dim_act 1
+findactor 0, "hudtu"
+car_setprojector 0, 15, 15, 15

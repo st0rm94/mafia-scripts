@@ -1,0 +1,34 @@
+commandblock 1
+dim_act 1
+findactor 0
+dim_flt 1
+human_addweapon 0, 7, 6, 30
+human_holster 0
+commandblock 0
+{ DOWN
+label WAIT
+wait 2000
+goto WAIT
+}
+wait 15000
+enemy_usecar
+enemy_lookto 5
+enemy_wait
+label FREESTATE
+enemy_playanim "NudaStativ.I3D", 0
+let flt[0] = flt[0] - 200
+wait flt[0]
+enemy_playanim "Nuda01.I3D", 0
+let flt[0] = flt[0] - 232
+wait flt[0]
+enemy_playanim "NudaStativ.I3D", 0
+let flt[0] = flt[0] - 232
+wait flt[0]
+enemy_playanim "Nuda02.I3D", 0
+let flt[0] = flt[0] - 283
+wait flt[0]
+goto FREESTATE
+
+event 1
+event_use_cb 1
+return

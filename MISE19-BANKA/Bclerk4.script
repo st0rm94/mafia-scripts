@@ -1,0 +1,15 @@
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+
+act_setstate 100, inactive
+
+enemy_playanim "panika leknuti02F.i3d", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "rucevzhuru02.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "rucevzhuru02loop.i3d"
+human_looktoactor 0, 1, 1

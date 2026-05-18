@@ -1,0 +1,12 @@
+end
+dim_flt 1
+
+label TEST
+fuckingbox_getnumbox 0, 0
+fuckingbox_getnumbox 1, 0
+fuckingbox_getnumbox 2, 0
+fuckingbox_getnumdest 0, 0
+fuckingbox_getnumdest 1, 0
+fuckingbox_getnumdest 2, 0
+wait 1000
+goto TEST

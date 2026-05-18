@@ -1,0 +1,81 @@
+dim_flt 4
+dim_act 4
+findactor 0, ""
+findactor 1, "TommySAILOR"
+findactor 2, "waiter2"
+findactor 3, "tleskej"
+
+{ down
+label 1
+enemy_playanim "ZidleSezeniStativ.I3D"
+wait 6000
+enemy_playanim "ZidleToSed01.I3D", 0
+let flt[0] = flt[0] - 500
+wait flt[0]
+enemy_playanim "ZidleSed01.I3D"
+wait 5000
+enemy_playanim "ZidleSed01ToNormal.I3D", 0
+let flt[0] = flt[0] - 500
+wait flt[0]
+enemy_playanim "ZidleSezeniStativ.I3D"
+wait 6000
+enemy_playanim "ZidleToSed02.I3D"
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "ZidleSed02.I3D"
+wait 5000
+enemy_playanim "ZidleSed02ToNormal.I3D"
+let flt[0] = flt[0] - 300
+wait flt[0]
+goto 1
+}
+enemy_playanim "xMavani01s.I3D"
+enemy_playanim "xMavani01s.I3D"
+enemy_playanim "xMavani01s.I3D"
+label 13
+detector_issignal 3, -1, 13
+wait 300
+enemy_playanim "xTleskani01c.I3D"
+wait 19500
+enemy_playanim "xMavani01s.I3D"
+wait 50000
+end
+
+event 7
+event_use_cb 1
+return
+
+event 1
+event_use_cb 0
+human_looktoactor 0, 3, 1
+wait 2000
+enemy_talk 14950041
+wait 2000
+human_looktoactor 0
+return
+
+event use_ab, 14970002
+event_use_cb 0
+getenemyaistate 0, 1
+if flt[1] ! 0, 6, -1
+human_looktoactor 0, 1, 1
+if flt[3] = 0, 2, -1
+if flt[3] = 1, 3, -1
+enemy_talk 14950037
+let flt[3] = 0
+goto 6
+label 2
+enemy_talk 14950038
+let flt[3] = 1
+goto 6
+label 3
+enemy_talk 14950039
+let flt[3] = 2
+label 6
+enemy_wait
+human_looktoactor 0
+return
+
+event 12
+enemy_setstate runaway
+return

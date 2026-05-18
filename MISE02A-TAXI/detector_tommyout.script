@@ -1,0 +1,45 @@
+//[debug_me]
+dim_act 2
+dim_flt 3
+findactor 0, "Tommy"
+findactor 1, "taxi"
+
+label BEGIN
+getgametime flt[0]
+let flt[1] = flt[0]
+let flt[1] = flt[1] + 10000
+let flt[2] = 0
+label CHECK
+gosub CHECKSVESTKY
+if flt[2] = 1, BEGIN, -1
+compareownerwithex 0, 1, BEGIN, -1
+getgametime flt[0]
+if flt[0] > flt[1], -1, CHECK
+getgametime flt[0]
+let flt[1] = flt[0]
+let flt[1] = flt[1] + 10000
+// Kontrola utoku!!!
+get_pm_state 0, 0, 9
+if flt[0] = 0, -1, END
+human_talk 0, 02950250
+gosub CHECKSVESTKY
+if flt[2] = 1, BEGIN, -1
+label CHECK2
+compareownerwithex 0, 1, BEGIN, -1
+getgametime flt[0]
+if flt[0] > flt[1], END, CHECK2
+
+label END
+endofmission 0, 02980003
+end
+
+label CHECKSVESTKY
+   label CHECKVID
+   policeitchforplayer 0
+   if flt[0] ! 0, -1, RET
+      debug_text "Vylizane lebky pokutuji PLAYERA!"
+      wait 5000
+      let flt[2] = 1
+   goto CHECKVID
+   label RET
+return

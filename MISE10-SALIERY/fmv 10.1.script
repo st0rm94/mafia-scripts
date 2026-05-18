@@ -1,0 +1,36 @@
+dim_frm 5
+commandblock 1
+zatmyse 1
+findframe 0, "SalieriHIGH"
+findframe 1, "@zidle14514"
+findframe 2, "@zidle10770"
+findframe 3, "@zidle1702"
+findframe 4, "Tommy"
+
+mission_objectivesclear
+player_lockcontrols 1
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+loaddifferences "dif10a.chg"
+recloadfull "record10a.rep"
+commandblock 0
+
+zatmyse 0
+wait 500
+autosavegame 5225
+recwaitforend
+recunload
+cleardifferences
+commandblock 1
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+commandblock 0
+player_lockcontrols 0
+
+mission_objectives 10960001

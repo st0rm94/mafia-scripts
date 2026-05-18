@@ -1,0 +1,61 @@
+dim_act 5
+dim_flt 4
+findactor 0,"supervisor"
+findactor 1,"enemycar01"
+findactor 2,"enemycar02"
+findactor 3,"enemycar03"
+findactor 4,"Enemy13C"
+
+car_enableus 1,0
+car_enableus 2,0
+car_enableus 3,0
+
+{ down
+label 101
+wait 500
+getcardamage 1,0
+if flt[0]<1,DAMAGE01,-1
+getcardamage 2,0
+if flt[0]<1,DAMAGE01,-1
+getcardamage 3,0
+if flt[0]<1,DAMAGE01,-1
+goto 101
+}
+
+label CEKEJ
+{ down
+label LOOP01
+wait 50000
+goto LOOP01
+}
+
+
+getcardamage 1,1
+getcardamage 2,2
+getcardamage 3,3
+
+
+{ down
+label 102
+wait 500
+getcardamage 1,0
+if flt[0]<flt[1],DAMAGE02,-1
+getcardamage 2,0
+if flt[0]<flt[2],DAMAGE02,-1
+getcardamage 3,0
+if flt[0]<flt[3],DAMAGE02,-1
+goto 102
+}
+
+label DAMAGE02
+setevent 0,201,-1
+goto 101
+
+
+
+label DAMAGE01
+setevent 4,201,-1
+goto CEKEJ
+
+event 201
+return

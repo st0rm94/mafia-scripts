@@ -1,0 +1,7 @@
+enemy_vidim 0
+wait 3000
+enemy_move 25
+enemy_lookto 26
+enemy_wait
+enemy_lockstate fight_guard_stand, 2
+enemy_vidim 1

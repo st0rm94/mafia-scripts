@@ -1,0 +1,23 @@
+dim_flt 1
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "null"
+findactor 2, "null"
+
+label 1
+wait 500
+detector_inrange 0, 35
+if flt[0] = 1, -1, 1
+
+compareownerwithex 0, 2, 2, -1
+human_getowner 0, 1
+
+label 2
+wait 500
+detector_inrange 0, 35
+if flt[0] = 0, -1, 2
+
+compareownerwithex 0, 2, 1, -1
+compareownerwithex 0, 1, -1, 1
+findactor 1, "null"
+goto 1

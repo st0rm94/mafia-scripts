@@ -1,0 +1,13 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "PortGuard6"
+
+enemy_group_new 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+
+enemy_vidim 1
+enemy_action_fire 0

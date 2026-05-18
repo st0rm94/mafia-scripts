@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "VincenzoHIGH"
+
+detector_waitforuse 07970001
+label 4
+setevent 2,100,4
+label 3
+setevent 1,100,3

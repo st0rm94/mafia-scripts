@@ -1,0 +1,12 @@
+//dim_act 1
+//findactor 0, ""
+
+//timeron 3, 55, 0, 600
+//settimeoutevent 0, 1
+
+//label 1
+//wait 1000000
+//goto 1
+
+//event 1
+//endofmission 0, 1502

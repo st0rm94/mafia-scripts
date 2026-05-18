@@ -1,0 +1,10 @@
+dim_flt 1
+enemy_vidim 0
+label 101
+enemy_playanim "x barman stativ.I3D",0
+wait 15000
+enemy_playanim "x barman stul.I3D",0
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101
+

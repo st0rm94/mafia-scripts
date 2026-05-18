@@ -1,0 +1,29 @@
+dim_flt 1
+dim_act 6
+dim_frm 2
+findactor 0, "MorelloLOW"
+findactor 1, "load animace 16.3"
+findactor 2, "load mise16-letiste"
+findactor 3, "load mise16-mesto"
+findactor 4, "vzdalenost player morello"
+findactor 5, "arrow"
+
+findframe 0, "load mise16-mesto"
+findframe 1, "FMVarrow00-travis"
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, active
+act_setstate 4, off
+
+car_enableus 5, 1
+
+disablecolls 1
+setcompass 0
+mission_objectivesclear
+mission_objectives 9960007

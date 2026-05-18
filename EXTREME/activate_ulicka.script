@@ -1,0 +1,90 @@
+commandblock 1
+dim_act 13
+dim_frm 2
+dim_flt 2
+findactor 0,"enm_ulicka01"
+findactor 1,"enm_ulicka02"
+findactor 2,"enm_ulicka03"
+findactor 3,"enm_ulicka04"
+findactor 4,"enm_ulicka05"
+findactor 5,"enm_ulicka06"
+findactor 6,"enm_ulicka07"
+findactor 7,"enm_ulicka08"
+findactor 8,"enm_ulicka09"
+findactor 9,"cad_road"
+findactor 10,"ulicka_unlockcar"
+findactor 11,"activate_ulicka"
+findactor 12,"AKTIVNI_SUBQUEST"
+
+
+findframe 0,"ulicka_thompson"
+findframe 1,"cad_road"
+
+frm_seton 0,0
+frm_seton 1,0
+car_invisible 9,1
+car_enableus 9,0
+
+enemy_group_new 0
+enemy_group_add 0,0
+enemy_group_add 0,1
+enemy_group_add 0,2
+enemy_group_add 0,3
+enemy_group_add 0,4
+enemy_group_add 0,5
+
+enemy_group_new 1
+enemy_group_add 1,6
+enemy_group_add 1,7
+enemy_group_add 1,8
+commandblock 0
+
+enemy_vidim 0
+
+label START
+{ down
+label 101
+enemy_playanim "Mavani01.I3D"
+wait 30000
+goto 101
+}
+detector_issignal 12,START,-1
+
+detector_setsignal 12,1
+
+mission_objectivesclear
+mission_objectives 22930001
+
+frm_seton 0,1
+frm_seton 1,1
+car_invisible 9,0
+
+createweaponfromframe 0,10,50,200
+
+act_setstate 0,active
+act_setstate 1,active
+act_setstate 2,active
+act_setstate 3,active
+act_setstate 4,active
+act_setstate 5,active
+act_setstate 6,active
+act_setstate 7,active
+act_setstate 8,active
+
+act_setstate 10,active
+
+human_eraseab 11
+enemy_stopanim
+label 102
+wait 50000
+goto 102
+end
+
+event use_ab,10970007
+detector_issignal 2,NELZE,-1
+autosavegamefull 5590
+goto JMP01
+label NELZE
+console_addtext 3474
+label JMP01
+return

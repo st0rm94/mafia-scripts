@@ -1,0 +1,189 @@
+//[debug_me]
+dim_flt 4
+dim_act 9
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 3
+findactor 4, "cad_ford99"
+findactor 5, "load mise18"
+findactor 6, "detector_hlasky"
+findactor 7, "nesahat_chemaFor"
+findactor 8, "nesahat_hearseCa"
+garage_nezahazuj 4
+car_muststeal 4, 1
+car_enableus 8, 0
+car_lock_all 4, 1
+dim_frm 1
+findframe 0, "cad_frod99.DOOR0"
+
+enemy_shut_up yes
+enemy_vidim 0
+human_eraseab 3
+
+{ DOWN
+label FREESTATE2
+enemy_playanim "Gesto_01b.I3d", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_stopanim
+rnd 0, 3
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 2300
+wait flt[0]
+enemy_playanim "Gesto_01c.I3d", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+goto FREESTATE2
+}
+enemy_playanim "podani ruky.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+
+label WAITVYPADNI
+enemy_look 8
+enemy_wait
+getactorsdist 3, 8, 0
+if flt[0] > 3, -1, WAITVYPADNI
+
+
+{ DOWN
+human_createab 3
+label FREESTATE
+{ DOWN
+enemy_move 1
+enemy_playanim "HledaniNaZemi.I3D",0
+enemy_wait
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_move 2
+enemy_wait
+enemy_playanim "HledaniNaZemi.I3D",0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_move 3
+enemy_wait
+enemy_playanim "HledaniNaZemi.I3D",0
+let flt[0] = flt[0] - 323
+wait flt[0]
+goto FREESTATE
+}
+if flt[1] > 1, GARAGEMANAGER, -1
+getgametime 3
+enemy_talk 18990061
+let flt[3] = flt[3] + 5000
+human_looktoactor 0, 3, 1
+human_looktoactor 1, 3, 1
+human_looktoactor 2, 3, 1
+human_looktoactor 3, 0, 1
+enemy_move 4
+label WAITSAY
+getgametime 0
+if flt[0] > flt[3], -1, WAITSAY
+enemy_talk 1, 18990071, 1
+enemy_wait
+human_looktoactor 3
+enemy_lookto 11
+enemy_wait
+actor_setdir 3, 0
+enemy_playanim "RalphKradeVelkeAuto.I3D",0
+enemy_talk 18990081
+let flt[0] = flt[0] - 166
+let flt[0] = flt[0] / 2
+wait flt[0]
+playsound "carunlock1.wav", 0, 15, 0.6, 3
+wait flt[0]
+enemy_wait
+enemy_talk 0, 18990091
+enemy_look 0
+enemy_wait
+enemy_playanim "Gestikulace03.I3D",0
+enemy_talk 18990101
+enemy_wait
+human_looktoactor 0
+human_looktoactor 1
+human_looktoactor 2
+human_looktoactor 3
+console_addtext 3468
+garage_enablesteal S
+label SEND
+setevent 5, 1, SEND
+label SEND2
+setevent 6, 1, SEND2
+human_createab 3
+car_lock_all 4, 0
+goto FREESTATE
+
+label GARAGEMANAGER
+enemy_look 0
+enemy_wait
+gosub HLASKA
+garage_carmanager
+human_createab 3
+goto FREESTATE
+
+event USE_AB, 18970050
+human_eraseab 3
+event_use_cb 1
+if flt[1] = 0, -1, RET
+debug_text "Ralph predava auto..."
+label RET
+let flt[1] = flt[1] + 1
+enemy_stop
+enemy_forcescript 3
+return
+
+label HLASKA
+rnd 0, 3
+let flt[0] = flt[0] + 1
+goto flt[0]
+label 1
+enemy_talk 00950110
+enemy_wait
+return
+label 2
+enemy_talk 00950111
+enemy_wait
+return
+label 3
+enemy_talk 00950112
+enemy_wait
+return
+
+event HIT_FROM_PLAYER
+if flt[2] > 4, RET2, -1
+human_looktoactor 3, 0, 1
+let flt[2] = flt[2] +1
+human_stoptalk 3
+human_getproperty 3, 0, Energy
+if flt[0] < 40, NASERSE, -1
+if flt[2] = 1, NASIRACKA1, -1
+if flt[2] = 2, NASIRACKA2, -1
+if flt[2] = 3, NASIRACKA3, NASERSE
+label NASIRACKA1
+enemy_talk 950119
+goto RET2
+label NASIRACKA2
+enemy_talk 950118
+goto RET2
+label NASIRACKA3
+enemy_talk 950120
+goto RET2
+label NASERSE
+enemy_shut_up no
+human_looktoactor 3
+enemy_vidim 1
+enemy_naserse 0
+label RET2
+event_use_cb 0
+return
+
+event 1
+debug_text "Ralph: Dostal jsem event ze je Tommy blizko a cuci na nas - odchazim"
+event_use_cb 1
+return 
+
+event 1000
+enemy_shut_up no
+enemy_vidim 1
+return

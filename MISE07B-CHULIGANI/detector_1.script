@@ -1,0 +1,33 @@
+dim_flt 2
+dim_act 10
+findactor 0, "Hoolig3"
+findactor 1, "civil"
+findactor 2, "Hoolig4"
+findactor 3, "detector_2"
+findactor 4, "Paulie"
+findactor 5, "detector_4"
+findactor 6, "Hoolig8"
+findactor 7, "Hoolig9"
+// 8 volna
+findactor 9, "dest_velky"
+// Zapne mne az detector "prijeti k servisu"
+act_setstate -1, inactive
+debug_text "detector_1: detection started!"
+
+LABEL DETECT
+wait 200
+detector_inrange 0, 3
+if flt[0] = 1,-1, DETECT
+LABEL 1
+setevent 0, 1, 1
+LABEL 2
+setevent 1, 1, 2
+LABEL 3
+setevent 2,1,3
+act_setstate 3, active
+debug_text "detector_1: events sent !"
+act_setstate 5, active
+act_setstate 9, active
+debug_text "detector_1: dest_velky active!"
+wait 2000
+end

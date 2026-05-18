@@ -1,0 +1,71 @@
+dim_flt 2
+dim_act 6
+findactor 0, "Guard"
+findactor 1, "Guard2"
+findactor 2, "Guard3"
+findactor 3, "Guard4"
+findactor 4, "Guard5"
+findactor 5, "Guard6"
+
+dim_frm 6
+findframe 0, "Guard"
+findframe 1, "Guard2"
+findframe 2, "Guard3"
+findframe 3, "Guard4"
+findframe 4, "Guard5"
+findframe 5, "Guard6"
+
+let flt[1] = 1
+
+label DETECT
+wait 500
+detector_inrange 0, 100
+if flt[0] = 0, NOSIGNAL, SIGNAL
+
+label NOSIGNAL
+if flt[1] = 0, DETECT, -1
+//detector_setsignal -1, 0
+let flt[1] = 0
+debug_text "PortGuard_eraser: Inactivating and setting off all actors !"
+gosub TURNOFF
+goto DETECT
+
+label SIGNAL
+if flt[1] = 1, DETECT, -1
+//detector_setsignal -1, 1
+let flt[1] = 1
+debug_text "PortGuard_eraser: Activating and setting on all actors !"
+gosub TURNON
+goto DETECT
+
+label TURNOFF
+act_setstate 0, inactive
+act_setstate 1, inactive
+act_setstate 2, inactive
+act_setstate 3, inactive
+act_setstate 4, inactive
+act_setstate 5, inactive
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+return
+
+label TURNON
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+return

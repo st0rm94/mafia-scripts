@@ -1,0 +1,41 @@
+dim_flt 4
+dim_act 5
+findactor 0, "1Paulie"
+findactor 1, "Tommy"
+//findactor 2, "zjisteni auta"
+findactor 3, "spusteni alarmu"
+findactor 4, "detekce prijeti poldu"
+
+label 1
+wait 100
+detector_inrange 0, 20
+if flt[0] = 1, -1, 1
+
+detector_issignal 100, 3, -1
+human_talk 1, 00950203, 4
+wait 10000
+goto 1
+
+label 3
+human_getowner 1, 2
+compareownerwithex 0, 2, 2, -1
+if flt[1] = 1, 1, -1
+human_talk 1, 00950212, 4
+let flt[1] = 1
+goto 1
+
+label 2
+detector_issignal 3, -1, 4
+let flt[2] = 1
+goto 5
+
+label 4
+detector_issignal 4, -1, 5
+let flt[3] = 1
+
+label 5
+floatreg_push 2
+floatreg_push 3
+character_push 0
+inventory_push 0
+change_mission "mise19-mesto", "load z mise19-banka", -1

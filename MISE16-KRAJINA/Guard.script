@@ -1,0 +1,33 @@
+enemy_vidim 0
+dim_act 3
+findactor 0, ""
+findactor 1, "civil"
+findactor 2, "arrow"
+
+{ down
+enemy_vidim 1
+
+label 1
+wait 1000000
+goto 1
+}
+
+label 2
+enemy_usecar
+compareownerwith 2, 2, -1
+
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3
+
+event 1
+commandblock 1
+enemy_vidim 1
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+event_use_cb 1
+commandblock 0
+return

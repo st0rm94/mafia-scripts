@@ -1,0 +1,48 @@
+dim_flt 2
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "krajeni"
+
+label 1
+detector_waitforuse 10970000
+detector_issignal -1, -1, 3
+detector_issignal 1, -1, 2
+change_mission "mise10-mesto", "2x load z mise10-saliery", 1
+end
+
+label 3
+rnd 1, 4
+if flt[1] = 0, 4, -1
+if flt[1] = 1, 5, -1
+if flt[1] = 2, 6, -1
+human_talk 0, 00950100
+wait 3000
+goto 1
+label 4
+human_talk 0, 00950101
+wait 3000
+goto 1
+label 5
+human_talk 0, 00950102
+wait 3000
+goto 1
+label 6
+human_talk 0, 00950103
+wait 4000
+goto 1
+
+label 2
+rnd 1, 3
+if flt[1] = 0, 7, -1
+if flt[1] = 1, 8, -1
+human_talk 0, 00950246
+wait 8000
+goto 1
+label 7
+human_talk 0, 00950247
+wait 8000
+goto 1
+label 8
+human_talk 0, 00950248
+wait 8000
+goto 1

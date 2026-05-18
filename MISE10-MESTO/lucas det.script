@@ -1,0 +1,7 @@
+dim_flt 1
+
+label 1
+wait 50
+DETECTOR_INRANGE 0, 3
+if flt[0] = 1, -1, 1
+detector_setsignal -1, 1

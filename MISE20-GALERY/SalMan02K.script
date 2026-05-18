@@ -1,0 +1,4 @@
+enemy_vidim 0
+enemy_podvadim_jak Tretera
+wait 1000
+enemy_vidim 1

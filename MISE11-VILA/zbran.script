@@ -1,0 +1,10 @@
+dim_flt 1
+dim_frm 1
+dim_act 1
+findactor 0, "Enemy08K"
+findframe 0, "2shotgun"
+
+label 1
+human_anyweaponinhand 0, 0
+if flt[0] = 1, -1, 1
+frm_seton 0, 0

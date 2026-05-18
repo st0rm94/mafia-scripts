@@ -1,0 +1,25 @@
+dim_flt 2
+dim_frm 1
+findframe 0, "uklizecka"
+
+label 1
+frm_seton 0, 1
+enemy_playanim "Zametani.I3D", 0
+let flt[0] = flt[0] - 600
+wait flt[0]
+let flt[1] = flt[1] + 1
+if flt[1] = 4, -1, 1
+enemy_lookto 10
+enemy_wait
+let flt[1] = 0
+label 2
+frm_seton 0, 1
+enemy_playanim "Zametani.I3D", 0
+let flt[0] = flt[0] - 600
+wait flt[0]
+let flt[1] = flt[1] + 1
+if flt[1] = 4, -1, 2
+enemy_lookto 9
+enemy_wait
+let flt[1] = 0
+goto 1

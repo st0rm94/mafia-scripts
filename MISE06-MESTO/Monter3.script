@@ -1,0 +1,7 @@
+{ up
+enemy_playanim "GestZamStativ.I3D",0
+label 101
+wait 50000
+goto 101
+}
+

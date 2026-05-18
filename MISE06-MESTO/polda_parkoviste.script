@@ -1,0 +1,22 @@
+dim_act 2
+findactor 0,"polda_parkoviste"
+findactor 1,"Tommy"
+
+human_changeanim 0,"walk1.i3d","ChuzeRuceZaZady1.I3D"
+
+human_addweapon 0,6,6,30
+human_holster 0
+
+{ up
+label 101
+enemy_move 11
+enemy_move 12
+enemy_move 13
+enemy_move 10
+goto 101
+}
+
+event ZATKNI
+human_changeanim 0,"walk1.i3d"
+enemy_arrest_player
+return

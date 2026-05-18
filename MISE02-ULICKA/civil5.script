@@ -1,0 +1,22 @@
+dim_flt 1
+dim_act 1
+findactor 0,"TommyTAXIDRIVER"
+
+enemy_vidim 0
+
+{ down
+enemy_playanim "Gestikulace03.i3", 0
+label 101
+wait 33000
+goto 101
+}
+enemy_move 18
+end
+
+event 202
+return
+
+event 201
+enemy_action_runaway 0,100
+end
+

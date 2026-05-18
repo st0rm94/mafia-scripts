@@ -1,0 +1,5 @@
+dim_act 1
+findactor 0, "Detektiv9"
+
+enemy_lockstate fight_guard, 2
+human_addweapon 0, 10, 50, 30

@@ -1,0 +1,396 @@
+dim_flt 7
+dim_act 10
+dim_frm 4
+findframe 0, ""
+findframe 1, "Tommy"
+findframe 2, "position_Tommy"
+findframe 3, "Postava"
+
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "Postava"
+findactor 3, "aktivace chlapiku"
+findactor 7, "Postava"
+findactor 8, "detector_svestky"
+findactor 9, "null"
+
+let flt[3] = 7
+
+{ DOWN
+label FREESTATE
+{ DOWN
+
+enemy_playanim "BombaPodStul.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_move 6
+enemy_lookto 7
+enemy_wait
+enemy_playanim "MechSroubovani.I3D", 0
+commandblock 1
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] * 3
+commandblock 0
+wait flt[0]
+enemy_playanim "MechSroubovani2.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto FREESTATE
+}
+}
+
+debug_text "Lucas: Back to FREESTATE"
+enemy_move 6
+enemy_lookto 7
+enemy_wait
+goto FREESTATE
+
+event USE_AB, 15970010
+getmissionnumber 0
+if flt[0] > 0, -1, FALSE
+if flt[1] = 1, FALSESUB, -1
+if flt[1] = 2, OK, -1
+if flt[1] = 3, FUCKED, -1
+if flt[1] = 4, DONE, -1
+
+policeitchforplayer 2
+if flt[2] = 1, -1, 3
+goto flt[3]
+
+label 7
+enemy_talk 1, 00950225, 4
+enemy_wait
+let flt[3] = flt[3] + 1
+return
+
+label 8
+enemy_talk 1, 00950224, 4
+enemy_wait
+let flt[3] = flt[3] + 1
+return
+
+label 9
+enemy_talk 1, 00950223, 4
+enemy_wait
+let flt[3] = 7
+return
+
+label 3
+enemy_stopanim 
+enemy_forcescript 0
+enemy_look 1
+player_lockcontrols 1
+commandblock 1
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+actor_setdir 1, 0
+dialog_begin 0, 2
+inventory_push 1
+inventory_clear 1
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_playanim "gesto2 nogun1a.I3D"
+dialog_camswitch 1, 0
+commandblock 0
+enemy_talk 17990181
+enemy_wait
+dialog_camswitch 0, 1
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_talk 1, 17990191
+enemy_wait
+dialog_camswitch 1, 0
+enemy_playanim "gesto2 nogun1b.I3D"
+enemy_talk 17990201
+enemy_wait
+enemy_talk 17990202
+enemy_playanim "gesto2 nogun1d.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 17990211
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 17990221
+enemy_wait
+enemy_talk 17990222
+enemy_playanim "gesto2 nogun1e.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_wait
+enemy_talk 17990223
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 17990231
+person_playanim 1, "gesto2 nogun1e.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_wait
+commandblock 1
+dialog_end
+inventory_pop 1
+person_stopanim 1
+player_lockcontrols 0
+
+autosavegamefull 5485
+
+human_looktoactor 0
+human_looktoactor 1
+act_setstate 7, active
+act_setstate 8, active
+event_use_cb 1
+setcompass 3
+timeron 17, 28, 0, 300
+settimeoutevent 8, 1
+commandblock 0
+mission_objectivesclear
+mission_objectives 17960002
+let flt[1] = 1
+goto RET
+
+//#################################
+//# Pokud dela subquest a jeste jej nedokoncil !  #
+//#################################
+label FALSESUB
+event_use_cb 0
+rnd 0, 2
+let flt[0] = flt[0] + 1
+goto flt[0]
+label 1
+enemy_talk 09990331
+enemy_wait
+goto RET
+label 2
+enemy_talk 09990341
+enemy_wait
+label RET
+return
+
+//######################
+//# Pokud nema delat subquest  #
+//######################
+label FALSE
+event_use_cb 0
+rnd 0, 2
+let flt[0] = flt[0] + 11
+goto flt[0]
+label 11
+enemy_talk 1, 09990601
+enemy_wait
+goto RET
+label 12
+enemy_talk 1, 09990602
+enemy_wait
+goto RET
+
+//##########
+//#  D O N E   #
+//##########
+label DONE
+event_use_cb 0
+enemy_talk 09990612
+enemy_wait
+goto RET
+
+// ###################################
+// ##    S U B Q U E S T  S U C C E S S F U L L    ##
+// ################################### 
+label OK
+
+policeitchforplayer 2
+if flt[2] = 1, -1, 6
+if flt[4] = 1, 5, -1
+enemy_talk 1, 00950224
+let flt[4] = 1
+
+label 5
+return
+
+label 6
+enemy_stopanim 
+enemy_forcescript 0
+enemy_look 1
+enemy_wait
+
+label WAIT
+wait 100
+detector_issignal 8, -1, WAIT
+getactorsdist 0, 1, 5
+if flt[5] < 4, -1, WAIT
+compareownerwithex 1, 9, 10, -1
+let flt[6] = 1
+goto WAIT
+
+label 10
+if flt[6] = 1, -1, 13
+wait 4000
+
+label 13
+commandblock 1
+player_lockcontrols 1
+inventory_push 1
+inventory_clear 1
+dialog_begin 0, 3
+//actor_setplacement 1, 2
+actor_setdir 1, 0
+actor_setdir 2, 0
+dialog_camswitch 1, 2
+human_looktoactor 0, 2, 1
+human_looktoactor 1, 2, 1
+human_looktoactor 2, 0, 1
+commandblock 0
+person_playanim 2, "gesto2 nogun1c.I3D", 0
+let flt[0] = flt[0] - 83
+enemy_talk 2, 17990281
+person_playanim 1, "breath01a.I3D"
+wait flt[0]
+person_stopanim 2
+enemy_wait
+dialog_camswitch 1, 0
+enemy_look 1
+enemy_wait
+human_looktoactor 1, 0, 1
+enemy_talk 17990291
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_wait
+dialog_camswitch 1, 2
+human_looktoactor 1, 2, 1
+enemy_talk 2, 17990301
+commandblock 1
+person_playanim 2, "gesto2 nogun1b.I3D", 0
+let flt[0] = flt[0] -83
+commandblock 0
+wait flt[0]
+person_playanim 2, "gesto2 nogun1a.I3D"
+person_playanim 1, "breath01a.I3D"
+enemy_wait
+dialog_camswitch 1, 0
+human_looktoactor 1, 0, 1
+enemy_talk 17990311
+human_looktoactor 0, 1, 1
+wait 1000
+enemy_look 1
+human_looktoactor 2, 1, 1
+enemy_wait
+enemy_playanim "gesto2 nogun1a.I3D"
+commandblock 1
+actor_setdir 2, 1
+dialog_camswitch 1, 2
+human_looktoactor 1, 2, 1
+human_looktoactor 2, 1, 1
+commandblock 0
+enemy_talk 2, 17990321
+enemy_wait
+dialog_camswitch 0, 1
+human_looktoactor 0, 1, 1
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_talk 1, 17990331
+enemy_wait
+dialog_camswitch 1, 0
+person_playanim 1, "breath01a.I3D"
+human_looktoactor 0, 2, 1
+human_looktoactor 2, 0, 1
+enemy_talk 17990531
+enemy_wait
+dialog_camswitch 1, 2
+enemy_talk 2, 17990541
+enemy_wait
+label SEND
+setevent 2, 2, SEND
+human_looktoactor 2
+wait 1000
+dialog_camswitch 1, 0
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+enemy_talk 17990341
+enemy_wait
+commandblock 1
+dialog_camswitch 0, 1
+person_playanim 1, "gesto2 nogun1b.I3D", 0
+let flt[0] = flt[0] - 83
+enemy_talk 1, 17990351
+commandblock 0
+enemy_wait
+person_playanim 1, "breath01a.I3D", 0
+dialog_camswitch 1, 0
+enemy_talk 17990361
+enemy_wait
+enemy_talk 17990362
+enemy_wait
+enemy_talk 17990363
+enemy_wait
+dialog_camswitch 0, 1
+commandblock 1
+person_playanim 1, "gesto2 nogun1e.I3D", 0
+let flt[0] = flt[0][ - 83
+enemy_talk 1, 17990371
+commandblock 0
+wait flt[0]
+person_stopanim 1
+enemy_wait
+human_looktoactor 1
+dialog_end
+inventory_pop 1
+
+autosavegamefull 5487
+
+act_setstate 3, active
+player_lockcontrols 0
+let flt[1] = 4
+mission_objectivesclear
+mission_objectives 17960003
+garage_enablesteal T
+console_addtext 3467
+goto RET
+
+label FUCKED
+// ######################################
+// ##    S U B Q U E S T  U N S U C C E S S F U L L    ##
+// ###################################### 
+enemy_stopanim 
+enemy_forcescript 0
+enemy_look 1
+player_lockcontrols 1
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+actor_setdir 1, 0
+dialog_begin 0, 2
+dialog_camswitch 0, 1
+person_playanim 1, "gesto2 nogun1e.I3D", 0
+enemy_talk 1, 17991531
+let flt[0] = flt[0] - 166
+wait flt[0]
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_wait
+dialog_camswitch 1, 0
+enemy_playanim "gesto2 nogun1b.I3D", 0
+enemy_talk 17991541
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 17991551
+wait 2000
+enemy_wait
+human_looktoactor 1
+dialog_end
+player_lockcontrols 0
+let flt[1] = 4
+mission_objectivesclear
+goto RET
+
+
+event 1
+let flt[1] = 2
+return
+
+event 2
+event_use_cb 1
+return
+
+event 100
+let flt[1] = 3
+return

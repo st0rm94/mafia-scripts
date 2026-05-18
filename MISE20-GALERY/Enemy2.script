@@ -1,0 +1,20 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+
+human_addweapon 0, 12, 2, 8
+human_addweapon 0, 6, 6, 18
+
+enemy_playanim "breath06a.i3d"
+wait 1000
+
+act_setstate 100, inactive
+
+enemy_playanim "enm roh drep nahl t.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+wait 500
+enemy_action_fire 1

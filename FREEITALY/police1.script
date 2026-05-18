@@ -1,0 +1,69 @@
+//policie ve meste
+
+DIM_FRM 8
+DIM_FLT 2
+
+FINDFRAME 0, "police1"
+FINDFRAME 1, "police2"
+FINDFRAME 2, "police3"
+FINDFRAME 3, "police4"
+FINDFRAME 4, "police5"
+FINDFRAME 5, "police6"
+FINDFRAME 6, "police7"
+FINDFRAME 7, "police8"
+
+FRM_SETON 0, 0
+FRM_SETON 1, 0
+FRM_SETON 2, 0
+FRM_SETON 3, 0
+FRM_SETON 4, 0
+FRM_SETON 5, 0
+FRM_SETON 6, 0
+FRM_SETON 7, 0
+
+label 1
+  rnd 0, 19  
+  let flt[0] = flt[0] * 5000 
+  let flt[0] = flt[0] + 30000
+  wait flt[0]
+ rnd 1, 24
+ IFFLTINRANGE 1, 0, 2, 2
+ IFFLTINRANGE 1, 3, 5, 3
+ IFFLTINRANGE 1, 6, 8, 4
+ IFFLTINRANGE 1, 9, 11, 5
+ IFFLTINRANGE 1, 12, 14, 6
+ IFFLTINRANGE 1, 15, 17, 7
+ IFFLTINRANGE 1, 18, 20, 8
+ IFFLTINRANGE 1, 21, 23, 9
+
+label 2
+ FRM_SETON 0, 1
+goto 1
+
+label 3
+ FRM_SETON 1, 1
+goto 1
+
+label 4
+ FRM_SETON 2, 1
+goto 1
+
+label 5
+ FRM_SETON 3, 1
+goto 1
+
+label 6
+ FRM_SETON 4, 1
+goto 1
+
+label 7
+ FRM_SETON 5, 1
+goto 1
+
+label 8
+ FRM_SETON 6, 1
+goto 1
+
+label 9
+ FRM_SETON 7, 1
+goto 1

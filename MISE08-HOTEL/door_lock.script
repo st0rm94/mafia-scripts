@@ -1,0 +1,12 @@
+dim_flt 1
+dim_act 1
+findactor 0,"k_hotkos00.Box09"
+
+act_setstate -1,inactive
+
+label 101
+detector_inrange 0,2
+if flt[0]=0,-1,101
+
+door_open 0,0
+door_lock 0,1

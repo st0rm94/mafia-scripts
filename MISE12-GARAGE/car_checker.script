@@ -1,0 +1,15 @@
+dim_act 2
+dim_flt 1
+findactor 0, "AUTO"
+findactor 1, "Enemy_gr3_ridic"
+act_setstate -1, inactive
+wait 2000
+
+label DETECT
+car_getspeed 0, 0
+if flt[0] < 5, -1, DETECT
+wait 400
+setevent 1, 1, -1
+debug_text "car_checker: AUTO nejede - posilam event ridici"
+end
+

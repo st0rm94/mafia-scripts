@@ -1,0 +1,83 @@
+dim_act 2
+dim_flt 1
+dim_frm 2
+findframe 0, "Lucas"
+findframe 1, "Boxer"
+findactor 0, "Tommy"
+findactor 1, ""
+act_setstate 1, inactive
+
+enemy_vidim 0
+enemy_playanim "Chuligan04Stativ.i3d"
+{ down
+label 1
+if flt[0] = 1, 28, -1
+goto 1
+}
+{ down
+enemy_vidim 1
+}
+{ up
+label 56
+if flt[0] = 1, 28, -1
+goto 56
+}
+
+event 1
+enemy_vidim 0
+enemy_forcescript 1
+enemy_brainwash
+enemy_actionsclear
+let flt[0] = 1
+return
+
+
+event 2
+event_use_cb 1
+return
+
+event use_ab
+event_use_cb 1
+setcompass -1
+player_lockcontrols 1
+dialog_begin 0, 2
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+dialog_camswitch 1, 0
+human_talk 0, 10990891
+enemy_wait
+enemy_playanim "GestikulaceNew03.i3d"
+dialog_camswitch 0, 1
+enemy_talk 10990901
+enemy_wait
+dialog_camswitch 1, 0
+human_talk 0, 10990911
+enemy_wait
+enemy_playanim "GestikulaceNew04.i3d"
+dialog_camswitch 0, 1
+enemy_talk 10990921
+enemy_wait
+dialog_camswitch 1, 0
+human_talk 0, 10990931
+enemy_wait
+enemy_playanim "GestikulaceNew05.i3d"
+dialog_camswitch 0, 1
+enemy_talk 10990941
+enemy_wait
+dialog_end
+human_looktoactor 0
+human_looktoactor 1
+player_lockcontrols 0
+return
+
+label 28
+enemy_talk 10990951
+setcompass 0
+mission_objectivesclear
+mission_objectives 10960009
+enemy_action_runaway 0, 150, return
+enemy_action_runaway 0, 150, return
+enemy_action_runaway 0, 150, return
+enemy_action_runaway 0, 150, return
+frm_seton 1, 0
+end

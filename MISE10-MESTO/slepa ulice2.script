@@ -1,0 +1,27 @@
+dim_act 1
+dim_flt 2
+findactor 0, "Tommy"
+
+label 1
+wait 250
+detector_inrange 0, 12
+if flt[0] = 1, -1, 1
+
+if flt[1] = 1, 2, -1
+if flt[1] = 2, 3, -1
+human_talk 0, 950203, 2
+wait 4000
+let flt[1] = 1
+goto 1
+
+label 2
+human_talk 0, 950204, 2
+wait 4000
+let flt[1] = 2
+goto 1
+
+label 3
+human_talk 0, 950206, 2
+wait 4000
+let flt[1] = 0
+goto 1

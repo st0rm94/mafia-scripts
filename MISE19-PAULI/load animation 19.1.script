@@ -1,0 +1,58 @@
+label 1
+autosavegame 5510
+zatmyse 1, 1
+commandblock 1
+dim_act 3
+dim_frm 10
+findactor 0, "Paulie"
+findactor 1, "load mise19-mesto"
+findactor 2, "Box80"
+findframe 0, "Tommy"
+findframe 1, "Paulie"
+findframe 2, "xstul18"
+findframe 3, "@zidle9289"
+findframe 4, "@zidle10222"
+findframe 5, "@zidle4123"
+findframe 6, "@zidle01"
+findframe 7, "xkniha 2"
+findframe 8, "xubrus 2"
+findframe 9, "xpopelnik"
+
+player_lockcontrols 1
+act_setstate 0, inactive
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+door_open 2, 1
+loaddifferences "dif19a.chg"
+recloadfull "record19a"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+player_lockcontrols 0
+act_setstate 0, active
+act_setstate 1, active
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+door_open 2, 0
+commandblock 0
+zatmyse 0

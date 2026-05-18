@@ -1,0 +1,45 @@
+dim_flt 1
+dim_act 5
+dim_frm 1
+findactor 0, "civil6"
+findactor 1, "civil5"
+findactor 2, "detekce narazu"
+findactor 3, "Lucas"
+findactor 4, "detekce healtu kamose"
+findframe 0, "load mise16-saliery"
+
+act_setstate 100, inactive
+
+timeron 0, 0, 0, 500
+
+label 1
+human_getproperty 1, 0, energy
+if flt[0] = 0, 4, -1
+let flt[0] = flt[0] * 5
+timer_setinterval 0
+goto 1
+
+label 4
+act_setstate 2, off
+act_setstate 4, off
+timeroff
+setcompass -1
+mission_objectivesclear
+mission_objectives 20960004
+
+label 2
+setevent 3, 1, 2
+
+label 3
+setevent 0, 3, 3
+
+wait 4000
+
+camera_unlock
+wingman_delindicator  3, 1
+
+mission_objectivesclear
+mission_objectives 17960001
+setcompass 0
+
+act_setstate 100, off

@@ -1,0 +1,8 @@
+dim_act 2
+dim_frm 1
+findactor 0, "Salieri"
+findactor 1, "Tommy"
+findframe 0, "load z mise13-mesto2"
+
+character_pop 0
+actor_setplacement 1, 0

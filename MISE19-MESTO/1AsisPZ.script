@@ -1,0 +1,142 @@
+dim_flt 3
+dim_act 11
+dim_frm 3
+findactor 0, "Box24"
+findactor 1, "Tommy"
+findactor 2, ""
+findactor 3, "1odchod od peteho 1"
+findactor 4, "1odchod od peteho 3"
+findactor 5, "1ProdZ"
+findactor 6, "detekce stavu asistenta"
+
+findactor 9, "Box24"
+findactor 10, "gRectangle01"
+
+findframe 0, "teleport asis dvere"
+findframe 1, "unlock_pete"
+findframe 2, "1ProdZ"
+
+enemy_group_new 2
+enemy_group_add 2, 2
+enemy_group_add 2, 5 
+
+door_enableus 9, 0
+door_enableus 10, 0
+act_setstate 100, inactive
+
+{ up
+label 1
+if flt[0] = 1, -1, 1
+}
+
+act_setstate 6, active
+enemy_move 6
+enemy_wait
+enemy_move 17
+enemy_wait
+enemy_lookto 7
+enemy_wait
+door_open 10, 1
+
+label 8
+getangleactortoactor 2, 1, 0
+if flt[0] < 15, -1, 8
+
+wait 1500
+enemy_talk 19990241
+enemy_wait
+wait 500
+enemy_talk 1, 19990251
+enemy_wait
+wait 500
+enemy_talk 19990261
+enemy_wait
+
+label 7
+human_anyweaponinhand 1, 0
+if flt[0] = 1, -1, 4
+if flt[1] = 1, 7, -1
+enemy_talk 19990271
+enemy_wait
+let flt[1] = 1
+goto 7
+
+
+label 4
+door_open 10, 0
+wait 500
+actor_setplacement 2, 0
+frm_seton 1, 1
+wait 4000
+door_lock 0, 0
+door_open 9, 1
+enemy_move 8
+enemy_wait
+enemy_lookto 9
+enemy_wait
+human_looktoactor 2, 1, 1
+
+label 2
+wait 1000000
+goto 2 
+
+event 1
+event_use_cb 1
+let flt[0] = 1
+return
+
+event 2
+enemy_move 11
+enemy_wait
+
+label 3
+detector_issignal 3, -1, 3
+
+human_looktoactor 2
+enemy_move 17
+enemy_wait
+enemy_lookto 7
+enemy_wait
+
+detector_issignal 4, -1, 6
+
+human_holster 2
+enemy_move 12
+enemy_wait
+enemy_lookto 7
+enemy_wait
+human_looktoactor 2, 1, 1
+
+label 5
+detector_issignal 4, 5, -1
+
+enemy_move 6
+enemy_wait
+enemy_lookto 17
+enemy_wait
+
+label 9
+detector_issignal 4, 9, -1
+
+label 6
+door_lock 0, 1
+door_open 0, 0
+wait 500
+enemy_move 13
+
+label 10
+wait 1000
+getactorsdist 1, 2, 0
+if flt[0] > 200, -1, 10
+getactorsdist 1, 5, 0
+if flt[0] > 200, -1, 10
+
+frm_seton 100, 0
+frm_seton 2, 0
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 100, off
+
+event 3
+enemy_naserse 1

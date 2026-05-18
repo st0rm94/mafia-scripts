@@ -1,0 +1,18 @@
+dim_flt 1
+dim_act 3
+findactor 0,"Tommy"
+findactor 2,"NULL"
+
+
+label 101
+wait 3000
+label 102
+wait 2000
+compareownerwithex 0,2,101,-1
+human_getowner 0,1
+label 103
+car_getspeed 1,0
+if flt[0]>100,-1,102
+wait 2000
+freeride_scoreadd 100
+goto 103

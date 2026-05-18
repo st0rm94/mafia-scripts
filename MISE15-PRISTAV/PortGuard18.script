@@ -1,0 +1,8 @@
+enemy_lockstate fight_guard, 30
+
+label 1
+wait 2000
+enemy_move 33
+enemy_move 34
+wait 2000
+goto 1

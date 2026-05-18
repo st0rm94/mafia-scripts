@@ -1,0 +1,199 @@
+commandblock 1
+dim_flt 6
+dim_act 9
+dim_frm 7
+findactor 0, ""
+findactor 1, "Tommy"
+//findactor 2, "zjisteni auta"
+findactor 3, "null"
+
+findactor 8, "prijeti k palermu 1"
+findframe 0, ""
+findframe 1, "Tommy"
+findframe 2, "poplach_zvonek"
+
+
+human_getowner 1, 2
+human_force_settocar 0, 2, 1
+
+let flt[5] = 10
+
+autosavegame 5540
+
+character_pop 0
+inventory_pop 0
+human_holster 0
+floatreg_pop 3
+if flt[3] = 1, 9, -1
+
+
+
+label 9
+floatreg_pop 4
+if flt[4] = 1, -1, 8
+frm_seton 2, 1
+
+label 8
+policemanager_forcearrest 1, 1, 1
+wingman_setindicator 0, 1, 1
+human_eraseab 0
+commandblock 0
+
+enemy_followplayer yes
+enemy_action_follow 1, 3, nonext
+enemy_followplayer no
+
+setcompass -1
+
+get_remote_actor 2, 8, 2
+compareactors 2, 3, 0
+if flt[0] = 1, 3, -1
+
+compareownerwith 3, 7, -1
+
+human_getowner 0, 2
+
+label 2
+enemy_usecar
+compareownerwith 2, 2, -1
+goto 7
+
+label 3
+enemy_move 44, run
+
+label 7
+human_looktoactor 0, 1, 11
+human_createab 0
+{ up
+label 4
+enemy_look 1
+enemy_wait
+wait 2000
+goto 4
+}
+
+event use_ab, 19970003
+policeitchforplayer 0
+if flt[0] = 1, -1, 12
+goto flt[5]
+
+label 10
+enemy_talk 00950072
+enemy_wait
+let flt[5] = 11
+return
+
+label 11
+enemy_talk 00950074
+enemy_wait
+let flt[5] = 10
+return
+
+label 12
+commandblock 1
+player_lockcontrols 1
+actor_setdir 0, 1
+actor_setdir 1, 0
+dialog_begin 0, 2
+dialog_camswitch 1, 0
+human_holster 1
+commandblock 0
+enemy_playanim "gestikulace03.i3d", 0, simple
+enemy_talk 19991441
+enemy_wait
+
+commandblock 1
+enemy_stopanim
+person_playanim 1, "gesto2 nogun1d.i3d", 0, simple
+dialog_camswitch 0, 1
+commandblock 0
+
+enemy_talk 1, 19991451
+enemy_wait
+enemy_talk 1, 19991461
+enemy_wait
+
+commandblock 1
+person_stopanim 1
+enemy_playanim "gestikulacenew01.i3d", 0, simple
+dialog_camswitch 1, 0
+commandblock 0
+
+enemy_talk 19991471
+enemy_wait
+
+commandblock 1
+enemy_stopanim
+person_playanim 1, "gesto2 nogun1e.i3d", 0, simple
+dialog_camswitch 0, 1
+commandblock 0
+
+enemy_talk 1, 19991481
+enemy_wait
+
+commandblock 1
+person_stopanim 1
+enemy_playanim "gestikulacenew02.i3d", 0, simple
+dialog_camswitch 1, 0
+commandblock 0
+
+enemy_talk 19991491
+enemy_wait
+enemy_talk 19991492
+enemy_wait
+enemy_talk 19991493
+enemy_wait
+
+commandblock 1
+enemy_stopanim
+person_playanim 1, "gesto2 nogun1e.i3d", 0, simple
+dialog_camswitch 0, 1
+commandblock 0 
+
+enemy_talk 1, 19991494
+enemy_wait
+
+commandblock 1
+person_stopanim 1
+enemy_playanim "pritakani02.i3d", 0, simple
+dialog_camswitch 1, 0
+commandblock 0
+
+enemy_talk 19991495
+enemy_wait
+
+commandblock 1
+enemy_stopanim
+person_playanim 1, "gestikulacenew07.i3d", 0, simple
+dialog_camswitch 0, 1
+commandblock 0
+
+enemy_talk 1, 19991496
+enemy_wait
+
+commandblock 1
+person_stopanim 1
+enemy_playanim "gestikulace03.i3d", 0, simple
+dialog_camswitch 1, 0
+commandblock 0
+
+enemy_talk 19991497
+enemy_wait
+zatmyse 1
+wait 500
+getmissionnumber 1
+if flt[1] = 3, -1, 5
+setmissionnumber 1
+goto 6
+
+label 5
+if flt[1] = 4, -1, 6
+setmissionnumber 2
+
+label 6
+change_mission "mise20-pauli", "", -1
+end 
+
+event 1
+enemy_forcescript 0
+return

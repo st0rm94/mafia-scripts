@@ -1,0 +1,6 @@
+act_setstate -1,inactive
+dim_act 1
+findactor 0,"nedovol_odjet"
+wait 30000
+setevent 0,201,-1
+end

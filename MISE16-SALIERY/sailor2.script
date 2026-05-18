@@ -1,0 +1,24 @@
+enemy_lockstate panic_freeze
+dim_flt 1
+
+label 1
+enemy_playanim "geststativtozam.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "gestzamstativ.i3d"
+wait 7000
+enemy_playanim "gestzamtostativ.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+enemy_move 20
+enemy_lookto 23
+enemy_wait
+enemy_playanim "borecstat.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+enemy_move 21
+enemy_lookto 22
+enemy_wait
+goto 1

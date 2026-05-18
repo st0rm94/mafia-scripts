@@ -1,0 +1,54 @@
+dim_frm 5
+dim_act 6
+
+commandblock 1
+citymusic_off
+findframe 0, "Tommy"
+findframe 1, "cad_phaeton"
+findframe 2, "Salieri"
+findframe 3, "light"
+findframe 4, "sloup33"
+findactor 0, "Salieri"
+findactor 1, "hlasky"
+findactor 2, "energymetr"
+findactor 3, "crash car"
+findactor 4, "hlasky 2"
+findactor 5, "Tommy"
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 4, 0
+player_lockcontrols 1
+commandblock 0
+
+autosavegame 5310
+mission_objectivesclear
+
+
+commandblock 1
+zatmyse 1, 50
+commandblock 0
+subtitle_add 7204
+wait 3000
+loaddifferences "dif13a.chg"
+recloadfull "record13a.rep"
+recwaitforend
+
+commandblock 1
+human_holster 5
+recunload
+cleardifferences
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 4, 1
+commandblock 0
+player_lockcontrols 0
+zatmyse 0, 500
+citymusic_on
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+mission_objectives 13960001

@@ -1,0 +1,103 @@
+//[debug_me]
+dim_act 6
+dim_flt 2
+dim_frm 4
+findactor 0, "TruckB"
+findactor 1, "Box343"
+findactor 2, "dvr1"
+getactiveplayer 3
+findactor 4, "Paulie2"
+findactor 5, "TruckBx"
+
+getactorframe 3, 0
+getactorframe 4, 1
+getactorframe 5, 2
+findframe 3, "misto_pro_Truck"
+
+act_setstate -1, inactive
+
+door_lock 1, 0
+door_lock 2, 0
+door_open 1, 1
+door_open 2, 1
+door_lock 1, 1
+door_lock 2, 1
+door_enableus 1, 0
+door_enableus 2, 0
+
+label DETECT
+   detector_inrange 0, 50
+   if flt[0] > 1, -1, DETECT
+
+label CHECKSVESTKY
+//get_pm_numpredators 3, 0
+//if flt[0] ! 0, JDOUPONAS, -1
+compareownerwithex 3, 5, -1, DETECT
+
+enemy_block
+player_lockcontrols 1
+policemanager_del "Tommy"
+zatmyse 1
+wait 500
+commandblock 1
+car_forcestop 5
+actor_setplacement 5, 3
+car_calm 5
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+setcitytrafficvisible 0
+loaddifferences "dif18bc.chg"
+recloadfull "record18bc.rep"
+commandblock 0
+citymusic_off
+zatmyse 0
+recwaitforend
+commandblock 1
+zatmyse 1, 1
+recunload
+cleardifferences
+commandblock 0
+garage_show
+change_mission "mise19-pauli", "", 0
+
+label JDOUPONAS
+// Paulie 950072-74
+// Tommy 950223-25
+getgametime 0
+if flt[0] > flt[2], -1, DETECT
+label RERAND
+rnd 0, 6
+let flt[0] = flt[0] + 1
+if flt[0] = flt[1], RERAND, -1
+goto flt[0]
+label 1
+human_looktoactor 3, 4, 1
+human_looktoactor 4, 3, 1
+human_talk 4, 950072
+goto RET
+label 2
+human_looktoactor 3, 4, 1
+human_looktoactor 4, 3, 1
+human_talk 4, 950073
+goto RET
+label 3
+human_looktoactor 3, 4, 1
+human_looktoactor 4, 3, 1
+human_talk 4, 950074
+goto RET
+label 4
+human_talk 3, 950223, 4
+goto RET
+label 5
+human_talk 3, 950224, 4
+goto RET
+label 6
+human_talk 3, 950225, 4
+label RET
+let flt[1] = flt[0]
+human_looktoactor 3
+human_looktoactor 4
+getgametime 2
+let flt[2] = flt[2] + 7000
+goto DETECT

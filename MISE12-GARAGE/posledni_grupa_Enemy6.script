@@ -1,0 +1,68 @@
+commandblock 1
+enemy_vidim 0
+enemy_blastfire
+dim_act 3
+dim_frm 1
+findactor 0
+findactor 1, "detector_posledni_grupa_Enemy6"
+getactiveplayer 2
+dim_flt 2
+getactorframe 0, 0
+human_addweapon 0, 7, 6, 30
+human_holster 0
+human_addweapon 0, 5, 0, 0
+frm_seton 0, 0
+enemy_lockstate FIGHT_GUARD_NOHOSTILE
+act_setstate -1, inactive
+commandblock 0
+act_setstate 1, active
+frm_seton 0, 1
+enemy_playanim "enm roh drep stat R.I3D", 0, 1
+{ DOWN
+label WAIT
+wait 105050505
+goto WAIT
+}
+if flt[1] = 1, STRILEJ, -1
+enemy_move 25, run
+enemy_lookto 26
+enemy_wait
+human_throwgrenade 0, 10, 13
+wait 1000
+human_addweapon 0, 5, 0, 0
+enemy_playanim "enm roh drep stat R.I3D", 0, 1
+wait 5000
+human_throwgrenade 0, 10, 17
+wait 1000
+enemy_move 27, run
+enemy_lookto 26
+enemy_wait
+enemy_playanim "enm roh drep stat R.I3D", 0, 1
+wait 500
+enemy_vidim 1
+enemy_wait
+goto FINISH
+
+label STRILEJ
+human_holster 0
+human_activateweapon 0, 7
+enemy_look 2
+enemy_wait
+enemy_vidim 1
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+let flt[1] = 1
+return
+
+event HIT_FROM_PLAYER
+event_use_cb 1
+let flt[1] = 1
+return
+
+label FINISH

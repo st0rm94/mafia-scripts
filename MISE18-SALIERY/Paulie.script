@@ -1,0 +1,126 @@
+//[debug_me]
+dim_act 4
+dim_flt 3
+findactor 0, "Tommy"
+findactor 1
+findactor 2, "Vincenzo"
+findactor 3, "detector_jde_k_Raplhovi"
+enemy_vidim 0
+enemy_shut_up yes
+
+wait 1000
+
+{ DOWN
+enemy_move 6
+human_looktoactor 1, 0, 1
+enemy_look 0
+enemy_wait
+label WAIT
+wait 250
+getactorsdist 0, 1, 0
+if flt[0] < 5, CONT, -1
+wait 250
+getactorsdist 0, 2, 0
+if flt[0] < 10, -1, WAIT
+}
+if flt[2] = 1, SKIP, -1
+label FIRSTFOLLOW
+enemy_action_follow 0, 3, NONEXT
+if flt[2] = 0, FIRSTFOLLOW, -1
+
+label SKIP
+{ DOWN
+label WAIT2
+wait 1000
+goto WAIT2
+}
+
+{ DOWN
+enemy_move 6
+}
+label NOEND
+enemy_action_follow 0, 3, NONEXT
+goto NOEND
+
+
+event 1
+debug_text "Paulie: Dostal jsem event 1 - Zaciname u Vincenza"
+event_use_cb 1
+enemy_forcescript 1
+let flt[2] = 1
+return
+
+event 2
+debug_text "Paulie: Dostal jsem event 2 - Koncime u Vincenza"
+event_use_cb 1
+enemy_forcescript 1
+let flt[2] = 0
+return
+
+event 3
+debug_text "Paulie: Dostal jsem event 3 - Jdeme k Ralphovi"
+event_use_cb 1
+enemy_forcescript 1
+let flt[2] = 0
+return
+
+event USE_AB, 7970005
+rnd 0, 5
+let flt[0] = flt[0] + 1
+human_looktoactor 1, 0, 1
+goto flt[0]
+label 1
+enemy_talk 950026
+goto RET
+label 2
+enemy_talk 950027
+goto RET
+label 3
+enemy_talk 950028
+goto RET
+label 4
+enemy_talk 950029
+goto RET
+label 5
+enemy_talk 950030
+label RET
+enemy_wait
+human_looktoactor 1
+return
+
+event HIT_FROM_PLAYER
+if flt[1] > 4, RET2, -1
+human_looktoactor 1, 0, 1
+let flt[1] = flt[1] +1
+human_stoptalk 1
+human_getproperty 1, 0, Energy
+if flt[0] < 40, NASERSE, -1
+if flt[1] = 1, 18, -1
+if flt[1] = 2, 19, -1
+if flt[1] = 3, 20, NASERSE
+label 18
+enemy_talk 00950094
+goto RET2
+label 19
+enemy_talk 00950095
+goto RET2
+label 20
+enemy_talk 00950096
+goto RET2
+label NASERSE
+enemy_shut_up no
+human_looktoactor 1
+enemy_vidim 1
+enemy_naserse 0
+label RET2
+event_use_cb 0
+return
+
+event 1000
+human_addweapon 1, 3, 0, 0
+enemy_shut_up no
+enemy_vidim 1
+setaipriority 100
+return
+
+label FINISH

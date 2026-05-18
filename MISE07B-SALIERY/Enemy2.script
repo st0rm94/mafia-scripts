@@ -1,0 +1,29 @@
+dim_flt 1
+dim_act 2
+findactor 0
+findactor 1, "Tommy"
+
+label FREESTATE
+enemy_playanim "Mise zidle04st.I3D"
+rnd 0, 3
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 5000
+wait flt[0]
+enemy_playanim "Mise zidle04a.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "Mise zidle04st.I3D"
+rnd 0, 3
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 5000
+wait flt[0]
+enemy_playanim "Mise zidle04b.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto FREESTATE
+
+event 1000
+enemy_shut_up no
+enemy_vidim 1
+enemy_naserse 1
+return

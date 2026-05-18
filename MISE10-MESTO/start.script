@@ -1,0 +1,34 @@
+dim_frm 6
+dim_act 5
+
+findactor 0, "detector u Joa"
+findactor 1, "Joe"
+findactor 2, "kamos1"
+findactor 3, "kamos 2"
+findactor 4, "Tony"
+
+findframe 0, "Biff"
+findframe 1, "Joe"
+findframe 2, "kamos1"
+findframe 3, "kamos 2"
+findframe 4, "Tony"
+findframe 5, "pes"
+
+wait 1000
+SETCOMPASS 0
+
+wait 5000
+
+act_setstate 0, inactive
+act_setstate 1, inactive
+act_setstate 2, inactive
+act_setstate 3, inactive
+act_setstate 4, inactive
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+
+end

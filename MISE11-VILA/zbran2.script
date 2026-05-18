@@ -1,0 +1,11 @@
+dim_flt 1
+dim_frm 1
+dim_act 1
+findactor 0, "Enemy08K"
+findframe 0, "2shotgun"
+
+label 1
+wait 300
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+frm_seton 0, 0

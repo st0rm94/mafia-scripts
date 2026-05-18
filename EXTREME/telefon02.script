@@ -1,0 +1,52 @@
+dim_frm 3
+dim_act 2
+dim_flt 1
+findactor 0,"telefon02"
+findactor 1,"telefon03"
+
+findframe 0,"tel02"
+findframe 1,"PHbox80"
+findframe 2,"PHbox34"
+
+frm_seton 0,0
+act_setstate -1,inactive
+
+frameistelephone 1,0
+if flt[0]=0,-1,BUDKAOK
+label 102
+wait 100000
+goto 102
+
+label BUDKAOK
+
+frm_seton 0,1
+
+timeron 0,0,30,150
+settimeoutevent 0,201
+
+detector_waitforuse 22970001
+
+settimeoutevent -1,201
+frm_seton 0,0
+timeroff
+mission_objectivesclear
+mission_objectives 22930014
+
+act_setstate 1,active
+
+label 103
+wait 1000
+frameistelephone 2,0
+if flt[0]=0,-1,103
+setevent 1,201,-1
+
+end
+
+event 201
+settimeoutevent -1,201
+frm_seton 0,0
+timeroff
+wait 5000
+endofmission 0,22980001
+end
+

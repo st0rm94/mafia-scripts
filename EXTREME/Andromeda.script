@@ -1,0 +1,44 @@
+dim_act 3
+dim_frm 1
+dim_flt 1
+
+findactor 0,"Andromeda"
+findactor 1,"godzila"
+findactor 2,"slepicecar"
+
+findframe 0,"slepicecar"
+
+enemy_vidim 0
+enemy_shut_up yes
+setnoanimhit 0,1
+
+frm_seton 0,0
+car_invisible 2,1
+car_enableus 2,0
+
+label 101
+enemy_playanim "game12 sara04 obirani.I3D",0
+wait flt[0]
+goto 101
+
+end
+
+event 201
+// *******  odemceni bonusoveho auta
+timeroff
+frm_seton 0,1
+car_invisible 2,0
+car_enableus 2,1
+detector_setsignal 1,1
+
+enemy_move 5,run
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar B
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590
+end

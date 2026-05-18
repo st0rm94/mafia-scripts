@@ -1,0 +1,12 @@
+commandblock 1
+zatmyse 1, 0
+loaddifferences "dif12a1.chg"
+recloadfull "record12a1.rep"
+autosavegame 5285
+zatmyse 0
+commandblock 0
+recwaitforend
+zatmyse 1, 0
+recunload
+cleardifferences
+change_mission "mise12-garage", "", -1

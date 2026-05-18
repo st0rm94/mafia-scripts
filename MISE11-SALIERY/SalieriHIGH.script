@@ -1,0 +1,57 @@
+dim_flt 4
+dim_act 9
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "door_dvuX01"
+findactor 3, "civil"
+findactor 4, "VincenzoHIGH"
+findactor 5, "Ralph"
+findactor 6, "SamHIGH"
+findactor 7, "Luigi"
+findactor 8, "civil"
+
+enemy_group_new 2
+enemy_group_add 2, 0
+enemy_group_add 2, 4
+enemy_group_add 2, 5
+enemy_group_add 2, 6
+enemy_group_add 2, 7
+enemy_group_add 2, 8
+
+{ up
+label 1
+enemy_playanim "ZidleSed02.i3d"
+wait 20000
+goto 1
+}
+
+event use_ab
+event_use_cb 1
+human_looktoactor 0, 1, 1
+enemy_talk 11990751
+enemy_wait
+enemy_talk 11990752
+enemy_wait
+human_looktoactor 0
+return
+
+event 1
+label 4
+getactorsdist 0, 1, 1
+if flt[1] < 5.5, -1, 5
+door_lock 2, 0
+human_looktoactor 0, 1, 1
+enemy_talk 00950001
+wait 10000
+goto 4
+label 5
+setevent 3, 2, 5
+human_looktoactor 0, 3, 1
+wait 3000
+getactorsdist 0, 1, 1
+if flt[1] < 5.5, 4, -1
+return
+
+event 1000
+enemy_action_fire 1, 3
+return

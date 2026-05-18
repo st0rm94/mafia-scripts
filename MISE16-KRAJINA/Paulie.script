@@ -1,0 +1,73 @@
+commandblock 1
+dim_flt 1
+dim_act 5
+dim_frm 4
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "Sam"
+//findactor 3, "zjisteni auta"
+findactor 4, "null"
+findframe 0, "arrow"
+findframe 1, "load z mise16-letiste"
+findframe 2, "load z mise16-mesto"
+findframe 3, "load mise16-mesto"
+
+getmissionnumber 0
+if flt[0] = 1, -1, 2
+compareownerwithex 0, 4, 2, -1
+human_getowner 0, 3
+
+human_getowner 0, 3
+
+human_force_settocar 1, 3, 1
+human_force_settocar 2, 3, 2
+car_setspeed 3, 20
+
+setcompass 3
+mission_objectivesclear
+mission_objectives 9960007
+
+label 2
+getmissionnumber 0
+if flt[0] = 0, -1, 1
+
+compareownerwithex 0, 4, 3, -1
+human_getowner 0, 3
+
+human_force_settocar 1, 3, 1
+human_force_settocar 2, 3, 2
+
+//actor_setplacement 3, 2
+
+label 3
+autosavegame 5425
+
+label 1
+inventory_pop 2
+inventory_pop 1
+character_pop 2
+character_pop 1
+
+human_set8slot 1, 1
+human_set8slot 2, 1
+human_holster 1
+human_holster 2
+
+human_activateweapon 1, 10
+human_activateweapon 2, 10
+
+wingman_setindicator 1, 1, 0
+wingman_setindicator 2, 2, 1
+commandblock 0
+
+enemy_action_follow 0, 3, nonext
+
+enemy_action_follow 0, 3, nonext
+
+event 1
+commandblock 1
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 1
+commandblock 0
+return

@@ -1,0 +1,107 @@
+//[debug_me]
+dim_flt 20
+dim_act 3
+findactor 0, "TruckB"
+findactor 1, "Tommy"
+findactor 2, "Ridic1"
+dim_frm 5
+findframe 0, "TruckB.Object02"
+//findframe 1, "TruckB.Object01"
+findframe 2, "TruckB.bocnice"
+findframe 3, "Tommy.neck"
+findframe 4, "TruckB"
+wait 5000
+
+label INIT
+act_setstate -1, inactive
+// Ridic mne zapne
+
+getangleactortoactor 1, 0, 0
+if flt[0] < 45, -1, SKIPZATMY
+  commandblock 1
+  frm_getworldpos 3, 2
+  frm_getworldpos 4, 5
+  vect_copy 8, 2
+  let flt[6] = flt[3]
+  vect_sub_vect 8, 5
+  vect_mul_scl 8, -1
+  coll_testline 11, 2, 8, 12, 15
+  if flt[11] ! 0, -1, SKIPZATMY
+  vect_sub_vect 12, 2
+  vect_magnitude 12, 18
+  getactorsdist 0, 1, 0
+  // Odectu nejdelsi vzdalenost aby si to sedelo cca
+  let flt[0] = flt[0] - 3.7
+  if flt[18] < flt[0], SKIPZATMY, -1
+//  zatmyse 1
+//  commandblock 0
+//  wait 500
+  commandblock 1
+//  player_lockcontrols 1
+//  enemy_block
+  let flt[1] = 1
+
+label SKIPZATMY
+frm_seton 0, 0
+//frm_seton 1, 0
+frm_seton 2, 1
+car_setspeccoll 0, 1
+commandblock 0
+
+if flt[1] = 1, -1, SKIPODTMY
+//  zatmyse 0
+  let flt[1] = 0
+//  wait 400
+//  player_lockcontrols 0
+//  enemy_unblock
+
+label SKIPODTMY
+// Zamceno ->Nakladak pro vykladani auto
+  let flt[19] = 1
+
+act_setstate -1, inactive
+// Ridic mne zapne
+
+getangleactortoactor 1, 0, 0
+if flt[0] < 45, -1, SKIPZATMY2
+  commandblock 1
+  frm_getworldpos 3, 2
+  frm_getworldpos 4, 5
+  vect_copy 8, 2
+  let flt[6] = flt[3]
+  vect_sub_vect 8, 5
+  vect_mul_scl 8, -1
+  coll_testline 11, 2, 8, 12, 15
+  if flt[11] ! 0, -1, SKIPZATMY2
+  vect_sub_vect 12, 2
+  vect_magnitude 12, 18
+  getactorsdist 0, 1, 0
+  // Odectu nejdelsi vzdalenost aby si to sedelo cca
+  let flt[0] = flt[0] - 3.7
+  if flt[18] < flt[0], SKIPZATMY2, -1
+//  zatmyse 1
+//  commandblock 0
+//  wait 500
+//  player_lockcontrols 1
+//  enemy_block
+  let flt[1] = 1
+
+label SKIPZATMY2
+frm_seton 0, 1
+//frm_seton 1, 1
+frm_seton 2, 0
+commandblock 0
+car_setspeccoll 0, 0
+
+if flt[1] = 1, -1, SKIPODTMY2
+//  zatmyse 0
+  let flt[1] = 0
+//  wait 400
+//  player_lockcontrols 0
+//  enemy_unblock
+
+label SKIPODTMY2
+// Odemceno ->Normalni auto
+  let flt[19] = 0
+
+goto INIT

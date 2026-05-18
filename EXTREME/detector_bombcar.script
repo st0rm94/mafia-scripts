@@ -1,0 +1,244 @@
+commandblock 1
+dim_act 10
+dim_frm 11
+dim_flt 1
+findactor 0,"bombcar00"
+findactor 1,"bombcar01"
+findactor 2,"bombcar02"
+findactor 3,"bombcar03"
+findactor 4,"bombcar04"
+findactor 5,"bombcar04false"
+findactor 6,"detector_bombcar"
+findactor 7,"thunderbird"
+findactor 8,"Tommy"
+findactor 9,"tommyho auto"
+
+findframe 1,"bombcar01"
+findframe 2,"bombcar02"
+findframe 3,"bombcar03"
+findframe 4,"bombcar04"
+findframe 5,"bombcar04false"
+
+findframe 6,"cam_bcar01"
+findframe 7,"cam_bcar02"
+findframe 8,"cam_bcar03"
+findframe 9,"cam_bcar04"
+findframe 10,"thunderbird"
+
+car_enableus 0,0
+
+car_enableus 7,0
+car_invisible 7,1
+frm_seton 10,0
+
+car_enableus 1,0
+car_invisible 1,1
+frm_seton 1,0
+
+car_enableus 2,0
+car_invisible 2,1
+frm_seton 2,0
+
+car_enableus 3,0
+car_invisible 3,1
+frm_seton 3,0
+
+car_enableus 4,0
+car_invisible 4,1
+frm_seton 4,0
+
+car_enableus 5,0
+car_invisible 5,1
+frm_seton 5,0
+commandblock 0
+
+act_setstate -1,inactive
+
+mission_objectivesclear
+mission_objectives 22930007
+
+car_enableus 0,1
+
+//************ AUTO 00
+
+timeron 0,0,30,90
+settimeoutevent 6,200
+
+label 101
+wait 1000
+car_inwater 0,0
+if flt[0]=1,-1,101
+
+car_enableus 1,1
+car_invisible 1,0
+frm_seton 1,1
+timeroff
+
+player_lockcontrols 1
+human_getowner 8,9
+car_breakmotor 9,1
+camera_lock 6
+citycaching_tick
+wait 4000
+camera_unlock
+citycaching_tick
+car_breakmotor 9,0
+player_lockcontrols 0
+
+//************ AUTO 01
+
+timeron 0,0,0,240
+settimeoutevent 6,201
+
+label 102
+wait 1000
+car_inwater 1,0
+if flt[0]=1,-1,102
+
+car_enableus 2,1
+car_invisible 2,0
+frm_seton 2,1
+timeroff
+
+player_lockcontrols 1
+human_getowner 8,9
+car_breakmotor 9,1
+camera_lock 7
+citycaching_tick
+wait 5000
+camera_unlock
+citycaching_tick
+car_breakmotor 9,0
+player_lockcontrols 0
+
+//************ AUTO 02
+
+timeron 0,0,0,180
+settimeoutevent 6,202
+
+label 103
+wait 1000
+car_inwater 2,0
+if flt[0]=1,-1,103
+
+car_enableus 3,1
+car_invisible 3,0
+frm_seton 3,1
+timeroff
+
+player_lockcontrols 1
+human_getowner 8,9
+car_breakmotor 9,1
+camera_lock 8
+citycaching_tick
+wait 5000
+camera_unlock
+citycaching_tick
+car_breakmotor 9,0
+player_lockcontrols 0
+
+//************ AUTO 03
+
+timeron 0,0,30,210
+settimeoutevent 6,203
+
+label 104
+wait 1000
+car_inwater 3,0
+if flt[0]=1,-1,104
+
+car_enableus 4,1
+car_invisible 4,0
+frm_seton 4,1
+timeroff
+
+player_lockcontrols 1
+human_getowner 8,9
+car_breakmotor 9,1
+camera_lock 9
+citycaching_tick
+wait 5000
+camera_unlock
+citycaching_tick
+car_breakmotor 9,0
+player_lockcontrols 0
+
+car_enableus 5,1
+car_invisible 5,0
+frm_seton 5,1
+
+car_invisible 7,0
+frm_seton 10,1
+
+// *********** AUTO 04
+
+timeron 0,0,30,270
+settimeoutevent 6,204
+
+label 105
+wait 1000
+car_inwater 4,0
+if flt[0]=1,-1,105
+timeroff
+
+// zpristupneni bonusoveho auta
+car_enableus 7,1
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar T
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590
+end
+
+event 200
+timeroff
+settimeoutevent -1,200
+car_explosion 0
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+event 201
+timeroff
+settimeoutevent -1,201
+car_explosion 1
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+event 202
+timeroff
+settimeoutevent -1,202
+car_explosion 2
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+event 203
+timeroff
+settimeoutevent -1,203
+car_explosion 3
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+event 204
+timeroff
+settimeoutevent -1,204
+car_explosion 4
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+event 205
+timeroff
+settimeoutevent -1,205
+car_explosion 5
+mission_objectivesclear
+endofmission 0,22980001
+end
+

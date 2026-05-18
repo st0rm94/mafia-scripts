@@ -1,0 +1,186 @@
+commandblock 1
+dim_flt 2
+dim_act 21
+dim_frm 19
+getactiveplayer 0
+findactor 1, "Johny"
+findactor 2, "Paulie"
+findactor 3, "Billy"
+findactor 4, "chemaFor"
+findactor 5, "odstran_auto"
+// nechat free
+findactor 7, "detector_Paulie_is_out"
+// free, volny k pouziti
+findactor 10, "detector_konec"
+// free, volny k pouziti
+findactor 12, "detector_Tommy"
+// free, volny k pouziti
+findactor 14, "detector_strilejPaulie"
+findactor 15, "music"
+findactor 16, "objectives"
+findactor 17, "auto_compass"
+findactor 18, "bouracka_pod_kopcem"
+findactor 19, "honka_detector_poskozeni"
+findactor 20, "detector_last_owner"
+
+findframe 0, "chemaFor"
+findframe 1, "Box40"
+findframe 2, "CIL"
+findframe 3, "postiton_Paulie2"
+findframe 4, "position_Tommy2"
+findframe 5, "TEST"
+findframe 6, "TEST2"
+findframe 7, "velkydest"
+findframe 8, "CIL2"
+findframe 9, "CIL3"
+findframe 10, "CIL4"
+// 11 free!!!!
+findframe 12, "position_auto"
+// 13 free!!!!
+findframe 14, "Paulie"
+findframe 15, "Tommy"
+findframe 16, "dvrcrash"
+findframe 17, "CIL5"
+findframe 18, "ticho"
+
+frm_seton 16, 0
+frm_seton 0, 1
+commandblock 0
+
+act_setstate -1, inactive
+
+// Music
+label SEND
+setevent 15, 1, SEND
+zatmyse 1
+wait 500
+camera_lock 18
+player_lockcontrols 1
+
+commandblock 1
+
+//Aby nebyl videt stin od auta, dam ho na CIL
+actor_setplacement 4, 12
+actorupdateplacement 4
+car_calm 4
+
+//Zapinam odstranovac auta z vyhledu (od brany)
+act_setstate 5, active
+
+// Vypnuti detectoru na odchod playera z mise
+label SEND3
+setevent 12, 1, SEND3
+
+// Posadim chuligany do auta
+human_force_settocar 3, 4, 0
+human_force_settocar 1, 4, 1
+
+// Chuliganska kara
+frm_seton 0, 0
+
+// Paulie
+frm_seton 14, 0
+
+// Tommy
+frm_seton 15, 0
+
+//Vrata
+frm_seton 16, 1
+
+//################
+//# Filmecek U T E K !!!#
+//################
+loaddifferences "dif07d1.chg"
+recloadfull "record07d1.rep"
+commandblock 0
+wait 200
+recwaitforend
+//##################
+//# K O N E C  U T E K !!! #
+//##################
+
+zatmyse 1, 0
+commandblock 1
+recunload
+cleardifferences
+
+// Save
+autosavegamefull 5146
+
+// detector_Paulie_is_out
+act_setstate 7, active
+
+// velkydest
+frm_seton 7, 1
+// Jeste vizualne
+weather_reset
+weather_setparam SPEED, 35
+weather_setparam LEN, 0.9
+weather_setparam WIDTH, 0.02
+weather_setparam MAX_DIST, 25
+weather_setparam MAX_HEIGHT, 12
+weather_setparam DIR_X, 0
+weather_setparam DIR_Y, -0.98
+weather_setparam DIR_Z, 0
+weather_setparam MODE, 0
+weather_setparam MAX_CNT, 3900
+
+// Chuliganska kara
+frm_seton 0, 1
+// Paulie
+frm_seton 14, 1
+// Tommy
+frm_seton 15, 1
+// Paulie pozice po animacce
+actor_setplacement 2, 3
+// Tommy pozice po animacce
+actor_setplacement 0, 4
+
+// Vypnuti prostredni brany
+frm_seton 1, 0
+disablecolls 1
+commandblock 0
+
+weather_setparam ON, 1
+
+// UKLIDNENI PAULIEHO
+label SEND2
+setevent 2, 2, SEND2
+
+// Aby Johny VIDEL
+label SEND4
+setevent 1, 3, SEND4
+camera_unlock
+zatmyse 0
+player_lockcontrols 0
+
+// Aby se do toho svestky nepletli
+//policemanager_del "Tommy"
+
+// Auto_compass
+act_setstate 17, active
+
+// Aktivace Billyho - ridice
+label SEND6
+setevent 3, 1, SEND6
+
+// detector_konec - active
+act_setstate 10, active
+
+// updating objectives"
+act_setstate 16, active
+
+// Aktivace Paulieho
+//label SEND5
+//setevent 2, 5, SEND5
+
+// bouracka_pod_kopcem
+act_setstate 18, active
+
+// honka_detector_poskozeni
+act_setstate 19, active
+
+//detector_last_owner
+label SEND7
+setevent 20, 1, SEND7
+end

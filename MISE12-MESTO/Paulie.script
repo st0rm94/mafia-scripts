@@ -1,0 +1,66 @@
+//[debug_me]
+enemy_vidim 0
+dim_act 5
+dim_flt 1
+findactor 0
+findactor 1, "Tommy"
+human_getowner 1, 2
+findactor 3, "dasfjfkfjkfkasd"
+findactor 4, "detector_honicka"
+
+dim_frm 1
+findframe 0, "2shotgun"
+frm_seton 0, 1
+human_addweapon 0, 7, 6, 250
+human_holster 0
+human_force_settocar 0, 2, 1
+enemy_vidim 1
+
+label FOLLOW
+debug_text "Paulie: 2 AI!"
+enemy_action_follow 1, 4
+if flt[0] = 1, -1, FOLLOW
+
+debug_text "Paulie: Event received - cekam az Tommy vysedne z auta..."
+//label DETECT
+//wait 200
+//compareownerwithex 1, 3, -1, DETECT
+enemy_vidim 0
+compareownerwithex 2, 3, VYSTUP, -1
+
+label CEKEJ
+   human_getowner 0, 2
+   compareownerwithex 2, 3, VYSTUP, -1
+   car_getspeed 2, 0
+   debug_text "Cekam az auto zastavi..."
+   if flt[0] < 0.1, -1, CEKEJ
+
+label VYSTUP
+enemy_usecar
+// Ted si bezi sebrat brokarnu
+debug_text "Paulie: Jdu si pro brokarnu..."
+enemy_move 10, run
+actor_setdir 0, 0
+enemy_playanim "SbiraniStul01.I3D", 0
+let flt[0] = flt[0]  - 498
+let flt[0] = flt[0] / 2
+wait flt[0]
+frm_seton 0, 0
+human_holster 0
+human_addweapon 0, 11, 8, 32
+wait flt[0]
+person_stopanim 0
+enemy_vidim 1
+enemy_action_follow 1, 3, CROUCH, NONEXT
+goto FINISH
+
+
+event 1
+debug_text "Paulie: Vidim 0 + Brainwash + Forcescript"
+let flt[0] = 1
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 0
+return
+
+label FINISH

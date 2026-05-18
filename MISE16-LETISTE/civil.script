@@ -1,0 +1,30 @@
+enemy_vidim 0
+enemy_nevyhazuj
+
+dim_act 4
+dim_frm 2
+findactor 0, "arrow"
+findactor 1, "MorelloLOW"
+findactor 2, "Tommy"
+findactor 3, "Guard"
+findframe 0, "navadeni morella"
+findframe 1, "navadeni morella 1"
+
+enemy_car_moveto 0, 1
+
+enemy_car_escape 0, 1, 0
+
+label 1
+setevent 1, 1, 1
+
+label 3
+setevent 3, 1, 3
+
+label 2
+enemy_usecar
+compareownerwith 0, 2, -1
+
+car_enableus 0, 0
+
+enemy_vidim 1
+enemy_action_fire 2

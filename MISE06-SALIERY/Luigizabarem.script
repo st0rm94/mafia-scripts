@@ -1,0 +1,26 @@
+dim_flt 1
+dim_act 2
+
+findactor 0,"Luigizabarem"
+findactor 1,"Tommy"
+
+act_setstate -1,inactive
+
+enemy_move 1
+enemy_lookto 2
+enemy_wait
+
+{ up
+label 101
+enemy_playanim "x barman stativ.I3D",0
+wait 30000
+goto 101
+}
+
+event use_ab,10970008
+
+human_looktoactor 0,1,1
+enemy_talk 00950062
+enemy_wait
+human_looktoactor 0
+return

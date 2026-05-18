@@ -1,0 +1,5 @@
+dim_frm 1
+
+findframe 0,"9hadra"
+
+frm_seton 0,0

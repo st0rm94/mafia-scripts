@@ -1,0 +1,20 @@
+//nahodny cvrcci10
+
+dim_flt 2
+dim_frm 1
+FindFrame 0
+
+label 10
+  let flt[1] = 0
+  rnd 0, 8                   
+  let flt[0] = flt[0] * 1250 
+  let flt[0] = flt[0] + 8000
+  wait flt[0]
+  rnd 0, 7
+  label 2
+  frm_seton 0, 1
+  wait 5677
+  if flt[0] = flt[1], 10, -1  
+  let flt[1] = flt[1] + 1
+goto 2
+end

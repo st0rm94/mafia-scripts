@@ -1,0 +1,19 @@
+dim_act 1
+dim_frm 2
+findactor 0, "Box61"
+findframe 0, "hlavnisal_door"
+findframe 1, "utlumena hlavni hala"
+
+label 1
+detector_waitforuse 2001, 1
+door_open 0, 0
+soundfade 0, 1000, 0.5, 0
+soundfade 1, 1000, 0, 0.4
+detector_setsignal 100, 0
+
+detector_waitforuse 2000, 1
+door_open 0, 1
+soundfade 0, 1000, 0, 0.5
+frm_seton 1, 0
+detector_setsignal 100, 1
+goto 1

@@ -1,0 +1,157 @@
+dim_frm 6
+dim_flt 4
+dim_act 3
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "vinc"
+findframe 0, "2bbat"
+findframe 1, "2c"
+findframe 2, "sroubovani"
+findframe 3, "vincput"
+findframe 4, "2bbat2"
+findframe 5, "2c2"
+act_setstate 2, inactive
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+
+frm_seton 2, 1
+label 1
+enemy_move 4
+enemy_lookto 5
+enemy_wait
+label 3
+enemy_playanim "MechSroubovani.i3d"
+wait 3000
+if flt[0] = 1, -1, 3
+frm_seton 2, 0
+enemy_stopanim
+enemy_look 1
+human_looktoactor 0, 1, 1
+wait 1000
+human_looktoactor 0
+enemy_move 1
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_playanim "VincStativ.i3d"
+act_setstate 2, active
+label 2
+if flt[1] = 1, -1, 2
+dialog_begin 0, 2
+player_lockcontrols 1
+dialog_camswitch 0, 1
+person_playanim 1, "GestikulaceNew02.I3D"
+enemy_talk 1, 11990012
+enemy_wait
+wait 300
+person_stopanim 1
+dialog_camswitch 1, 0
+enemy_look 1
+enemy_wait
+frm_seton 3, 1
+enemy_playanim "VincPodaniSapiku.I3D", -1, simple
+enemy_talk 11990021
+enemy_wait
+wait 1000
+human_linktohand 0, 0
+enemy_talk 11990022
+wait 3400
+playsound "s_put5.wav", 0, 7, 1
+commandblock 1
+frm_seton 0, 0
+frm_seton 4, 1
+createweaponfromframe 4, 4
+commandblock 0
+enemy_wait
+enemy_talk 11990023
+human_looktoactor 0
+enemy_move 2
+enemy_playanim "SbiraniStul01.i3d", -1, simple
+wait 500
+human_linktohand 0, 1
+wait 500
+enemy_move 1
+enemy_lookto 3
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_playanim "SbiraniStul01.i3d", -1, simple
+wait 500
+playsound "s_put4.wav", 1, 7, 1
+commandblock 1
+frm_seton 1, 0
+frm_seton 5, 1
+createweaponfromframe 5, 9, 7, 7
+commandblock 0
+wait 700
+enemy_talk 11990025
+enemy_wait
+wait 300
+dialog_camswitch 0, 1
+enemy_talk 1, 11990031
+enemy_wait
+wait 500
+player_lockcontrols 0
+dialog_end
+let flt[3] = 1
+wait 1000
+human_looktoactor 0
+enemy_move 4
+enemy_lookto 5
+enemy_wait
+
+label 5
+frm_seton 2, 1
+enemy_playanim "MechSroubovani.i3d"
+wait 3000
+goto 5
+
+event 1
+let flt[0] = 1
+return
+
+event 2
+let flt[1] = 1
+return
+
+event use_ab
+if flt[3] = 1, -1, 8
+enemy_stop
+enemy_stopanim
+frm_seton 2, 0
+enemy_look 1
+human_looktoactor 0, 1, 1
+if flt[0] = 0, 6, -1
+if flt[0] = 1, 7, -1
+enemy_talk 00950235
+enemy_wait
+human_looktoactor 0
+enemy_lookto 5
+enemy_wait
+let flt[0] = 0
+return
+label 6
+enemy_talk 00950236
+enemy_wait
+human_looktoactor 0
+enemy_lookto 5
+enemy_wait
+let flt[0] = 1
+return
+label 7
+enemy_talk 00950237
+enemy_wait
+human_looktoactor 0
+enemy_lookto 5
+enemy_wait
+let flt[0] = 2
+return
+label 8
+return
+
+event 1000
+enemy_action_fire 1, 3
+return
+
+event enemy_to_script
+end

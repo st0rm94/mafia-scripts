@@ -1,0 +1,89 @@
+dim_flt 2
+dim_act 3
+findactor 0, "Enemy09K"
+findactor 1, "rozvadec"
+findactor 2, "Tommy"
+human_addweapon 0, 11, 8, 8
+//human_holster 0
+
+label 4
+{ up
+label 1
+if flt[1] = 1, 3, -1
+//enemy_move 207
+//enemy_lookto 202
+//wait 3000
+//enemy_move 208
+//enemy_lookto 202
+//wait 3000
+enemy_move 207
+enemy_lookto 202
+enemy_wait
+wait 4000
+enemy_move 208
+enemy_lookto 202
+enemy_wait
+wait 4000
+enemy_move 207
+enemy_lookto 202
+enemy_wait
+wait 4000
+enemy_move 208
+enemy_move 13
+enemy_playanim "Vyhlizeni201.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_move 227
+wait 2000
+enemy_playanim "Vyhlizeni202.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_move 13
+enemy_playanim "Vyhlizeni202.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_move 12
+enemy_playanim "Vyhlizeni201.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_move 13
+enemy_playanim "Vyhlizeni202.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_move 227
+wait 2000
+enemy_playanim "Vyhlizeni202.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+goto 1
+}
+
+label 3
+enemy_stop
+let flt[1] = 0
+wait 1000
+enemy_stop
+enemy_actionsclear
+enemy_lookto 33
+enemy_wait
+human_talk 0, 11990141, 1
+wait 2000
+enemy_move 44, run
+enemy_move 33, run
+enemy_lookto 5
+enemy_wait
+wait 5000
+enemy_use_detector 1
+enemy_move 227, walk
+goto 4
+
+event 1
+detector_issignal 1, 2, -1
+event_use_cb 1
+let flt[1] = 1
+label 2
+return
+
+event 5
+enemy_action_fire 2
+return

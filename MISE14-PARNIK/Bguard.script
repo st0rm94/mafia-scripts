@@ -1,0 +1,69 @@
+dim_flt 4
+dim_act 3
+findactor 0, ""
+findactor 1, "TommySAILOR"
+findactor 2, "detektor v kajute"
+human_addweapon 0, 8, 6, 30
+human_holster 0
+
+label 1
+{ up
+enemy_playanim "x hlidka stativ02.I3D"
+label 10
+if flt[1] = 1, 11, 10
+label 11
+act_setstate 2, active
+wait 500
+enemy_move 27
+enemy_wait
+enemy_move 25
+enemy_move 28
+enemy_lookto 3
+enemy_wait
+label 17
+goto 17
+end
+}
+
+event 3
+let flt[1] = 1
+return
+
+event 1
+enemy_talk 1, 14990091
+return
+
+event 2
+enemy_talk 1, 14990251
+return
+
+event 4
+human_activateweapon 0, 8
+enemy_forcescript -1
+enemy_brainwash
+enemy_action_fire 1
+return
+
+event use_ab, 14970002
+event_use_cb 1
+getenemyaistate 0, 2
+if flt[2] ! 0, 6, -1
+human_looktoactor 0, 1, 1
+if flt[0] = 0, 2, -1
+if flt[0] = 1, 3, -1
+goto 6
+label 2
+enemy_talk 14950004
+let flt[0] = 1
+goto 6
+label 3
+enemy_talk 14950005
+let flt[0] = 0
+label 6
+enemy_wait
+human_looktoactor 0
+return
+
+event 12
+enemy_naserse 1
+return

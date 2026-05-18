@@ -1,0 +1,15 @@
+dim_frm 1
+dim_flt 1
+findframe 0,"SalMan02K.neck"
+
+label 110
+{ up
+label 107
+enemy_playanim "KurakLoop.i3d",0
+wait 7000
+enemy_playanim "KurakPotahnuti.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+emitparticle 0,25
+goto 107 
+}

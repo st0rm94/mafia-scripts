@@ -1,0 +1,22 @@
+act_setstate -1,inactive
+commandblock 1
+dim_flt 1
+dim_act 3
+dim_frm 1
+findframe 0
+
+findactor 0,"fov_det05"
+findactor 1,"Tommy"
+findactor 2,"fov_car"
+
+setcompass 0
+commandblock 0
+
+label 101
+wait 500
+detector_inrange 0,25
+if flt[0]>0,-1,101
+compareownerwithex 1,2,-1,101
+
+act_setstate 0,active
+

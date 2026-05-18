@@ -1,0 +1,37 @@
+//[debug_me]
+dim_act 4
+dim_frm 1
+dim_flt 1
+findactor 0, "Tommy"
+findactor 1, "nesahat_cad_ford"
+findactor 2, "detector_energy2"
+findactor 3
+findframe 0, "Saliery"
+enemy_vidim 0
+{ DOWN
+label WAIT
+wait 1000
+goto WAIT
+}
+enemy_brainwash
+enemy_vidim 1
+enemy_action_follow 0, 3, CROUCH, NONEXT
+
+label NASTUP
+enemy_move_to_car 1, 0
+enemy_usecar 1, 0
+compareownerwith 1, -1, NASTUP
+enemy_vidim 0
+enemy_car_moveto 1, 0
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+let flt[0] = 1
+return
+
+label FINISH

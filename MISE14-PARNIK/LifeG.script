@@ -1,0 +1,338 @@
+[debug_me]
+commandblock 1
+dim_frm 9
+dim_flt 13
+dim_act 13
+findactor 0, "TommySAILOR"
+findactor 1, ""
+findactor 2, "sailor"
+findactor 3, "out of order"
+findactor 4, "Box05"
+findactor 5, "roger folow"
+findactor 6, "smrad"
+findactor 7, "Box482"
+findactor 8, "help talk"
+findactor 9, "Bguard"
+findactor 10, "Bguard2"
+findactor 11, "akce proslov"
+findactor 12, "load mise15-saliery"
+findframe 0, "LifeG.neck"
+findframe 1, "14_flush"
+findframe 2, ""
+findframe 3, "2coltds2"
+findframe 4, "xclun"
+findframe 5, "lifeg camera"
+findframe 6, "s_put"
+findframe 7, "xplechovka"
+findframe 8, "2cigaro2"
+
+human_addweapon 1, 16, 0, 0
+commandblock 0
+//act_setstate 6, inactive
+frm_seton 1, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+
+label 3
+{ down
+enemy_move 4
+enemy_wait
+enemy_lookto 5
+enemy_wait
+enemy_playanim "KoureniAutoToStativ.I3D", 0
+let flt[0] = flt[0] - 485
+frm_seton 7, 1
+frm_seton 8, 1
+wait flt[0]
+frm_seton 7, 0
+label 1
+frm_seton 8, 1
+if flt[5] = 1, 9, -1
+enemy_playanim "KoureniAutoStativ.I3D"
+emitparticle 0, 25
+wait 3000
+let flt[1] = flt[1] + 1
+if flt[1] = 10, 2, -1
+enemy_playanim "KoureniAutoPotahnuti.I3D", 0
+let flt[0] = flt[0] - 400
+wait flt[0]
+goto 1
+label 2
+let flt[1] = 0
+enemy_playanim "KoureniAutoToNormal.I3D", 0
+frm_seton 8, 0
+let flt[0] = flt[0] - 400
+wait flt[0]
+}
+{ up
+enemy_move 6
+enemy_wait
+if flt[5] = 1, 9, -1
+enemy_lookto 7
+enemy_wait
+enemy_playanim "Vyhlizeni2Stativ.I3D"
+wait 15000
+enemy_move 1
+if flt[5] = 1, 9, -1
+label 58
+getactorsdist 0, 1, 11
+if flt[11] < 2, 58, -1
+commandblock 1
+human_eraseab 1
+door_open 7, 0
+//door_lock 7, 1
+commandblock 0
+wait 15000
+frm_seton 1, 1
+wait 5000
+//door_lock 7, 0
+//door_open 7, 1
+wait 1000
+human_createab 1
+}
+{ up
+enemy_move 8
+enemy_wait
+human_looktoactor 1
+if flt[5] = 1, 9, -1
+enemy_lookto 2
+enemy_wait
+setevent 2, 1, 3
+enemy_look 2
+enemy_wait
+human_looktoactor 1, 2, 1
+enemy_talk 14950073
+enemy_playanim "GestoPojdSem02.I3D", 0
+let flt[0] = flt[0] - 400
+wait flt[0]
+enemy_stopanim
+wait 5000
+enemy_playanim "Vysvetlovani01.I3D", 0
+let flt[0] = flt[0] - 200
+wait flt[0]
+human_looktoactor 1
+}
+goto 3
+
+label 9
+{ up
+enemy_move 14
+enemy_wait
+detector_setsignal 5, 1
+if flt[6] = 1, -1, 11
+if flt[7] = 1, 12, -1
+human_eraseab 1
+enemy_action_follow 0, 0.5, -1, return
+act_setstate 11, inactive
+actor_setdir 0, 2
+enemy_look 0
+enemy_wait
+camera_lock 5
+player_lockcontrols 1
+wait 500
+enemy_talk 14990262
+enemy_playanim "PlavcikStrkajici.i3d"
+wait 500
+person_playanim 0, "zasah Sm rameno FL.i3d", -1, simple
+//person_playanim 0, "TomyStrcenyFront.i3d"
+commandblock 1
+human_anyweaponininventory 0, 10
+if flt[10] = 1, -1, 444
+human_linktohand 0, 3
+commandblock 0
+human_unlinkfromhand 0, 3, 6, 6, 0
+human_delweapon 0, 6
+frm_seton 6, 1
+wait 200
+enemy_vidim 0
+wait 2000
+camera_unlock
+player_lockcontrols 0
+wait 500
+label 22
+enemy_talk 14990271
+enemy_wait
+setevent 8, 1, -1
+setevent 9, 4, -1
+setevent 10, 4, -1
+act_setstate 11, off
+frm_seton 4, 1
+act_setstate 12, active
+enemy_vidim 1
+enemy_action_runaway 0, 12
+//**********************END***********************
+label 11
+human_eraseab 1
+enemy_action_follow 0, 0.5, -1, return
+act_setstate 11, inactive
+actor_setdir 0, 2
+enemy_look 0
+enemy_wait
+camera_lock 5
+player_lockcontrols 1
+wait 500
+enemy_talk 14990261
+enemy_playanim "PlavcikStrkajici.i3d"
+wait 500
+person_playanim 0, "zasah Sm rameno FL.i3d", -1, simple
+//person_playanim 0, "TomyStrcenyFront.i3d"
+commandblock 1
+human_anyweaponininventory 0, 10
+if flt[10] = 1, -1, 444
+human_linktohand 0, 3
+commandblock 0
+human_unlinkfromhand 0, 3, 6, 6, 0
+human_delweapon 0, 6
+frm_seton 6, 1
+wait 200
+enemy_vidim 0
+wait 2000
+camera_unlock
+player_lockcontrols 0
+wait 500
+goto 22
+
+label 12
+goto 3
+}
+
+event 1
+let flt[4] = 1
+return
+
+event 2
+let flt[5] = 1
+human_createab 1
+return
+
+event 3
+let flt[2] = 3
+return
+
+event 4
+let flt[7] = 1
+return
+
+event use_ab, 14970002
+event_use_cb 1
+enemy_forcescript 1
+frm_seton 8, 0
+setevent 2, 2, -1
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+wait 300
+if flt[2] = 3, 10, -1
+if flt[2] = 4, 7, -1
+detector_issignal 3, -1, 7
+if flt[2] = 1, 4, -1
+if flt[2] = 2, 5, -1
+if flt[4] = 0, 8, -1
+enemy_talk 0, 14990191
+enemy_wait
+wait 300
+enemy_playanim "Nepritakani02.I3D", -1, simple
+enemy_talk 14990201
+enemy_wait
+human_looktoactor 1
+let flt[2] = 1
+return
+label 4
+enemy_talk 0, 14990211
+enemy_wait
+wait 300
+getactorsdist 0, 1, 0
+if flt[0] > 2, 6, -1
+enemy_playanim "GestikulaceNew01.I3D"
+enemy_talk 14990221
+enemy_wait
+wait 300
+getactorsdist 0, 1, 0
+if flt[0] > 2, 6, -1
+enemy_talk 14990222
+enemy_wait
+wait 300
+getactorsdist 0, 1, 0
+if flt[0] > 2, 6, -1
+enemy_talk 0, 14990231
+enemy_wait
+wait 300
+getactorsdist 0, 1, 0
+if flt[0] > 2, 6, -1
+enemy_look 0
+enemy_wait
+enemy_talk 14990241
+enemy_playanim "SbiraniStul01.I3D", 12, simple
+detector_setsignal 3, 0
+human_delweapon 1, 16
+human_addweapon 0, 16, 0, 0
+//act_setstate 6, active
+//enemy_wait
+let flt[2] = 2
+let flt[12] = flt[12] - 900
+wait flt[12]
+label 6
+human_looktoactor 1
+return
+label 5
+enemy_talk 14990291
+enemy_wait
+human_looktoactor 1
+return
+label 7
+enemy_playanim "GestikulaceNew02.I3D", -1, simple
+gosub 333
+enemy_wait
+human_looktoactor 1
+return
+label 8
+enemy_talk 0, 14990101
+enemy_wait
+wait 300
+enemy_playanim "Nepritakani02.I3D", -1, simple
+enemy_talk 14990201
+enemy_wait
+human_looktoactor 1
+let flt[2] = 1
+return
+label 10
+player_lockcontrols 1
+enemy_talk 14990331
+person_playanim 0, "gesto2 nogun1a.i3d"
+person_playanim 0, "SbiraniStul01.I3D", -1, simple
+enemy_wait
+human_delweapon 0, 16
+enemy_talk 14990332
+enemy_wait
+player_lockcontrols 0
+human_talk 0, 14990341
+wait 1500
+human_looktoactor 1
+let flt[6] = 1
+let flt[2] = 4
+return
+
+label 333
+if flt[8] = 0, 334, -1
+if flt[8] = 1, 335, -1
+enemy_talk 14950070
+let flt[8] = 0
+return
+label 334
+enemy_talk 14950071
+let flt[8] = 1
+return
+label 335
+enemy_talk 14950072
+let flt[8] = 2
+return
+
+label 444
+commandblock 0
+camera_unlock
+player_lockcontrols 0
+wait 2000
+setevent 11, 1, -1
+act_setstate 11, active
+goto 3

@@ -1,0 +1,141 @@
+commandblock 1
+enemy_vidim 0
+//[debug_me]
+dim_flt 2
+dim_frm 1
+dim_act 5
+findactor 0, "Tommy"
+findactor 1, "civil"
+findactor 2, "detector_civil"
+findactor 3, "Paulie"
+findactor 4, "detector_civil_a_tomova_hlava"
+setnoanimhit 1, 1
+commandblock 0
+
+act_setstate -1, inactive
+
+LABEL FREESTATE
+{ DOWN
+enemy_playanim "Nepritakani01.I3D", 0, 1
+let flt[0] = flt[0] -83
+wait flt[0]
+enemy_playanim "Nepritakani02.I3D", 0, 1
+let flt[0] = flt[0] -83
+wait flt[0]
+enemy_playanim "Nepritakani02.I3D", 0, 1
+let flt[0] = flt[0] -83
+wait flt[0]
+GOTO FREESTATE
+}
+
+{ DOWN
+enemy_playanim "Nepritakani02.I3D", 0, 1
+let flt[0] = flt[0] - 183
+wait flt[0]
+WAIT 1917
+enemy_talk 1, 29940045, 1
+enemy_playanim "DoKryti.I3D", 0, 1
+let flt[0] = flt[0] -83
+wait flt[0]
+}
+enemy_talk 1, 29940046, 1
+wait 417
+setnoanimhit 1, 1
+enemy_move 13, RUN 
+enemy_wait 
+enemy_lookto 22
+setnoanimhit 1, 0
+label WAIT
+getactorsdist 0, 1, 0
+if flt[0] > 23, WAIT, -1
+act_setstate 2, active
+enemy_vidim 1
+debug_text "civil: Back to AI"
+LABEL FREESTATE2
+{ DOWN
+enemy_playanim "Vyhlizeni02.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+enemy_playanim "Vyhlizeni01.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+enemy_playanim "Vyhlizeni03.I3D", 0
+let flt[0] = flt[0] - 350
+wait flt[0]
+}
+if flt[1] ! 0, -1, FREESTATE2
+if flt[1] = 2, SKIP, -1
+gosub DIALOG
+label SKIP
+wait 3000
+human_looktoactor 1
+enemy_move 14
+enemy_lookto 19
+enemy_wait
+
+LABEL FREESTATE3
+gosub CHECKDIST
+enemy_playanim "Vyhlizeni02.I3D", 0
+let flt[0] = flt[0] - 330
+wait flt[0]
+gosub CHECKDIST
+enemy_playanim "Vyhlizeni01.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+gosub CHECKDIST
+enemy_playanim "Vyhlizeni03.I3D", 0
+let flt[0] = flt[0] - 350
+wait flt[0]
+goto FREESTATE3
+
+label CHECKDIST
+getactorsdist 0, 1, 0
+if flt[0] > 40, -1, RET
+getangleactortoactor 0, 1, 0
+if flt[0] > 60, FINISH, -1
+label RET
+return
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+return
+
+event 3
+let flt[1] = 1
+event_use_cb 1
+return
+
+event USE_AB
+label DIALOG
+act_setstate 4, active
+human_eraseab 1
+human_looktoactor 1, 0, 1
+human_looktoactor 0, 1, 1
+human_looktoactor 3, 1, 1
+enemy_talk 07990631
+enemy_playanim "Gestikulace02.I3D", 0
+enemy_wait
+enemy_talk 07990641
+enemy_wait
+enemy_stopanim
+event_use_cb 1
+let flt[1] = 2
+human_looktoactor 0
+human_looktoactor 3
+act_setstate 4, inactive
+return
+
+event ENEMY_TO_AI
+event_use_cb 0
+human_looktoactor 0
+human_looktoactor 3
+return
+
+LABEL FINISH
+frm_seton 0,0
+debug_text "civil: SCRIPT FINISHED"
+act_setstate -1, off

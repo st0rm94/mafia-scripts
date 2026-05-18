@@ -1,0 +1,84 @@
+dim_act 9
+dim_flt 2
+dim_frm 7
+findactor 0, "Tommy"
+findactor 1, "load do mise07-sara"
+findactor 3, "NULL"
+findactor 4,"detector_subquest"
+findactor 5,"subquest_car"
+findactor 6,"ForAde"
+findactor 7,"ForAca"
+findactor 8,"blackha"
+
+findframe 0, "load do mise07-sara"
+findframe 1, "Tommy"
+findframe 2, "Lucas"
+findframe 3, "cad_phaeton"
+findframe 4, "compassoff"
+findframe 5, "placement_car"
+findframe 6,"detector_subquest"
+
+setcompass 4
+let flt[1]=0
+
+label 101
+wait 100
+detector_inrange 0, 25
+if flt[0] = 1, -1, 101
+policeitchforplayer 0
+if flt[0]>0,-1,BEZPOLDU
+if flt[1]=0,-1,101
+human_talk 0,00950223
+let flt[1]=1
+goto 101
+
+label BEZPOLDU
+setcompass -1
+
+zatmyse 1
+wait 500
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+compareownerwithex 0,3,222,-1
+human_getowner 0,2
+car_forcestop 2
+human_fromcar 0,4
+actor_setplacement 2,5
+label 222
+actor_setplacement 0,4
+loaddifferences "dif06d.chg"
+recloadfull "record06d.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 1,1
+frm_seton 2,1
+frm_seton 3,1
+
+PLAYER_LOCKCONTROLS 0
+garage_enablesteal I
+console_addtext 3455
+zatmyse 0
+commandblock 0
+
+autosavegamefull 5115
+
+act_setstate 1,active
+act_setstate 4,active
+setcompass 6
+mission_objectivesclear
+mission_objectives 06960003
+car_muststeal 5,1
+car_muststeal 6,1
+car_muststeal 7,1
+car_muststeal 8,1
+
+end
+

@@ -1,0 +1,9 @@
+dim_flt 1
+act_setstate -1, inactive
+label 1
+detector_setsignal -1, 0
+detector_inrange 0, 2
+if flt[0] ! 0, -1, 1
+detector_setsignal -1, 1
+debug_text "Player je vzadu u snipera!"
+goto 1

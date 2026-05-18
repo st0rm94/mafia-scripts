@@ -1,0 +1,21 @@
+dim_flt 1
+
+wait 1000
+label 1
+enemy_playanim "ZidleSed01.i3d"
+wait 4000
+enemy_playanim "ZidleSed01ToNormal.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "ZidleToSed03.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "ZidleSed03.i3d"
+wait 4000
+enemy_playanim "ZidleSed03ToNormal.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_playanim "ZidleToSed01.i3d", 0
+let flt[0] = flt[0] - 350
+wait flt[0]
+goto 1

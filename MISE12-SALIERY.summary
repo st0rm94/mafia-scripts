@@ -1,0 +1,127 @@
+# .dnc extraction summary
+# source        : MISE12-SALIERY.dnc  (2820 bytes, main)
+# source        : MISE12-SALIERY-InitScripts.dnc  (283 bytes, init)
+# actors_total  : 19
+# init_records  : 2
+# scripts_found : 8
+
+# main-container actor type-code distribution
+#   type    5  count=6  script
+#   type    6  count=10  
+#   type   35  count=3  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 25
+# total invocations: 80
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     8  let
+     6  end
+     6  zatmyse
+     5  dim_flt
+     5  label
+     4  commandblock
+     4  dim_frm
+     4  findframe    [casings: FindFrame]
+     4  frm_seton
+     4  goto
+     4  rnd
+     4  wait
+     2  act_setstate
+     2  autosavegame
+     2  change_mission
+     2  cleardifferences
+     2  findactor
+     2  loaddifferences
+     2  recloadfull
+     2  recunload
+     2  recwaitforend
+     1  dim_act
+     1  getmissionnumber
+     1  if
+     1  noanimpreload
+
+# ---- per-script command listing ----
+
+[GameInitEnd]  type=init  lines=12  commands=8
+    act_setstate
+    dim_act
+    dim_flt
+    end
+    findactor
+    getmissionnumber
+    if
+    label
+
+[GameInitStart]  type=init  lines=1  commands=1
+    noanimpreload
+
+[ambipeople]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[animation]  type=5  lines=12  commands=9
+    autosavegame
+    change_mission
+    cleardifferences
+    commandblock
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse
+
+[animation2]  type=5  lines=12  commands=9
+    autosavegame
+    change_mission
+    cleardifferences
+    commandblock
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse
+
+[car]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[krajeni]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait

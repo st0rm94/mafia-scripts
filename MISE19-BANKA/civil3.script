@@ -1,0 +1,211 @@
+dim_flt 1
+dim_act 10
+dim_frm 1
+findactor 0, "BnkO"
+findactor 1, "Tommy"
+findactor 2, "BnkO2"
+findactor 3, "opruzovani u chlapku"
+findactor 4, ""
+findactor 5, "civil2"
+findactor 6, "open door 2"
+findactor 7, "Box190"
+findactor 8, "spusteni rozhovoru"
+findactor 9, "detekce healtu civil3"
+findframe 0, "poloha sedajiciho"
+
+enemy_playanim "sezcteni.i3d"
+
+label 1
+person_playanim 5, "seztopoh01.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_playanim 5, "sezpoh01l.i3d"
+wait 5000
+person_playanim 5, "sezpoh01ton.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_playanim 5, "seznormal.i3d"
+detector_issignal 8, 15, -1
+detector_issignal 3, -1, 14
+gosub 7
+enemy_playanim "seztocteni.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "sezcteni.i3d"
+label 14
+person_playanim 5, "seztopoh03.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_playanim 5, "sezpoh03l.i3d"
+wait 10000
+person_playanim 5, "sezpoh03ton.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_playanim 5, "seznormal.i3d"
+detector_issignal 8, 15, -1
+detector_issignal 3, -1, 1
+gosub 7
+enemy_playanim "seztocteni.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "sezcteni.i3d"
+goto 1
+
+label 15
+detector_issignal 3, -1, 8
+gosub 7
+
+label 8
+person_playanim 5, "sezprekr.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_playanim 5, "sezprloop.i3d"
+enemy_talk 5, 19950023
+enemy_wait
+
+detector_issignal 3, -1, 9
+gosub 7
+
+label 9
+enemy_talk 19950024
+enemy_playanim "sezcteniton.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "seznormal.i3d"
+wait 2000
+
+detector_issignal 3, -1, 10
+gosub 7
+
+label 10
+enemy_talk 5, 19950025
+person_playanim 5, "sezprnorm.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_playanim 5, "seznormal.i3d"
+wait 2000
+//person_playanim 5, "seztopoh03.i3d", 0, simple
+//let flt[0] = flt[0] - 323
+//wait flt[0]
+//person_playanim 5, "sezpoh03l.i3d"
+//person_playanim 5, "sezpoh03ton.i3d", 0, simple
+//let flt[0] = flt[0] - 323
+//wait flt[0]
+person_playanim 5, "sezprekr.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_playanim 5, "sezprloop.i3d"
+detector_issignal 3, -1, 11
+gosub 7
+
+label 11
+wait 4000
+enemy_talk 19950026
+enemy_wait
+
+detector_issignal 3, -1, 12
+gosub 7
+
+label 12
+enemy_talk 5, 19950027
+enemy_wait
+
+detector_issignal 3, -1, 13
+gosub 7
+
+label 13
+enemy_talk 19950028
+enemy_wait
+enemy_playanim "zidlevstanibezdrzenil.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+
+act_setstate 3, off
+
+enemy_move 40
+
+commandblock 1
+detector_issignal 6, 6, -1
+enemy_use_detector 6
+
+label 6
+commandblock 0
+
+enemy_move 43
+door_lock 7, 0
+door_open 7, 1
+enemy_move 39
+enemy_lookto 43
+enemy_wait
+door_open 7, 0
+door_lock 7, 1
+enemy_move 6
+enemy_move 63
+
+act_setstate 9, off
+frm_seton 100, 0
+act_setstate 100, off
+
+label 7
+enemy_playanim "zidlevstanibezdrzenif.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_look 1
+enemy_wait
+human_looktoactor 4, 1, 1
+enemy_talk 19950005
+enemy_wait
+wait 2000
+detector_issignal 3, 2, -1
+human_looktoactor 4
+enemy_lookto 46
+enemy_wait
+actor_setplacement 4, 0
+enemy_playanim "sezsed.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "seznormal.i3d"
+return
+
+label 2
+enemy_talk 19950006
+enemy_wait
+wait 2000
+detector_issignal 3, 3, -1
+human_looktoactor 4
+enemy_lookto 46
+enemy_wait
+actor_setplacement 4, 0
+enemy_playanim "sezsed.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "seznormal.i3d"
+return
+
+label 3
+//enemy_playanim "zidlevstanibezdrzeni.i3d", 0, simple
+//let flt[0] = flt[0] - 323
+//wait flt[0]
+//enemy_stopanim
+debug_text "Panove z ochranky. Muzete prosim vas toho chlapa odsud vyvest."
+wait 3000
+
+label 4
+setevent 0, 2, 4
+setevent 2, 2, 4
+
+label 5
+detector_issignal 3, 5, -1
+human_looktoactor 4
+enemy_lookto 46
+enemy_wait
+actor_setplacement 4, 0
+enemy_playanim "sezsed.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "seznormal.i3d"
+return
+
+event 1
+event_use_cb 1
+return

@@ -1,0 +1,75 @@
+dim_act 4
+dim_flt 2
+findactor 0,"Enemy13C"
+findactor 1,"supervisor"
+findactor 2,"hlidac_hlasky"
+findactor 3,"Tommy"
+
+human_addweapon 0,8,6,6
+human_holster 0
+human_setproperty 0,1,Energy
+human_setproperty 0,7,Sight
+enemy_shut_up yes
+
+{ up
+enemy_vidim 1
+enemy_move 16
+enemy_lookto 18
+enemy_wait 
+
+label 101
+enemy_playanim "VyhlizeniStativ.i3d"
+wait 5000
+rnd 1,4
+if flt[1]=0,-1,JMP1
+  enemy_playanim "Vyhlizeni02.i3d",0
+  let flt[0]=flt[0]-323
+  wait flt[0]
+label JMP1
+if flt[1]=1,-1,JMP2
+  enemy_playanim "Vyhlizeni02.i3d",0
+  let flt[0]=flt[0]-323
+  wait flt[0]
+label JMP2
+if flt[1]=2,-1,JMP3
+  enemy_playanim "Vyhlizeni03.i3d",0
+  let flt[0]=flt[0]-323
+  wait flt[0]
+label JMP3
+if flt[1]=3,-1,JMP4
+  enemy_playanim "Vyhlizeni03.i3d",0
+  let flt[0]=flt[0]-323
+  wait flt[0]
+label JMP4
+goto 101
+}
+
+event enemy_to_ai
+enemy_vidim 0
+enemy_getstate 0
+if flt[0]>1,-1,SKIP01
+act_setstate 2,active
+human_setproperty 0,100,Energy
+human_setproperty 0,100,Sight
+label A1
+setevent 1,201,A1
+enemy_vidim 1
+enemy_podvadim_jak tretera
+enemy_naserse 3
+enemy_action_fire 3
+label SKIP01
+return
+
+event 201
+// ALERT
+enemy_vidim 0
+act_setstate 2,active
+human_setproperty 0,100,Energy
+human_setproperty 0,100,Sight
+label A1
+setevent 1,201,A1
+enemy_vidim 1
+enemy_podvadim_jak tretera
+enemy_naserse 3
+enemy_action_fire 3
+return

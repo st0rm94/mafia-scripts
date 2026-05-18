@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 3
+findactor 0, "1Bclerk"
+findactor 1, "1detekce healtu civila 5x"
+findactor 2, "detekce healtu urednika rozhovor"
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+commandblock 1
+act_setstate 1, off
+//act_setstate 2, off
+commandblock 0
+
+detector_setsignal 100, 1

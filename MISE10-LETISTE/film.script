@@ -1,0 +1,94 @@
+dim_frm 21
+dim_flt 4
+dim_act 18
+
+commandblock 1
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "Animace 10.5"
+findactor 3, "March"
+findactor 4, "Alice"
+findactor 5, "load mise10-mesto"
+findactor 6, "zep d2"
+findactor 7, "Detektiv2"
+findactor 8, "Detektiv4"
+findactor 9, "Detektiv"
+findactor 10, "Detektiv7"
+findactor 11, "unik2"
+findactor 12, "enemy energymetr"
+findactor 13, "prd"
+findactor 14, "NULL"
+findactor 15, "slapa ulice"
+findactor 16, "energymetr"
+findactor 17, "film"
+
+findframe 0, "pos 2"
+findframe 1, "Tommy"
+findframe 2, "FrankHIGH"
+findframe 3, "March"
+findframe 4, "Alice"
+findframe 5, "pos 6"
+findframe 6, "pos 7"
+findframe 7, "pos 8"
+findframe 8, "pos 9"
+findframe 9, "xtaska 9"
+findframe 10, "xtaska 8"
+findframe 11, "pos 3"
+findframe 12, "pol"
+findframe 13, "pouta"
+findframe 14, "camera2"
+findframe 15, "pouta2"
+findframe 16, "amplion1"
+findframe 17, "pouta3"
+findframe 18, "xForAca2"
+findframe 19, "xblackha5"
+findframe 20, "TruckA"
+frm_seton 15, 0
+frm_seton 17, 0
+commandblock 0
+
+act_setstate 17, inactive
+wait 600
+commandblock 1
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 12, 0
+frm_seton 16, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+loaddifferences "dif10f.chg"
+recloadfull "record10f.rep"
+commandblock 0
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+human_delweapon 0, 26
+human_addweapon 0, 16, -1, -1
+actor_setplacement 0, 11
+frm_seton 1, 1
+frm_seton 12, 1
+frm_seton 16, 1
+frm_seton 18, 1
+frm_seton 19, 1
+frm_seton 20, 1
+frm_seton 9, 0
+frm_seton 10, 0
+disablecolls 9
+disablecolls 10
+human_eraseab 1
+human_eraseab 3
+mission_objectivesclear
+commandblock 0
+act_setstate 3, off
+act_setstate 4, off
+player_lockcontrols 0
+zatmyse 0
+mission_objectives 10960006
+act_setstate 5, active
+act_setstate 15, off
+detector_setsignal 16, 1

@@ -1,0 +1,219 @@
+//[debug_me]
+dim_act 16
+dim_flt 5
+dim_frm 3
+// 0 jauto playera do filmecku
+findactor 1, "chemaFor"
+findactor 2, "Billy"
+findactor 3, "Johny"
+getactiveplayer 4
+setnullactor 5
+// actor 6 FMVTom1
+// actor 7 FMVTom2
+// actor 8 FMVTom3
+// actor 9 FMVPaulie1
+// actor 10 FMVPaulie2
+// actor 11 FMVPaulie3
+findactor 12, "music"
+// actor 13 je temp owner od playera
+findactor 14, "animace_v_Service_station"
+findactor 15, "honka_detector_poskozeni"
+
+findframe 0, "ticho"
+findframe 1, "kos_1"
+findframe 2, "kos_2"
+
+act_setstate -1, inactive
+wait 10
+{ DOWN
+label SKIPINACTIVE
+
+// ##################
+// #   NOVA  DETECKCE   #
+// ##################
+
+label DETECT
+gosub CHECKOWNER
+getactorsdist 3, 4, 0
+if flt[0] > 100, PREEND, -1
+      if flt[4] ! 0, -1, SKIPRESET
+      timeroff
+      let flt[4] = 0
+      label SKIPRESET
+      car_getspeed 1, 0
+      if flt[0] < 25, CHECKSPEED, DETECT
+
+label CHECKSPEED
+if flt[1] = 0, -1, DETECTSPEED
+// Pokud se jejich auto 11 sec nerozjede
+   getgametime 1
+   let flt[1] = flt[1] + 11000
+label DETECTSPEED
+getgametime 0
+if flt[0] > flt[1], TEST_CRASH, -1
+   car_getspeed 1, 0
+   if flt[0] > 10, -1, DETECT
+      let flt[1] = 0
+      goto DETECT
+
+label TEST_CRASH
+   getactorsdist 3, 4, 0
+   if flt[0] > 20, -1, TEST_CRASH2
+   label UPDATETIMER
+   getgametime 1
+   let flt[1] = flt[1] + 2000
+goto DETECT
+
+label TEST_CRASH2
+human_getowner 4, 13
+compareactors 13, 5, 0
+if flt[0] = 1, KONEC_CRASH, UPDATETIMER
+
+label CHECKOWNER
+compareownerwithex 2, 1, -1, KONEC_CRASH
+compareownerwithex 3, 1, -1, KONEC_CRASH
+return
+
+label PREEND
+// flt[4] = time kdy bude gameover
+if flt[4] = 0, -1, SKIP
+getgametime 4
+debug_text "detector_konec: Player se musi do 20sec priblizit pod 200m !"
+let flt[4] = flt[4] + 120000
+timeron 9, 14, 0, 120
+label SKIP
+getgametime 0
+if flt[0] > flt[4] ,-1, CHECKSPEED
+getactorsdist 3, 4, 0
+if flt[0] > 100, BADEND, -1
+debug_text "detector_konec: Podminka na priblizeni vyprsela !"
+let flt[4] = 0
+timeroff
+goto DETECT
+}
+act_setstate 15, off
+if flt[3] = 0, -1, KONEC_CRASH
+
+label KONEC
+citymusic_off
+label MUSIC
+setevent 12, 2, MUSIC
+zatmyse 1
+camera_lock 0
+wait 450
+commandblock 1
+enemy_block
+m7_zastavzkurvenepolise
+car_forcestop 0
+car_forcestop 1
+actor_setplacement 0, 1
+actor_setplacement 1, 2
+car_calm 0
+car_calm 1
+car_lock_all 0, 1
+car_lock_all 1, 1
+debug_text "Animation 7.2"
+actor_duplicate 0, 2, 0
+actor_duplicate 2, 3, 0
+actor_duplicate 3, 4, 0
+actor_duplicate 4, 5, 1
+setcitytrafficvisible 0
+loaddifferences "dif07d2.chg"
+recloadfull "record07d2.rep"
+recclear
+// Pripojeni copii Tommyho auta do recordu
+recaddactor 2, "car30"
+recaddactor 3, "car13"
+recaddactor 4, "car12"
+recaddactor 5, "act0"
+// Posazeni filmeckovych actoru do kopii
+findactor 6, "FMVTom1"
+findactor 7, "FMVTom2"
+findactor 8, "FMVTom3"
+findactor 9, "FMVPaulie1"
+findactor 10, "FMVPaulie2"
+findactor 11, "FMVPaulie3"
+human_force_settocar 6, 2, 0
+human_force_settocar 9, 2, 1
+human_force_settocar 7, 3, 0
+human_force_settocar 10, 3, 1
+human_force_settocar 8, 4, 0
+human_force_settocar 11, 4, 1
+recload "record07d2.rep"
+zatmyse 0
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+// At nejsou slyset zvuky po konci filmecku....
+camera_lock 0
+recunload
+zatmyse 1,1
+cleardifferences
+setcitytrafficvisible 1
+actor_delete 2
+actor_delete 3
+actor_delete 4
+actor_delete 5
+// Povoleni freerideu
+setfreeride 1
+commandblock 0
+garage_show
+change_mission "mise08-mesto", "", 0
+end
+
+label BADEND
+endofmission 0, 7980008
+end
+
+
+label KONEC_CRASH
+debug_text "detector_konec: KONCIME CRASHEM !"
+citymusic_off
+label MUSIC
+setevent 12, 2, MUSIC
+zatmyse 1
+// At nejsou slyset zvuky po konci filmecku....
+camera_lock 0
+wait 450
+commandblock 1
+enemy_block
+m7_zastavzkurvenepolise
+car_forcestop 0
+car_forcestop 1
+actor_setplacement 0, 1
+actor_setplacement 1, 2
+car_calm 0
+car_calm 1
+car_lock_all 0, 1
+car_lock_all 1, 1
+loaddifferences "dif07d3.chg"
+recloadfull "record07d3.rep"
+zatmyse 0
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+zatmyse 1,1
+cleardifferences
+// Povoleni freerideu
+subtitle_add 7210
+setfreeride 1
+commandblock 0
+wait 5000
+garage_show
+change_mission "mise08-mesto", "", 0
+end
+
+event 1
+event_use_cb 1
+let flt[3] = 0
+return
+
+event 2
+event_use_cb 1
+let flt[3] = 1
+return

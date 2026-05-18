@@ -1,0 +1,32 @@
+dim_flt 1
+dim_act 3
+findactor 0,"Tommy"
+findactor 1,"civil2"
+findactor 2,"detector_talktorecepcni"
+
+enemy_lockstate panic_runaway
+
+DIM_FLT 1
+HUMAN_LOOKTOACTOR 1
+
+{ up
+enemy_playanim "SezPoh01L.I3D", 0
+label 1
+wait 12000
+goto 1
+}
+
+event use_ab,10970007
+getenemyaistate 1,0
+iffltinrange 0,2,5,120
+HUMAN_LOOKTOACTOR 1, 0, 1
+enemy_talk 08950009
+enemy_wait
+HUMAN_LOOKTOACTOR 1
+label 120
+return
+
+event 201
+enemy_use_detector 2
+debug_text "vypnut AB talktorecepni"
+return

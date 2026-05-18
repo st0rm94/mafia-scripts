@@ -1,0 +1,38 @@
+enemy_lockstate panic_freeze
+dim_flt 1
+dim_act 5
+findactor 0, ""
+findactor 1, "1reakce 1"
+findactor 2, "1reakce 2"
+findactor 3, "1reakce 3"
+findactor 4, "1Paulie"
+
+label 1
+detector_issignal 1, -1, 1
+
+wait 500
+enemy_look 4
+enemy_wait
+enemy_playanim "rucevzhuru01.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "rucevzhuru01loop.i3d
+
+label 2
+detector_issignal 2, -1, 2
+
+enemy_playanim "rucevzhuru01down.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+
+enemy_lookto 29
+enemy_wait
+
+enemy_playanim "x panika leh dolu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+
+label 3
+enemy_playanim "x panika leh stativ.i3d"
+goto 3

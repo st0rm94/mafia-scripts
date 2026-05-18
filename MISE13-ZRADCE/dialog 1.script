@@ -1,0 +1,12 @@
+dim_act 2
+dim_flt 1
+findactor 0, "Salieri"
+findactor 1, "WillMan"
+
+label 1
+detector_inrange 0, 5
+if flt[0] = 1, -1, 1
+setevent 1, 1, -1
+label 2
+setevent 0, 1, 2
+act_setstate -1, inactive

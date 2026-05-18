@@ -1,0 +1,6 @@
+dim_flt 1
+ACT_SETSTATE -1,inactive
+
+detector_waitforuse 02970001
+garage_show
+change_mission "mise06-saliery","",0

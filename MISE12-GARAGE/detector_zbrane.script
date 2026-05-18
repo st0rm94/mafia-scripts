@@ -1,0 +1,353 @@
+//[debug_me]
+commandblock 1
+dim_act 42
+dim_frm 32
+dim_flt 2
+findactor 0, "forVfor"
+findactor 1, "forVfor2"
+findactor 2, "GatesMan4"
+findactor 3, "GatesMan2"
+findactor 4, "GatesMan3"
+findactor 5, "Paulie"
+findactor 6, "Sam"
+findactor 7, "Tommy"
+findactor 8, "Enemy1"
+findactor 9, "Enemy2"
+findactor 10, "Enemy3"
+findactor 11, "Enemy4"
+findactor 12, "Enemy5"
+findactor 13, "Enemy6"
+findactor 14, "Enemy7"
+findactor 15, "Enemy8"
+findactor 16, "Enemy9"
+findactor 17, "Gates"
+findactor 18, "GatesMan"
+findactor 19, "Vratny"
+findactor 20, "forVfor3"
+findactor 21, "Enemy_gr2_1"
+findactor 22, "Enemy_gr2_2"
+findactor 23, "Enemy_gr2_3"
+findactor 24, "Enemy_gr2_4"
+findactor 25,  "detector_gr2"
+findactor 26, "Players_men"
+findactor 27, "Players_men2"
+findactor 28, "detector_zbrane2"
+// free!
+findactor 30, "music"
+findactor 31, "ForAca"
+findactor 32, "ForAcou"
+findactor 33, "chev2"
+findactor 34, "ForAro"
+setnullactor 35
+// 36 free!
+findactor 37, "detector_zbrane"
+findactor 38, "detector_energy_friends"
+findactor 39, "detector_posledni_grupa"
+findactor 40, "detector_prestrelka"
+findactor 41, "detector_TED_ZHEBNES_ZMRDE"
+
+findframe 0, "position_car"
+findframe 1, "position_car2"
+findframe 2, "position_E1"
+findframe 3, "position_E2"
+findframe 4, "position_E3"
+findframe 5, "position_E4"
+findframe 6, "position_E5"
+findframe 7, "position_E6"
+findframe 8, "position_E7"
+findframe 9, "position_E8"
+findframe 10, "position_E9"
+findframe 11, "position_Sam"
+findframe 12, "position_Paulie"
+findframe 13, "position_Tommy"
+findframe 14, "position_gr2_car"
+findframe 15, "position_gr2_E1"
+findframe 16, "position_gr2_E2"
+findframe 17, "position_gr2_E3"
+findframe 18, "position_gr2_E4"
+findframe 19, "Paulie"
+findframe 20, "Tommy"
+findframe 21, "Sam"
+findframe 22, "Gates"
+findframe 23, "GatesMan4"
+findframe 24, "GatesMan"
+findframe 25, "GatesMan2"
+findframe 26, "GatesMan3"
+findframe 27, "2shotgun"
+findframe 28, "skupinka1"
+findframe 29, "skupinka2"
+findframe 30, "radio"
+findframe 31, "!kref"
+frm_seton 28, 1
+frm_seton 29, 1
+frm_seton 31, 0
+commandblock 0
+
+//goto DEJZBRANE
+
+{ DOWN
+label DETECT
+detector_inrange 0, 2
+if flt[0] ! 0, -1, DETECT
+}
+label SEND2
+setevent 5, 100, SEND2
+label SEND3
+setevent 6, 100, SEND3
+
+label DEJZBRANE
+
+human_addweapon 5, 7, 6, 200
+human_holster 5
+human_addweapon 6, 11, 8, 200
+human_holster 6
+act_setstate 28, off
+act_setstate -1, inactive
+//compareownerwithex 7, 35, -1, NASERTESEVSICI
+if flt[1] = 1, FINISH, -1
+label SKIP
+
+getenemyaistate 17, 0
+if flt[0] < 2, -1, ZAPNI_ZMRDY
+getenemyaistate 18, 0
+if flt[0] < 2, -1, ZAPNI_ZMRDY
+getenemyaistate 3, 0
+if flt[0] < 2, -1, ZAPNI_ZMRDY
+getenemyaistate 4, 0
+if flt[0] < 2, -1, ZAPNI_ZMRDY
+getenemyaistate 2, 0
+if flt[0] < 2, -1, ZAPNI_ZMRDY
+
+zatmyse 1
+frm_seton 28, 0
+frm_seton 29, 0
+wait 450
+// #################
+// #    F I L M E C E K !!!! #
+// #################
+commandblock 1
+// vypnuti: detector_energy_friends
+act_setstate 38, off
+person_stopanim 7
+player_lockcontrols 1
+// Vypinani visualu !!!!
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+frm_seton 27, 0
+frm_seton 30, 0
+
+loaddifferences "dif12b.chg"
+recloadfull "record12b.rep"
+
+commandblock 0
+
+recwaitforend
+commandblock 1
+zatmyse 1, 1
+recunload
+cleardifferences
+// Zbrane wingmanum kvuli nezname chybe ze ji nekdy nedostali
+inventory_clear 5
+human_addweapon 5, 7, 6, 200
+inventory_clear 6
+human_addweapon 6, 11, 8, 200
+
+// AUTA
+actor_setplacement 0, 0
+actor_setplacement 1,1
+settankhitcount 0, 2
+settankhitcount 1, 2
+settankhitcount 31, 2
+settankhitcount 32, 2
+settankhitcount 33, 2
+settankhitcount 34, 1
+//E1
+actor_setplacement 8, 2
+human_addweapon 8, 11, 8, 60
+//E2
+actor_setplacement 9, 3
+human_addweapon 9, 10, 50, 300
+//E3
+actor_setplacement 10, 4
+human_addweapon 10, 10, 50, 300
+//E4
+actor_setplacement 11, 5
+human_addweapon 11, 10, 50, 300
+//E5
+actor_setplacement 12, 6
+human_addweapon 12, 11, 8, 40
+//E6
+actor_setplacement 13, 7
+human_addweapon 13, 10, 50, 300
+//E7
+actor_setplacement 14, 8
+human_addweapon 14, 11, 8, 60
+//E8
+actor_setplacement 15, 9
+human_addweapon 15, 11, 8, 60
+//E9
+actor_setplacement 16, 10
+human_addweapon 16, 10, 50, 300
+//Sam
+actor_setplacement 6, 11
+//Paulie
+actor_setplacement 5, 12
+//Tommy
+actor_setplacement 7, 13
+//GatesMan4 -W3
+human_death 2
+//GatesMan2 -W2
+human_death 3
+//GatesMan3 -W1
+human_death 4
+//Gates
+human_death 17
+commandblock 0
+//Players_men
+human_addweapon 26, 7, 6, 30
+human_death 26
+//Players_men2
+human_addweapon 27, 7, 6, 30
+human_death 27
+//###################
+//##         F I G H T !!!!      ##
+//###################
+act_setstate 8, active
+act_setstate 9, active
+act_setstate 10, active
+// Enemy 3
+human_death 10
+act_setstate 11, active
+act_setstate 12, active
+// Enemy 5
+human_death 12
+act_setstate 13, active
+act_setstate 14, active
+act_setstate 15, active
+act_setstate 16, active
+act_setstate 25, active
+// Vratny 
+actor_setplacement 19, 31
+human_death 19
+// Kdyby bylo player nahodou prijel autem a bylo neviditelny
+// Vyresil jsem to jinak
+//act_setstate 40, active
+// Zapinani visualu !!!!
+frm_seton 19, 1
+frm_seton 20, 1
+frm_seton 21, 1
+frm_seton 22, 1
+frm_seton 23, 1
+frm_seton 24, 1
+frm_seton 25, 1
+frm_seton 26, 1
+version_is_germany 0
+if flt[0] ! 0, SKIPKREF, -1
+frm_seton 31, 1
+label SKIPKREF
+commandblock 0
+label SEND8
+setevent 5, 101, SEND8
+label SEND7
+setevent 6, 101, SEND7
+// Aktivuji Gatesmana
+label SEND6
+setevent 18, 2, SEND6
+zatmyse 0
+commandblock 1
+human_isweapon 7, 0, 10
+if flt[0] = 1, -1, SKIP2
+human_activateweapon 7, 10
+label SKIP2
+person_playanim 7, "breath06a.I3D", 0, 1
+commandblock 0
+wait 400
+player_lockcontrols 0
+
+// ######################
+// #  end of   F I L M E C E K !!!!  #
+// ######################
+
+act_setstate 30, active
+act_setstate 41, active
+
+{ DOWN
+label DETECT2
+detector_inrange 0, 3
+if flt[0] ! 0, -1, DETECT2
+}
+commandblock 1
+//###################
+//##      F I G H T  2  !!!!    ##
+//###################
+compareownerwithex 7, 35, NOTINCAR, -1
+debug_text "detector_zbrane: Player jede v aute - budeme tvrdaci!"
+human_setproperty 21, 100, Shooting
+human_setproperty 21, 100, Reactions
+human_setproperty 22, 100, Shooting
+human_setproperty 22, 100, Reactions
+human_setproperty 23, 100, Shooting
+human_setproperty 23, 100, Reactions
+human_setproperty 24, 100, Shooting
+human_setproperty 24, 100, Reactions
+
+label NOTINCAR
+// AUTO
+actor_setplacement 20, 14
+//E1
+actor_setplacement 21, 15
+human_addweapon 21, 10, 50, 300
+act_setstate 21, active
+//E2
+actor_setplacement 22, 16
+human_addweapon 22, 10, 50, 300
+act_setstate 22, active
+//E3
+actor_setplacement 23, 17
+human_addweapon 23, 10, 50, 300
+act_setstate 23, active
+//E4
+actor_setplacement 24, 18
+human_addweapon 24, 11, 8, 30
+act_setstate 24, active
+//Posledni grupa?
+debug_text "detector_zbrane: Posledni grupa activated..."
+act_setstate 39, active
+gosub ZAPNI_ZMRDY
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+return
+
+//# TFUJ TFUJ !!!!
+//label NASERTESEVSICI
+//setevent 3, 1, NASERTESEVSICI
+//label SEND4
+//setevent 18, 1, SEND4
+
+event 3
+label ZAPNI_ZMRDY
+setevent 5, 101, ZAPNI_ZMRDY
+label SEND5
+setevent 6, 101, SEND5
+debug_text "detector_zbrane: Ted sis to posral ! / Nebo zacla prestrelka..."
+let flt[1] = 1
+act_setstate 25, active
+return
+
+
+label FINISH
+debug_text "detector_zbrane: SCRIPT FINISHED"
+commandblock 0
+end

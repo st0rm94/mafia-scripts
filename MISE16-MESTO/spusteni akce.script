@@ -1,0 +1,57 @@
+dim_flt 1
+dim_act 18
+dim_frm 1
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findactor 2, "civil3"
+findactor 3, "Czena"
+findactor 4, "civil4"
+findactor 5, "Czena5"
+findactor 6, "civil7"
+findactor 7, "MorelloLOW"
+findactor 8, "Bguard2"
+findactor 9, "Bguard3"
+findactor 10, "Czena2"
+findactor 11, "civil2"
+findactor 12, "civil"
+findactor 13, "Czena6"
+findactor 14, "civil6"
+findactor 15, "Czena3"
+findactor 16, "detekce stavu guarda"
+findactor 17, "detekce vzdalenosti playera od morella"
+
+findframe 0, "MorelloLOW"
+
+act_setstate 100, inactive
+
+commandblock 1
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 8, active
+//act_setstate 9, active
+act_setstate 10, active
+act_setstate 11, active
+act_setstate 12, active
+act_setstate 13, active
+act_setstate 14, active
+act_setstate 15, active
+act_setstate 16, active
+act_setstate 17, active
+commandblock 0
+
+human_activateweapon 0, 10
+human_activateweapon 1, 10
+
+human_talk 1, 16991041, 1
+human_talk 0, 16991051, 1
+human_talk 0, 16991061, 1
+
+mission_objectivesclear
+mission_objectives 16960001
+setcompass 0
+
+act_setstate 100, off

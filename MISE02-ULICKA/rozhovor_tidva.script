@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 1
+findactor 0,"civil4"
+
+label 101
+wait 110
+detector_inrange 0,4
+if flt[0]=1,-1,101
+
+setevent 0,202,-1
+end

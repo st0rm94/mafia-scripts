@@ -1,0 +1,32 @@
+dim_flt 1
+dim_act 3
+dim_frm 2
+findactor 0,"dverekancl"
+findactor 1,"ReditelH"
+findactor 2,"Tommy"
+
+findframe 0,"9klic"
+findframe 1, "placement_klic"
+
+frm_seton 0, 1
+
+detector_waitforuse 08970003
+PLAYER_LOCKCONTROLS 1
+setnoanimhit 2,1
+actor_setplacement 2,1
+person_playanim 2,  "sbirani zvrchu.i3d", 0, simple
+wait 1000
+frm_seton 0, 0
+let flt[0] = flt[0] - 1323
+wait flt[0]
+person_stopanim 2
+human_addweapon 2,16,0,0
+door_lock  0, 0
+human_getproperty 1,0,Energy
+if flt[0]=0,SKIP,-1
+label 204
+setevent 1,204,204
+
+label SKIP
+setnoanimhit 2,0
+PLAYER_LOCKCONTROLS 0

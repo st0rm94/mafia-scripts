@@ -1,0 +1,94 @@
+commandblock 1
+garage_enablesteal F
+dim_act 5
+dim_flt 3
+dim_frm 6
+findactor 0, "Tommy"
+findactor 1
+findactor 2, "forVco"
+findactor 3, "PortGuard4"
+findactor 4, "Organizator"
+findframe 0, "PortGuard2.neck"
+findframe 1, "2cigaro2"
+findframe 2, "cil_Ford"
+findframe 3, "cil_TruckB"
+findframe 4, "trashcan2"
+findframe 5, "18_worker3"
+
+//frm_seton 0, 1
+frm_seton 1, 1
+car_setdooropen 2, 0, 90
+car_muststeal 2, 1
+car_calm 2
+car_lock_all 2, 1
+human_looktoactor 1, 3, 1
+commandblock 0
+
+{ DOWN
+label WAIT
+rnd 1, 5
+let flt[1] = flt[1] * 2300
+enemy_playanim "KoureniAutoStativ.I3D", 0
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] + flt[1]
+wait flt[0]
+enemy_playanim "KoureniAutoPotahnuti.I3D", 0
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] / 3
+wait flt[0]
+wait flt[0]
+emitparticle 0, 25
+wait flt[0]
+goto WAIT
+}
+if flt[2] = 1, END_IN_AI, -1
+frm_seton 1, 0
+car_lock_all 2, 0
+enemy_move_to_car 2, 0
+enemy_usecar 2, 0
+label WAITNASTUP
+   wait 200
+   compareownerwithex 4, 2, -1, WAITNASTUP
+debug_text "PortGuard2: Jedem si pro tebe smejde!"
+{ DOWN
+   enemy_car_moveto 2, 2
+label WAITSIG
+   wait 100000
+goto WAITSIG
+}
+enemy_car_moveto 2, 3, stop
+label TESDIST
+getactorsdist 0, 1, 0
+if flt[0] < 150, TESTDIST, FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 100
+enemy_naserse 0, 100
+frm_seton 1, 0
+return
+
+event ENEMY_TO_AI
+enemy_getstate 0
+if flt[0] > 1, -1, RET
+frm_seton 5, 0
+frm_seton 1, 0
+let flt[2] = 1
+event_use_cb 1
+return
+label RET
+event_use_cb 0
+return
+
+label END_IN_AI
+wait 9580000000
+goto END_IN_AI
+
+
+label FINISH
+actor_setplacement 2, 4
+act_setstate 2, off
+debug_text "PortGuard2: SCRIPT FINISHED"
+act_setstate 1, off

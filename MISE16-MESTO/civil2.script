@@ -1,0 +1,32 @@
+dim_act 3
+dim_frm 4
+findactor 0, ""
+findactor 1, "Czena2"
+findactor 2, "buikFor"
+findframe 0, "navadeni auta 3"
+findframe 1, ""
+findframe 2, "Czena2"
+findframe 3, "buikFor"
+
+enemy_changeanim "walk1.i3d", "chuzerucezazady1.i3d"
+
+act_setstate 100, inactive
+
+enemy_move 36
+enemy_lookto 37
+enemy_wait
+
+label 1
+enemy_usecar 2, 0
+compareownerwith 2, -1, 1
+
+wait 2000
+
+enemy_car_moveto 2, 0
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 0, off

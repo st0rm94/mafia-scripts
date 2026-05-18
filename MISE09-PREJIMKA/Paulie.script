@@ -1,0 +1,325 @@
+dim_act 18
+dim_flt 7
+dim_frm 17
+
+findactor 0,"Tommy"
+findactor 1,"Paulie"
+findactor 2, "Samblood"
+findactor 3, "Box2058"
+findactor 4, "Box2059"
+findactor 8, "TruckA"
+findactor 10, "Detektiv3"
+findactor 11, "Detektiv4"
+findactor 12, "SalMan01K"
+findactor 13, "Good-End"
+//enemy ve stodole
+findactor 5, "Enemy2"
+findactor 6, "Enemy3"
+findactor 7, "Enemy"
+findactor 14, "Enemy02+2"
+findactor 15, "paulie_pomoc"
+findactor 16, "SalMan02K"
+findactor 17, "Enemy07+"
+
+findframe 2, "TruckA3"
+findframe 3, "TruckA"
+findframe 4, "auto"
+findframe 5, "autoSam"
+findframe 6, "Tom"
+findframe 8, "Paulie"
+findframe 9, "pacidlo"
+findframe 10, "vykop vrat"
+findframe 11, "Enemy13C"
+findframe 12, "lighting3"
+findframe 13, "lighting2"
+findframe 14, "lighting"
+findframe 15, "ambidest_2"
+findframe 16, "Enemy13C2"
+
+human_set8slot 1, 1
+
+//vyspeedovani Pauliho
+human_setproperty 1, 110, speed
+human_set8slot 1,1
+human_addweapon 1,9,7,35
+human_holster 1
+human_addweapon 1,11,8,24
+
+frm_seton 9,1
+enemy_lockstate fight_guard,1
+
+//zjistovani stisku AB a vybuch auta
+
+label 101
+let flt[4]=0
+{ down
+label A1
+wait 50000
+goto A1
+}
+if flt[4] = 1,-1,101
+if flt[2] = 1,-1,101
+
+getactorsdist 0,1,0
+if flt[0]>5,101,-1
+
+//Rozhovor u auta
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+DIALOG_BEGIN 0,2
+PLAYER_LOCKCONTROLS 1
+human_reset 1
+enemy_look 0
+actor_setdir 0,8
+human_looktoactor 1,0,1
+human_looktoactor 0,1,1
+dialog_camswitch 1,0
+enemy_talk 0, 09990061, 2
+enemy_wait
+dialog_camswitch 0,1
+enemy_talk 1, 09990071, 2
+enemy_wait
+dialog_camswitch 1,0
+enemy_talk 0, 09990081, 2
+enemy_wait 
+dialog_camswitch 0,1
+enemy_talk 1, 09990091, 2
+enemy_wait
+dialog_camswitch 1,0
+enemy_talk 0, 09990101, 2
+enemy_wait
+enemy_talk 0, 09990102, 2
+enemy_wait
+dialog_camswitch 0,1
+enemy_talk 1, 09990111, 2
+enemy_wait
+dialog_camswitch 1,0
+enemy_talk 0, 09990121, 2
+enemy_wait
+enemy_talk 1, 09990131, 2
+enemy_wait
+DIALOG_END
+PLAYER_LOCKCONTROLS 0
+mission_objectivesclear
+mission_objectives 09960003
+
+wingman_setindicator 1,1,0
+
+human_looktoactor 1
+human_looktoactor 0
+
+// zjisteni jestli ziji wingmani
+human_getproperty 16,0,Energy
+if flt[0]=0,SKIP01,-1
+human_getproperty 12,0,Energy
+if flt[0]=0,SKIP01,-1
+
+enemy_look 12
+enemy_wait
+enemy_talk 1, 09990132, 2
+enemy_wait
+enemy_talk 1, 09990133, 2
+enemy_wait
+enemy_talk 12, 09990141
+enemy_wait
+label SKIP01
+
+enemy_vidim 1
+enemy_lockstate fight_dogfight
+
+//nasledovani playera
+human_activateweapon 1,11
+enemy_vidim 1
+
+enemy_action_follow 0,1,nonext
+
+label 103
+enemy_move 12, run
+if flt[5] = 1,-1,103
+enemy_lookto 13
+enemy_wait
+enemy_talk 09990631,0
+enemy_playanim "SbiraniStul02.i3d",1,simple
+wait 1000
+frm_seton 9,0
+let  flt[1]=flt[1]-1083
+wait flt[1]
+
+label 104
+enemy_move 30,run
+enemy_look 13
+wait 1000
+if flt[6] = 1,-1,104
+
+//vypaceni vrat a jatka ve vnitr
+autosavegamefull 5197
+
+setevent 2,202,-1
+
+// **********************
+// tohle pridal david
+commandblock 1
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 1
+frm_seton 16, 1
+commandblock 0
+// *************************
+
+enemy_move 30, walk
+enemy_vidim 0
+human_holster 1
+human_addweapon 1,20,0,0
+enemy_look 0
+enemy_wait
+enemy_talk 1, 09990171
+enemy_wait
+enemy_talk 1, 09990172
+enemy_wait
+enemy_lookto 4
+enemy_wait
+
+setnoanimhit 1,1
+enemy_playanim "PaceniDveri.I3D", 1, simple
+wait 7000
+wait 100
+wait 100
+let flt[1] = flt[1] - 7783
+wait flt[1]
+setnoanimhit 1,0
+
+human_holster 1
+human_activateweapon 1, 11
+enemy_talk 1, 09990181
+enemy_wait
+enemy_playanim "VykopnutiDveri.I3D", 1, simple
+let flt[1] = flt[1] - 83
+wait 800
+door_lock 3, 0
+door_lock 4, 0
+frm_seton 10, 1
+door_open 3, 1
+door_open 4, 1
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 14, active
+
+enemy_vidim 1
+enemy_action_follow 0,1.5,nonext
+
+//sem se dostane force skriptem v detektoru u Sama ( musi tam byt i player )
+//Dojde na checkpoint a zacne trialog :)
+
+enemy_move 6, run
+enemy_look 2
+enemy_wait
+
+DIALOG_BEGIN 0,3
+PLAYER_LOCKCONTROLS 1
+actor_setplacement 0, 6
+human_looktoactor 0,2,1
+human_looktoactor 1,2,1
+
+human_activateweapon 1,11
+
+dialog_camswitch 2,1
+
+enemy_talk 1, 09990191
+enemy_wait
+enemy_talk 1, 09990192
+enemy_wait
+enemy_talk 1, 09990193
+enemy_wait
+
+dialog_camswitch 0,2
+person_playanim 2, "SamZrToSed.I3D",5
+enemy_talk 2, 09990201
+enemy_wait
+person_playanim 2, "SamZrSedS.I3D"
+
+dialog_camswitch 2,1
+enemy_talk 1, 09990211
+enemy_wait
+dialog_camswitch 0,2
+enemy_talk 2, 09990221
+enemy_wait
+dialog_camswitch 2,0
+enemy_talk 1, 09990231
+enemy_wait
+human_looktoactor 1
+dialog_camswitch 0,2
+enemy_move 7, run
+enemy_talk 0, 09990241
+enemy_wait
+dialog_camswitch 0,2
+enemy_talk 2, 09990251
+enemy_wait
+human_looktoactor 0
+DIALOG_END
+PLAYER_LOCKCONTROLS 0
+wingman_setindicator 2, 2, 1
+
+//vypne stary nakladak, da tam novy a hodi ho to dovnitr
+enemy_vidim 0
+actor_setplacement 8, 4
+human_force_settocar 1,8,0
+
+wait 5000
+
+//Vypusti policajty v autech
+debug_text "*******************Aktivace poldu"
+act_setstate 10,active
+act_setstate 11,active
+
+//po tehle prodleve se rozjede ( mozno postelovat )
+wait 25000
+
+enemy_car_moveto 8,5
+enemy_usecar
+//zapne Good end
+act_setstate 13,active
+enemy_vidim 1
+
+act_setstate 15,active
+//pak beha za playerem, dokud nebudou oba pred stodolou ( kvuli animaci )
+
+label 10
+enemy_move 35,run
+enemy_look 0
+wait 1000
+goto 10
+
+event use_ab,10970002
+let flt[4] = 1
+return
+
+event 1
+let flt[2] = 1
+wait 500
+human_talk 1, 09990051, 1
+return
+
+event 201
+enemy_talk 09990621
+enemy_forcescript 1
+return
+
+event 202
+let flt[5] = 1
+return
+
+event 203
+let flt[6] = 1
+return
+
+event 204
+enemy_forcescript 1
+return
+
+event 205
+human_reset 1
+return

@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 3
+findactor 0, "Delnik"
+findactor 1, "load animace italian garden"
+findactor 2, "detekce stavu budky"
+
+label 1
+wait 100
+getenemyaistate 0, 0
+if flt[0] = 3, -1, 1
+
+act_setstate 1, off
+act_setstate 2, off
+wait 5000
+endofmission 0, 15980006
+act_setstate 100, off

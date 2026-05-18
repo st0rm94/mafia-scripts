@@ -1,0 +1,95 @@
+dim_flt 4
+dim_act 8
+dim_frm 4
+findactor 0, "Tommy"
+findactor 1, "detekce polozeni bomby"
+findactor 2, "Milenka"
+findactor 3, "spusteni animace 15.4"
+findactor 4, "Enemy12K2"
+//findactor 5, "zjisteni auta"
+findactor 6, "prijeti k domu milenky"
+findactor 7, "prekazejici auto milenka"
+
+findframe 0, "polozeni bomby poloha playera"
+findframe 1, "polozeni bomby kamera"
+findframe 2, "ira"
+findframe 3, "poloha prek auta milenka"
+
+let flt[2] = 4
+
+act_setstate 100, inactive
+
+label 1
+
+{ up
+detector_waitforuse 15970003
+}
+
+policeitchforplayer 0
+if flt[0] = 1, -1, 7
+goto flt[2]
+
+label 4
+human_talk 0, 00950223, 4
+let flt[2] = 5
+goto 1
+
+label 5
+human_talk 0, 00950224, 4
+let flt[2] = 6
+goto 1
+
+label 6
+human_talk 0, 00950225, 4
+let flt[2] = 4
+goto 1
+
+label 7
+if flt[1] = 1, -1, 2
+
+human_isweapon 0, 0, 22
+if flt[0] = 1, -1, 1
+
+commandblock 1
+player_lockcontrols 1
+actor_setplacement 0, 0
+camera_lock 1
+//policemanager_forcearrest 0, 1
+get_remote_actor 5, 6, 5
+getactorsdist 5, 7, 3
+if flt[3] < 5, -1, 8
+actor_setpos 5, 3
+car_calm 5
+
+label 8
+commandblock 0 
+frm_seton 2, 1
+person_playanim 0, "bombaauto.i3d", 0, simple
+wait 1500
+human_activateweapon 0, 22
+wait 4000
+human_delweapon 0, 22
+wait 5700
+person_stopanim 0
+commandblock 1
+camera_unlock
+player_lockcontrols 0
+//policemanager_forcearrest 0, 0
+commandblock 0
+act_setstate 2, off
+wait 1000
+vlvp 0
+if flt[0] = 1, -1, 3
+human_talk 0, 00950224
+
+label 3
+act_setstate 3, active
+act_setstate 100, off
+
+label 2
+setevent 4, 1, 2
+goto 1
+
+event 1
+let flt[1] = 1
+return

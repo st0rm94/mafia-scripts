@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "MorelloLOW"
+
+act_setstate 100, inactive
+
+label 1
+wait 500
+getactorsdist 0, 1, 0
+if flt[0] > 300, -1, 1
+
+endofmission 0, 16980005

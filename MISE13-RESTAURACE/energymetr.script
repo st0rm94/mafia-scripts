@@ -1,0 +1,126 @@
+dim_frm 3
+dim_flt 4
+dim_act 11
+commandblock 1
+findactor 0, "Enemy04K"
+findactor 1, "Enemy10K2"
+findactor 2, "Enemy08K"
+findactor 3, "Enemy10K"
+findactor 4, "Enemy12K"
+findactor 5, "Enemy11K"
+findactor 6, "Enemy12K2"
+findactor 7, "Salieri"
+findactor 8, "Tommy"
+findactor 9, "Enemy12K4"
+findactor 10, "Enemy12K3"
+findframe 0, "Tommy"
+findframe 1, "Salieri"
+findframe 2, "energymetr"
+commandblock 0
+
+label 1
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 0, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 1
+label 2
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 1, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 2
+label 3
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 2, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 3
+label 4
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 3, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 4
+label 5
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 4, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 5
+label 6
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 5, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 6
+label 7
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 6, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 7
+label 10
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 9, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 10
+label 11
+wait 1000
+human_getproperty 7, 1, energy
+human_getproperty 8, 2, energy
+human_getproperty 10, 0, energy
+if flt[2] = 0, 9, -1
+if flt[1] = 0, 8, -1
+if flt[0] = 0, -1, 11
+
+wait 2000
+zatmyse 1
+wait 500
+player_lockcontrols 1
+human_reset 8
+commandblock 1
+frm_seton 0, 0
+frm_seton 1, 0
+loaddifferences "dif13c.chg"
+recloadfull "record13c.rep"
+commandblock 0
+recwaitforend
+commandblock 1
+recunload
+cleardifferences
+inventory_push 8
+frm_seton 0, 1
+frm_seton 1, 1
+commandblock 0
+character_push 7
+actor_setplacement 8, 2
+change_mission "mise13-mesto2", "load z mise13-restaurace", 0
+end
+
+label 8
+wait 5000
+endofmission 0, 13980001
+end
+
+label 9
+wait 3000
+endofmission 0, 13980002
+end

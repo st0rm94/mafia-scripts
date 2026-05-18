@@ -1,0 +1,35 @@
+dim_act 4
+dim_flt 1
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 3, "ForApic"
+
+label CHECK
+wait 1000
+human_getproperty 0, 0, Energy
+if flt[0] = 0, END1, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, END2, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, END3, -1
+iscarusable 3, 0
+if flt[0] = 0, CAR, CHECK
+
+label END1
+endofmission 0, 12980003
+goto FINISH
+label END2
+endofmission 0, 12980004
+goto FINISH
+label END3
+endofmission 0, 12980005
+label CAR
+wait 6000
+iscarusable 3, 0
+if flt[0] = 0, -1, CHECK
+endofmission 0, 12980001
+goto FINISH
+
+label FINISH
+end

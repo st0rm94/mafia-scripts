@@ -1,0 +1,36 @@
+enemy_vidim 0
+dim_act 2
+dim_flt 1
+findactor 0, "Tommy"
+findactor 1
+findactor 2, "civil"
+
+{ DOWN
+LABEL FREESTATE
+enemy_playanim "GestikulaceNew07.I3D", 0, 1
+LET flt[0] = flt[0] - 83
+wait flt[0]
+GOTO  FREESTATE
+}
+
+human_looktoactor 1, 2, 1
+wait 3000
+human_looktoactor 1, 0, 1
+enemy_move 15
+enemy_move 16
+enemy_look 0
+human_addweapon 1, 2, 0, 0
+enemy_wait
+human_looktoactor 1
+enemy_talk 1, 1940083, 1
+enemy_wait
+enemy_vidim 1
+enemy_naserse 0, 70
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH
+debug_text "Hoolig4: SCRIPT FINISHED" 

@@ -1,0 +1,12 @@
+act_setstate -1, inactive
+//[debug_me]
+dim_act 2
+findactor 0, "Paulie"
+setnullactor 1
+
+label DETECT
+wait 500
+compareownerwithex 0, 1, DETECT, -1
+label SEND
+setevent 0, 4, SEND
+debug_text "detector_strilejPaulie: Paulie vidi a ma pistol!!!"

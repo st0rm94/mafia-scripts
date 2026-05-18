@@ -1,0 +1,17 @@
+dim_act 3
+dim_flt 1
+getactiveplayer 0
+findactor 1, "PortGuard2"
+findactor 2, "forVco"
+
+label DETECT
+wait 1000
+IFPLAYERSTEALCAR 2, 0
+if flt[0] ! 0, SEND, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, UNLOCKONLY, -1
+compareownerwithex 0, 2, -1, DETECT
+label SEND
+setevent 1, 100, SEND
+label UNLOCKONLY
+car_lock_all 2, 0

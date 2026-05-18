@@ -1,0 +1,24 @@
+dim_frm 10
+
+findframe 0,"FMV salek2"
+frm_seton 0,0
+findframe 0,"FMV foto-stul"
+frm_seton 0,0
+findframe 0,"FMV foto-stul2"
+frm_seton 0,0
+findframe 0,"FMV foto-Tomy_ruka"
+frm_seton 0,0
+findframe 0,"FMV foto-Norman_ruka"
+frm_seton 0,0
+findframe 0,"FMV tuzk-ruka3"
+frm_seton 0,1
+findframe 0,"FMV tuzk-ruka"
+frm_seton 0,0
+findframe 0,"FMV tuzk-ruka2"
+frm_seton 0,0
+findframe 0,"FMV tuzk-stul1"
+frm_seton 0,0
+findframe 0,"FMV tuzk-stul2"
+frm_seton 0,0
+findframe 0,"FMV tuzk-ruka4"
+frm_seton 0,0

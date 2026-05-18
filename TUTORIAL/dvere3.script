@@ -1,0 +1,12 @@
+dim_act 1
+findactor 0, "Mesh19"
+
+door_enableus 0, 0
+
+detector_waitforuse 19970000, 1
+door_open 0, 1
+wait 2000
+playsound "20950004.wav", -1, 10, 1
+wait 5000
+door_enableus 0, 1
+act_setstate 100, off

@@ -1,0 +1,7 @@
+act_setstate -1, inactive
+dim_frm 1
+findframe 0
+dim_act 1
+findactor 0, "ForApic"
+wait 20000
+actor_setplacement 0, 0

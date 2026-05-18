@@ -1,0 +1,40 @@
+dim_flt 2
+dim_act 3
+findactor 0, "1Paulie"
+findactor 1, ""
+findactor 2, "Tommy"
+
+label 1
+detector_inrange 0, 30
+if flt[0] = 1, -1, 1
+
+setplayerhornevent 1, 1
+
+{ up
+label 3
+wait 1000000
+goto 3
+}
+
+event 1
+event_use_cb 1 
+
+label 6
+setevent 0, 1, 6
+
+detector_inrange 0, 30
+if flt[0] = 1, 4, -1
+return
+
+label 4
+wait 1000
+
+detector_inrange 0, 30
+if flt[0] = 1, 5, -1
+return
+
+label 5
+setcompass -1
+act_setstate 0, active
+wait 180000
+return

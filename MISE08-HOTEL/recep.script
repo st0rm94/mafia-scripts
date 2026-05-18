@@ -1,0 +1,142 @@
+dim_flt 4
+dim_act 8
+findactor 0,"Tommy"
+findactor 1,"recep"
+findactor 2,"Bguard"
+findactor 3,"Bguard2"
+findactor 4,"Enemy"
+findactor 5,"Guard2"
+findactor 6,"Bguard4"
+findactor 7,"ReditelH"
+
+enemy_group_new 2
+enemy_group_add 2,1
+enemy_group_add 2,2
+enemy_group_add 2,3
+enemy_group_add 2,4
+enemy_group_add 2,5
+enemy_group_add 2,6,cast
+enemy_group_add 2,7,cast
+
+act_setstate 5,active
+
+commandblock 1
+human_set8slot 1,1
+human_addweapon 1, 12, 2, 20
+human_holster 1
+enemy_shut_up yes
+human_eraseab 1
+let flt[1]=0
+commandblock 0
+
+// cas na HOLSTER
+wait 2000
+
+{ up
+if flt[3]=1,JMP01,-1
+enemy_playanim "RecepcniStativ.i3D"
+label 1
+wait 11000
+goto 1
+label JMP01
+}
+
+enemy_naserse 0
+label SMYCKA
+wait 60000
+goto SMYCKA
+
+event 201
+getenemyaistate 1,0
+iffltinrange 0,2,5,130
+
+if flt[1]=0,-1,111
+HUMAN_LOOKTOACTOR 1, 0, 1
+enemy_playanim "RecepcniUkazani.I3D"
+ENEMY_TALK 0, 08990011
+enemy_wait
+getactorsdist 0,1,0
+if flt[0]>3,SKIP01,-1
+ENEMY_TALK 1, 08990021
+enemy_wait
+let flt[1]=1
+getactorsdist 0,1,0
+if flt[0]>3,SKIP01,-1
+ENEMY_TALK 0, 08990031
+enemy_wait
+wait 2500
+label SKIP01
+enemy_stopanim
+HUMAN_LOOKTOACTOR 1
+goto 130
+label 111
+
+if flt[1]=1,-1,222
+player_lockcontrols 1
+human_looktoactor 1, 0, 1
+person_stopanim 0
+person_playanim 0,"PolBlok01.I3D",0,simple
+ENEMY_TALK 0, 08990171
+wait flt[0]
+person_stopanim 0
+person_playanim 0,"PolBlok04.I3D",0,simple
+enemy_wait
+enemy_playanim "GestikulaceNew01.I3D"
+ENEMY_TALK 1, 08990181
+enemy_wait
+person_stopanim 0
+person_playanim 0,"breath01a.I3D"
+ENEMY_TALK 1, 08990182
+enemy_wait
+enemy_playanim "breath01a.I3D"
+ENEMY_TALK 0, 08990191
+enemy_wait
+human_looktoactor 1
+let flt[1]=2
+person_stopanim 0
+enemy_stopanim
+player_lockcontrols 0
+goto 130
+label 222
+
+if flt[1]=2,-1,333
+player_lockcontrols 1
+person_playanim 0,"breath01a.I3D"
+enemy_playanim "GestikulaceNew01.I3D"
+human_looktoactor 1, 0, 1
+ENEMY_TALK 1, 08990201
+enemy_wait
+ENEMY_TALK 1, 08990202
+enemy_wait
+enemy_playanim "breath01a.I3D"
+ENEMY_TALK 0, 08990211
+enemy_wait
+enemy_playanim "GestikulaceNew01.I3D"
+ENEMY_TALK 1, 08990221
+enemy_wait
+ENEMY_TALK 1, 08990222
+enemy_wait
+enemy_playanim "breath01a.I3D"
+ENEMY_TALK 0, 08990231
+enemy_wait
+wait 2500
+human_looktoactor 1
+let flt[1]=3
+person_stopanim 0
+player_lockcontrols 0
+goto 130
+label 333
+
+label 130
+return
+
+event 202
+event_use_cb 0
+enemy_vidim 0
+enemy_actionsclear
+enemy_brainwash
+enemy_move 51,run
+enemy_podvadim_jak tretera
+enemy_lockstate fight_guard,3
+enemy_vidim 1
+return

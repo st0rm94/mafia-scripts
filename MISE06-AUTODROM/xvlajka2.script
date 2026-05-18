@@ -1,0 +1,55 @@
+mission_objectivesclear
+zatmyse 1,1
+
+dim_flt 1
+getmissionnumber 0
+if flt[0] = 30131, -1, is_mission6
+end
+
+label is_mission6
+
+autosavegame 5105
+
+// ********Animace*********
+commandblock 1
+dim_frm 1
+findframe 0,"Dverex1"
+frm_seton 0,0
+loaddifferences "dif06b.chg"
+recloadfull "record06b.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 0,1
+zatmyse 0
+commandblock 0
+//***************************
+
+dim_act 1
+findactor 0,"detector_bugatti"
+
+act_setstate 0,active
+
+racing_mission6_start 0
+
+label 1
+if flt[0] = 1,2,-1
+if flt[0] = 0,3,-1
+if flt[0] = 2,4,-1
+if flt[0] = 3,5,1
+
+label 2
+setmissionnumber 1
+change_mission "mise06-oslava", "", -1
+
+label 3
+endofmission 0, 06980004
+
+label 4
+endofmission 0, 06980004
+
+label 5

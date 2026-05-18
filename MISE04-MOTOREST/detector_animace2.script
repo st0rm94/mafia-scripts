@@ -1,0 +1,70 @@
+dim_flt 1
+dim_act 9
+dim_frm 9
+findactor 0, "Box66"
+findactor 1, "Enemy222"
+findactor 2, "Tommy"
+findactor 3, "Samblood"
+findactor 4, "GodzMan10"
+findactor 5, "Box395"
+findactor 6, "load mise04-krajina"
+findactor 7,"load z mise04-mesto"
+findactor 8,"Paulie"
+
+findframe 0, "load mise04-krajina" 
+findframe 1, "Tommy" 
+findframe 2, "Samblood" 
+findframe 3, "GodzMan9" 
+findframe 4, "pozice_sama" 
+findframe 5, "GodzMan10" 
+findframe 6, "pozice_tommyho2" 
+findframe 7, "pozice_godzily" 
+findframe 8, "placement_paulie" 
+
+label 1
+wait 200
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+human_getproperty 4,0,Energy
+if flt[0] > 0,1,-1
+
+
+door_lock 0,0
+door_lock 5,0
+door_open 0,1
+door_open 5,1
+
+/////////
+PLAYER_LOCKCONTROLS 1
+zatmyse 1
+wait 500
+commandblock 1
+frm_seton 1,0
+frm_seton 2,0
+loaddifferences "dif04f.chg"
+recloadfull "record04f.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+actor_setplacement 2,6
+actor_setplacement 8,8
+setevent 8,201,-1
+
+setevent 1,201,-1
+frm_seton 1,1
+frm_seton 2,1
+PLAYER_LOCKCONTROLS 0
+///////
+mission_objectivesremove 04960004
+mission_objectives 04960005
+//setcompass 0
+act_setstate 6, active
+//povoleni hracova auta
+setevent 7,201,-1
+zatmyse 0
+commandblock 0

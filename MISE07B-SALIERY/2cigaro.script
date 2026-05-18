@@ -1,0 +1,3 @@
+dim_frm 1
+findframe 0, "2cigaro"
+emitparticle 0, 24

@@ -1,0 +1,34 @@
+dim_flt 1
+dim_frm 9
+findframe 0, "Zabradl fall"
+findframe 1, "prk1"
+findframe 2, "prk2"
+findframe 3, "prk3"
+findframe 4, "prk4"
+findframe 5, "prk_vez"
+findframe 6, "prk_vez2"
+findframe 7, "prk_vez3"
+findframe 8, "prk_vez4"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 3
+if flt[0] = 1, -1, 1
+
+destroy_physicalobject 0
+destroy_physicalobject 1
+destroy_physicalobject 2
+destroy_physicalobject 3
+destroy_physicalobject 4
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+
+act_setstate 100, off

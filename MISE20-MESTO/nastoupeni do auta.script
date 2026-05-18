@@ -1,0 +1,21 @@
+dim_act 2
+dim_frm 2
+findactor 0, "Tommy"
+findactor 1, "cordca"
+findframe 0, "cordca"
+findframe 1, "load mise20-galery"
+
+act_setstate 100, inactive
+
+setcompass 0
+
+label 1
+wait 250
+compareownerwithex 0, 1, -1, 1
+
+setcompass -1
+
+mission_objectivesclear
+mission_objectives 20960000
+setcompass 1
+act_setstate 100, off

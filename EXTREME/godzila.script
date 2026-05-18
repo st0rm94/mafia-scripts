@@ -1,0 +1,74 @@
+dim_frm 5
+dim_flt 1
+dim_act 4
+
+findframe 0,"godzila"
+findframe 1,"godzila_krev"
+findframe 2,"censored"
+findframe 3,"Andromeda"
+findframe 4,"cam_andromeda"
+
+findactor 0,"detector_godzila"
+findactor 1,"godzila"
+findactor 2,"Andromeda"
+findactor 3,"zampr2b.zam1"
+
+frm_seton 2,0
+frm_seton 3,1
+
+act_setstate -1,inactive
+
+mission_objectivesclear
+mission_objectives 22930008
+
+player_lockcontrols 1
+commandblock 1
+camera_lock 4
+citycaching_tick
+commandblock 0
+wait 3000
+camera_unlock
+citycaching_tick
+player_lockcontrols 0
+
+model_playanim 0,"SLEPchuz1.I3D"
+
+{ down
+label 101
+wait 50000
+goto 101
+}
+
+model_playanim 0,"SLEProzhl1.I3D"
+wait 5000
+mission_objectivesclear
+act_setstate 3,off
+
+model_playanim 0,"SLEPchuz1.I3D"
+
+detector_issignal 1,SKIP,-1
+human_getproperty 2,0,Energy
+if flt[0]=0,SKIP,-1
+
+timeroff
+frm_seton 2,1
+mission_objectivesclear
+mission_objectives 20960004
+//emitparticle 1,40
+wait 10000
+frm_seton 3,0
+wait 5000
+frm_seton 2,0
+
+endofmission 0,22980001
+label SKIP
+
+act_setstate 0,active
+
+model_playanim 0,"SLEPchuz1.I3D"
+wait 5000
+mission_objectivesclear
+end
+
+event 201
+return

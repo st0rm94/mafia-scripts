@@ -1,0 +1,15 @@
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+
+human_addweapon 0, 6, 6, 18
+human_holster 0
+
+act_setstate 100, inactive
+
+wait 2000
+
+enemy_move 13
+enemy_lookto 14
+enemy_wait
+human_looktoactor 0, 1, 1

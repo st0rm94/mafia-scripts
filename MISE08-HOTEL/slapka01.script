@@ -1,0 +1,22 @@
+enemy_changeanim "walk1.I3D" , "walk woman1.I3D"
+
+dim_act 3
+dim_flt 1
+findactor 0,"slapka01"
+findactor 1,"zhyralec01"
+findactor 2,"Box447"
+
+enemy_move 21
+enemy_look 1
+human_looktoactor 0,1,1
+
+label 101
+setevent 1,201,101
+
+enemy_talk 08950017
+enemy_wait
+
+human_looktoactor 0
+enemy_move 27
+door_lock 2,0
+enemy_move 22

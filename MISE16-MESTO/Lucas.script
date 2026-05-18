@@ -1,0 +1,312 @@
+dim_flt 10
+dim_act 13
+dim_frm 9
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "merced500K"
+findactor 3, "Bookmaker"
+findactor 4, "detekce playera v mercedesu"
+findactor 5, "detekce auto ve vode"
+findactor 6, "chytry kompas"
+findactor 7, "detekce playera v kradenym aute"
+findactor 8, "vrat2"
+findactor 9, "vrat3"
+findactor 10, "detekce stavu auta"
+findactor 11, "merced500K2"
+findactor 12, "detekce prijeti autem"
+
+findframe 0, "poloha kamery zatmivacka"
+findframe 1, "poloha lucase pri rozhovoru"
+findframe 2, "poloha playera pri rozhovoru"
+findframe 3, "poloha kamery auto"
+findframe 4, ""
+findframe 5, "detekce auto ve vode"
+findframe 6, "merced500K2"
+findframe 7, "poloha lucase na zidli"
+findframe 8, "merced500K"
+
+let flt[6] = 13
+
+enemy_playanim "sezcteni.i3d"
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event use_ab, 15970010
+
+if flt[2] = 1, 8, -1
+human_looktoactor 0, 1, 1
+if flt[7] = 1, 7, -1
+enemy_talk 1, 09990601
+enemy_wait
+let flt[7] = 1
+
+label 7
+wait 3000
+human_looktoactor 0
+return
+
+label 8
+if flt[4] = 1, -1, 5
+
+if flt[3] = 1, 5, -1
+if flt[8] = 1, 3, -1
+enemy_talk 09990593
+enemy_wait
+let flt[8] = 1
+
+label 3
+return
+
+label 5
+if flt[9] = 1, -1, 10
+enemy_talk 09990613
+enemy_wait
+return
+
+label 10
+policeitchforplayer 0
+if flt[0] = 1, -1, 9
+human_looktoactor 0, 1, 1
+goto flt[6]
+
+label 13
+enemy_talk 1, 00950223, 4
+enemy_wait
+let flt[6] = flt[6] + 1
+return
+
+label 14
+enemy_talk 1, 00950224, 4
+enemy_wait
+let flt[6] = flt[6] + 1
+return
+
+label 14
+enemy_talk 1, 00950225, 4
+enemy_wait
+let flt[6] = 13
+return
+
+label 9
+enemy_playanim "sezcteniton.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "zidlevstanibezdrzenil.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+
+if flt[3] = 1, 4, -1
+
+
+label 11
+getactorsdist 0, 1, 0
+if flt[0] < 2, -1, 11
+
+commandblock 1
+player_lockcontrols 1
+inventory_push 1
+inventory_clear 1
+human_reset 1
+dialog_begin 0, 2
+dialog_camswitch 1, 0
+actor_setdir 1, 4
+commandblock 0
+enemy_playanim "gestikulacenew02.i3d"
+person_playanim 1, "gestikulacenew01.i3d"
+enemy_talk 16990191
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990201
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 16990211
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990221
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 16990231
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990241
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 16990251
+enemy_wait
+enemy_talk 16990252
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990261
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 16990271
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990301
+enemy_wait
+wait 1000
+zatmyse 1
+wait 500
+commandblock 1
+actor_setplacement 0, 1
+actor_setplacement 1, 2
+commandblock 0
+wait 2000
+commandblock 1
+dialog_camswitch 1, 0
+commandblock 0
+zatmyse 0
+wait 500 
+enemy_talk 16990311
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990321
+enemy_wait 
+dialog_camswitch 1, 0
+enemy_talk 16990331
+enemy_wait
+dialog_camswitch 0, 1 
+enemy_talk 1, 16990341
+enemy_wait
+commandblock 1
+dialog_end
+inventory_pop 1
+commandblock 0 
+
+autosavegamefull 5450
+
+setcompass 5
+mission_objectivesclear
+mission_objectives 16960002
+person_stopanim 1
+player_lockcontrols 0
+human_looktoactor 0
+enemy_stopanim
+let flt[4] = 1
+
+act_setstate 5, active
+act_setstate 7, active
+act_setstate 10, active
+
+enemy_move 42
+
+enemy_playanim "oteviranidveril.i3d", 0, simple
+wait 400
+door_open 8, 1
+door_open 9, 1
+wait 200
+enemy_stop
+
+wait 500
+
+enemy_move 43
+enemy_lookto 44
+enemy_wait
+human_looktoactor 0, 1, 1
+return
+
+label 4
+
+label 12
+getactorsdist 0, 1, 0
+if flt[0] < 2, -1, 12
+
+commandblock 1
+setcompass -1
+player_lockcontrols 1
+inventory_push 1
+inventory_clear 1
+human_reset 1
+dialog_begin 0, 2
+dialog_camswitch 0, 1
+actor_setdir 1, 4
+commandblock 0
+enemy_playanim "gestikulacenew02.i3d"
+person_playanim 1, "gestikulacenew01.i3d"
+detector_issignal 12, 16, -1
+enemy_talk 1, 16990361
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 16990371
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990381
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 16990391
+enemy_wait
+
+label 16
+enemy_talk 1, 16990401
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 16990411
+enemy_wait
+enemy_talk 16990412
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990421
+enemy_wait
+dialog_camswitch 1, 0 
+enemy_talk 16990431
+enemy_wait
+enemy_talk 16990432
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 16990441
+enemy_wait
+commandblock 1
+dialog_end
+inventory_pop 1
+commandblock 0
+
+autosavegamefull 5452
+
+enemy_stopanim
+person_stopanim 1
+mission_objectivesclear
+mission_objectives 16960003
+setcompass 6
+player_lockcontrols 0
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 6, active
+act_setstate 12, off
+car_invisible 11, 0
+frm_seton 6, 1
+garage_enablesteal P
+console_addtext 3465
+let flt[9] = 1
+
+label 15
+wait 1000
+getactorsdist 0, 1, 0
+if flt[0] > 50, -1, 15
+human_looktoactor 0
+actor_setplacement 0, 7
+enemy_playanim "sezcteni.i3d"
+return
+
+event 1
+let flt[2] = 1
+return
+
+event 2
+let flt[3] = 1
+let flt[6] = 0
+human_looktoactor 0
+door_open 8, 0
+door_open 9, 0
+actor_setplacement 0, 7
+act_setstate 2, off
+act_setstate 12, active
+frm_seton 8, 0
+enemy_playanim "sezcteni.i3d"
+return

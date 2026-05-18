@@ -1,0 +1,109 @@
+commandblock 1
+dim_act 45
+dim_flt 1
+dim_frm 3
+
+findactor 0,"rediteluv stul"
+findactor 1,"ReditelH"
+findactor 2,"Enemy2"
+findactor 3,"civil"
+findactor 4,"Czena"
+findactor 5,"Czena2"
+findactor 6,"Czena3"
+findactor 7,"Enemy"
+findactor 8,"Bguard"
+findactor 9,"Bguard2"
+findactor 10,"Guard"
+findactor 11,"recep"
+findactor 12,"waiter"
+findactor 13,"civil2"
+findactor 14,"detector_bitch1"
+findactor 15,"Bitch"
+findactor 16,"detector_bitch2"
+findactor 17,"Bitch2"
+findactor 18,"klic"
+findactor 19,"MichelleLOW"
+findactor 20,"Kurva"
+findactor 21,"detector_zakernak"
+findactor 22,"kancl"
+findactor 23,"misa"
+findactor 24,"bad end"
+findactor 25,"detector_zakernak2"
+findactor 26,"detector_guard"
+findactor 27,"Bitch4"
+findactor 28,"zakernak2"
+findactor 29,"Guard2"
+findactor 30,"Guard3"
+findactor 31,"zakernak"
+findactor 32,"okno"
+findactor 33,"zhyralec01"
+findactor 34,"slapka01"
+findactor 35,"Bitch3"
+findactor 36,"Cop01"
+findactor 37,"Cop02"
+findactor 38,"Bguard4"
+findactor 39,"energy_reditel"
+
+findactor 42,"Cop03"
+findactor 43,"tudy_ne"
+findactor 44,"detector_rozhovory_off"
+
+findframe 0,"Cop01"
+findframe 1,"Cop02"
+findframe 2,"Cop03"
+commandblock 0
+
+//setcitytrafficvisible 0
+act_setstate -1,inactive
+
+commandblock 1
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, off
+act_setstate 11, off
+act_setstate 12, off
+act_setstate 13, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, off
+act_setstate 18, off
+act_setstate 20, off
+act_setstate 21, off
+act_setstate 22, off
+act_setstate 23, off
+act_setstate 24, off
+act_setstate 25, off
+act_setstate 26, off
+act_setstate 27, off
+act_setstate 28, off
+act_setstate 29, off
+act_setstate 30, off
+act_setstate 31, off
+//act_setstate 32, off
+act_setstate 33, off
+act_setstate 34, off
+act_setstate 35, off
+act_setstate 36, off
+act_setstate 37, off
+act_setstate 38, off
+act_setstate 39, off
+
+act_setstate 42, off
+act_setstate 43, off
+act_setstate 44, off
+
+commandblock 0
+
+end

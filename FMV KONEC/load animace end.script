@@ -1,0 +1,17 @@
+commandblock 1
+zatmyse 1, 1
+loaddifferences "dif20x.chg"
+recloadfull "record20x"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+subtitle_add 7210
+wait 4000
+subtitle_add 7211
+wait 4000
+endofmission 1, 0

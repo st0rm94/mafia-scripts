@@ -1,0 +1,88 @@
+dim_act 7
+getactiveplayer 0
+findactor 1, "Paulie"
+setnullactor 2
+// actor 3 = free pro ownera playera
+// actor 4 = posledni pouzity auto
+findactor 5, "TruckB"
+findactor 6
+
+dim_flt 4
+{ UP
+if flt[3] = 1, DETECT, -1
+act_setstate -1, inactive
+
+label DETECT
+wait 100
+if flt[3] = 1, DETECT, -1
+compareownerwithex 0, 2, DETECT, -1
+human_getowner 0, 3
+gosub STOREOWNER
+compareownerwithex 1, 3, DETECT, -1
+getactorsdist 0, 1, 0
+if flt[0] > 5, -1, DETECT
+car_getspeed 3, 0
+if flt[0] > 2, -1, DETECT
+
+getgametime 0
+if flt[0] > flt[2], -1, DETECT
+// paulie 00950021-23
+// Tommy 00950212-13
+getactorsdist 0, 1, 0
+if flt[0] > 40, -1, RERAND
+label RERAND2
+rnd 0, 2
+let flt[0] = flt[0] + 3
+if flt[0] = flt[1], RERAND2, -1
+goto flt[0]
+
+label RERAND
+rnd 0, 5
+if flt[0] = flt[1], RERAND, -1
+goto flt[0]
+label 0
+human_talk 1, 00950021, 1
+goto RET
+label 1
+human_talk 1, 00950022, 1
+goto RET
+label 2
+human_talk 1, 00950023, 1
+goto RET
+label 3
+human_talk 0, 00950212, 2
+goto RET
+label 4
+human_talk 0, 00950213, 2
+label RET
+getgametime 0
+let flt[2] = flt[0] + 7000
+let flt[1] = flt[0]
+goto DETECT
+}
+
+label STOREOWNER
+// Jestlize neni nulovy
+compareownerwithex 2, 3, RET2, -1
+compareactors 4, 3, 0
+// Jestlize neni ten posledni 
+if flt[0] = 1, RET2, -1
+// Jestlize neni TruckB
+compareactors 5, 3, 0
+if flt[0] = 1, RET2, -1
+// Jestlize je pouzitelny
+iscarusable 3, 0
+if flt[0] = 0, RET2, -1
+set_remote_actor 3, 6, 4
+debug_text "detector_ujizdi_pauliemu: Tommy ma noveho ownera = %a", 4
+label RET2
+return
+
+label 1
+let flt[3] = 1
+event_use_cb 1
+return
+
+label 2
+event_use_cb 1
+return

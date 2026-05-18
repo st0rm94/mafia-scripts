@@ -1,0 +1,52 @@
+dim_flt 1
+dim_act 2
+dim_frm 8
+findactor 0, "Tommy"
+findactor 1, "prepnuti prken"
+findframe 0, "Zabradl fall"
+findframe 1, "prk1"
+findframe 2, "prk2"
+findframe 3, "prk3"
+findframe 4, "prk4"
+findframe 5, "ochoz1"
+findframe 6, "ochoz2"
+findframe 7, "ochoz3"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+frm_seton 5, 1
+
+wait 3000
+
+label 2
+detector_inrange 0, 2
+if flt[0] = 1, -1, 2
+
+frm_seton 6, 1
+
+wait 3000
+
+label 3
+detector_inrange 0, 2
+if flt[0] = 1, -1, 3
+
+act_setstate 1, active
+
+frm_seton 7, 1
+wait 1000
+commandblock 1
+create_physicalobject 0, 0, 1, 100
+create_physicalobject 1, 0, 1, 100
+create_physicalobject 2, 0, 1, 100
+create_physicalobject 3, 0, 1, 100
+create_physicalobject 4, 0, 1, 100
+disablecolls 3
+commandblock 0
+
+human_forcefall 0
+
+act_setstate 100, off

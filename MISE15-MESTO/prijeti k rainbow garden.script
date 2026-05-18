@@ -1,0 +1,237 @@
+dim_flt 7
+dim_act 22
+dim_frm 20
+findactor 0, ""
+findactor 1, "Sergio"
+findactor 2, "load posledni cast"
+findactor 3, "null"
+findactor 4, "Tommy"
+//findactor 5, "zjisteni auta"
+findactor 6, "1Paulie"
+findactor 7, "Enemy08K2"
+findactor 8, "Enemy04K2"
+findactor 9, "Enemy11K2"
+findactor 10, "load posledni cast2"
+findactor 11, "Enemy7"
+findactor 12, "Enemy12K"
+findactor 13, "hudfor"
+findactor 14, "Enemy08K"
+findactor 15, "Enemy04K"
+findactor 16, "Enemy11K"
+findactor 17, "Enemy4"
+findactor 18, "Enemy12K3"
+findactor 19, "detekce kradeni aut rainbow"
+findactor 20, "detekce playera v aute rainbow"
+findactor 21, "priblizeni se k morellovi"
+
+findframe 0, "Sergio"
+findframe 1, "Enemy08K2"
+findframe 2, "Enemy04K2"
+findframe 3, "Enemy11K2"
+findframe 4, "Enemy12K"
+findframe 5, "1Paulie"
+findframe 6, "poloha auta po animaci 15.6"
+findframe 7, "poloha paulieho po animaci 15.6"
+findframe 8, "Enemy7"
+findframe 9, "hudfor"
+findframe 10, "2tommy"
+findframe 11, "Enemy08K"
+findframe 12, "Enemy04K"
+findframe 13, "Enemy11K"
+findframe 14, "Enemy4"
+findframe 15, "Enemy12K3"
+findframe 16, "2cigaro2"
+findframe 17, "load posledni cast"
+findframe 18, "poloha playera rainbow"
+findframe 19, "skupinka"
+
+act_setstate 100, inactive
+
+label 1
+wait 100
+detector_inrange 0, 40
+if flt[0] = 1, -1, 1
+
+compareownerwithex 4, 3, 1, -1
+
+policeitchforplayer 0
+if flt[0] = 1, 1, -1
+
+getactorsdist 0, 6, 0
+if flt[0] < 60, -1, 1
+
+label 4
+compareownerwithex 4, 3, 1, -1
+detector_setsignal 100, 1
+act_setstate 21, off
+human_getowner 4, 5
+car_breakmotor 5, 1
+
+zatmyse 1
+wait 500
+
+autosavegamefull 5372
+
+zatmyse 1, 1
+
+commandblock 1
+player_lockcontrols 1
+policemanager_del "Tommy"
+car_forcestop 5
+car_breakmotor 5, 0
+actor_setplacement 5, 6
+human_fromcar 6, 7
+human_fromcar 4, 18
+human_force_settocar 4, 5, 0
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 11, off
+act_setstate 18, off
+act_setstate 19, off
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 8, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 19, 0
+setcompass -1
+citymusic_off
+loaddifferences "dif15f.chg"
+recloadfull "record15f"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+actor_setdir 14, 5
+actor_setdir 15, 5
+actor_setdir 16, 5
+actor_setdir 17, 5
+human_force_settocar 12, 13, 0
+act_setstate 2, active
+act_setstate 10, active
+act_setstate 12, active
+act_setstate 14, active
+act_setstate 15, active
+act_setstate 16, active
+act_setstate 17, active
+human_addweapon 16, 9, 7, 30
+human_addweapon 17, 9, 7, 30
+human_addweapon 12, 9, 7, 30
+
+frm_seton 0, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 10, 1
+frm_seton 11, 1
+frm_seton 12, 1
+frm_seton 13, 1
+frm_seton 14, 1
+
+createweaponfromframe 10, 10, 0, 0
+
+label 2
+setevent 1, 1, -1
+
+label 3
+setevent 6, 1, 3
+citymusic_on
+stream_create 1, "sounds\music\20 - Carchase 2.ogg"
+stream_play 1
+stream_setloop 1, 1
+
+policemanager_add "Tommy"
+//policemanager_add "Enemy12K"
+mission_objectivesclear
+mission_objectives 1960001
+player_lockcontrols 0
+commandblock 0
+wait 500
+zatmyse 0
+
+label 6
+let flt[5] = 0
+wait 1000
+getactorsdist 4, 14, 0
+if flt[0] > 150, -1, 16
+act_setstate 14, off
+frm_seton 11, 0
+let flt[5] = flt[5] + 1
+
+label 16
+wait 1000
+getactorsdist 4, 15, 0
+if flt[0] > 150, -1, 17
+act_setstate 15, off
+frm_seton 12, 0
+let flt[5] = flt[5] + 1
+if flt[5] = 2, 7, -1
+
+label 17
+human_getproperty 14, 0, energy
+if flt[0] = 0, -1, 6
+
+human_getproperty 15, 0, energy
+if flt[0] = 0, -1, 6
+
+label 7
+wait 1000
+let flt[2] = 0
+let flt[3] = 0
+getactorsdist 4, 12, 0, 1
+if flt[0] < 0, -1, 12
+let flt[2] = flt[2] + 1
+label 12
+if flt[0] > 150, -1, 8
+let flt[3] = flt[3] + 1
+label 8
+getactorsdist 4, 16, 0, 1
+if flt[0] < 0, -1, 13
+let flt[2] = flt[2] + 1
+label 13
+if flt[0] > 150, -1, 9
+let flt[3] = flt[3] + 1
+label 9
+getactorsdist 4, 17, 0, 1
+if flt[0] < 0, -1, 14
+let flt[2] = flt[2] + 1
+label 14
+if flt[0] > 150, -1, 15
+let flt[3] = flt[3] + 1
+label 15
+if flt[2] = 3, 10, -1
+if flt[3] = 3, 11, -1
+let flt[6] = flt[2] + flt[3]
+if flt[6] = 3, -1, 7
+
+label 11
+frm_seton 4, 0
+frm_seton 9, 0
+frm_seton 13, 0
+frm_seton 14, 0
+act_setstate 12, off
+act_setstate 13, off
+act_setstate 16, off
+act_setstate 17, off
+
+label 10
+act_setstate 20, off
+car_remove_driver 13
+detector_setsignal 2, 1
+detector_setsignal 10, 1
+stream_fadevol 1, 7000, 1, 0
+wait 7000
+stream_destroy 1
+mission_objectivesclear
+mission_objectives 17960001
+setcompass 17
+
+act_setstate 100, off

@@ -1,0 +1,123 @@
+dim_flt 4
+dim_act 23
+dim_frm 12
+findactor 0, "poli"
+findactor 1, "poli2"
+findactor 2, "poli3"
+findactor 3, "pol"
+findactor 4, "pol2"
+findactor 5, "pol3"
+findactor 6, "polimFor"
+findactor 7, "pol4"
+findactor 8, "1Paulie"
+findactor 9, ""
+findactor 10, "pol5"
+findactor 11, "pol6"
+findactor 12, "pol7"
+findactor 13, "pol8"
+findactor 14, "Tommy"
+findactor 15, "load mise19-mesto"
+findactor 16, "load mise19-mesto 1"
+findactor 17, "load mise19-mesto 2"
+findactor 18, "load mise19-mesto 3"
+findactor 19, "detekce playera venku"
+findactor 20, "detekce playera venku1"
+findactor 21, "1vraceni k pauliemu"
+findactor 22, "detekce prijeti poldu"
+
+findframe 0, "poli"
+findframe 1, "poli2"
+findframe 2, "poli3"
+findframe 3, "pol"
+findframe 4, "pol2"
+findframe 5, "pol3"
+findframe 6, "polimFor"
+findframe 7, "pol4"
+findframe 8, "pol5"
+findframe 9, "pol6"
+findframe 10, "pol7"
+findframe 11, "pol8"
+
+act_setstate 100, inactive
+timeron 11, 45, 0, 300
+settimeoutevent 9, 1
+
+wait 295000
+
+detector_setsignal 100, 1
+
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 10, active
+act_setstate 11, active
+act_setstate 12, active
+act_setstate 13, active
+act_setstate 19, active
+act_setstate 20, active
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 10, 1
+frm_seton 11, 1
+
+detector_setsignal 22, 1
+
+wait 10000
+
+label 4
+setevent 8, 6, 4
+
+label 3
+human_getproperty 3, 0, energy
+if flt[0] = 0, -1, 3
+
+human_getproperty 5, 0, energy
+if flt[0] = 0, -1, 3
+
+human_getproperty 10, 0, energy
+if flt[0] = 0, -1, 3
+
+human_getproperty 13, 0, energy
+if flt[0] = 0, -1, 3
+
+detector_setsignal 100, 0
+
+label 7
+//setevent 8, 8, 7
+
+label 6
+human_getproperty 4, 0, energy
+if flt[0] = 0, -1, 6
+
+human_getproperty 7, 0, energy
+if flt[0] = 0, -1, 6
+
+human_getproperty 11, 0, energy
+if flt[0] = 0, -1, 6
+
+human_getproperty 12, 0, energy
+if flt[0] = 0, -1, 6
+
+act_setstate 100, off
+
+event 1
+event_use_cb 1
+timeroff
+return
+
+event 2
+let flt[3] = 1
+return

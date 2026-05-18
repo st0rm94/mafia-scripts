@@ -1,0 +1,53 @@
+dim_frm 7
+dim_flt 1
+dim_act 4
+findframe 0, "March"
+findframe 1, "Tommy"
+findframe 2, "FrankHIGH"
+findframe 3, "pos 11"
+findframe 4, "pos 12"
+findframe 5, "fmv9letenka2"
+findframe 6, "amplion1"
+
+findactor 0, "FrankHIGH"
+findactor 1, "March"
+findactor 2, "hala"
+findactor 3, "Tommy"
+
+act_setstate -1, inactive
+
+label 1
+wait 250
+detector_inrange 0, 7
+if flt[0] = 2, -1, 1
+player_lockcontrols 1
+commandblock 1
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 6, 0
+loaddifferences "dif10e2.chg"
+recloadfull "record10e2.rep"
+commandblock 0
+recwaitforend
+commandblock 1
+recunload
+cleardifferences
+actor_setplacement 3, 3
+actor_setplacement 0, 4
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 6, 1
+commandblock 0
+player_lockcontrols 0
+
+mission_objectivesclear
+mission_objectives 10960005
+createweaponfromframe 5, 26
+
+label 2
+setevent 0, 2, 2
+human_createab 0
+human_createab 1
+act_setstate 2, active

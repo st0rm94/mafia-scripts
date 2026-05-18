@@ -1,0 +1,80 @@
+commandblock 1
+dim_flt 1
+dim_act 5
+findactor 0, "Tommy"
+findactor 1, ""
+//findactor 2, "zjisteni auta"
+findactor 3, "null"
+//findactor 4, "xletadlo17413"
+
+enemy_vidim 0
+enemy_naprdelivaute yes
+
+human_getowner 0, 2
+commandblock 0
+
+//compareownerwithex 0, 3, 5, -1
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+label 2
+enemy_usecar
+compareownerwith 2, 2, -1
+
+{ down
+label 3
+wait 1000000
+goto 3
+}
+
+human_force_settocar 1, 2, 2
+
+enemy_vidim 1
+
+{ down
+label 6
+wait 1000000
+goto 6
+}
+
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 1
+enemy_actionsclear
+commandblock 0
+
+enemy_naprdelivaute no
+
+{ down
+//enemy_action_fire 4
+
+label 4
+wait 1000000
+goto 4
+}
+
+label 5
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 1
+enemy_actionsclear
+commandblock 0
+
+enemy_vidim 1
+enemy_action_follow 0, 4, nonext
+
+event 1
+event_use_cb 1
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 1
+commandblock 0
+return

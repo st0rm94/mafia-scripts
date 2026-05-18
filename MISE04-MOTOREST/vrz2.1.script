@@ -1,0 +1,13 @@
+//vrz cedule2
+
+DIM_FRM 2
+
+FINDFRAME 0, "vrz2.1"
+FINDFRAME 1, "vrz2.2"
+
+label 10
+frm_seton 0,1
+wait 1000
+frm_seton 1,1
+wait  1000
+goto 10

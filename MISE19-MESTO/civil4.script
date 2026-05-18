@@ -1,0 +1,11 @@
+act_setstate 100, inactive
+
+enemy_playanim "mechsroubovani2.i3d"
+
+enemy_lockstate panic_freeze
+
+frm_seton 100, 1
+
+label 1
+wait 1000000
+goto 1

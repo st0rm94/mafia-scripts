@@ -1,0 +1,21 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 3
+findactor 0, ""
+findactor 1, "SalMan01K2"
+findactor 2, "Tommy"
+
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event 1
+enemy_move 1, run
+enemy_vidim 1
+return

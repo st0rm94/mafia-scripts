@@ -1,0 +1,11 @@
+enemy_vidim 0
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+
+human_addweapon 0, 9, 7, 14
+human_addweapon 0, 6, 6, 18
+
+act_setstate 100, inactive
+
+enemy_action_fire 1

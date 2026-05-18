@@ -1,0 +1,108 @@
+dim_act 13
+dim_frm 9
+dim_flt 3
+
+findactor 0,"REnemy2"
+findactor 1,"REnemy10K"
+findactor 2,"Enemy09K"
+findactor 3,"REnemy3"
+findactor 4,"REnemy"
+
+findactor 5,"Enemy11K"
+findactor 6,"Enemy12K"
+findactor 7,"Enemy10K"
+findactor 8,"Enemy04K"
+findactor 9,"varhanik"
+findactor 10,"Tommy"
+
+findactor 11,"Object44"
+findactor 12,"Object07"
+
+findframe 0,"Enemy11K"
+findframe 1,"Enemy12K"
+findframe 2,"Enemy10K"
+findframe 3,"Enemy04K"
+findframe 4,"Tommy"
+findframe 5,"civil01"
+findframe 6,"civil02"
+findframe 7,"civil03"
+findframe 8,"dvere otv"
+
+door_enableus 11,0
+door_enableus 12,0
+
+label 101
+wait 5000
+human_getproperty 0,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 1,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 2,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 3,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 4,0,Energy
+if flt[0]=0,-1,101
+
+wait 5000
+
+frm_seton 0,1
+act_setstate 5,active
+wait 1000
+frm_seton 1,1
+act_setstate 6,active
+wait 1000
+frm_seton 2,1
+act_setstate 7,active
+wait 1000
+frm_seton 3,1
+act_setstate 8,active
+wait 1000
+
+label 102
+wait 2000
+human_getproperty 5,0,Energy
+if flt[0]=0,-1,102
+human_getproperty 6,0,Energy
+if flt[0]=0,-1,102
+human_getproperty 7,0,Energy
+if flt[0]=0,-1,102
+human_getproperty 8,0,Energy
+if flt[0]=0,-1,102
+human_getproperty 9,0,Energy
+if flt[0]=0,-1,102
+
+wait 1000
+
+zatmyse 1
+wait 500
+
+////// ANIMACE
+commandblock 1
+PLAYER_LOCKCONTROLS 1
+frm_seton 4,0
+frm_seton 5,0
+frm_seton 6,0
+frm_seton 7,0
+frm_seton 8,0
+loaddifferences "dif08f.chg"
+recloadfull "record08f.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 4,1
+PLAYER_LOCKCONTROLS 0
+
+debug_text "LOAD MESTO"
+human_getproperty 10,0,Energy
+if flt[0]<1,-1,JEDNA
+let flt[0]=1
+label JEDNA
+setmissionnumber flt[0]
+inventory_push 10
+commandblock 0
+change_mission "mise08-mesto", "", -1

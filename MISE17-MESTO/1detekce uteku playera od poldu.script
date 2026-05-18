@@ -1,0 +1,30 @@
+dim_flt 1
+dim_act 11
+findactor 0, "1pol2"
+findactor 1, "1pol"
+findactor 2, "1Delnik"
+findactor 3, "detekce healtu poldy"
+findactor 4, "detekce stavu poldy"
+findactor 8, "detekce vzdalenosti od zasahovky"
+findactor 9, "Tommy"
+findactor 10, "null"
+
+label 1
+detector_inrange 0, 10
+if flt[0] = 1, -1, 2
+
+compareownerwithex 9, 10, 1, -1
+
+label 2
+detector_setsignal 4, 1
+playsound "21940005.wav", -1, 50, 1
+
+label 3
+setevent 1, 2, 7
+
+label 4
+setevent 2, 1, 4
+
+act_setstate 3, off
+
+act_setstate 100, off

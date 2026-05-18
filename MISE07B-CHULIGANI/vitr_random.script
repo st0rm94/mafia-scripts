@@ -1,0 +1,32 @@
+act_setstate -1, inactive
+//nahodny vitr
+
+DIM_FRM 2
+DIM_FLT 2
+
+FINDFRAME 0, "vitr_random"
+FINDFRAME 1, "vitr_random2"
+
+{ UP
+label 1
+  rnd 0, 10  
+  let flt[0] = flt[0] * 3000 
+  let flt[0] = flt[0] + 15000
+  wait flt[0]
+ rnd 1, 8
+ IFFLTINRANGE 1, 0, 3, 2
+ IFFLTINRANGE 1, 4, 7, 3
+}
+
+label 2
+ FRM_SETON 0, 1
+goto 1
+
+label 3
+ FRM_SETON 1, 1
+goto 1
+
+event 1
+soundfade 0, 1000, 0.2, 0.5
+event_use_cb 1
+return

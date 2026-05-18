@@ -1,0 +1,48 @@
+dim_flt 1
+dim_act 3
+findactor 0, ""
+findactor 1, "chuligan hlaska"
+findactor 2, "Tommy"
+
+human_addweapon 0, 3, 0, 0
+human_holster 0
+human_addweapon 0, 6, 6, 12
+
+enemy_lockstate fight_guard
+
+act_setstate 100, inactive
+
+{ down
+label 1
+detector_issignal 1, -1, 1
+
+act_setstate 1, off
+
+enemy_talk 17990111
+enemy_playanim "gesto2 nogun1c.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+
+label 2
+wait 1000000
+goto 2
+}
+
+{ up
+enemy_vidim 1
+label 3
+wait 1000000
+goto 3
+}
+
+event enemy_to_ai
+commandblock 1
+human_stoptalk 0
+enemy_stopanim
+act_setstate 1, off
+event_use_cb 1
+commandblock 0
+enemy_look 2
+enemy_wait
+return

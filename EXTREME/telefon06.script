@@ -1,0 +1,52 @@
+dim_frm 2
+dim_act 2
+dim_flt 1
+findactor 0,"telefon06"
+findactor 1,"telefon_auto"
+
+findframe 0,"tel06"
+findframe 1,"telefon_auto"
+
+frm_seton 0,0
+frm_seton 1,0
+car_invisible 1,1
+car_enableus 1,0
+
+act_setstate -1,inactive
+
+frm_seton 0,1
+
+timeron 0,0,45,195
+settimeoutevent 0,201
+
+label 101
+detector_waitforuse 22970001
+detector_inrange 0,1
+if flt[0]=1,-1,101
+
+settimeoutevent -1,201
+frm_seton 0,0
+timeroff
+
+frm_seton 1,1
+car_invisible 1,0
+car_enableus 1,1
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930019
+freeride_enablecar M
+wait 10000
+mission_objectivesclear
+autosavegamefull 5590
+end
+
+event 201
+settimeoutevent -1,201
+frm_seton 0,0
+timeroff
+wait 5000
+endofmission 0,22980001
+end
+

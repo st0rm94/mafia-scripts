@@ -1,0 +1,80 @@
+commandblock 1
+dim_frm 1
+dim_act 13
+dim_flt 11
+findactor 0,"Tommy"
+findactor 1,"Paulie"
+findactor 2,"Samblood"
+findactor 3,"Enemy04K"
+findactor 4,"Enemy08K"
+findactor 5,"Enemy09K"
+findactor 6,"Enemy10K"
+findactor 7,"Enemy11K"
+findactor 8,"Enemy12K"
+findactor 9,"GodzMan9"
+findactor 10,"cad_ford"
+findactor 11,"Enemy222"
+human_getowner 0,12
+
+findframe 0,"2tommy"
+
+mission_objectivesclear
+mission_objectives 04960004
+createweaponfromframe 0,10,50,0
+
+settankhitcount 10,1000
+car_muststeal 10,1
+
+human_addweapon 3,8,6,36
+human_addweapon 4,9,7,35
+human_holster 4
+human_addweapon 4,10,50,50
+human_addweapon 5,9,7,35
+human_addweapon 6,7,6,30
+human_addweapon 7,7,6,30
+human_addweapon 8,9,7,32
+
+let flt[9]=0
+commandblock 0
+
+label 101
+human_getproperty 0,0,Energy
+human_getproperty 1,1,Energy
+human_getproperty 2,2,Energy
+human_getproperty 11,10,Energy
+
+if flt[0]=0,102,-1
+if flt[1]=0,102,-1
+if flt[2]=0,102,-1
+if flt[10]=0,GOODEND,-1
+
+if flt[9]=1,101,-1
+
+human_getproperty 3,3,Energy
+human_getproperty 4,4,Energy
+human_getproperty 5,5,Energy
+human_getproperty 6,6,Energy
+human_getproperty 7,7,Energy
+human_getproperty 8,8,Energy
+
+if flt[3]=0,-1,101
+if flt[4]=0,-1,101
+if flt[5]=0,-1,101
+if flt[6]=0,-1,101
+if flt[7]=0,-1,101
+if flt[8]=0,-1,101
+
+setevent 9,201,-1
+let flt[9]=1
+goto 101
+end
+
+label 102
+endofmission 0,04980002
+end
+
+label GOODEND
+human_talk 0,04990431
+garage_show
+change_mission "intermezzo02","",-1
+end

@@ -1,0 +1,10 @@
+act_setstate -1, inactive
+dim_act 1
+dim_flt 1
+label DETECT
+wait 200
+detector_inrange 0, 5
+if flt[0] ! 0, -1, DETECT
+findactor 0, "smich"
+act_setstate 0, active
+end

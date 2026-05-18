@@ -1,0 +1,44 @@
+enemy_vidim 0
+enemy_podvadim_jak Tretera
+dim_act 2
+findactor 0, "buikFor"
+findactor 1, ""
+
+human_addweapon 1, 9, 7, 30
+
+label 6
+enemy_move_to_car 0, 2, run
+
+label 2
+enemy_usecar 0, 2
+compareownerwith 0, -1, 2
+
+{ down
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3
+}
+
+{ down
+label 4
+enemy_usecar
+compareownerwith 0, 4, -1
+
+enemy_vidim 1
+
+label 5
+wait 1000000
+goto 5
+}
+
+goto 6
+
+event 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 1
+return

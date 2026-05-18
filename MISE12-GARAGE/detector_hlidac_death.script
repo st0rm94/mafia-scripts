@@ -1,0 +1,11 @@
+dim_act 2
+findactor 0, "Vratny"
+getactiveplayer 1
+dim_flt 1
+
+label DETECT
+wait 1000
+human_getproperty 0, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_looktoactor 1
+debug_text "detector_hlidac_death: SCRIPT FINSHED"

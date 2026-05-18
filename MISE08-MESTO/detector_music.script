@@ -1,0 +1,9 @@
+dim_flt 1
+
+getmissionnumber 0
+if flt[0]>0,-1,KONEC
+
+stream_create 0,"sounds\music\19 - Carchase 1.ogg"
+stream_play 0
+
+label KONEC

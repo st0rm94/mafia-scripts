@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "Enemy09K"
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+human_addweapon 0, 10, 50, 200
+enemy_lockstate fight_guard, 2
+frm_seton 100, 0
+act_setstate 100, inactive

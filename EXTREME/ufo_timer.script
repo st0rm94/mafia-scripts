@@ -1,0 +1,28 @@
+act_setstate -1,inactive
+
+dim_act 1
+findactor 0,"ufo_timer"
+
+timeron 0,0,0,900
+settimeoutevent 0,201
+
+mission_objectivesclear
+mission_objectives 22930024
+
+{ down
+label 101
+wait 60000
+goto 101
+}
+
+settimeoutevent -1,201
+timeroff
+end
+
+event 201
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+event 202
+return

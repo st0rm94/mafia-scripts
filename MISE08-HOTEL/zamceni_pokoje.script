@@ -1,0 +1,28 @@
+dim_frm 2
+dim_act 3
+dim_flt 1
+findactor 0,"slapka01"
+findactor 1,"zhyralec01"
+findactor 2,"Box447"
+
+label 101
+wait 1000
+detector_inrange 0,4
+if flt[0]=1,-1,101
+
+label 102
+wait 1000
+getenemyaistate 1,0
+if flt[0]>1,SKIP01,-1
+detector_inrange 0,4
+if flt[0]=2,-1,102
+
+act_setstate 1,off
+frm_seton 1,0
+
+label SKIP01
+door_open 2,0
+door_lock 2,1
+
+act_setstate 0,off
+frm_seton 0,0

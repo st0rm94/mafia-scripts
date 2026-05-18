@@ -1,0 +1,13 @@
+dim_flt 2
+dim_act 1
+findactor 0, "Tommy"
+
+label 1
+wait 900
+detector_inrange 0, 100
+if flt[0] = 1, -1, 1
+get_pm_numpredators 0, 1
+if flt[1] > 0, -1, 1
+human_talk 0, 00950224, 2
+wait 15000
+goto 1

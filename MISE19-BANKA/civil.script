@@ -1,0 +1,74 @@
+dim_flt 1
+dim_act 4
+findactor 0, "Bclerk3"
+findactor 1, "open door 1"
+findactor 2, "open door 2"
+findactor 3, "detekce healtu civil"
+
+human_eraseab 0
+
+label 1
+wait 1000000
+goto 1
+
+event 1
+wait 1000
+enemy_move 45
+enemy_move 31
+enemy_lookto 4
+enemy_wait
+enemy_talk 0, 19950015
+enemy_wait
+enemy_playanim "xgestik01b.i3d"
+enemy_talk 19950016
+enemy_wait
+enemy_stopanim
+person_playanim 0, "urednikpodivanir.i3d"
+enemy_talk 0, 19950017
+wait 2000
+enemy_talk 19950018
+wait 2900
+person_playanim 0, "urednikpsani.i3d"
+wait 3000
+person_playanim 0, "urednikpodivanir.i3d"
+wait 1000
+enemy_talk 0, 19950019
+wait 4000
+person_playanim 0, "urednikpsani.i3d"
+enemy_talk 19950020
+enemy_playanim "game sarastativ.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+wait 1500
+person_playanim 0, "urednikpodivanir.i3d"
+enemy_talk 0, 19950021
+wait 4000
+person_playanim 0, "urednikpsani.i3d"
+enemy_talk 19950022
+enemy_move 45
+enemy_playanim "nadavani naridicehp.i3d", 0, simple
+let flt[0] = flt[0] - 400
+wait flt[0]
+
+human_createab 0
+
+enemy_move 40
+
+detector_issignal 1, 2, -1
+enemy_use_detector 1
+
+label 2
+
+enemy_move 41
+
+detector_issignal 2, 3, -1
+enemy_use_detector 2 
+
+label 3
+
+enemy_move 13
+
+act_setstate 3, off
+frm_seton 100, 0
+act_setstate 100, off

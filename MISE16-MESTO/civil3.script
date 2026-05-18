@@ -1,0 +1,29 @@
+dim_act 3
+dim_frm 4
+findactor 0, ""
+findactor 1, "Czena"
+findactor 2, "chemaFor"
+
+findframe 0, ""
+findframe 1, "Czena"
+findframe 2, "chemaFor"
+findframe 3, "navadeni auta 1"
+
+act_setstate 100, inactive
+
+wait 2000
+
+label 1
+enemy_usecar 2, 0
+compareownerwith 2, -1, 1
+
+wait 2000
+
+enemy_car_moveto 2, 3
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 0, off

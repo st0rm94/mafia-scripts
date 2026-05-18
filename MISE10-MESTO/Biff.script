@@ -1,0 +1,61 @@
+dim_flt 5
+dim_act 3
+dim_frm 3
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "Tony"
+findframe 0, "Tony"
+findframe 1, "Tommy"
+findframe 2, "pes"
+
+label 1
+{ up
+enemy_playanim "NudaStativ.I3D"
+wait 3000
+enemy_playanim "Nuda01.I3D", 0
+let flt[0] = flt[0] - 420
+wait flt[0]
+enemy_playanim "NudaStativ.I3D"
+wait 3000
+enemy_playanim "Nuda03.I3D", 0
+let flt[0] = flt[0] - 420
+wait flt[0]
+enemy_playanim "NudaStativ.I3D"
+wait 3000
+enemy_playanim "Nuda03.I3D", 0
+let flt[0] = flt[0] - 420
+wait flt[0]
+}
+goto 1
+
+event use_ab, 10970012
+enemy_playanim "GestikulaceNew02.i3d"
+event_use_cb 1
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+if flt[1] = 1, 2, -1
+enemy_talk 0, 10990121
+enemy_wait
+enemy_talk 0, 10990122
+enemy_wait
+enemy_playanim "GestikulaceNew02.i3d", -1, simple
+enemy_talk 10990131
+enemy_wait
+enemy_talk 10990132
+enemy_wait
+wait 1500
+//human_looktoactor 1
+let flt[1] = 1
+frm_seton 0, 1
+frm_seton 2, 1
+act_setstate 2, active
+setcompass 0
+return
+
+label 2
+enemy_playanim "GestikulaceNew02.i3d"
+enemy_talk 10990141
+enemy_wait
+//human_looktoactor 1
+return

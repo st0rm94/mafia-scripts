@@ -1,0 +1,19 @@
+enemy_vidim 0
+dim_act 1
+findactor 0,"Samblood"
+setnoanimhit 0,1
+
+enemy_playanim "SamZrSedS.i3d"
+{ down
+label 101
+wait 30000
+goto 101
+}
+
+enemy_playanim "Mise04e Sam stativ.I3D"
+label 102
+wait 30000
+goto 102
+
+event 201
+return

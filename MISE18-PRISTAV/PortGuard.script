@@ -1,0 +1,18 @@
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "PortGuard2"
+findactor 2
+human_addweapon 2, 7, 6, 30
+human_holster 2
+dim_frm 1
+findframe 0, "cil_PortGuard"
+dim_flt 2
+
+enemy_playanim "Gesto_04a.I3D", 0
+
+label FREESTATE
+wait 3000
+human_looktoactor 2, 0, 1
+wait 3000
+human_looktoactor 2, 1, 1
+goto FREESTATE

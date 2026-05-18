@@ -1,0 +1,13 @@
+frm_seton 100, 0
+enemy_vidim 0
+dim_act 1
+findactor 0, ""
+human_addweapon 0, 9, 7, 14
+
+act_setstate 100, inactive
+frm_seton 100, 1
+
+enemy_move 14, run
+enemy_lookto 2
+enemy_wait
+enemy_vidim 1

@@ -1,0 +1,63 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 3
+findactor 0, ""
+findactor 1, "Enemy10K"
+findactor 2, "Tommy"
+
+enemy_podvadim_jak Tretera
+
+act_setstate 100, inactive
+
+{ down
+label 4
+wait 1000000
+goto 4
+}
+
+//enemy_move 10
+//enemy_lookto 1
+//enemy_wait
+
+//enemy_playanim "gesto_04a.i3d"
+
+enemy_vidim 1
+
+//{ down
+//label 1
+//wait 1000000
+//goto 1
+//}
+
+enemy_move 4
+enemy_lookto 2
+enemy_wait
+
+human_looktoactor 0, 1, 1
+
+{ down
+label 2
+wait 1000000
+goto 2
+}
+
+enemy_move 2
+enemy_lookto 9
+enemy_wait
+
+human_looktoactor 0, 2, 1
+
+enemy_playanim "gesto_04a.i3d"
+
+{ up
+label 3
+wait 1000000
+goto 3
+}
+
+event 1
+event_use_cb 1
+return
+
+event 2
+enemy_naserse 2

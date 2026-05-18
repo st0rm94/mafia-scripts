@@ -1,0 +1,33 @@
+dim_flt 1
+dim_act 10
+findactor 0, "SalMan01K3"
+findactor 1, "Enemy04K"
+findactor 2, "Enemy"
+findactor 3, "aktivace granatu"
+findactor 4, "aktivace sebehnuti chlapku"
+findactor 5, "SalMan02K2"
+findactor 6, "aktivace druhe casti"
+findactor 7, "SalMan01K5"
+findactor 8, "SalMan03K2"
+findactor 9, "vypnuti hudby u schodu"
+
+label 1
+detector_inrange 0, 3
+if flt[0] = 1, -1, 1
+
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, off
+act_setstate 5, active
+act_setstate 6, off
+act_setstate 9, active
+
+label 2
+setevent 7, 1, 2
+
+label 3
+setevent 8, 1, 3
+
+act_setstate 100, off

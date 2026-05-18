@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 2
+findactor 0,"Tommy"
+findactor 1, "recepce"
+
+label 1
+{ up
+enemy_playanim "x panika drep stativ.I3D"
+wait 60000
+}
+goto 1

@@ -1,0 +1,20 @@
+dim_act 5
+dim_flt 1
+findactor 0,"TommyTAXIDRIVER"
+findactor 1,"taxi"
+findactor 2,"fordtFor"
+findactor 3,"fordtFor2"
+findactor 4,"ForAde"
+
+car_enableus 1,0
+car_muststeal 2,1
+car_muststeal 3,1
+car_muststeal 4,1
+
+label 101
+human_getproperty 0,0,Energy
+if flt[0]<1,-1,101
+
+endofmission 0,02980001
+end
+

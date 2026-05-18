@@ -1,0 +1,44 @@
+dim_frm 1
+dim_flt 2
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "xradio "
+findactor 2, "Guard_bouda"
+findframe 0, "radio"
+frm_seton 0, 1
+let flt[0] = 1
+let flt[1] = 500
+
+label ZAPVYP
+let flt[1] = flt[1] - 415
+wait flt[1]
+getactorsdist 0, 1, 1
+if flt[1] > 2, SKIPPLAYER3, -1
+person_stopanim 0
+player_lockcontrols 0
+label SKIPPLAYER3
+
+detector_waitforuse 18970051
+getactorsdist 0, 1, 1
+if flt[1] > 2, SKIPPLAYER, -1
+player_lockcontrols 1
+person_stopanim 0
+actor_setdir 0, 0
+person_playanim 0, "Vypinac01.I3D", 1
+label SKIPPLAYER2
+if flt[0] = 1, -1,  ZAPNI
+frm_seton 0, 0
+let flt[0] = 0
+detector_setsignal -1, 1
+goto ZAPVYP
+
+label ZAPNI
+frm_seton 0, 1
+let flt[0] = 1
+detector_setsignal -1, 0
+goto ZAPVYP
+
+label SKIPPLAYER
+//actor_setdir 2, 0
+person_playanim 2, "Vypinac01.I3D", 1, SIMPLE
+goto SKIPPLAYER2

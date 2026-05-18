@@ -1,0 +1,21 @@
+dim_flt 1
+dim_act 2
+findactor 0,"Tommy"
+findactor 1,"GodzMan10"
+
+enemy_vidim 0
+human_addweapon 1,6,6,18
+
+{ down
+label 101
+wait 30000
+goto 101
+}
+
+wait 500
+enemy_vidim 1
+ENEMY_ACTION_FIRE 0
+end
+
+event 201
+return

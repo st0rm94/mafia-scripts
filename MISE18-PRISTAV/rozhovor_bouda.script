@@ -1,0 +1,89 @@
+//bee nikdy se uz nepouzije Lemonuv vymysl ;(((
+act_setstate -1, off
+dim_flt 1
+dim_act 4
+findactor 0, "Guard_bouda"
+//findactor 0, "Bitch"
+findactor 1, "Guard_bouda2"
+findactor 2, "Guard_bouda3"
+findactor 3, "xradio "
+
+label DETECT
+detector_inrange 0, 10
+if flt[0] ! 0, -1, DETECT
+
+human_talk 0, 18950004
+gosub WAIT
+gosub  CHECKRADIO
+
+human_talk 1, 18950005
+gosub WAIT
+gosub  CHECKRADIO
+
+human_talk 2, 18950006
+gosub WAIT
+gosub  CHECKRADIO
+
+human_talk 1, 18950007
+gosub WAIT
+gosub  CHECKRADIO
+
+human_talk 0, 18950008
+gosub WAIT
+gosub  CHECKRADIO
+
+human_talk 2, 18950009
+gosub WAIT
+gosub  CHECKRADIO
+
+human_talk 1, 18950010
+gosub WAIT
+gosub  CHECKRADIO
+
+human_talk 2, 18950011
+gosub WAIT
+gosub  CHECKRADIO
+wait 5000
+
+human_talk 2, 18950012
+gosub WAIT
+gosub  CHECKRADIO
+
+label SEND
+setevent 0, 2, SEND
+goto FINISH
+
+label WAIT
+rnd 0, 3
+let flt[0] = flt[0] +1
+let flt[0] = flt[0] * 1300
+let flt[0] = flt[0] + 5000
+wait flt[0]
+return
+
+label CHECKRADIO
+detector_issignal 3, -1, RET
+human_talk 1, 18950013
+gosub WAIT
+human_talk 2, 18950014
+gosub WAIT
+human_talk 0, 18950015
+gosub WAIT
+human_talk 1, 18950016
+gosub WAIT
+human_talk 2, 18950017
+gosub WAIT
+human_talk 0, 18950018
+wait 3000
+human_talk 1, 18950019
+gosub WAIT
+human_talk 1, 18950020
+label SEND2
+setevent 0, 3, SEND2
+act_setstate -1, inactive
+label RET
+return
+
+
+label FINISH
+debug_text "rozhovor_bouda: Script finished!"

@@ -1,0 +1,43 @@
+commandblock 1
+//[debug_me]
+//entity_view 1
+enemy_vidim 0
+dim_act 5
+dim_flt 1
+findactor 0, "forVfor2"
+findactor 1
+findactor 2, "Enemy6"
+findactor 3, "Enemy8"
+findactor 4, "Tommy"
+human_addweapon 1, 7, 6, 30
+human_holster 0
+
+car_calm 0
+
+enemy_group_new 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_addcar 0, 0
+
+enemy_group_chcipni_hajzle 0,4
+//enemy_podvadim_jak Tretera
+commandblock 0
+
+{ DOWN
+label WAIT
+wait 1000
+//debug_text "Enemy5: Waiting..."
+goto WAIT
+}
+commandblock 1
+setevent 2, 1, -1
+setevent 3, 1, -1
+enemy_vidim 1
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

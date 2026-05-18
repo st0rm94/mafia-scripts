@@ -1,0 +1,252 @@
+dim_flt 1
+dim_act 66
+dim_frm 36
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 5, "civil7"
+findactor 6, "arrow"
+findactor 7, "Bguard2"
+findactor 8, "Bguard3"
+findactor 9, "load mise17-saliery2"
+findactor 10, "load mise17-saliery"
+findactor 11, "civil2"
+findactor 12, "Czena3"
+findactor 13, "civil6"
+findactor 14, "civil"
+findactor 15, "Czena6"
+findactor 16, "Czena2"
+findactor 17, "civil4"
+findactor 18, "detekce stavu auta"
+findactor 19, "Czena"
+findactor 20, "civil3"
+findactor 21, "Czena5"
+findactor 22, "merced500K2"
+findactor 23, "MorelloLOW"
+findactor 24, "chemaTud"
+findactor 25, "buikFor"
+findactor 26, "DrVrat09.Object01"
+findactor 27, "DrVrat09.Object02"
+findactor 28, "door_dvuX"
+findactor 30, "chemaFor"
+findactor 31, "detekce prijeti autem"
+findactor 32, "load mise16-krajina"
+findactor 33, "1Paulie"
+findactor 34, "1Sam"
+findactor 35, "prijeti k opere"
+findactor 36, "pontTud"
+findactor 37, "detekce vzdalenosti playera od morella"
+findactor 38, "autosave"
+findactor 39, "autosave 1"
+findactor 40, "9opera.Object01"
+findactor 41, "#rad67.Mesh02"
+findactor 43, "pontTud2"
+findactor 44, "merced500K"
+findactor 45, "detekce auto ve vode"
+findactor 46, "prijeti k lucasovi"
+findactor 47, "vystoupeni u salieriho"
+findactor 48, "buiCou"
+findactor 49, "hudcou"
+findactor 50, "Bookmaker"
+findactor 51, "pol3"
+findactor 52, "detekce kradeni auta"
+findactor 53, "detekce chlapka v aute"
+findactor 54, "detekce playera v mercedesu"
+findactor 55, "chytry kompas"
+findactor 56, "detekce playera v kradenym aute"
+findactor 57, "zjisteni prenasenyho auta"
+findactor 58, "1detekce healtu vsech"
+findactor 59, "1detekce healtu playera"
+findactor 60, "aktivace civilu"
+findactor 61, "aktivace civilu 1"
+findactor 62, "aktivace civilu 2"
+findactor 63, "detekce stavu guarda"
+findactor 64, "Enemy09K"
+findactor 65, "Enemy04K"
+
+findframe 1, "pontTud"
+findframe 2, "Paulie"
+findframe 3, "Sam"
+findframe 4, "Bguard2"
+findframe 5, "Bguard3"
+findframe 6, "civil2"
+findframe 7, "Czena3"
+findframe 8, "civil6"
+findframe 9, "civil"
+findframe 10, "Czena6"
+findframe 11, "Czena2"
+findframe 12, "civil4"
+findframe 13, "merced500K2"
+findframe 14, "Czena"
+findframe 15, "civil3"
+findframe 16, "Czena5"
+
+findframe 18, "MorelloLOW"
+findframe 19, "chemaTud"
+findframe 20, "buikfor"
+findframe 21, "arrow"
+findframe 22, "civil7"
+findframe 23, "1Sam"
+findframe 24, "1Paulie"
+findframe 25, "pontTud2"
+findframe 26, "merced500K"
+findframe 27, "chemaFor"
+findframe 28, "hudcou"
+findframe 29, "buiCou"
+findframe 30, "Bookmaker"
+findframe 31, "pol3"
+findframe 32, "2cigaro"
+findframe 33, "2cigaro2"
+findframe 34, "Enemy09K"
+findframe 35, "Enemy04K"
+
+enablemap 1
+policemanager_on 980000, 2
+police_speed_factor 0.6
+
+door_enableus 28, 0
+door_enableus 40, 0
+door_enableus 41, 0
+
+getmissionnumber 0
+if flt[0] = 0, -1, 1
+
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, off
+act_setstate 22, off
+act_setstate 18, off
+act_setstate 31, off
+act_setstate 33, off
+act_setstate 34, off
+act_setstate 39, off
+act_setstate 43, off
+act_setstate 44, off
+act_setstate 45, off
+act_setstate 46, off
+act_setstate 47, off
+act_setstate 48, off
+act_setstate 49, off
+act_setstate 50, off
+act_setstate 51, off
+act_setstate 52, off
+act_setstate 53, off
+act_setstate 54, off
+act_setstate 55, off
+act_setstate 56, off
+act_setstate 58, off
+act_setstate 59, off
+
+frm_seton 5, 0
+frm_seton 13, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+frm_seton 28, 0
+frm_seton 29, 0
+frm_seton 30, 0
+frm_seton 31, 0
+frm_seton 32, 0
+frm_seton 33, 0
+human_force_settocar 5, 6, 0
+human_force_settocar 23, 6, 3
+human_force_settocar 7, 6, 1
+
+human_addweapon 7, 9, 7, 30
+
+door_open 40, 1
+door_enableus 26, 0
+door_enableus 27, 0
+
+car_muststeal 24, 1
+car_muststeal 25, 1
+car_enableus 6, 0
+car_unbreakable 6, 1
+car_muststeal 30, 1
+settankhitcount 6, 10000
+mission_objectivesclear
+mission_objectives 16960000
+end
+
+label 1
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+
+act_setstate 11, off
+act_setstate 12, off
+act_setstate 13, off
+act_setstate 14, off
+act_setstate 15, off
+act_setstate 16, off
+act_setstate 17, off
+
+act_setstate 19, off
+act_setstate 20, off
+act_setstate 21, off
+
+act_setstate 23, off
+act_setstate 24, off
+act_setstate 25, off
+
+act_setstate 30, off
+
+act_setstate 32, off
+act_setstate 35, off
+act_setstate 36, off
+act_setstate 37, off
+act_setstate 38, off
+
+
+act_setstate 57, off
+act_setstate 60, off
+act_setstate 61, off
+act_setstate 62, off
+act_setstate 63, off
+act_setstate 64, off
+act_setstate 65, off
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 27, 0
+frm_seton 32, 0
+frm_seton 33, 0
+frm_seton 34, 0
+frm_seton 35, 0
+mission_objectivesclear
+mission_objectives 9960007
+human_addweapon 50, 9, 7, 14
+human_addweapon 51, 6, 6, 30
+human_holster 50
+door_enableus 26, 0
+door_enableus 27, 0
+
+car_invisible 22, 1
+car_muststeal 22, 1
+car_muststeal 44, 1
+car_muststeal 48, 1
+car_muststeal 49, 1

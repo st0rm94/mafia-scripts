@@ -1,0 +1,48 @@
+dim_flt 1
+dim_act 2
+dim_frm 1
+findactor 0, ""
+findactor 1, "Tommy"
+
+human_addweapon 0, 7, 6, 0
+human_addweapon 0, 3, 0, 0
+human_holster 0 
+
+enemy_narohysevyser
+
+{ down
+label 1
+enemy_playanim "sezprloop.i3d"
+wait 5000
+enemy_playanim "sezprnorm.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "seztopoh03.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "sezpoh03l.i3d"
+wait 6000
+enemy_playanim "sezpoh03ton.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "sezprekr.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "sezprloop.i3d"
+goto 1
+}
+
+wait 500
+enemy_stopanim
+enemy_look 1
+enemy_wait 
+wait 6000
+enemy_move 4, run
+enemy_wait
+enemy_action_fire 1
+label 3
+goto 3
+
+event 1
+event_use_cb 1
+return

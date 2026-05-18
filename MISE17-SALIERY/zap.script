@@ -1,0 +1,13 @@
+act_setstate -1, inactive
+
+dim_frm 3
+
+findframe 0, "zap"
+findframe 1, "praskani"
+findframe 2, "gramecmusic"
+
+frm_seton 0, 1
+wait 1500
+frm_seton 1, 1
+wait 2200
+frm_seton 2, 1

@@ -1,0 +1,32 @@
+dim_flt 1
+dim_act 8
+findactor 0,"pol11"
+findactor 1,"pol06"
+findactor 2,"pol07"
+findactor 3,"pol08"
+findactor 4,"pol09"
+findactor 5,"pol10"
+findactor 6,"Tommy"
+findactor 7,"pol14"
+
+enemy_group_new 0
+enemy_group_add 0,0
+enemy_group_add 0,1
+enemy_group_add 0,2
+enemy_group_add 0,3
+enemy_group_add 0,4
+enemy_group_add 0,5
+enemy_group_add 0,7
+
+human_addweapon 0,6,6,12
+human_holster 0
+human_addweapon 0,13,5,5
+
+act_setstate -1,inactive
+
+label 101
+wait 5000
+enemy_move 44,run
+enemy_look 6
+goto 101
+

@@ -1,0 +1,30 @@
+dim_flt 1
+dim_act 3
+findactor 0, "Paulie2"
+findactor 1, "null"
+//findactor 2, "zjisteni auta"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 15
+if flt[0] = 1, -1, 1
+
+vlvp 0
+if flt[0] = 1, 1, -1
+
+compareownerwithex 0, 1, 2, -1
+
+human_getowner 0, 2
+
+car_getspeed 2, 0
+if flt[0] = 0, -1, 1
+
+wait 1000
+car_getspeed 2, 0
+if flt[0] = 0, -1, 1
+
+label 2
+setevent 0, 1, 2
+
+act_setstate 100, off

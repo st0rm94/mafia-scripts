@@ -1,0 +1,8 @@
+dim_act 1
+findactor 0, "Delnik"
+
+act_setstate 100, inactive
+
+human_talk 0, 17990081
+//human_talk 0, 17990082
+act_setstate 100, off

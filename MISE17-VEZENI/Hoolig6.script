@@ -1,0 +1,25 @@
+dim_flt 1
+dim_act 5
+findactor 0, ""
+findactor 1, "Hoolig7"
+findactor 2, "Homeless4"
+findactor 3, "Hoolig5"
+findactor 4, "civil10"
+
+human_addweapon 0, 7, 6, 0
+human_addweapon 0, 3, 0, 0
+human_addweapon 0, 6, 6, 6
+
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+
+enemy_podvadim_jak Tretera
+enemy_lockstate fight_guard, 2
+
+act_setstate 100, inactive
+
+enemy_talk 0, 17990131, 1

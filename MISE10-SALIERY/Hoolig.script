@@ -1,0 +1,169 @@
+dim_flt 4
+dim_frm 6
+dim_act 5
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "AB vinc"
+findactor 3, "load mise10-mesto"
+findactor 4, "2x load mise10-mesto"
+findframe 0, "9pistl1lw"
+findframe 2, "2sawoff2"
+findframe 3, "2c3"
+findframe 4, "2sawoff"
+findframe 5, "vincmech"
+human_holster 1
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+act_setstate 2, inactive
+
+label 4
+enemy_move 12
+enemy_wait
+enemy_lookto 13
+enemy_wait
+
+{ down
+label 1
+enemy_playanim "MechSroubovani2.I3D", 0
+frm_seton 5, 1
+let flt[0] = flt[0] - 200
+wait flt[0]
+goto 1
+}
+if flt[2] = 1, 1, -1
+enemy_move 8
+enemy_wait
+enemy_look 0
+human_looktoactor 1, 0, 1
+act_setstate 2, active
+label 2
+if flt[1] = 1, -1, 2
+  act_setstate 2, inactive
+  player_lockcontrols 1
+  human_looktoactor 0, 1, 1
+  dialog_begin 0, 2
+  dialog_camswitch 1, 0  
+  person_playanim 0, "GestikulaceNew02.I3D"
+  enemy_talk 0, 10990051
+  enemy_wait
+  enemy_playanim "GestikulaceNew02.I3D"
+  dialog_camswitch 0, 1
+  person_stopanim 0
+  enemy_talk 10990061
+  enemy_wait
+  enemy_talk 10990062
+  enemy_wait
+  person_playanim 0, "GestikulaceNew02.I3D"
+  wait 500
+  dialog_camswitch 1, 0
+  enemy_stopanim
+  enemy_talk 0, 10990071
+  enemy_wait
+  wait 1000
+  dialog_camswitch 0, 1
+  person_stopanim 0
+  human_looktoactor 1
+  enemy_move 9
+  enemy_wait
+  enemy_lookto 10
+  enemy_wait
+  enemy_playanim "SbiraniStul01.I3D"
+  wait 600
+  human_linktohand 1, 0
+  wait 600
+  enemy_move 8
+  enemy_wait
+  enemy_look 0
+  enemy_wait
+  enemy_playanim "SbiraniStul01.I3D", -1, simple
+  wait 550
+  playsound "s_put4.wav", 0, 7, 1
+  frm_seton 0, 0
+  frm_seton 3, 1
+  createweaponfromframe 3, 9, 7, 35
+  wait 600
+  wait 800
+  enemy_talk 10990081
+  enemy_move 9
+  enemy_wait
+  enemy_lookto 10
+  enemy_wait
+  enemy_playanim "SbiraniStul01.I3D"
+  wait 600
+  human_linktohand 1, 2
+  wait 600
+  enemy_move 11
+  enemy_wait
+  enemy_look 0
+  enemy_wait
+  enemy_playanim "SbiraniStul01.I3D"
+  wait 550
+  playsound "s_put1.wav", 2, 7, 1
+  frm_seton 2, 0
+  frm_seton 4, 1
+  createweaponfromframe 4, 12, 2, 12
+  wait 700
+  human_looktoactor 1, 0, 1
+  enemy_playanim "gesto2 nogun1a.I3D"
+//CZ  wait 5000
+  enemy_talk 10990082
+  enemy_wait
+  enemy_talk 10990084
+  enemy_wait
+  enemy_talk 10990085
+  enemy_wait
+  wait 800
+  enemy_stopanim
+  dialog_camswitch 1, 0  
+  person_playanim 0, "GestikulaceNew02.I3D"
+  enemy_talk 0, 10990091
+  enemy_wait
+  wait 1500
+//CZ  dialog_camswitch 0, 1
+  person_stopanim 0
+//CZ  enemy_playanim "gesto2 nogun1a.I3D"
+//CZ  enemy_talk 10990101
+//CZ  enemy_wait
+//CZ  enemy_talk 10990102
+//CZ  enemy_wait
+//CZ  enemy_stopanim
+//CZ  wait 2000
+  human_looktoactor 1
+  human_looktoactor 0
+  dialog_end
+player_lockcontrols 0
+detector_setsignal 3, 1
+detector_setsignal 4, 1
+let flt[2] = 1
+goto 4
+
+
+event 1
+return
+
+event 2
+let flt[1] = 1
+return
+
+event use_ab 10970001
+if flt[2] = 1, -1, 5
+rnd 3, 3
+if flt[3] = 0, 6, -1
+if flt[3] = 1, 7, -1
+enemy_talk 00950235
+enemy_wait
+goto 5
+label 6
+enemy_talk 00950236
+enemy_wait
+goto 5
+label 7
+enemy_talk 00950237
+enemy_wait
+label 5
+return
+
+event 1000
+enemy_action_fire 0, 3
+return

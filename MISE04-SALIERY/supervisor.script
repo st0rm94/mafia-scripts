@@ -1,0 +1,48 @@
+dim_flt 1
+dim_act 11
+findactor 1,"Sam"
+findactor 2,"Paulie"
+findactor 3,"Ralph"
+findactor 4,"VincenzoHIGH"
+findactor 5,"Tommy"
+findactor 6,"detector_vincenzo"
+findactor 7,"flag_ralph"
+findactor 8,"Luigi"
+findactor 9,"Salieri"
+findactor 10,"frank"
+
+human_set8slot 5,1
+
+label 111
+wait 1000
+human_getproperty 1,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 2,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 3,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 4,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 5,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 8,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 9,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 10,0,Energy
+if flt[0]=0, 101, -1
+
+detector_issignal -1,111,-1
+detector_issignal 7,-1,111
+detector_issignal 6,-1,111
+compareownerwithex 5,NULL,111,-1
+label 112
+setevent 1,201,112
+label 113
+setevent 2,201,113
+detector_setsignal -1,1
+goto 111
+
+label 101
+endofmission 0,04980002
+end

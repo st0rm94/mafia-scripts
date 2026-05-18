@@ -1,0 +1,31 @@
+dim_act 2
+dim_flt 1
+findactor 0,"TommyTAXIDRIVER"
+findactor 1,"civil5"
+
+enemy_vidim 0
+
+enemy_playanim "PolBlok02.i3", 0
+{ down
+label 101
+wait 40000
+goto 101
+}
+
+enemy_talk 02950015
+enemy_wait
+enemy_talk 1,02950016
+enemy_wait
+enemy_talk 02950017
+enemy_wait
+enemy_talk 1,02950018
+enemy_wait
+setevent 1,202,-1
+enemy_move 17
+end
+
+event 202
+return
+
+event 201
+enemy_action_runaway 0,100

@@ -1,0 +1,239 @@
+# .dnc extraction summary
+# source        : MISE19-PAULI.dnc  (9157 bytes, main)
+# source        : MISE19-PAULI-InitScripts.dnc  (518 bytes, init)
+# actors_total  : 55
+# init_records  : 3
+# scripts_found : 15
+
+# main-container actor type-code distribution
+#   type    2  count=1  
+#   type    5  count=11  script
+#   type    6  count=17  
+#   type   12  count=1  
+#   type   18  count=1  
+#   type   27  count=1  human (scripted NPC)
+#   type   35  count=23  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 45
+# total invocations: 233
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    32  frm_seton    [casings: FRM_SETON, frm_seton]
+    21  findframe    [casings: FINDFRAME, FindFrame, findframe]
+    20  label
+    15  let
+    12  findactor
+    11  dim_flt    [casings: DIM_FLT, dim_flt]
+    11  goto
+    10  dim_frm    [casings: DIM_FRM, dim_frm]
+    10  wait
+     9  rnd
+     6  commandblock
+     6  end
+     5  dim_act
+     5  enemy_move
+     4  act_setstate
+     4  enemy_lookto
+     4  enemy_wait
+     4  if
+     4  iffltinrange    [casings: IFFLTINRANGE]
+     3  detector_issignal
+     3  door_open
+     2  detector_inrange
+     2  detector_setsignal
+     2  endofmission
+     2  human_addweapon
+     2  human_getproperty
+     2  human_holster
+     2  human_looktoactor
+     2  player_lockcontrols
+     2  settraffsectorsnd    [casings: SetTraffSectorSnd]
+     2  zatmyse
+     1  autosavegame
+     1  callsubroutine
+     1  change_mission
+     1  cleardifferences
+     1  door_lock
+     1  enemy_playanim
+     1  enemy_stopanim
+     1  inventory_push
+     1  loaddifferences
+     1  mission_objectives
+     1  mission_objectivesclear
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+
+# ---- per-script command listing ----
+
+[GameInitEnd]  type=init  lines=16  commands=9
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    human_addweapon
+    human_holster
+    mission_objectives
+    mission_objectivesclear
+
+[GameInitStart]  type=init  lines=1  commands=1
+    callsubroutine
+
+[Paulie]  type=27  lines=47  commands=19
+    commandblock
+    detector_issignal
+    dim_act
+    dim_flt
+    dim_frm
+    door_lock
+    door_open
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_stopanim
+    enemy_wait
+    findactor
+    findframe
+    frm_seton
+    human_looktoactor
+    label
+    let
+    wait
+
+[TraffSndSect]  type=init  lines=5  commands=1
+    settraffsectorsnd
+
+[detekce healtu paulieho a playera]  type=5  lines=18  commands=9
+    dim_act
+    dim_flt
+    end
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+    wait
+
+[detekce playera v byte]  type=5  lines=11  commands=6
+    detector_inrange
+    detector_setsignal
+    dim_flt
+    goto
+    if
+    label
+
+[load animation 19.1]  type=5  lines=58  commands=17
+    act_setstate
+    autosavegame
+    cleardifferences
+    commandblock
+    dim_act
+    dim_frm
+    door_open
+    findactor
+    findframe
+    frm_seton
+    label
+    loaddifferences
+    player_lockcontrols
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse
+
+[load mise19-mesto]  type=5  lines=13  commands=9
+    act_setstate
+    change_mission
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    inventory_push
+    label
+
+[rodina_nadobi]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[rodinakrik1]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[rodinakrik3]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[zaclona1.2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[zaclona2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[zaclona2.2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[zaclony1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait

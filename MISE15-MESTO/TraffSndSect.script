@@ -1,0 +1,7 @@
+// Car Traffic Sound Sectors
+// ------------------------------------
+
+SetTraffSectorSnd "Primary sector"
+SetTraffSectorSnd "sector moto2"
+SetTraffSectorSnd "sector moto3"
+SetTraffSectorSnd "sector tunelmnh"

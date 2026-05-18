@@ -1,0 +1,34 @@
+dim_act 7
+dim_flt 1
+findactor 0, "Gates"
+findactor 1, "GatesMan4"
+findactor 2, "GatesMan"
+findactor 3, "GatesMan2"
+findactor 4, "GatesMan3"
+findactor 5, "Players_men"
+findactor 6, "Players_men2"
+
+label DETECT
+wait 1000
+human_getproperty 0, 0, Energy
+if flt[0] ! 0, -1, END
+human_getproperty 1, 0, Energy
+if flt[0] ! 0, -1, END
+human_getproperty 2, 0, Energy
+if flt[0] ! 0, -1, END
+human_getproperty 3, 0, Energy
+if flt[0] ! 0, -1, END
+human_getproperty 4, 0, Energy
+if flt[0] ! 0, -1, END
+human_getproperty 5, 0, Energy
+if flt[0] ! 0, -1, ENDFRINEDS
+human_getproperty 6, 0, Energy
+if flt[0] ! 0, DETECT, ENDFRINEDS
+
+label END
+endofmission 0, 12980006
+end
+
+label ENDFRINEDS
+endofmission 0, 12980007
+end

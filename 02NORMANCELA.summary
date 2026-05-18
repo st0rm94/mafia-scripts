@@ -1,0 +1,49 @@
+# .dnc extraction summary
+# source        : 02NORMANCELA.dnc  (265 bytes, main)
+# source        : 02NORMANCELA-InitScripts.dnc  (233 bytes, init)
+# actors_total  : 1
+# init_records  : 2
+# scripts_found : 3
+
+# main-container actor type-code distribution
+#   type    5  count=1  script
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 13
+# total invocations: 19
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     4  commandblock
+     2  car_setprojector
+     2  dim_act
+     2  findactor
+     1  cleardifferences
+     1  endofmission
+     1  game_nightmission
+     1  loaddifferences
+     1  noanimpreload    [casings: NOANIMPRELOAD]
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[gameinitend]  type=init  lines=7  commands=3
+    car_setprojector
+    dim_act
+    findactor
+
+[gameinitstart]  type=init  lines=3  commands=2
+    game_nightmission
+    noanimpreload
+
+[load animation end]  type=5  lines=13  commands=8
+    cleardifferences
+    commandblock
+    endofmission
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse

@@ -1,0 +1,212 @@
+dim_flt 3
+dim_act 37
+dim_frm 31
+findactor 0, "1Paulie"
+findactor 1, "prijeti k rainbow garden"
+findactor 2, "Sergio"
+findactor 3, "Enemy08K"
+findactor 4, "Enemy04K"
+findactor 5, "Enemy11K"
+findactor 6, "Enemy12K"
+findactor 7, "prijeti k rainbow garden paulieho hlaska"
+findactor 8, "hudfor"
+findactor 9, "civil4"
+findactor 10, "cad_ford"
+findactor 11, "Tommy"
+findactor 12, "hudcou2"
+findactor 13, "detekce vzdalenosti od sergia1"
+findactor 14, "Enemy4"
+findactor 15, "detekce healtu playera"
+findactor 16, "detekce healtu paulieho a playera"
+//findactor 17, "ForAfo"
+findactor 18, "LLsklap01"
+findactor 19, "Sergio2"
+findactor 20, "load posledni cast"
+findactor 21, "salina18"
+findactor 22, "salina19"
+findactor 23, "salina17"
+findactor 24, "salina33"
+findactor 25, "salina32"
+findactor 26, "salina31"
+findactor 27, "salina30"
+findactor 28, "salina29"
+findactor 29, "salina28"
+findactor 30, "salina27"
+findactor 31, "salina11"
+findactor 32, "salina24"
+findactor 33, "salina23"
+findactor 34, "salina22"
+findactor 35, "salina21"
+findactor 36, "salina20"
+
+findframe 0, "1Paulie"
+findframe 1, "Sergio"
+findframe 2, "Enemy08K"
+findframe 3, "Enemy04K"
+findframe 4, "Enemy11K"
+findframe 5, "Enemy12K"
+findframe 6, "hudfor"
+findframe 7, "civil4"
+findframe 8, "cad_ford"
+findframe 9, "hudcou2"
+findframe 10, "Enemy4"
+findframe 11, "nadr_budka"
+findframe 12, "2tommy"
+findframe 13, "ForAfo"
+findframe 14, "Sergio2"
+findframe 15, "salina18"
+findframe 16, "salina19"
+findframe 17, "salina17"
+findframe 18, "salina33"
+findframe 19, "salina32"
+findframe 20, "salina31"
+findframe 21, "salina30"
+findframe 22, "salina29"
+findframe 23, "salina28"
+findframe 24, "salina27"
+findframe 25, "salina11"
+findframe 26, "salina24"
+findframe 27, "salina23"
+findframe 28, "salina22"
+findframe 29, "salina21"
+findframe 30, "salina20"
+
+let flt[1] = 4
+
+act_setstate 100, inactive
+
+label 1
+detector_waitforuse
+detector_issignal 100, 3, -1
+mission_objectivesclear
+mission_objectives 1960001
+goto 1
+
+label 3
+vlvp 0
+if flt[0] = 1, -1, 2
+goto flt[1]
+
+label 4
+human_talk 11, 00950223, 4
+let flt[1] = flt[1] + 1
+goto 1
+
+label 5
+human_talk 11, 00950225, 4
+let flt[1] = flt[1] + 1
+goto 1
+
+label 6
+human_talk 11, 00950224, 4
+let flt[1] = 4
+goto 1
+
+label 2
+zatmyse 1
+wait 500
+commandblock 1
+player_lockcontrols 1
+human_setproperty 11, 100, energy
+policemanager_del "Tommy"
+wingman_delindicator 0, 0
+setcompass -1
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 14, off
+act_setstate 15, active
+act_setstate 16, off
+act_setstate 20, off
+act_setstate 21, off
+act_setstate 22, off
+act_setstate 23, off
+act_setstate 24, off
+act_setstate 25, off
+act_setstate 26, off
+act_setstate 27, off
+act_setstate 28, off
+act_setstate 29, off
+act_setstate 30, off
+act_setstate 31, off
+act_setstate 32, off
+act_setstate 33, off
+act_setstate 34, off
+act_setstate 35, off
+act_setstate 36, off
+commandblock 0
+
+autosavegamefull 5375
+
+commandblock 1
+frm_seton 0, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+frm_seton 27, 0
+frm_seton 28, 0
+frm_seton 29, 0
+frm_seton 30, 0
+subtitle_add 7205
+citymusic_off
+stream_create 2, "sounds\music\mise02-ulicka.ogg"
+loaddifferences "dif15g.chg"
+recloadfull "record15g"
+commandblock 0
+citycaching_tick
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 11, 1
+frm_seton 13, 1
+frm_seton 14, 1
+car_setspeed 10, 50
+car_setspeed 12, 40
+//car_invisible 17, 0
+car_invisible 12, 0
+car_invisible 10, 0
+act_setstate 9, active
+act_setstate 13, active
+act_setstate 19, active
+bridge_shutdown 18, 1
+human_force_settocar 19, 10, 3
+human_addweapon 19, 9, 7, 30
+human_force_settocar 9, 10, 0
+human_holster 11
+human_force_settocar 11, 12, 0
+human_addweapon 11, 9, 7, 30
+mission_objectivesclear
+mission_objectives 15960004
+policemanager_add "Tommy"
+player_lockcontrols 0
+commandblock 0
+stream_play 2
+zatmyse 0
+act_setstate 100, off

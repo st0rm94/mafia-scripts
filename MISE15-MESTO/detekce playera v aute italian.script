@@ -1,0 +1,54 @@
+dim_flt 1
+dim_act 7
+findactor 0, "Delnik4"
+findactor 1, "Delnik3"
+findactor 2, "Enemy09K2"
+findactor 3, "Tommy"
+findactor 4, "null"
+findactor 5, "buikFor"
+//findactor 6, "zjisteni auta"
+
+act_setstate 100, inactive
+
+label 3
+wait 1000
+compareownerwithex 3, 4, -1, 3
+
+getactorsdist 3, 5, 0
+if flt[0] < 15, -1, 3
+
+debug_text "posilam eventy"
+
+label 4
+setevent 0, 1, 4
+
+label 5
+setevent 1, 1, 5
+
+label 6
+setevent 2, 1, 6
+
+wait 5000
+
+label 7
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 11
+human_getproperty 1, 0, energy
+if flt[0] = 0, 8, -1
+label 11
+compareownerwithex 3, 4, 7, -1
+human_getowner 3, 6
+car_getspeed 6, 0
+if flt[0] > 0, -1, 7
+
+label 8
+setevent 0, 1, 8
+
+label 9
+setevent 1, 1, 9
+
+label 10
+setevent 2, 1, 10
+
+goto 3

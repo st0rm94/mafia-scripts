@@ -1,0 +1,46 @@
+dim_act 10
+dim_frm 13
+
+findactor 0, "Tommy"
+findactor 1, "dvere otv01"
+findactor 2, "REnemy"
+findactor 3, "REnemy10K"
+findactor 4, "REnemy2"
+findactor 5, "load mise08-mestoutek"
+findactor 6, "load mise08-mestoutek 2"
+findactor 7, "RKnez"
+findactor 8, "REnemy3"
+findactor 9, "Enemy09K"
+
+findframe 0, "dvere otv01"
+findframe 1, "Tommy"
+findframe 2, "REnemy"
+findframe 3, "REnemy10K"
+findframe 4, "REnemy2"
+findframe 5, "RKnez"
+findframe 6, "REnemy3"
+findframe 7, "Enemy09K"
+findframe 8, "holuby2"
+findframe 9, "vrzdreva"
+findframe 10, "mesto1"
+findframe 11, "kybl"
+findframe 12, "hit"
+
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+frm_seton 6,0
+frm_seton 7,0
+frm_seton 8,0
+frm_seton 9,0
+frm_seton 10,0
+frm_seton 11,0
+frm_seton 12,0
+
+act_setstate 2, inactive
+act_setstate 3, inactive
+act_setstate 4, inactive
+act_setstate 7, inactive
+act_setstate 8, inactive
+act_setstate 9, inactive

@@ -1,0 +1,19 @@
+act_setstate -1,inactive
+
+commandblock 1
+dim_act 2
+findactor 0,"pol03"
+findactor 1,"Tommy"
+
+dim_frm 1
+findframe 0,"placement_policajti"
+actor_setplacement 0,0
+
+human_addweapon 0, 6, 6, 30 
+commandblock 0
+
+label 101
+enemy_move 101,run
+wait 1000
+goto 101
+

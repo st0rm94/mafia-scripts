@@ -1,0 +1,6 @@
+// Car Traffic Sound Sectors
+// ------------------------------------
+
+SetTraffSectorSnd "Primary sector"
+SetTraffSectorSnd "sector Object113"
+SetTraffSectorSnd "sector && kancl crash02"

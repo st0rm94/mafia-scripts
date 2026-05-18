@@ -1,0 +1,102 @@
+act_setstate -1,inactive
+
+commandblock 1
+dim_frm 3
+dim_act 4
+dim_flt 1
+
+findframe 0, "invisible"
+findframe 1,"light"
+findframe 2,"slunko2"
+
+findactor 0, "invisibledetector"
+findactor 1, "Tommy"
+findactor 2, "invisible_bonuscar"
+findactor 3, "invisible"
+
+//***********PREPNUTI SLUNCI
+frm_seton 1,0
+frm_seton 2,1
+commandblock 0
+
+human_eraseab 3
+wait 3000
+car_enableus 2, 0
+
+enemy_move 60, walk
+enemy_move 61, run
+enemy_move 62, run
+enemy_move 63, run
+wait 1000
+enemy_move 65, run
+enemy_move 63, run
+enemy_move 64, run
+enemy_move 66, run
+wait 4000
+enemy_move 67, run
+enemy_move 68, run
+enemy_playanim "enm roh drep stat L.i3d"
+wait 7000
+enemy_move 88, run
+wait 12000
+enemy_move 69, run
+enemy_move 70, run
+enemy_move 71, run
+wait 20000
+enemy_move 72, run
+wait 12000
+enemy_move 77, run
+enemy_move 73, run
+enemy_move 78, run
+enemy_move 74, run
+wait 8000
+enemy_move 75, run
+wait 6000
+
+enemy_move 80, run
+enemy_use_railway 10
+{ down
+label 7
+goto 7
+}
+enemy_exit_railway
+wait 2000
+enemy_move 86, run
+enemy_move 81, run
+enemy_move 82, run
+enemy_move 83, run
+enemy_playanim "enm roh drep stat L.i3d"
+//wait 6000
+enemy_changeanim "walk1.i3d", "walk6.i3d"
+enemy_move 84, walk
+enemy_changeanim "walk1.i3d"
+enemy_move 90, run
+enemy_move 85, run
+
+label 2
+wait 1000
+getactorsdist 1,3,0
+if flt[0]<3,-1,2
+
+
+car_enableus 2, 1
+frm_seton 0, 0
+//***********PREPNUTI SLUNCI
+frm_seton 1,1
+frm_seton 2,0
+
+act_setstate 0,off
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar A
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590
+end
+return
+
+event 1
+event_use_cb 1
+return

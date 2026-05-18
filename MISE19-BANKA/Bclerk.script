@@ -1,0 +1,98 @@
+dim_flt 1
+dim_act 2
+dim_frm 2
+findactor 0, ""
+findactor 1, "Czena4"
+findframe 0, "xkniha 33"
+findframe 1, "xkniha 34"
+
+human_eraseab 0
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+human_looktoactor 0, 1
+enemy_talk 19950029
+enemy_wait
+
+label 2
+setevent 1, 1, 2
+
+{ down
+label 3
+wait 1000000
+goto 3
+}
+
+enemy_talk 19950031
+enemy_wait
+
+label 4
+setevent 1, 1, 4
+
+{ down
+label 5
+wait 1000000
+goto 5
+}
+
+enemy_talk 19950033
+enemy_wait
+
+label 6
+setevent 1, 1, 6
+
+{ down
+label 7
+wait 1000000
+goto 7
+}
+human_looktoactor 0
+enemy_lookto 51
+enemy_wait
+enemy_talk 19950035
+enemy_playanim "bankaurednikdava.i3d"
+wait 2500
+frm_seton 0, 1
+wait 2700
+human_looktoactor 0, 1
+commandblock 1
+frm_seton 0, 0
+frm_seton 1, 1
+commandblock 0
+wait 500
+enemy_stopanim
+
+
+label 8
+setevent 1, 1, 8
+
+{ up
+label 9
+wait 1000000
+goto 9
+}
+
+event 1
+event_use_cb 1
+return 
+
+event use_ab
+event_use_cb 1
+enemy_playanim "urednikodpovida.i3d"
+enemy_talk 19950003
+enemy_wait
+enemy_playanim "urednikstativ.i3d"
+return
+
+event 2
+enemy_playanim "x panika drep dolu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x panika drep stativ.i3d"
+
+label 10
+wait 1000000
+goto 10

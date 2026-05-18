@@ -1,0 +1,30 @@
+dim_act 1
+findactor 0, "Ridic1"
+act_setstate -1, inactive
+human_talk 0, 18990711
+wait 2000
+{ DOWN
+wait 300000
+}
+human_talk 0, 18990721
+wait 2000
+{ DOWN
+wait 60000
+}
+human_talk 0, 18990731
+wait 2000
+{ DOWN
+wait 60000
+}
+human_talk 0, 18990741
+wait 2000
+{ DOWN
+wait 60000
+}
+human_talk 0, 18990751
+wait 4000
+end
+
+event 1
+event_use_cb 1
+return

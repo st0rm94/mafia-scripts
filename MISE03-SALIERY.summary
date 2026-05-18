@@ -1,0 +1,83 @@
+# .dnc extraction summary
+# source        : MISE03-SALIERY.dnc  (3544 bytes, main)
+# source        : MISE03-SALIERY-InitScripts.dnc  (419 bytes, init)
+# actors_total  : 31
+# init_records  : 2
+# scripts_found : 6
+
+# main-container actor type-code distribution
+#   type    5  count=4  script
+#   type    6  count=12  
+#   type   35  count=15  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 21
+# total invocations: 60
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    12  commandblock
+     7  settraffsectorsnd    [casings: SetTraffSectorSnd]
+     4  let
+     3  cleardifferences
+     3  loaddifferences
+     3  recloadfull
+     3  recunload
+     3  recwaitforend
+     2  dim_flt
+     2  dim_frm
+     2  end
+     2  findframe    [casings: FindFrame]
+     2  frm_seton
+     2  goto
+     2  label
+     2  rnd
+     2  wait
+     1  autosavegame
+     1  callsubroutine
+     1  change_mission
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[GameInitStart]  type=init  lines=1  commands=1
+    callsubroutine
+
+[TraffSndSect]  type=init  lines=10  commands=1
+    settraffsectorsnd
+
+[ambipeople]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[animace_b]  type=5  lines=35  commands=8
+    change_mission
+    cleardifferences
+    commandblock
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse
+
+[autosave]  type=5  lines=1  commands=1
+    autosavegame
+
+[kladivko]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait

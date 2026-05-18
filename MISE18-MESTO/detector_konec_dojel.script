@@ -1,0 +1,9 @@
+act_setstate -1, inactive
+
+dim_flt 1
+
+label DETECT
+detector_inrange 0, 20
+if flt[0] = 1, -1, DETECT
+endofmission 0, 18980056
+end

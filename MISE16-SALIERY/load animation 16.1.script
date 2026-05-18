@@ -1,0 +1,101 @@
+label 1
+autosavegame 5410
+zatmyse 1, 1
+commandblock 1
+dim_act 10
+dim_frm 24
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findactor 2, "VincenzoHIGH"
+findactor 3, "Salieri"
+findactor 4, "Luigi"
+findactor 5, "Czena"
+findactor 6, "civil"
+findactor 7, "sailor3"
+findactor 8, "sailor2"
+findactor 9, "sailor"
+
+findframe 0, "Paulie"
+findframe 1, "Sam"
+findframe 2, "VincenzoHIGH"
+findframe 3, "Salieri"
+findframe 4, "Tommy"
+findframe 5, "sailor3"
+findframe 6, "sailor2"
+findframe 7, "sailor"
+findframe 8, "@zidle14514"
+findframe 9, "@zidle3920"
+findframe 10, "sailor"
+findframe 11, "@zidle8321"
+findframe 12, "@zidle4494"
+findframe 13, "@zidle01"
+findframe 14, "sailor2"
+findframe 15, "@zidle10770"
+findframe 16, "kule test"
+findframe 17, "kule test2"
+findframe 18, "kule test3"
+findframe 19, "kule test4"
+findframe 20, "kule test5"
+findframe 21, "kule test6"
+findframe 22, "kule test7"
+findframe 23, "radio"
+
+player_lockcontrols 1
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+loaddifferences "dif16a.chg"
+recloadfull "record16a"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+player_lockcontrols 0
+
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 10, 1
+frm_seton 11, 1
+frm_seton 12, 1
+frm_seton 13, 1
+frm_seton 14, 1
+frm_seton 15, 1
+frm_seton 23, 1
+commandblock 0
+zatmyse 0
+wait 1000
+
+create_physicalobject 16, 0, 0, 6
+create_physicalobject 17, 0, 0, 6
+create_physicalobject 18, 0, 0, 6
+create_physicalobject 19, 0, 0, 6
+create_physicalobject 20, 0, 0, 6
+create_physicalobject 21, 0, 0, 6
+create_physicalobject 22, 0, 0, 6
+act_setstate 100, off

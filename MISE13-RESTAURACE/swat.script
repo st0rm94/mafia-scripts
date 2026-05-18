@@ -1,0 +1,9 @@
+dim_act 3
+findactor 0, "Enemy11K"
+findactor 1, "Enemy10K"
+findactor 2, "Enemy08K"
+
+wait 20000
+setevent 0, 1, -1
+setevent 1, 1, -1
+setevent 2, 1, -1

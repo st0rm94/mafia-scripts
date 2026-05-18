@@ -1,0 +1,198 @@
+//enemy_vidim 0
+enemy_changeanim "walk1.I3D", "ChuzeRuceZaZady1.I3D"
+dim_flt 3
+dim_act 6
+dim_frm 1
+findframe 0, "SS_POINTER"
+findactor 0, "biff_detector"
+findactor 1, "Paulie"
+findactor 2, "Biff"
+findactor 3, "Tommy"
+findactor 4, "prijeti k servisu"
+findactor 5, "fade_vitr"
+human_addweapon 2, 3, 0, 0
+human_holster 2
+
+{ DOWN
+LABEL WAITING_POSE
+enemy_playanim "Vyhlizeni2Stativ.I3D",0, 1
+//LET flt[0] = flt[0] - 95
+WAIT flt[0]
+enemy_playanim "Vyhlizeni201.I3D",0, 1
+LET flt[0] = flt[0] -83
+WAIT flt[0]
+enemy_playanim "Vyhlizeni202.I3D",0, 1
+LET flt[0] = flt[0] -83
+WAIT flt[0]
+GOTO WAITING_POSE
+}
+//enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+citymusic_off
+{ DOWN
+//ROZHLIDNE SE JESTLI HO NEKDO NESLEDUJE
+let flt[0] = 95
+human_setproperty 2, flt[0], Speed
+enemy_playanim "breathE1.I3D", 0, SIMPLE
+enemy_talk 2, 07990371
+label 2
+setevent 0,1,2
+human_looktoactor 2,1,1
+enemy_wait
+// Aktivace AB
+label DIALOG_WAIT
+//DYCHA A CEKA NA AB
+enemy_playanim "breathA1.I3D", 0
+LET flt[0] = flt[0] - 83
+wait flt[0]
+goto DIALOG_WAIT
+}
+
+//Dialog_Begin 1, 3
+//DIALOG_CAMSWITCH 2,1
+human_eraseab 1
+human_looktoactor 1,2,1
+human_looktoactor 3,2,1
+enemy_talk 1, 07990381
+enemy_wait
+enemy_talk 1, 07990382
+enemy_playanim "GestikulaceNew02.I3D", 0, 1
+enemy_wait
+gosub WAIT_DIST
+//DIALOG_CAMSWITCH 1,2
+enemy_playanim "GestikulaceNew02.I3D", 0, 1
+enemy_talk 2, 07990391
+enemy_wait
+gosub WAIT_DIST
+//DIALOG_CAMSWITCH 2,1
+enemy_playanim "GestikulaceNew02.I3D", 0, 1
+enemy_talk 1, 07990401
+ENEMY_WAIT
+enemy_playanim "GestikulaceNew02.I3D", 0, 1
+enemy_talk 1, 07990402
+wait 1000
+enemy_playanim "GestikulaceNew02.I3D", 0, 1
+ENEMY_WAIT
+gosub WAIT_DIST
+enemy_talk 1, 07990403
+wait 1000
+enemy_playanim "GestikulaceNew02.I3D", 0, 1
+wait 1000
+enemy_wait
+gosub WAIT_DIST
+//DIALOG_CAMSWITCH 1,2
+enemy_playanim "GestikulaceNew03.I3D", 0, 1
+enemy_talk 2, 07990411
+enemy_wait
+gosub WAIT_DIST
+enemy_talk 2, 07990412
+wait 100
+enemy_playanim "GestikulaceNew04.I3D", 0, 1
+enemy_wait
+enemy_talk 2, 07990413
+gosub WAIT_DIST
+//wait 1900
+enemy_playanim "GestikulaceNew05.I3D", 0, 1
+enemy_wait
+enemy_talk 2, 07990414
+enemy_wait
+gosub WAIT_DIST
+enemy_talk 2, 07990415
+enemy_wait
+setcompass 0
+enemy_talk 2, 07990416
+enemy_wait
+//DIALOG_CAMSWITCH 2,1
+enemy_talk 1, 07990421
+enemy_wait
+wait 750
+enemy_talk 1, 07990422
+enemy_wait
+//DIALOG_CAMSWITCH 1,2
+wait 500
+
+//###########################
+//# Pozvanka na Subquest - Oddelano #
+//###########################
+//enemy_talk 2, 07990431
+//wait 1900
+//human_looktoactor 2,3,1
+//ENEMY_WAIT
+//enemy_talk 2, 07990432
+//ENEMY_WAIT
+//DIALOG_CAMSWITCH 2,3
+//enemy_talk 3, 07990441
+//ENEMY_WAIT
+//DIALOG_CAMSWITCH 3,2
+//enemy_talk 2, 07990451
+//ENEMY_WAIT
+//enemy_talk 2, 07990452
+//ENEMY_WAIT
+//DIALOG_CAMSWITCH 2,3
+//enemy_talk 3, 07990461
+//ENEMY_WAIT
+//DIALOG_CAMSWITCH 3,2
+enemy_talk 2, 07990471
+ENEMY_WAIT
+human_looktoactor 2
+human_looktoactor 1
+human_looktoactor 3
+human_createab 1
+enemy_brainwash
+enemy_actionsclear
+//enemy_vidim 0
+//Dialog_End
+
+// fade_vitr
+act_setstate 5, active
+
+//nastavit detector prijeti k servisu na aktivni
+ACT_SETSTATE 4, ACTIVE
+//posle event, ze dialog uz zkoncil-Pauliemu
+LABEL PAULIEBEZ
+SETEVENT 1, 1, PAULIEBEZ
+LABEL RANDOMWALK
+RND 0, 9
+if flt[0] = 0, FIRSTRNDWALK, -1
+let flt[0] = flt[0] + 1
+enemy_move flt[0]
+GOTO RANDOMWALK
+label FIRSTRNDWALK
+enemy_move 8
+GOTO RANDOMWALK
+
+GOTO FINISH
+
+label WAIT_DIST
+getactorsdist 2, 3, 1
+if flt[1] < 5, RET, -1
+wait 500
+goto WAIT_DIST
+label RET
+return
+
+event 1
+event_use_cb 1
+return
+
+event ENEMY_TO_SCRIPT
+enemy_brainwash
+return
+
+event 2
+event_use_cb 1
+return
+
+event ENEMY_TO_AI
+enemy_getstate 1
+if flt[1] > 1, -1, RET
+if flt[2] ! 0, RET, -1
+enemy_changeanim "walk1.I3D"
+//act_setstate 0, off
+let flt[2] = 1
+label RET
+return
+
+LABEL FINISH
+debug_text "Biff: SCRIPT FINISHED"

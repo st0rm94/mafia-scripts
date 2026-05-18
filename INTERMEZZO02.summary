@@ -1,0 +1,40 @@
+# .dnc extraction summary
+# source        : INTERMEZZO02.dnc  (1385 bytes, main)
+# actors_total  : 3
+# init_records  : 0
+# scripts_found : 1
+
+# main-container actor type-code distribution
+#   type    5  count=1  script
+#   type   12  count=1  
+#   type   18  count=1  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 10
+# total invocations: 13
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     4  commandblock
+     1  change_mission
+     1  cleardifferences
+     1  loaddifferences
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  subtitle_add
+     1  wait
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[animace]  type=5  lines=17  commands=10
+    change_mission
+    cleardifferences
+    commandblock
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    subtitle_add
+    wait
+    zatmyse

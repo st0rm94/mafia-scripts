@@ -1,0 +1,5 @@
+detector_waitforuse
+
+dim_act 1
+findactor 0,"jesk_dvere"
+door_lock 0,0

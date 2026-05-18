@@ -1,0 +1,281 @@
+commandblock 1
+enemy_vidim 0
+enemy_shut_up yes
+dim_flt 3
+dim_act 10
+findactor 0,"TommyTAXIDRIVER"
+findactor 1,"Paulie"
+findactor 2,"Enemy01"
+findactor 3,"Enemy02"
+findactor 4,"Enemy03"
+findactor 5,"enemy_car"
+findactor 6,"Sam"
+findactor 7,"taxi"
+findactor 8,"detector_opusteni_auta"
+findactor 9,"supervisor"
+
+human_addweapon 1,7,6,30
+human_setproperty 1,80,Energy
+commandblock 0
+
+act_setstate -1,inactive
+
+mission_objectivesclear
+mission_objectives 01960001
+
+act_setstate 2,active
+act_setstate 3,active
+act_setstate 4,active
+act_setstate 6,active
+act_setstate 8,active
+
+human_talk 1,01990011,2
+enemy_wait
+
+act_setstate 9,active
+enemy_vidim 1
+
+{ up
+label 101
+wait 50000
+goto 101
+}
+
+event 201
+// narazeni
+  rnd 0,11
+  if flt[0]=0,-1,303
+  human_talk 1,01990611,2
+  label 303
+  if flt[0]=1,-1,304
+  human_talk 1,01990621,2
+  label 304
+  if flt[0]=2,-1,305
+  human_talk 1,01990631,2
+  label 305
+  if flt[0]=3,-1,306
+  human_talk 1,01990641,2
+  label 306
+  if flt[0]=4,-1,307
+  human_talk 1,01990651,2
+  label 307
+  if flt[0]=5,-1,308
+  human_talk 1,01990661,2
+  label 308
+  if flt[0]=6,-1,309
+  human_talk 1,01990671,2
+  label 309
+  if flt[0]=7,-1,310
+  human_talk 1,01990681,2
+  label 310
+  if flt[0]=8,-1,311
+  human_talk 1,01990691,2
+  label 311
+  if flt[0]=9,-1,312
+  human_talk 1,01990701,2
+  label 312
+  if flt[0]=10,-1,313
+  human_talk 1,01990711,2
+  label 313
+  enemy_wait
+return
+
+event 202
+// enemy strili
+  rnd 0,8
+  if flt[0]=0,-1,503
+  human_talk 1,01990141,2
+  label 503
+  if flt[0]=1,-1,504
+  human_talk 1,01990151,2
+  label 504
+  if flt[0]=2,-1,505
+  human_talk 1,01990161,2
+  label 505
+  if flt[0]=3,-1,506
+  human_talk 1,01990171,2
+  label 506
+  if flt[0]=4,-1,507
+  human_talk 1,01990181,2
+  label 507
+  if flt[0]=5,-1,510
+  human_talk 1,01990801,2
+  label 510
+  if flt[0]=6,-1,511
+  human_talk 1,01990051,2
+  label 511
+  if flt[0]=7,-1,512
+  human_talk 1,01990091,2
+  label 512
+  if flt[0]=8,-1,513
+//  human_talk 1,01990101,2
+  label 513
+  enemy_wait
+  //*****tommyho odpovedi******
+  rnd 0,10
+  if flt[0]=0,-1,530
+  human_talk 0,01990241,2
+  label 530
+  if flt[0]=1,-1,531
+  human_talk 0,01990251,2
+  label 531
+  enemy_wait
+return
+
+event 203
+//jede pomalu
+  rnd 0,12
+  if flt[0]=0,-1,411
+  human_talk 1,01990021,2
+  label 411
+  if flt[0]=1,-1,412
+  human_talk 1,01990031,2
+  label 412
+  if flt[0]=2,-1,413
+  human_talk 1,01990041,2
+  label 413
+  if flt[0]=3,-1,414
+  human_talk 1,01990051,2
+  label 414
+  if flt[0]=4,-1,415
+  human_talk 1,01990061,2
+  label 415
+  if flt[0]=5,-1,416
+  human_talk 1,01990071,2
+  label 416
+  if flt[0]=6,-1,417
+  human_talk 1,01990081,2
+  label 417
+  if flt[0]=7,-1,418
+  human_talk 1,01990091,2
+  label 418
+  if flt[0]=8,-1,419
+  human_talk 1,01990101,2
+  label 419
+  if flt[0]=9,-1,420
+  human_talk 1,01990111,2
+  label 420
+  if flt[0]=10,-1,421
+  human_talk 1,01990121,2
+  label 421
+  if flt[0]=11,-1,422
+  human_talk 1,01990131,2
+  label 422
+  enemy_wait
+//*****tommyho odpovedi******
+rnd 0,15
+  if flt[0]=2,-1,437
+  human_talk 0,01990271,2
+  label 437
+  if flt[0]=3,-1,438
+  human_talk 0,01990551,2
+  label 438
+  if flt[0]=4,-1,439
+  human_talk 0,01990561,2
+  label 439
+  if flt[0]=5,-1,440
+  human_talk 0,01990571,2
+  label 440
+  if flt[0]=6,-1,441
+  human_talk 0,01990581,2
+  label 441
+  if flt[0]=7,-1,442
+  human_talk 0,01990591,2
+  label 442
+  if flt[0]=8,-1,443
+  human_talk 0,01990601,2
+  label 443
+  enemy_wait
+return
+
+event 204
+// hrac utece z auta pri honicce
+  rnd 0,6
+  if flt[0]=0,-1,523
+  human_talk 1,01990311,2
+  label 523
+  if flt[0]=1,-1,524
+  human_talk 1,01990321,2
+  label 524
+  if flt[0]=2,-1,525
+  human_talk 1,01990331,2
+  label 525
+  if flt[0]=3,-1,526
+  human_talk 1,01990341,2
+  label 526
+  if flt[0]=4,-1,527
+  human_talk 1,01990351,2
+  label 527
+  if flt[0]=5,-1,528
+  human_talk 1,01990361,2
+  label 528
+  enemy_wait
+return
+
+event 205
+// utece pri jizde do baru
+  rnd 0,2
+  if flt[0]=0,-1,670
+  human_talk 1,01990411,2
+  label 670
+  if flt[0]=1,-1,671
+  human_talk 1,01990421,2
+  label 671
+  enemy_wait
+return
+
+event 206
+// hrac se vrati vcas
+human_talk 1,01990431,2
+enemy_wait
+return
+
+event 207
+// hrac jede dlouho
+  rnd 0,4
+  if flt[0]=0,-1,170
+  human_talk 1,01990371,2
+  label 170
+  if flt[0]=1,-1,171
+  human_talk 1,01990381,2
+  label 171
+  if flt[0]=2,-1,172
+  human_talk 1,01990391,2
+  label 172
+  if flt[0]=3,-1,173
+  human_talk 1,01990401,2
+  label 173
+  enemy_wait
+return
+
+event 208
+// zbavili jsme se jich
+human_talk 6,01990871,2
+enemy_wait
+human_talk 1,01990881,2
+enemy_wait
+
+mission_objectivesremove 01960001
+mission_objectives 01960002
+return
+
+event 209
+// Paulie nebo Sam strili
+  rnd 0,5
+  if flt[0]=0,-1,608
+  human_talk 1,01990191,2
+  label 608
+  if flt[0]=1,-1,609
+  human_talk 1,01990201,2
+  label 609
+  if flt[0]=2,-1,610
+  human_talk 1,01990811,2
+  label 610
+  if flt[0]=3,-1,612
+  human_talk 1,01990821,2
+  label 612
+  if flt[0]=4,-1,613
+  human_talk 1,01990831,2
+  label 613
+  enemy_wait
+return

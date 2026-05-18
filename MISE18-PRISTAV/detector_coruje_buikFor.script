@@ -1,0 +1,16 @@
+dim_act 3
+findactor 0, "buikFor"
+getactiveplayer 1
+findactor 2, "City_Guard3" 
+dim_flt 1
+
+label DETECT
+wait 500
+IFPLAYERSTEALCAR 0, 0
+if flt[0] ! 0, ALARM, -1
+wait 500
+compareownerwithex 1, 0, -1, DETECT
+label ALARM
+debug_text "detector_coruje_buikFor2: Player coruje buicka nebo v nem uz sedi"
+setevent 2, 100, ALARM
+end

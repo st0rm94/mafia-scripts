@@ -1,0 +1,16 @@
+dim_flt 1
+
+{ up
+enemy_move 11
+enemy_lookto 14
+enemy_wait
+
+label 101
+enemy_playanim "NudaStativ.i3d",0
+wait 7000
+enemy_playanim "Nuda01.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101
+
+}

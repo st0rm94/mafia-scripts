@@ -1,0 +1,13 @@
+dim_flt 1
+getmissionnumber 0
+
+if flt[0]=0,-1,111
+autosavegame 5100
+mission_objectivesclear
+mission_objectives 06960001
+end
+
+label 111
+autosavegame 5110
+mission_objectivesclear
+mission_objectives 06960002

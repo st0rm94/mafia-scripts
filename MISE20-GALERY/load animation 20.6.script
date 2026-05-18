@@ -1,0 +1,79 @@
+dim_flt 2
+dim_act 13
+dim_frm 9
+findactor 0, "Sam"
+findactor 1, "SalMan"
+findactor 2, "SalMan05K"
+findactor 3, "Tommy"
+findactor 4, "Enemy12K"
+
+findactor 6, "SalMan01K4"
+findactor 7, "SalMan02K4"
+findactor 8, "aktivace mistnosti"
+findactor 9, "Enemy12K2"
+findactor 10, "SalMan03K8"
+findactor 11, "SalMan02K7"
+findactor 12, "detekce healtu chlapka"
+
+findframe 0, "Tommy"
+findframe 1, "Sam"
+findframe 2, "poloha playera po animaci 20.6"
+findframe 3, "SalMan"
+findframe 4, "SalMan05K"
+findframe 5, "Enemy12K"
+findframe 6, "2dollar60"
+findframe 7, "SalMan01K4"
+findframe 8, "SalMan02K4"
+
+stream_create 1, "sounds\music\19 - Carchase 1.ogg"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 4
+if flt[0] = 1, -1, 1
+
+zatmyse 1
+wait 500
+commandblock 1
+player_lockcontrols 1 
+frm_seton 0, 0
+frm_seton 6, 0
+loaddifferences "dif20c.chg"
+recloadfull "record20c"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 4, active
+
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 8, active
+act_setstate 9, active
+act_setstate 10, active
+act_setstate 11, active
+act_setstate 12, active
+frm_seton 0, 1
+
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+
+stream_play 1
+stream_setloop 0, 1
+
+actor_setplacement 3, 2
+player_lockcontrols 0
+commandblock 0
+zatmyse 0
+act_setstate 100, off

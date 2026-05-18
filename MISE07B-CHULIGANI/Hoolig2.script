@@ -1,0 +1,30 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 2
+findactor 0, "Hoolig2"
+findactor 1, "Paulie"
+human_addweapon 0, 4, 0, 0
+act_setstate -1, inactive
+{ DOWN
+label FREESTATE
+enemy_playanim "ChulPoplacavani.I3D" , 0, 1
+let flt[0] = flt[0] - 166
+wait flt[0]
+goto FREESTATE
+}
+
+human_looktoactor 0,1,1
+wait 1000
+enemy_lookto 52
+human_looktoactor 0
+enemy_playanim "ChulPoplacavaniDos.I3D" , 0
+let flt[0] = flt[0] -83
+wait flt[0]
+enemy_playanim "ChulGesto01.I3D" , 0
+let flt[0] = flt[0] -83
+wait flt[0]
+enemy_vidim 1
+
+event 1
+event_use_cb 1
+return

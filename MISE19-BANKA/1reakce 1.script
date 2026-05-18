@@ -1,0 +1,41 @@
+dim_act 7
+dim_frm 4
+findactor 0, "rozhovor1"
+findactor 1, "auto"
+findactor 2, "psaci stroj"
+findactor 3, "posunuti zidle"
+findactor 4, "dalnopis"
+findactor 5, "zesileni hodin"
+findactor 6, ""
+findframe 0, "hlavni sal"
+findframe 1, "ambient_prepadeni"
+findframe 2, "hlavnisal_door"
+findframe 3, "utlumena hlavni hala"
+
+setplayerfireevent 6, 1
+
+{ up
+label 1
+wait 500
+detector_issignal 100, -1, 1
+}
+
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, active
+soundfade 0, 3000, 0.3, 0
+soundfade 1, 1000, 0, 0.4
+frm_seton 2, 0
+frm_seton 3, 0
+
+label 10
+goto 10
+act_setstate 100, off
+
+event 1
+event_use_cb 1
+detector_setsignal 100, 1
+return

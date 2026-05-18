@@ -1,0 +1,81 @@
+dim_flt 3
+dim_act 6
+dim_frm 1
+
+findactor 1, "Tommy"
+findactor 2, ""
+findactor 3, "civil4"
+findactor 4, "BnkO2"
+findactor 5, "opruzovani u chlapku"
+findactor 6, "civil"
+findactor 7, "Czena2"
+findactor 8, "Czena3"
+findactor 9, "Czena4"
+findframe 0, "civil4" 
+
+enemy_group_new 2
+enemy_group_add 2, 2
+enemy_group_add 2, 4
+
+enemy_narohysevyser
+
+{ up
+enemy_move 5
+enemy_wait
+enemy_lookto 3
+human_looktoactor 2
+
+label 1
+wait 1000000
+goto 1
+}
+
+event 1
+human_looktoactor 2, 4, 1
+wait 5000
+return
+
+event 2
+enemy_move 3
+enemy_wait
+enemy_look 1
+enemy_wait
+human_looktoactor 2, 1, 1
+debug_text "Pane. Nedelejte tady potize a odejdete."
+label 5
+wait 4000
+detector_issignal 5, 5, -1
+label 4
+setevent 4, 4, 4
+return
+
+label 3
+debug_text "Tak ty me budes provokovat?!"
+enemy_naserse 1
+
+label 7
+wait 1000000
+goto 7
+
+event use_ab, 19970006
+event_use_cb 1
+enemy_look 1
+human_looktoactor 2, 1, 1
+if flt[0] = 1, 2, -1
+enemy_talk 19950011
+enemy_wait
+let flt[0] = 1
+return
+
+label 2
+enemy_talk 19950013
+enemy_wait
+return
+
+event 3
+enemy_naserse 1
+
+label 6
+wait 100000
+goto 6
+

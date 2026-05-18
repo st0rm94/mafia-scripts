@@ -1,0 +1,27 @@
+dim_act 4
+dim_frm 4
+findactor 0, "arrow"
+findactor 1, "MorelloLOW"
+findactor 2, "civil"
+findactor 3, "Guard"
+findframe 0, "xletadlo17413.glow"
+findframe 1, "xletadlo17413.glow01"
+findframe 2, "xletadlo17413.glow02"
+findframe 3, "xletadlo17413.glow03"
+
+human_force_settocar 1, 0, 3
+human_force_settocar 2, 0, 0
+human_force_settocar 3, 0, 1
+human_addweapon 2, 6, 6, 30
+human_addweapon 3, 9, 7, 14
+human_addweapon 3, 6, 6, 30
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+
+car_setspeed 0, 40
+mission_objectivesclear
+mission_objectives 16960001
+setmissionnumber 1

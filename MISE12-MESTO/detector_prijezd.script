@@ -1,0 +1,129 @@
+commandblock 1
+dim_act 15
+dim_frm 2
+dim_flt 7
+// flt[1] = !0 znamena ze se rovnou detekuje
+// flt[2] = posledni label hlasky
+// flt[3]-flt[4]-flt[5] pozice frame Tommy
+// flt[6] = posledni gametime kontroly
+
+findactor 0, "nesahat_chemaFor"
+findactor 1, "Tommy"
+findactor 2, "Sam"
+findactor 3, "Paulie"
+findactor 4, "Enemy1"
+findactor 5, "position_Sam"
+findactor 6, "Enemy3"
+findactor 7, "Enemy4"
+findactor 8, "Enemy5"
+findactor 9, "Enemy6"
+//findactor 10, "Enemy7"
+findactor 11, "Enemy8"
+findactor 12
+findactor 13, "detector_skladiste"
+findactor 14, "detector_hlasky_auto"
+
+findframe 0, "skladiste"
+findframe 1, "Tommy"
+commandblock 0
+
+label DETECT
+if flt[1]  = 1, DETECT2, -1
+frm_getworldpos 1, 3
+ispointinarea 3, 0, 0
+if flt[0] ! 0, -1, DETECT
+
+// Zjisti jak daleko je vocad Sam
+getactorsdist 2, 12, 0
+if flt[0] > 40, -1, SKIPSAM
+
+act_setstate 5, active
+debug_text "detector_prijezd: Aktivoval jsem position_Sam"
+
+label SKIPSAM
+act_setstate 14, off
+label SEND2
+setevent 3, 1, SEND2
+debug_text "detector_prijezd: Poslal jsem event 1 Pauliemu"
+debug_text "detector_prijezd: Vypinam hlasky pro Paulieho"
+let flt[1] = 1
+
+label DETECT2
+getactorsdist 1, 4, 0, -1
+iffltinrange 0, 0, 65, DETECT2
+getactorsdist 1, 6, 0, -1
+iffltinrange 0, 0, 65, DETECT2
+getactorsdist 1, 7, 0, -1
+iffltinrange 0, 0, 65, DETECT2
+getactorsdist 1, 8, 0, -1
+iffltinrange 0, 0, 65, DETECT2
+getactorsdist 1, 9, 0, -1
+iffltinrange 0, 0, 65, DETECT2
+getactorsdist 1, 11, 0, -1
+iffltinrange 0, 0, 65, DETECT2
+
+label ENDSUCCESS
+//debug_text "detector_prijezd: Cekam na signal ze vsichni jsou tady !"
+   detector_issignal 13, -1, DETECT2
+// Jeste check na svestky....
+//   vlvp 0
+//   if flt[0] ! 0, DETECT2, -1
+//      policeitchforplayer 0
+//   if flt[0] ! 0, -1, FINALEND
+//      getgametime flt[0]
+//      if flt[0] > flt[6], -1, DETECT2
+//      gosub SAYSVESTKA
+//   goto DETECT2
+// Pokud bude potreba znovu policajty odremovat radkty vyse a ten nasledujici... 
+goto FINALEND
+
+label SAYSVESTKA
+   getactorsdist 1, 3, 0
+   if flt[0] < 25, -1, TOMMY
+// Paulie 950072-74
+label RERAND
+   rnd 0, 3
+   let flt[0] = flt[0] + 1
+   if flt[0] =  flt[2], RERAND, -1
+   goto flt[0]
+   label 1
+      human_talk 3, 950072, 1
+      goto RET
+   label 2
+      human_talk 3, 950073, 1
+      goto RET
+   label 3
+      human_talk 3, 950074, 1
+      goto RET
+label TOMMY
+// Tommy 950223-25
+   rnd 0, 3
+   let flt[0] = flt[0] + 4
+   if flt[0] =  flt[2], TOMMY, -1
+   label 4
+      human_talk 1, 950223, 1
+      goto RET      
+   label 5
+      human_talk 1, 950224, 1
+      goto RET 
+   label 6
+      human_talk 1, 950225, 1
+label RET
+let flt[2] = flt[0]
+getgametime flt[6]
+let flt[6] = flt[6] + 10000
+return
+
+label FINALEND
+debug_text "detector_prijezd: Vsichni tady a zadny enemik...MISSION SUCESSFULL !"
+human_talk 3, 12990111, 1
+wait 3000
+zatmyse 1
+wait 500
+setmissionnumber 122
+debug_text "detector_prijezd: LOADING...."
+change_mission "mise12-saliery", "", -1
+label BEEP
+beep
+goto BEEP
+end

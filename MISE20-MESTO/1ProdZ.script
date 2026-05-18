@@ -1,0 +1,142 @@
+dim_flt 3
+dim_act 4
+dim_frm 1
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "1odchod od peteho"
+findactor 3, "aktivace dedka"
+findframe 0, "poloha playera u dedka"
+
+human_addweapon 0, 9, 7, 30
+human_holster 0
+
+enemy_podvadim_jak Tretera
+enemy_lockstate fight_guard_stand, 1
+
+let flt[2] = 2
+
+act_setstate 100, inactive
+
+label 10
+
+{ up
+label 1
+detector_issignal 3, 9, 1
+}
+
+event 1
+event_use_cb 1
+act_setstate 3, active
+enemy_move 9
+enemy_wait
+enemy_lookto 10
+enemy_wait
+enemy_playanim "petekpultu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "petestativ.i3d"
+return
+
+label 9
+if flt[1] = 1, 7, -1
+human_anyweaponinhand 1, 0
+if flt[0] = 1, -1, 6
+goto flt[2]
+
+label 2
+enemy_talk 19991391
+enemy_wait
+let flt[2] = flt[2] + 1
+detector_setsignal 3, 0
+act_setstate 3, active
+goto 10
+
+label 3
+enemy_talk 19991411
+enemy_wait
+let flt[2] = flt[2] + 1
+detector_setsignal 3, 0
+act_setstate 3, active
+goto 10
+
+label 4
+enemy_talk 19991421
+enemy_wait
+let flt[2] = flt[2] + 1
+detector_setsignal 3, 0
+act_setstate 3, active
+goto 10
+
+label 5
+detector_setsignal 3, 0
+act_setstate 3, active
+goto 10
+
+label 6
+player_lockcontrols 1
+actor_setplacement 1, 0
+dialog_begin 0, 2
+dialog_camswitch 1, 0 
+enemy_talk 20990021
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 20990031
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 20990041
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 20990051
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 20990061
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 20990071
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 20990081
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 20990091
+enemy_wait
+dialog_end
+
+gunshop_menu
+
+commandblock 1
+inventory_push 1
+inventory_clear 1
+dialog_begin 0, 2
+dialog_camswitch 0, 1
+commandblock 0
+enemy_talk 1, 20990101
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 20990111
+enemy_wait
+commandblock 1
+dialog_end
+inventory_pop 1
+commandblock 0
+player_lockcontrols 0
+act_setstate 2, active
+let flt[1] = 1
+detector_setsignal 3, 0
+act_setstate 3, active
+goto 10
+
+label 7
+enemy_talk 20990131
+enemy_wait
+player_lockcontrols 1
+gunshop_menu
+player_lockcontrols 0
+detector_setsignal 3, 0
+act_setstate 3, active
+goto 10
+
+event 2
+act_setstate 3, off
+enemy_naserse 1
+return

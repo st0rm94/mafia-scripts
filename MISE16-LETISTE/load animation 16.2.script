@@ -1,0 +1,113 @@
+dim_flt 2
+dim_act 12
+dim_frm 10
+findactor 0, "xletadlo17413"
+findactor 1, "load mise16-krajina"
+findactor 2, "Paulie"
+findactor 3, "Sam"
+//findactor 4, "zjisteni auta"
+findactor 5, "Tommy"
+findactor 6, ""
+findactor 7, "arrow"
+findactor 8, "civil"
+findactor 9, "jeste mam praci"
+findactor 10, "jeste mam praci2"
+findactor 11, "Guard"
+
+findframe 0, "Tommy"
+findframe 1, "Paulie"
+findframe 2, "Sam"
+findframe 3, "xletadlo17413"
+findframe 4, "poloha auta po animaci"
+findframe 5, "poloha paulieho po animaci"
+findframe 6, "poloha sama po animaci"
+findframe 7, "poloha playera po animaci"
+findframe 8, "civil"
+findframe 9, "Guard"
+
+stream_create 1, "sounds\music\20 - Carchase 2.ogg"
+stream_play 1
+stream_setloop 1, 1
+
+act_setstate 100, inactive
+
+human_getowner 2, 4
+
+label 3
+getactorsdist 6, 4, 0
+if flt[0] < 15, -1, 3
+
+zatmyse 1
+wait 500
+stream_stop 1
+stream_destroy 1
+commandblock 1
+player_lockcontrols 1
+car_forcestop 4
+actor_setplacement 4, 4
+car_calm 4
+airplaneshowdamage 0, 0
+
+//act_setstate 0, off
+act_setstate 8, off
+act_setstate 11, off
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+//frm_seton 3, 0
+frm_seton 8, 0
+frm_seton 9, 0
+airplane_isdestroyed 0, 0
+commandblock 0
+
+if flt[0] = 0, -1, 2
+commandblock 1
+loaddifferences "dif16b1.chg"
+recloadfull "record16b1"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+endofmission 0, 16980005
+end
+
+label 2
+commandblock 1
+loaddifferences "dif16b2.chg"
+recloadfull "record16b2"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+act_setstate 0, off
+act_setstate 1, active
+act_setstate 9, off
+act_setstate 10, off
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 0
+car_remove_driver 4
+human_fromcar 5, 7
+human_fromcar 2, 5
+human_fromcar 3, 6
+
+label 4
+setevent 3, 1, 4
+
+player_lockcontrols 0
+commandblock 0
+zatmyse 0
+car_enableus 7, 1
+mission_objectivesclear
+mission_objectives 9960007
+wait 1000
+act_setstate 100, off

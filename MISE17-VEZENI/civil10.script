@@ -1,0 +1,30 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 1
+dim_frm 1
+findactor 0, ""
+findframe 0, "spadnuti"
+
+frm_seton 100, 0
+
+human_addweapon 0, 3, 0, 0
+human_holster 0
+human_addweapon 0, 11, 8, 0
+
+act_setstate 100, inactive
+
+frm_seton 100, 1
+frm_seton 0, 1
+human_throwitem 0, 11
+enemy_playanim "panika run02b.i3d", 0, simple
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_stopanim
+enemy_vidim 1
+
+label 1
+wait 1000000
+goto 1
+
+label 2
+act_setstate 100, off

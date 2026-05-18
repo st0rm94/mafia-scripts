@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Bclerk4"
+findactor 1, "Box332"
+
+door_enableus 1, 0
+
+detector_waitforuse
+door_open 1, 1
+act_setstate 0, active
+door_enableus 1, 1
+act_setstate 100, inactive 
+

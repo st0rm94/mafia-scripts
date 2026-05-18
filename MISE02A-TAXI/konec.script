@@ -1,0 +1,7 @@
+dim_act 1
+findactor 0, "Tommy"
+act_setstate -1, inactive
+human_talk 0, 2950230, 4
+zatmyse 1
+wait 500
+change_mission "mise02-ulicka", "", 0

@@ -1,0 +1,10 @@
+dim_act 1
+findactor 0, ""
+
+human_addweapon 0, 7, 6, 18
+human_addweapon 0, 6, 6, 18
+
+enemy_playanim "breath06a.i3d"
+wait 1000
+
+act_setstate 100, inactive

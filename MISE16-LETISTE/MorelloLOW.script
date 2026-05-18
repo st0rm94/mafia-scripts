@@ -1,0 +1,21 @@
+dim_flt 1
+dim_act 2
+findactor 0, "arrow"
+findactor 1, "prijiti na plochu"
+
+enemy_vidim 0
+
+label 1
+wait 1000000
+goto 1
+
+event 1
+label 2
+enemy_usecar
+compareownerwith 0, 2, -1
+enemy_move 7, run
+enemy_playanim "salina nastup.i3d"
+wait 800
+frm_seton 100, 0
+act_setstate 1, active
+act_setstate 100, off

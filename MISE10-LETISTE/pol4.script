@@ -1,0 +1,28 @@
+commandblock 1
+dim_frm 3
+dim_flt 1
+dim_act 5
+findactor 0, "polimFor2"
+findactor 1, "pol4"
+findactor 2, "pol"
+findactor 3, "Tommy"
+findactor 4, "sirene2"
+findframe 0, "stopka2"
+commandblock 0
+
+enemy_vidim 0
+human_addweapon 1, 11, 8, 16
+human_addweapon 2, 8, 6, 24
+enemy_usecar 0, 0
+act_setstate 1, inactive
+wait 33000
+//enemy_car_moveto 0, 0
+enemy_car_escape 0, 3, 0
+enemy_usecar
+act_setstate 4, off
+setevent 2, 1, -1
+enemy_vidim 1
+enemy_podvadim_jak tretera
+//enemy_action_fire 3, 10
+label 1
+goto 1

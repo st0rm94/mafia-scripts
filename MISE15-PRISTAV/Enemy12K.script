@@ -1,0 +1,7 @@
+dim_act 1
+findactor 0, "Tommy"
+
+enemy_vidim 0
+enemy_lockstate fight_guard, 20
+enemy_move 27, run
+enemy_action_fire 0

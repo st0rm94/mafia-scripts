@@ -1,0 +1,12 @@
+dim_act 1
+dim_flt 1
+findactor 0,"Tommy"
+
+label 101
+detector_waitforuse 08970005
+human_getproperty 0,0,Energy
+if flt[0]=100,101,-1
+
+human_setproperty 0,100,Energy
+goto 101
+

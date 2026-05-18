@@ -1,0 +1,58 @@
+dim_act 3
+getactiveplayer 0
+findactor 1, "Paulie"
+setnullactor 2
+dim_flt 4
+
+act_setstate -1, inactive
+
+label DETECT
+wait 100
+compareownerwithex 0, 2, DETECT, -1
+human_getowner 0, 3
+compareownerwithex 1, 3, DETECT, -1
+getactorsdist 0, 1, 0
+if flt[0] > 5, -1, DETECT
+if flt[0] > 150, GAMEOVER, -1
+car_getspeed 3, 0
+if flt[0] > 2, -1, DETECT
+
+getgametime 0
+if flt[0] > flt[2], -1, DETECT
+// paulie 00950021-23
+// Tommy 00950212-13
+getactorsdist 0, 1, 0
+if flt[0] > 40, -1, RERAND
+label RERAND2
+rnd 0, 2
+let flt[0] = flt[0] + 3
+if flt[0] = flt[1], RERAND2, -1
+goto flt[0]
+
+label RERAND
+rnd 0, 5
+if flt[0] = flt[1], RERAND, -1
+goto flt[0]
+label 0
+human_talk 1, 00950021, 1
+goto RET
+label 1
+human_talk 1, 00950022, 1
+goto RET
+label 2
+human_talk 1, 00950023, 1
+goto RET
+label 3
+human_talk 0, 00950212, 2
+goto RET
+label 4
+human_talk 0, 00950213, 2
+label RET
+getgametime 0
+let flt[2] = flt[0] + 7000
+let flt[1] = flt[0]
+goto DETECT
+
+label GAMEOVER
+endofmission 0, 7980015
+end

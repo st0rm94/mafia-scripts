@@ -1,0 +1,33 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 5
+dim_frm 1
+findactor 0, ""
+findactor 1, "Enemy08K2"
+findactor 2, "Enemy08K3"
+findactor 3, "Enemy04K3"
+findactor 4, "chemaFor3pristav"
+
+findframe 0, "navadeni posil"
+
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+
+human_force_settocar 0, 4, 0
+
+enemy_car_moveto 4, 0
+
+label 2
+enemy_usecar
+compareownerwith 4, 2, -1
+enemy_move 31, run
+enemy_lookto 15
+enemy_wait
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3

@@ -1,0 +1,23 @@
+DIM_FRM 6
+DIM_ACT 3
+
+FINDFRAME 0, "chodba9"
+FINDFRAME 1, "sector && koupelna01"
+FINDFRAME 3, "xsvetlo 27"
+FINDFRAME 4, "xsvetlo 10 on9"
+FINDFRAME 5, "xsvetlo 10 break5"
+FINDACTOR 0, "vypinac34"
+
+DETECTOR_WAITFORHIT
+
+// po sestreleni
+PLAYSOUND "glass1.wav", -1, 10, 1
+COMMANDBLOCK 1
+FRM_SETON 0, 0
+FRM_SETON 3, 0
+FRM_SETON 4, 0
+FRM_SETON 5, 1
+SETLMLEVEL 1, 0
+COMMANDBLOCK 0
+ACT_SETSTATE 0, off
+ACT_SETSTATE -1, off

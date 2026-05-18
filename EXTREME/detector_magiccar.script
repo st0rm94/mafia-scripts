@@ -1,0 +1,88 @@
+dim_act 4
+findactor 0,"Tommy"
+findactor 1,"magiccar"
+findactor 2,"Sam"
+findactor 3,"Paulie"
+
+dim_frm 22
+findframe 0,"magiccar.karoseriedd"
+findframe 1,"magiccar.DOOR1"
+findframe 2,"magiccar.DOOR2"
+findframe 3,"magiccar.DOOR3"
+findframe 4,"magiccar.DOOR0"
+findframe 5,"magiccar.Object06"
+findframe 6,"magiccar.Object05"
+findframe 7,"magiccar.naraznik predni01"
+findframe 8,"magiccar.naraznik predni"
+findframe 9,"magiccar.sedacka01"
+findframe 10,"magiccar.Object02"
+findframe 11,"magiccar.SWHEEL"
+findframe 12,"magiccar.WHL0"
+findframe 13,"magiccar.WHL1"
+findframe 14,"magiccar.WHR0"
+findframe 15,"magiccar.WHR1"
+
+findframe 16,"Sam"
+findframe 17,"Paulie"
+findframe 18,"Tommy"
+
+findframe 19,"magiccar.Cylinder05"
+findframe 20,"magiccar.Cylinder02g"
+findframe 21,"magiccar.Object01"
+
+
+label 101
+wait 10000
+compareownerwithex 0,1,-1,101
+
+wait 5000
+frm_seton 5,0
+wait 5000
+frm_seton 6,0
+wait 5000
+frm_seton 7,0
+wait 5000
+frm_seton 8,0
+wait 5000
+frm_seton 0,0
+wait 5000
+frm_seton 1,0
+wait 5000
+frm_seton 2,0
+wait 5000
+frm_seton 3,0
+wait 5000
+frm_seton 4,0
+wait 5000
+frm_seton 9,0
+wait 5000
+frm_seton 10,0
+wait 5000
+frm_seton 12,0
+wait 5000
+frm_seton 13,0
+wait 5000
+frm_seton 14,0
+wait 5000
+frm_seton 15,0
+wait 5000
+frm_seton 11,0
+wait 5000
+frm_seton 19,0
+wait 5000
+frm_seton 20,0
+wait 5000
+frm_seton 21,0
+
+wait 5000
+compareownerwithex 2,1,-1,SKIP01
+frm_seton 16,0
+label SKIP01
+wait 5000
+compareownerwithex 3,1,-1,SKIP02
+frm_seton 17,0
+label SKIP02
+wait 5000
+compareownerwithex 0,1,-1,SKIP03
+frm_seton 18,0
+label SKIP03

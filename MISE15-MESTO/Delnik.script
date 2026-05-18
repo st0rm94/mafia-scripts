@@ -1,0 +1,37 @@
+dim_flt 1
+dim_act 8
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "buikFor"
+findactor 3, "Enemy"
+findactor 4, "Enemy2"
+findactor 5, "Enemy3"
+findactor 6, "Enemy09K"
+findactor 7, "Delnik2"
+
+enemy_group_new 0
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+enemy_group_add 0, 5
+enemy_group_add 0, 6
+enemy_group_add 0, 7
+
+human_addweapon 1, 7, 6, 12
+human_addweapon 1, 6, 6, 18
+human_holster 1
+
+wait 1000
+
+enemy_playanim "zidlesed03.i3d"
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event 1
+event_use_cb 1
+enemy_move 30, run
+enemy_action_fire 0, 4
+return

@@ -1,0 +1,92 @@
+//[debug_me]
+dim_flt 10
+dim_act 12
+getactiveplayer 0
+findactor 1, "TruckB"
+findactor 2, "TruckBx"
+findactor 3, "City_Guard"
+findactor 4, "City_Guard2"
+findactor 5, "City_Guard3"
+findactor 6, "City_Guard4"
+findactor 7, "City_Guard5"
+findactor 8, "City_Guard6"
+findactor 9, "Vratny"
+findactor 10, "buikFor"
+findactor 11, "buikFor2"
+
+dim_frm 6
+getactorframe 1, 0
+getactorframe 2, 1
+findframe 2, "position_kontrola_Tommy"
+findframe 3, "TruckBx.Object01"
+findframe 4, "TruckBx.bocnice"
+findframe 5
+frm_seton 3, 1
+frm_seton 4, 0
+
+label DETECT
+detector_inrange 0, 10
+if flt[0] = 1, -1, DETECT
+compareownerwithex 0, 1, -1, DETECT
+fuckingbox_getnumdest 1, 0
+if flt[0] = 0, -1, DETECT
+debug_text "LOADING next MISSION !!!"
+commandblock 1
+car_forcestop 1
+zatmyse 1, 1
+frm_getworldpos 1, 7
+actor_setplacement 2, 5
+car_calm 2
+frm_setpos 0, 7
+actorupdateplacement 1
+human_fromcar 0, 2
+human_force_settocar 0, 2, 0
+inventory_push 0
+character_push 0
+character_push 3
+character_push 4
+character_push 5
+character_push 6
+character_push 7
+character_push 8
+character_push 9
+getcardamage 10, 0
+floatreg_push 0
+getcardamage 11, 0
+floatreg_push 0
+
+setmissionnumber 18
+dim_frm 12
+findframe 0, "bedna_static_car"
+findframe 1, "bedna_static_car2"
+findframe 2, "bedna_static_car3"
+findframe 3, "bedna_static_car4"
+findframe 4, "bedna_static_car5"
+findframe 5, "bedna_static_car6"
+findframe 6, "bedna_static_car7"
+findframe 7, "bedna_static_car8"
+findframe 8, "bedna_static_car9"
+findframe 9, "bedna_static_car10"
+findframe 10, "bedna_static_car11"
+findframe 11, "bedna_static_car12"
+setmodeltocar 0
+setmodeltocar 1
+setmodeltocar 2
+setmodeltocar 3
+setmodeltocar 4
+setmodeltocar 5
+setmodeltocar 6
+setmodeltocar 7
+setmodeltocar 8
+setmodeltocar 9
+setmodeltocar 10
+setmodeltocar 11
+change_mission "mise18-mesto", "load z mise18-pristav", 0
+commandblock 0
+//zatmyse 0, 1
+end
+
+
+
+
+

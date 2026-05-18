@@ -1,0 +1,38 @@
+dim_flt 1
+dim_act 8
+findactor 0,"HlidacBob"
+findactor 1,"Tommy"
+findactor 2,"alfa2"
+findactor 3,"Bertone"
+findactor 4,"ambulance"
+findactor 5,"poli02"
+findactor 6,"ForAcou"
+findactor 7,"fordtpi"
+
+car_enableus 4,0
+car_enableus 5,0
+car_enableus 6,0
+car_enableus 7,0
+
+mission_objectivesclear
+mission_objectives 05960001
+
+label 111
+wait 1000
+human_getproperty 0,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 1,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 3,0,Energy
+if flt[0]=0, 101, -1
+getcardamage 2,0
+if flt[0]<0.01, 102, -1
+goto 111
+
+label 101
+endofmission 0,05980003
+end
+
+label 102
+endofmission 0,05980004
+end

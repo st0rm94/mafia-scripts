@@ -1,0 +1,74 @@
+label 1
+autosavegame 5545
+zatmyse 1, 1
+dim_flt 2
+dim_act 6
+dim_frm 11
+findactor 0, "Enemy"
+findactor 1, "Enemy10K"
+findactor 2, "aktivace chlapku"
+findactor 3, "detekce stavu poldy"
+findactor 4, "PoliceMan"
+findactor 5, "PoliceMan2"
+
+findframe 0, "Tommy"
+findframe 1, "PaulieCorpse"
+findframe 2, "telefon"
+findframe 3, "xstul"
+findframe 4, "Box51"
+findframe 5, "Sluchatko"
+findframe 6, "dverexx1"
+findframe 7, "merced500K"
+findframe 8, "PoliceMan"
+findframe 9, "PoliceMan2"
+findframe 10, "polimTud"
+
+commandblock 1
+player_lockcontrols 1
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+
+stream_create 1, "sounds\music\06 - Briefing - Bad.ogg"
+
+setcitytrafficvisible 0
+loaddifferences "dif20a.chg"
+recloadfull "record20a"
+commandblock 0
+
+recwaitforend
+
+commandblock 0
+recunload
+cleardifferences
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 10, 1
+stream_play 1
+stream_setloop 1, 1
+
+setcitytrafficvisible 1
+player_lockcontrols 0
+commandblock 0
+zatmyse 0

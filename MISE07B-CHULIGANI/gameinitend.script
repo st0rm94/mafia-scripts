@@ -1,0 +1,6 @@
+weather_preparebuffer 3900
+policemanager_on 980000, 0
+policemanager_add "Tommy"
+police_speed_factor 0.53
+enablemap 1
+

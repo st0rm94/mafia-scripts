@@ -1,0 +1,13 @@
+dim_act 2
+dim_flt 1
+findactor 0,"ReditelH"
+findactor 1,"rediteluv stul"
+
+label 100
+wait 1000
+human_getproperty 0,0,Energy
+if flt[0]<25,-1,100
+
+mission_objectivesremove 08960002
+setevent 1,201,100
+end

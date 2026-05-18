@@ -1,0 +1,16 @@
+dim_act 2
+dim_flt 1
+
+findactor 0,"Tommy"
+findactor 1,"blackha"
+
+act_setstate -1,inactive
+
+label 101
+wait 200
+detector_inrange 0,10
+if flt[0]=1,-1,101
+compareownerwithex 0,1,-1,101
+
+detector_setsignal -1,1
+end

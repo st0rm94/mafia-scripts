@@ -1,0 +1,26 @@
+dim_flt 1
+dim_act 3
+findactor 0, "arrow"
+findactor 1, "Tommy"
+findactor 2, "Kasar"
+car_enableus 0, 0
+act_setstate -1, inactive
+
+label 1
+detector_waitforuse 11970004
+getactorsdist 1, 2, 0
+if flt[0] > 10, 2, -1
+human_talk 1, 11990541
+wait 1000
+label 3
+setevent 2, 2, 3
+car_enableus 0, 1
+end
+
+label 2
+human_talk 1, 11990331
+wait 2000
+goto 1
+
+event 1000
+end

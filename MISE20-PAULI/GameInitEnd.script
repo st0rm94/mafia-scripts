@@ -1,0 +1,36 @@
+dim_flt 1
+dim_act 7
+findactor 0, "Box51"
+findactor 1, "Box81"
+findactor 2, "load animace 20.2"
+findactor 3, "Tommy"
+findactor 4, "merced500K"
+findactor 5, "Enemy"
+findactor 6, "Enemy10K"
+
+act_setstate 2, off
+mission_objectivesclear
+mission_objectives 20960000
+
+human_force_settocar 5, 4, 1
+
+human_addweapon 3, 6, 6, 0
+human_addweapon 5, 6, 6, 18
+human_addweapon 5, 3, 0, 0
+human_addweapon 6, 6, 6, 18
+human_addweapon 6, 3, 0, 0
+human_holster 3
+human_holster 5
+human_holster 6
+
+
+getmissionnumber 0
+if flt[0] = 1, -1, 2
+setmissionnumber 1
+goto 3
+
+label 2
+if flt[0] = 2, -1, 3
+setmissionnumber 2
+
+label 3

@@ -1,0 +1,64 @@
+dim_flt 1
+dim_act 6
+dim_frm 3
+findactor 0,"alfa2"
+findactor 1,"Tommy"
+findactor 2,"HlidacBob"
+findactor 3,"detector_konecmise"
+findactor 4,"detector_formula"
+findactor 5,"detector_music"
+
+findframe 0, "motor"
+findframe 1, "placement01_formule"
+findframe 2, "placement01_tommy"
+
+ACT_SETSTATE -1,inactive
+timeroff
+settimeoutevent 4,201
+timeron 1,2,0,300
+
+label 101
+detector_inrange 0,5
+if flt[0]=1,-1,101
+compareownerwithex 1,0,-1,101
+car_getspeed 0,0
+if flt[0]<7,-1,101
+player_lockcontrols 1
+car_breakmotor 0,1
+
+frm_seton 0,1
+timeroff
+settimeoutevent -1,201
+showcardamage 0,0
+
+label 102
+setevent 2,204,102
+
+// MUSIC FADEDOWN
+setevent 5,554,-1
+
+zatmyse 1,1000
+wait 1500
+human_fromcar 1,2
+actor_setplacement 1,2
+actor_setplacement 0,1
+car_calm 0
+zatmyse 0,1000
+
+
+car_enableus 0,0
+
+
+ACT_SETSTATE 3, active
+
+// MUSIC STOP + DESTROY
+wait 5000
+setevent 5,552,-1
+setevent 5,556,-1
+
+end
+
+event 201
+timeroff
+endofmission 0,05980001,"05990221.wav"
+return

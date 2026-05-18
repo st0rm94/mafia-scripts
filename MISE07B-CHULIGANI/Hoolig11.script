@@ -1,0 +1,22 @@
+enemy_vidim 0
+act_setstate -1, inactive
+wait 7000
+dim_flt 1
+dim_act 1
+dim_frm 1
+findframe 0, "position_Hoolig10"
+findactor 0
+human_addweapon 0, 4, 0, 0
+human_holster 0
+human_addweapon 0, 6, 6, 10
+enemy_playanim "KrytiLoop.I3D"
+wait 100
+enemy_playanim "KrytiKonec.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "ZradceZOkna f.I3D", 0
+let flt[0] = flt[0] - 489
+wait flt[0]
+actor_setplacement 0, 0
+enemy_vidim 1
+enemy_move 25, run

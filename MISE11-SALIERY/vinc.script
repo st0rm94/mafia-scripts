@@ -1,0 +1,10 @@
+wait 1000
+dim_act 2
+findactor 0, "VincenzoHIGH"
+findactor 1, "load mise11-mesto"
+
+label 1
+detector_waitforuse
+setevent 0, 2, -1
+detector_setsignal 1, 1
+end

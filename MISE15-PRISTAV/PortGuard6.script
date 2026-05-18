@@ -1,0 +1,4 @@
+dim_act 1
+findactor 0, "Tommy"
+
+enemy_action_fire 0

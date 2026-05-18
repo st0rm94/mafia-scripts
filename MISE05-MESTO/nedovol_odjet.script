@@ -1,0 +1,26 @@
+dim_act 4
+findactor 0,"Tommy"
+findactor 1,"NULL"
+findactor 2,"HlidacBob"
+findactor 3,"nedovol_odjet_timer"
+
+act_setstate -1,inactive
+
+act_setstate 3,active
+
+label 101
+wait 500
+compareownerwithex 0,1,101,-1
+PLAYER_LOCKCONTROLS 1
+
+{ down
+label 102
+wait 100
+compareownerwithex 2,1,102,-1
+}
+
+PLAYER_LOCKCONTROLS 0
+end
+
+event 201
+return

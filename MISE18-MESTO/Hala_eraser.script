@@ -1,0 +1,57 @@
+dim_flt 2
+dim_act 4
+findactor 0, "PortGuard"
+findactor 1, "PortGuard2"
+findactor 2, "PortGuard3"
+findactor 3, "Tommy"
+
+dim_frm 3
+findframe 0, "PortGuard"
+findframe 1, "PortGuard2"
+findframe 2, "PortGuard3"
+
+let flt[1] = 1
+
+label DETECT
+wait 500
+detector_inrange 0, 70
+if flt[0] = 0, NOSIGNAL, SIGNAL
+
+label NOSIGNAL
+if flt[1] = 0, DETECT, -1
+//detector_setsignal -1, 0
+let flt[1] = 0
+debug_text "Hala_eraser: Inactivating and setting off all actors !"
+gosub TURNOFF
+goto DETECT
+
+label SIGNAL
+if flt[1] = 1, DETECT, -1
+//detector_setsignal -1, 1
+let flt[1] = 1
+debug_text "Hala_eraser: Activating and setting on all actors !"
+gosub TURNON
+goto DETECT
+
+label TURNOFF
+getactorsdist 0, 3, 0
+if flt[0] < 100, SKIPHIM, -1
+act_setstate 0, inactive
+frm_seton 0, 0
+label SKIPHIM
+act_setstate 1, inactive
+act_setstate 2, inactive
+
+frm_seton 1, 0
+frm_seton 2, 0
+return
+
+label TURNON
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+return

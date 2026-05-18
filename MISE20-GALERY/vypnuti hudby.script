@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 2
+findactor 0, "load animation 20.6"
+findactor 1, "load animation 20.4"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+act_setstate 1, active
+
+get_remote_float 0, 0, 1
+
+stream_fadevol 0, 10000, 1, 0
+wait 10000
+stream_destroy 0
+act_setstate 100, off

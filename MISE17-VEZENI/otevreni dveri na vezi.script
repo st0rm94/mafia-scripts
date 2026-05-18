@@ -1,0 +1,120 @@
+dim_flt 1
+dim_act 47
+dim_frm 2
+
+findactor 0, "detekce vystrelu na vezi"
+findactor 1, "Politik"
+findactor 2, "Bguard"
+findactor 3, "Bguard2"
+findactor 4, "civil"
+findactor 5, "cad_ford"
+findactor 6, "pol"
+findactor 7, "civil3"
+findactor 8, "civil4"
+findactor 9, "civil2"
+findactor 10, "civil5"
+findactor 11, "civil6"
+findactor 12, "civil7"
+findactor 13, "civil8"
+findactor 14, "civil9"
+findactor 15, "Czena"
+findactor 16, "Czena2"
+findactor 17, "Czena3"
+findactor 18, "Guard"
+findactor 19, "detekce healtu politika"
+findactor 20, "detekce healtu guardu"
+findactor 21, "detekce healtu guardu2"
+findactor 22, "stani na konci ochozu"
+findactor 23, "Guard2"
+findactor 24, "civil11"
+findactor 25, "civil12"
+findactor 26, "civil13"
+findactor 27, "civil14"
+findactor 28, "civil15"
+findactor 29, "civil16"
+findactor 30, "civil17"
+findactor 31, "civil18"
+findactor 32, "civil19"
+findactor 33, "civil20"
+findactor 34, "civil21"
+findactor 35, "civil22"
+findactor 36, "civil23"
+findactor 37, "civil24"
+findactor 38, "civil25"
+findactor 39, "civil26"
+findactor 40, "civil27"
+findactor 41, "civil28"
+findactor 42, "civil29"
+findactor 43, "civil30"
+findactor 44, "civil31"
+findactor 45, "civil32"
+findactor 46, "civil33"
+
+findframe 0, "civil15"
+findframe 1, "civil18"
+
+frm_seton 0, 0
+frm_seton 1, 0
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+autosavegamefull 5466
+
+commandblock 1
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 8, active
+act_setstate 9, active
+act_setstate 10, active
+act_setstate 11, active
+act_setstate 12, active
+act_setstate 13, active
+act_setstate 14, active
+act_setstate 15, active
+act_setstate 16, active
+act_setstate 17, active
+act_setstate 18, active
+act_setstate 19, active
+act_setstate 20, active
+act_setstate 21, active
+act_setstate 22, active
+act_setstate 23, active
+act_setstate 24, active
+act_setstate 25, active
+act_setstate 26, active
+act_setstate 27, active
+act_setstate 28, active
+act_setstate 29, active
+act_setstate 30, active
+act_setstate 31, active
+act_setstate 32, active
+act_setstate 33, active
+act_setstate 34, active
+act_setstate 35, active
+act_setstate 36, active
+act_setstate 37, active
+act_setstate 38, active
+act_setstate 39, active
+act_setstate 40, active
+act_setstate 41, active
+act_setstate 42, active
+act_setstate 43, active
+act_setstate 44, active
+act_setstate 45, active
+act_setstate 46, active
+
+frm_seton 0, 1
+frm_seton 1, 1
+commandblock 0
+
+setplayerfireevent 0, 1 

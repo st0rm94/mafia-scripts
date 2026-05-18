@@ -1,0 +1,22 @@
+dim_act 1
+dim_frm 4
+dim_flt 1
+findframe 0,"2bucket"
+findframe 1,"delnik"
+findframe 2, "hit"
+findframe 3, "kybl"
+
+findactor 0,"delnik"
+
+
+person_playanim 0,"MechSroubovani.I3D"
+
+
+detector_waitforhit
+frm_seton 2, 1
+
+create_physicalobject 0,1,1,20
+wait 900
+frm_seton 3, 1
+wait 1000
+human_setproperty 0,0,Energy

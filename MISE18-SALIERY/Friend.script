@@ -1,0 +1,45 @@
+commandblock 1
+dim_act 4
+dim_frm 3
+dim_flt 1
+findframe 0, "cil_friend"
+findframe 1, "s_whimper2"
+findframe 2, "s_whimper3"
+frm_seton 2, 0
+frm_seton 1, 1
+findactor 0
+findactor 1, "Ralph"
+findactor 2, "nesahat_hearseCa"
+getactiveplayer 3
+car_muststeal 2, 1
+car_lock_all 2, 1
+commandblock 0
+enemy_vidim 0
+{ DOWN
+label FREESTATE
+goto FREESTATE
+}
+human_setproperty 0, 110, Speed
+frm_seton 1, 0
+frm_seton 2, 1
+enemy_playanim "podani ruky.I3D", 0
+let flt[0] = flt[0] - 250
+wait flt[0]
+commandblock 1
+car_lock_all 2, 0
+frm_seton 2, 0
+human_looktoactor 0, 3, 1
+commandblock 0
+label NASTUP
+enemy_move_to_car 2, 0
+enemy_usecar 2, 0
+compareownerwith 2, -1, NASTUP
+enemy_car_moveto 2, 0
+goto FINISH
+
+event 1
+debug_text "Friend: Event 1 received"
+event_use_cb 1
+return
+
+label FINISH

@@ -1,0 +1,89 @@
+# .dnc extraction summary
+# source        : MISE03-SALIERYKONEC.dnc  (3426 bytes, main)
+# source        : MISE03-SALIERYKONEC-InitScripts.dnc  (418 bytes, init)
+# actors_total  : 33
+# init_records  : 2
+# scripts_found : 5
+
+# main-container actor type-code distribution
+#   type    5  count=3  script
+#   type    6  count=12  
+#   type   35  count=18  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 24
+# total invocations: 47
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     7  settraffsectorsnd    [casings: SetTraffSectorSnd]
+     4  commandblock
+     4  let
+     3  dim_flt
+     3  label
+     2  dim_frm
+     2  end
+     2  findframe    [casings: FindFrame]
+     2  frm_seton
+     2  goto
+     2  rnd
+     2  wait
+     1  callsubroutine
+     1  change_mission
+     1  cleardifferences
+     1  garage_show
+     1  getmissionnumber
+     1  if
+     1  loaddifferences
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  setmissionnumber
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[GameInitSart]  type=init  lines=1  commands=1
+    callsubroutine
+
+[TraffSndSect]  type=init  lines=10  commands=1
+    settraffsectorsnd
+
+[animace]  type=5  lines=22  commands=14
+    change_mission
+    cleardifferences
+    commandblock
+    dim_flt
+    garage_show
+    getmissionnumber
+    if
+    label
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    setmissionnumber
+    zatmyse
+
+[krajeni]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[umyvani nadobi]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait

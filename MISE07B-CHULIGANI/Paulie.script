@@ -1,0 +1,379 @@
+commandblock 1
+enemy_vidim 0
+dim_act 21
+dim_flt 4
+// flt[3] = znamena ze dvere vykopl player
+dim_frm 10
+findactor 0, "nesahat_merced500K"
+findactor 1, "Tommy"
+findactor 2, "prijeti k servisu"
+setnullactor 3
+findactor 4, "vrata02"
+findactor 5, "Hoolig2"
+findactor 6, "Paulie"
+findactor 7, "Hoolig"
+findactor 8, "civil2"
+findactor 9, "biff_detector"
+findactor 10, "Biff"
+findactor 11, "detector_TommySTOP"
+findactor 12, "objectives"
+// 13 Nechat FREE !!!
+findactor 14, "detector_smich"
+findactor 15, "vitr_random"
+findactor 16, "detector_Tommy"
+findactor 17, "music"
+findactor 18, "dest"
+findactor 19, "Billy"
+findactor 20, "detector_vykopnuti_dveri"
+
+findframe 0, "TEST2"
+findframe 1, "Hoolig7"
+findframe 2, "7b_kickout"
+findframe 3, "load z mise07b-saliery"
+findframe 4, "objectives"
+findframe 5, "Cil_namesti"
+findframe 6, "Cil_servis_station"
+findframe 7, "velkydest"
+findframe 8, "dvrcrash"
+findframe 9, "Box40"
+door_lock 4, 1
+door_enableus 4, 0
+
+// Oddelat!!!
+//commandblock 0
+//label WAITTTTT
+//goto WAITTTTT
+
+human_isweapon 6, 0, 9
+if flt[0] = 0, -1, SKIPWEAPON
+debug_text "Paulie INIT: Pauliemu pridany zbrane !!!"
+human_addweapon 6, 9, 7, 100
+human_holster 6
+human_addweapon 6, 4, 0, 0
+label SKIPWEAPON
+
+//Jestlize Tommy nema auto (EDITOR) vygeneruji si mercedes :)
+// oddelat!!!
+compareownerwithex 1, 3, -1, SEDNI
+human_force_settocar 1, 0, 0
+
+// Pred Salieri
+actor_setplacement 0, 3
+car_calm 0
+// Pred SS
+//actor_setplacement 0, 4
+
+//Posadim se do Tommyho auta
+label SEDNI
+human_getowner 1, 13
+human_force_settocar 6, 13, 1
+
+// Bohuzel NOVE!!! tam nebude ;-(
+goto SKIPSEDNI
+
+// NOVE!!! Pokud Pauli prejizdel z mise do mise...
+getmissionnumber flt[0]
+
+// POUZE NA ZKOUSKU!!! O D D E L A T ! ! ! !
+//let flt[0] = 3
+
+if flt[0] > 0, -1, RIDILTOMMY
+   if flt[0] = 1, -1, SPOLUJEZDEC2
+      human_force_settocar 1, 13, 1
+      human_force_settocar 6, 13, 0
+goto SKIPSEDNI
+label SPOLUJEZDEC2
+   if flt[0] = 2, -1, SPOLUJEZDEC3
+      human_force_settocar 1, 13, 2
+      human_force_settocar 6, 13, 0
+goto SKIPSEDNI
+label SPOLUJEZDEC3
+   if flt[0] = 3, -1, RIDILTOMMY
+      human_force_settocar 1, 13, 3
+      human_force_settocar 6, 13, 0
+goto SKIPSEDNI
+label RIDILTOMMY
+human_force_settocar 6, 13, 1
+
+label SKIPSEDNI
+commandblock 0
+enemy_vidim 1
+
+//oddelat - Vstup do SS
+//goto SKIP
+//oddelat - Posledni dialog!
+//goto HONICKA
+//goto FOLLOW2
+
+//enemy_action_follow 1, 3, NONEXT, TARGET, 5
+enemy_action_follow 1, 3, NONEXT
+
+debug_text "Paulie: Jsme u Biffa"
+
+//############
+//##     B I F F    ##
+//############
+{ DOWN
+enemy_usecar
+label POPOJDI
+enemy_action_follow 10, 1.2, RETURN, NOLINK
+enemy_look 10
+enemy_wait
+LABEL CEKAM
+getactorsdist 6, 10, 0
+if flt[0] > 2, POPOJDI, -1
+GOTO CEKAM
+}
+
+label SKIP
+
+// OBJECTIVES
+act_setstate 12, active
+//enemy_action_follow 1, 3, CROUCH, NONEXT, TARGET, 6
+enemy_action_follow 1, 3, CROUCH, NONEXT
+
+//#####################
+//##  SERVICE STATION      ##
+//#####################
+// Music
+act_setstate 17, active
+debug_text "Paulie: Jsme u Servisu"
+
+//#####################
+//## PRIJEZD K SERVISU   ##
+//#####################
+// detector_smich
+act_setstate 14, active
+// COMPASS
+setcompass -1
+//detector_TommySTOP - nyni jej zapina prijeti k servisu
+//act_setstate 11, active
+enemy_usecar
+frm_seton 7, 0
+enemy_look 1
+enemy_wait
+// SAVE
+autosavegamefull 5145
+debug_text "Paulie: GAME SAVED"
+[debug_me]
+commandblock 1
+findactor 4, "vrata02"
+door_lock 4, 1
+door_enableus 4, 0
+human_looktoactor 6, 1, 1
+// Vypnout zvuk deste
+frm_seton 7, 0
+// Vypnuti vyrazenych dveri pro pripad ze player hral predchozi save a hraje 
+// tuto cast znovu
+frm_seton 8, 0
+// Pro pripad ze by player vykopl dvere sam
+let flt[3] = 0
+commandblock 0
+// Detector vykopnuti dveri
+act_setstate 20, active
+// Kdyby se vracel hrac o save drive aby mel zpatky vyrazeny vrata
+frm_seton 9, 1
+frm_seton 2, 0
+wait 500
+enemy_look 1
+enemy_wait
+enemy_talk 07990501
+enemy_wait
+wait 300
+enemy_talk 07990502
+enemy_wait
+setplayerfireevent 6, 3
+human_looktoactor 6
+
+// Protoze kdyz ted zmackne player AB cely to rozmrda
+setnoanimhit 6, 1
+human_eraseab 6
+enemy_vidim 0
+
+{ DOWN
+if flt[3] ! 0, SKIPVYKOP, -1
+enemy_move 18
+enemy_lookto 51
+enemy_wait
+act_setstate 20, off
+label SKIPNITO
+enemy_playanim "VykopnutiDveri.I3D", 0, SINGLE
+let flt[0] = flt[0] - 323
+let flt[0] = flt[0] / 2
+wait flt[0]
+frm_seton 2, 1
+door_lock 4,0
+door_open 4, 1
+door_enableus 4, 0
+wait flt[0]
+label SKIPVYKOP
+}
+setnoanimhit 6, 0
+human_createab 6
+
+// Aby nedelal picoviny
+enemy_brainwash
+
+// Chuligan co se opira o barel, kvuli sejvu
+act_setstate 7, active
+
+// Zesileni "vitr_random"
+label SEND5
+setevent 15, 1, SEND5
+// dest
+act_setstate 18, active
+
+human_delweapon 6, 9
+enemy_move 52
+detector_issignal 11, SKOK, -1
+label SEND4
+setevent 11, 1, SEND4
+label SKOK
+act_setstate 8, active
+enemy_look 5
+enemy_wait
+human_looktoactor 6, 5, 1
+wait 700
+enemy_talk 07990531
+LABEL SEND
+setevent 5, 1, SEND
+LABEL SEND2
+setevent 7, 1, SEND2
+enemy_wait
+enemy_talk 5, 07990611, 1
+enemy_wait
+human_looktoactor 6
+label SEND3
+setevent 11, 1, SEND3
+act_setstate 16, active
+
+// OBJECTIVES
+act_setstate 12, active
+
+// HONICKA
+label HONICKA
+
+debug_text "Paulie: Vidim 1!"
+enemy_vidim 1
+
+LABEL FOLLOW2
+enemy_action_follow 1, 3, CROUCH, NONEXT
+debug_text "Paulie: Back from Follow"
+goto FOLLOW2
+
+event 1
+debug_text "Paulie: EVENT 1 received (USE_CB)"
+event_use_cb 1
+RETURN
+
+event 2
+commandblock 1
+event_use_cb 0
+debug_text "Paulie: EVENT 2 received (VIDIM 0 + BRAINWASH + ACTIONSCLEAR)"
+human_delweapon 6, 9
+human_delweapon 6, 4
+human_holster 6
+human_addweapon 6, 9, 7, 250
+enemy_brainwash
+commandblock 0
+return
+
+event 3
+debug_text "Paulie: EVENT 3 received"
+enemy_forcescript 6
+enemy_stop
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+if flt[2] =1, FIRE_END, -1
+human_looktoactor 6,1,1
+enemy_look 1
+enemy_wait
+ENEMY_TALK 07990541
+enemy_wait
+let flt[2] = 1
+endofmission 0, 07980002
+human_looktoactor 6
+label FIRE_END
+end
+return
+
+event 4
+event_use_cb 0
+enemy_vidim 1
+return
+
+event 5
+event_use_cb 0
+debug_text "Paulie: EVENT 5 ( ACTIONSCLEAR + BRAINWASH )"
+enemy_actionsclear
+//enemy_brainwash
+return
+
+event 6
+event_use_cb 0
+debug_text "Paulie: EVENT 6 received (VIDIM 0 + BRAINWASH)"
+enemy_vidim 0
+enemy_brainwash
+return
+
+event 100
+debug_text "Paulie: EVENT 100 received"
+enemy_look 1
+enemy_wait
+human_looktoactor 6, 1, 1
+enemy_talk 07990511
+enemy_wait
+human_looktoactor 6
+return
+
+event 101
+debug_text "Paulie: EVENT 101 received"
+enemy_look 1
+enemy_wait
+human_looktoactor 6, 1, 1
+enemy_talk 07990521
+human_looktoactor 6
+enemy_wait
+return
+
+event 200
+if flt[3] ! 0, SKIPKOP, -1
+   let flt[3] = 1
+   event_use_cb 1
+return
+label SKIPKOP
+   event_use_cb 0
+return
+
+event USE_AB, 7970005
+rnd 0, 5
+let flt[0] = flt[0] + 5
+human_looktoactor 6, 1, 1
+goto flt[0]
+label 5
+enemy_talk 950026
+enemy_wait
+goto RET2
+label 6
+enemy_talk 950027
+enemy_wait
+goto RET2
+label 7
+enemy_talk 950028
+enemy_wait
+goto RET2
+label 8
+enemy_talk 950029
+enemy_wait
+goto RET2
+label 9
+enemy_talk 950030
+enemy_wait
+label RET2
+event_use_cb 0
+human_looktoactor 6
+return
+
+LABEL FINISH
+debug_text "Paulie: SCRIPT FINISHED"

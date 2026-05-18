@@ -1,0 +1,13 @@
+autosavegame 5580,0
+dim_act 1
+findactor 0,"AKTIVNI_SUBQUEST"
+
+label 101
+detector_waitforuse 10970000
+detector_issignal 0,NELZE,-1
+autosavegamefull 5585
+goto 101
+
+label NELZE
+console_addtext 3474
+goto 101

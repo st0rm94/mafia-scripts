@@ -1,0 +1,170 @@
+//[debug_me]
+act_setstate -1, inactive
+dim_act 7
+findactor 0, "Paulie"
+getactiveplayer 1
+// 2 Tommyho CARa
+setnullactor 3
+findactor 4, "Enemy1"
+findactor 5, "Enemy5"
+findactor 6, "Sam"
+dim_flt 8
+debug_text "Hlasky spusteny!"
+
+//##################
+// flt[0] = new crashtime, new distance....
+// flt[1] = temp pro vzdalenosti >20 -> hlaska
+// flt[2] = temp pro rychlost >30 -> hlaska
+// flt[3] = old crash time
+// flt[4] = posledni hlaska NENIVAUTE
+// flt[5] = posledni hodnota BOURAL
+// flt[6] = posledni hodnota POMALU
+// flt[7] = posledni hodnote BLIZKO
+//##################
+
+label DETECT
+compareownerwithex 1, 3, NENIVAUTE, -1
+gosub CHECKCRASH
+
+label DETECT2
+human_getowner 1, 2
+car_getspeed 2, 0
+iffltinrange 0, 5, 30, POMALU
+
+label DETECT3
+getactorsdist 0, 4, 0
+if flt[0] < 20, -1, TESTDISTANCE2
+   human_getproperty 4, 0, Energy
+   if flt[0] = 0, -1, BLIZKO
+
+label TESTDISTANCE2
+   getactorsdist 0, 5, 0
+   if flt[0] < 20, -1, DETECT
+      human_getproperty 5, 0, Energy
+      if flt[0] = 0, DETECT, BLIZKO
+
+
+label CHECKCRASH
+get_pm_crashtime 1, 0
+if flt[0] = 0, -1, SKIP2
+let flt[3] = flt[0]
+goto RET
+label SKIP2
+if flt[3] < flt[0], NEXTCRSH, -1
+goto RET
+label NEXTCRSH
+gosub BOURAL
+label RET
+get_pm_crashtime 1, 0
+let flt[3] = flt[0]
+return
+
+label BOURAL
+//debug_text "Neumis ridit ZMRDE!"
+label RERAND
+rnd 0, 5
+let flt[0] = flt[0] + 7
+if flt[0] = flt[5], RERAND, -1
+goto flt[0]
+label 7
+human_talk 0, 01990631, 2
+goto RET4
+label 8
+human_talk 0, 01990661, 2
+goto RET4
+label 9
+human_talk 0, 01990671, 2
+goto RET4
+label 10
+human_talk 0, 01990681, 2
+goto RET4
+label 11
+human_talk 0, 01990691, 2
+label RET4
+let flt[5] = flt[0]
+return
+
+label POMALU
+getactorsdist 0, 4, 0
+if flt[0] < 30, -1, TESTPOMALU
+   human_getproperty 4, 0, Energy
+   if flt[0] = 0, -1, SAY_POMALU
+
+label TESTPOMALU
+getactorsdist 0, 5, 0
+if flt[0] < 30, -1, DETECT
+   human_getproperty 5, 0, Energy
+   if flt[0] = 0, DETECT, SAY_POMALU
+
+label SAY_POMALU
+compareownerwithex 1, 3, DETECT, -1
+let flt[2] = flt[2]  + 1
+if flt[2] < 30, DETECT3, -1
+//debug_text "Jedes pomalu ZMRDE!"
+label RERAND3
+rnd 0, 3
+let flt[0] = flt[0] + 4
+if flt[0] = flt[6], RERAND3, -1
+goto flt[0]
+label 4
+human_talk 0, 01990051, 2
+goto RET3
+label 5
+human_talk 0, 01990041, 2
+goto RET3
+label 6
+human_talk 0, 01990161, 2
+label RET3
+// RESET TO DEFAULTS
+let flt[2] = 0
+let flt[6] = flt[0]
+goto DETECT
+
+label BLIZKO
+compareownerwithex 1, 3, DETECT, -1
+let flt[1] = flt[1] + 1
+if flt[1] < 10, DETECT, -1
+debug_text "Jsou blizko ZMRDE!"
+label RERAND4
+rnd 0, 4
+let flt[0] = flt[0] + 12
+if flt[0] = flt[7], RERAND4, -1
+goto flt[0]
+label 12
+human_talk 0, 01990171, 2
+goto RET1
+label 13
+human_talk 0, 01990161, 2
+goto RET1
+label 14
+human_talk 0, 01990031, 2
+goto RET1
+label 15
+human_talk 0, 01990181, 2
+label RET1
+// RESET TO DEFAULTS
+let flt[1] = 0
+let flt[7] = flt[0]
+goto DETECT
+
+label NENIVAUTE
+label RERAND2
+rnd 0, 3
+let flt[0] = flt[0] + 1
+if flt[0] = flt[4], RERAND2, -1
+goto flt[0]
+label 1
+human_talk 0, 12990071, 1
+goto RET2
+label 2
+human_talk 0, 12990081, 1
+goto RET2
+label 3
+// Sam...
+getactorsdist 6, 1, 0
+if flt[0] < 30, -1, RERAND2
+human_talk 0, 12990091, 1
+label RET2
+let flt[4] = flt[0]
+wait 10000
+goto DETECT

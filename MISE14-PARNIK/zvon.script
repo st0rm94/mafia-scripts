@@ -1,0 +1,13 @@
+//nahodnyzvon
+
+dim_flt 1
+dim_frm 1
+FindFrame 0
+
+label 1
+  rnd 0, 12             
+  let flt[0] = flt[0] * 5000 
+  let flt[0] = flt[0] + 40000 
+  wait flt[0]
+  frm_seton 0, 1
+goto 1

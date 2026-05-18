@@ -1,0 +1,73 @@
+enemy_vidim 0
+
+dim_act 1
+dim_flt 2
+findactor 0,"Tommy"
+
+{ up
+label 100
+wait 100
+goto 100
+}
+
+event 201
+rnd 1,4
+  if flt[1]=0,-1,110
+  enemy_talk 0,00950100
+  enemy_wait
+  goto 103
+  label 110
+  if flt[1]=1,-1,111
+  enemy_talk 0,00950101
+  enemy_wait
+  goto 103
+  label 111
+  if flt[1]=2,-1,112
+  enemy_talk 0,00950102
+  enemy_wait
+  goto 103
+  label 112
+  if flt[1]=3,-1,113
+  enemy_talk 0,00950103
+  enemy_wait
+  label 113
+label 103
+return
+
+event 202
+rnd 1,3
+  if flt[1]=0,-1,120
+  enemy_talk 0,00950246
+  enemy_wait
+  goto 104
+  label 120
+  if flt[1]=1,-1,121
+  enemy_talk 0,00950247
+  enemy_wait
+  goto 104
+  label 121
+  if flt[1]=2,-1,122
+  enemy_talk 0,00950248
+  enemy_wait
+  label 122
+label 104
+return
+
+event 203
+enemy_talk 0,00950171
+enemy_wait
+return
+
+event 204
+rnd 1,2
+  if flt[1]=0,-1,130
+  enemy_talk 0,00950208
+  enemy_wait
+  goto 105
+  label 130
+  if flt[1]=1,-1,131
+  enemy_talk 0,00950209
+  enemy_wait
+  label 131
+label 105
+return

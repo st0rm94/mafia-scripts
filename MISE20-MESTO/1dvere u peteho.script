@@ -1,0 +1,70 @@
+dim_flt 4
+dim_act 4
+dim_frm 3
+findactor 0, "1AsisPZ"
+findactor 1, "1prichod do mistnosti u peteho"
+findactor 2, "Tommy"
+findactor 3, "Box24"
+findframe 0, "buseni"
+findframe 1, "poloha playera u dveri"
+findframe 2, "poloha playera vykopnuti"
+
+let flt[3] = 3
+
+label 7
+detector_waitforuse 19970002, 1
+
+getmissionnumber 1
+if flt[1] = 2, -1, 1
+
+commandblock 1
+player_lockcontrols 1
+actor_setplacement 2, 2
+policemanager_forcearrest 2, 1
+commandblock 0
+person_playanim 2, "vykopnutidveri.i3d", 0, simple
+wait 600
+door_open 3, 1
+wait 1000
+person_stopanim 2
+player_lockcontrols 0
+policemanager_forcearrest 2, 0
+act_setstate 100, off
+
+label 1
+policeitchforplayer 2
+if flt[2] = 1, -1, 6
+goto flt[3]
+
+label 3
+human_talk 2, 00950225, 4
+let flt[3] = flt[3] + 1
+goto 7
+
+label 4
+human_talk 2, 00950225, 4
+let flt[3] = flt[3] + 1
+goto 7
+
+label 5
+human_talk 2, 00950225, 4
+let flt[3] = 3
+goto 7
+
+label 6
+commandblock 1
+act_setstate 0, active
+player_lockcontrols 1
+actor_setplacement 2, 1
+commandblock 0
+frm_seton 0, 1
+person_playanim 2, "buseninadvere02.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_stopanim 2
+player_lockcontrols 0
+
+label 2
+setevent 0, 1, 2
+act_setstate 1, active
+act_setstate 100, off

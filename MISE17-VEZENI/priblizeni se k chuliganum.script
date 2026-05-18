@@ -1,0 +1,64 @@
+dim_flt 1
+dim_act 10
+dim_frm 15
+findactor 0, "houmles1.1"
+findactor 1, "houmles2.2"
+findactor 2, "houmles3.1"
+findactor 3, "houmles5.1"
+findactor 4, "houmles4.1"
+findactor 5, "flasa"
+findactor 6, "houmles7.1"
+findactor 7, "Hoolig3"
+findactor 8, "aktivace druheho patra"
+findactor 9, "chuligan zabehnuti do dveri"
+
+findframe 0, "houmles4.2"
+findframe 1, "houmles3.1"
+findframe 2, "houmles3.2"
+findframe 3, "houmles3.3"
+findframe 4, "houmles4.1"
+findframe 5, "houmles5.1"
+findframe 6, "houmles5.2"
+findframe 7, "houmles5.3"
+findframe 8, "drevo"
+findframe 9, "houmles2.1"
+findframe 10, "houmles2.2"
+findframe 11, "houmles1.1"
+findframe 12, "houmles1.2"
+findframe 13, "houmles7.1"
+findframe 14, "houmles7.2"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+label 2
+setevent 7, 1, 2
+
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 8, active
+act_setstate 9, active
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+act_setstate 100, off

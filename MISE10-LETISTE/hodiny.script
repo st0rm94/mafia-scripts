@@ -1,0 +1,10 @@
+//pravidelny tikot
+
+dim_frm 1
+FindFrame 0, "hodiny"
+
+label 10
+  wait 1000
+  frm_seton 0, 1
+goto 10
+end

@@ -1,0 +1,39 @@
+dim_flt 1
+dim_act 2
+findactor 0,"TommyTAXIDRIVER"
+findactor 1,"Czena"
+
+enemy_vidim 0
+
+enemy_playanim "Gestikulace02.i3", 0
+{ down
+label 101
+wait 25000
+goto 101
+}
+
+enemy_talk 02950007
+enemy_wait
+enemy_talk 1,02950008
+enemy_wait
+enemy_talk 02950009
+enemy_wait
+enemy_talk 1,02950010
+enemy_wait
+enemy_talk 02950011
+enemy_wait
+enemy_talk 1,02950012
+enemy_wait
+enemy_talk 02950013
+enemy_wait
+enemy_move 18
+end
+
+event 202
+return
+
+event 201
+human_stoptalk 1
+enemy_talk 1,02950014
+enemy_wait
+enemy_action_runaway 0,100

@@ -1,0 +1,89 @@
+dim_flt 1
+dim_act 2
+dim_frm 25
+findactor 0, "BnkO"
+findactor 1, "Bclerk"
+
+findframe 0, "Object10"
+findframe 1, "Mesh66"
+findframe 2, "Mesh65"
+findframe 3, "Mesh64"
+findframe 4, "Mesh62"
+findframe 5, "Mesh38"
+findframe 6, "Mesh39"
+findframe 7, "Mesh37"
+findframe 8, "Object72"
+findframe 9, "Object59"
+findframe 10, "Object23"
+findframe 11, "Object22"
+findframe 12, "Object16"
+findframe 13, "Mesh63"
+findframe 14, "Mesh105"
+findframe 15, "Mesh104"
+findframe 16, "Mesh103"
+findframe 17, "Object15"
+findframe 18, "Object28"
+findframe 19, "Mesh17"
+findframe 20, "Object29"
+findframe 21, "Mesh36"
+findframe 22, "Object24"
+findframe 23, "Object08"
+findframe 24, "Object25"
+
+label 1
+frm_ison 0, 0
+if flt[0] = 1, -1, 2
+frm_ison 1, 0
+if flt[0] = 1, -1, 2
+frm_ison 2, 0
+if flt[0] = 1, -1, 2
+frm_ison 3, 0
+if flt[0] = 1, -1, 2
+frm_ison 4, 0
+if flt[0] = 1, -1, 2
+frm_ison 5, 0
+if flt[0] = 1, -1, 2
+frm_ison 6, 0
+if flt[0] = 1, -1, 2
+frm_ison 7, 0
+if flt[0] = 1, -1, 2
+frm_ison 8, 0
+if flt[0] = 1, -1, 2
+frm_ison 9, 0
+if flt[0] = 1, -1, 2
+frm_ison 10, 0
+if flt[0] = 1, -1, 2
+frm_ison 11, 0
+if flt[0] = 1, -1, 2
+frm_ison 12, 0
+if flt[0] = 1, -1, 2
+frm_ison 13, 0
+if flt[0] = 1, -1, 2
+frm_ison 14, 0
+if flt[0] = 1, -1, 2
+frm_ison 15, 0
+if flt[0] = 1, -1, 2
+frm_ison 16, 0
+if flt[0] = 1, -1, 2
+frm_ison 17, 0
+if flt[0] = 1, -1, 2
+frm_ison 18, 0
+if flt[0] = 1, -1, 2
+frm_ison 19, 0
+if flt[0] = 1, -1, 2
+frm_ison 20, 0
+if flt[0] = 1, -1, 2
+frm_ison 21, 0
+if flt[0] = 1, -1, 2
+frm_ison 22, 0
+if flt[0] = 1, -1, 2
+frm_ison 23, 0
+if flt[0] = 1, -1, 2
+frm_ison 24, 0
+if flt[0] = 1, 1, -1
+
+label 2
+setevent 0, 3, 2
+
+label 3
+setevent 1, 2, 3

@@ -1,0 +1,104 @@
+dim_act 6
+dim_frm 1
+dim_flt 1
+findactor 0,"fuckcar"
+findactor 1,"activate_fuckoff"
+findactor 2,"detector_fuckoff"
+findactor 3,"AKTIVNI_SUBQUEST"
+findactor 5,"fuckoff_badend"
+findactor 4,"misto_pro_bednu"
+
+findframe 0,"fuckcar"
+
+frm_seton 0,0
+car_invisible 0,1
+car_enableus 0,0
+enemy_vidim 0
+
+label START
+{ down
+label 101
+enemy_playanim "Mavani01.I3D"
+wait 30000
+goto 101
+}
+detector_issignal 3,START,-1
+
+detector_setsignal 3,1
+
+enemy_stopanim
+frm_seton 0,1
+car_invisible 0,0
+
+human_eraseab 1
+act_setstate 2,active
+act_setstate 5,active
+
+mission_objectives 22930010
+
+{ down
+label 102
+wait 50000
+goto 102
+}
+
+mission_objectivesclear
+mission_objectives 22930020
+
+human_changeanim 1,"walk1.i3d","ChuzeRuceZaZady1.I3D"
+
+let flt[0]=0
+
+enemy_move 100
+enemy_move 101
+enemy_move 102
+enemy_move 103
+enemy_move 104
+enemy_move 105
+
+enemy_move 106
+enemy_lookto 107
+enemy_wait
+
+
+{ down
+label 103
+if flt[0]=1,SKIP,-1
+wait 50000
+goto 103
+label SKIP
+}
+
+car_enableus 0,1
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar O
+wait 3000
+mission_objectivesclear
+setevent 5,202,-1
+autosavegamefull 5590
+
+act_setstate 4,active
+
+label XX
+wait 60000
+goto XX
+end
+
+
+event use_ab,10970007
+detector_issignal 3,NELZE,-1
+autosavegamefull 5590
+goto JMP01
+label NELZE
+console_addtext 3474
+label JMP01
+return
+
+event 201
+let flt[0]=1
+return

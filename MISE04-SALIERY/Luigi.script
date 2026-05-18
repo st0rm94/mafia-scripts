@@ -1,0 +1,75 @@
+commandblock 1
+dim_flt 3
+dim_act 8
+dim_frm 1
+findactor 0,"Tommy"
+findactor 1,"Luigi"
+findactor 2, "VincenzoHIGH"
+findactor 3, "Salieri"
+findactor 4, "frank"
+findactor 5, "Ralph"
+findactor 6, "Sam"
+findactor 7, "Paulie"
+
+findframe 0, "L_utirani"
+frm_seton 0, 0
+
+let flt[0]=1
+human_addweapon 1,11,8,32
+human_set8slot 1,1
+human_holster 1
+
+
+enemy_group_new 2
+enemy_group_add 2,1
+enemy_group_add 2,2
+enemy_group_add 2,3
+enemy_group_add 2,4
+enemy_group_add 2,5
+enemy_group_add 2,6
+enemy_group_add 2,7
+commandblock 0
+
+{ up
+if flt[1]=1,102,-1
+label 101
+enemy_playanim "x barman stativ.I3D",0
+wait 15000
+frm_seton 0, 1
+enemy_playanim "x barman stul.I3D",0
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101
+label 102
+}
+
+{ up
+label C01
+enemy_look 0
+wait 2000
+goto C01
+}
+end
+
+
+event use_ab,10970008
+human_looktoactor 1,0,1
+rnd 0,3
+  if flt[0]=0,-1,113
+  enemy_talk 00950060
+  label 113
+  if flt[0]=1,-1,114
+  enemy_talk 00950061
+  label 114
+  if flt[0]=2,-1,115
+  enemy_talk 00950062
+  label 115
+enemy_wait
+human_looktoactor 1
+return
+
+event 1000
+label BLBOST
+enemy_action_fire 0
+wait 5000
+goto BLBOST

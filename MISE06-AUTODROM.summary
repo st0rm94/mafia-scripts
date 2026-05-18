@@ -1,0 +1,127 @@
+# .dnc extraction summary
+# source        : MISE06-AUTODROM.dnc  (3566 bytes, main)
+# source        : MISE06-AUTODROM-InitScripts.dnc  (284 bytes, init)
+# actors_total  : 31
+# init_records  : 2
+# scripts_found : 5
+
+# main-container actor type-code distribution
+#   type    5  count=3  script
+#   type   28  count=26  
+#   type   35  count=2  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 36
+# total invocations: 94
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    10  label
+     8  findframe    [casings: FindFrame, findframe]
+     8  if
+     7  frm_seton
+     6  commandblock
+     6  wait
+     4  dim_flt
+     4  dim_frm
+     3  end
+     3  frm_linkto
+     2  act_setstate
+     2  detector_inrange
+     2  dim_act
+     2  endofmission
+     2  findactor
+     2  getmissionnumber
+     2  let
+     2  model_stopanim
+     2  zatmyse
+     1  actor_setplacement
+     1  autosavegame
+     1  change_mission
+     1  cleardifferences
+     1  emitparticle
+     1  goto
+     1  loaddifferences
+     1  mission_objectivesclear
+     1  model_playanim
+     1  racing_mission6_init
+     1  racing_mission6_start
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  rnd
+     1  setmissionnumber
+     1  stopparticle
+
+# ---- per-script command listing ----
+
+[GameDoneStart]  type=init  lines=5  commands=4
+    dim_frm
+    findframe
+    frm_linkto
+    model_stopanim
+
+[GameInitStart]  type=init  lines=7  commands=6
+    dim_flt
+    end
+    getmissionnumber
+    if
+    label
+    racing_mission6_init
+
+[dav]  type=5  lines=17  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[detector_bugatti]  type=5  lines=40  commands=18
+    act_setstate
+    actor_setplacement
+    commandblock
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    emitparticle
+    findactor
+    findframe
+    frm_linkto
+    frm_seton
+    if
+    label
+    model_playanim
+    model_stopanim
+    stopparticle
+    wait
+
+[xvlajka2]  type=5  lines=55  commands=24
+    act_setstate
+    autosavegame
+    change_mission
+    cleardifferences
+    commandblock
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    endofmission
+    findactor
+    findframe
+    frm_seton
+    getmissionnumber
+    if
+    label
+    loaddifferences
+    mission_objectivesclear
+    racing_mission6_start
+    recloadfull
+    recunload
+    recwaitforend
+    setmissionnumber
+    zatmyse

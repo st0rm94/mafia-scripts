@@ -1,0 +1,19 @@
+dim_act 2
+dim_frm 1
+findactor 0, ""
+findactor 1, "TruckA5pristav"
+findframe 0, "navadeni trucku 1"
+
+enemy_vidim 0
+
+human_force_settocar 0, 1, 0
+
+act_setstate 100, inactive
+
+enemy_car_moveto 1, 0
+
+label 1
+enemy_usecar
+compareownerwith 1, 1, -1
+
+enemy_vidim 1

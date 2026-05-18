@@ -1,0 +1,14 @@
+//nahodny kasel
+
+dim_flt 1
+dim_frm 1
+FindFrame 0, "kasel"
+
+label 10
+  rnd 0, 10
+  let flt[0] = flt[0] * 3200
+  let flt[0] = flt[0] + 12000
+  wait flt[0]
+  frm_seton 0, 1
+goto 10
+end

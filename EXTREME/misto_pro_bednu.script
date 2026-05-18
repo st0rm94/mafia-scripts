@@ -1,0 +1,51 @@
+act_setstate -1,inactive
+dim_flt 4
+dim_act 3
+findactor 0,"activate_fuckoff"
+findactor 1,"fuckcar"
+findactor 2,"Tommy"
+
+fuckingbox_add 0,"bednakl"
+fuckingbox_recompile
+fuckingbox_add_dest 0,"misto_pro_bednu"
+
+label 100
+wait 1000
+detector_inrange 3,10
+if flt[3]=2,-1,100
+
+mission_objectivesclear
+mission_objectives 22930021
+
+label 101
+wait 1000
+fuckingbox_getnumdest 0,2
+if flt[2]=0,-1,101
+
+setevent 0,201,-1
+
+act_setstate -1,inactive
+
+let flt[1]=60
+
+label 102
+wait 1000
+human_getproperty 0,0,Energy
+if flt[0]=0,BOMBA,-1
+let flt[1]=flt[1]-1
+if flt[1]=0,-1,102
+end
+
+label BOMBA
+
+let flt[1]=13
+label 103
+wait 5000
+compareownerwithex 2,1,BOOM,-1
+let flt[1]=flt[1]-1
+if flt[1]=0,-1,103
+end
+
+label BOOM
+mission_objectivesclear
+car_explosion 1

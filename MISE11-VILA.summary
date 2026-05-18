@@ -1,0 +1,1895 @@
+# .dnc extraction summary
+# source        : MISE11-VILA.dnc  (97821 bytes, main)
+# source        : MISE11-VILA-InitScripts.dnc  (691 bytes, init)
+# actors_total  : 165
+# init_records  : 2
+# scripts_found : 123
+
+# main-container actor type-code distribution
+#   type    4  count=1  
+#   type    5  count=107  script
+#   type    6  count=42  
+#   type    9  count=1  
+#   type   27  count=14  human (scripted NPC)
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 98
+# total invocations: 4240
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+   769  frm_seton    [casings: FRM_SETON, frm_seton]
+   567  findframe    [casings: FINDFRAME, FindFrame, findframe]
+   439  setlmlevel    [casings: SETLMLEVEL]
+   270  findactor    [casings: FINDACTOR, findactor]
+   238  commandblock    [casings: COMMANDBLOCK, commandblock]
+   236  label
+   140  detector_setsignal    [casings: DETECTOR_SETSIGNAL, detector_setsignal]
+   137  goto
+   120  wait
+   107  dim_act    [casings: DIM_ACT, dim_act]
+    99  dim_frm    [casings: DIM_FRM, dim_frm]
+    96  act_setstate    [casings: ACT_SETSTATE, act_setstate]
+    89  playsound    [casings: PLAYSOUND]
+    71  enemy_move
+    59  detector_issignal    [casings: DETECTOR_ISSIGNAL, detector_issignal]
+    55  if
+    54  detector_waitforuse    [casings: DETECTOR_WAITFORUSE, detector_waitforuse]
+    52  setevent
+    49  enemy_use_detector
+    39  enemy_playanim
+    36  enemy_wait
+    36  event
+    35  enemy_lookto
+    34  dim_flt
+    34  return
+    33  detector_waitforhit    [casings: DETECTOR_WAITFORHIT]
+    32  human_talk
+    30  let
+    20  event_use_cb
+    18  end
+    16  human_getproperty
+    15  getenemyaistate
+    13  human_addweapon
+    10  door_open
+    10  {
+    10  }
+     9  enemy_vidim
+     8  enemy_action_fire
+     8  enemy_forcescript
+     8  enemy_group_add
+     8  enemy_talk
+     7  door_enableus
+     7  stream_fadevol
+     6  enemy_look
+     6  zatmyse
+     5  detector_inrange
+     5  enemy_brainwash
+     5  getactorsdist
+     5  human_isweapon
+     4  actor_setplacement
+     4  car_enableus
+     4  compareownerwithex
+     4  door_lock
+     4  endofmission
+     4  human_looktoactor
+     3  mission_objectives
+     3  rnd
+     3  stream_play
+     2  change_mission
+     2  character_push
+     2  createweaponfromframe
+     2  enemy_car_moveto
+     2  enemy_group_new
+     2  enemy_stop
+     2  human_force_settocar
+     2  human_set8slot
+     2  mission_objectivesclear
+     2  player_lockcontrols
+     2  stream_create
+     2  stream_stop
+     1  autosavegame
+     1  autosavegamefull
+     1  character_pop
+     1  cleardifferences
+     1  console_addtext
+     1  enemy_action_follow
+     1  enemy_actionsclear
+     1  enemy_changeanim
+     1  enemy_lockstate
+     1  enemy_move_to_car
+     1  enemy_usecar
+     1  game_nightmission
+     1  garage_enablesteal
+     1  human_activateweapon
+     1  human_anyweaponinhand
+     1  human_delweapon
+     1  human_fromcar
+     1  human_getowner
+     1  human_holster
+     1  human_setproperty
+     1  loaddifferences
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  setmissionnumber
+     1  setnoanimhit
+     1  setplayerfireevent
+     1  wingman_setindicator
+
+# ---- per-script command listing ----
+
+[2x load mise11-mesto2]  type=5  lines=90  commands=28
+    actor_setplacement
+    change_mission
+    character_push
+    compareownerwithex
+    detector_waitforuse
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    endofmission
+    event
+    findactor
+    findframe
+    getactorsdist
+    goto
+    human_addweapon
+    human_force_settocar
+    human_fromcar
+    human_getowner
+    human_getproperty
+    human_isweapon
+    human_talk
+    if
+    label
+    let
+    return
+    wait
+    zatmyse
+
+[9lustr]  type=5  lines=25  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr02]  type=5  lines=31  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr04]  type=5  lines=32  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr06]  type=5  lines=31  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr2]  type=5  lines=45  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr3]  type=5  lines=24  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr4]  type=5  lines=22  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr5]  type=5  lines=25  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[9lustr6]  type=5  lines=25  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[Bitch2]  type=27  lines=26  commands=19
+    detector_issignal
+    dim_act
+    dim_flt
+    enemy_playanim
+    enemy_use_detector
+    enemy_vidim
+    event
+    event_use_cb
+    findactor
+    goto
+    human_getproperty
+    human_talk
+    if
+    label
+    return
+    setnoanimhit
+    wait
+    {
+    }
+
+[Enemy]  type=27  lines=9  commands=8
+    act_setstate
+    dim_act
+    end
+    enemy_lookto
+    enemy_move
+    findactor
+    goto
+    label
+
+[Enemy04K]  type=27  lines=22  commands=16
+    dim_act
+    enemy_action_fire
+    enemy_brainwash
+    enemy_playanim
+    enemy_vidim
+    event
+    event_use_cb
+    findactor
+    goto
+    human_addweapon
+    human_set8slot
+    label
+    return
+    wait
+    {
+    }
+
+[Enemy08K]  type=27  lines=99  commands=30
+    commandblock
+    createweaponfromframe
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_action_fire
+    enemy_group_add
+    enemy_group_new
+    enemy_look
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_activateweapon
+    human_addweapon
+    human_delweapon
+    human_holster
+    human_set8slot
+    human_talk
+    label
+    let
+    return
+    setevent
+    wait
+
+[Enemy08K3]  type=27  lines=65  commands=18
+    compareownerwithex
+    dim_act
+    dim_flt
+    enemy_action_fire
+    enemy_forcescript
+    enemy_look
+    enemy_lookto
+    enemy_move
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    goto
+    label
+    return
+    wait
+    {
+    }
+
+[Enemy09K]  type=27  lines=89  commands=24
+    detector_issignal
+    dim_act
+    dim_flt
+    enemy_action_fire
+    enemy_actionsclear
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_stop
+    enemy_use_detector
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    goto
+    human_addweapon
+    human_talk
+    if
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[Enemy10K]  type=27  lines=27  commands=11
+    dim_act
+    enemy_action_fire
+    enemy_move
+    enemy_playanim
+    event
+    findactor
+    goto
+    human_looktoactor
+    label
+    return
+    wait
+
+[Enemy10K2]  type=27  lines=29  commands=17
+    dim_act
+    dim_flt
+    enemy_action_fire
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    goto
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[Enemy11K]  type=27  lines=40  commands=18
+    act_setstate
+    commandblock
+    dim_act
+    dim_flt
+    enemy_group_add
+    enemy_group_new
+    enemy_lockstate
+    enemy_lookto
+    enemy_move
+    enemy_wait
+    findactor
+    getenemyaistate
+    goto
+    human_getproperty
+    human_talk
+    if
+    label
+    setevent
+
+[Enemy11K2]  type=27  lines=19  commands=13
+    dim_act
+    dim_flt
+    enemy_action_fire
+    enemy_brainwash
+    enemy_playanim
+    enemy_vidim
+    event
+    findactor
+    goto
+    human_addweapon
+    label
+    return
+    wait
+
+[Kasar]  type=27  lines=133  commands=39
+    act_setstate
+    car_enableus
+    commandblock
+    console_addtext
+    detector_issignal
+    detector_setsignal
+    dim_act
+    dim_flt
+    dim_frm
+    door_enableus
+    door_lock
+    door_open
+    enemy_action_follow
+    enemy_forcescript
+    enemy_look
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    garage_enablesteal
+    getactorsdist
+    goto
+    human_looktoactor
+    human_talk
+    if
+    label
+    let
+    return
+    setevent
+    wait
+    {
+    }
+
+[Radni]  type=27  lines=45  commands=27
+    act_setstate
+    car_enableus
+    compareownerwithex
+    dim_act
+    dim_flt
+    dim_frm
+    door_open
+    enemy_brainwash
+    enemy_car_moveto
+    enemy_forcescript
+    enemy_move
+    enemy_move_to_car
+    enemy_talk
+    enemy_use_detector
+    enemy_usecar
+    enemy_vidim
+    event
+    event_use_cb
+    findactor
+    findframe
+    goto
+    label
+    return
+    setevent
+    wait
+    {
+    }
+
+[Serv]  type=27  lines=143  commands=26
+    dim_act
+    dim_flt
+    dim_frm
+    enemy_brainwash
+    enemy_changeanim
+    enemy_forcescript
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_vidim
+    enemy_wait
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_talk
+    if
+    label
+    let
+    return
+    setevent
+    wait
+    {
+    }
+
+[arrow detector]  type=5  lines=26  commands=15
+    act_setstate
+    car_enableus
+    detector_waitforuse
+    dim_act
+    dim_flt
+    end
+    event
+    findactor
+    getactorsdist
+    goto
+    human_talk
+    if
+    label
+    setevent
+    wait
+
+[autosave]  type=5  lines=4  commands=3
+    autosavegame
+    mission_objectives
+    mission_objectivesclear
+
+[cas]  type=5  lines=33  commands=7
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    wait
+
+[cvrcek1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[det trezor]  type=5  lines=115  commands=28
+    act_setstate
+    autosavegamefull
+    cleardifferences
+    commandblock
+    createweaponfromframe
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_flt
+    dim_frm
+    door_enableus
+    door_open
+    end
+    findactor
+    findframe
+    frm_seton
+    getactorsdist
+    goto
+    human_talk
+    if
+    label
+    loaddifferences
+    player_lockcontrols
+    recloadfull
+    recunload
+    recwaitforend
+    setevent
+    wait
+
+[detector]  type=5  lines=8  commands=7
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+
+[detector2]  type=5  lines=9  commands=7
+    detector_inrange
+    dim_act
+    dim_flt
+    goto
+    if
+    label
+    wait
+
+[detector3]  type=5  lines=43  commands=10
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    getenemyaistate
+    human_talk
+    if
+    label
+    wait
+
+[devka]  type=5  lines=8  commands=7
+    detector_inrange
+    detector_setsignal
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+
+[energymetr]  type=5  lines=25  commands=9
+    dim_act
+    dim_flt
+    endofmission
+    findactor
+    human_getproperty
+    human_talk
+    if
+    label
+    wait
+
+[gameinitend]  type=init  lines=29  commands=8
+    character_pop
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    human_addweapon
+    setmissionnumber
+    wingman_setindicator
+
+[gameinitstart]  type=init  lines=1  commands=1
+    game_nightmission
+
+[hmyz]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[hmyzL]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[hodiny3]  type=5  lines=10  commands=7
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    wait
+
+[holster]  type=5  lines=12  commands=10
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    getenemyaistate
+    human_setproperty
+    if
+    label
+
+[holster2]  type=5  lines=11  commands=9
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    getenemyaistate
+    if
+    label
+
+[load mise11-mesto2]  type=5  lines=34  commands=16
+    act_setstate
+    character_push
+    commandblock
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    getactorsdist
+    goto
+    human_isweapon
+    human_talk
+    if
+    label
+    setevent
+    wait
+
+[music]  type=5  lines=60  commands=15
+    commandblock
+    detector_issignal
+    dim_act
+    dim_flt
+    event
+    findactor
+    goto
+    human_getproperty
+    if
+    label
+    return
+    stream_create
+    stream_fadevol
+    stream_play
+    stream_stop
+
+[obectives2]  type=5  lines=10  commands=9
+    dim_act
+    dim_flt
+    findactor
+    human_isweapon
+    if
+    label
+    mission_objectives
+    mission_objectivesclear
+    wait
+
+[po retry]  type=27  lines=90  commands=11
+    act_setstate
+    commandblock
+    dim_act
+    dim_frm
+    enemy_use_detector
+    enemy_vidim
+    findactor
+    findframe
+    frm_seton
+    wait
+    zatmyse
+
+[prokurator me vidi]  type=5  lines=27  commands=8
+    commandblock
+    dim_act
+    dim_flt
+    findactor
+    getenemyaistate
+    if
+    label
+    setevent
+
+[rozvadec]  type=5  lines=215  commands=21
+    commandblock
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_flt
+    dim_frm
+    door_enableus
+    door_open
+    event
+    findactor
+    findframe
+    frm_seton
+    goto
+    human_talk
+    if
+    label
+    let
+    return
+    setevent
+    setlmlevel
+    wait
+
+[ruseni zvuku]  type=5  lines=49  commands=13
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    getenemyaistate
+    goto
+    if
+    label
+    setevent
+    wait
+
+[shot]  type=5  lines=29  commands=10
+    commandblock
+    detector_setsignal
+    dim_act
+    end
+    event
+    findactor
+    goto
+    label
+    setevent
+    setplayerfireevent
+
+[sing]  type=5  lines=16  commands=12
+    dim_act
+    dim_flt
+    dim_frm
+    end
+    findactor
+    findframe
+    frm_seton
+    getenemyaistate
+    human_getproperty
+    if
+    label
+    setevent
+
+[vykop]  type=5  lines=24  commands=13
+    act_setstate
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_flt
+    door_enableus
+    door_lock
+    door_open
+    findactor
+    goto
+    human_isweapon
+    if
+    label
+
+[vykop2]  type=5  lines=22  commands=14
+    act_setstate
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_flt
+    door_enableus
+    door_lock
+    door_open
+    end
+    findactor
+    goto
+    human_isweapon
+    if
+    label
+
+[vypinac10]  type=5  lines=53  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac11]  type=5  lines=44  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac12]  type=5  lines=36  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac13]  type=5  lines=52  commands=11
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac14]  type=5  lines=84  commands=15
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    event
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    return
+    setlmlevel
+
+[vypinac15]  type=5  lines=44  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac16]  type=5  lines=73  commands=15
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    event
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    return
+    setlmlevel
+
+[vypinac17]  type=5  lines=77  commands=15
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    event
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    return
+    setlmlevel
+
+[vypinac18]  type=5  lines=39  commands=12
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac19]  type=5  lines=41  commands=12
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac20]  type=5  lines=41  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac21]  type=5  lines=34  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac22]  type=5  lines=35  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac23]  type=5  lines=44  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac24]  type=5  lines=39  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac25]  type=5  lines=37  commands=12
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac26]  type=5  lines=39  commands=12
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac27]  type=5  lines=34  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac28]  type=5  lines=41  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac29]  type=5  lines=34  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac3]  type=5  lines=84  commands=18
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    return
+    setlmlevel
+    {
+    }
+
+[vypinac30]  type=5  lines=41  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac31]  type=5  lines=35  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac32]  type=5  lines=42  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac33]  type=5  lines=36  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac34]  type=5  lines=39  commands=12
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac35]  type=5  lines=41  commands=12
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac36]  type=5  lines=58  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac37]  type=5  lines=47  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac38]  type=5  lines=47  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac39]  type=5  lines=47  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac4]  type=5  lines=58  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac40]  type=5  lines=47  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac41]  type=5  lines=47  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac42]  type=5  lines=47  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac43]  type=5  lines=47  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac44]  type=5  lines=40  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac45]  type=5  lines=58  commands=18
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    event
+    event_use_cb
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    return
+    setlmlevel
+    {
+    }
+
+[vypinac46]  type=5  lines=42  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac47]  type=5  lines=35  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac48]  type=5  lines=46  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac5]  type=5  lines=35  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac6]  type=5  lines=42  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac7]  type=5  lines=66  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac8]  type=5  lines=54  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[vypinac9]  type=5  lines=44  commands=13
+    commandblock
+    detector_issignal
+    detector_setsignal
+    detector_waitforuse
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    goto
+    label
+    playsound
+    setlmlevel
+
+[xsvetlo ]  type=5  lines=25  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 01 on]  type=5  lines=24  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 04]  type=5  lines=27  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 06]  type=5  lines=24  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 07]  type=5  lines=24  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 09]  type=5  lines=21  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10]  type=5  lines=21  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on]  type=5  lines=26  commands=11
+    act_setstate
+    commandblock
+    detector_setsignal
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on10]  type=5  lines=26  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on2]  type=5  lines=29  commands=11
+    act_setstate
+    commandblock
+    detector_setsignal
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on3]  type=5  lines=28  commands=11
+    act_setstate
+    commandblock
+    detector_setsignal
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on5]  type=5  lines=25  commands=11
+    act_setstate
+    commandblock
+    detector_setsignal
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on6]  type=5  lines=26  commands=11
+    act_setstate
+    commandblock
+    detector_setsignal
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on7]  type=5  lines=29  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on8]  type=5  lines=29  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 10 on9]  type=5  lines=23  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 12]  type=5  lines=24  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 13]  type=5  lines=24  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 13 on]  type=5  lines=24  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 13 on2]  type=5  lines=24  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 13 on4]  type=5  lines=33  commands=10
+    act_setstate
+    commandblock
+    detector_waitforhit
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 14]  type=5  lines=26  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 15]  type=5  lines=30  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[xsvetlo 17]  type=5  lines=24  commands=7
+    act_setstate
+    detector_waitforhit
+    dim_frm
+    findframe
+    frm_seton
+    playsound
+    setlmlevel
+
+[zbran]  type=5  lines=10  commands=9
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    human_anyweaponinhand
+    if
+    label
+
+[zbran2]  type=5  lines=11  commands=10
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    human_getproperty
+    if
+    label
+    wait

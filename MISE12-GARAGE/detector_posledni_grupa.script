@@ -1,0 +1,48 @@
+commandblock 1
+//[debug_me]
+dim_frm 7
+dim_flt 4
+findframe 0, "spodek"
+findframe 1, "Tommy"
+findframe 2, "posledni_grupa_auto_schody"
+findframe 3, "posledni_grupa_auto_vjezd"
+findframe 4, "posledni_grupa_auto_vjezd2"
+findframe 5, "posledni_grupa_auto_kryci"
+findframe 6, "prijezd"
+dim_act 10
+findactor 0, "fordtFor2"
+findactor 1, "chemaFor4"
+findactor 2, "chev4"
+findactor 3, "posledni_grupa_Enemy"
+findactor 4, "posledni_grupa_Enemy2"
+findactor 5, "posledni_grupa_Enemy3"
+findactor 6, "forVfor5"
+findactor 7, "posledni_grupa_Enemy5"
+findactor 8, "posledni_grupa_Enemy6"
+findactor 9, "posledni_grupa_Enemy4"
+frm_seton 6, 0
+commandblock 0
+
+act_setstate -1, inactive
+
+label DETECT
+wait 200
+frm_getpos 1, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, DETECT, -1
+frm_seton 6, 1
+actor_setplacement 0, 2
+car_calm 0
+actor_setplacement 1, 3
+car_calm 1
+actor_setplacement 2, 4
+car_calm 2
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 7, active
+act_setstate 8, active
+act_setstate 9, active
+actor_setplacement 6, 5
+car_calm 6
+debug_text "detector_posledni_grupa: Inicializovana!"

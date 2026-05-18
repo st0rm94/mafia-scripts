@@ -1,0 +1,147 @@
+//[debug_me]
+dim_act 24
+dim_flt 3
+// flt[2] = Posledni hlaska
+findactor 0, "Tommy"
+findactor 1, "detector_1"
+findactor 2, "Paulie"
+findactor 3, "Johny"
+findactor 4, "Billy"
+findactor 5, "Chulig"
+findactor 6, "Hoolig"
+findactor 7, "Hoolig2"
+findactor 8, "SS_POINTER"
+findactor 9, "Hoolig7"
+findactor 10, "detector_TommySTOP"
+findactor 11, "vitr_random"
+findactor 12, "ef1"
+findactor 13, "ef4.2"
+findactor 14, "ef6.3"
+findactor 15
+setnullactor 16
+findactor 17, "detector_citytraffic"
+findactor 18, "Hoolig12"
+findactor 19, "Hoolig13"
+findactor 20, "detector_corkari"
+findactor 21, "civil"
+findactor 22, "Hoolig3"
+findactor 23, "Hoolig4"
+
+//Vypinam se - zapne mne az Biff
+act_setstate -1, inactive
+
+//Kdyz prijedou k servisu
+LABEL DETECT
+wait 200
+detector_inrange 0,18
+if flt[0] = 1,-1, DETECT
+door_lock 8, 0
+act_setstate 1, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+// Zapina mne Paulie kvuli sejvu
+//act_setstate 6, active
+act_setstate 7, active
+act_setstate 9, active
+act_setstate 10, active
+act_setstate 11, active
+act_setstate 12, active
+act_setstate 13, active
+act_setstate 14, active
+act_setstate 17, active
+act_setstate 18, active
+act_setstate 19, active
+act_setstate 20, active
+act_setstate 21, active
+act_setstate 22, active
+act_setstate 23, active
+debug_text "prijeti k servisu: actors active!"
+
+label HLASKY
+wait 200
+gosub CHECKSVESTKY
+getactorsdist 2, 15, 0
+if flt[0] > 30, PREJEL, -1
+if flt[0] < 10, -1, HLASKY
+human_looktoactor 2, 0, 1
+if flt[1] ! 1, -1, SERVICEPRIJEZD
+human_talk 2, 07990481, 1
+let flt[1] = 1
+
+label SERVICEPRIJEZD
+compareownerwithex 2, 16, -1, HLASKY
+enemy_forcescript 2
+end
+
+label PREJEL
+compareownerwithex 0, 16, HLASKY, -1
+rnd 0, 4
+let flt[0] = flt[0]  + 1
+if flt[2] = flt[0], PREJEL, -1
+goto flt[0]
+label 1
+human_talk 2, 950042, 1
+goto RET
+label 2
+human_talk 2, 950043, 2
+goto RET
+label 3
+human_talk 2, 950044, 2
+goto RET
+label 4
+human_talk 2, 950045, 2
+label RET
+let flt[2] = flt[0]
+wait 10000
+goto HLASKY
+
+label CHECKSVESTKY
+//vlvp 0
+//if flt[0] ! 0, -1, RET3
+//policeitchforplayer 0
+//if flt[0] ! 0, -1, RET3
+get_pm_numpredators 0, 0
+if flt[0] ! 0, -1, RET3
+debug_text "Prijeti k servisu: SVESTKY PO NAS JDOU"
+gosub SVESTKY
+goto CHECKSVESTKY
+label RET3
+debug_text "Prijeti k servisu:  SVESTKY PO NAS NEJDOU"
+return
+
+label SVESTKY
+// Paulie 950072-74
+getactorsdist 0, 2, 0
+if flt[0] > 10, TOMMY, -1
+rnd 0, 3
+let flt[0] = flt[0] + 5
+if flt[2] = flt[0], SVESTKY, -1
+goto flt[0]
+label 5
+human_talk 2, 950072 ,2
+goto RET2
+label 6
+human_talk 2, 950073 ,2
+goto RET2
+label 7
+human_talk 2, 950074 ,2
+goto RET2
+label TOMMY
+// Tommy 950223-25
+rnd 0, 3
+let flt[0] = flt[0] + 8
+if flt[2] = flt[0], TOMMY, -1
+goto flt[0]
+label 8
+human_talk 0, 950223 ,2
+goto RET2
+label 9
+human_talk 0, 950224 ,2
+goto RET2
+label 10
+human_talk 0, 950225 ,2
+label RET2
+let flt[2] = flt[0]
+wait 7000
+return

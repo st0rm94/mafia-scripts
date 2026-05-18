@@ -1,0 +1,36 @@
+dim_frm 4
+dim_flt 3
+findframe 0, "prach1"
+findframe 1, "prach2"
+findframe 2, "prach3"
+findframe 3, "prach4"
+
+label 1
+rnd 0, 4
+let flt[0]=flt[0] + 2
+let flt[1]=20000
+goto flt[0]
+
+label 2
+emitparticle 0, 33, flt[2]
+wait flt[1]
+stopparticle flt[2]
+goto 1
+
+label 3
+emitparticle 1, 33, flt[2]
+wait flt[1]
+stopparticle flt[2]
+goto 1
+
+label 4
+emitparticle 2, 33, flt[2]
+wait flt[1]
+stopparticle flt[2]
+goto 1
+
+label 5
+emitparticle 3, 33, flt[2]
+wait flt[1]
+stopparticle flt[2]
+goto 1

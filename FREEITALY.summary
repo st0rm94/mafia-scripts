@@ -1,0 +1,960 @@
+# .dnc extraction summary
+# source        : FREEITALY.dnc  (44511 bytes, main)
+# source        : FREEITALY-InitScripts.dnc  (670 bytes, init)
+# actors_total  : 332
+# init_records  : 3
+# scripts_found : 73
+
+# main-container actor type-code distribution
+#   type    4  count=3  
+#   type    5  count=70  script
+#   type    6  count=2  
+#   type    8  count=29  
+#   type   12  count=1  
+#   type   18  count=4  
+#   type   20  count=2  
+#   type   25  count=3  
+#   type   35  count=218  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 58
+# total invocations: 1056
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+   130  label
+   123  let
+   112  goto
+    70  frm_seton    [casings: FRM_SETON, frm_seton]
+    66  findframe    [casings: FINDFRAME, FindFrame, findframe]
+    65  dim_flt    [casings: DIM_FLT, dim_flt]
+    56  rnd
+    55  wait
+    48  dim_frm    [casings: DIM_FRM, dim_frm]
+    43  if
+    36  end
+    30  console_addtext
+    26  iffltinrange    [casings: IFFLTINRANGE]
+    23  findactor
+    19  dim_act
+    17  freeride_scoreget
+    17  freeride_scoreset
+    17  human_addweapon
+    16  detector_waitforuse
+    13  human_canaddweapon
+    10  commandblock
+     7  settraffsectorsnd    [casings: SetTraffSectorSnd]
+     6  frm_setpos
+     3  human_getowner
+     3  human_holster
+     3  soundfade
+     2  autosavegamefull
+     2  compareownerwithex
+     2  freeride_scoreon
+     2  getactorsdist
+     2  getticktime
+     2  human_getproperty
+     2  human_isweapon
+     2  human_talk
+     2  player_lockcontrols    [casings: PLAYER_LOCKCONTROLS]
+     2  policeitchforplayer
+     1  actor_setplacement
+     1  callsubroutine
+     1  camera_lock
+     1  camera_unlock
+     1  car_calm
+     1  car_forcestop
+     1  car_getspeed
+     1  car_repair
+     1  detector_inrange
+     1  enablemap
+     1  endofmission
+     1  freeride_scoreadd
+     1  freeride_traffsetup
+     1  human_set8slot
+     1  human_setproperty
+     1  isvalidtaxipassenger
+     1  mission_objectives
+     1  mission_objectivesclear
+     1  police_speed_factor
+     1  policemanager_on
+     1  setfreeride
+     1  taxidriver_enable
+
+# ---- per-script command listing ----
+
+[2bbat]  type=5  lines=28  commands=14
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    human_isweapon
+    if
+    label
+    let
+
+[2c]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2coltds]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2grenade3]  type=5  lines=24  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2knife]  type=5  lines=29  commands=14
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    human_isweapon
+    if
+    label
+    let
+
+[2m]  type=5  lines=26  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2mol]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2mosin]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2sawoff]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2shotgun]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2sw]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2sw2]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[2tommy]  type=5  lines=25  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_addweapon
+    human_canaddweapon
+    if
+    label
+    let
+
+[EnergyMeter]  type=5  lines=11  commands=8
+    dim_act
+    dim_flt
+    end
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+
+[GameInitEnd]  type=init  lines=14  commands=9
+    dim_flt
+    dim_frm
+    enablemap
+    findframe
+    frm_setpos
+    let
+    police_speed_factor
+    policemanager_on
+    taxidriver_enable
+
+[GameInitStart]  type=init  lines=2  commands=2
+    callsubroutine
+    freeride_traffsetup
+
+[Salieri_save]  type=5  lines=34  commands=16
+    autosavegamefull
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreon
+    freeride_scoreset
+    goto
+    human_talk
+    if
+    isvalidtaxipassenger
+    label
+    let
+    policeitchforplayer
+
+[TraffSndSect]  type=init  lines=10  commands=1
+    settraffsectorsnd
+
+[bertone_opravna]  type=5  lines=94  commands=29
+    actor_setplacement
+    camera_lock
+    camera_unlock
+    car_calm
+    car_forcestop
+    car_repair
+    commandblock
+    compareownerwithex
+    console_addtext
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    freeride_scoreget
+    freeride_scoreset
+    frm_setpos
+    getactorsdist
+    getticktime
+    goto
+    human_getowner
+    human_talk
+    if
+    label
+    let
+    player_lockcontrols
+    policeitchforplayer
+    wait
+
+[bonus_speed]  type=5  lines=18  commands=11
+    car_getspeed
+    compareownerwithex
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreadd
+    goto
+    human_getowner
+    if
+    label
+    wait
+
+[cheat_freeride]  type=5  lines=2  commands=2
+    detector_waitforuse
+    setfreeride
+
+[dite1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[dite2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_ark1.2]  type=5  lines=25  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_ark3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_down1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_down2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_down3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob1]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_hob2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob4]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_hob5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_z1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_z2]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_z3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef_z4]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[ef_z5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[emeth_1]  type=5  lines=1  commands=0
+
+[emeth_2]  type=5  lines=1  commands=0
+
+[emeth_3]  type=5  lines=1  commands=0
+
+[emeth_4]  type=5  lines=1  commands=0
+
+[horn1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn4]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[horn6]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[lekarna]  type=5  lines=20  commands=13
+    console_addtext
+    detector_waitforuse
+    dim_act
+    dim_flt
+    findactor
+    freeride_scoreget
+    freeride_scoreset
+    goto
+    human_getproperty
+    human_setproperty
+    if
+    label
+    let
+
+[lod_sirena]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[nadr1]  type=5  lines=21  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    soundfade
+    wait
+
+[nadr2]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[nadr4]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[nadr6]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[pes6]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[police1]  type=5  lines=69  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[start]  type=5  lines=22  commands=12
+    autosavegamefull
+    commandblock
+    dim_act
+    dim_flt
+    end
+    findactor
+    freeride_scoreon
+    human_addweapon
+    human_holster
+    human_set8slot
+    mission_objectives
+    mission_objectivesclear
+
+[stavba1.2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[stavba2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[stavba3.2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[vychodef1.1]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[vychodef2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[vychodef3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[zapadef1.1]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[zapadef2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[zapadef3.1]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[zapadef4]  type=5  lines=22  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[zvon1]  type=5  lines=10  commands=7
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    wait
+
+[zvon2]  type=5  lines=15  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    soundfade
+    wait

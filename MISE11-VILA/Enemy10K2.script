@@ -1,0 +1,29 @@
+dim_flt 1
+dim_act 1
+findactor 0, "Tommy"
+
+{ down
+label 1
+enemy_playanim "KoureniAutoStativ.i3d"
+wait 4000
+enemy_playanim "KoureniAutoPotahnuti.i3d", 0
+let flt[0] = flt[0] - 300
+wait flt[0]
+goto 1
+}
+label 2
+goto 2
+
+event 1
+event_use_cb 1
+wait 4000
+enemy_move 226, walk
+enemy_lookto 56
+enemy_wait
+return
+
+
+event 5
+event_use_cb 0
+enemy_action_fire 0
+return

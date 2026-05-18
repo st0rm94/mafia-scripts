@@ -1,0 +1,66 @@
+dim_flt 4
+dim_act 4
+findactor 0, "civil5"
+//findactor 1, "zjisteni auta"
+findactor 2, "Tommy"
+findactor 3, "civil6"
+
+let flt[1] = 3
+
+act_setstate 100, inactive
+
+human_getowner 0, 1
+
+car_switchshowenergy 1, 2
+
+wait 2000
+human_talk 0, 15990501, 2
+human_talk 3, 15990521, 2
+human_talk 3, 15990531, 2
+
+label 1
+getcardamage 1, 0
+
+label 2
+wait 1000
+getcardamage 1, 2
+let flt[3] = flt[0] - flt[2]
+if flt[3] > 0, -1, 2
+compareownerwithex 2, 1, -1, 2
+
+goto flt[1]
+
+label 3
+human_talk 0, 15990502, 2
+human_talk 3, 15990551, 2
+human_talk 3, 15990561, 2
+let flt[1] = flt[1] + 1
+wait 10000
+human_talk 3, 15990511, 2
+wait 5000
+goto 1
+
+label 4
+human_talk 0, 15990503, 2
+human_talk 3, 15990571, 2
+let flt[1] = flt[1] + 1
+wait 10000
+human_talk 3, 15990541, 2
+wait 5000
+goto 1
+
+label 5
+human_talk 0, 15990504, 2
+human_talk 3, 15990581, 2
+let flt[1] = flt[1] + 1
+wait 15000
+goto 1
+
+label 6
+human_talk 0, 15990501, 2
+human_talk 3, 15990591, 2
+let flt[1] = 3
+wait 10000
+human_talk 3, 15990511, 2
+wait 5000
+goto 1

@@ -1,0 +1,45 @@
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+zatmyse 1,1
+
+dim_frm 6
+dim_act 3
+
+// aktivace aut
+findactor 0, "TruckA"
+findactor 1, "TruckA2"
+findactor 2, "TruckB"
+act_setstate 0,active
+act_setstate 1,active
+act_setstate 2,active
+
+findframe 0,"Tommy"
+findframe 1,"Paulie"
+findframe 2,"SalMan01K"
+findframe 3,"SalMan02K"
+findframe 4,"TruckA"
+findframe 5,"TruckA2"
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+loaddifferences "dif09b2.chg"
+recloadfull "record09b2.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 0,1
+frm_seton 1,1
+frm_seton 2,1
+frm_seton 3,1
+frm_seton 4,1
+frm_seton 5,1
+PLAYER_LOCKCONTROLS 0
+zatmyse 0
+commandblock 0

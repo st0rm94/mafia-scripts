@@ -1,0 +1,15 @@
+dim_act 5
+dim_flt 1
+dim_frm 1
+findframe 0, "position_AUTO"
+findactor 0, "Enemy_gr3_ridic"
+findactor 1, "Enemy_gr3_3"
+findactor 2, "Enemy_gr3_4"
+findactor 3, "Enemy_gr3_2"
+findactor 4, "AUTO"
+act_setstate -1, inactive
+
+debug_text "AUTO_start: ACTIVE"
+actor_setplacement 4, 0
+car_calm 4
+act_setstate 0, active

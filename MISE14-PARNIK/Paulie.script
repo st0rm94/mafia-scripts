@@ -1,0 +1,9 @@
+dim_act 2
+findactor 0, ""
+findactor 1, "TommySAILOR"
+
+wait 1000
+enemy_playanim "AutoRidicStativ.i3d"
+label 1
+human_looktoactor 0, 1, 1
+goto 1

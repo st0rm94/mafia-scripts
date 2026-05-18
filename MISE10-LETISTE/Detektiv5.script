@@ -1,0 +1,14 @@
+dim_act 3
+findactor 0, "Box241"
+findactor 1, "Detektiv5"
+findactor 2, "Box242"
+
+//human_addweapon 1, 16, -1, -1
+//door_enableus 2, 0
+act_setstate -1, inactive
+door_lock 0, 0
+door_open 0, 1
+wait 3000
+enemy_move 7, run
+//door_open 0, 0
+//door_lock 0, 1

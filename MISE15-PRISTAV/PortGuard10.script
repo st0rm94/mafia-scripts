@@ -1,0 +1,10 @@
+enemy_podvadim_jak tretera
+dim_act 1
+findactor 0, "Tommy"
+
+label 1
+wait 1000000
+goto 1
+
+event 1
+enemy_action_fire 0

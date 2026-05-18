@@ -1,0 +1,11 @@
+act_setstate 100, inactive
+
+enemy_lockstate panic_freeze
+
+frm_seton 100, 1
+
+enemy_playanim "gesto_05b.i3d"
+
+label 1
+wait 1000000
+goto 1

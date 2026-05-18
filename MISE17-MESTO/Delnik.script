@@ -1,0 +1,72 @@
+dim_flt 2
+dim_act 3
+findactor 0, ""
+findactor 1, "Tommy" 
+findactor 2, "delnik je mrtvy"
+
+enemy_playanim "vyhlizenistativ.i3d"
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+label 5
+
+{ down
+label 2
+wait 2000
+enemy_look 1
+enemy_wait
+goto 2
+}
+
+{ down
+label 4
+wait 1000000
+goto 4
+}
+
+goto 5
+
+event 1
+enemy_stopanim
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_talk 17990084
+enemy_wait
+return
+
+event 2
+enemy_move 1
+enemy_wait
+enemy_lookto 2
+enemy_wait
+enemy_talk 17990083
+enemy_wait
+enemy_move 2
+enemy_wait
+return
+
+event 4
+event_use_cb 1
+enemy_look 1
+enemy_wait
+enemy_playanim "panika leknuti01f.i3d", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "rucevzhuru01.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "rucevzhuru01loop.i3d"
+return
+
+event 5
+event_use_cb 1
+enemy_playanim "rucevzhuru01down.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+return

@@ -1,0 +1,16 @@
+dim_flt 1
+dim_frm 1
+dim_act 1
+findactor 0, "Serv"
+findframe 0, "zpev"
+
+frm_seton 0, 1
+label 1
+getenemyaistate 0, 0
+if flt[0] > 1, 2, -1
+human_getproperty 0, 0, energy
+if flt[0] < 100, -1, 1
+label 2
+frm_seton 0, 0
+setevent 0, 1, -1
+end

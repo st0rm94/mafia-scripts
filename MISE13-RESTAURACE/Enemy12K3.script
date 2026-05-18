@@ -1,0 +1,11 @@
+enemy_lockstate fight_guard, 2
+{ up
+label 1
+goto 1
+}
+
+event 1
+event_use_cb 1
+enemy_lockstate fight_dogfight
+enemy_podvadim_jak tretera
+return

@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 2
+findactor 0, "prd"
+findactor 1, "FrankHIGH"
+
+act_setstate 0, inactive
+label 1
+human_getproperty 1, 0, energy
+wait 360
+if flt[0] = 0, -1, 1
+human_death 1

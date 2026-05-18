@@ -1,0 +1,65 @@
+dim_act 4
+dim_frm 9
+findactor 0, ""
+findactor 1, "deuseJco"
+findactor 2, "detekce chlapka v aute"
+findactor 3, "dverchr"
+findframe 0, "navadeni chlapka"
+findframe 1, "navadeni chlapka 1"
+findframe 2, "deuseJco"
+findframe 3, ""
+findframe 4, "navadeni chlapka 2"
+findframe 5, "navadeni chlapka 3"
+findframe 6, "navadeni chlapka 4"
+findframe 7, "navadeni chlapka 5"
+findframe 8, "navadeni chlapka 6"
+
+act_setstate 100, inactive
+
+frm_seton 2, 1
+frm_seton 3, 1
+human_force_settocar 0, 1, 0
+
+act_setstate 2, active
+
+car_setspeed 1, 30
+
+enemy_car_moveto 1, 4, natvrdo
+
+enemy_car_moveto 1, 5, natvrdo
+
+enemy_car_moveto 1, 6, natvrdo
+
+enemy_car_moveto 1, 7, natvrdo
+
+enemy_car_moveto 1, 8, natvrdo
+
+enemy_car_moveto 1, 1, natvrdo
+
+enemy_car_moveto 1, 0, natvrdo
+
+act_setstate 2, off
+
+label 2
+enemy_usecar
+compareownerwith 1, 2, -1
+
+car_muststeal 1, 1
+
+enemy_move 37
+
+enemy_lookto 45
+enemy_wait
+
+door_open 3, 1
+
+wait 500
+
+enemy_move 45
+
+door_open 3, 0
+
+enemy_move 46 
+
+frm_seton 100, 0
+act_setstate 100, off

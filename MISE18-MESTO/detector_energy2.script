@@ -1,0 +1,88 @@
+dim_act 12
+dim_flt 2
+// flt[1] = 1 Zobrazovani damage indicatoru pro auto zapnuto
+findactor 0, "Tommy"
+findactor 1, "Paulie2"
+findactor 2, "Sam2"
+findactor 3, "Guard"
+findactor 4, "Guard2"
+findactor 5, "Guard3"
+findactor 6, "Guard4"
+findactor 7, "Guard5"
+findactor 8, "Guard6"
+findactor 9, "TruckBx"
+findactor 10, "GuardSpec"
+findactor 11, "GuardSpec2"
+
+// Default pro navrat z pristavu
+car_switchshowenergy 9, 2
+cardamagevisible 1
+let flt[1] = 1
+
+label DETECT
+//iscarusable 9, 0
+//if flt[0] = 0, CARDESTROYED, -1
+getcardamage 9, 0
+if flt[0] < 0.25, CARDESTROYED, -1
+compareownerwithex 0, 9, ZAPNI, VYPNI
+label HELTY
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, PAULIEDEATH, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, SAMDEATH, -1
+human_getproperty 3, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 4, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 5, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 6, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 7, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 8, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 10, 0, Energy
+if flt[0] = 0, -1, DETECT
+human_getproperty 11, 0, Energy
+if flt[0] = 0, -1, DETECT
+debug_text "All enemies are dead !!!"
+detector_setsignal -1, 1
+goto DETECT
+
+label TOMMYDEATH
+wait 3000
+endofmission 0, 18980001
+goto FINISH
+
+label PAULIEDEATH
+endofmission 0, 18980052
+goto FINISH
+
+label SAMDEATH
+endofmission 0, 18980051
+goto FINISH
+
+label CARDESTROYED
+wait 5000
+// druhy test pro jistotu!
+//iscarusable 9, 0
+//if flt[0] = 0, -1, DETECT
+endofmission 0, 18980055
+goto FINISH
+
+label ZAPNI
+if flt[1] = 1, HELTY, -1
+cardamagevisible 1
+let flt[1] = 1
+goto HELTY
+
+label VYPNI
+if flt[1] = 0, HELTY, -1
+cardamagevisible 0
+let flt[1] = 0
+goto HELTY
+
+label FINISH

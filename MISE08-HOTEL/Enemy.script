@@ -1,0 +1,55 @@
+commandblock 1
+dim_flt 2
+dim_act 3
+findactor 0,"Tommy"
+findactor 1,"Enemy"
+findactor 2,"waiter"
+
+human_addweapon 1, 9, 7, 34
+human_holster 1
+commandblock 0
+
+{ down
+label 1
+rnd 0, 10
+let flt[0] = flt[0] * 700
+let flt[0] = flt[0] + 3000
+enemy_playanim "Mise zidle01a.I3D"
+wait flt[0] + 3000
+enemy_playanim "Mise zidle01a.I3D", 0
+wait flt[0] + 83
+
+rnd 0, 10
+let flt[0] = flt[0] * 700
+let flt[0] = flt[0] + 3000
+enemy_playanim "Mise zidle01a.I3D"
+wait flt[0] + 5000
+enemy_playanim "Mise zidle01a.I3D", 0
+wait flt[0] - 500
+goto 1
+}
+
+human_looktoactor 1, 2, 1
+wait 2500
+debug_text "V poradku."
+wait 4500
+human_looktoactor 1
+goto 1
+
+event 1
+return
+
+event use_ab,10970007
+getenemyaistate 1,1
+iffltinrange 1,2,5,120
+HUMAN_LOOKTOACTOR 1, 0, 1
+enemy_talk 08950022
+enemy_wait
+HUMAN_LOOKTOACTOR 1
+label 120
+return
+
+event 201
+human_activateweapon 1,9
+enemy_action_fire 0
+return

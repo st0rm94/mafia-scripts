@@ -1,0 +1,42 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 7
+findactor 0, "Hoolig5"
+findactor 1, "Hoolig6"
+findactor 2, "Paulie"
+findactor 3, "Tommy"
+findactor 4, "Hoolig10"
+findactor 5, "Hoolig11"
+findactor 6, "paulie_sem"
+
+human_addweapon 0, 3, 0, 0
+human_holster 0
+
+act_setstate -1, inactive
+
+commandblock 1
+   act_setstate 6, active
+   act_setstate 4, active
+   act_setstate 5, active
+   enemy_talk 0, 07990621, 1
+   setplayerfireevent -1, 3
+commandblock 0
+
+enemy_playanim "GestoPojdsem02.I3D", 0
+let flt[0] = flt[0] - 249
+wait flt[0]
+enemy_playanim "gun01 stoj ON.I3D", 0
+commandblock 1
+//enemy_talk 2, 07990551
+human_delweapon 2, 9
+human_addweapon 2, 9, 7, 200
+human_activateweapon 2, 9
+commandblock 0
+let flt[0] = flt[0] - 498
+let flt[0] = flt[0] / 2
+wait flt[0]
+human_addweapon 0, 7, 6, 30
+wait flt[0]
+act_setstate 5, active
+enemy_vidim 1
+

@@ -1,0 +1,13 @@
+dim_act 1
+dim_frm 1
+findactor 0, "nesahat merced500K"
+findframe 0, "cil"
+
+car_enableus 0, 0
+
+label 1
+wait 30000
+goto 1
+
+event 1
+enemy_car_moveto 0, 0

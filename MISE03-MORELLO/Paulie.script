@@ -1,0 +1,129 @@
+dim_flt 2
+dim_frm 2
+dim_act 6
+findactor 0,"Tommy"
+findactor 1,"Paulie"
+findactor 2,"PAULIEHO AUTO"
+findactor 3,"zniceni_aut"
+findactor 4,"NULL"
+findactor 5,"preparkovani_paulie"
+
+findframe 0,"destination_paulie"
+findframe 1,"preparkovani_paulie"
+
+human_getowner 1,2
+
+enemy_vidim 0
+let flt[1]=0
+
+label 111
+enemy_action_follow 0,3
+if flt[1]=1,-1,111
+
+compareownerwithex 1,4,-1,VAUTE
+// PESKY
+human_looktoactor 1,0,1
+getactorsdist 0,1,1
+if flt[1]>15,112,-1
+human_talk 1,03990071
+getactorsdist 0,1,1
+if flt[1]>15,112,-1
+human_talk 1,03990072
+getactorsdist 0,1,1
+if flt[1]>15,112,-1
+human_talk 1,03990073
+getactorsdist 0,1,1
+if flt[1]>15,112,-1
+human_talk 1,03990074
+getactorsdist 0,1,1
+if flt[1]>15,112,-1
+human_talk 0,03990081
+goto 112
+
+label VAUTE
+getactorsdist 0,1,1
+if flt[1]>2,112,-1
+human_talk 1,03990071
+getactorsdist 0,1,1
+if flt[1]>2,112,-1
+human_talk 1,03990072
+getactorsdist 0,1,1
+if flt[1]>2,112,-1
+human_talk 1,03990073
+getactorsdist 0,1,1
+if flt[1]>2,112,-1
+human_talk 1,03990074
+getactorsdist 0,1,1
+if flt[1]>2,112,-1
+human_talk 0,03990081
+label 112
+
+human_looktoactor 1
+
+compareownerwithex 1,4,-1,SKIP
+enemy_move 21
+enemy_lookto 20
+label SKIP
+
+{ down
+goto 104
+label 101
+wait 3000
+compareownerwithex 0,2,-1,101
+detector_issignal 3,-1,103
+label FOLLOW
+enemy_action_follow 0,3
+goto FOLLOW
+label 104
+wait 3000
+compareownerwithex 0,2,104,101
+
+label 103
+getactorsdist 0,1,1
+if flt[1]>2,104,-1
+rnd 0,2
+if flt[0]=0,-1,105
+human_talk 1,03990051,2
+goto 104
+label 105
+human_talk 1,03990061,2
+goto 104
+}
+compareownerwithex 1,4,-1,SKIP02
+enemy_action_follow 0,3,nonext
+end
+
+label SKIP02
+getactorsdist 2,5,0
+if flt[0]<13,-1,NOPREPARK
+actor_setplacement 2,1
+label NOPREPARK
+enemy_usecar
+label 102
+enemy_move_to_car 2,0,run
+enemy_usecar 2,0
+compareownerwith 2,-1,102
+
+iscarusable 2,0
+if flt[0]=0,-1,JED
+enemy_action_follow 0,3,nonext
+end
+
+label JED
+ENEMY_CAR_MOVETO 2,0
+//ENEMY_CAR_ESCAPE 2,0,0,-1,1000,1000,1
+enemy_action_follow 0,3,nonext
+end
+
+event 201
+return
+
+event 202
+let flt[1]=1
+return
+
+event 203
+compareownerwithex 1,4,333,-1
+human_getowner 1,2
+label 333
+return

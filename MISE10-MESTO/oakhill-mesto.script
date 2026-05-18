@@ -1,0 +1,50 @@
+  // inicializace
+dim_frm 3
+findframe 0, "primary_ambitown"
+getactivecamera 1
+findframe 2, "oakhill"
+sound_setvolume 0, 0.55
+dim_flt 4
+
+  // kontrola na pritomnost mimo sector
+label _out
+wait 471
+frm_getworldpos 1, 0
+ispointinarea 0, 2, 3
+if flt[3] = 0, _out, -1
+
+  // fade zvuku dolu
+sound_getvolume 0, 0
+label _out_fade
+commandblock 0
+commandblock 1
+getticktime 1
+let flt[1] = flt[1] * 0.0003
+let flt[0] = flt[0] - flt[1]
+sound_setvolume 0, flt[0]
+if flt[0] < 0.2, -1, _out_fade
+commandblock 0
+sound_setvolume 0, 0.2
+
+  // kontrola na pritomnost v sectoru
+label _in
+wait 471
+frm_getworldpos 1, 0
+ispointinarea 0, 2, 3
+if flt[3] = 1, _in, -1
+
+  // fade zvuku nahoru
+sound_getvolume 0, 0
+label _in_fade
+commandblock 0
+commandblock 1
+getticktime 1
+let flt[1] = flt[1] * 0.0003
+let flt[0] = flt[0] + flt[1]
+sound_setvolume 0, flt[0]
+if flt[0] > 0.55, -1, _in_fade
+commandblock 0
+sound_setvolume 0, 0.55
+
+  // cyklus
+goto _out

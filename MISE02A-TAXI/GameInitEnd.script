@@ -1,0 +1,14 @@
+dim_act 6
+findactor 0,"Tommy"
+findactor 1,"taxi"
+findactor 2, "taxi2"
+findactor 3, "Taxikar"
+findactor 4, "A8"
+findactor 5, "A9"
+policemanager_on 980000, 0
+policemanager_add "Tommy"
+police_speed_factor 0.6
+human_force_settocar 0,1,0
+human_force_settocar 3,2,0
+human_force_settocar 5,4,0
+enablemap 1

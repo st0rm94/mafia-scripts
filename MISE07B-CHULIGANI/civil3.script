@@ -1,0 +1,58 @@
+dim_flt 2
+dim_act 2
+getactiveplayer 0
+findactor 1
+human_addweapon 1, 28, 0, 0
+human_holster 1
+act_setstate -1, inactive
+
+{ DOWN
+label FREESTATE
+enemy_playanim "GestZamOtoceni.i3d", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "GestZam02.i3d", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "GestZamStativ.i3d", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "GestZam03.i3d", 0
+let flt[0] = flt[0] - 249
+wait flt[0]
+goto FREESTATE
+}
+if flt[0] = 0, FINISH, -1
+enemy_look 0
+human_looktoactor 1, 0, 1
+enemy_talk 1, 27940002, 1
+enemy_wait
+human_looktoactor 1
+human_eraseab 1
+enemy_naserse 0
+goto FINISH
+
+event ENEMY_TO_AI
+enemy_getstate 0
+if flt[0] > 1, -1, RET
+event_use_cb 1
+return
+human_eraseab 1
+label RET
+event_use_cb 0
+return
+
+event USE_AB
+human_looktoactor 1, 0, 1
+enemy_talk 27940031
+enemy_wait
+human_looktoactor 1
+event_use_cb 0
+return
+
+event 1
+let flt[1] = 1
+event_use_cb 1
+return
+
+LABEL FINISH

@@ -1,0 +1,71 @@
+//[debug_me]
+enemy_vidim 0
+enemy_lockstate PANIC_FREEZE
+dim_flt 3
+dim_act 1
+dim_frm 1
+findactor 0, "civil11M"
+findframe 0, "s_whimper"
+wait 5000
+frm_seton 0, 1
+{ DOWN
+label FREESTATE
+enemy_playanim "gesto2 nogun1e.i3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.i3D", 0
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 1400
+wait flt[0]
+enemy_playanim "gesto2 nogun1c.i3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.i3D", 0
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 1400
+wait flt[0]
+let flt[2] = flt[2] + 1
+if flt[2] > 10, -1, FREESTATE
+}
+if flt[1] = 1, PANIKA, -1
+label SEND
+setevent 0, 2, SEND
+
+{ DOWN
+enemy_move 12
+goto FINISH
+label PANIKA
+label SEND2
+setevent 0, 1, SEND2
+frm_seton 0, 0
+enemy_playanim "Game SaraStativ.I3D"
+rnd 0, 4
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 2000
+wait flt[0]
+}
+enemy_move 12, run
+goto FINISH
+
+event HIT_FROM_PLAYER
+event_use_cb 1
+let flt[1] = 1
+return
+
+event 1
+event_use_cb 1
+let flt[1] = 1
+return
+
+event 2
+event_use_cb 1
+return
+
+label FINISH
+enemy_playanim "DoKryti.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "KrytiLoop.I3D", 0
+enemy_vidim 1

@@ -1,0 +1,25 @@
+dim_frm 2
+dim_act 5
+findframe 0, "point2"
+findframe 1, "music"
+findactor 0, "Box216"
+findactor 1, "Tommy"
+findactor 2, "Carlo"
+findactor 3, "CarlZen"
+findactor 4, "Czena2"
+
+soundfade 1, 1, 0.2, 0.2
+door_enableus 0, 0
+act_setstate -1, inactive
+door_lock 0, 0
+detector_waitforuse 13970000
+player_lockcontrols 1
+actor_setplacement 1, 0
+person_playanim 1, "VykopnutiDveri.i3d"
+wait 900
+door_open 0, 1
+soundfade 1, 100, 0.2, 1
+setevent 3, 1, -1
+setevent 2, 1, -1
+setplayerfireevent 4, 1
+player_lockcontrols 0

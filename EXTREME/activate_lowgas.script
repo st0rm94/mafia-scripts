@@ -1,0 +1,58 @@
+dim_flt 3
+dim_act 4
+findactor 0,"lowgas_end"
+findactor 1,"activate_lowgas"
+findactor 2,"lowgas_car"
+findactor 3,"AKTIVNI_SUBQUEST"
+
+car_enableus 2,0
+enemy_vidim 0
+
+label START
+{ down
+label 101
+enemy_playanim "Mavani01.I3D"
+wait 30000
+goto 101
+}
+if flt[2]=1,START,-1
+detector_issignal 3,START,-1
+
+detector_setsignal 3,1
+act_setstate 0,active
+car_enableus 2,1
+let flt[0]=1
+car_setactlevel 2,flt[0]
+
+human_eraseab 1
+enemy_stopanim
+label 102
+wait 50000
+goto 102
+end
+
+event use_ab,10970007
+pumper_canwork 0,1
+if flt[1]=1,-1,MRTVYP
+pumper_canwork 1,1
+if flt[1]=1,-1,MRTVYP
+pumper_canwork 2,1
+if flt[1]=1,JMP02,MRTVYP
+
+label MRTVYP
+mission_objectivesclear
+mission_objectives 22930028
+wait 5000
+mission_objectivesclear
+let flt[2]=1
+goto JMP01
+
+label JMP02
+detector_issignal 3,NELZE,-1
+autosavegamefull 5590
+let flt[2]=0
+goto JMP01
+label NELZE
+console_addtext 3474
+label JMP01
+return

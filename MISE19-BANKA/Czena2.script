@@ -1,0 +1,36 @@
+dim_act 3
+findactor 0, "open door 2"
+findactor 1, "open door 1"
+findactor 2, "detekce healtu Czena2"
+
+enemy_changeanim "walk1.i3d", "walk woman1.i3d"
+enemy_playanim "recepcnistativ.i3d"
+
+label 1
+wait 1000000
+goto 1
+
+event 1
+enemy_move 42
+enemy_move 40
+
+commandblock 1
+detector_issignal 0, 2, -1
+enemy_use_detector 0
+
+label 2
+commandblock 0
+
+enemy_move 41
+
+commandblock 1
+detector_issignal 1, 3, -1
+enemy_use_detector 1
+
+label 3
+commandblock 0
+
+enemy_move 13
+act_setstate 2, off
+frm_seton 100, 0
+act_setstate 100, off

@@ -1,0 +1,46 @@
+label 1
+autosavegame 5455
+commandblock 1
+player_lockcontrols 1
+zatmyse 1, 1
+subtitle_add 7201
+commandblock 0
+wait 5000
+commandblock 1
+dim_act 4
+dim_frm 2
+findactor 0, "SalieriHIGH"
+findactor 1, "Ralph"
+findactor 2, "VincenzoHIGH"
+findactor 3, "Luigi"
+findframe 0, "Tommy"
+findframe 1, "SalieriHIGH"
+findframe 2, "Luigi"
+act_setstate 1, inactive
+act_setstate 2, inactive
+act_setstate 3, inactive
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+loaddifferences "dif17a.chg"
+recloadfull "record17a.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+player_lockcontrols 0
+mission_objectivesclear
+mission_objectives 17960000
+commandblock 0
+wait 250
+zatmyse 0

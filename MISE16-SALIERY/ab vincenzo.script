@@ -1,0 +1,22 @@
+dim_act 4
+findactor 0, "VincenzoHIGH"
+findactor 1, "spusteni dialogu"
+findactor 2, "Paulie"
+findactor 3, "Sam"
+
+act_setstate 100, inactive
+
+detector_waitforuse 15970008
+
+act_setstate 1, off
+
+label 1
+setevent 0, 1, 1
+
+label 2
+setevent 2, 2, 2
+
+label 3
+setevent 3, 2, 3
+
+act_setstate 100, off

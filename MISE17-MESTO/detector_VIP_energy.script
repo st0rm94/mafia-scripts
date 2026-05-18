@@ -1,0 +1,25 @@
+dim_flt 1
+dim_act 1
+dim_frm 1
+findactor 0, "Postava"
+findframe 0, "load mise18-saliery"
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+setcompass -1
+mission_objectivesclear
+mission_objectives 20960004
+
+label 2
+setevent 0, 100, 2
+
+wait 4000
+mission_objectivesclear
+mission_objectives 17960001
+setcompass 0
+
+
+act_setstate 100, off

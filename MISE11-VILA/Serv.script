@@ -1,0 +1,143 @@
+dim_frm 1
+dim_flt 1
+dim_act 15
+findactor 0, "vypinac3"
+findactor 1, "vypinac45"
+findactor 2, "vypinac17"
+findactor 3, "vypinac14"
+findactor 4, "vypinac16"
+findactor 5, "Serv"
+findactor 6, "Enemy08K2"
+findactor 7, "Enemy10K2"
+
+findactor 8, "Enemy08K"
+findactor 9, "Enemy10K"
+findactor 10, "Enemy04K"
+findactor 11, "Enemy11K2"
+findactor 12, "Enemy09K"
+findactor 13, "Enemy10K2"
+findactor 14, "Enemy08K3"
+
+findframe 0, "dialog"
+enemy_changeanim "walk1.i3d", "walk woman1.I3D"
+
+{ down
+label 1
+// _____________jidelna____________
+enemy_move 104
+enemy_lookto 105
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 0, 1, -1
+wait 700
+enemy_move 106
+enemy_playanim "SbiraniZeme01.i3d", -1, simple
+wait 1500
+enemy_move 107
+enemy_playanim "SbiraniZeme01.i3d", -1, simple
+wait 1500
+enemy_move 108
+enemy_playanim "SbiraniZeme01.i3d", -1, simple
+wait 1500
+enemy_move 104
+enemy_lookto 105
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 0, 2, -1
+wait 700
+// _____________kuchyne_____________
+enemy_move 109
+enemy_lookto 108
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 1, 1, -1
+wait 700
+enemy_move 110
+enemy_lookto 2
+enemy_wait
+enemy_playanim "VincOdebraniPistole.i3d", -1, simple
+wait 5000
+enemy_playanim "VincOdebraniPistole.i3d", -1, simple
+wait 5000
+enemy_move 109
+enemy_lookto 108
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 1, 2, -1
+wait 700
+//____________chodba_________________
+enemy_move 111
+enemy_lookto 112
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 2, 1, -1
+wait 700
+//_______pokoj__________
+enemy_move 7
+enemy_lookto 110
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 3, 1, -1
+wait 700
+enemy_move 8
+enemy_playanim "sbirani zvrchu.i3d", -1, simple
+wait 1500
+enemy_move 10
+enemy_lookto 9
+enemy_wait
+enemy_playanim "sbirani zvrchu.i3d", -1, simple
+wait 1500
+enemy_move 7
+enemy_lookto 110
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 3, 2, -1
+wait 700
+enemy_move 11
+enemy_lookto 500
+enemy_wait
+enemy_playanim "Vypinac02.i3d"
+wait 500
+setevent 4, 1, -1
+wait 700
+goto 1
+}
+if flt[0] = 1, -1, 575
+enemy_forcescript 5
+enemy_vidim 0
+enemy_brainwash
+enemy_move 32, run
+human_talk 5, 11990282, 1
+wait 500
+human_talk 5, 11990271, 1
+
+setevent 8, 5, -1
+setevent 9, 5, -1
+setevent 10, 5, -1
+setevent 11, 5, -1
+setevent 12, 5, -1
+setevent 13, 5, -1
+setevent 14, 5, -1
+
+enemy_vidim 1
+
+label 575
+frm_seton 0, 0
+label 543
+goto 543
+
+
+event 1
+event_use_cb 1
+enemy_vidim 0
+enemy_forcescript 5
+enemy_brainwash
+let flt[0] = 1
+return

@@ -1,0 +1,20 @@
+dim_flt 1
+dim_act 2
+findactor 0,"civil2"
+findactor 1,"ulice9_gover"
+
+label 104
+act_setstate 1,inactive
+label 101
+wait 1000
+detector_inrange 0, 20
+if flt[0] = 1, -1, 101
+label 102
+setevent 0,201,102
+act_setstate 1,active
+
+label 103
+wait 1000
+detector_inrange 0, 20
+if flt[0] = 1, 103, 104
+

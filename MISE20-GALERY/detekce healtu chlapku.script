@@ -1,0 +1,24 @@
+dim_flt 1
+dim_act 5
+findactor 0, "SalMan01K"
+findactor 1, "SalMan02K"
+findactor 2, "SalMan03K"
+findactor 3, "SalMan01K2"
+findactor 4, "SalMan03K4"
+
+act_setstate 100, inactive
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+human_getproperty 1, 0, energy
+if flt[0] = 0, -1, 1
+
+label 2
+setevent 2, 1, 2
+setevent 3, 1, 2
+
+act_setstate 4, active
+
+act_setstate 100, off

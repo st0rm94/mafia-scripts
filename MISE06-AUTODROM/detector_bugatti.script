@@ -1,0 +1,40 @@
+commandblock 1
+dim_frm 4
+dim_act 2
+dim_flt 2
+findactor 1,"racing_car0"
+
+findframe 0,"placement_bugatti"
+findframe 1,"kour"
+findframe 2,"racing_driver0"
+findframe 3,"racing_car0"
+
+frm_seton 2,1
+frm_seton 1,1
+commandblock 0
+
+act_setstate -1,inactive
+frm_linkto 1,3
+
+wait 4000
+emitparticle 1,28,1
+model_playanim 2,"FormuleNadavani.I3D"
+
+label 101
+wait 1000
+detector_inrange 0,50
+if flt[0]=1,-1,101
+
+actor_setplacement 1,0
+frm_seton 2,0
+model_stopanim 2
+
+wait 30000
+
+label 102
+wait 1000
+detector_inrange 0,50
+if flt[0]=1,-1,102
+
+stopparticle 1
+frm_linkto 1,-1

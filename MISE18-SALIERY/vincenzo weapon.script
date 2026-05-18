@@ -1,0 +1,6 @@
+dim_act 1
+findactor 0, "Vincenzo"
+detector_waitforuse
+label SEND
+setevent 0, 1, SEND
+

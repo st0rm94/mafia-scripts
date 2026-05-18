@@ -1,0 +1,50 @@
+zatmyse 1, 1
+autosavegame 5290
+commandblock 1
+player_lockcontrols 0
+enemy_block
+dim_frm 6
+findframe 0, "Tommy"
+findframe 1, "Paulie"
+findframe 2, "Sam"
+findframe 3, "Players_men"
+findframe 4, "Players_men2"
+findframe 5, "PICA"
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+dim_act 4
+findactor 0, "PICA"
+findactor 1, "detector_vstup"
+getactiveplayer 2
+findactor 3, "objectives"
+carlight_main 0, 0
+carlight_light 0, 0
+carlight_indic_r 0, 0
+carlight_indic_l 0, 0
+car_breakmotor 0, 1
+loaddifferences "dif12a2.chg"
+recloadfull "record12a2.rep"
+zatmyse 0 
+commandblock 0
+recwaitforend
+commandblock 1
+zatmyse 1
+recunload
+cleardifferences
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+player_lockcontrols 0
+enemy_unblock
+commandblock 0
+zatmyse 0
+act_setstate 1, active
+act_setstate 3, active
+end

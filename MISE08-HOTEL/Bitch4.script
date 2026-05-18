@@ -1,0 +1,12 @@
+{ down
+enemy_playanim "Obejmuti02Loop.I3D"
+label 1
+wait 12000
+goto 1
+}
+
+enemy_setstate freeze
+end
+
+event PANIKA
+return

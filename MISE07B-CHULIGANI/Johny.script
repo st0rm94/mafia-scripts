@@ -1,0 +1,47 @@
+commandblock 1
+enemy_vidim 0
+dim_flt 1
+dim_act 5
+findactor 0, "Paulie"
+findactor 1
+findactor 2, "chemaFor"
+findactor 3, "Billy"
+getactiveplayer 4
+human_addweapon 1, 8, 6, 100
+commandblock 0
+
+// ODDELAT !!!!
+act_setstate -1, inactive
+
+{ DOWN
+LABEL FREESTATE
+enemy_playanim "Gestikulace05.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Gestikulace06.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Gestikulace07.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+GOTO FREESTATE
+}
+
+enemy_action_follow 3, 3, NONEXT
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+return
+
+event 3
+enemy_vidim 1
+enemy_action_fire 4
+enemy_naserse 4, 100
+return
+
+label FINISH

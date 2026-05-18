@@ -1,0 +1,67 @@
+dim_act 3
+dim_frm 3
+dim_flt 4
+findactor 0,"speedygonzales"
+findactor 1,"Tommy"
+findactor 2,"detector_gonzales"
+
+findframe 0,"speedygonzales"
+findframe 1,"speedygonzales.l_foot"
+findframe 2,"speedygonzales.r_foot"
+
+enemy_vidim 0
+
+frm_seton 0,0
+
+act_setstate -1,inactive
+
+frm_seton 0,1
+
+enemy_move 20,run
+enemy_move 222,run
+enemy_move 21,run
+human_getproperty 0,3,energy
+label 101
+getactorsdist 0,1,2
+if flt[2]<25,GO,-1
+human_getproperty 0,2,energy
+if flt[2]<flt[3],-1,101
+
+
+label GO
+enemy_move 22,run
+enemy_move 23,run
+enemy_move 24,run
+enemy_move 25,run
+enemy_move 26,run
+enemy_move 27,run
+enemy_move 28,run
+enemy_move 29,run
+enemy_move 30,run
+enemy_move 31,run
+enemy_move 32,run
+enemy_move 33,run
+
+enemy_move 50,run
+enemy_move 51,run
+enemy_move 52,run
+enemy_move 53,run
+enemy_move 54,run
+enemy_move 55,run
+enemy_move 56,run
+
+enemy_move 34,run
+
+enemy_move 57,run
+enemy_move 58,run
+enemy_move 59,run
+
+enemy_move 35,run
+enemy_move 36,run
+enemy_move 37,run
+enemy_move 38,run
+enemy_move 39,run
+enemy_move 40,run
+enemy_move 41,run
+setevent 2,201,-1
+enemy_move 42,run

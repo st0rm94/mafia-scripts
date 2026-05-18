@@ -1,0 +1,49 @@
+dim_flt 1
+dim_act 6
+dim_frm 7
+findactor 0, "Box1004"
+findactor 1, "Box1006"
+findactor 2, "SalMan02K3"
+findactor 3, "SalMan03K3"
+findactor 4, "vypnuti hudby u schodu"
+findactor 5, "zabiti playera na schodech"
+
+findframe 0, "2grenade"
+findframe 1, "2grenade2"
+findframe 2, "Box1004"
+findframe 3, "Box1006"
+findframe 4, "dverboom"
+findframe 5, "dverboom2"
+findframe 6, "ohen na dverich"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 6
+if flt[0] = 1, -1, 1
+
+act_setstate 2, active
+act_setstate 3, active
+
+create_physicalobject 0, 1, 2, 50
+wait 500
+playsound "20_grenade.wav", 0, 15, 1
+create_physicalobject 1, 1, 2, 50
+wait 2500
+commandblock 1
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+act_setstate 0, off
+act_setstate 1, off
+frm_seton 4, 1
+frm_seton 5, 1
+create_physicalobject 4, 0, 0, 10
+create_physicalobject 5, 0, 0, 10
+explosion 10, 200
+emitparticle 6, 21
+emitparticle 5, 9
+act_setstate 4, active
+act_setstate 5, active
+commandblock 0

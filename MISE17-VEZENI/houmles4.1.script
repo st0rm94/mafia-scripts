@@ -1,0 +1,18 @@
+DIM_FRM 2
+DIM_FLT 2
+
+FINDFRAME 0, "houmles4.1"
+FINDFRAME 1, "houmles4.2"
+
+label 1
+  rnd 0, 7  
+  let flt[0] = flt[0] * 3850 
+  let flt[0] = flt[0] + 6200
+  wait flt[0]
+ rnd 1, 10
+ IFFLTINRANGE 1, 0, 4, 2
+ IFFLTINRANGE 1, 5, 9, 3
+
+label 2
+ FRM_SETON 0, 1
+goto 1

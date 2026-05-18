@@ -1,0 +1,15 @@
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "pontTud2"
+
+act_setstate 100, inactive
+
+label 1
+wait 500
+compareownerwithex 0, 1, -1, 2
+policemanager_forcearrest 0, 1, 1
+goto 1
+
+label 2
+policemanager_forcearrest 0, 0
+goto 1

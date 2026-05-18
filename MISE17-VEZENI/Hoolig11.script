@@ -1,0 +1,26 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "dvere cela80"
+findactor 2, ""
+
+human_addweapon 2, 4, 0, 0
+
+act_setstate 100, inactive
+
+door_lock 1, 0
+door_open 1, 1
+
+wait 500
+
+enemy_move 36, run
+
+enemy_look 0
+enemy_wait
+
+enemy_playanim "chuldohrozeni.i3d"
+enemy_talk 2, 04940023, 1
+enemy_wait
+
+enemy_vidim 1

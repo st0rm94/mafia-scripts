@@ -1,0 +1,20 @@
+dim_act 1
+findactor 0
+human_addweapon 0, 6, 6, 50
+human_holster 0
+dim_flt 1
+
+{ DOWN
+label FREESTATE
+enemy_playanim "Chuligan04Stativ.I3D", 0
+let flt[0] = flt[0] - 340
+wait flt[0]
+goto FREESTATE
+}
+goto FINISH
+
+event ENEMY_TO_SCRIPT
+event_use_cb 1
+return
+
+label FINISH

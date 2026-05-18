@@ -1,0 +1,30 @@
+dim_flt 1
+dim_act 2
+findactor 0, "SamHIGH"
+findactor 1, "door_dvuX01"
+
+enemy_playanim "GestikulaceNew06.i3d"
+label 1
+if flt[0] = 1, -1, 1
+enemy_playanim "podani ruky.I3D", 0, simple
+let flt[0] = flt[0] - 300
+wait flt[0]
+enemy_move 7
+enemy_move 8
+enemy_look 0
+label 2
+setevent 0, 1, 2
+label 3
+goto 3
+
+event 1
+let flt[0] = 1
+return
+
+event 2
+enemy_move 7
+door_open 1, 0
+door_lock 1, 1
+enemy_move 6
+enemy_look 0
+return

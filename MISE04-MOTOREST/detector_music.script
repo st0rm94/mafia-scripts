@@ -1,0 +1,40 @@
+dim_flt 1
+stream_create 0,"sounds\music\09 - Fighting theme 1.ogg"
+
+{ up
+label 101
+wait 100000
+goto 101
+}
+
+
+event 551
+// PLAY
+stream_play 0
+return
+
+event 552
+// STOP + DESTROY
+stream_stop 0
+stream_destroy 0
+return
+
+event 553
+// PAUSE
+stream_pause 0
+return
+
+event 554
+// FADEDOWN
+stream_fadevol 0,5000,1,0
+return
+
+event 555
+// FADEUP
+stream_fadevol 0,5000,0,1
+return
+
+event 556
+// DESTROY
+stream_destroy 0
+return

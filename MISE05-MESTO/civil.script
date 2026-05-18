@@ -1,0 +1,6 @@
+dim_flt 1
+label 101
+enemy_playanim "GestikulaceNew01.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101

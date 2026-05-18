@@ -1,0 +1,15 @@
+dim_flt 1
+dim_act 3
+findactor 0,"HlidacBob"
+findactor 1,"detector_bertone"
+findactor 2,"detector_autodrom"
+
+ACT_SETSTATE -1,inactive
+
+label 101
+detector_inrange 0,2
+if flt[0]=1,-1,101
+setevent 0,203,101
+
+ACT_SETSTATE 2, inactive
+

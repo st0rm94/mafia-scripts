@@ -1,0 +1,31 @@
+commandblock 1
+enemy_vidim 0
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "aktivace chlapka u okna"
+
+human_addweapon 0, 9, 7, 30
+
+enemy_lockstate fight_guard, 1
+commandblock 0 
+
+act_setstate 100, inactive
+
+detector_issignal 1, 2, -1
+
+act_setstate 1, off
+enemy_playanim "vykopnutidveri.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3
+
+label 2
+act_setstate 1, off
+enemy_vidim 1
+

@@ -1,0 +1,10 @@
+dim_act 1
+findactor 0,"Enemy08K2"
+
+human_addweapon 0,9,7,35
+
+{ up
+label 101
+wait 10000
+goto 101
+}

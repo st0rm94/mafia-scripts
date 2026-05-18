@@ -1,0 +1,514 @@
+//[debug_me]
+dim_flt 10
+dim_act 11
+dim_frm 8
+findactor 0
+findactor 1, "Tommy"
+findactor 2, "detector_energy"
+findactor 3, "Delnik2"
+findactor 4, "PortGuard2"
+findactor 5, "detector_corka"
+findactor 6, "Delnik3"
+findactor 7, "Delnik4"
+findactor 8, "forVco"
+setnullactor 9
+findactor 10, "detector_buzer"
+
+findframe 0, "Organizator"
+findframe 1, "bednakl19"
+getframefromactor 2, 1
+findframe 3, "Organizator.base"
+findframe 4, "position_kontrola_Tommy"
+findframe 5, "position_kontrola_Organizator"
+findframe 6, "2_piss"
+//findframe 7, "position_camera_bedny"
+findframe 7, "position_camera_bedny2"
+
+//oddelat!!!
+//camera_lock 7
+//wait 600000000
+
+frm_seton 6, 0
+human_candie 0
+human_addweapon 0, 9, 7, 50
+human_holster 0
+
+human_eraseab 0
+goto FREESTATE
+
+label START
+{ DOWN
+human_eraseab 0
+enemy_move 3
+enemy_lookto 2
+enemy_wait
+human_createab 0
+}
+gosub CHECKIF
+
+label FREESTATE
+{ DOWN
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 1300
+wait flt[0]
+enemy_playanim "enm klid stat A.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_stopanim
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 1300
+wait flt[0]
+enemy_playanim "enm klid stat B.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_stopanim
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 1300
+wait flt[0]
+enemy_playanim "enm klid stat C.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_stopanim
+}
+
+{ UP
+label CHECKIF
+if flt[3] ! 0, DOCUMENTSCHECK, -1
+if flt[1] = 1, BUZER, -1
+if flt[1] = 2, CHCANI, -1
+if flt[1] = 3, KONTROLA, -1
+if flt[1] = 5, SMECKO, -1
+if flt[5] = 1, ACTION2, -1
+
+//HELP ;((
+// flt[1] = 0   IDLE
+// flt[1] = 1 kdyz jde chcat, hned po buzeru
+// flt[1] = 2 chcije
+// flt[1] = 3 jde kontrolovat
+// flt[1] = 4   IDLE po provedeni prace
+// flt[1] = 5 jdu k vlaku 
+// flt[1] = 6 privezli mne na misto !!!
+// flt[2] = 1 prave chcije, jinak 0
+// flt[2] = 2 AB druhy, nechce se delat!
+// flt[3] ! 0  ALARM !!!
+// flt[3] = 5 Dialog po navratu od vlaku
+// flt[4]   IDX particlu chcani
+// flt[5] = 1 EVENT AB (podruhe)
+// flt[6] = 1 jestlize hrac mluvi s delnikem co mu pomaha nosit bedny
+// flt[7] = 1 jestlize hrac mluvi s delnikem co ridi nakladak co odjede po buzeraci
+// , predava vzdy osoba ktera ma ve skriptu dany dialog
+// flt[8] = jestli hrac nahodou nemluvi s borcama u vlaku
+// flt[9] > 1 Hrac sedel pred buzerem v aute musim pockat, nez dokonci animacku vystupovani
+return
+goto FREESTATE
+}
+
+// ##############
+// #  B U Z E R  ! ! !  #
+// ##############
+label BUZER
+let flt[1] = 1
+label HONHO
+let flt[9] = flt[9] + 1
+enemy_action_follow 1, 1.5, RETURN, NOLINK
+human_havebox 1, 0, 1
+if flt[0] = 1, -1, NEXT
+act_setstate 5, off
+let flt[3] = 1
+gosub DOCUMENTSCHECK
+label NEXT
+gosub CHECKLIFE
+compareownerwithex 1, 9, -1, HONHO
+// Pro pripad ze by hrac byl predtim v aute
+if flt[9] > 1, -1, SKIPCEKEJ
+wait 2000
+label SKIPCEKEJ
+commandblock 1
+player_lockcontrols 1
+person_playanim 1, "breath01a.I3D"
+dialog_begin 0, 2
+dialog_camswitch 1, 0
+actor_setdir 1, 0
+person_stopanim 1
+commandblock 0
+enemy_look 1
+enemy_wait
+enemy_talk 0, 18990401, 2
+enemy_playanim "gesto2 nogun1c.I3D", 0
+let flt[0]  = flt[0] - 166
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.I3D"
+wait 2000
+enemy_lookto 2
+wait 750
+actor_setdir 0, 1
+enemy_stopanim
+commandblock 1
+camera_setfov 25
+camera_lock 7
+commandblock 0
+enemy_playanim "Chuligan02Akce.I3D", 0
+let flt[0] = flt[0] - 332
+let flt[0] = flt[0] / 2
+wait flt[0]
+wait flt[0]
+enemy_stopanim
+enemy_look 1
+commandblock 1
+camera_unlock
+camera_setfov 70
+commandblock 0
+wait 800
+actor_setdir 0, 2
+enemy_stop
+dialog_camswitch 0, 1
+enemy_playanim "gesto2 nogun1a.I3D", 0
+wait 700
+enemy_stopanim
+enemy_talk 1, 18990411
+wait 2000
+person_playanim 1, "Pritakani02.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+person_stopanim 1
+enemy_wait
+dialog_end
+label SEND10
+// Pridelano kvuli problemu s odeslanim eventu mrtvole
+   human_getproperty 6, 0, Energy
+   if flt[0] ! 0, -1, SEND11
+      setevent 6, 1, SEND10
+
+label SEND11
+// Pridelano kvuli problemu s odeslanim eventu mrtvole
+   human_getproperty 7, 0, Energy
+   if flt[0] ! 0, -1, SEND2
+      setevent 7, 1, SEND11
+
+label SEND2
+// Pridelano kvuli problemu s odeslanim eventu mrtvole
+   human_getproperty 3, 0, Energy
+   if flt[0] ! 0, -1, FINISHLOCK
+      setevent 3, 1, SEND2
+
+label FINISHLOCK
+human_createab 0
+player_lockcontrols 0
+
+// ##############
+// #  CH C A N I  ! ! !  #
+// ##############
+label CHCANI
+{ DOWN
+   let flt[1] = 2
+   label JDUCHCAT
+      let flt[5] = 0
+      enemy_move 1
+// JEstlize me player vyrusil ABckem...
+   if flt[5] = 1, JDUCHCAT, -1
+   human_eraseab 0
+   enemy_lookto 102
+   enemy_wait
+   let flt[2] = 1
+   enemy_playanim "ChcaniVyndani.I3D", 0
+   let flt[0] = flt[0] - 250
+   wait flt[0]
+   enemy_playanim "ChcaniLoop.I3D"
+   frm_seton 6, 1
+   emitparticle 3, 26, 4
+   wait 12000
+   emitparticle 3, 26, 4
+   wait 14000
+   frm_seton 6, 0
+   enemy_playanim "ChcaniZandani.I3D", 0
+   let flt[0] = flt[0] - 250
+   wait flt[0]
+   let flt[5] = 0
+   human_createab 0
+}
+if flt[2] = 1, -1, DOCHCAL
+   stopparticle 4
+   let flt[2] = 0
+label DOCHCAL
+   let flt[1] = 0
+gosub CHECKIF
+goto START
+
+// ##################
+// #  K O N T R O L A  ! ! !  #
+// ##################
+label KONTROLA
+   human_eraseab 0
+   enemy_action_follow 1, 1.5, RETURN, NOLINK
+   gosub CHECKLIFE
+   commandblock 1
+   player_lockcontrols 1
+   person_stopanim 1
+   enemy_vidim 0
+   zatmyse 1
+   commandblock 0
+   wait 500
+   actor_setplacement 0, 5
+   actor_setplacement 1, 4
+   dialog_begin 0, 2
+   dialog_camswitch 1, 0
+   human_looktoactor 1, 0, 1
+   zatmyse 0
+   person_playanim 1, "breath01a.I3D"
+   wait 400
+   enemy_playanim "enm klid stat A.I3D"
+   wait 2000
+   enemy_talk 18990451
+   wait 4000
+   enemy_look 1
+   enemy_wait
+   dialog_end
+   player_lockcontrols 0
+   enemy_vidim 1
+   let flt[1] = 4
+   human_looktoactor 1
+//   human_createab 0
+gosub CHECKIF
+goto START
+
+// ###############
+// #  S M E C K O  ! ! !  #
+// ###############
+label SMECKO
+   human_eraseab 0
+   enemy_move 22
+   label SEND
+   setevent 4, 1, SEND
+   enemy_move_to_car 8, 1
+   enemy_usecar 8, 1
+   { DOWN
+      label CHECKDIST
+      wait 200
+      getactorsdist 0, 1, 0
+      if flt[0] < 10, -1, CHECKDIST
+   }
+   if flt[1] = 6, SKIPZASTAVENI, -1
+      car_remove_driver 8
+      car_forcestop 8
+   label SKIPZASTAVENI
+      enemy_usecar
+   label SEND3
+      setevent 4, 1, SEND3
+   let flt[3] = 5
+gosub DOCUMENTSCHECK
+
+// ##############
+// #  A C T I O N ! ! !  #
+// ##############
+label ACTION
+   enemy_forcescript 0
+   enemy_look 1
+   enemy_wait
+   enemy_talk 18990421
+   human_looktoactor 0, 1, 1
+   enemy_wait
+//   wait 5000
+//   getangleactortoactor 0, 1, 0
+//   if flt[0] < 80, -1, RET3
+//      enemy_look 1
+//      enemy_wait
+//      wait 4000
+//      getactorsdist 0, 1, 0
+//     if flt[0] < 7, -1, RET3
+//         gosub DOCUMENTSCHECK
+  label RET3
+  human_looktoactor 0
+  let flt[5] = 0
+return
+
+label ACTION2
+   gosub CHECKLIFE
+   human_eraseab 0
+   enemy_forcescript 0
+   player_lockcontrols 1
+   person_playanim 1, "breath01a.I3D"
+   enemy_look 1
+   enemy_wait
+   actor_setdir 1, 0
+   dialog_begin 0, 2
+   dialog_camswitch 0, 1
+   human_looktoactor 0, 1, 1
+   human_looktoactor 1, 0, 1
+   enemy_talk 1, 18990541
+   wait 2000
+   person_playanim 1, "gesto2 nogun1d.I3D", 0
+   let flt[0] = flt[0] - 166
+   wait flt[0]
+   person_playanim 1, "breath01a.I3D"
+   enemy_wait
+   dialog_camswitch 1, 0
+   enemy_playanim "gesto2 nogun1c.I3D", 0
+//   enemy_talk 18990551
+   enemy_talk 18990471
+   let flt[0] = flt[0] - 166
+   wait flt[0]
+   enemy_playanim "gesto2 nogun1b.I3D"
+   enemy_wait
+   dialog_end
+   human_looktoactor 0
+   human_looktoactor 1
+   player_lockcontrols 0
+   event_use_cb 1
+   let flt[5] = 0
+   let flt[1] = 5
+return
+goto START
+
+//####################
+//## CHECK DOCUMENTS##
+//####################
+label DOCUMENTSCHECK
+setevent 10, 1, DOCUMENTSCHECK
+enemy_forcescript 0
+label HONHO2
+enemy_action_follow 1, 1.5, RETURN, NOLINK
+gosub CHECKLIFE
+compareownerwithex 1, 9, -1, HONHO2
+enemy_look 1
+actor_setdir 1, 0
+player_lockcontrols 1
+dialog_begin 0, 2
+dialog_camswitch 1, 0
+if flt[3] = 5, SKIP4,-1
+if flt[3] > 0, -1, SKIP
+enemy_talk 18990461
+enemy_playanim "gesto2 nogun1c.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "gesto2 nogun1b.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.I3D", 0
+enemy_wait
+enemy_lookto 3
+enemy_wait
+enemy_playanim "Chuligan02Akce.I3D", 0
+enemy_talk 0, 18990463, 1
+enemy_wait
+goto KONECDIALOGU
+label SKIP4
+enemy_talk 18990561
+goto SKIP2
+label SKIP
+enemy_talk 18990431
+label SKIP2
+enemy_playanim "Gestikulace02.I3D" ,0
+enemy_wait
+if flt[3] = 5, SKIP5, -1
+if flt[3] > 0, -1, SKIP3
+label SKIP5
+enemy_talk 18990432
+enemy_wait
+label SKIP3
+human_delweapon 1, 21
+dialog_camswitch 1, 0
+enemy_playanim "Game OstrDokl Bere.I3D", 0
+let flt[0] = flt[0] - 581
+let flt[0] = flt[0] /3
+wait flt[0]
+human_addweapon 0, 21, 0, 0
+wait flt[0]
+wait flt[0]
+enemy_playanim "Game OstrDokl stativ.I3D", 0
+enemy_talk 18990441
+enemy_wait
+enemy_lookto 3
+enemy_wait
+enemy_playanim "Chuligan02Akce.I3D", 0
+human_throwitem 0, 21
+enemy_talk 18990442
+let flt[0] = flt[0] - 415
+wait flt[0]
+enemy_stopanim
+enemy_wait
+label KONECDIALOGU
+dialog_end
+player_lockcontrols 0
+human_eraseab 0
+human_looktoactor 0
+enemy_brainwash
+enemy_actionsclear
+enemy_naserse 1, 60
+return
+//##########################
+//## CHECK DOCUMENTS   END !! ##
+//##########################
+
+label BUG
+debug_text "KURVA CHYBA !!!!!"
+goto FINISH
+
+label CHECKLIFE
+human_getproperty 1, 0, Energy
+if flt[0] = 0, FINISH, -1
+// flt[6] = jestli hrac nahodou nemluvi s borcama co mu maji pomoct nosit bedny
+if flt[6] = 1, CHECKLIFE, -1
+// flt[7] = jestli hrac nahodou nemluvi s borcama co odjedou v nakladaku
+if flt[7] = 1, CHECKLIFE, -1
+// flt[8] = jestli hrac nahodou nemluvi s borcama u vlaku
+if flt[8] = 1, CHECKLIFE, -1
+return
+
+event 1
+event_use_cb 1
+let flt[1] = 1
+return
+
+event 2
+debug_text "Organizator: Jdu zkontrolovat Tommyho"
+let flt[1] = 3
+event_use_cb 1
+return
+
+event 3
+if flt[3] ! 0, RET2, -1
+debug_text "Organizator: Player nese bednu s diamanty"
+enemy_forcescript 0
+let flt[3] = 1
+event_use_cb 1
+label RET2
+return
+
+event 4
+debug_text "Organizator: event od PortGuarda za uz jsme tady"
+event_use_cb 1
+let flt[1] = 6
+return
+
+event USE_AB, 18970001
+   human_eraseab 0
+   debug_text "Organizator: EVENT AB"
+   if flt[1] = 4, RET, -1
+      gosub ACTION
+      if flt[1] = 1, ZECHCIJE, -1
+      if flt[1] = 2, ZECHCIJE, -1
+      human_createab 0
+      event_use_cb 0
+   return
+
+   label ZECHCIJE
+      let flt[5] = 1
+      human_createab 0
+      event_use_cb 0
+  return
+
+   label RET
+      let flt[5] = 1
+      event_use_cb 1
+      enemy_forcescript 0
+   return
+
+
+label FINISH
+commandblock 0
+enemy_look 1
+enemy_wait
+debug_text "Organizator: SCRIPT FINISHED"

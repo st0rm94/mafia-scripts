@@ -1,0 +1,18 @@
+//[debug_me]
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "DSFFFFFDFDFEF"
+findactor 2, "ForApic2"
+dim_frm 1
+findframe 0, "load z mise12-garage"
+compareownerwithex 0, 1, -1, FINISH
+human_force_settocar 0, 2, 0
+label FINISH
+human_getowner 0, 2
+actor_setplacement 2, 0
+car_calm 2
+car_switchshowenergy 2, 2
+showcardamage 2, 1
+cardamagevisible 1
+player_lockcontrols 0
+garage_enablesteal D

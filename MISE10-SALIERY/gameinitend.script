@@ -1,0 +1,13 @@
+dim_act 3
+findactor 0, "Hoolig"
+findactor 1, "SalieriHIGH"
+findactor 2, "Luigi"
+
+garage_generatecars
+human_addweapon 0, 7, 6, 30
+human_addweapon 1, 7, 6, 30
+human_addweapon 2, 11, 8, 32
+human_set8slot 2, 1
+human_holster 0
+human_holster 1
+human_holster 2

@@ -1,0 +1,212 @@
+commandblock 1
+dim_flt 2
+dim_act 31
+dim_frm 27
+findactor 0, "Guard2"
+findactor 1, "Enemy12K2"
+findactor 2, "Milenka"
+findactor 3, "cad_road"
+findactor 4, "hlidani stavu auta"
+findactor 5, "hlidani stavu guardu"
+findactor 6, "hlidani stavu milenky"
+findactor 7, "1Paulie"
+findactor 8, "hudcou3"
+findactor 9, "prijeti k rainbow garden paulieho hlaska"
+findactor 10, "Tommy"
+//findactor 11, "zjisteni auta"
+findactor 12, "prijeti k domu milenky"
+findactor 18, "detekce pozice auta"
+findactor 19, "spusteni akce guardu"
+findactor 20, "detekce healtu playera"
+findactor 21, "detekce healtu 1paulieho a playera"
+findactor 22, "cad_ford2"
+findactor 23, "Enemy08K2"
+findactor 24, "Enemy04K2"
+findactor 25, "Enemy11K2"
+findactor 26, "Enemy7"
+findactor 27, "Enemy12K3"
+findactor 28, "hudfor"
+findactor 29, "Sergio"
+findactor 30, "null"
+
+findframe 0, "Milenka"
+findframe 1, "Guard2"
+findframe 2, "Enemy12K2"
+findframe 3, "Tommy"
+findframe 4, "cad_road"
+findframe 5, "1Paulie"
+findframe 6, "hudcou3"
+findframe 7, "hudfor"
+findframe 8, "Sergio"
+findframe 9, "Enemy08K2"
+findframe 10, "Enemy04K2"
+findframe 11, "Enemy11K2"
+findframe 12, "Enemy12K3"
+findframe 13, "@Rstul"
+//findframe 14, "zjisteni auta"
+findframe 15, "Enemy7"
+findframe 16, "prijeti k rainbow garden"
+findframe 17, "2tommy"
+findframe 18, "2cigaro"
+findframe 19, "cad_ford2"
+findframe 20, "2cigaro2"
+findframe 21, "poloha auta milenka"
+findframe 22, "poloha auta pred barem"
+findframe 23, "@HQzdl"
+findframe 24, "@HQzdl2"
+findframe 25, "@HQzdl3"
+findframe 26, "@HQzdl4"
+commandblock 0
+
+{ up
+act_setstate 100, inactive
+wait 1000
+}
+
+label 1
+act_setstate 0, off
+act_setstate 1, off
+wait 1000
+detector_inrange 0, 50
+if flt[0] = 1, -1, 1
+vlvp 0
+if flt[0] = 1, 1, -1
+wait 2000
+vlvp 0
+if flt[0] = 1, 1, -1 
+zatmyse 1
+wait 500
+commandblock 1
+player_lockcontrols 1
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 18, off
+act_setstate 19, off
+act_setstate 20, inactive
+act_setstate 21, active
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 13, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+compareownerwithex 10, 30, 6, -1
+human_fromcar 10, 16
+goto 7
+
+label 6
+actor_setplacement 10, 16
+
+label 7
+get_remote_actor 11, 12, 5
+compareactors 11, 30, 1
+if flt[1] = 1, 2, -1
+actor_setplacement 11, 21
+car_calm 11
+goto 3
+
+label 2
+frm_seton 6, 1
+car_invisible 8, 0 
+
+label 3
+policemanager_del "Tommy"
+//setcitytrafficvisible 0
+
+loaddifferences "dif15e.chg"
+recloadfull "record15e"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+act_setstate 7, active
+act_setstate 9, active
+act_setstate 23, active
+act_setstate 24, active
+act_setstate 25, active
+act_setstate 26, active
+act_setstate 27, active
+act_setstate 29, active
+frm_seton 3, 1
+frm_seton 5, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 10, 1
+frm_seton 11, 1
+frm_seton 12, 1
+frm_seton 13, 1
+frm_seton 15, 1
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 1
+frm_seton 20, 1
+frm_seton 23, 1
+frm_seton 24, 1
+frm_seton 25, 1
+frm_seton 26, 1
+
+if flt[1] = 1, -1, 4
+human_force_settocar 7, 8, 1
+human_force_settocar 10, 8, 0
+goto 5
+
+label 4
+human_force_settocar 7, 11, 1
+human_force_settocar 10, 11, 0
+actor_setplacement 11, 22
+car_repair 11
+car_calm 11
+act_setstate 8, off
+
+label 5
+human_addweapon 10, 9, 7, 14
+human_addweapon 7, 8, 6, 30
+human_addweapon 7, 9, 7, 30
+human_holster 7
+human_holster 10
+human_addweapon 23, 9, 7, 30
+human_addweapon 24, 9, 7, 30
+human_addweapon 25, 9, 7, 30
+human_addweapon 26, 9, 7, 30
+human_addweapon 27, 9, 7, 30
+human_holster 23
+human_holster 24
+human_holster 25
+human_holster 26
+human_holster 27
+human_setproperty 10, 100, energy
+car_invisible 22, 0
+car_invisible 28, 0
+wingman_setindicator 7, 1, 0
+//setcitytrafficvisible 1
+player_lockcontrols 0
+commandblock 0
+zatmyse 0
+
+autosavegamefull 5370
+
+frm_seton 17, 0
+frm_seton 18, 0
+car_invisible 22, 0
+car_invisible 28, 0
+wingman_setindicator 7, 1, 0
+policemanager_add "Tommy"
+setcompass 16
+mission_objectivesclear
+mission_objectives 15960003
+act_setstate 12, off
+act_setstate 100, off

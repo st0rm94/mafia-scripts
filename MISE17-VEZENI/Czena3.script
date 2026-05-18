@@ -1,0 +1,16 @@
+enemy_vidim 0
+act_setstate 100, inactive
+dim_act 1
+findactor 0, "Tommy"
+
+label 1
+wait 10000
+enemy_playanim "xtleskani01c.i3d"
+wait 3000
+enemy_stopanim
+goto 1
+
+event 1
+enemy_move 30, run
+frm_seton 100, 0
+act_setstate 100, off

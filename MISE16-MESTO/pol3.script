@@ -1,0 +1,17 @@
+dim_act 1
+findactor 0, "Tommy"
+
+frm_seton 100, 0
+act_setstate 100, inactive
+
+frm_seton 100, 1
+enemy_move 30, run
+enemy_look 0
+enemy_wait
+wait 500
+
+enemy_arrest_player
+
+label 2
+wait 1000000
+goto 2

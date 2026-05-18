@@ -1,0 +1,53 @@
+enemy_vidim 0
+enemy_podvadim_jak Tretera
+dim_flt 2
+dim_act 4
+findactor 0, "Tommy"
+findactor 1, "hudfor"
+findactor 2, ""
+findactor 3, "Enemy12K"
+
+act_setstate 100, inactive
+
+label 6
+enemy_move_to_car 1, 1, run
+label 2
+enemy_usecar 1, 1
+compareownerwith 1, -1, 2
+
+if flt[1] = 1, 7, -1
+human_addweapon 2, 10, 50, 200
+label 8
+setevent 3, 2, 8
+let flt[1] = 1
+
+label 7
+{ down
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3
+}
+
+{ down
+label 4
+enemy_usecar
+compareownerwith 1, 4, -1
+
+enemy_vidim 1
+
+label 5
+wait 1000000
+goto 5
+}
+
+goto 6
+
+event 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 2
+return 

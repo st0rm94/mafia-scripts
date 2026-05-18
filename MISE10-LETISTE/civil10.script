@@ -1,0 +1,21 @@
+commandblock 1
+dim_act 1
+dim_flt 1
+findactor 0, "Czena5"
+commandblock 0
+
+enemy_vidim 0
+enemy_playanim "Obejmuti01Loop.i3d"
+label 1
+//enemy_playanim "Obejmuti01Loop.i3d"
+human_getproperty 0, 0, energy
+if flt[0] < 100, -1, 1
+enemy_stopanim
+wait 1500
+enemy_look 0
+enemy_wait
+enemy_vidim 1
+
+event 1
+enemy_playanim "Obejmuti01Loop.i3d"
+return

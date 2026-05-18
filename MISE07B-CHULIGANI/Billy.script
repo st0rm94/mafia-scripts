@@ -1,0 +1,188 @@
+commandblock 1
+enemy_vidim 0
+dim_flt 4
+dim_act 5
+dim_frm 6
+getactiveplayer 0
+findactor 1, "Johny"
+findactor 2, "Paulie"
+findactor 3
+findactor 4, "chemaFor"
+findframe 0, "CIL"
+findframe 1, "CIL2"
+findframe 2, "CIL3"
+findframe 3, "CIL4"
+findframe 4, "CIL5"
+findframe 5, "dummy_pro_particle"
+human_addweapon 3, 7, 6, 30
+human_holster 3
+commandblock 0
+
+// flt[1] = 0 = CADILAC
+// flt[1] = 1 = FORDA, Chevrolet Six
+// flt[1] = 2 = FORDT
+let flt[1] = 0
+
+{ DOWN
+// Oddelat
+act_setstate -1, inactive
+
+label FREESTATE
+enemy_playanim "Gestikulace01.I3D", 0, 1
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Gestikulace02.I3D", 0, 1
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Gestikulace03.I3D", 0, 1
+let flt[0] = flt[0] - 250
+wait flt[0]
+goto FREESTATE
+}
+
+// CAR1 = Cadilac V16 Open
+// CAR2 = FordA, ChevroletSix
+// CAR3 = FordT
+// Default || Jina hodnota = CAR1
+// Rychlost ne min nez 30!!!
+commandblock 1
+
+label STARTCHASE1
+if flt[3] = 2, SKIPTHIS, -1
+if flt[3] = 0, -1, DESTROY
+car_breakmotor 4, 0
+stopparticle 2
+let flt[3] = 1
+goto SKIPTHIS
+
+label DESTROY
+car_breakmotor 4, 1
+emitparticle 5, 28, 2
+let flt[3] = 2
+//enemy_naprdelivaute yes
+//enemy_lockstate FIGHT_GUARD_NOHOSTILE
+//enemy_vidim 0
+commandblock 0
+
+
+label SKIPTHIS
+if flt[1] = 0, CAR1_1, -1
+if flt[1] = 1, CAR2_1, -1
+if flt[1] = 2, CAR3_1, CAR1_1
+
+label STARTCHASE2
+if flt[1] = 0, CAR1_2, -1
+if flt[1] = 1, CAR2_2, -1
+if flt[1] = 2, CAR3_2, CAR1_2
+
+label STARTCHASE3
+if flt[1] = 0, CAR1_3, -1
+if flt[1] = 1, CAR2_3, -1
+if flt[1] = 2, CAR3_3, CAR1_3
+
+label STARTCHASE4
+if flt[1] = 0, CAR1_4, -1
+if flt[1] = 1, CAR2_4, -1
+if flt[1] = 2, CAR3_4, CAR1_4
+
+label STARTCHASE5
+if flt[1] = 0, CAR1_5, -1
+if flt[1] = 1, CAR2_5, -1
+if flt[1] = 2, CAR3_5, CAR1_5
+
+// 1-ni frame
+label CAR1_1
+   commandblock 0
+   enemy_car_escape 4, 0, 0, -1, 31, 32, 0.59
+   commandblock 1
+goto STARTCHASE2
+label CAR2_1
+   commandblock 0
+   enemy_car_escape 4, 0, 0, -1, 31, 35, 0.575
+   commandblock 1
+goto STARTCHASE2
+label CAR3_1
+   commandblock 0
+   enemy_car_escape 4, 0, 0, -1, 31, 35, 0.5
+   commandblock 1
+goto STARTCHASE2
+
+// 2-hy frame
+label CAR1_2
+   commandblock 0
+   enemy_car_escape 4, 0, 1, -1, 40, 70, 0.5
+   commandblock 1
+goto STARTCHASE3
+label CAR2_2
+   commandblock 0
+   enemy_car_escape 4, 0, 1, -1, 40, 70, 0.495
+   commandblock 1
+goto STARTCHASE3
+label CAR3_2
+   commandblock 0
+   enemy_car_escape 4, 0, 1, -1, 31, 60, 0.35
+   commandblock 1
+goto STARTCHASE3
+
+// 3-ti frame
+label CAR1_3
+   commandblock 0
+   enemy_car_escape 4, 0, 2, -1, 40, 70, 0.5
+   commandblock 1
+goto STARTCHASE4
+label CAR2_3
+   commandblock 0
+   enemy_car_escape 4, 0, 2, -1, 40, 70, 0.495
+   commandblock 1
+goto STARTCHASE4
+label CAR3_3
+   commandblock 0
+   enemy_car_escape 4, 0, 2, -1, 31, 60, 0.35
+   commandblock 1
+goto STARTCHASE4
+
+// 4-ty frame
+label CAR1_4
+   commandblock 0
+   enemy_car_escape 4, 0, 3, -1, 40, 70, 0.5
+   commandblock 1
+goto STARTCHASE5
+label CAR2_4
+   commandblock 0
+   enemy_car_escape 4, 0, 3, -1, 40, 70, 0.495
+   commandblock 1
+goto STARTCHASE5
+label CAR3_4
+   commandblock 0
+   enemy_car_escape 4, 0, 3, -1, 31, 60, 0.35
+   commandblock 1
+goto STARTCHASE5
+
+// 5-ty frame
+label CAR1_5
+   commandblock 0
+   enemy_car_escape 4, 0, 4, -1, 40, 70, 0.5
+   commandblock 1
+goto STARTCHASE1
+label CAR2_5
+   commandblock 0
+   enemy_car_escape 4, 0, 4, -1, 40, 70, 0.495
+   commandblock 1
+goto STARTCHASE1
+label CAR3_5
+   commandblock 0
+   enemy_car_escape 4, 0, 4, -1, 31, 60, 0.35
+   commandblock 1
+goto STARTCHASE1
+
+event 1
+event_use_cb 1
+return
+
+event 2
+// Event ktery obdrzi pri honicce kdyz auto nejede
+event_use_cb 1
+return
+
+LABEL FINISH
+debug_text "Billy: SCRIPT FINISHED"

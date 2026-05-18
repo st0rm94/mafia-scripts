@@ -1,0 +1,21 @@
+commandblock 1
+enemy_vidim 0
+dim_act 1
+dim_flt 1
+findactor 0
+commandblock 0
+
+{ DOWN
+label WAIT
+wait 1000
+debug_text "GuardSpec2: waiting..."
+goto WAIT
+}
+enemy_vidim 1
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

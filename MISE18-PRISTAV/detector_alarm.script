@@ -1,0 +1,53 @@
+dim_act 17
+dim_flt 1
+
+findactor 0, "Sniper"
+findactor 1, "Sniper2"
+findactor 2, "Sniper3"
+findactor 3, "Guard_bouda"
+findactor 4, "Guard"
+findactor 5, "Guard2"
+findactor 6, "Guard3"
+findactor 7, "Guard4"
+findactor 8, "Guard5"
+findactor 9, "Organizator"
+findactor 10, "Tommy"
+findactor 11, "Guard_bouda"
+findactor 12, "Guard_bouda2"
+findactor 13, "Guard_bouda3"
+findactor 14, "Vratny"
+findactor 15
+findactor 16, "City_Guard5"
+
+setnpckillevent 15, 100, "civil31.I3d"
+setnpckillevent 15, 100, "civil32.I3d"
+setnpckillevent 15, 100, "civil33.I3d"
+setnpckillevent 15, 100, "civil34.I3d"
+setnpckillevent 15, 100, "civil35.I3d"
+setnpckillevent 15, 100, "civil36.I3d"
+setnpckillevent 15, 100, "civil37.I3d"
+
+{ DOWN
+label DETECT
+human_getproperty 9, 0, Energy
+wait 100
+if flt[0] = 0, ALARM, DETECT
+label ALARM
+}
+debug_text "detector_alarm: ALARM player zabil civila/nebo Organizatora!!!!"
+label SEND
+setevent 0, 100, SEND
+label SEND2
+setevent 11, 100, SEND2
+label SEND3
+setevent 16, 100, SEND3
+
+goto FINISH
+
+
+event 100
+debug_text "detector_alarm: Alarm!!!!"
+event_use_cb 1
+return
+
+label FINISH

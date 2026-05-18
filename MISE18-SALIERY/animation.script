@@ -1,0 +1,56 @@
+commandblock 1
+player_lockcontrols 1
+dim_act 3
+findactor 0, "Paulie"
+findactor 1, "Sam"
+findactor 2, "objectives"
+
+dim_frm 11
+findframe 0, "Paulie"
+findframe 1, "Sam"
+findframe 2, "Tommy"
+findframe 3, "@zidle10770"
+findframe 4, "@zidle3920"
+findframe 5, "@zidle14514"
+findframe 6, "@zidle8321"
+findframe 7, "@zidle01"
+findframe 8, "@rstul12054"
+findframe 9, "xpopelnik6"
+findframe 10, "xpopelnik7"
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+//frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+loaddifferences "dif18a.chg"
+recloadfull "record18a.rep"
+commandblock 0
+recwaitforend
+commandblock 1
+zatmyse 1, 1
+recunload
+cleardifferences
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+//frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 10, 1
+act_setstate 0, active
+act_setstate 1, active
+commandblock 0
+player_lockcontrols 0
+zatmyse 0
+act_setstate 2, active

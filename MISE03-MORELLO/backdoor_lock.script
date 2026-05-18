@@ -1,0 +1,37 @@
+act_setstate -1,inactive
+dim_flt 1
+dim_act 6
+dim_frm 1
+findactor 0,"misto_pro_bednu"
+findactor 1,"Object18cc"
+findactor 2,"Enemy04K"
+findactor 3,"Enemy10K"
+findactor 4,"Enemy12K"
+findactor 5,"Enemy08K"
+
+findframe 0,"bouchani na dvere"
+frm_seton 0,0
+
+label 101
+wait 100
+detector_inrange 0,1.3
+if flt[0]>0,-1,101
+
+detector_issignal 0,-1,102
+frm_seton 0,1
+//wait 15000
+//frm_seton 0,0
+
+label A2
+setevent 2,203,A2
+label A3
+setevent 3,203,A3
+label A4
+setevent 4,203,A4
+label A5
+setevent 5,203,A5
+end
+
+label 102
+door_lock 1,0
+door_open 1,1

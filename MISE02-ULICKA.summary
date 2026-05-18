@@ -1,0 +1,985 @@
+# .dnc extraction summary
+# source        : MISE02-ULICKA.dnc  (34437 bytes, main)
+# source        : MISE02-ULICKA-InitScripts.dnc  (86 bytes, init)
+# actors_total  : 94
+# init_records  : 1
+# scripts_found : 73
+
+# main-container actor type-code distribution
+#   type    2  count=1  
+#   type    4  count=4  
+#   type    5  count=51  script
+#   type    6  count=1  
+#   type   12  count=1  
+#   type   18  count=1  
+#   type   27  count=21  human (scripted NPC)
+#   type   35  count=14  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 72
+# total invocations: 1125
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+   117  label
+    83  wait
+    82  findactor
+    73  if
+    64  dim_flt    [casings: DIM_FLT, dim_flt]
+    59  frm_seton    [casings: FRM_SETON, frm_seton]
+    46  detector_inrange
+    44  dim_act
+    43  goto
+    37  let
+    35  enemy_playanim
+    35  findframe    [casings: FINDFRAME, FindFrame, findframe]
+    34  act_setstate
+    30  end
+    28  enemy_wait
+    25  event
+    25  setevent
+    23  enemy_talk
+    20  dim_frm    [casings: DIM_FRM, dim_frm]
+    19  enemy_vidim
+    17  return
+    14  commandblock
+    14  {
+    14  }
+    12  human_talk
+    12  rnd
+    11  enemy_move
+    10  endofmission
+    10  human_getproperty
+     8  enemy_action_runaway
+     6  player_lockcontrols    [casings: PLAYER_LOCKCONTROLS, player_lockcontrols]
+     5  enemy_lookto
+     5  human_looktoactor
+     4  human_addweapon
+     4  human_setproperty
+     3  car_muststeal
+     3  emitparticle
+     3  person_playanim
+     3  zatmyse
+     2  cleardifferences
+     2  enemy_group_add
+     2  enemy_shut_up
+     2  human_stoptalk
+     2  iffltinrange    [casings: IFFLTINRANGE]
+     2  loaddifferences
+     2  recloadfull
+     2  recunload
+     2  recwaitforend
+     2  setcitytrafficvisible
+     2  setcompass
+     2  stream_fadevol
+     1  autosavegame
+     1  car_enableus
+     1  change_mission
+     1  door_enableus
+     1  enemy_action_fire
+     1  enemy_block
+     1  enemy_car_moveto
+     1  enemy_changeanim    [casings: ENEMY_CHANGEANIM]
+     1  enemy_group_new
+     1  enemy_naserse
+     1  enemy_podvadim_jak
+     1  human_delweapon
+     1  human_force_settocar
+     1  human_forcefall
+     1  mission_objectives
+     1  mission_objectivesclear
+     1  stream_create
+     1  stream_destroy
+     1  stream_pause
+     1  stream_play
+     1  stream_stop
+
+# ---- per-script command listing ----
+
+[Czena]  type=27  lines=17  commands=9
+    dim_flt
+    end
+    enemy_playanim
+    enemy_vidim
+    event
+    goto
+    label
+    let
+    wait
+
+[Czena3]  type=27  lines=32  commands=15
+    dim_act
+    dim_flt
+    end
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    goto
+    label
+    return
+    wait
+    {
+    }
+
+[Czena4]  type=27  lines=8  commands=7
+    dim_flt
+    enemy_playanim
+    enemy_vidim
+    goto
+    label
+    let
+    wait
+
+[Enemy]  type=27  lines=5  commands=5
+    enemy_playanim
+    enemy_vidim
+    goto
+    label
+    wait
+
+[Enemy08K]  type=27  lines=24  commands=15
+    act_setstate
+    commandblock
+    dim_act
+    enemy_action_fire
+    enemy_shut_up
+    enemy_vidim
+    event
+    findactor
+    goto
+    human_addweapon
+    human_setproperty
+    label
+    return
+    {
+    }
+
+[Enemy09K]  type=27  lines=32  commands=21
+    act_setstate
+    commandblock
+    dim_act
+    dim_flt
+    enemy_group_add
+    enemy_group_new
+    enemy_naserse
+    enemy_podvadim_jak
+    enemy_shut_up
+    event
+    findactor
+    goto
+    human_addweapon
+    human_delweapon
+    human_setproperty
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[GameDoneStart]  type=init  lines=3  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[Gangster]  type=27  lines=5  commands=5
+    enemy_playanim
+    enemy_vidim
+    goto
+    label
+    wait
+
+[Hoolig]  type=27  lines=26  commands=16
+    act_setstate
+    dim_act
+    dim_flt
+    dim_frm
+    emitparticle
+    end
+    enemy_action_runaway
+    enemy_move
+    enemy_playanim
+    enemy_vidim
+    event
+    findactor
+    findframe
+    frm_seton
+    let
+    wait
+
+[Hoolig2]  type=27  lines=30  commands=19
+    dim_act
+    dim_flt
+    end
+    enemy_action_runaway
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    goto
+    label
+    let
+    return
+    wait
+    {
+    }
+
+[Luigi]  type=27  lines=10  commands=7
+    dim_flt
+    enemy_playanim
+    enemy_vidim
+    goto
+    label
+    let
+    wait
+
+[SalMan01K]  type=27  lines=5  commands=5
+    enemy_playanim
+    enemy_vidim
+    goto
+    label
+    wait
+
+[animace]  type=5  lines=108  commands=22
+    act_setstate
+    change_mission
+    cleardifferences
+    commandblock
+    dim_act
+    dim_frm
+    enemy_block
+    findactor
+    findframe
+    frm_seton
+    loaddifferences
+    mission_objectives
+    mission_objectivesclear
+    player_lockcontrols
+    recloadfull
+    recunload
+    recwaitforend
+    setcitytrafficvisible
+    setcompass
+    setevent
+    wait
+    zatmyse
+
+[autosave]  type=5  lines=1  commands=1
+    autosavegame
+
+[chlapek chcani]  type=5  lines=15  commands=8
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    if
+    label
+    setevent
+
+[civil]  type=27  lines=39  commands=18
+    dim_act
+    dim_flt
+    end
+    enemy_action_runaway
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    goto
+    human_stoptalk
+    label
+    return
+    wait
+    {
+    }
+
+[civil2]  type=27  lines=63  commands=19
+    act_setstate
+    commandblock
+    dim_act
+    dim_flt
+    enemy_talk
+    enemy_vidim
+    event
+    findactor
+    goto
+    human_getproperty
+    human_looktoactor
+    human_talk
+    if
+    label
+    person_playanim
+    return
+    rnd
+    setevent
+    wait
+
+[civil3]  type=27  lines=17  commands=12
+    dim_act
+    dim_flt
+    dim_frm
+    emitparticle
+    enemy_playanim
+    enemy_vidim
+    findactor
+    findframe
+    goto
+    label
+    let
+    wait
+
+[civil4]  type=27  lines=31  commands=18
+    dim_act
+    dim_flt
+    end
+    enemy_action_runaway
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    goto
+    label
+    return
+    setevent
+    wait
+    {
+    }
+
+[civil5]  type=27  lines=22  commands=15
+    dim_act
+    dim_flt
+    end
+    enemy_action_runaway
+    enemy_move
+    enemy_playanim
+    enemy_vidim
+    event
+    findactor
+    goto
+    label
+    return
+    wait
+    {
+    }
+
+[detector_chlappr]  type=5  lines=15  commands=8
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    if
+    label
+    setevent
+
+[detector_death1]  type=5  lines=23  commands=13
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    human_setproperty
+    if
+    label
+    person_playanim
+    player_lockcontrols
+    wait
+
+[detector_death2]  type=5  lines=19  commands=13
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    human_setproperty
+    if
+    label
+    person_playanim
+    player_lockcontrols
+    wait
+
+[detector_driver]  type=5  lines=15  commands=10
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[detector_dvorek]  type=5  lines=23  commands=10
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    human_stoptalk
+    if
+    label
+    setevent
+    wait
+
+[detector_kurak]  type=5  lines=15  commands=8
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    if
+    label
+    setevent
+
+[detector_music]  type=5  lines=39  commands=14
+    dim_flt
+    event
+    goto
+    label
+    return
+    stream_create
+    stream_destroy
+    stream_fadevol
+    stream_pause
+    stream_play
+    stream_stop
+    wait
+    {
+    }
+
+[detector_startchcani]  type=5  lines=8  commands=7
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+
+[detector_tidva]  type=5  lines=19  commands=8
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    human_getproperty
+    if
+    label
+    setevent
+
+[detector_zlodej]  type=5  lines=15  commands=12
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    goto
+    if
+    label
+    setevent
+    wait
+    {
+    }
+
+[driver01]  type=27  lines=21  commands=15
+    dim_act
+    dim_frm
+    end
+    enemy_car_moveto
+    enemy_vidim
+    event
+    findactor
+    findframe
+    goto
+    human_force_settocar
+    label
+    return
+    wait
+    {
+    }
+
+[dummy-driver]  type=5  lines=1  commands=0
+
+[ef1]  type=5  lines=15  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef3]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef4]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef5]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef6]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef7]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[kurak]  type=27  lines=29  commands=21
+    dim_act
+    dim_flt
+    dim_frm
+    emitparticle
+    end
+    enemy_action_runaway
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    findframe
+    goto
+    human_looktoactor
+    label
+    let
+    wait
+    {
+    }
+
+[load mise02-saliery]  type=5  lines=13  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    door_enableus
+    findactor
+    if
+    label
+    wait
+
+[panika_zandezena]  type=5  lines=10  commands=8
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    if
+    label
+    setevent
+
+[pes1]  type=5  lines=24  commands=10
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    goto
+    iffltinrange
+    label
+    let
+    rnd
+    wait
+
+[randechlap]  type=27  lines=57  commands=18
+    dim_act
+    dim_flt
+    enemy_action_runaway
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_vidim
+    enemy_wait
+    event
+    findactor
+    goto
+    if
+    label
+    let
+    rnd
+    wait
+    {
+    }
+
+[randezena]  type=27  lines=75  commands=23
+    dim_act
+    dim_flt
+    end
+    enemy_action_runaway
+    enemy_changeanim
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    findactor
+    goto
+    human_forcefall
+    human_looktoactor
+    if
+    label
+    let
+    return
+    rnd
+    wait
+    {
+    }
+
+[rozhovor_balkon]  type=5  lines=11  commands=9
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[rozhovor_dvorek]  type=5  lines=11  commands=9
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[rozhovor_randechlap]  type=5  lines=11  commands=9
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    human_talk
+    if
+    label
+    wait
+
+[rozhovor_randezena]  type=5  lines=11  commands=9
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    human_talk
+    if
+    label
+    wait
+
+[rozhovor_tidva]  type=5  lines=11  commands=9
+    detector_inrange
+    dim_act
+    dim_flt
+    end
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[sipka01]  type=5  lines=12  commands=8
+    detector_inrange
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    if
+    label
+    wait
+
+[sipka02]  type=5  lines=18  commands=11
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    if
+    label
+    wait
+
+[sipka03]  type=5  lines=18  commands=11
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    if
+    label
+    wait
+
+[sipka04]  type=5  lines=15  commands=9
+    act_setstate
+    detector_inrange
+    dim_flt
+    dim_frm
+    findframe
+    frm_seton
+    if
+    label
+    wait
+
+[supervisor]  type=5  lines=20  commands=10
+    car_enableus
+    car_muststeal
+    dim_act
+    dim_flt
+    end
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+
+[ulice1_end]  type=5  lines=23  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice1_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice2_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice3_end]  type=5  lines=20  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice3_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice4_end]  type=5  lines=20  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice4_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice5_end]  type=5  lines=20  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice5_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice6_end]  type=5  lines=20  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice6_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice7_end]  type=5  lines=20  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice7_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice8_end]  type=5  lines=20  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice8_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[ulice9_end]  type=5  lines=20  commands=9
+    act_setstate
+    detector_inrange
+    dim_act
+    dim_flt
+    findactor
+    if
+    label
+    setevent
+    wait
+
+[ulice9_gover]  type=5  lines=7  commands=5
+    detector_inrange
+    dim_flt
+    endofmission
+    if
+    label
+
+[zlodej]  type=27  lines=23  commands=15
+    dim_act
+    dim_flt
+    end
+    enemy_move
+    enemy_playanim
+    enemy_vidim
+    event
+    findactor
+    goto
+    human_addweapon
+    label
+    let
+    wait
+    {
+    }

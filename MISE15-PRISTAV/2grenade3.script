@@ -1,0 +1,48 @@
+dim_act 9
+dim_frm 9
+findactor 0, "2grenade"
+findactor 1, "2grenade2"
+findactor 2, "2grenade4"
+findactor 3, "2grenade5"
+findactor 4, "2grenade6"
+findactor 5, "2grenade7"
+findactor 6, "2grenade8"
+findactor 7, "2grenade9"
+findactor 8, "get grenade"
+
+findframe 0, "2grenade"
+findframe 1, "2grenade2"
+findframe 2, "2grenade4"
+findframe 3, "2grenade5"
+findframe 4, "2grenade6"
+findframe 5, "2grenade7"
+findframe 6, "2grenade8"
+findframe 7, "2grenade9"
+findframe 8, "9boxgran2"
+
+detector_waitforhit
+
+commandblock 1
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+frm_seton 100, 0
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+explosion 10, 400
+commandblock 0
+
+act_setstate 100, off

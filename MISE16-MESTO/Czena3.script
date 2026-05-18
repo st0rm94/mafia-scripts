@@ -1,0 +1,5 @@
+act_setstate 100, inactive
+
+enemy_move 41
+enemy_lookto 40
+enemy_wait

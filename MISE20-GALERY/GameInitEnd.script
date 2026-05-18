@@ -1,0 +1,154 @@
+dim_act 26
+dim_frm 24
+findactor 0, "Sam"
+findactor 1, "SalMan01K"
+findactor 2, "SalMan02K"
+findactor 3, "SalMan03K"
+findactor 4, "SalMan01K2"
+findactor 5, "SalMan02K2"
+findactor 6, "SalMan03K2"
+findactor 7, "SalMan01K3"
+findactor 8, "SalMan02K3"
+findactor 9, "SalMan03K3"
+findactor 10, "SalMan"
+findactor 11, "SalMan05K"
+findactor 12, "Enemy12K"
+
+findactor 14, "SalMan01K4"
+findactor 15, "SalMan02K4"
+findactor 16, "SalMan01K5"
+findactor 17, "SalMan03K4"
+findactor 18, "SalMan05K2"
+findactor 19, "SalMan03K5"
+findactor 20, "SalMan03K6"
+findactor 21, "SalMan01K6"
+findactor 22, "SalMan02K5"
+findactor 23, "Salman03K7"
+findactor 24, "Enemy11K2"
+findactor 25, "SalMan02K6"
+
+findframe 0, "SalMan01K"
+findframe 1, "SalMan02K"
+findframe 2, "SalMan02K2"
+findframe 3, "SalMan01K3"
+findframe 4, "fmv zabrgal"
+findframe 5, "SalMan05K"
+findframe 6, "Enemy12K"
+
+findframe 8, "SalMan01K4"
+findframe 9, "SalMan02K4"
+findframe 10, "dverboom"
+findframe 11, "dverboom2"
+findframe 12, "SalMan03K4"
+findframe 13, "SalMan"
+findframe 14, "2krevgal"
+findframe 15, "2krevgal2"
+findframe 16, "2krevgal3"
+findframe 17, "2krevgal4"
+findframe 18, "2krevgal5"
+findframe 19, "2krevgal6"
+findframe 20, "2krevgal7"
+findframe 21, "2krevgal8"
+findframe 22, "2krevgal9"
+findframe 23, "2krevgal10"
+
+//human_addweapon 0, 10, 50, 10000
+human_addweapon 1, 6, 6, 16
+human_addweapon 2, 6, 0, 16 
+human_addweapon 3, 9, 7, 7
+human_addweapon 3, 6, 6, 30
+human_addweapon 4, 9, 7, 7
+human_addweapon 4, 6, 6, 30
+human_addweapon 5, 10, 50, 50
+human_addweapon 5, 6, 6, 18
+human_addweapon 6, 11, 8, 8
+human_addweapon 6, 6, 6, 30
+human_addweapon 7, 9, 7, 14
+human_addweapon 7, 6, 6, 30
+human_addweapon 8, 9, 7, 30
+human_addweapon 9, 9, 7, 30
+human_addweapon 10, 10, 50, 200
+human_addweapon 10, 6, 6, 30
+human_addweapon 10, 15, 2, 0
+human_addweapon 11, 10, 50, 200
+human_addweapon 11, 6, 6, 30
+human_addweapon 11, 15, 2, 0
+human_addweapon 12, 10, 50, 200
+human_addweapon 12, 6, 6, 30
+
+human_addweapon 14, 9, 2, 30
+human_addweapon 15, 9, 7, 30
+human_addweapon 16, 9, 7, 30
+human_addweapon 17, 9, 7, 30
+human_addweapon 18, 9, 7, 30
+human_addweapon 19, 9, 7, 30
+human_addweapon 20, 11, 8, 8
+human_addweapon 20, 6, 6, 30
+human_addweapon 21, 10, 50, 0
+human_addweapon 21, 6, 6, 30
+human_addweapon 22, 10, 50, 0
+human_addweapon 22, 6, 6, 30
+human_addweapon 23, 11, 2, 8
+human_addweapon 23, 6, 6, 30
+human_addweapon 24, 6, 6, 30
+human_addweapon 24, 15, 2, 0
+human_addweapon 25, 11, 8, 8
+human_addweapon 25, 6, 6, 30
+
+human_set8slot 0, 1
+
+human_holster 0
+human_holster 1
+human_holster 2
+
+act_setstate 1, inactive
+act_setstate 2, inactive
+
+
+act_setstate 5, inactive
+act_setstate 7, inactive
+act_setstate 8, inactive
+act_setstate 9, inactive
+act_setstate 10, inactive
+act_setstate 11, inactive
+act_setstate 12, inactive
+
+act_setstate 14, inactive
+act_setstate 15, inactive
+
+act_setstate 18, inactive
+act_setstate 19, inactive
+
+act_setstate 21, inactive
+act_setstate 22, inactive
+act_setstate 23, inactive
+act_setstate 24, inactive
+act_setstate 25, inactive
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+
+mission_objectivesclear
+mission_objectives 20960003

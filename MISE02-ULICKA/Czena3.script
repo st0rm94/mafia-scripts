@@ -1,0 +1,32 @@
+dim_flt 1
+dim_act 2
+findactor 0,"Czena3"
+findactor 1,"Czena4"
+
+enemy_vidim 0
+
+
+enemy_playanim "Gestikulace01.i3", 0
+{ down
+label 101
+wait 35000
+goto 101
+}
+
+enemy_talk 02950019
+enemy_wait
+enemy_talk 1,02950020
+enemy_wait
+enemy_talk 02950021
+enemy_wait
+enemy_talk 1,02950022
+enemy_wait
+enemy_talk 02950023
+enemy_wait
+enemy_talk 1,02950024
+enemy_wait
+goto 101
+end
+
+event 201
+return

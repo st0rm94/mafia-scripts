@@ -1,0 +1,22 @@
+commandblock 1
+zatmyse 1,1
+loaddifferences "dif03e.chg"
+recloadfull "record03e.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+dim_flt 1
+getmissionnumber 0
+if flt[0]=1,-1,111
+setmissionnumber 1
+
+label 111
+commandblock 0
+
+garage_show
+change_mission "mise04-saliery", "", -1

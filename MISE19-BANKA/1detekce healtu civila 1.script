@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 2
+findactor 0, "civil5"
+findactor 1, "1detekce healtu civila 1x"
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+act_setstate 1, off
+act_setstate 100, off

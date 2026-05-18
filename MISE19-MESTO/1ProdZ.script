@@ -1,0 +1,177 @@
+enemy_podvadim_jak Tretera
+dim_flt 3
+dim_act 8
+dim_frm 4
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "1odchod od peteho"
+findactor 3, "1potvrzeni navstevy gunshopu"
+findactor 4, "1pokus o otevreni dveri u paulieho"
+findactor 5, "aktivace dedka"
+findactor 6, "rozjety subquest"
+findactor 7, "mam krast auto"
+
+findframe 0, "poloha playera u dedka"
+findframe 1, "1prijeti k pauliemu"
+findframe 2, "Hoolig"
+findframe 3, "deuseJco"
+
+human_addweapon 0, 9, 7, 30
+human_holster 0
+
+let flt[2] = 2
+enemy_lockstate fight_guard_stand, 1
+act_setstate 100, inactive
+
+label 9
+
+{ up
+label 1
+detector_issignal 5, 8, 1
+}
+
+event 1
+act_setstate 5, active
+enemy_move 9
+enemy_wait
+enemy_lookto 10
+enemy_wait
+enemy_playanim "petekpultu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "petestativ.i3d"
+return
+
+label 8
+if flt[1] = 1, 7, -1
+human_anyweaponinhand 1, 0
+if flt[0] = 1, -1, 6
+goto flt[2]
+
+label 2
+enemy_talk 19991391
+enemy_wait
+let flt[2] = flt[2] + 1
+detector_setsignal 5, 0
+act_setstate 5, active
+goto 9
+
+label 3
+enemy_talk 19991411
+enemy_wait
+let flt[2] = flt[2] + 1
+detector_setsignal 5, 0
+act_setstate 5, active
+goto 9
+
+label 4
+enemy_talk 19991421
+enemy_wait
+let flt[2] = flt[2] + 1
+detector_setsignal 5, 0
+act_setstate 5, active
+goto 9
+
+label 5
+detector_setsignal 5, 0
+act_setstate 5, active
+goto 9
+
+label 6
+commandblock 1
+player_lockcontrols 1
+actor_setplacement 1, 0
+dialog_begin 0, 2
+dialog_camswitch 1, 0 
+commandblock 0
+enemy_talk 19990291
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 19990301
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19990311
+enemy_wait
+enemy_talk 19990312
+enemy_wait
+enemy_talk 19990313
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 19990321
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19990331
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 19990341
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19990351
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 19990361
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19990371
+enemy_wait
+dialog_end
+
+gunshop_menu
+
+commandblock 1
+dialog_begin 0, 2
+dialog_camswitch 0, 1
+inventory_push 1
+inventory_clear 1
+commandblock 0
+enemy_talk 1, 19990411
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19990421
+enemy_wait
+enemy_talk 19990422
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 19990431
+enemy_wait
+commandblock 1
+dialog_end
+inventory_pop 1
+commandblock 0
+player_lockcontrols 0
+act_setstate 2, active
+detector_setsignal 3, 1
+mission_objectivesremove 19960007
+mission_objectives 19960008
+detector_issignal 6, 10, -1
+detector_issignal 7, 11, -1
+setcompass 1
+goto 12
+
+label 10
+setcompass 2
+goto 12
+
+label 11
+setcompass 3
+
+label 12
+act_setstate 4, active
+let flt[1] = 1
+detector_setsignal 5, 0
+act_setstate 5, active
+goto 9
+
+label 7
+debug_text "Tak copak jeste chces?"
+player_lockcontrols 1
+gunshop_menu
+player_lockcontrols 0
+detector_setsignal 5, 0
+act_setstate 5, active
+goto 9
+
+event 2
+act_setstate 5, off
+enemy_naserse 1
+return

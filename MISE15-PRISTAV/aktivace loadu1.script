@@ -1,0 +1,59 @@
+dim_flt 1
+dim_act 11
+dim_frm 10
+findactor 0, "chemaFor2pristav"
+findactor 1, "chemaFor3pristav"
+findactor 2, "Enemy08K2"
+findactor 3, "Enemy11K"
+findactor 4, "Enemy10K2"
+findactor 5, "Enemy04K2"
+findactor 6, "Enemy04K3"
+findactor 7, "Enemy08K3"
+findactor 8, "Enemy10K3"
+findactor 9, "Enemy12K2"
+findactor 10, "load mise15-mesto"
+
+findframe 0, "chemaFor2pristav"
+findframe 1, "chemaFor3pristav"
+findframe 2, "Enemy08K2"
+findframe 3, "Enemy11K"
+findframe 4, "Enemy10K2"
+findframe 5, "Enemy04K2"
+findframe 6, "Enemy04K3"
+findframe 7, "Enemy08K3"
+findframe 8, "Enemy10K3"
+findframe 9, "Enemy12K2"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 90
+if flt[0] = 1, -1, 1
+
+commandblock 1
+car_invisible 0, 0
+car_invisible 1, 0
+
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 8, active
+act_setstate 9, active
+act_setstate 10, active
+
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+commandblock 0
+
+act_setstate 100, off

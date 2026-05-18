@@ -1,0 +1,10 @@
+dim_act 1
+dim_flt 1
+findactor 0, "Tommy"
+
+label 1
+wait 1000
+human_isweapon 0, 0, 19
+if flt[0] = 1, -1, 1
+mission_objectivesclear
+mission_objectives 11960003

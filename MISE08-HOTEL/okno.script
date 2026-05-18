@@ -1,0 +1,82 @@
+dim_flt 1
+dim_frm 10
+dim_act 6
+
+findactor 0, "Tommy"
+findactor 1, "act_off"
+findactor 2, "detector_music"
+findactor 3, "detector_pol_schody"
+findactor 4, "prijezd polisu"
+findactor 5, "prijezd druhych polisu"
+
+findframe 0, "bad end"
+findframe 1, "Tommy"
+findframe 2, "vypln_okna"
+findframe 3, "Box498"
+findframe 4, "ohen_okno01"
+findframe 5, "ohen_okno02"
+findframe 6, "ohen_okno03"
+findframe 7, "horici okno"
+findframe 8, "hasici_prijezd"
+findframe 9, "tik tak"
+
+frm_seton 2,1
+act_setstate -1, inactive
+
+debug_text "OKNO aktivovano"
+
+label 101
+detector_inrange 0,2
+if flt[0] = 1,-1,101
+
+timeroff
+act_setstate 1,active
+// MUSIC FADE DOWN
+setevent 2,554,-1
+
+enemy_block
+zatmyse 1
+wait 500
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+frm_seton 1,0
+frm_seton 2,0
+loaddifferences "dif08c.chg"
+recloadfull "record08c.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+actor_setplacement 0,0
+frm_seton 1,1
+frm_seton 3,1
+PLAYER_LOCKCONTROLS 0
+enemy_unblock
+// MUSIC STOP-DESTROY
+setevent 2,552,-1
+zatmyse 0
+commandblock 0
+
+//setcitytrafficvisible 1
+wait 1000
+
+autosavegamefull 5160
+
+frm_seton 2,0
+emitparticle 4,6
+emitparticle 5,9
+emitparticle 6,9
+frm_seton 7, 1
+frm_seton 9, 0
+
+mission_objectivesclear
+
+act_setstate 3,active
+act_setstate 4,active
+act_setstate 5,active
+
+wait 35000
+frm_seton 8, 1

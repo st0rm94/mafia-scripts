@@ -1,0 +1,29 @@
+dim_frm 6
+dim_act 6
+findframe 0, "load mise mise13-zradce"
+findframe 1, "2tommy"
+findframe 2, "2tommy2"
+findframe 3, "2shotgun"
+findframe 4, "2shotgun2"
+
+findactor 0, "Tommy"
+findactor 1, "Salieri"
+findactor 2, "Enemy04K"
+findactor 3, "Enemy10K"
+findactor 4, "Enemy10K2"
+findactor 5, "Enemy12K"
+
+createweaponfromframe 1, 10, 23, 50
+createweaponfromframe 2, 10, 7, 50
+createweaponfromframe 3, 11, 0, 16
+createweaponfromframe 4, 11, 4, 8
+
+setcompass 0
+enablemap 1
+human_death 2
+human_death 3
+human_death 4
+human_death 5
+
+policemanager_on 980000, 1
+police_speed_factor 0.57

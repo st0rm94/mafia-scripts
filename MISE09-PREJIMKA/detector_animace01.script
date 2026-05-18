@@ -1,0 +1,94 @@
+dim_frm 10
+dim_flt 1
+dim_act 19
+findactor 0,"Detektiv"
+findactor 1,"Enemy08K"
+findactor 2,"detector_chatka01"
+findactor 3,"detector_chatka02"
+findactor 4,"vybuch"
+findactor 5, "Enemy02+"
+findactor 6,"Enemy08K3"
+findactor 7,"Enemy10K2"
+findactor 8,"Detektiv5"
+findactor 9,"Enemy09K2"
+findactor 10,"Enemy10K3"
+findactor 11,"zmena_pocasi"
+findactor 12,"Tommy"
+findactor 13,"TruckB"
+findactor 14,"Enemy07+"
+findactor 15,"Enemy08K2"
+findactor 16,"SalMan02K"
+findactor 17,"SalMan01K"
+findactor 18,"Paulie"
+
+findframe 0,"Tommy"
+findframe 1,"placement_tommy"
+findframe 2,"Enemy13C"
+findframe 3,"Enemy13C2"
+findframe 4,"TruckB"
+findframe 5,"Enemy07+"
+findframe 6,"Enemy08K2"
+findframe 7,"placement_most01"
+findframe 8,"placement_most02"
+findframe 9,"placement_most03"
+
+frm_seton 3,0
+frm_seton 2,1
+
+settankhitcount 13,1000
+
+label 101
+detector_inrange 0,2
+if flt[0] = 1,-1,101
+
+
+//*********************ANIMACE
+zatmyse 1
+wait 500
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+
+frm_seton 0,0
+frm_seton 2,0
+frm_seton 4,0
+
+actor_setplacement 12,1
+
+loaddifferences "dif09c.chg"
+recloadfull "record09c.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+frm_seton 0,1
+cleardifferences
+PLAYER_LOCKCONTROLS 0
+
+frm_seton 3,1
+frm_seton 4,1
+frm_seton 5,1
+frm_seton 6,1
+
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 8, active
+act_setstate 9, active
+act_setstate 10, active
+act_setstate 11,active
+
+actor_setplacement 18,7
+actor_setplacement 16,8
+actor_setplacement 17,9
+
+mission_objectivesclear
+mission_objectives 09960008
+zatmyse 0
+commandblock 0

@@ -1,0 +1,13 @@
+dim_act 1
+findactor 0, "chemaTud"
+enemy_changeanim "walk1.i3d", "walk woman1.i3d"
+
+act_setstate 100, inactive
+
+enemy_move 39
+enemy_lookto 38
+enemy_wait
+
+label 1
+enemy_usecar 0, 1
+compareownerwith 0, -1, 1

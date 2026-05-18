@@ -1,0 +1,90 @@
+dim_flt 2
+dim_act 12
+dim_frm 28
+findactor 0, "civil"
+findactor 1, "cad_ford"
+findactor 2, "load mise17-mesto"
+findactor 3, "vrat dvr"
+findactor 4, "houmles1.1"
+findactor 5, "houmles2.2"
+findactor 6, "houmles3.1"
+findactor 7, "houmles5.1"
+findactor 8, "houmles4.1"
+findactor 9, "houmles7.1"
+findactor 10, "flasa"
+findactor 11, "Politik"
+
+findframe 0, "ohen na barelu"
+findframe 1, "sklenky"
+findframe 2, "houmles4.2"
+findframe 3, "houmles3.1"
+findframe 4, "houmles3.2"
+findframe 5, "houmles3.3"
+findframe 6, "houmles4.1"
+findframe 7, "houmles5.1"
+findframe 8, "houmles5.2"
+findframe 9, "houmles5.3"
+findframe 10, "drevo"
+findframe 11, "houmles2.1"
+findframe 12, "houmles2.2"
+findframe 13, "houmles1.1"
+findframe 14, "houmles1.2"
+findframe 15, "houmles7.1"
+findframe 16, "houmles7.2"
+findframe 17, "paceni"
+findframe 18, "ochoz1"
+findframe 19, "ochoz2"
+findframe 20, "ochoz3"
+findframe 21, "Cylinder01"
+findframe 22, "17_tomout"
+findframe 23, "flyboy"
+findframe 24, "prk_vez"
+findframe 25, "prk_vez2"
+findframe 26, "prk_vez3"
+findframe 27, "prk_vez4"
+
+
+human_force_settocar 0, 1, 0
+
+door_enableus 3, 0 
+
+act_setstate 4, inactive
+act_setstate 5, inactive
+act_setstate 6, inactive
+act_setstate 7, inactive
+act_setstate 8, inactive
+act_setstate 9, inactive
+act_setstate 10, inactive
+
+human_candie 11
+
+emitparticle 0, 9
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 0
+frm_seton 23, 0
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+frm_seton 27, 0
+mission_objectivesclear
+mission_objectives 17960000

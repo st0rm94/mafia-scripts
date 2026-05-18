@@ -1,0 +1,32 @@
+dim_flt 1
+dim_act 4
+dim_frm 2
+findactor 0, "Tommy"
+findactor 1, "load mise20-mesto"
+findactor 2, "Box51"
+findactor 3, "Box81"
+findframe 0, "poloha playera po animaci"
+findframe 1, "Tommy"
+
+detector_waitforuse 19970000, 1
+
+commandblock 1
+player_lockcontrols 1
+frm_seton 1, 0
+loaddifferences "dif20b.chg"
+recloadfull "record20b"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+actor_setplacement 0, 0
+door_setopenpose 2, 90
+door_enableus 2, 1
+player_lockcontrols 0
+act_setstate 1, active
+door_enableus 3, 1
+mission_objectives 20960000
+commandblock 0

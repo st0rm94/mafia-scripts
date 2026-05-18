@@ -1,0 +1,300 @@
+dim_flt 6
+dim_act 12
+dim_frm 7
+findactor 0
+findactor 1, "Tommy"
+findactor 2, "Enemy"
+findactor 3, "Enemy2"
+findactor 4, "Enemy3"
+findactor 5, "Dickovi_hlasky"
+findactor 6, "detector_smaz_Dicka"
+findactor 7, "Lucas"
+findactor 8, "detector_VIP_energy"
+findactor 9, "detector_energy_enemy"
+findactor 10, "rozjety subquest"
+findactor 11, "null"
+
+findframe 0
+findframe 1, "Enemy"
+findframe 2, "Enemy2"
+findframe 3, "Enemy3"
+findframe 4, "position_Tommy"
+findframe 5, "Lucas"
+findframe 6, "Tommy"
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 0, 0
+
+let flt[3] = 3
+
+act_setstate 100, inactive
+
+setcompass 0
+
+frm_seton 0, 1
+human_addweapon 0, 9, 7, 65
+human_holster 0
+
+{ DOWN
+label FREESTATE
+if flt[1] = 1, KONEC, -1
+enemy_playanim "NudaStativ.I3D"
+rnd 0, 4
+let flt[0] = flt[0] +1
+let flt[0] = flt[0] * 4000
+wait flt[0]
+enemy_playanim "Nuda01.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto FREESTATE
+}
+
+{ up
+label 2
+if flt[1] = 1, KONEC, -1
+enemy_vidim 1
+goto 2
+}
+
+label KONEC
+// ################
+// ##   K O N E C ! ! !  ##
+// ################
+wait 2000
+act_setstate 5, off
+
+label 7
+enemy_action_follow 1, 1.3, RETURN, NOLINK
+
+policeitchforplayer 5
+if flt[5] = 1, 7, -1
+
+compareownerwithex 1, 11, 8, -1
+let flt[4] = 1
+goto 7
+
+label 8
+if flt[4] = 1, -1, 9
+wait 4000
+let flt[4] = 0
+goto 7
+
+label 9
+commandblock 1
+player_lockcontrols 1
+inventory_push 1
+inventory_clear 1
+actor_setdir 0, 6
+actor_setdir 1, 0
+dialog_begin 0, 2
+dialog_camswitch 1, 0
+commandblock 0
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_talk 19991071
+enemy_wait
+dialog_camswitch 0, 1
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_talk 1, 19991081
+enemy_wait
+dialog_camswitch 1, 0
+enemy_playanim "gesto2 nogun1c.I3D"
+enemy_talk 19991091
+enemy_wait
+enemy_playanim "gesto2 nogun1a.I3D", 0
+dialog_camswitch 0, 1
+enemy_talk 1, 19991101
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19991111
+enemy_playanim "gesto2 nogun1b.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_wait
+dialog_end
+inventory_pop 1
+player_lockcontrols 0
+wait 1000
+let flt[1] = 0
+
+label SEND10
+setevent 7, 3, SEND10
+//act_setstate 8, off
+act_setstate 6, active
+
+mission_objectivesremove 19960004
+mission_objectives 20960005
+setcompass 5
+detector_setsignal 10, 0
+human_holster 0
+enemy_move 35, run
+enemy_move 38
+enemy_move 39
+enemy_move 40
+enemy_move 41
+enemy_lookto 42
+enemy_wait
+frm_seton 100, 0
+act_setstate 8, off
+act_setstate 100, off
+
+event USE_AB, 19970101
+event_use_cb 1
+policeitchforplayer 2
+if flt[2] = 1, -1, 6
+goto flt[3]
+
+label 3
+enemy_talk 1, 00950223, 4
+enemy_wait
+let flt[3] = flt[3] + 1
+return
+
+label 4
+enemy_talk 1, 00950225, 4
+enemy_wait
+let flt[3] = flt[3] + 1
+return
+
+label 5
+enemy_talk 1, 00950224, 4
+enemy_wait
+let flt[3] = 3
+return
+
+label 6
+enemy_stopanim
+enemy_vidim 0
+human_looktoactor 0, 1, 1
+player_lockcontrols 1
+enemy_look 1
+human_isweapon 1, 0, 27
+if flt[0] = 1, -1, FALSE
+if flt[1] = 2, KONEC, -1
+setcompass -1
+commandblock 1
+inventory_push 1
+inventory_clear 1
+actor_setdir 1, 0
+dialog_begin 0, 3
+dialog_camswitch 0, 1
+commandblock 0
+enemy_talk 1, 19990961
+enemy_wait
+dialog_camswitch 1, 0
+enemy_playanim "gesto2 nogun1c.I3D", 0
+let flt[0] = flt[0] - 200
+enemy_talk 19990971
+wait flt[0]
+enemy_playanim "gesto2 nogun1b.I3D"
+enemy_wait
+enemy_playanim "gesto2 nogun1a.I3D"
+dialog_camswitch 0, 1
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_talk 1, 19990981
+enemy_wait
+human_addweapon 1, 27, 0, 0
+human_activateweapon 1, 27
+commandblock 1
+person_playanim 1, "Vypinac01.I3D", 0
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] /2
+commandblock 0
+wait flt[0]
+human_delweapon 1, 27
+wait flt[0]
+dialog_camswitch 1, 0
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_talk 19990991
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 19991011
+enemy_wait
+// CHLAPICI !!!
+
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+
+dialog_camswitch 1, 0
+human_looktoactor 0, 2, 1
+enemy_talk 19991021
+wait 500
+human_looktoactor 1, 2, 1
+wait 1000
+enemy_look 2
+dialog_camswitch 1, 2
+wait 500
+enemy_wait
+commandblock 1
+dialog_camswitch 0, 1
+actor_setdir 1, 1
+commandblock 0
+enemy_talk 1, 19991031
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19991041
+enemy_wait
+dialog_camswitch 0, 1
+enemy_talk 1, 19991051
+enemy_wait
+commandblock 1
+dialog_end
+inventory_pop 1
+human_delweapon 1, 27
+commandblock 0
+act_setstate 9, active
+player_lockcontrols 0
+label SEND
+setevent 2, 1, SEND
+label SEND2
+setevent 3, 1, SEND2
+label SEND3
+setevent 4, 1, SEND3
+act_setstate 5, active
+human_eraseab 0
+goto RET
+
+label FALSE
+debug_text "Dick: Player NEma balicek..."
+actor_setplacement 1, 4
+dialog_begin 0, 3
+dialog_camswitch 0, 1
+enemy_talk 1, 19990961
+enemy_wait
+dialog_camswitch 1, 0
+enemy_playanim "gesto2 nogun1c.I3D", 0
+let flt[0] = flt[0] - 200
+enemy_talk 19990971
+wait flt[0]
+enemy_playanim "gesto2 nogun1b.I3D"
+enemy_wait
+enemy_playanim "gesto2 nogun1a.I3D"
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_talk 19990972
+enemy_wait 
+dialog_camswitch 0, 1
+enemy_talk 1, 19990973
+enemy_wait
+dialog_camswitch 1, 0
+enemy_talk 19990974
+enemy_wait
+dialog_end
+// SPOLECNY RETURN
+
+label RET
+human_looktoactor 0
+human_looktoactor 1
+event_use_cb 1
+player_lockcontrols 0
+return
+
+event 100
+let flt[1] = 1
+event_use_cb 1
+return

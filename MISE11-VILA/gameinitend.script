@@ -1,0 +1,29 @@
+dim_act 11
+dim_frm 2
+findactor 0, "Kasar"
+findactor 1, "Enemy08K"
+findactor 2, "Enemy10K"
+findactor 3, "Enemy08K2"
+findactor 4, "Enemy10K2"
+findactor 5, "Enemy08K3"
+findactor 6, "Enemy"
+findactor 7, "Enemy11K"
+findactor 8, "Radni"
+findactor 9, "Tommy"
+findframe 0, "load z mise11-mesto"
+
+
+wingman_setindicator 0, 4, 0
+human_addweapon 1, 11, 8, 4
+human_addweapon 2, 11, 8, 4
+human_addweapon 3, 11, 8, 4
+human_addweapon 4, 11, 8, 4
+human_addweapon 5, 11, 8, 4
+human_addweapon 6, 8, 6, 30
+human_addweapon 7, 10, 50, 100
+human_addweapon 8, 6, 6, 30
+
+
+setmissionnumber 1
+character_pop 0
+

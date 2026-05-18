@@ -1,0 +1,23 @@
+dim_flt 1
+dim_act 4
+dim_frm 1
+findactor 0, "SalMan02K3"
+findactor 1, "SalMan03K3"
+findactor 2, "load animation 20.6"
+findactor 3, "load animation 20.3"
+
+act_setstate 100, inactive
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+human_getproperty 1, 0, energy
+if flt[0] = 0, -1, 1
+
+get_remote_float 0, 3, 0
+stream_fadevol 0, 7000, 1, 0
+wait 7000
+stream_destroy 0
+act_setstate 100, off
+

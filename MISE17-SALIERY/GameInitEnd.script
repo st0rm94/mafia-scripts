@@ -1,0 +1,40 @@
+dim_act 7
+dim_frm 6
+findactor 0, "dvere_frontX"
+findactor 1, "Object28"
+findactor 2, "SalieriHIGH"
+findactor 3, "VincenzoHIGH"
+findactor 4, "Luigi"
+findactor 5, "buiCousal"
+findactor 6, "Tommy"
+
+findframe 0, "sroub"
+findframe 1, "praskani"
+findframe 2, "gramecmusic"
+findframe 3, "zap"
+findframe 4, "2c2"
+findframe 5, "vztyk_sal"
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+
+door_enableus 0, 0
+door_enableus 1, 0 
+
+garage_generatecars
+
+human_addweapon 2, 7, 6, 30
+human_addweapon 3, 12, 2, 30
+human_addweapon 4, 12, 2, 30
+human_addweapon 6, 6, 6, 0
+human_holster 2
+human_holster 3
+human_holster 4
+human_holster 6
+
+car_muststeal 5, 1
+garage_nezahazuj 5

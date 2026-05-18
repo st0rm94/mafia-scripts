@@ -1,0 +1,78 @@
+dim_flt 4
+dim_act 5
+findactor 0, "civil13"
+findactor 1, "TommySAILOR"
+findactor 2, "Czena"
+findactor 3, "Box364"
+findactor 4, "tleskej"
+
+human_addweapon 0, 8, 6, 30
+human_holster 0
+label 1
+{ up
+enemy_lookto 20
+enemy_wait
+let flt[1] = flt[1] + 1
+if flt[1] = 3, 2, -1
+enemy_playanim "xMavani01s.I3D"
+wait 10000
+enemy_playanim "xMavani01a.I3D"
+wait 3000
+enemy_playanim "xMavani01s.I3D"
+wait 10000
+enemy_playanim "xMavani01c.I3D"
+wait 3000
+goto 1
+}
+
+label 2
+{ up
+human_eraseab 0
+enemy_move 22
+enemy_wait
+wait 1000
+enemy_move 36
+door_open 3, 0
+}
+{ up
+enemy_move 23
+enemy_wait
+let flt[1] = 0
+human_createab 0
+goto 1
+}
+
+event 7
+enemy_stop
+enemy_playanim "KurakLoop.I3D"
+label 13
+detector_issignal 4, -1, 13
+wait 300
+enemy_playanim "xTleskani01c.I3D"
+wait 18500
+return
+
+event use_ab, 14970002
+event_use_cb 1
+getenemyaistate 0, 2
+if flt[2] ! 0, 5, -1
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_playanim "GestSkl01.I3D"
+if flt[3] = 0, 3, -1
+if flt[3] = 1, 4, -1
+enemy_talk 14950037
+let flt[3] = 0
+goto 5
+label 3
+enemy_talk 14950038
+let flt[3] = 1
+goto 5
+label 4
+enemy_talk 14950039
+let flt[3] = 2
+label 5
+enemy_wait
+human_looktoactor 0
+return

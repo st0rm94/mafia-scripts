@@ -1,0 +1,26 @@
+dim_flt 2
+dim_act 4
+findactor 0, "kamos1"
+findactor 1, "kamos 2"
+findactor 2, "Joe"
+findactor 3, "Tommy"
+
+label 1
+wait 250
+GETACTORSDIST 2, 3, 0
+if flt[0] < 15, -1, 1
+//if flt[1] = 1, 3, -1
+//autosavegamefull 5235
+//let flt[1] = 1
+//label 3
+setevent 0, 1, 1
+setevent 1, 1, 1
+setevent 2, 1, 1
+label 2
+wait 250
+GETACTORSDIST 2, 3, 0
+if flt[0] > 15, -1, 2
+setevent 0, 2, 2
+setevent 1, 2, 2
+setevent 2, 2, 2
+goto 1

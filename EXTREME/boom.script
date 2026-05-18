@@ -1,0 +1,11 @@
+act_setstate -1,inactive
+
+{ up
+label 101
+wait 20000
+goto 101
+}
+
+event 201
+explosion 5,100
+return

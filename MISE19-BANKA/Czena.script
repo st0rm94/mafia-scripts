@@ -1,0 +1,23 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 4
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "1reakce 1"
+findactor 3, "1reakce 2"
+
+enemy_playanim "recepcniletistestativ.i3d"
+
+label 1
+detector_issignal 2, -1, 1
+
+wait 600
+enemy_lookto 28
+enemy_wait
+wait 1500
+enemy_lookto 62
+enemy_wait
+enemy_playanim "x panika leh dolu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0] 
+enemy_playanim "x panika leh stativ.i3d"

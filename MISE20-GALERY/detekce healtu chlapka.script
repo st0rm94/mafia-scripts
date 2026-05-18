@@ -1,0 +1,14 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Enemy12K2"
+findactor 1, "SalMan02K7"
+
+act_setstate 100, inactive
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+label 2
+setevent 1, 1, 2
+act_setstate 100, off

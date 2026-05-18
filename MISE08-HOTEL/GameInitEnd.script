@@ -1,0 +1,37 @@
+dim_frm 15
+dim_act 1
+
+findactor 0, "ReditelH"
+human_candie 0
+
+findframe 0, "horici okno"
+findframe 1, "tram1"
+findframe 2, "tram2"
+findframe 3, "policie"
+findframe 4, "horn1"
+findframe 5, "horn2"
+findframe 6, "horn3"
+findframe 7, "hasici_prijezd"
+findframe 8, "prijezd policie1"
+findframe 9, "polidoor1" 
+findframe 10, "polidoor2"
+findframe 11, "prijezd policie2"
+findframe 12, "anim1"
+findframe 13, "anim2"
+findframe 14, "tik tak"
+
+frm_seton 0, 0 
+frm_seton 1, 0 
+frm_seton 2, 0 
+frm_seton 3, 0 
+frm_seton 4, 0 
+frm_seton 5, 0 
+frm_seton 6, 0 
+frm_seton 7, 0 
+frm_seton 8, 0 
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0

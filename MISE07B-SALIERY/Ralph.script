@@ -1,0 +1,123 @@
+dim_flt 4
+dim_act 4
+dim_frm 3
+findframe 0, "9tool2"
+findframe 1, "ralpik1"
+findframe 2, "ralpik2"
+findactor 0
+findactor 1, "Tommy"
+findactor 2, "nesahat_ForAcou"
+findactor 3, "detector_Ralph"
+enemy_shut_up yes
+enemy_vidim 0
+car_enableus 2, 0
+human_linktohand 0, 0
+
+frm_seton 1, 0
+frm_seton 2, 0
+
+label PLACE
+{ DOWN
+enemy_move 9
+enemy_lookto 11
+enemy_wait 
+let flt[1] = 0
+}
+gosub CHECK
+if flt[1] = 1, PLACE, -1
+
+{ DOWN
+label FREESTATE 
+frm_seton 1, 1
+enemy_playanim "MechVDire01.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "MechVDire02.I3D", 0
+frm_seton 2, 1
+wait 700
+let flt[0] = flt[0] - 866
+wait flt[0]
+enemy_stopanim
+wait 1000
+}
+gosub CHECK
+if flt[1] = 1, PLACE, FREESTATE
+
+label CHECK
+if flt[1] = 1, -1, RET
+getactorsdist 0, 1, 0
+if flt[0] > 3, -1, SKIP 
+enemy_action_follow 1, 1.5, RETURN, NOLINK
+label SKIP
+human_looktoactor 0, 1, 1
+enemy_look 1
+enemy_wait
+rnd 0, 3
+let flt[0] = flt[0] + 1
+goto flt[0]
+
+label 1
+enemy_talk 00950110
+enemy_wait
+goto CARMANAGER
+
+label 2
+enemy_talk 00950112
+enemy_wait
+goto CARMANAGER
+
+label 3
+enemy_talk 00950111
+enemy_wait
+label CARMANAGER
+garage_carmanager
+human_looktoactor 0
+debug_text "Ralph: Event AB vykonan!"
+label RET
+act_setstate 3, active
+return
+
+event USE_AB, 07970002
+let flt[1] = 1
+enemy_forcescript 0
+event_use_cb 1
+return
+
+event 1
+let flt[1] = 1
+event_use_cb 1
+return
+
+event HIT_FROM_PLAYER
+if flt[3] > 4, RET2, -1
+human_looktoactor 0, 1, 1
+let flt[3] = flt[3] +1
+human_stoptalk 0
+playsoundstop 1, 1
+human_getproperty 0, 0, Energy
+if flt[0] < 40, NASERSE, -1
+if flt[3] = 1, NASIRACKA1, -1
+if flt[3] = 2, NASIRACKA2, -1
+if flt[3] = 3, NASIRACKA3, NASERSE
+label NASIRACKA1
+enemy_talk 950119
+goto RET2
+label NASIRACKA2
+enemy_talk 950118
+goto RET2
+label NASIRACKA3
+enemy_talk 950120
+goto RET2
+label NASERSE
+enemy_shut_up no
+human_looktoactor 0
+enemy_vidim 1
+enemy_naserse 1
+label RET2
+event_use_cb 0
+return
+
+event 1000
+enemy_shut_up no
+enemy_vidim 1
+return

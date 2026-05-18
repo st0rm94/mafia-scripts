@@ -1,0 +1,11 @@
+dim_flt 2
+
+dim_frm 1
+findframe 0
+
+label 1
+emitparticle 0,32,0
+rnd 1,20
+let flt[1] = flt[1] * 1000
+wait flt[1]
+goto 1

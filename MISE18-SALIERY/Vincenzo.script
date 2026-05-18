@@ -1,0 +1,229 @@
+//[debug_me]
+dim_act 7
+dim_frm 14
+dim_flt 4
+findactor 0, "Vincenzo"
+findactor 1, "Tommy"
+findactor 2, "Paulie"
+findactor 3, "Sam"
+findactor 4, "detector_Tommy"
+findactor 5, "load mise18"
+findactor 6, "detector_hlasky"
+findframe 0, "position_Tommy"
+findframe 1, "position_Paulie"
+findframe 2, "position_Sam"
+findframe 3, "Baseballka"
+findframe 4, "Colt"
+findframe 5
+findframe 6, "Thompson"
+findframe 7, "Thompson2"
+findframe 8, "2bbat"
+findframe 9, "2c1911"
+findframe 10, "xkybl "
+findframe 11, "2sawoff"
+findframe 12, "vinc_sednuti"
+findframe 13, "vinc_vztyk"
+//createweaponfromframe 10, 17
+human_set8slot 1, 1
+human_set8slot 2, 1
+human_set8slot 3, 1
+human_addweapon 0, 12, 2, 30
+human_holster 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 11, 1
+enemy_shut_up yes
+enemy_vidim 0
+wait 2000
+enemy_playanim "VincSezeniStativ.I3D", 0
+
+{ DOWN
+label FREESTATE
+wait 1000
+goto FREESTATE
+}
+frm_seton 13, 1
+enemy_playanim "VincVstani.I3D", 0
+let flt[0] = flt[0] - 581
+let flt[0] = flt[0] / 2
+wait flt[0]
+frm_seton 11, 0
+playsound "s_put3.wav", 11, 10, 0.5, 3
+wait flt[0]
+enemy_playanim "VincStativ.I3D"
+player_lockcontrols 1
+dialog_begin 0, 3
+label SEND5
+setevent 2, 1, SEND5
+label SEND6
+setevent 3, 1, SEND6
+zatmyse 1
+wait 500
+commandblock 1
+actor_setplacement 1, 0
+actor_setplacement 2, 1
+actor_setplacement 3, 2
+commandblock 0
+human_looktoactor 2, 0, 1
+human_looktoactor 3, 0, 1
+human_looktoactor 1, 0, 1
+human_looktoactor 0, 2, 1
+person_playanim 2, "breath01a.I3D", 0, 1
+person_playanim 3, "breath01a.I3D", 0, 1
+dialog_camswitch 1, 0
+zatmyse 0
+wait 500
+enemy_talk 18990011
+enemy_wait
+actor_setdir 2, 5
+actor_setdir 3, 5
+dialog_camswitch 0, 2
+enemy_talk 2, 18990021
+person_playanim 2, "gesto2 nogun1b.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+person_playanim 2, "gesto2 nogun1a.I3D"
+enemy_wait
+person_stopanim 2
+dialog_camswitch 2, 0
+commandblock 1
+   frm_seton 7, 1
+commandblock 0
+enemy_talk 18990031
+commandblock 1
+human_looktoactor 0
+playsound "s_vinc3.wav", 7,10, 0.8, 3
+enemy_playanim "VincPodaniSapiku.I3D", 0
+person_playanim 2, "SbiraniStul02.I3D", 1, simple
+human_setproperty 2, 50, Speed
+let flt[1] = flt[1] - 166
+let flt[1] = flt[1] / 2
+human_addweapon 3, 10, 50, 200
+   let flt[0] = flt[0] - 700
+   let flt[0] = flt[0] / 4
+commandblock 0
+wait flt[1]
+commandblock 1
+   human_addweapon 2, 10, 50, 200
+   frm_seton 7, 0
+   let flt[1] = flt[0] - flt[1]
+commandblock 0
+wait flt[1]
+wait flt[0]
+human_linktohand 0, 3
+wait flt[0]
+commandblock 1
+  human_setproperty 2, 100, Speed
+  frm_seton 3, 0
+  frm_seton 8, 1
+  playsound "s_put6.wav", 8, 5, 0.7, 3
+  createweaponfromframe 8, 4
+   person_stopanim 2
+commandblock 0
+wait flt[0]
+person_playanim 3, "gesto2 gun1a.I3D"
+person_playanim 2, "gesto2 gun1a.I3D"
+dialog_camswitch 0, 2
+human_looktoactor 0
+playsound "s_vinc3.wav", 7, 10, 0.8
+enemy_playanim "VincPodaniPistole.I3D", 0
+person_playanim 2, "gesto2 gun1b.I3D", 1
+enemy_talk 2, 18990041
+let flt[1] = flt[1] - 166
+wait flt[1]
+person_playanim 2, "gesto2 gun1a.I3D"
+commandblock 1
+let flt[0] = flt[0] - 850
+let flt[0] = flt[0] / 4
+let flt[1] = flt[0] - flt[1]
+commandblock 0
+wait flt[1]
+wait flt[0]
+dialog_camswitch 1, 0
+human_linktohand 0, 4
+wait flt[0]
+commandblock 1
+  frm_seton 4, 0
+  frm_seton 9, 1
+  playsound "s_put10.wav", 9, 5, 0.7, 3
+  createweaponfromframe 9, 9, 7, 35
+commandblock 0
+wait flt[0]
+enemy_playanim "VincStativ.I3D", 0
+dialog_camswitch 0, 1
+person_playanim 1, "Gestikulace01.I3D"
+enemy_talk 1, 18990051
+enemy_wait
+person_stopanim 1
+wait 1000
+human_looktoactor 2
+human_looktoactor 3
+human_looktoactor 1
+dialog_end
+human_holster 2
+human_holster 3
+player_lockcontrols 0
+//act_setstate 4, active
+label SEND
+setevent 2, 1, SEND
+label SEND2
+setevent 3, 2, SEND2
+label SEND3
+setevent 5, 2, SEND3
+label SEND4
+setevent 6, 2, SEND4
+human_looktoactor 0
+frm_seton 12, 1
+enemy_playanim "VincSednuti.I3D", 0, simple
+let flt[0] = flt[0] - 498
+let flt[0] = flt[0] / 3
+wait flt[0]
+wait flt[0]
+commandblock 1
+   playsound "s_put7.wav", 11, 10, 0.5, 3
+   frm_seton 11, 1
+commandblock 0
+wait flt[0]
+enemy_playanim "VincSezeniStativ.I3D", 0
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+event HIT_FROM_PLAYER
+if flt[2] > 4, RET, -1
+human_looktoactor 0, 1, 1
+let flt[2] = flt[2] +1
+human_stoptalk 0
+human_getproperty 0, 0, Energy
+if flt[0] < 40, NASERSE, -1
+if flt[2] = 1, 5, -1
+if flt[2] = 2, 6, -1
+if flt[2] = 3, 7, NASERSE
+label 5
+enemy_talk 00950243
+goto RET
+label 6
+enemy_talk 00950244
+goto RET
+label 7
+enemy_talk 00950245
+goto RET
+label NASERSE
+enemy_shut_up no
+human_looktoactor 0
+enemy_vidim 1
+enemy_naserse 1
+label RET
+return
+
+event 1000
+enemy_shut_up no
+enemy_vidim 1
+setaipriority 100
+return
+
+label FINISH

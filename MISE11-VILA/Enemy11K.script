@@ -1,0 +1,40 @@
+dim_flt 2
+dim_act 6
+commandblock 1
+findactor 0, "Enemy11K"
+findactor 1, "Enemy"
+findactor 2, "Enemy10K2"
+findactor 3, "Radni"
+findactor 4, "Enemy08K3"
+findactor 5, "Enemy10K2"
+commandblock 0
+
+act_setstate -1, inactive
+enemy_group_new 0
+enemy_group_add 0, 0
+enemy_group_add 0, 1
+enemy_group_add 0, 3
+
+human_getproperty 2, 1, energy
+if flt[1] = 0, 2, -1
+getenemyaistate 2, 1
+if flt[1] > 1, 2, -1
+
+setevent 4, 3, -1
+setevent 5, 1, -1
+human_talk 0, 11991002, 1
+enemy_move 32
+enemy_lookto 3
+enemy_wait
+label 1
+goto 1
+
+label 2
+setevent 3, 1, -1
+human_talk 0, 11991001, 1
+enemy_move 244
+enemy_lookto 103
+enemy_wait
+enemy_lockstate fightguard, 10
+label 3
+goto 3

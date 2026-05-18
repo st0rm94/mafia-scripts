@@ -1,0 +1,207 @@
+[debug_me]
+dim_act 14
+dim_flt 3
+findactor 0
+findactor 1, "Ridic1"
+findactor 2, "Ridic2"
+findactor 3, "Tommy"
+findactor 4, "Guard"
+findactor 5, "Guard2"
+findactor 6, "Guard3"
+findactor 8, "load mise18-pristav"
+findactor 9, "detector_stop"
+findactor 10, "player_v_pristavu"
+findactor 11, "TruckB"
+// nechat free
+findactor 13, "detector_corka"
+
+enemy_group_new 2
+enemy_group_add 2, 0
+enemy_group_add 2, 4
+enemy_group_add 2, 5
+enemy_group_add 2, 6
+
+human_returnfrompanic 0, 1
+
+label DETECT
+wait 100
+getactorsdist 0, 1, 0
+gosub  VSTUPCHECK
+if flt[0] < 30, RIDIC1, DETECT
+
+label RIDIC1
+// Znamena ze vykecava s ridicem
+let flt[1] = 1
+{ UP
+
+label WAITSPEED
+gosub  VSTUPCHECK
+human_getowner 1, 12
+car_getspeed 12, 0
+if flt[0] < 3, -1, WAITSPEED
+enemy_move_to_car 11, 0
+enemy_look 1
+enemy_wait
+}
+{ UP
+human_looktoactor 0, 1, 1
+enemy_wait
+enemy_playanim "Gestikulace07.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "Vypinac02.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_stopanim
+human_looktoactor 0
+}
+label SEND7
+setevent 1, 2, SEND7
+// Uz nevykecava, prave se vraci
+label CHECKODCHOD
+enemy_look 1
+enemy_wait
+getactorsdist 0, 1, 0
+if flt[0] > 15, -1, CHECKODCHOD
+
+let flt[1] = 0
+enemy_move 7
+enemy_lookto 10
+
+label DETECTOUT
+wait 100
+getactorsdist 0, 3, 0
+if flt[0] < 30, DETECT, -1
+getactorsdist 0, 1, 0
+if flt[0] > 35, DETECT, DETECTOUT
+
+event 100
+if flt[1] = 1, -1, CONT2
+enemy_forcescript 0
+label CONT2
+human_isweapon 3, 0, 21
+if flt[0] = 1, -1, ALARM
+compareownerwithex 3, 11, -1, ALARM
+player_lockcontrols 1
+poczkurvenychbedencar 11, 0, 1
+if flt[0] ! 0, ALARM, -1
+//fuckingbox_getnumbox 1, 0
+//if flt[0] ! 0, ALARM, -1
+//detector_issignal 13, -1, ALARM
+human_getowner 3, 12
+enemy_move_to_car 12, 0
+enemy_look 3
+enemy_wait
+human_looktoactor 0, 3, 1
+enemy_playanim "Gestikulace07.I3D", 0
+enemy_talk 18990371
+enemy_wait
+enemy_playanim "Game OstrDokl Bere.I3D", 0
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] / 2
+wait flt[0]
+human_addweapon 0, 21, 0, 0
+wait flt[0]
+enemy_playanim "Game OstrDokl stativ.I3D"
+enemy_talk 18990391
+enemy_wait
+enemy_playanim "Game OstrDokl Vraci.I3D", 0
+let flt[0] = flt[0] - 83
+let flt[0] = flt[0] / 2
+wait flt[0]
+human_holster 0
+wait flt[0]
+enemy_stopanim
+zatmyse 1
+wait 500
+// Spusteni loadu.....
+setevent 9, 1, -1
+human_looktoactor 0
+player_lockcontrols 0
+act_setstate 8, active
+// Toto uz se nespousti......Zustalo z Alphy
+goto FINISH
+
+label VSTUPCHECK
+detector_issignal 10, SEND5, -1
+return
+
+label ALARM
+debug_text "Player nema vjet..."
+human_getowner 3, 12
+enemy_move_to_car 12, 0
+enemy_look 3
+enemy_wait
+human_looktoactor 0, 3, 1
+enemy_playanim "x hlidka prohlidka.I3D", -1, SIMPLE
+enemy_talk 18990371
+enemy_wait
+enemy_stopanim
+gosub  VSTUPCHECK
+wait 2000
+enemy_look 3
+enemy_wait
+compareownerwithex 3, 11, -1, NEMANIC
+poczkurvenychbedencar 11, 0, 1
+if flt[0] ! 0, BEDNY, -1
+//fuckingbox_getnumbox 1, 0
+//if flt[0] ! 0, BEDNY, -1
+//detector_issignal 13, -1, BEDNY
+label NEMANIC
+enemy_playanim "Gesto_05a.I3D", 0
+enemy_talk 18990381
+goto CONT
+label BEDNY
+enemy_playanim "Gesto_05a.I3D", 0
+enemy_talk 18990771
+label CONT
+let flt[0] = flt[0] - 332
+wait flt[0]
+enemy_stopanim
+enemy_wait
+gosub  VSTUPCHECK
+wait 2000
+rnd 0, 2
+let flt[0] = flt[0] + 1
+enemy_look 3
+enemy_wait
+enemy_playanim "gesto2 nogun1c.I3D", 0, SIMPLE
+goto flt[0]
+label 1
+enemy_talk 18990801
+enemy_wait
+goto RET
+label 2
+enemy_talk 18990811
+enemy_wait
+label RET
+human_looktoactor 0
+gosub  VSTUPCHECK
+label SEND6
+setevent 9, 1, SEND6
+player_lockcontrols 0
+if flt[1] = 0, -1, QUICKEND
+enemy_move 7
+event_use_cb 0
+return
+label QUICKEND
+event_use_cb 1
+return
+
+label SEND5
+setevent 9, 1, SEND5
+act_setstate 9, off
+human_looktoactor 0
+enemy_move 9, run
+detector_issignal 10, -1, DETECT
+enemy_look 3
+enemy_playanim "gesto2 nogun1c.I3D", 0, SIMPLE
+enemy_talk 0, 18990781, 1
+label SEND
+setevent 4, 1, SEND
+enemy_wait
+enemy_stopanim
+enemy_move 10, run
+return
+
+label FINISH

@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 2
+dim_frm 1
+findactor 0, ""
+findactor 1, "Tommy"
+findframe 0, "Prokur.neck"
+
+label 1
+enemy_playanim "kurakloop.i3d"
+wait 7000
+enemy_playanim "kurakpotahnuti.i3d", 0, simple
+wait 2500
+emitparticle 0, 25
+wait 500
+enemy_playanim "kurakloop.i3d"
+goto 1

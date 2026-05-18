@@ -1,0 +1,201 @@
+dim_frm 20
+dim_flt 1
+findframe 1,"help_cam01"
+findframe 2,"help_cam02"
+findframe 3,"help_cam03"
+findframe 4,"help_cam04"
+findframe 5,"help_cam05"
+findframe 6,"help_cam06"
+findframe 7,"help_cam07"
+findframe 8,"help_cam08"
+findframe 9,"help_cam09"
+findframe 10,"help_cam10"
+findframe 11,"help_cam11"
+findframe 12,"help_cam12"
+findframe 13,"help_cam13"
+findframe 14,"help_cam14"
+findframe 15,"help_cam15"
+findframe 16,"help_cam16"
+findframe 17,"help_cam17"
+findframe 18,"help_cam18"
+findframe 19,"help_cam19"
+
+label 101
+player_lockcontrols 0
+detector_waitforuse 10970000
+player_lockcontrols 1
+rnd 0,19
+let flt[0]=flt[0]+1
+goto flt[0]
+
+
+label 1
+commandblock 1
+camera_lock 1
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 2
+commandblock 1
+camera_lock 2
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 3
+commandblock 1
+camera_lock 3
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 4
+commandblock 1
+camera_lock 4
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 5
+commandblock 1
+camera_lock 5
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 6
+commandblock 1
+camera_lock 6
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 7
+commandblock 1
+camera_lock 7
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 8
+commandblock 1
+camera_lock 8
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 9
+commandblock 1
+camera_lock 9
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 10
+commandblock 1
+camera_lock 10
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 11
+commandblock 1
+camera_lock 11
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 12
+commandblock 1
+camera_lock 12
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 13
+commandblock 1
+camera_lock 13
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 14
+commandblock 1
+camera_lock 14
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 15
+commandblock 1
+camera_lock 15
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 16
+commandblock 1
+camera_lock 16
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 17
+commandblock 1
+camera_lock 17
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 18
+commandblock 1
+camera_lock 18
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101
+
+label 19
+commandblock 1
+camera_lock 19
+citycaching_tick
+commandblock 0
+wait 5000
+camera_unlock
+goto 101

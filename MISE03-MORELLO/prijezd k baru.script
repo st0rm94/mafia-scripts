@@ -1,0 +1,54 @@
+dim_flt 2
+dim_act 13
+dim_frm 2
+findframe 0,"compass_dvorek"
+findframe 1,"load mise03-salierykonec"
+
+findactor 0, "Paulie"
+findactor 1,"Tommy"
+findactor 2,"music_loud"
+findactor 3,"paulie_getowner"
+findactor 4,"Enemy04K"
+findactor 5,"Enemy13C"
+findactor 6,"Enemy08K"
+findactor 7,"Enemy10K"
+findactor 8,"Enemy12K"
+findactor 9,"zniceni_aut"
+findactor 10,"detector_vrataopen"
+findactor 11,"misto_pro_bednu"
+findactor 12,"backdoor_lock"
+
+setcompass 0
+let flt[1]=0
+
+label 101
+wait 500
+detector_inrange 0,50
+if flt[0]=1,-1,101
+
+policeitchforplayer 0
+if flt[0]>0,-1,BEZPOLDU
+if flt[1]=0,-1,101
+human_talk 0,00950074
+let flt[1]=1
+goto 101
+label BEZPOLDU
+
+autosavegamefull 5045
+mission_objectivesclear
+mission_objectives 03960001
+
+setcompass 0
+act_setstate 4,active
+
+act_setstate 2,active
+act_setstate 9,active
+act_setstate 10,active
+act_setstate 11,active
+act_setstate 12,active
+act_setstate 3,off
+label 102
+setevent 0,202,102
+wait 500
+enemy_forcescript 0
+

@@ -1,0 +1,14 @@
+//nahodny stavba3.2
+
+dim_flt 1
+dim_frm 1
+FindFrame 0
+
+label 10
+  rnd 0, 35
+  let flt[0] = flt[0] * 900
+  let flt[0] = flt[0] + 5500
+  wait flt[0]
+  frm_seton 0, 1
+goto 10
+end

@@ -1,0 +1,46 @@
+dim_flt 2
+dim_act 5
+dim_frm 3
+findactor 0, "Sam"
+findactor 1, "Tommy"
+findactor 2, "detekce healtu sama"
+findactor 3, "sam ai"
+findactor 4, "sam ai 1"
+findframe 0, "Sam"
+findframe 1, "poloha playera po animaci 20.4"
+findframe 2, "Tommy"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 5
+if flt[0] = 1, -1, 1
+
+zatmyse 1
+wait 500
+
+autosavegamefull 5561
+
+zatmyse 1, 1
+
+commandblock 1
+player_lockcontrols 1
+frm_seton 2, 0
+loaddifferences "dif20d.chg"
+recloadfull "record20d"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+act_setstate 0, active
+act_setstate 2, active
+//act_setstate 3, active
+//act_setstate 4, active
+frm_seton 2, 1
+actor_setplacement 1, 1
+player_lockcontrols 0
+commandblock 0
+zatmyse 0

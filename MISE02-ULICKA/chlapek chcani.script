@@ -1,0 +1,15 @@
+dim_act 1
+dim_flt 1
+findactor 0,"Hoolig"
+
+label 101
+detector_inrange 0,5
+if flt[0]>0,102,-1
+human_getproperty 0,0,Energy
+if flt[0]<100,102,101
+
+
+
+
+label 102
+setevent 0,201,102

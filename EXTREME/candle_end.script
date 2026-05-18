@@ -1,0 +1,65 @@
+dim_act 4
+dim_frm 1
+dim_flt 2
+findactor 0,"candle01"
+findactor 1,"candles_bonuscar"
+findactor 2,"Tommy"
+findactor 3,"bugatti"
+
+findframe 0,"candles_bonuscar"
+
+frm_seton 0,0
+car_invisible 1,1
+car_enableus 1,0
+
+act_setstate -1,inactive
+
+act_setstate 0,active
+frm_seton 0,1
+car_invisible 1,0
+car_enableus 1,0
+let flt[1]=0
+
+mission_objectivesclear
+mission_objectives 22930026
+
+timeron 0,0,15,345
+findactor 0,"candle_end"
+settimeoutevent 0,202
+
+{ up
+label 101
+wait 1000
+detector_inrange 0,30
+if flt[0]=1,-1,101
+compareownerwithex 2,3,-1,101
+if flt[1]=32,-1,101
+}
+
+timeroff
+settimeoutevent -1,202
+car_enableus 1,1
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar E
+freeride_enablecar Q
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590
+
+label 102
+wait 1000
+compareownerwithex 2,3,102,-1
+car_enableus 3,0
+end
+
+event 201
+let flt[1]=flt[1]+1
+return
+
+event 202
+timeroff
+mission_objectivesclear
+endofmission 0,22980001

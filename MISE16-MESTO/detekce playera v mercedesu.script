@@ -1,0 +1,17 @@
+dim_act 2
+dim_frm 1
+findactor 0, "Tommy"
+findactor 1, "merced500K2"
+findframe 0, "load mise17-saliery"
+
+act_setstate 100, inactive
+
+label 1
+wait 250
+compareownerwithex 0, 1, -1, 1
+
+setcompass -1
+mission_objectivesclear
+mission_objectives 17960001
+setcompass 0
+act_setstate 100, off

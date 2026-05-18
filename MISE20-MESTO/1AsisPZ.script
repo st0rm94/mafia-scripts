@@ -1,0 +1,162 @@
+dim_flt 4
+dim_act 12
+dim_frm 3
+
+findactor 1, "Tommy"
+findactor 2, ""
+findactor 3, "1odchod od peteho 1"
+findactor 4, "1odchod od peteho 3"
+findactor 5, "1ProdZ"
+findactor 9, "Box24"
+findactor 10, "gRectangle01"
+findactor 11, "dedek prezkoceni pultu"
+
+findframe 0, "teleport asis dvere"
+findframe 1, "unlock_pete"
+findframe 2, "1ProdZ"
+
+enemy_group_new 2
+enemy_group_add 2, 2
+enemy_group_add 2, 5
+
+door_enableus 9, 0
+door_enableus 10, 0
+act_setstate 100, inactive
+
+{ up
+label 1
+if flt[0] = 1, -1, 1
+}
+
+getmissionnumber 3
+if flt[3] = 1, -1, 11
+
+enemy_vidim 0
+human_holster 0
+human_changemodel 2, "ProdZ1.I3D"
+
+enemy_move 6
+enemy_wait
+enemy_move 17
+enemy_wait
+enemy_lookto 7
+enemy_wait
+door_open 10, 1
+
+label 9
+getangleactortoactor 2, 1, 0
+if flt[0] < 15, -1, 9
+
+wait 1000
+
+enemy_talk 20992001
+door_open 10, 0
+
+wait 1000
+
+frm_seton 100, 0
+act_setstate 100, off
+
+label 11
+act_setstate 11, active
+enemy_move 6
+enemy_wait
+enemy_move 17
+enemy_wait
+enemy_lookto 7
+enemy_wait
+door_open 10, 1
+
+label 12
+getangleactortoactor 2, 1, 0
+if flt[0] < 15, -1, 12
+
+wait 1000
+
+enemy_talk 20990011
+enemy_wait
+
+label 7
+human_anyweaponinhand 1, 0
+if flt[0] = 1, -1, 8
+if flt[1] = 1, 7, -1
+enemy_talk 19990271
+enemy_wait
+let flt[1] = 1
+goto 7
+
+label 8
+door_open 10, 0
+wait 500
+frm_seton 1, 1
+wait 4000
+actor_setplacement 2, 0
+door_lock 9, 0
+door_open 9, 1
+enemy_move 8
+enemy_wait
+enemy_lookto 9
+enemy_wait
+human_looktoactor 2, 1, 1
+
+label 2
+wait 1000000
+goto 2 
+
+event 1
+let flt[0] = 1
+return
+
+event 2
+enemy_move 11
+enemy_wait
+
+label 3
+detector_issignal 3, -1, 3
+
+human_looktoactor 2
+enemy_move 6
+enemy_wait
+enemy_lookto 17
+enemy_wait
+
+detector_issignal 4, -1, 6
+human_holster 2
+enemy_move 12
+enemy_lookto 7
+enemy_wait
+human_looktoactor 2, 1, 1
+
+label 5
+detector_issignal 4, 5, -1
+
+enemy_move 6
+enemy_lookto 17
+enemy_wait
+
+label 10
+detector_issignal 4, 10, -1
+
+label 6
+door_lock 9, 1
+door_open 9, 0
+wait 500
+enemy_move 13
+enemy_wait
+
+label 13
+wait 1000
+getactorsdist 1, 2, 0
+if flt[0] > 200, -1, 13
+getactorsdist 1, 5, 0
+if flt[0] > 200, -1, 13
+
+frm_seton 2, 0
+frm_seton 100, 0
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 11, off
+act_setstate 100, off
+
+event 3
+enemy_naserse 1

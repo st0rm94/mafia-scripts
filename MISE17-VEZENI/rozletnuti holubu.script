@@ -1,0 +1,21 @@
+dim_flt 1
+dim_act 1
+dim_frm 3
+findactor 0, "otevreni dveri na vezi"
+findframe 0, "holuby_vrku"
+findframe 1, "holuby_frnk"
+findframe 2, "hovna"
+
+act_setstate 100, inactive
+
+soundfade 0, 1, 0, 0.85
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+frm_seton 1, 1
+emitparticle 2, 73
+soundfade 0, 500, 0.85, 0
+act_setstate 0, active
+act_setstate 100, off

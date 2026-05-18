@@ -1,0 +1,98 @@
+dim_act 3
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "cad_phaeton"
+
+act_setstate 0, inactive
+wingman_setindicator 0, 3, 0
+
+label 1
+wait 30000
+goto 1
+
+event 1
+human_looktoactor 0, 1, 1
+human_talk 0, 13990141, 2
+enemy_wait
+human_looktoactor 0
+return
+
+event 2
+wait 10000
+compareownerwithex 1, 2, -1, 12
+human_talk 0, 13990011, 2
+enemy_wait
+human_talk 0, 13990012, 2
+enemy_wait
+human_talk 0, 13990013, 2
+enemy_wait
+human_talk 0, 13990014, 2
+enemy_wait
+human_talk 0, 13990015, 2
+enemy_wait
+return
+label 12
+human_talk 0, 13990011, 0
+enemy_wait
+human_talk 0, 13990012, 0
+enemy_wait
+human_talk 0, 13990013, 0
+enemy_wait
+human_talk 0, 13990014, 0
+enemy_wait
+human_talk 0, 13990015, 0
+enemy_wait
+return
+
+event 3
+human_looktoactor 0, 1, 1
+human_talk 0, 13990021, 2
+enemy_wait
+human_looktoactor 0
+return
+
+event 4
+human_looktoactor 0, 1, 1
+human_talk 0, 13990031, 2
+enemy_wait
+human_looktoactor 0
+return
+
+event 5
+human_looktoactor 0, 1, 1
+human_talk 0, 13990041, 2
+enemy_wait
+human_looktoactor 0
+return
+
+event 6
+human_looktoactor 0, 1, 1
+enemy_talk 13990051
+enemy_wait
+human_looktoactor 0
+return
+
+event 7
+human_looktoactor 0, 1, 1
+enemy_talk 13990061
+enemy_wait
+human_looktoactor 0
+return
+
+event 8
+human_looktoactor 0, 1, 1
+enemy_talk 13990071
+enemy_wait
+human_looktoactor 0
+return
+
+event 9
+endofmission 0, 13980000
+end
+
+event 10
+human_looktoactor 0, 1, 1
+human_talk 0, 13990081, 2
+enemy_wait
+human_looktoactor 0
+return

@@ -1,0 +1,14 @@
+frm_seton 100, 1
+
+{ up
+enemy_vidim 1
+label 1
+wait 100000
+goto 1
+}
+
+event 1
+enemy_move 30, run
+enemy_lookto 31
+enemy_wait
+return

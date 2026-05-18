@@ -1,0 +1,7 @@
+label 1
+enemy_move 13
+wait 10000
+enemy_move 14
+enemy_move 15
+enemy_move 16
+goto 1

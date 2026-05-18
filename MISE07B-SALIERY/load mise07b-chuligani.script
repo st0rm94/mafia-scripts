@@ -1,0 +1,48 @@
+//[debug_me]
+dim_flt 2
+dim_act 5
+findactor 0, "Tommy"
+findactor 1, "KURVADRATEK"
+findactor 3, "detector_hlasky"
+findactor 4, "Paulie"
+dim_frm 1
+findframe 0, "POZICE_FROMCAR"
+label 1
+detector_inrange 0, 3
+if flt[0] = 1, 2, 1
+
+label 2
+if flt[1] = 1, 4, 3
+
+label 3
+label SEND
+commandblock 0
+setevent 3, 100, SEND
+wait 7000
+goto 1
+
+label 4
+commandblock 1
+human_getseatidx 4, 0
+if flt[0] = -1, 3, -1
+human_getseatidx 0, 0
+if flt[0] = -1, 3, -1
+zatmyse 1, 1
+if flt[0] > 0, -1, RIDITOMMY
+setmissionnumber flt[0]
+human_fromcar 4, 0
+human_getowner 0, 1
+human_force_settocar 0, 1, 0 
+label RIDITOMMY
+// Predani inventare do dalsi mise + charactera
+character_push 4
+character_push 0
+inventory_push 0
+change_mission "mise07b-chuligani", "load z mise07b-saliery", 1
+//debug_text "Prechazim do dalsi mise: Tommy sedi na sedadle: %n", 0
+commandblock 0
+end
+
+event 1
+let flt[1] = 1
+return

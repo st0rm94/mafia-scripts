@@ -1,0 +1,9 @@
+dim_act 3
+findactor 0,"Tommy"
+findactor 1,"Enemy3"
+findactor 2, "Paulie"
+
+act_setstate -1,inactive
+
+human_addweapon 1, 9, 7, 14
+enemy_naserse 0

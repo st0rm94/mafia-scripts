@@ -1,0 +1,34 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 1
+findactor 0, "1reakce 1"
+findactor 1, "Tommy"
+
+enemy_playanim "urednikpsani.i3d"
+
+label 1
+detector_issignal 0, -1, 1
+
+enemy_playanim "urednikodstolul.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x panika drep dolu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x panika drep stativ.i3d"
+
+{ up
+label 2
+wait 1000000
+goto 2
+}
+
+event use_ab, 19970004
+event_use_cb 1
+enemy_talk 1, 19990641
+enemy_wait
+enemy_talk 19990591
+enemy_wait
+enemy_talk 19990592
+enemy_wait
+return

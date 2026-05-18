@@ -1,0 +1,33 @@
+dim_flt 1
+dim_act 11
+findactor 0, "Hoolig"
+findactor 1, "Hoolig3"
+findactor 2, "Hoolig2"
+findactor 3, "Billy"
+findactor 4, "Hoolig4"
+findactor 5, "Tommy"
+findactor 6, "Hoolig5"
+findactor 7, "Sara"
+findactor 8, "Hoolig6"
+findactor 9, "Hoolig7"
+findactor 10, "detector_haraseni2"
+act_setstate -1, inactive
+// Zapne pomocny detector haraseni
+act_setstate 10, active
+
+{ DOWN
+label DETECT
+detector_inrange 0, 10
+if flt[0] ! 0, -1, DETECT
+}
+act_setstate 10, off
+label SEND
+setevent 7, 5, SEND
+
+label FINISH
+debug_text "detector_haraseni: finished!"
+end
+
+event 1
+event_use_cb 1
+return

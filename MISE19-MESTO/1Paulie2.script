@@ -1,0 +1,20 @@
+enemy_vidim 0
+dim_act 1
+findactor 0, ""
+
+frm_seton 100, 0
+act_setstate 100, inactive
+
+frm_seton 100, 1
+enemy_move 31
+enemy_lookto 32
+enemy_wait
+enemy_playanim "x barman stativ.i3d"
+wait 2000
+human_talk 0, 19990451, 6
+enemy_wait
+wait 1000 
+enemy_stopanim
+enemy_move 30
+frm_seton 100, 0
+act_setstate 100, off

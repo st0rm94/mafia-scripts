@@ -1,0 +1,13 @@
+dim_flt 1
+
+getmissionnumber 0
+if flt[0] = 0, -1, 1
+mission_objectivesclear
+mission_objectives 10960001
+end
+
+label 1
+mission_objectivesclear
+mission_objectives 10960006
+end
+

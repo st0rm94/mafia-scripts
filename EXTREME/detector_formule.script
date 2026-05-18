@@ -1,0 +1,152 @@
+commandblock 1
+dim_act 6
+dim_frm 9
+dim_flt 9
+findframe 0,"formulatruck01"
+findframe 1,"formulatruck02"
+findframe 2,"formulatruck03"
+
+findframe 3,"formule01"
+findframe 4,"formule02"
+findframe 5,"formule03"
+
+findframe 6,"cam_formule01"
+findframe 7,"cam_formule02"
+findframe 8,"cam_formule03"
+
+findactor 0,"formule01"
+findactor 1,"formule02"
+findactor 2,"formule03"
+
+findactor 3,"alfa8C"
+findactor 4,"detector_formule"
+findactor 5,"Tommy"
+
+car_enableus 0,0
+car_enableus 1,0
+car_enableus 2,0
+car_enableus 3,0
+commandblock 0
+
+act_setstate -1,inactive
+
+mission_objectivesclear
+mission_objectives 22930006
+
+camera_lock 6
+citycaching_tick
+wait 5000
+camera_lock 7
+citycaching_tick
+wait 5000
+camera_lock 8
+citycaching_tick
+wait 5000
+camera_unlock
+citycaching_tick
+
+timeron 1,0,0,600
+settimeoutevent 4,201
+
+car_enableus 0,1
+car_enableus 1,1
+car_enableus 2,1
+
+label 101
+wait 1000
+detector_inrange 0,5
+if flt[0]=1,-1,101
+
+
+
+// #### kontrola formule 01
+
+frm_getpos 1,1
+frm_getpos 3,4
+
+let flt[7]=flt[1]-2
+let flt[8]=flt[1]+2
+if flt[4]>flt[7],-1,NESPLNENO
+if flt[4]<flt[8],-1,NESPLNENO
+
+let flt[7]=flt[2]+0.75
+let flt[8]=flt[2]+2
+if flt[5]>flt[7],-1,NESPLNENO
+if flt[5]<flt[8],-1,NESPLNENO
+
+label NEXT02
+let flt[7]=flt[3]-2
+let flt[8]=flt[3]+2
+if flt[6]>flt[7],-1,NESPLNENO
+if flt[6]<flt[8],-1,NESPLNENO
+
+// #### kontrola formule 02
+
+frm_getpos 2,1
+frm_getpos 4,4
+
+let flt[7]=flt[1]-2
+let flt[8]=flt[1]+2
+if flt[4]>flt[7],-1,NESPLNENO
+if flt[4]<flt[8],-1,NESPLNENO
+
+let flt[7]=flt[2]+0.75
+let flt[8]=flt[2]+2
+if flt[5]>flt[7],-1,NESPLNENO
+if flt[5]<flt[8],-1,NESPLNENO
+
+let flt[7]=flt[3]-2
+let flt[8]=flt[3]+2
+if flt[6]>flt[7],-1,NESPLNENO
+if flt[6]<flt[8],-1,NESPLNENO
+
+// #### kontrola formule 03
+
+frm_getpos 0,1
+frm_getpos 5,4
+
+let flt[7]=flt[1]-2
+let flt[8]=flt[1]+2
+if flt[4]>flt[7],-1,NESPLNENO
+if flt[4]<flt[8],-1,NESPLNENO
+
+let flt[7]=flt[2]+0.75
+let flt[8]=flt[2]+2
+if flt[5]>flt[7],-1,NESPLNENO
+if flt[5]<flt[8],-1,NESPLNENO
+
+let flt[7]=flt[3]-2
+let flt[8]=flt[3]+2
+if flt[6]>flt[7],-1,NESPLNENO
+if flt[6]<flt[8],-1,NESPLNENO
+
+car_enableus 3,1
+timeroff
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar S
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590
+
+label XZ
+wait 1000
+compareownerwithex 5,0,XZ,-1
+car_enableus 0,0
+car_enableus 1,0
+car_enableus 2,0
+end
+
+
+
+
+label NESPLNENO
+goto 101
+
+event 201
+timeroff
+mission_objectivesclear
+endofmission 0,22980001
+end

@@ -1,0 +1,15 @@
+//nahodny ef_hob1
+
+dim_flt 1
+dim_frm 1
+FindFrame 0
+  wait 5500
+  frm_seton 0, 1
+label 10
+  rnd 0, 22
+  let flt[0] = flt[0] * 2600
+  let flt[0] = flt[0] + 8000
+  wait flt[0]
+  frm_seton 0, 1
+goto 10
+end

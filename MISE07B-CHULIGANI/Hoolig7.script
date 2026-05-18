@@ -1,0 +1,5 @@
+act_setstate -1, inactive
+dim_act 1
+findactor 0, "Hoolig7"
+human_addweapon 0, 7, 6, 30
+enemy_lockstate FIGHT_GUARD

@@ -1,0 +1,8 @@
+dim_flt 1
+act_setstate -1, inactive
+
+label 1
+wait 250
+detector_inrange 0, 7
+if flt[0] = 1, -1, 1
+change_mission "mise10-mesto", "load z mise10-letiste", 1

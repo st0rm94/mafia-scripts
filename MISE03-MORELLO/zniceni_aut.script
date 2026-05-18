@@ -1,0 +1,53 @@
+act_setstate -1,inactive
+// aktivuje prijezd k baru po fullsave
+
+dim_flt 7
+dim_act 4
+
+findactor 0,"enemycar01"
+findactor 1,"enemycar02"
+findactor 2,"enemycar03"
+findactor 3,"load mise03-salierykonec"
+
+car_switchshowenergy 0,2
+car_switchshowenergy 1,2
+car_switchshowenergy 2,2
+
+showcardamage 0,1
+showcardamage 1,1
+showcardamage 2,1
+
+detector_setsignal -1,0
+
+label 101
+wait 1000
+getcardamage 0,1
+getcardamage 1,2
+getcardamage 2,3
+
+if flt[1]=0,-1,111
+   if flt[4]=0,-1, 111
+   console_addtext 3471
+   let flt[4]=1
+label 111
+if flt[2]=0,-1,112
+   if flt[5]=0,-1, 112
+   console_addtext 3471
+   let flt[5]=1
+label 112
+if flt[3]=0,-1,113
+   if flt[6]=0,-1, 113
+   console_addtext 3471
+   let flt[6]=1
+label 113
+
+if flt[4]=1,-1,101
+if flt[5]=1,-1,101
+if flt[6]=1,-1,101
+
+mission_objectivesremove 03960001
+mission_objectives 03960002
+
+detector_setsignal -1,1
+act_setstate 3, active
+act_setstate -1,inactive

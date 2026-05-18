@@ -1,0 +1,20 @@
+dim_flt 2
+dim_act 1
+dim_frm 3
+findactor 0, "" 
+findframe 0, "~barel54"
+findframe 1, "agon2"
+findframe 2, "horici_wagon2"
+
+act_setstate 100, inactive
+emitparticle 0, 6, 1
+wait 700
+actor_setpos 0, 0
+frm_seton 1, 1
+emitparticle 0, 52
+destroy_physicalobject 0
+frm_seton 0, 0
+frm_seton 2, 1
+stopparticle 1
+explosion 30, 1000
+act_setstate 100, off

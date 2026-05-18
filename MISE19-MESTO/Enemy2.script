@@ -1,0 +1,21 @@
+enemy_vidim 0
+dim_act 1
+findactor 0
+human_addweapon 0, 7, 6, 30
+act_setstate -1, inactive
+{ DOWN
+enemy_move 25
+enemy_look 28
+label WAIT
+wait 100000
+goto WAIT
+}
+enemy_vidim 1
+
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

@@ -1,0 +1,20 @@
+dim_act 3
+dim_flt 1
+getactiveplayer 0
+findactor 1, "Paulie"
+findactor 2, "civil"
+
+act_setstate -1, inactive
+
+label DETECT
+human_getproperty 2, 0, Energy
+if flt[0] = 0, VYPNI, -1
+getenemyaistate 2, 0
+if flt[0] > 1, VYPNI, DETECT
+
+label VYPNI
+commandblock 1
+human_looktoactor 0
+human_looktoactor 1
+act_setstate -1, off
+commandblock 0

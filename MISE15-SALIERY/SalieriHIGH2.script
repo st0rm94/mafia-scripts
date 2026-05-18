@@ -1,0 +1,19 @@
+dim_act 3
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "VincenzoHIGH2"
+
+enemy_playanim "gesto_02a.i3d"
+human_looktoactor 0, 1, 1
+
+label 1
+wait 10000000
+goto 1
+
+event use_ab, 15970000
+enemy_talk 00950001
+enemy_wait
+return
+
+event 1000
+enemy_action_fire 1

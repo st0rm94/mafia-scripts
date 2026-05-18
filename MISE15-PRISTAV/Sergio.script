@@ -1,0 +1,17 @@
+enemy_vidim 0
+dim_act 3
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "sergiova hlaska"
+
+act_setstate 100, inactive
+
+enemy_move 20, run
+enemy_lockstate fight_guard, 1
+act_setstate 2, active
+
+enemy_vidim 1
+
+label 1
+wait 1000000
+goto 1

@@ -1,0 +1,28 @@
+dim_flt 1
+dim_act 3
+findactor 0, "door_zbrX01"
+findactor 1, "VincenzoHIGH"
+findactor 2, "Tommy"
+
+label 1
+if flt[0] = 0,1,-1
+//debug_text "detekuji !"
+label 2
+detector_inrange 0,10
+if flt[0] = 2,-1,2
+//debug_text "Closing DOORS!"
+
+//Weapon CHECK
+HUMAN_ISWEAPON 2, 0, 9
+if flt[0]=1,-1,2
+HUMAN_ISWEAPON 2, 0, 4
+if flt[0]=1,-1,2
+
+DOOR_OPEN 0,0
+DOOR_LOCK  0,1
+ACT_SETSTATE 1,INACTIVE
+
+event 555
+let flt[0] = 20
+//debug_text "Vincenzo DOORS CLOSED!"
+return

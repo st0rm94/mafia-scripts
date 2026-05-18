@@ -1,0 +1,41 @@
+dim_flt 1
+dim_act 3
+findactor 0, "Detektiv"
+findactor 1, "nesahat_police_car"
+findactor 2, ""
+
+frm_seton 100, 1
+
+label 1
+{ down
+enemy_vidim 1
+
+label 2
+wait 1000000
+goto 2
+}
+
+label 3
+enemy_usecar
+compareownerwith 1, 3, -1
+
+{ down
+enemy_vidim 1
+
+label 4
+wait 1000000
+goto 4
+}
+
+enemy_move_to_car 1, 1, run
+
+label 5
+enemy_usecar 1, 1
+compareownerwith 1, 1, 5
+
+event 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 2
+return

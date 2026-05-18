@@ -1,0 +1,23 @@
+dim_frm 5
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+act_setstate -1, inactive
+commandblock 1
+inventory_push 0
+character_push 0
+character_push 1
+character_push 2
+findframe 0, "bednakl"
+findframe 1, "bednakl2"
+findframe 2, "bednakl3"
+findframe 3, "bednakl4"
+findframe 4, "bednakl5"
+SETMODELTOCAR 0
+SETMODELTOCAR 1
+SETMODELTOCAR 2
+SETMODELTOCAR 3
+SETMODELTOCAR 4
+change_mission "mise12-mesto", "load z mise12-garage", 0
+commandblock 0

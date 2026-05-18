@@ -1,0 +1,257 @@
+commandblock 1
+dim_flt 1
+dim_act 39
+dim_frm 60
+
+findactor 0, "Radni"
+findactor 1, "civil6"
+findactor 2, "Czena"
+findactor 3, "civil9"
+findactor 4, "civil7"
+findactor 5, "civil10"
+findactor 6, "Czena5"
+findactor 7, "Bguard"
+findactor 8, "Bguard2"
+findactor 9, "civil12"
+findactor 10, "Czena6"
+findactor 11, "civil14"
+findactor 12, "civil13"
+findactor 13, "Czena7"
+findactor 14, "civil15"
+findactor 15, "Czena3"
+findactor 16, "civil16"
+findactor 17, "civil17"
+findactor 18, "Czena2"
+findactor 19, "Czena4"
+findactor 20, "civil18"
+findactor 21, "civil19"
+findactor 22, "Radni"
+findactor 23, "load mise15-saliery"
+findactor 24, "NPC1"
+findactor 25, "NPC2"
+findactor 26, "NPC3"
+findactor 27, "NPC4"
+findactor 28, "NPC5"
+findactor 29, "NPC6"
+findactor 30, "Box313"
+findactor 31, "civil11"
+findactor 32, "civil21"
+findactor 33, "civil20"
+findactor 34, "civil22"
+findactor 35, "civil23"
+findactor 36, "civil24"
+findactor 37, "waiter2"
+findactor 38, "panika vsem"
+
+findframe 0, "pos radni"
+findframe 1, "pos civil6"
+findframe 2, "pos Czena"
+findframe 3, "pos civil9"
+findframe 4, "pos civil7"
+findframe 5, "pos civil10"
+findframe 6, "pos Czena5"
+findframe 7, "pos Bguard"
+findframe 8, "pos Bguard2"
+findframe 9, "pos civil12"
+findframe 10, "pos Czena6"
+findframe 11, "pos civil14"
+findframe 12, "pos civil13"
+findframe 13, "pos Czena7"
+findframe 14, "pos civil15"
+findframe 15, "pos Czena3"
+findframe 16, "pos civil16"
+findframe 17, "pos civil17"
+findframe 18, "pos Czena2"
+findframe 19, "pos Czena4"
+findframe 20, "pos civil18"
+findframe 21, "pos civil19"
+findframe 22, "xclun"
+findframe 23, "Paulie"
+findframe 24, "Bguard"
+findframe 25, "Bguard2"
+findframe 26, "TommySAILOR"
+findframe 27, "9pultik"
+findframe 28, "civil11"
+findframe 29, "civil21"
+findframe 30, "civil20"
+findframe 31, "civil22"
+findframe 32, "civil23"
+findframe 33, "civil24"
+findframe 34, "waiter2"
+findframe 35, "ParnikBasa"
+findframe 36, "2prnuz3"
+findframe 37, "2prvid3"
+findframe 38, "2cigspic"
+findframe 39, "2prnuz2"
+findframe 40, "2prvid2"
+findframe 41, "2prnuz"
+findframe 42, "2prvid"
+findframe 43, "2prlzice"
+findframe 44, "2cigspic2"
+findframe 45, "2cigaro"
+findframe 46, "2prnuz6"
+findframe 47, "2prvid6"
+findframe 48, "2prnuz5"
+findframe 49, "2prvid5"
+findframe 50, "2prnuz4"
+findframe 51, "2prvid4"
+findframe 52, "14_Coucou"
+findframe 53, "Radni"
+findframe 54, "clun"
+findframe 55, "obed4"
+findframe 56, "obed5"
+findframe 57, "obed6"
+findframe 58, "obed7"
+findframe 59, "pevny""
+commandblock 0
+
+frm_seton 22, 0
+frm_seton 54, 0
+frm_seton 23, 0
+frm_seton 27, 0
+//let flt[0] = 35
+
+//goto 76
+
+label 1
+wait 10000
+let flt[0] = flt[0] +1
+if flt[0] > 35, -1, 1
+wait 80000
+
+label 76
+wait 2000
+
+zatmyse 1
+wait 500
+player_lockcontrols 1
+commandblock 1
+frm_seton 24, 0
+frm_seton 25, 0
+frm_seton 26, 0
+frm_seton 27, 1
+act_setstate 31, off
+act_setstate 32, off
+act_setstate 33, off
+act_setstate 34, off
+act_setstate 35, off
+act_setstate 36, off
+act_setstate 37, off
+frm_seton 28, 0
+frm_seton 29, 0
+frm_seton 30, 0
+frm_seton 31, 0
+frm_seton 32, 0
+frm_seton 33, 0
+frm_seton 34, 0
+frm_seton 35, 0
+frm_seton 36, 0
+frm_seton 37, 0
+frm_seton 38, 0
+frm_seton 39, 0
+frm_seton 40, 0
+frm_seton 41, 0
+frm_seton 42, 0
+frm_seton 43, 0
+frm_seton 44, 0
+frm_seton 45, 0
+frm_seton 46, 0
+frm_seton 47, 0
+frm_seton 48, 0
+frm_seton 49, 0
+frm_seton 50, 0
+frm_seton 51, 0
+frm_seton 52, 0
+frm_seton 53, 0
+
+door_lock 30, 0
+loaddifferences "dif14c.chg"
+recloadfull "record14c.rep"
+commandblock 0
+camera_setswing 1, 3, 59
+recwaitforend
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+commandblock 1
+// ****************posilani civilu na proslov
+actor_setplacement 0, 0
+actor_setplacement 1, 1
+actor_setplacement 2, 2
+actor_setplacement 3, 3
+actor_setplacement 4, 4
+actor_setplacement 5, 5
+actor_setplacement 6, 6
+actor_setplacement 7, 7
+actor_setplacement 8, 8
+actor_setplacement 9, 9
+actor_setplacement 10, 10
+actor_setplacement 11, 11
+actor_setplacement 12, 12
+actor_setplacement 13, 13
+actor_setplacement 14, 14
+actor_setplacement 15, 15
+actor_setplacement 16, 16
+actor_setplacement 17, 17
+actor_setplacement 18, 18
+actor_setplacement 19, 19
+actor_setplacement 20, 20
+actor_setplacement 21, 21
+act_setstate 24, off
+act_setstate 25, off
+act_setstate 26, off
+act_setstate 27, off
+act_setstate 28, off
+act_setstate 29, off
+frm_seton 22, 1
+frm_seton 23, 1
+frm_seton 24, 1
+frm_seton 25, 1
+frm_seton 26, 1
+frm_seton 53, 1
+frm_seton 54, 1
+frm_seton 55, 0
+frm_seton 56, 0
+frm_seton 57, 0
+frm_seton 58, 0
+human_eraseab 7
+human_eraseab 8
+door_lock 30, 1
+
+setevent 1, 7, -1
+setevent 2, 7, -1
+setevent 3, 7, -1
+setevent 4, 7, -1
+setevent 5, 7, -1
+setevent 6, 7, -1
+setevent 7, 7, -1
+setevent 8, 7, -1
+setevent 9, 7, -1
+setevent 10, 7, -1
+setevent 11, 7, -1
+setevent 12, 7, -1
+setevent 13, 7, -1
+setevent 14, 7, -1
+setevent 15, 7, -1
+//act_setstate 16, off
+setevent 16, 7, -1
+setevent 17, 7, -1
+setevent 18, 7, -1
+setevent 19, 7, -1
+setevent 20, 7, -1
+setevent 21, 7, -1
+commandblock 0
+act_setstate 38, active
+
+zatmyse 0
+wait 500
+player_lockcontrols 0
+label 2
+setevent 22, 7, 2
+act_setstate 23, active
+
+
+event 1
+let flt[0] = 35
+return

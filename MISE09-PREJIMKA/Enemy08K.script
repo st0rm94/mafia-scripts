@@ -1,0 +1,13 @@
+dim_act 2
+dim_frm 1
+findactor 0,"Enemy08K"
+findactor 1,"Tommy"
+findframe 0,"Enemy08K"
+
+human_addweapon 0, 11, 8, 8
+
+frm_seton 0,0
+act_setstate -1,inactive
+frm_seton 0,1
+
+enemy_action_fire 1

@@ -1,0 +1,90 @@
+commandblock 1
+dim_flt 1
+dim_act 8
+dim_frm 1
+findactor 0, ""
+findactor 1, "Tommy"
+//findactor 2, "zjisteni auta"
+findactor 3, "null"
+findactor 4, "load animace italian garden"
+findactor 5, "paulieho kecy italian garden"
+findactor 6, "zjisteni prenasenyho auta"
+findactor 7, "zapnuti vidim1 italian"
+findframe 0, "navadeni paulieho italian"
+
+enemy_naprdelivaute yes
+
+human_getowner 1, 2
+human_force_settocar 0, 2, 1
+wingman_setindicator 0, 1, 0
+
+autosavegame 5350
+
+inventory_pop 0
+human_set8slot 0, 1
+human_holster 0
+commandblock 0
+enemy_followplayer yes
+enemy_action_follow 1, 2, nonext, target, 0
+enemy_followplayer no
+compareownerwith 3, 8, -1
+human_getowner 0, 2
+
+label 3
+enemy_usecar
+compareownerwith 2, 3, -1
+
+label 8
+{ down
+act_setstate 5, active
+human_looktoactor 0, 1, 1
+enemy_move 15
+enemy_look 1
+enemy_wait
+
+label 6
+wait 1000000
+goto 6
+}
+
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+get_remote_actor 2, 6, 1
+commandblock 0
+
+compareownerwithex 0, 2, 10, -1
+enemy_move_to_car 2, 1, run
+
+label 7
+enemy_usecar 2, 1
+compareownerwith 2, -1, 7
+
+human_setproperty 0, 100, aggresivity
+
+wait 5000
+label 10
+act_setstate 6, off
+act_setstate 7, active
+enemy_followplayer yes
+enemy_action_follow 1, 2, nonext
+
+label 9
+wait 1000000
+goto 9
+
+event 1
+event_use_cb 1
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+commandblock 0
+return
+
+event 2
+enemy_vidim 1
+return

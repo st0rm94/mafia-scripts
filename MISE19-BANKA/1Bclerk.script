@@ -1,0 +1,25 @@
+enemy_vidim 0
+dim_act 3
+findactor 0, ""
+findactor 1, "1Paulie"
+findactor 2, "Tommy"
+
+human_eraseab 0
+
+enemy_playanim "x panika drep stativ.i3d"
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event use_ab, 19970004
+event_use_cb 1
+enemy_talk 2, 19990641
+enemy_wait
+enemy_talk 19990591
+enemy_wait
+enemy_talk 19990592
+enemy_wait
+return

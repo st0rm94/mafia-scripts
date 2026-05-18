@@ -1,0 +1,12 @@
+dim_flt 1
+dim_act 2
+findactor 0, "animation"
+findactor 1, "animation2"
+getmissionnumber 0
+//let flt[0] = 122
+if flt[0] = 122, FINALE, -1
+act_setstate 1, off
+end
+label FINALE
+act_setstate 0, off
+end

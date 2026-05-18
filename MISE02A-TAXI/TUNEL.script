@@ -1,0 +1,25 @@
+dim_flt 1
+label START
+act_setstate -1, inactive
+debug_text "TUNEL: ACTIVE"
+dim_act 7
+dim_frm 1
+findframe 0, "CIL5"
+findactor 0
+findactor 1, "Tommy"
+findactor 2, "TUNEL"
+findactor 3, "Delnik"
+
+label DETECT 
+wait 300
+detector_inrange 0, 20
+if flt[0] = 2, PROJELI, -1
+getactorsdist 0, 1, 0
+if flt[0] > 490, -1, DETECT
+human_talk 3, 02950217
+wait 5000
+goto DETECT
+label PROJELI
+debug_text "TUNEL: PROJELI !!!"
+setcompass 0
+goto START

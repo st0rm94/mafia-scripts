@@ -1,0 +1,33 @@
+//pravidelny (za 1 min)
+
+dim_frm 10
+FindFrame 0, "cas1"
+FindFrame 1, "cas2"
+FindFrame 2, "cas3"
+FindFrame 3, "cas4"
+FindFrame 4, "cas5"
+FindFrame 5, "cas6"
+FindFrame 6, "cas7"
+FindFrame 7, "cas8"
+FindFrame 8, "cas9"
+FindFrame 9, "cas10"
+
+
+label 10
+  wait 58000
+  frm_seton 0, 1
+  frm_seton 4, 1
+  wait 300
+  frm_seton 1, 1
+  frm_seton 5, 1
+  wait 300
+  frm_seton 2, 1
+  frm_seton 3, 1
+  wait 300
+  frm_seton 6, 1
+  frm_seton 7, 1
+  wait 300
+  frm_seton 8, 1
+  frm_seton 9, 1
+goto 10
+end

@@ -1,0 +1,51 @@
+dim_act 4
+dim_frm 1
+dim_flt 1
+findactor 0,"telefon01"
+findactor 1,"activate_telefon"
+findactor 2,"telefon01_check"
+findactor 3,"AKTIVNI_SUBQUEST"
+
+findframe 0,"PHbox49"
+enemy_vidim 0
+
+label START
+{ down
+label 101
+enemy_playanim "Mavani01.I3D"
+wait 30000
+goto 101
+}
+detector_issignal 3,START,-1
+
+detector_setsignal 3,1
+
+frameistelephone 0,0
+if flt[0]=0,-1,BUDKAOK
+mission_objectivesclear
+mission_objectives 22930016
+wait 5000
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+label BUDKAOK
+
+act_setstate 0,active
+act_setstate 2,active
+
+human_eraseab 1
+enemy_stopanim
+label 102
+wait 50000
+goto 102
+end
+
+event use_ab,10970007
+detector_issignal 3,NELZE,-1
+autosavegamefull 5590
+goto JMP01
+label NELZE
+console_addtext 3474
+label JMP01
+return

@@ -1,0 +1,35 @@
+fuckingbox_add 0, "bednakl0"
+fuckingbox_add 0, "bednakl"
+fuckingbox_add 0, "bednakl1"
+fuckingbox_add 0, "bednakl2"
+fuckingbox_add 0, "bednakl3"
+fuckingbox_add 0, "bednakl4"
+fuckingbox_add 0, "bednakl5"
+fuckingbox_add 0, "bednakl6"
+fuckingbox_add 0, "bednakl7"
+fuckingbox_add 0, "bednakl8"
+fuckingbox_add 0, "bednakl9"
+fuckingbox_add 0, "bednakl10"
+
+fuckingbox_add_dest 0, "TruckB.dest01"
+fuckingbox_add_dest 0, "TruckB.dest02"
+fuckingbox_add_dest 0, "TruckB.dest03"
+fuckingbox_add_dest 0, "TruckB.dest04"
+fuckingbox_add_dest 0, "TruckB.dest05"
+fuckingbox_add_dest 0, "TruckB.dest06"
+fuckingbox_add_dest 0, "TruckB.dest07"
+fuckingbox_add_dest 0, "TruckB.dest08"
+fuckingbox_add_dest 0, "TruckB.dest09"
+fuckingbox_add_dest 0, "TruckB.dest10"
+fuckingbox_add_dest 0, "TruckB.dest11"
+fuckingbox_add_dest 0, "TruckB.dest12"
+
+fuckingbox_recompile
+
+dim_flt 1
+fuckingbox_getnumbox 0, 0
+label SKLADEJ
+fuckingbox_move 0
+let flt[0] = flt[0] - 1
+if flt[0] = 0, -1, SKLADEJ
+debug_text "Ridic1: Bedny naskladany"

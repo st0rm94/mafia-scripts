@@ -1,0 +1,39 @@
+enemy_vidim 0
+dim_act 2
+dim_flt 1
+findactor 0
+findactor 1, "AUTO"
+human_force_settocar 0, 1, 2
+human_addweapon 0, 12, 2, 30
+act_setstate -1, inactive
+enemy_blastfire
+{ DOWN
+label WAIT
+wait 2000
+car_getspeed 1, 0
+if flt[0] < 2, VYSTUP, -1
+goto WAIT
+}
+label VYSTUP
+enemy_usecar
+enemy_lockstate FIGHT_GUARD
+enemy_move 10, run
+enemy_vidim 1
+goto FINISH
+
+event 100
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 0
+event_use_cb 1
+return
+
+event HIT_FROM_PLAYER
+if flt[0] ! 0, RET, -1
+let flt[0] = 1
+enemy_vidim 1
+label RET
+return
+
+label FINISH

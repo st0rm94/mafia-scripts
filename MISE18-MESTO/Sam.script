@@ -1,0 +1,253 @@
+//[debug_me]
+commandblock 1
+dim_act 14
+dim_frm 11
+dim_flt 4
+findactor 0, "detector_prestrelka"
+findactor 1, "Paulie"
+findactor 2, "Tommy"
+findactor 3, "Sam"
+findactor 4, "detector_parkovistepristav"
+findactor 5, "Vratpr3"
+findactor 6,  "Vratpr"
+setnullactor 7
+findactor 8, "nesahat_cad_ford"
+findactor 9, "check_svestky"
+setnullactor 10
+findactor 11, "detector_vypni_Sama"
+findactor 12, "detector_prestrelka"
+// 13 = free pro schovani auta do filmecku
+
+findframe 0, "position_Sam"
+findframe 1, "position_Paulie"
+findframe 2, "position_Tommy"
+findframe 3, "load z mise18-pristav"
+findframe 4, "load z mise 18-saliery"
+// Paulie
+// Sam
+findframe 7, "bedna86"
+// Tommmy
+findframe 9, "detector_prestrelka"
+
+// Aby na konci rikal na AB neco jineho
+let flt[1] = 0
+// Slouzi jako znak pro to zda se pred filmeckem schovavalo auto
+let flt[3] = 0
+
+human_set8slot 1, 1
+human_set8slot 3, 1
+human_holster 1
+human_holster 3
+door_lock 5, 1
+door_lock 6, 1
+door_enableus 5, 0
+door_enableus 6, 0
+
+compareownerwithex 2, 7, -1, SKIPCARINIT
+actor_setplacement 8, 4
+human_force_settocar 2, 8, 0
+label SKIPCARINIT
+human_getowner 2, 7
+//actor_setplacement 7, 4
+human_force_settocar 1, 7, 1
+human_force_settocar 3, 7, 2
+//car_calm 7
+
+enemy_followplayer yes
+commandblock 0
+
+
+label FOLLOW
+enemy_action_follow 2, 4, CROUCH, NONEXT
+enemy_talk 18990121
+enemy_wait
+// Kdyby jsme se setkali s fizlama tak nas musim uklidnit
+// Paulie BRAINWAS + ACTIONSCLEAR
+//label SEND2
+//setevent 1, 6, SEND2
+// A TED JA
+enemy_brainwash
+enemy_actionsclear
+
+zatmyse 1
+citymusic_off
+wait 400
+player_lockcontrols 1
+human_holster 1
+human_holster 2
+human_holster 3
+//actor_setplacement 2, 2
+//actor_setplacement 1, 1
+//actor_setplacement 3, 0
+findnearactor 12, 13, CAR
+compareactors 13, 10, 0
+if flt[0] = 0, -1, ANIMACKA
+getactorsdist 12, 13, 0
+if flt[0] < 6, -1, ANIMACKA
+getactorframe 13, 10
+frm_seton 10, 0
+car_invisible 13, 1
+let flt[3] = 1
+
+// ################
+// # NOVY FILMECEK!!! #
+// ################
+label ANIMACKA
+commandblock 1
+getactorframe 1, 5
+getactorframe 2, 8
+getactorframe 3, 6
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+loaddifferences "dif18a2.chg"
+recloadfull "record18a2.rep"
+commandblock 0
+zatmyse 0
+recwaitforend
+zatmyse 1
+wait 500
+commandblock 1
+recunload
+cleardifferences
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+commandblock 0
+// #####################
+// # Konec NOVY FILMECEK!!! #
+// #####################
+human_looktoactor 1
+human_looktoactor 2
+human_looktoactor 3
+
+// Kdybych nahodou pred filmeckem musel schovavat auto, ted ho zase ukazu
+if flt[3] ! 0, -1, SKIPDIALOG
+frm_seton 10, 1
+car_invisible 13, 0
+
+label SKIPDIALOG
+door_lock 5, 0
+door_lock 6, 0
+door_open 5, 1
+door_open 6, 1
+door_lock 5, 1
+door_lock 6, 1
+debug_text "Ted ste si pokecali vo bance..."
+setcompass 3
+enemy_followplayer no
+// Oddelani WINGMANINDICATORU PRO SAMA
+wingman_delindicator 3, 1
+// detector parkoviste pristav...
+act_setstate 4, active
+commandblock 0
+// Prepnuti Paulieho
+enemy_forcescript 1
+zatmyse 0
+wait 500
+player_lockcontrols 0
+act_setstate 0, active
+citymusic_on
+wait 2500
+enemy_move 1
+enemy_lookto 3
+enemy_wait
+let flt[1] = 1
+
+label INITFREESTATE
+human_activateweapon 3, 10
+act_setstate 11, active
+
+label FREESTATE
+enemy_playanim "enm klid puska stat A.I3D", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+rnd 0, 3
+if flt[0] = 0, FREESTATE, -1
+if flt[0] = 1, FREESTATE2, -1
+enemy_playanim "enm klid puska stat B.I3D", 0
+let flt[0] = flt[0] - 370
+wait flt[0]
+goto FREESTATE
+label FREESTATE2
+enemy_playanim "enm klid puska stat C.I3D", 0
+let flt[0] = flt[0] - 370
+wait flt[0]
+goto FREESTATE
+
+event USE_AB, 7970003
+human_eraseab 3
+human_stoptalk 3
+if flt[1] ! 1, DEFAULT, -1
+label RERAND
+rnd 0, 3
+let flt[0] = flt[0] + 1
+if flt[0] = flt[2], RERAND, -1
+human_looktoactor 2, 3, 1
+human_looktoactor 3, 2, 1
+goto flt[0]
+label 1
+enemy_talk 3, 950164
+goto RET
+label 2
+enemy_talk 3, 950165
+goto RET
+label 3
+enemy_talk 3, 950166
+label RET
+enemy_wait
+human_looktoactor 2
+human_looktoactor 3
+let flt[2] = flt[0]
+human_createab 3
+return
+
+label DEFAULT
+rnd 0, 3
+let flt[0] = flt[0] + 4
+if flt[0] = flt[2], DEFAULT, -1
+human_looktoactor 2, 3, 1
+human_looktoactor 3, 2, 1
+goto flt[0]
+label 4
+enemy_talk 3, 950154
+goto RET2
+label 5
+enemy_talk 3, 950162
+goto RET2
+label 6
+enemy_talk 3, 950163
+label RET2
+enemy_wait
+human_looktoactor 2
+human_looktoactor 3
+let flt[2] = flt[0]
+human_createab 3
+event_use_cb 0
+return
+
+event HIT_FROM_PLAYER
+human_looktoactor 3, 2, 1
+human_stoptalk 3
+human_eraseab 3
+label RERAND2
+rnd 0, 3
+let flt[0] = flt[0] + 7
+if flt[0] = flt[2], RERAND2, -1
+goto flt[0]
+label 7
+enemy_talk 3, 00950199
+goto RET3
+label 8
+enemy_talk 3, 00950200
+goto RET3
+label 9
+enemy_talk 3, 00950201
+label RET3
+human_looktoactor 3
+let flt[2] = flt[0]
+human_createab 3
+event_use_cb 0
+return

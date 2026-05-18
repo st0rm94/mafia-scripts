@@ -1,0 +1,161 @@
+# .dnc extraction summary
+# source        : MISE06-SALIERY.dnc  (3790 bytes, main)
+# source        : MISE06-SALIERY-InitScripts.dnc  (550 bytes, init)
+# actors_total  : 22
+# init_records  : 3
+# scripts_found : 10
+
+# main-container actor type-code distribution
+#   type    2  count=1  
+#   type    5  count=6  script
+#   type    6  count=11  
+#   type   27  count=1  human (scripted NPC)
+#   type   35  count=3  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 44
+# total invocations: 113
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    14  frm_seton
+     8  findframe    [casings: FindFrame, findframe]
+     7  label
+     7  settraffsectorsnd    [casings: SetTraffSectorSnd]
+     6  findactor
+     5  dim_flt
+     5  wait
+     4  commandblock
+     4  dim_act
+     4  let
+     3  dim_frm
+     3  end
+     3  goto
+     3  if
+     2  act_setstate
+     2  enemy_wait
+     2  human_getproperty
+     2  human_looktoactor
+     2  player_lockcontrols    [casings: PLAYER_LOCKCONTROLS]
+     2  rnd
+     2  zatmyse
+     1  autosavegame
+     1  callsubroutine
+     1  change_mission
+     1  cleardifferences
+     1  detector_inrange
+     1  endofmission
+     1  enemy_lookto
+     1  enemy_move
+     1  enemy_playanim
+     1  enemy_talk
+     1  event
+     1  human_addweapon
+     1  human_holster
+     1  human_set8slot
+     1  loaddifferences
+     1  mission_objectives
+     1  mission_objectivesclear
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  return
+     1  {
+     1  }
+
+# ---- per-script command listing ----
+
+[EnergyMeter]  type=5  lines=16  commands=8
+    dim_act
+    dim_flt
+    end
+    endofmission
+    findactor
+    human_getproperty
+    if
+    label
+
+[GameInitEnd]  type=init  lines=6  commands=5
+    dim_act
+    findactor
+    human_addweapon
+    human_holster
+    human_set8slot
+
+[GameInitStart]  type=init  lines=1  commands=1
+    callsubroutine
+
+[Luigizabarem]  type=27  lines=26  commands=17
+    act_setstate
+    dim_act
+    dim_flt
+    enemy_lookto
+    enemy_move
+    enemy_playanim
+    enemy_talk
+    enemy_wait
+    event
+    findactor
+    goto
+    human_looktoactor
+    label
+    return
+    wait
+    {
+    }
+
+[TraffSndSect]  type=init  lines=10  commands=1
+    settraffsectorsnd
+
+[animace_start]  type=5  lines=43  commands=17
+    act_setstate
+    cleardifferences
+    commandblock
+    dim_act
+    dim_frm
+    findactor
+    findframe
+    frm_seton
+    loaddifferences
+    mission_objectives
+    mission_objectivesclear
+    player_lockcontrols
+    recloadfull
+    recunload
+    recwaitforend
+    wait
+    zatmyse
+
+[autosave]  type=5  lines=1  commands=1
+    autosavegame
+
+[ef1]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[ef2]  type=5  lines=14  commands=10
+    dim_flt
+    dim_frm
+    end
+    findframe
+    frm_seton
+    goto
+    label
+    let
+    rnd
+    wait
+
+[load do mise06-mesto]  type=5  lines=9  commands=6
+    change_mission
+    detector_inrange
+    dim_flt
+    if
+    label
+    wait

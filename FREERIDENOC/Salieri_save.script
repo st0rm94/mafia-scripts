@@ -1,0 +1,34 @@
+dim_act 1
+dim_flt 1
+findactor 0,"Tommy"
+
+label 101
+detector_waitforuse 19970002
+//*****detekce poldu
+policeitchforplayer 0
+if flt[0]>0,-1,BEZPOLDU
+human_talk 0,00950072
+goto 101
+label BEZPOLDU
+
+isvalidtaxipassenger 0
+if flt[0]>0,-1,BEZPASAZERA
+console_addtext 3476
+goto 101
+label BEZPASAZERA
+
+freeride_scoreget 0
+if flt[0]<2000,MALOPENEZ,-1
+let flt[0]=flt[0]-2000
+freeride_scoreset flt[0]
+freeride_scoreget 0
+autosavegamefull 5584
+freeride_scoreon 1
+freeride_scoreset flt[0]
+goto 101
+
+
+
+label MALOPENEZ
+console_addtext 3472
+goto 101

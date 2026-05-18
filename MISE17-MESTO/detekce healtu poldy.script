@@ -1,0 +1,22 @@
+dim_flt 1
+dim_act 7
+findactor 0, "1pol2"
+findactor 1, "pol"
+findactor 2, "pol2"
+findactor 3, "pol3"
+findactor 4, "pol4"
+findactor 5, "detekce vzdalenosti od zasahovky"
+findactor 6, "Tommy"
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+
+act_setstate 100, off

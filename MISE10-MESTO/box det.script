@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Boxer"
+findactor 1, ""
+act_setstate 1, inactive
+
+label 1
+wait 100
+human_getproperty 0, 0, energy
+if flt[0] < 50, -1, 1
+detector_setsignal 1, 1
+label 2
+setevent 0, 1, 2

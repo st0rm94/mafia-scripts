@@ -1,0 +1,197 @@
+dim_flt 1
+dim_act 14
+dim_frm 4
+//findactor 0, "zjisteni auta"
+findactor 1, "Tommy"
+findactor 2, ""
+findactor 3, "1prijeti k bance"
+findactor 4, "load mise19-banka"
+findactor 5, "1potvrzeni navstevy gunshopu"
+findactor 6, "1Paulie2"
+findactor 7, "1prijeti k pauliemu"
+findactor 8, "pauli00.pdvr2"
+findactor 9, "1spusteni kecu v aute"
+findactor 10, "null"
+findactor 11, "1potvrzeni vyzvednuti paulieho"
+findactor 12, "rozjety subquest"
+findactor 13, "mam krast auto"
+
+findframe 0, "1prijeti k bance"
+findframe 1, "navadeni paulieho"
+findframe 2, "Hoolig"
+findframe 3, "deuseJco"
+
+human_addweapon 2, 6, 6, 30
+human_addweapon 2, 7, 6, 30
+human_holster 2
+human_eraseab 2
+
+label 1
+frm_seton 100, 0
+act_setstate 100, inactive
+
+human_getowner 1, 0
+act_setstate 6, active
+wait 25000
+frm_seton 100, 1
+door_lock 8, 0
+door_open 8, 1
+enemy_move 29
+door_open 8, 0
+door_lock 8, 1
+enemy_move_to_car 0, 1
+
+detector_issignal 5, -1, 4
+
+act_setstate 4, active
+act_setstate 7, off
+act_setstate 3, active
+act_setstate 9, active
+detector_issignal 12, 10, -1
+detector_issignal 13, 11, -1
+setcompass 0
+goto 12
+
+label 10
+setcompass 2
+goto 12
+
+label 11
+setcompass 3
+
+label 12
+mission_objectivesremove 19960008
+mission_objectives 19960006
+wingman_setindicator 2, 1, 1 
+
+detector_setsignal 11, 1
+
+enemy_followplayer yes
+enemy_action_follow 1, 2, nonext, target, 1
+enemy_followplayer no
+
+compareownerwith 10, 7, -1
+
+label 3
+enemy_usecar
+compareownerwith 0, 3, -1
+
+label 7
+enemy_move 14
+enemy_wait
+enemy_look 1
+enemy_wait
+enemy_playanim "gestikulacenew01.i3d"
+human_looktoactor 2, 1, 1
+enemy_talk 19990551
+enemy_wait
+enemy_stopanim
+
+enemy_lookto 15
+enemy_wait
+
+label 6
+wait 1000000
+goto 6
+
+label 4
+enemy_look 1
+enemy_wait
+human_looktoactor 2, 1, 1
+
+getactorsdist 1, 2, 0
+if flt[0] < 5, -1, 9
+
+enemy_playanim "gestikulacenew01.i3d"
+enemy_talk , 19990461
+enemy_wait
+enemy_stopanim
+enemy_talk 1, 19991531
+enemy_wait
+enemy_playanim "gestikulace03.i3d"
+enemy_talk 19991541
+enemy_wait
+
+getactorsdist 1, 2, 0
+if flt[0] < 5, -1, 9
+
+enemy_talk 19991511
+enemy_wait
+
+getactorsdist 1, 2, 0
+if flt[0] < 5, -1, 9
+
+enemy_talk 19991512
+enemy_wait
+
+getactorsdist 1, 2, 0
+if flt[0] < 5, -1, 9
+
+enemy_talk 19991521
+enemy_wait
+enemy_stopanim
+
+label 9
+human_looktoactor 2
+human_createab 2
+{ up
+enemy_move 29
+door_lock 8, 0
+door_open 8, 1
+}
+
+human_eraseab 2
+enemy_move 16
+enemy_lookto 29
+enemy_wait
+door_open 8, 0
+door_lock 8, 1
+goto 1
+
+event 1
+human_getowner 1, 0
+return
+
+event use_ab
+event_use_cb 1
+enemy_forcescript 2
+enemy_stop
+enemy_look 1
+enemy_wait
+human_looktoactor 2, 1, 1
+enemy_talk 19990183
+enemy_wait
+commandblock 1
+getactorsdist 1, 2, 0
+if flt[0] > 5, 8, -1
+commandblock 0
+enemy_look 1
+enemy_talk 19990184
+enemy_wait
+commandblock 1
+getactorsdist 1, 2, 0
+if flt[0] > 5, 8, -1
+commandblock 0
+enemy_talk 19990185
+enemy_wait
+commandblock 1
+getactorsdist 1, 2, 0
+if flt[0] > 5, 8, -1
+commandblock 0
+enemy_talk 19990186
+enemy_wait
+commandblock 1
+getactorsdist 1, 2, 0
+if flt[0] > 5, 8, -1
+commandblock 0
+enemy_talk 19990187
+enemy_wait
+
+label 8
+human_looktoactor 2
+human_eraseab 2
+return
+
+event 2
+enemy_forcescript 2
+return

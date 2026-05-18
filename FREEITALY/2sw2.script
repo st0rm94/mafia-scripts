@@ -1,0 +1,25 @@
+dim_act 1
+dim_flt 1
+findactor 0,"Tommy"
+
+label 101
+detector_waitforuse 3508
+human_canaddweapon 0,8,0
+if flt[0]=1,-1,NENIMISTO
+
+freeride_scoreget 0
+if flt[0]<30,MALOPENEZ,-1
+let flt[0]=flt[0]-30
+freeride_scoreset flt[0]
+human_addweapon 0,8,6,18
+goto 101
+
+
+
+label MALOPENEZ
+console_addtext 3472
+goto 101
+
+label NENIMISTO
+console_addtext 3473
+goto 101

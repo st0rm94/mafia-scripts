@@ -1,0 +1,19 @@
+enemy_lockstate panic_freeze
+dim_flt 1
+dim_act 2
+dim_frm 2
+findactor 0, ""
+findactor 1, "Tommy"
+findframe 0, "cigaro kour"
+findframe 1, "sailor.neck"
+
+emitparticle 0, 24
+
+label 1
+enemy_playanim "koureniautopotahnuti.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "koureniautostativ.i3d"
+emitparticle 1, 25
+wait 5000
+goto 1

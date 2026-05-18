@@ -1,0 +1,12 @@
+dim_act 1
+dim_flt 1
+
+findactor 0, "Tommy"
+
+label 1
+human_getproperty 0,0,Energy
+if flt[0] = 0,2,1
+
+label 2
+endofmission 0, 09980005
+end

@@ -1,0 +1,31 @@
+dim_flt 1
+dim_act 6
+findactor 0, "civil7"
+findactor 1, "Tommy"
+findactor 2, "speedster"
+findactor 3, "pontFor"
+findactor 4, "chemaTud"
+findactor 5, "chemaFor"
+
+act_setstate 100, inactive
+
+label 1
+getangleactortoactor 0, 1, 0
+if flt[0] < 70, -1, 1
+
+ifplayerstealcar 2, 0
+if flt[0] = 1, 2, -1
+
+ifplayerstealcar 3, 0
+if flt[0] = 1, 2, -1
+
+ifplayerstealcar 4, 0
+if flt[0] = 1, 2, -1
+
+ifplayerstealcar 5, 0
+if flt[0] = 1, 2, 1
+
+label 2
+setevent 0, 1, 2
+
+act_setstate 100, off

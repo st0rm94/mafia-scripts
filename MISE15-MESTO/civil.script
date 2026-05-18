@@ -1,0 +1,16 @@
+dim_flt 1
+
+enemy_lockstate panic_freeze
+
+label 1
+enemy_playanim "gesto_2b.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "gesto_2a.i3d"
+wait 3000
+enemy_playanim "gesto_2c.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "gesto_2a.i3d"
+wait 5000
+goto 1

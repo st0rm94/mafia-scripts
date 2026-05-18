@@ -1,0 +1,51 @@
+dim_flt 1
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+
+human_addweapon 0, 7, 6, 30
+human_holster 0
+
+enemy_vidim 0
+
+act_setstate 100, inactive
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+wait 600
+human_activateweapon 0, 7
+
+label 2
+enemy_playanim "breath07a.i3d"
+wait 7000
+enemy_move 16, run
+enemy_lookto 21
+enemy_wait
+enemy_playanim "breath07a.i3d"
+wait 6000
+enemy_move 17, run
+enemy_lookto 20
+enemy_wait
+enemy_playanim "breath07a.i3d"
+wait 5000
+enemy_move 15, run
+enemy_lookto 20
+enemy_wait
+goto 2
+
+
+event 1
+event_use_cb 1
+return
+
+event 2
+enemy_look 1
+enemy_wait
+wait 3000
+enemy_move 28, run
+frm_seton 100, 0
+act_setstate 100, off

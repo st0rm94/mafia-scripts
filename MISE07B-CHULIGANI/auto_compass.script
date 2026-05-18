@@ -1,0 +1,37 @@
+dim_frm 2
+findframe 0, "chemaFor"
+findframe 1, "Tommy"
+dim_act 4
+getactiveplayer 0
+findactor 1, "chemaFor"
+// nechat 2 free!
+setnullactor 3
+dim_flt 3
+act_setstate -1, inactive
+
+label DETECT
+   playsoundstop 2
+   human_getowner 0, 2
+   compareactors 2, 3, 0
+   if flt[0] = 0, KOMPAS, -1
+      if flt[1] = 1, KOMPAS, -1
+         cardamagevisible 0
+         let flt[1] = 0
+
+label KOMPAS
+   if flt[1] = 0, -1, NEXT
+   car_switchshowenergy 2, 3
+   cardamagevisible 1
+   let flt[1] = 1
+
+label NEXT
+   getactorsdist 0, 1, 0
+   setcompass 0
+   if flt[0] < 100, DETECT, BLIKEJ
+
+label BLIKEJ
+   playsound "00_kompas.wav", 1, 40, 1, 2
+   wait 500
+   setcompass -1
+goto DETECT
+

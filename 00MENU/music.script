@@ -1,0 +1,4 @@
+dim_flt 1
+stream_create 0, "sounds\music\02 - Main Theme (short version).ogg"
+stream_play 0
+stream_setloop 0, 1

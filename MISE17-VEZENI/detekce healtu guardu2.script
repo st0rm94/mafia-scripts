@@ -1,0 +1,15 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Bguard2"
+findactor 1, "civil"
+
+act_setstate 100, inactive
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+label 2
+setevent 1, 1, 2
+

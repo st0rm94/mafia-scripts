@@ -1,0 +1,11 @@
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "TruckB"
+act_setstate -1, inactive
+commandblock 1
+compareownerwithex 0, 1, LOAD, -1
+human_force_settocar 0, 1, 0
+label LOAD
+inventory_push 0
+change_mission "mise18-pristav", "load z mise18-mesto", 0
+commandblock 0

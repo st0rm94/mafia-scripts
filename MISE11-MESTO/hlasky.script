@@ -1,0 +1,39 @@
+dim_act 4
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "NULL"
+findactor 3, "Kasar"
+act_setstate 1, inactive
+
+wait 2500
+compareownerwithex 0, 2, 1, -1
+human_talk 0, 11990061, 2
+wait 1000
+human_talk 3, 11990071, 2
+wait 1000
+human_talk 0, 11990081, 2
+wait 1000
+human_talk 3, 11990091, 2
+wait 500
+human_talk 3, 11990092, 2
+wait 500
+human_talk 3, 11990093, 2
+end
+
+label 1
+human_talk 0, 11990061, 1
+wait 1000
+human_talk 3, 11990071, 1
+wait 1000
+human_talk 0, 11990081, 1
+wait 1000
+human_talk 3, 11990091, 1
+wait 500
+human_talk 3, 11990092, 1
+wait 500
+human_talk 3, 11990093, 1
+end
+
+
+event 1
+end

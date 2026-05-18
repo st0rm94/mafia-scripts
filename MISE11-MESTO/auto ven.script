@@ -1,0 +1,35 @@
+zatmyse 1
+dim_frm 4
+dim_flt 1
+dim_act 4
+findactor 0, "Tommy"
+findactor 1, "NULL"
+findactor 2, "arrow"
+findactor 3, "Kasar2"
+findframe 0, "auto ven"
+findframe 1, "load z mise11-vila"
+findframe 2, "2x load z mise11-vila"
+findframe 3, "salvatore ke me"
+
+human_getowner 0, 1
+compareownerwithex 0, 2, 1, -1
+actor_setplacement 1, 0
+human_isweapon 0, 0, 3
+if flt[0] = 1, -1, 2
+human_delweapon 0, 3
+human_fromcar 0, 1
+//actor_setplacement 3, 3
+zatmyse 0
+wait 500
+end
+
+label 1
+zatmyse 0
+wait 500
+end
+
+label 2
+human_fromcar 0, 2
+zatmyse 0
+wait 500
+end

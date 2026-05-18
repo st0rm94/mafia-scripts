@@ -1,0 +1,58 @@
+# .dnc extraction summary
+# source        : MISE07-SALIERY.dnc  (2268 bytes, main)
+# source        : MISE07-SALIERY-InitScripts.dnc  (221 bytes, init)
+# actors_total  : 17
+# init_records  : 2
+# scripts_found : 4
+
+# main-container actor type-code distribution
+#   type    5  count=2  script
+#   type    6  count=11  
+#   type   18  count=1  
+#   type   35  count=3  
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 15
+# total invocations: 24
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+     4  commandblock
+     3  findframe
+     3  frm_seton
+     3  zatmyse
+     1  autosavegame
+     1  change_mission
+     1  cleardifferences
+     1  dim_frm
+     1  end
+     1  game_nightmission
+     1  loaddifferences
+     1  noanimpreload
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+
+# ---- per-script command listing ----
+
+[GameInitEnd]  type=init  lines=7  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[GameInitStart]  type=init  lines=2  commands=2
+    game_nightmission
+    noanimpreload
+
+[autosave]  type=5  lines=2  commands=2
+    autosavegame
+    end
+
+[load mise07-sara]  type=5  lines=19  commands=8
+    change_mission
+    cleardifferences
+    commandblock
+    loaddifferences
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse

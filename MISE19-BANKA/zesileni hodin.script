@@ -1,0 +1,8 @@
+dim_frm 1
+findframe 0, "hodiny"
+
+
+act_setstate 100, inactive
+
+soundfade 0, 180000, 0.2, 1
+act_setstate 100, off

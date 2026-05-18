@@ -1,0 +1,137 @@
+dim_frm 4
+dim_flt 4
+dim_act 5
+commandblock 1
+findactor 0, "Tommy"
+findactor 1, "ralf detektor"
+findactor 2, "Ralph"
+findactor 3, "krajeni"
+findactor 4, "chemaFor"
+findframe 0, "2cigaro2"
+findframe 1, "Ralph.neck"
+findframe 2, "RALF1"
+findframe 3, "RALF2"
+frm_seton 0, 0
+frm_seton 2, 1
+commandblock 0
+car_muststeal 4, 1
+
+{ down
+enemy_playanim "Ralph stativ pod autem.i3d"
+label 1
+wait 3000
+goto 1
+}
+
+{ up
+enemy_move 5
+enemy_lookto 14
+enemy_wait
+let flt[1] = 0
+ENEMY_PLAYANIM "KurakZapaleni.I3D", 0
+LET flt[0] = flt[0] - 600
+frm_seton 0, 1
+WAIT flt[0]
+}
+LABEL 3
+{ up
+label 17
+RND 0, 10
+LET flt[0] = flt[0] * 500
+LET flt[0] = flt[0] + 1000
+ENEMY_PLAYANIM "KurakLoop.I3D"
+WAIT flt[0]
+emitparticle 1, 25
+wait 3500
+ENEMY_PLAYANIM "KurakPotahnuti.I3D", 0
+LET flt[0] = flt[0] + 83
+WAIT flt[0]
+LET flt[1] = flt[1] + 1
+GOTO 17
+}
+
+event use_ab, 10970011
+event_use_cb 1
+frm_seton 0, 0
+enemy_forcescript 2
+if flt[2] = 1, 6, -1
+if flt[2] = 2, 7, -1
+enemy_talk 0, 10990011
+enemy_wait
+frm_seton 2, 0
+frm_seton 3, 1
+enemy_playanim "Ralph vstavani zpod auta.i3d", 0
+wait 2200
+enemy_talk 10990021
+wait 5700
+human_looktoactor 2, 0, 1
+enemy_stopanim
+enemy_look 0
+enemy_wait
+enemy_playanim "Gestikulace03.i3d"
+enemy_talk 10990022
+enemy_wait
+let flt[2] = 1
+label 6
+human_looktoactor 2
+enemy_move 6
+human_looktoactor 2, 0, 1
+enemy_look 0
+enemy_wait
+label 56
+detector_issignal 1, -1, 56
+enemy_playanim "Gestikulace03.I3D"
+enemy_talk 10990023
+enemy_wait
+human_looktoactor 2
+enemy_lookto 7
+enemy_wait
+playsound "carunlock3.wav", -1, 12, 1
+enemy_playanim "RalphKradeVelkeAuto.i3d"
+//enemy_playanim "RalphOdemykani.I3D"
+wait 1350
+//CZ enemy_talk 10990024
+playsoundex 1, 134
+wait 7000
+let flt[2] = 2
+//detector_issignal 1, -1, 5
+enemy_talk 10990031
+garage_enablesteal E
+console_addtext 3458
+wait 500
+enemy_talk 0, 10990041
+enemy_wait
+detector_setsignal 3, 1
+return
+label 5
+wait 4000
+return
+label 7
+enemy_stop
+enemy_look 0
+enemy_wait
+human_looktoactor 2, 0, 1
+rnd 3, 3
+if flt[3] = 0, 8, -1
+if flt[3] = 1, 9, -1
+enemy_talk 00950110
+enemy_wait
+garage_carmanager
+human_looktoactor 2
+return
+label 8
+enemy_talk 0095011
+enemy_wait
+garage_carmanager
+human_looktoactor 2
+return
+label 9
+enemy_talk 00950112
+enemy_wait
+garage_carmanager
+human_looktoactor 2
+return
+
+event 1000
+enemy_action_fire 0, 3
+return

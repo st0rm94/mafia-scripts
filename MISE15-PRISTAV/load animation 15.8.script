@@ -1,0 +1,78 @@
+label 1
+autosavegame 5380
+zatmyse 1, 1
+commandblock 1
+dim_flt 1
+dim_act 5
+dim_frm 13
+findactor 0, "hudcoupristav"
+findactor 1, "Hoolig"
+findactor 2, "Tommy"
+findactor 3, "hudcoupristav"
+findactor 4, "TruckApristav"
+
+findframe 0, "Tommy"
+findframe 1, "PortGuard2"
+findframe 2, "PortGuard"
+findframe 3, "TruckApristav"
+findframe 4, "TruckA2pristav"
+findframe 5, "hudcoupristav"
+findframe 6, "Hoolig"
+findframe 7, "PortGuard13"
+findframe 8, "Delnik4"
+findframe 9, "Delnik3"
+findframe 10, "cad_fordpristav"
+findframe 11, "para"
+findframe 12, "poloha playera po animaci 1"
+
+inventory_pop 2
+character_pop 2
+human_activateweapon 2, 9
+
+player_lockcontrols 1
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+human_death 1
+car_invisible 0, 1
+enemy_block
+loaddifferences "dif15h.chg"
+recloadfull "record15h"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 10, 1
+actor_setplacement 2, 12
+emitparticle 11, 47
+car_invisible 0, 0
+car_invisible 3, 0
+car_invisible 4, 0
+enemy_unblock
+stream_create 0, "sounds\music\09 - Fighting theme 1.ogg"
+stream_play 0
+player_lockcontrols 0
+commandblock 0
+zatmyse 0
+act_setstate 100, inactive

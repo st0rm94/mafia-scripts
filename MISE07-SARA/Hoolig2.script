@@ -1,0 +1,25 @@
+enemy_az_po_panice_hovno
+wait 100
+enemy_podvadim_jak Tretera
+
+dim_act 3
+dim_flt 1
+findactor 0, "Tommy"
+findactor 1
+findactor 2, "Sara"
+wait 2000
+act_setstate -1, inactive
+
+label 2
+wait 101212000
+goto 2
+
+event 1
+  event_use_cb 1
+return
+
+event 2
+  event_use_cb 1
+return
+
+

@@ -1,0 +1,15 @@
+dim_act 1
+dim_frm 1
+findframe 0, "sem"
+findactor 0, "xchemaFor"
+
+enemy_vidim 0
+wait 13000
+enemy_move 14, run
+label 1
+enemy_usecar 0, 0
+compareownerwith 0, -1, 1
+wait 1000
+enemy_car_moveto 0, 0
+act_setstate 0, off
+end

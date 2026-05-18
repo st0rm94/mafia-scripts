@@ -1,0 +1,34 @@
+// ******************** detekce urazu *******************
+dim_flt 3
+dim_act 2
+findactor 0, "Salieri"
+findactor 1, "NULL"
+wait 3000
+
+human_getproperty 0, 2, energy
+label 1
+human_getproperty 0, 0, energy
+if flt[0] < flt[2], -1, 1
+
+compareownerwithex 0, 1, 4, -1
+let flt[2] = flt[0]
+if flt[1] = 1, 2, -1
+if ftl[1] = 2, 3, -1
+human_talk 0, 00950128, 2
+wait 3000
+let flt[1] = 1
+goto 1
+label 2
+human_talk 0, 00950129, 2
+wait 3000
+let flt[1] = 2
+goto 1
+label 3
+human_talk 0, 00950130, 2
+wait 3000
+let flt[1] = 0
+goto 1
+
+label 4
+setevent 0, 5, -1
+end

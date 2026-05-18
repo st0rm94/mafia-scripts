@@ -1,0 +1,23 @@
+dim_frm 2
+dim_act 3
+findframe 0,"firebar01"
+findframe 1,"horici bar"
+
+findactor 0,"Enemy08K"
+findactor 1,"fire_death02"
+findactor 2,"petrolejka.Line01"
+
+detector_waitforhit
+
+label 101
+wait 2000
+detector_issignal 2,-1,101
+
+emitparticle 0,6
+setevent 0,201,-1
+soundfade 1,2500,0.5,1
+
+act_setstate 1,active
+
+wait 1500
+human_setproperty 0,0,Energy

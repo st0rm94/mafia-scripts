@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+
+act_setstate -1,inactive
+
+label 101
+detector_inrange 0,5
+if flt[0] = 2,-1,101
+
+label 102
+setevent 1,203,102
+enemy_forcescript 1
+
+

@@ -1,0 +1,10 @@
+act_setstate -1,inactive
+
+dim_frm 1
+dim_act 1
+findactor 0,"Andromeda"
+findframe 0,"zampr2b"
+
+detector_waitforhit
+setevent 0,201,-1
+create_physicalobject 0,1,1,5

@@ -1,0 +1,55 @@
+dim_act 6
+dim_flt 2
+dim_frm 3
+findactor 0, "Hoolig"
+findactor 1, "Lucas"
+findactor 2, "Dickovi_hlasky"
+findactor 3, "detector_energy_enemy"
+findactor 4, "1potvrzeni navstevy gunshopu"
+findactor 5, "1potvrzeni vyzvednuti paulieho"
+findframe 0, "1dvere u peteho"
+findframe 1, "1prijeti k pauliemu"
+findframe 2, "1prijeti k bance"
+
+act_setstate 100, inactive
+
+{ up
+label DETECT
+human_getproperty 0, 0, Energy
+if flt[0] = 0, DICKDEATH, DETECT
+}
+
+label DICKDEATH
+setevent 1, 4, DICKDEATH
+act_setstate 2, off
+act_setstate 3, off
+
+mission_objectivesclear
+mission_objectives 20960004
+wait 4000
+mission_objectivesclear
+
+detector_issignal 5, -1, 2
+mission_objectives 19960006
+setcompass 2
+goto 4
+
+label 2
+detector_issignal 4, -1, 3
+mission_objectives 19960008
+setcompass 1
+goto 4
+
+label 3
+mission_objectives 19960007
+setcompass 0
+
+label 4
+let flt[1] = 1
+goto DETECT
+
+event 1
+debug_text "detector_VIP_energy: Dick mne uz nezajima !"
+let flt[1] = 1
+event_use_cb 1
+return

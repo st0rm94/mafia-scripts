@@ -1,0 +1,31 @@
+enemy_lockstate panic_freeze
+human_returnfrompanic 2, 1
+dim_flt 1
+dim_act 3
+findactor 0, "dvere_frontX"
+findactor 1, "hlaska u dveri"
+findactor 2, ""
+
+door_enableus 0, 0
+
+{ down
+enemy_playanim "sbirani zvrchu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+enemy_move 8
+enemy_lookto 18
+enemy_wait
+enemy_playanim "oteviranidveril.i3d", 0, simple
+wait 500
+door_open 0, 0
+wait 700
+enemy_stopanim
+act_setstate 1, off
+enemy_move 7
+}
+
+enemy_move 7, run
+
+frm_seton 100, 0
+act_setstate 100, off

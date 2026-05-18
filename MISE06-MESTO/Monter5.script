@@ -1,0 +1,27 @@
+dim_frm 1
+dim_act 1
+dim_flt 1
+findactor 0,"Monter5"
+findframe 0,"placement_monter5"
+
+{ up
+label 101
+actor_setplacement 0,0
+//enemy_playanim "MechSroubovani2.I3D",0
+//let flt[0]=flt[0]-323
+//wait flt[0]
+enemy_playanim "MechKolo.I3D",0
+let flt[0]=flt[0]-323
+wait flt[0]
+enemy_playanim "GestStativToZam.I3D",0
+let flt[0]=flt[0]-400
+wait flt[0]
+enemy_playanim "GestZamStativ.I3D",0
+wait 5000
+enemy_playanim "GestZamToStativ.I3D",0
+let flt[0]=flt[0]-323
+wait flt[0]
+
+goto 101
+}
+

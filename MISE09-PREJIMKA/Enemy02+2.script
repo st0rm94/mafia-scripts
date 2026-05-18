@@ -1,0 +1,11 @@
+dim_act 2
+findactor 0,"Enemy02+2"
+findactor 1,"Tommy"
+
+act_setstate -1,inactive
+
+human_addweapon 0, 9, 7, 21
+
+label 101
+wait 33000
+goto 101

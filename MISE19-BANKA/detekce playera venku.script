@@ -1,0 +1,43 @@
+dim_flt 1
+dim_act 11
+findactor 0, "zatceni playera"
+findactor 1, "pol"
+findactor 2, "pol2"
+findactor 3, "pol3"
+findactor 4, "pol4"
+findactor 5, "pol5"
+findactor 6, "pol6"
+findactor 7, "pol7"
+findactor 8, "pol8"
+findactor 9, "null"
+findactor 10, "detekce playera venku1"
+
+act_setstate 100, inactive
+
+label 1
+compareownerwithex 1, 9, -1, 1
+compareownerwithex 2, 9, -1, 1
+compareownerwithex 3, 9, -1, 1
+compareownerwithex 4, 9, -1, 1
+compareownerwithex 5, 9, -1, 1
+compareownerwithex 6, 9, -1, 1
+compareownerwithex 7, 9, -1, 1
+compareownerwithex 8, 9, -1, 1 
+
+label 2
+detector_inrange 0, 12
+if flt[0] = 1, -1, 2
+
+act_setstate 0, off
+act_setstate 10, off
+
+setevent 1, 2, -1
+setevent 2, 1, -1
+setevent 3, 1, -1
+setevent 4, 1, -1
+setevent 5, 3, -1
+setevent 6, 2, -1
+setevent 7, 2, -1
+setevent 8, 2, -1
+
+act_setstate 100, off

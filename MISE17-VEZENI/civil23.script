@@ -1,0 +1,8 @@
+act_setstate 100, inactive
+
+label 1
+enemy_move 105
+enemy_move 106
+enemy_move 104
+enemy_move 103
+goto 1

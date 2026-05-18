@@ -1,0 +1,67 @@
+dim_flt 1
+dim_act 2
+dim_frm 5
+findactor 0, ""
+findactor 1, "smich1"
+findframe 0, "smich2"
+findframe 1, "smich3"
+findframe 2, "brk"
+findframe 3, "smich1"
+findframe 4, "spol1"
+
+human_returnfrompanic 0, 1
+setnoanimhit 0, 1
+
+enemy_playanim "zidlesed03.i3d"
+
+{ down
+label 1
+enemy_playanim "zidlesed03tonormal.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "zidletosed02.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "zidlesed02.i3d"
+wait 5000
+enemy_playanim "zidlesed02tonormal.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "zidletosed03.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "zidlesed03.i3d"
+wait 6000
+goto 1
+}
+
+enemy_playanim "mise zidle01 panika.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika stativ.i3d"
+
+label 2
+human_getproperty 0, 0, energy
+if flt[0] < 99, -1, 2
+
+enemy_playanim "mise zidle01 panika smrt.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika smrt stativ.i3d"
+end
+
+event enemy_to_ai
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+event_use_cb 1
+act_setstate 1, off
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+commandblock 0
+return

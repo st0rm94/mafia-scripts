@@ -1,0 +1,22 @@
+dim_act 1
+dim_frm 1
+dim_flt 1
+findactor 0,"Enemy13C"
+findframe 0,"Tommy"
+
+act_setstate -1,inactive
+
+actor_setdir 0,0
+human_talk 0,03990041,1
+
+human_getproperty 0,0,Energy
+if flt[0]=0,KONEC,-1
+
+human_talk 0,03990042,1
+
+human_getproperty 0,0,Energy
+if flt[0]=0,KONEC,-1
+
+human_talk 0,03990044,1
+
+label KONEC

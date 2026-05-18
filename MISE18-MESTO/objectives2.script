@@ -1,0 +1,7 @@
+debug_text "objectives: ACTIVATED (ty po vyjeti z pristaviste)"
+mission_objectivesclear
+mission_objectives 18960005
+act_setstate -1, inactive
+mission_objectivesremove 18960005
+mission_objectives 18960006
+end

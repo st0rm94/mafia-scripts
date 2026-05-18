@@ -1,0 +1,101 @@
+commandblock 1
+dim_flt 3
+// flt[0] = temp
+// flt[1] = doba kdy byla recena posledni hlaska aby si player nastoupil
+// flt[2] = posledni hlaska
+dim_act 9
+dim_frm 3
+findactor 0, "Vratny"
+findactor 1, "Players_men"
+findactor 2, "Players_men2"
+findactor 3, "ForApic"
+findactor 4, "Tommy"
+findactor 5, "detector_garage"
+findactor 6, "Paulie"
+findactor 7, "load mise12-mesto"
+findactor 8, "Sam"
+findframe 0, "Paulie_nastup"
+findframe 1, "position_car_END"
+findframe 2, "camera_odjezd"
+commandblock 0
+act_setstate -1, inactive
+
+label DETECT
+detector_inrange 0, 20
+if flt[0] ! 0, -1, DETECT
+label SEND
+setevent 0, 1, SEND
+//label SEND2
+//setevent 1, 1, SEND2
+//label SEND3
+//setevent 2, 1, SEND3
+
+act_setstate -1, inactive
+
+label DETECT2
+detector_inrange 0, 20
+if flt[0] ! 0, -1, DETECT2
+compareownerwithex 4, 3, DETECT3, -1
+gosub HLASKA
+goto DETECT2
+label DETECT3
+detector_issignal 5, DETECT2, ENDOFMISSION
+
+label HLASKA
+getgametime 0
+if flt[0] > flt[1], -1, RET
+label RERAND
+rnd 0, 4
+let flt[0] = flt[0] + 1
+if flt[2] = flt[0], RERAND, -1
+let flt[2] = flt[0]
+getgametime 1
+let flt[1] = flt[1] + 10000
+goto flt[0]
+label 1
+human_talk 6, 12990071, 1
+return
+label 2
+human_talk 6, 12990081, 1
+return
+label 3
+human_talk 8, 12990091, 1
+return
+label 4
+human_talk 6, 12990101, 1
+label RET
+return
+
+label ENDOFMISSION
+car_breakmotor 3, 1
+zatmyse 1
+player_lockcontrols 1
+wait 500
+car_forcestop 3
+//compareownerwithex 4, 3, -1, DETECT2
+compareownerwithex 6, 3, -1, NASTUPPAULIE
+act_setstate 7, active
+end
+
+label NASTUPPAULIE
+actor_setplacement 6, 0
+actor_setplacement 3, 1
+car_calm 3
+label SEND4
+setevent 6, 3, SEND4
+camera_lock 2
+zatmyse 0
+wait 500
+getgametime 0
+let flt[0] = flt[0] + 5000
+label WAIT
+getgametime 1
+if flt[1] > flt[0], LOAD, -1
+compareownerwithex 6, 3, -1, WAIT
+label LOAD
+zatmyse 1
+wait 500
+player_lockcontrols 0
+camera_unlock
+act_setstate 7, active
+end

@@ -1,0 +1,15 @@
+dim_act 1
+findactor 0,"VincenzoHIGH"
+
+detector_waitforuse 10970001
+
+label 101
+setevent 0,201,101
+detector_setsignal -1,1
+mission_objectivesremove 04960011
+
+label 103
+detector_waitforuse 10970001
+
+setevent 0,202,-1
+goto 103

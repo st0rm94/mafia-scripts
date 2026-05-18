@@ -1,0 +1,34 @@
+commandblock 1
+dim_frm 1
+dim_flt 2
+dim_act 2
+findactor 0,"Tommy"
+findactor 1,"Bguard"
+
+findframe 0,"Bguard.neck"
+
+human_addweapon 1, 8, 6, 30
+human_holster 1
+commandblock 0
+
+label 110
+{ up
+label 107
+enemy_playanim "KurakLoop.i3d",0
+wait 7000
+enemy_playanim "KurakPotahnuti.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+emitparticle 0,25
+goto 107 
+}
+
+event use_ab,10970007
+getenemyaistate 1,1
+iffltinrange 1,2,5,120
+human_looktoactor 1, 0, 1
+enemy_talk 08950019
+enemy_wait
+human_looktoactor 1
+label 120
+return

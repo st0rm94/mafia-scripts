@@ -1,0 +1,41 @@
+dim_flt 1
+dim_act 5
+dim_frm 2
+findactor 0, "Lucas"
+findactor 1, "pontTud2"
+findactor 2, ""
+findactor 3, "detekce playera v kradenym aute"
+findactor 4, "detekce stavu auta"
+findframe 0, "Lucas"
+findframe 1, "load mise17-saliery"
+
+act_setstate 100, inactive
+
+label 1
+car_inwater 1, 0
+if flt[0] = 1, -1, 1
+
+getactorsdist 1, 2, 0
+if flt[0] < 400, -1, 3
+
+act_setstate 3, off
+act_setstate 4, off
+policemanager_forcearrest 0, 0
+setcompass -1
+mission_objectivesclear
+mission_objectives 20960005
+setcompass 0
+
+label 2
+setevent 0, 2, 2
+act_setstate 100, off
+
+label 3
+setcompass -1
+mission_objectivesclear
+mission_objectives 20960004
+wait 4000
+mission_objectivesclear
+mission_objectives 17960001
+setcompass 1
+act_setstate 100, off

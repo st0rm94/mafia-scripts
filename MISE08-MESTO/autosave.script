@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 1
+findactor 0,"Tommy"
+
+getmissionnumber 0
+if flt[0]>0,101,-1
+autosavegame 5150
+end
+
+label 101
+human_setproperty 0,flt[0],Energy
+autosavegame 5170
+inventory_pop 0
+
+mission_objectivesclear
+mission_objectives 03960002

@@ -1,0 +1,66 @@
+act_setstate -1,inactive
+
+dim_act 4
+dim_flt 1
+findactor 0,"activate_fuckoff"
+findactor 1,"obehni"
+findactor 2,"misto_pro_bednu"
+findactor 3,"fuckcar"
+
+act_setstate 1,active
+
+{ down
+label 99
+wait 50000
+goto 99
+}
+
+label 100
+wait 1000
+detector_inrange 0,10
+if flt[0]=1,-1,100
+
+//***********Drepy
+mission_objectivesclear
+mission_objectives 22930011
+
+label 101
+commandblock 0
+commandblock 1
+ctrl_readex 0,CROUCH
+if flt[0]=1,DREP01,-1
+ctrl_readex 0,CROUCH1
+if flt[0]=1,-1,101
+
+label DREP01
+commandblock 0
+
+label 102
+commandblock 0
+commandblock 1
+ctrl_readex 0,CROUCH
+if flt[0]=1,DREP02,-1
+ctrl_readex 0,CROUCH1
+if flt[0]=1,-1,102
+
+label DREP02
+commandblock 0
+
+label 103
+commandblock 0
+commandblock 1
+ctrl_readex 0,CROUCH
+if flt[0]=1,DREP03,-1
+ctrl_readex 0,CROUCH1
+if flt[0]=1,-1,103
+
+label DREP03
+commandblock 0
+
+setevent 0,201,-1
+act_setstate 2,active
+
+end
+
+event 201
+return

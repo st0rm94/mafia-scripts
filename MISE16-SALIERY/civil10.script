@@ -1,0 +1,43 @@
+dim_flt 1
+dim_act 1
+dim_frm 1
+findactor 0, ""
+findframe 0, "poloha chlapka u okna"
+
+human_returnfrompanic 0, 1
+setnoanimhit 0, 1
+
+actor_setplacement 0, 0
+
+enemy_playanim "x sed4.i3d"
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+enemy_playanim "mise zidle01 panika.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika stativ.i3d"
+
+label 2
+human_getproperty 0, 0, energy
+if flt[0] < 99, -1, 2
+
+enemy_playanim "mise zidle01 panika smrt.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "mise zidle01 panika smrt stativ.i3d"
+end
+
+event enemy_to_ai
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+event_use_cb 1
+commandblock 0
+return

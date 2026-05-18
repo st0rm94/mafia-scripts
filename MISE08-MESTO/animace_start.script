@@ -1,0 +1,55 @@
+commandblock 1
+zatmyse 1,1
+dim_flt 1
+dim_act 2
+findactor 0,"Tommy"
+findactor 1,"chev"
+dim_frm 4
+findframe 0,"Tommy"
+findframe 1,"chev"
+findframe 2,"load mise08-hotel"
+findframe 3,"light"
+
+PLAYER_LOCKCONTROLS 1
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 3,0
+setcitytrafficvisible 0
+
+loaddifferences "dif08a.chg"
+recloadfull "record08a.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+frm_seton 0,1
+frm_seton 1,1
+frm_seton 3,1
+
+PLAYER_LOCKCONTROLS 0
+
+human_addweapon 0, 9, 7, 21
+human_holster 0
+human_addweapon 0, 22, 0, 0
+human_holster 0
+human_force_settocar 0,1,0
+setcitytrafficvisible 1
+zatmyse 0
+commandblock 0
+
+garage_cansteal 1,0
+if flt[0]=0,-1,101
+human_talk 0,08990161
+console_addtext 3453
+garage_enablesteal F
+label 101
+
+setcompass 2
+garage_addcar 1
+
+mission_objectivesclear
+mission_objectives 08960001

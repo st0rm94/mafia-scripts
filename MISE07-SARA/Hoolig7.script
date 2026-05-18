@@ -1,0 +1,34 @@
+enemy_az_po_panice_hovno
+wait 100
+enemy_podvadim_jak Tretera
+
+dim_act 3
+dim_flt 2
+findactor 0
+findactor 1, "Tommy"
+findactor 2, "Sara"
+
+{ DOWN
+enemy_playanim "Chuligan03Stativ.I3D",0
+label FREESTATE
+wait 10000
+if flt[1] = 1, -1, FREESTATE
+}
+enemy_move 32
+goto FINISH
+
+event ENEMY_TO_AI
+if flt[1] = 0, RET, -1
+let flt[1] = 1
+enemy_playanim "Chuligan03Akce f.I3D", 0, 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+event_use_cb 1
+return
+label RET
+event_use_cb 0
+return
+
+label FINISH
+wait 505050505
+goto FINISH

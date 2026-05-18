@@ -1,0 +1,17 @@
+dim_act 2
+findactor 0,"pol06"
+findactor 1,"Tommy"
+
+act_setstate -1,inactive
+
+enemy_vidim 0
+human_addweapon 0,9,7,32
+enemy_move 46,run
+enemy_vidim 1
+
+label 100
+enemy_move 45,run
+wait 5010
+goto 100
+end
+

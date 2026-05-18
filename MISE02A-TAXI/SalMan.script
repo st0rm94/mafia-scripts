@@ -1,0 +1,248 @@
+commandblock 1
+enemy_vidim 0
+enemy_shut_up yes
+dim_act 8
+dim_frm 2
+dim_flt 9
+//   flt[1] je pocet hlasek, ktere jsme uz vypsali
+//   flt[4] je posledni hodnota crashtime PM
+//   flt[3] je puvodni energie pasazera
+//   flt[2] je hodnota prestupku > 3= hlaska
+//   flt[5] je hodnota prestupku rychlost > 3 = hlaska
+//   flt[6] posledni hlaska CESTA
+//   flt[7] posledni hlaska NARAZ
+//   flt[8] posledni hlaska RYCHLOST
+
+findactor 0
+human_getproperty 0, 3, Energy
+let flt[3] = flt[3] - 20
+findactor 1, "Tommy"
+findactor 2, "taxi"
+findactor 3, "CIL1"
+findactor 4, "Bookmaker"
+findactor 5, "SalMan2"
+findactor 6, "Tommyho_odpovedi"
+findactor 7, "objectives"
+
+findframe 0, "CIL1"
+findframe 1, "place_passenger1"
+commandblock 0
+car_lock 2, 1
+car_setdestroymotor 2, 1
+car_disable_uo 2, 3, 0
+enemy_move_to_car 2, 3
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1 
+enemy_talk 0, 02950314, 2
+enemy_wait
+enemy_talk 1, 02950315, 2
+enemy_wait
+setcompass 0
+enemy_usecar 2, 3
+car_disable_uo 2, 3, 0
+car_lock 2, 0
+car_setdestroymotor 2, 0
+timeron 1, 15, 0, 300
+settimeoutevent 0, 1
+act_setstate 7, active
+
+//##########
+//#   B A S E   #
+//##########
+label CHECK
+wait 200
+human_getproperty 0, 0, Energy
+if flt[0] < flt[3], ZRANENI, -1
+get_pm_state 1, 0, 5
+if flt[0] ! 0, CHODEC, -1
+detector_issignal 3, CIL, -1
+get_pm_state 1, 0, 4
+if flt[0] ! 0, NARAZ, -1
+get_pm_state 1, 0, 3
+if flt[0] ! 0, NARAZ, -1
+get_pm_state 1, 0, 6
+if flt[0] ! 0, CESTA, -1
+label SPEED
+car_getspeed 2, 0
+if flt[0] > 120, RYCHLOST2, -1
+if flt[0] > 75, RYCHLOST, -1
+goto CHECK
+
+label CIL
+debug_text "Salman: Jsem u cile - chci vystupovat..."
+goto VYSTUPOK
+
+label CHODEC
+enemy_talk 0, 02950300, 2
+enemy_wait
+endofmission 0, 2980004
+goto VYSTUP
+
+label CESTA
+car_getspeed 2, 0
+// Jestlize rychlost auta je vetsi nez 15 testuji jizdu po chodniku.
+if flt[0] > 15, -1, CHECK
+let flt[2] = flt[2] + 1
+// Jestlize jedu po chodniku uz po 3 spoustim hlasku
+if flt[2] = 3, -1, SPEED
+label RERAND
+rnd 0, 3
+let flt[0] = flt[0] + 4
+if flt[0] = flt[6], RERAND, -1
+goto flt[0]
+label 4
+enemy_talk 0, 02950304, 2
+enemy_wait
+goto RET
+label 5
+enemy_talk 0, 02950305, 2
+enemy_wait
+goto RET
+label 6
+enemy_talk 0, 02950306, 2
+enemy_wait
+label RET
+// Po vysloveni hlasky nuluji counter
+let flt[2] = 0
+let flt[6] = flt[0]
+// Tommyho odpoved
+setevent 6, 2, -1
+goto CHECK
+
+label NARAZ
+get_pm_crashtime 1, 1
+if flt[1] > flt[4], -1, UPDATE
+label RERAND2
+rnd 0, 3
+let flt[0] = flt[0] + 7
+if flt[0] = flt[7], RERAND2, -1
+goto flt[0]
+label 7
+enemy_talk 0, 02950301, 2
+enemy_wait
+goto RET3
+label 8
+enemy_talk 0, 02950312, 2
+enemy_wait
+goto RET3
+label 9
+enemy_talk 0, 02950313, 2
+enemy_wait
+label RET3
+let flt[7] = flt[0]
+// Tommyho odpoved
+setevent 6, 1, -1
+label UPDATE
+let flt[4] = flt[1]
+goto CHECK
+
+label RYCHLOST
+let flt[5] = flt[5] + 1
+if flt[5] = 3, -1, CHECK
+label RERAND3
+rnd 0, 3
+let flt[0] = flt[0] + 1
+if flt[0] = flt8], RERAND3, -1
+goto flt[0]
+label 1
+enemy_talk 0, 02950307, 2
+enemy_wait
+goto RET2
+label 2
+enemy_talk 0, 02950308, 2
+enemy_wait
+goto RET2
+label 3
+enemy_talk 0, 02950309, 2
+enemy_wait
+label RET2
+// Jestlize hodnota prestupku pro rychlost je prekrocena, spusti se hlaska a tady vynuluje counter
+let flt[5] = 0
+let flt[8] = flt[0]
+setevent 6, 3, -1
+goto CHECK
+
+label RYCHLOST2
+enemy_talk 0, 02950303, 2
+enemy_wait
+enemy_talk 0, 02950311, 2
+enemy_wait
+goto VYSTUP
+
+label VYSTUP
+act_setstate 3, off
+car_lock 2, 1
+car_setdestroymotor 2, 1
+enemy_usecar
+goto GAMEOVER
+
+label VYSTUPOK
+car_getspeed 2, 0
+if flt[0] = 0, -1, VYSTUPOK
+detector_issignal 3, -1, PREJEL
+commandblock 1
+timeroff
+setcompass -1
+car_lock 2, 1
+car_setdestroymotor 2, 1
+act_setstate 3, inactive
+commandblock 0
+gosub WAITTOMMY
+player_lockcontrols 1
+commandblock 0
+zatmyse 1
+wait 500
+commandblock 1
+actor_setplacement 2, 1
+actor_setdir 2, 2
+actorupdateplacement 2
+commandblock 0
+autosavegamefull 5010
+car_calm 2
+zatmyse 0
+wait 500
+enemy_talk 0, 02950316, 2
+enemy_wait
+enemy_usecar
+car_disable_uo 2, 3, 0
+player_lockcontrols 0
+label SEND
+setevent 4, 2, SEND
+human_looktoactor 0
+enemy_move 10
+enemy_look 5
+label SEND2
+setevent 5, 1, SEND2
+enemy_vidim 1
+enemy_wait
+goto FINISH
+
+label PREJEL
+enemy_talk 0, 02950318, 2
+//enemy_wait
+goto CHECK
+
+label ZRANENI
+enemy_talk 0, 02950301, 2
+enemy_wait
+endofmission 0, 02980052
+goto VYSTUP
+
+label WAITTOMMY
+compareownerwithex 1, 2, -1, WAITTOMMY
+commandblock 1
+return
+
+label GAMEOVER
+endofmission 0, 02980003
+goto FINISH
+
+event 1
+enemy_talk 0, 02950311, 2
+enemy_wait
+endofmission 0, 2980051
+goto VYSTUP
+return
+
+label FINISH

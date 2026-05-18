@@ -1,0 +1,29 @@
+act_setstate -1, inactive
+dim_flt 2
+dim_act 1
+findactor 0, "Guard"
+
+label PREDETECT
+wait 200
+detector_inrange 0, 20
+if flt[0] > 1, -1, PREDETECT
+gosub SAY
+
+label DETECT
+detector_inrange 0, 12
+wait 200
+if flt[0] > 1, -1, NOONE
+if flt[1] = 1, DETECT, -1
+let flt[1] = 1
+detector_setsignal -1, 1
+goto DETECT
+
+label NOONE
+if flt[1] = 1, -1, DETECT
+let flt[1] = 0
+detector_setsignal -1, 0
+goto DETECT
+
+label SAY
+human_talk 0, 02950167
+return

@@ -1,0 +1,22 @@
+commandblock 1
+dim_flt 1
+dim_act 3
+dim_frm 1
+findactor 0,"Enemy10K"
+findactor 1,"Enemy11K"
+findactor 2,"Tommy"
+findframe 0,"Enemy10K"
+
+enemy_group_new 0
+enemy_group_add 0,0
+enemy_group_add 0,1
+
+human_addweapon 0, 9, 7, 14
+commandblock 0
+
+frm_seton 0,0
+act_setstate -1,inactive
+frm_seton 0,1
+
+//enemy_group_chcipni_hajzle 0,2
+enemy_move 21,run

@@ -1,0 +1,14 @@
+dim_act 1
+findactor 0, "Paulie"
+
+act_setstate 100, inactive
+
+wait 1500
+
+player_lockcontrols 0
+
+wait 10000
+
+human_talk 0, 16990171, 2
+
+act_setstate 100, off

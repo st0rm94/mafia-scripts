@@ -1,0 +1,44 @@
+//[debug_me]
+dim_act 4
+dim_frm 2
+dim_flt 3
+findactor 0, "Tommy"
+findactor 1, "9lekarna.Box02"
+findactor 2, "Paulie"
+findactor 3, "Sam"
+findframe 0
+findframe 1, "lekarnicka"
+
+door_enableus 1, 0
+label INIT
+detector_waitforuse 8970005
+human_getproperty 0, 0, Energy
+if flt[0] < 100, -1, INIT
+enemy_block
+commandblock 1
+player_lockcontrols 1
+actor_setpos 0, 1
+actor_setdir 0, 0
+commandblock 0
+person_playanim 0, "sbirani zvrchu.I3D", 0
+door_enableus 1, 1
+door_open 1, 1
+let flt[0] = flt[0] - 498
+let flt[0] = flt[0] / 2
+wait flt[0]
+playsound "p_pull2.wav", 0, 10, 1
+wait flt[0]
+person_stopanim 0
+human_getproperty 0, 0, Energy
+if flt[0] > 49, FULL, -1
+let flt[0] = flt[0] + 50
+goto SET
+label FULL
+let flt[0] = 100
+label SET
+human_setproperty 0, flt[0], Energy
+
+//door_open 1, 0
+door_enableus 1, 0
+player_lockcontrols 0
+enemy_unblock

@@ -1,0 +1,217 @@
+act_setstate -1, off
+//[debug_me]
+dim_act 10
+dim_flt 10
+dim_frm 1
+
+findactor 0, "Tommy"
+findactor 1, "Hoolig"
+findactor 2, "Hoolig2"
+findactor 3, "Hoolig3"
+findactor 4, "Hoolig4"
+findactor 5, "Billy"
+findactor 6, "Hoolig5"
+findactor 7, "Hoolig6"
+findactor 8, "Hoolig7"
+findactor 9, "PoliceMan"
+
+act_setstate -1, inactive
+let flt[9] = 0
+
+label DETECT
+// MOJE PANIKA, zatim oddelano, trabo to bude fungovat, jinak staci odremovat!
+//getenemyaistate 1, 0
+//if flt[0] = 4, PANIC1, -1
+//getenemyaistate 2, 0
+//if flt[0] = 4, PANIC2, -1
+//getenemyaistate 3, 0
+//if flt[0] = 4, PANIC3, -1
+//getenemyaistate 4, 0
+//if flt[0] = 4, PANIC4, -1
+//getenemyaistate 5, 0
+//if flt[0] = 4, PANIC5, -1
+//getenemyaistate 6, 0
+//if flt[0] = 4, PANIC6, -1
+//getenemyaistate 7, 0
+//if flt[0] = 4, PANIC7, -1
+//getenemyaistate 8, 0
+//if flt[0] = 4, PANIC8, -1
+
+label SMAZ1
+   if flt[1] = 1, SMAZ2, -1
+      getactorsdist 0, 1, 0, -1
+      iffltinrange 0, 0, 30, SMAZ2
+         getangleactortoactor 0, 1, 0
+         if flt[0] > 60, -1, SMAZ2
+//            getenemyaistate 1, 0
+//            if flt[0] > 1, -1, SMAZ2
+               commandblock 1
+               getframefromactor 0, 1
+               frm_seton 0, 0
+               human_death 1
+               let flt[1] = 1
+               commandblock 0
+
+label SMAZ2
+   if flt[2] = 1, SMAZ3, -1
+      getactorsdist 0, 2, 0, -1
+      iffltinrange 0, 0, 30, SMAZ3
+         getangleactortoactor 0, 2, 0
+         if flt[0] > 60, -1, SMAZ3
+//            getenemyaistate 2, 0
+//            if flt[0] > 1, -1, SMAZ3
+               commandblock 1
+               getframefromactor 0, 2
+               frm_seton 0, 0
+               human_death 2
+               let flt[2] = 1
+               commandblock 0
+
+label SMAZ3
+   if flt[3] = 1, SMAZ4, -1
+      getactorsdist 0, 3, 0, -1
+      iffltinrange 0, 0, 30, SMAZ4
+         getangleactortoactor 0, 3, 0
+         if flt[0] > 60, -1, SMAZ4
+//            getenemyaistate 3, 0
+//            if flt[0] > 1, -1, SMAZ4
+            commandblock 1
+            getframefromactor 0, 3
+            frm_seton 0, 0
+            human_death 3
+            let flt[3] = 1
+            commandblock 0
+
+label SMAZ4
+if flt[9] = 0, DETECT, -1
+
+   if flt[4] = 1, SMAZ5, -1
+// Billyho kamos
+      getactorsdist 0, 4, 0, -1
+      iffltinrange 0, 0, 50, SMAZ5
+         getangleactortoactor 0, 4, 0
+         if flt[0] > 60, -1, SMAZ5
+//            getenemyaistate 4, 0
+//            if flt[0] > 1, -1, SMAZ5
+            commandblock 1
+            getframefromactor 0, 4
+            frm_seton 0, 0
+            human_death 4
+            let flt[4] = 1
+            commandblock 0
+
+label SMAZ5
+// Billy
+   if flt[5] = 1, SMAZ6, -1
+      getactorsdist 0, 5, 0, -1
+      iffltinrange 0, 0, 50, SMAZ6
+         getangleactortoactor 0, 5, 0
+         if flt[0] > 60, -1, SMAZ6
+//            getenemyaistate 5, 0
+//            if flt[0] > 1, -1, SMAZ6
+            commandblock 1
+            getframefromactor 0, 5
+            frm_seton 0, 0
+            commandblock 0
+            human_death 5
+            let flt[5] = 1
+
+label SMAZ6
+   if flt[6] = 1, SMAZ7, -1
+      getactorsdist 0, 6, 0, -1
+      iffltinrange 0, 0, 30, SMAZ7
+         getangleactortoactor 0, 6, 0
+         if flt[0] > 60, -1, SMAZ7
+//            getenemyaistate 6, 0
+//            if flt[0] > 1, -1, SMAZ7
+            commandblock 1
+            getframefromactor 0, 6
+            frm_seton 0, 0
+            human_death 6
+            let flt[6] = 1
+            commandblock 0
+
+label SMAZ7
+   if flt[7] = 1, SMAZ8, -1
+      getactorsdist 0, 7, 0, -1
+      iffltinrange 0, 0, 30, SMAZ8
+         getangleactortoactor 0, 7, 0
+         if flt[0] > 60, -1, SMAZ8
+//            getenemyaistate 7, 0
+//            if flt[0] > 1, -1, SMAZ8
+            commandblock 1
+            getframefromactor 0, 7
+            frm_seton 0, 0
+            human_death 7
+            let flt[7] = 1
+            commandblock 0
+
+label SMAZ8
+   if flt[8] = 1, SMAZ9, -1
+      getactorsdist 0, 8, 0, -1
+      iffltinrange 0, 0, 30, SMAZ9
+         getangleactortoactor 0, 8, 0
+         if flt[0] > 60, -1, SMAZ9
+//            getenemyaistate 8, 0
+//            if flt[0] > 1, -1, SMAZ9
+            commandblock 1
+            getframefromactor 0, 8
+            frm_seton 0, 0
+            human_death 8
+            let flt[8] = 1
+            commandblock 0
+
+label SMAZ9
+if flt[1] = 1, -1, DETECT
+if flt[2] = 1, -1, DETECT
+if flt[3] = 1, -1, DETECT
+if flt[4] = 1, -1, DETECT
+// Billy muze zit...
+//if flt[5] = 1, -1, DETECT
+if flt[6] = 1, -1, DETECT
+if flt[7] = 1, -1, DETECT
+if flt[8] = 1, -1, DETECT
+debug_text "detector_zustan_v_panice: Vycisteno....Prepinam PoliceMana"
+label SEND
+setevent 9, 1, SEND
+goto FINISH
+
+label PANIC1
+setevent 1, 5000, PANIC1
+goto DETECT
+
+label PANIC2
+setevent 2, 5000, PANIC2
+goto DETECT
+
+label PANIC3
+setevent 3, 5000, PANIC3
+goto DETECT
+
+label PANIC4
+setevent 4, 5000, PANIC4
+goto DETECT
+
+label PANIC5
+setevent 5, 5000, PANIC5
+goto DETECT
+
+label PANIC6
+setevent 6, 5000, PANIC6
+goto DETECT
+
+label PANIC7
+setevent 7, 5000, PANIC7
+goto DETECT
+
+label PANIC8
+setevent 8, 5000, PANIC8
+goto DETECT
+
+event 1
+// Event 1 od Sary
+debug_text "detector_zustan_v_panice: prepnuto na vsechny actory..."
+let flt[9] = 1
+return
+
+label FINISH

@@ -1,0 +1,22 @@
+dim_act 3
+findactor 0, "Salieri"
+findactor 1, "nesahat merced500K"
+findactor 2, "SalMan"
+
+mission_objectivesclear
+act_setstate 0, inactive
+player_lockcontrols 1
+commandblock 1
+loaddifferences "dif14a.chg"
+recloadfull "record14a.rep"
+commandblock 0
+recwaitforend
+commandblock 1
+act_setstate 0, active
+recunload
+cleardifferences
+player_lockcontrols 0
+commandblock 0
+
+human_force_settocar 2, 1, 0
+mission_objectives 14960000

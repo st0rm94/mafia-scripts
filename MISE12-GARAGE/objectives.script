@@ -1,0 +1,7 @@
+act_setstate -1, inactive
+mission_objectivesclear
+mission_objectives 12960000
+act_setstate -1, inactive
+mission_objectivesremove 12960000
+mission_objectives 12960001
+act_setstate -1, inactive

@@ -1,0 +1,156 @@
+//[debug_me]
+act_setstate -1, inactive
+dim_flt 3
+// flt[0] temp
+// flt[1] hrajici music
+// flt[2] pointer na stream
+dim_act 13
+findactor 0, "Hoolig"
+findactor 1, "Hoolig2"
+findactor 2, "Hoolig3"
+findactor 3, "Hoolig4"
+findactor 4, "Hoolig5"
+findactor 5, "Hoolig6"
+findactor 6, "Hoolig7"
+findactor 7, "Hoolig8"
+findactor 8, "Hoolig9"
+findactor 9, "Hoolig10"
+findactor 10, "Hoolig11"
+findactor 11, "PortGuard"
+findactor 12, "PortGuard2"
+
+stream_create 2, "sounds\music\12 - Quiet Before Storm.ogg"
+stream_fadevol 2, 1, 0, 0.7
+stream_play 2
+
+{ DOWN
+label DETECT
+   getenemyaistate 0, 0
+   if flt[0] < 2, NEXT, -1
+   human_getproperty 0, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT
+   getenemyaistate 1, 0
+   if flt[0] < 2, NEXT2, -1
+   human_getproperty 1, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT2
+   getenemyaistate 2, 0
+   if flt[0] < 2, NEXT3, -1
+   human_getproperty 2, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT3
+   getenemyaistate 3, 0
+   if flt[0] < 2, NEXT4, -1
+   human_getproperty 3, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT4
+   getenemyaistate 4, 0
+   if flt[0] < 2, NEXT5, -1
+   human_getproperty 4, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT5
+   getenemyaistate 5, 0
+   if flt[0] < 2, NEXT6, -1
+   human_getproperty 5, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT6
+   getenemyaistate 6, 0
+   if flt[0] < 2, NEXT7, -1
+   human_getproperty 6, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT7
+   getenemyaistate 7, 0
+   if flt[0] < 2, NEXT8, -1
+   human_getproperty 7, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT8
+   getenemyaistate 8, 0
+   if flt[0] < 2, NEXT9, -1
+   human_getproperty 8, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT9
+   getenemyaistate 9, 0
+   if flt[0] < 2, NEXT10, -1
+   human_getproperty 9, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT10
+   getenemyaistate 10, 0
+   if flt[0] < 2, NEXT11, -1
+   human_getproperty 10, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT11
+   getenemyaistate 11, 0
+   if flt[0] < 2, NEXT12, -1
+   human_getproperty 11, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT12
+   getenemyaistate 12, 0
+   if flt[0] < 2, NEXT13, -1
+   human_getproperty 12, 0, Energy
+   if flt[0] = 0, -1, ZAPNI
+label NEXT13
+   gosub VYPNI
+goto DETECT
+
+label ZAPNI
+if flt[1] = 0, -1, DETECT
+stream_stop 2
+stream_destroy 2
+stream_create 2, "sounds\music\09 - Fighting theme 1.ogg"
+stream_fadevol 2, 1, 0, 0.8
+stream_setloop 2, 1
+stream_play 2
+let flt[1] = 1
+goto DETECT
+
+label VYPNI
+if flt[1] = 1, -1, RET2
+stream_fadevol 2, 2000, 0.7, 0
+wait 2000
+stream_stop 2
+stream_destroy 2
+stream_create 2, "sounds\music\12 - Quiet Before Storm.ogg"
+stream_fadevol 2, 1, 0, 0.7
+stream_play 2
+let flt[1] = 0
+label RET2
+return
+}
+
+citymusic_off
+//wait 10000
+//stream_create 2, "sounds\music\20 - Carchase 2.ogg"
+//stream_setloop 2, 1
+//stream_fadevol 2, 1, 0, 0.7
+//stream_play 2
+
+{ DOWN
+label WAIT
+wait 5000
+goto WAIT
+}
+
+// Pridelat vypnuti hudby z filmecku....
+stream_fadevol 2, 100, 0.7, 0
+wait 100
+commandblock 1
+stream_stop 2
+stream_destroy 2
+commandblock 0
+goto FINISH
+
+event 1
+stream_fadevol 2, 100, 0.5, 0
+wait 100
+stream_stop 2
+stream_destroy 2
+event_use_cb 1
+return
+
+event 2
+event_use_cb 1
+return
+
+label FINISH
+end

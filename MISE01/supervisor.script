@@ -1,0 +1,190 @@
+commandblock 1
+dim_frm 5
+dim_act 12
+dim_flt 7
+findactor 0,"TommyTAXIDRIVER"
+findactor 1,"Sam"
+findactor 2,"Paulie"
+findactor 3,"taxi"
+findactor 4,"enemy_car"
+findactor 5,"detector_konec"
+findactor 6,"dummy_timer"
+findactor 7,"Enemy01"
+findactor 8,"Enemy02"
+findactor 9,"Enemy03"
+findactor 10,"detector_opusteni_auta"
+findactor 11,"detector_music"
+
+findframe 0,"Enemy01"
+findframe 1,"Enemy02"
+findframe 2,"Enemy03"
+findframe 3,"enemy_car"
+findframe 4,"detector_konec"
+
+policemanager_add "TommyTAXIDRIVER"
+policemanager_add "Enemy02"
+policemanager_add "Enemy03"
+policemanager_add "Paulie"
+policemanager_add "Sam"
+
+commandblock 0
+
+act_setstate -1,inactive
+
+commandblock 1
+// MUSIC PLAY
+setevent 11,551,-1
+wingman_setindicator 2,1,1
+wingman_setindicator 1,2,2
+commandblock 0
+
+let flt[2]=0
+{ up
+label 101
+get_pm_crashtime 0,1
+get_pm_firetime 8,3
+get_pm_firetime 9,4
+get_pm_firetime 1,5
+get_pm_firetime 2,6
+
+wait 2000
+human_getproperty 0,0,Energy
+if flt[0]=0,102,-1
+human_getproperty 1,0,Energy
+if flt[0]=0,103,-1
+human_getproperty 2,0,Energy
+if flt[0]=0,104,-1
+
+if flt[2]=0,-1,101
+
+detector_issignal 10,101,-1
+// detekce strelby
+get_pm_firetime 1,0
+if flt[0]>flt[5],109,-1 
+get_pm_firetime 2,0
+if flt[0]>flt[6],109,-1 
+
+get_pm_firetime 8,0
+if flt[0]>flt[3],108,-1 
+get_pm_firetime 9,0
+if flt[0]>flt[4],108,-1 
+
+// detekce narazu
+get_pm_crashtime 0,0
+if flt[0]>flt[1],105,-1 
+// ************   zmena od Davida **************
+human_getproperty 7,0,Energy
+if flt[0]=0,110,-1
+// ***************************************************
+
+// detekce vzdalenosti
+getactorsdist 3,4,0
+if flt[0]<20,106,-1 
+if flt[0]>200,107,-1
+// ************   zmena od Davida **************
+//human_getproperty 7,0,Energy
+//if flt[0]=0,110,-1
+// **************************************************
+goto 101
+}
+
+label 102
+endofmission 0,00980001
+end
+
+label 103
+endofmission 0,00980003
+end
+
+label 104
+endofmission 0,00980002
+end
+
+label 105
+// hrac naboural
+rnd 0,2
+  if flt[0]=0,-1,301
+  setevent 2,201,-1
+  goto 101
+  label 301
+ setevent 1,201,-1
+goto 101
+
+label 106
+// hrac jede pomalu enemy jsou blizko
+rnd 0,2
+  if flt[0]=0,-1,401
+  setevent 2,203,-1
+  goto 101
+  label 401
+  setevent 1,203,-1
+goto 101
+
+label 107
+// hrac ujel
+  car_remove_driver 4
+  act_setstate 7,off
+  act_setstate 8,off
+  act_setstate 9,off
+  act_setstate 4,off
+  frm_seton 0,0
+  frm_seton 1,0
+  frm_seton 2,0
+  frm_seton 3,0
+  // MUSIC FADEDOWN
+  setevent 11,554,-1
+  label 333
+  setevent 10,201,333
+  setcompass 4
+  let flt[2]=1
+  label 444
+  setevent 2,208,444
+ACT_SETSTATE 5,active
+ACT_SETSTATE 6,active
+  // MUSIC STOP+DESTROY
+  wait 5000
+  setevent 11,552,-1
+goto 101
+
+label 110
+// ridic mrtvy
+  // MUSIC FADEDOWN
+  car_remove_driver 4
+  setevent 11,554,-1
+  label 333
+  setevent 10,201,333
+  setcompass 4
+  let flt[2]=1
+  label 444
+  setevent 2,208,444
+ACT_SETSTATE 5,active
+ACT_SETSTATE 6,active
+  // MUSIC STOP+DESTROY
+  wait 5000
+  setevent 11,552,-1
+goto 101
+
+
+
+
+
+
+label 108
+// strili se
+rnd 0,4
+  if flt[0]=0,-1,801
+  setevent 1,202,-1
+  goto 101
+  label 801
+  setevent 2,202,-1
+goto 101
+
+label 109
+// Paulie nebo Sam strili
+rnd 0,2
+  if flt[0]=0,-1,802
+  setevent 2,209,-1
+  goto 101
+  label 802
+  setevent 1,209,-1
+goto 101

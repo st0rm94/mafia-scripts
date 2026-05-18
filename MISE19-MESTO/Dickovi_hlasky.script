@@ -1,0 +1,28 @@
+act_setstate -1, inactive
+dim_act 1
+dim_flt 1
+findactor 0, "Hoolig"
+wait 4000
+human_talk 0, 19950040
+gosub WAIT
+human_talk 0, 19950050
+gosub WAIT
+human_talk 0, 19950060
+gosub WAIT
+human_talk 0, 19950070
+gosub WAIT
+human_talk 0, 19950080
+gosub WAIT
+human_talk 0, 19950090
+gosub WAIT
+human_talk 0, 19950100
+gosub WAIT
+human_talk 0, 19950110
+end
+
+label WAIT
+rnd 0, 4
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 1300
+wait flt[0]
+return

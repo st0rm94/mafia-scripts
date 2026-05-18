@@ -1,0 +1,27 @@
+enemy_vidim 0
+dim_flt 1
+dim_act 2
+findactor 0, "aktivace enemy v ulicce"
+findactor 1, "Tommy"
+
+frm_seton 100, 0
+act_setstate 100, inactive
+
+frm_seton 100, 1
+
+detector_issignal 0, -1, 2
+
+enemy_move 15, run
+enemy_action_fire 1
+
+label 3
+wait 1000000
+goto 3
+
+
+label 2
+enemy_playanim "jumpR1.i3d", 0, simple
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "breath07a.i3d"
+enemy_vidim 1

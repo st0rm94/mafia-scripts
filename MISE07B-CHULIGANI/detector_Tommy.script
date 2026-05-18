@@ -1,0 +1,95 @@
+//[debug_me]
+dim_flt 7
+// flt[0] = 0 temp
+// flt[1] - flt[3] vektor pozice
+// flt[4] = vypnuta/zapnuta doprava
+// flt[5] = posledni label hlasky
+// flt[6] = gametime posledni hlasky
+
+// Defaultne zapnuta
+let flt[4] = 1
+
+act_setstate -1, inactive
+
+dim_act 2
+getactiveplayer 0
+findactor 1, "Paulie"
+dim_frm 2
+getactivecamera 0
+findframe 1, "service_station_area"
+
+label DETECT
+frm_getworldpos 0, 1
+ispointinarea 1, 1, 0
+if flt[0] = 0, NENITU, JETU
+
+label JETU
+if flt[4] = 0, DETECT, -1
+setcitytrafficvisible 0
+debug_text "detector_Tommy: Doprava vypnuta"
+let flt[4] = 0
+goto DETECT
+
+
+label NENITU
+if flt[4] = 1, -1, ZAPNIDOPRAVU
+label HLASKA
+getgametime 0
+if flt[0] > flt[6], -1, DETECT
+getactorsdist 0, 1, 0
+if flt[0] < 10, PAULIE, -1
+label RERAND
+rnd 0, 5
+let flt[0] = flt[0] + 1
+if flt[0] = flt[5], RERAND, -1
+goto flt[0]
+label 1
+human_talk 0, 950202, 4
+goto RET
+label 2
+human_talk 0, 950203, 4
+goto RET
+label 3
+human_talk 0, 950204, 4
+goto RET
+label 4
+human_talk 0, 950205, 4
+goto RET
+label 5
+human_talk 0, 950206, 4
+label RET
+let flt[5] = flt[0]
+getgametime 6
+let flt[6] = flt[6] + 7000
+goto DETECT
+
+label PAULIE
+rnd 0, 2
+let flt[0] = flt[0] + 6
+if flt[0] = flt[5], PAULIE, -1
+goto flt[0]
+label 6
+human_talk 1, 07990511, 1
+goto RET
+label 7
+human_talk 1, 07990521, 1
+goto RET
+
+label ZAPNIDOPRAVU
+let flt[4] = 1
+setcitytrafficvisible 1
+debug_text "detector_Tommy: Doprava zapnuta!"
+goto HLASKA
+
+label END
+endofmission 0, 07980007
+end
+
+event 1
+commandblock 1
+if flt[4] = 1, KONCIM, -1
+setcitytrafficvisible 1
+label KONCIM
+act_setstate -1, off
+commandblock 0
+return

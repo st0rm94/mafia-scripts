@@ -1,0 +1,30 @@
+// ************************* detekce policie *******************
+dim_flt 2
+dim_act 2
+findactor 0, "Salieri"
+findactor 1, "Tommy"
+
+label 1
+wait 3000
+vlvp 0
+if flt[0] = 1, -1, 1
+
+human_talk 1, 00950229
+wait 2000
+
+if flt[1] = 1, 2, -1
+if ftl[1] = 2, 3, -1
+human_talk 0, 00950133, 2
+wait 30000
+let flt[1] = 1
+goto 1
+label 2
+human_talk 0, 00950134, 2
+wait 30000
+let flt[1] = 2
+goto 1
+label 3
+human_talk 0, 00950135, 2
+wait 30000
+let flt[1] = 0
+goto 1

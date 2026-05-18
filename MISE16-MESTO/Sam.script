@@ -1,0 +1,11 @@
+dim_act 3
+findactor 0, ""
+findactor 1, "MorelloLOW"
+findactor 2, "Tommy"
+
+enemy_naserse 1
+
+label 1
+enemy_followplayer yes
+enemy_action_follow 2, 3, nonext
+goto 1

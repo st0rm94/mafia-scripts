@@ -1,0 +1,27 @@
+dim_flt 1
+dim_act 3
+dim_frm 1
+findactor 0, "civil10"
+findactor 1, "Box696"
+findactor 2, "Tommy"
+findframe 0, "poloha playera u dveri"
+
+door_enableus 1, 0
+
+act_setstate 100, inactive
+
+detector_waitforuse 19970000, 1
+
+commandblock 1
+player_lockcontrols 1
+actor_setplacement 2, 0
+person_playanim 2, "vykopnutidveri.i3d"
+commandblock 0
+
+wait 600
+door_open 1, 1
+act_setstate 0, active
+wait 800
+person_stopanim 2
+player_lockcontrols 0
+act_setstate 100, off

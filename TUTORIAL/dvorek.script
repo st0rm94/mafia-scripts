@@ -1,0 +1,28 @@
+DIM_FRM 3
+DIM_FLT 2
+
+FINDFRAME 0, "dvorek"
+FINDFRAME 1, "dvorek2"
+FINDFRAME 2, "dvorek3"
+
+label 1
+  rnd 0, 8  
+  let flt[0] = flt[0] *  1400 
+  let flt[0] = flt[0] + 7000
+  wait flt[0]
+ rnd 1, 10
+ IFFLTINRANGE 1, 0, 3, 2
+ IFFLTINRANGE 1, 4, 7, 3
+ IFFLTINRANGE 1, 8, 9, 4
+
+label 2
+ FRM_SETON 0, 1
+goto 1
+
+label 3
+ FRM_SETON 1, 1
+goto 1
+
+label 4
+ FRM_SETON 2, 1
+goto 1

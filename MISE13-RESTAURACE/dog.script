@@ -1,0 +1,10 @@
+DIM_FLT 1
+DIM_FRM 1
+FINDFRAME 0, "dog!"			
+
+label 1
+wait 2000
+DETECTOR_INRANGE 0, 30
+IF flt[0] = 1, -1, 1
+frm_seton 0, 1
+goto 1

@@ -1,0 +1,12 @@
+enemy_vidim 0
+dim_act 1
+findactor 0, "Tommy"
+
+enemy_podvadim_jak "Tretera"
+enemy_vidim 1
+
+enemy_naserse 0
+
+label 1
+wait 1000000
+goto 1

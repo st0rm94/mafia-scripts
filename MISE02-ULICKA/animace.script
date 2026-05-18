@@ -1,0 +1,108 @@
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+mission_objectivesclear
+zatmyse 1,1
+dim_act 5
+dim_frm 12
+findactor 0,"TommyTAXIDRIVER"
+findactor 1,"Enemy08K"
+findactor 2,"Enemy09K"
+findactor 3,"civil2"
+findactor 4,"detector_music"
+
+findframe 0,"TommyTAXIDRIVER"
+findframe 1,"Enemy08K"
+findframe 2,"Enemy09K"
+findframe 3,"taxi"
+
+findframe 4,"SalMan01K"
+findframe 5,"Gangster"
+findframe 6,"Luigi"
+findframe 7,"Enemy"
+
+findframe 8,"load mise02-saliery"
+findframe 9,"light01"
+findframe 10,"Rstul"
+findframe 11,"Rstul2"
+
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+
+setcitytrafficvisible 0
+
+loaddifferences "dif02a.chg"
+recloadfull "record02a.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+act_setstate 1,active
+act_setstate 2,active
+act_setstate 3,active
+
+frm_seton 0,1
+frm_seton 1,1
+frm_seton 2,1
+frm_seton 3,1
+
+setcitytrafficvisible 1
+
+PLAYER_LOCKCONTROLS 0
+setcompass 8
+zatmyse 0
+commandblock 0
+
+mission_objectives 02960001
+
+act_setstate -1,inactive
+// MUSIC FADEDOWN
+setevent 4,554,-1
+
+zatmyse 1
+wait 500
+PLAYER_LOCKCONTROLS 1
+commandblock 1
+setcompass -1
+enemy_block
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+
+frm_seton 4,0
+frm_seton 5,0
+frm_seton 6,0
+frm_seton 7,0
+frm_seton 9,0
+frm_seton 10,0
+frm_seton 11,0
+
+loaddifferences "dif02b.chg"
+recloadfull "record02b.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+frm_seton 0,1
+frm_seton 1,1
+frm_seton 2,1
+
+frm_seton 4,1
+frm_seton 5,1
+frm_seton 6,1
+frm_seton 7,1
+frm_seton 9,1
+frm_seton 10,1
+frm_seton 11,1
+
+PLAYER_LOCKCONTROLS 0
+commandblock 0
+change_mission "mise02-saliery","",-1

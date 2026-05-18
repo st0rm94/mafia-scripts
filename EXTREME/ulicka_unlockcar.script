@@ -1,0 +1,57 @@
+act_setstate -1,inactive
+
+dim_act 10
+dim_flt 1
+findactor 0,"enm_ulicka01"
+findactor 1,"enm_ulicka02"
+findactor 2,"enm_ulicka03"
+findactor 3,"enm_ulicka04"
+findactor 4,"enm_ulicka05"
+findactor 5,"enm_ulicka06"
+findactor 6,"enm_ulicka07"
+findactor 7,"enm_ulicka08"
+findactor 8,"enm_ulicka09"
+findactor 9,"cad_road"
+
+dim_frm 2
+findframe 0,"light"
+findframe 1,"slunko2"
+//***********PREPNUTI SLUNCI
+frm_seton 0,0
+frm_seton 1,1
+
+label 101
+wait 3000
+human_getproperty 0,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 1,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 2,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 3,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 4,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 5,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 6,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 7,0,Energy
+if flt[0]=0,-1,101
+human_getproperty 8,0,Energy
+if flt[0]=0,-1,101
+
+car_enableus 9,1
+
+//***********PREPNUTI SLUNCI
+frm_seton 0,1
+frm_seton 1,0
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar C
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590

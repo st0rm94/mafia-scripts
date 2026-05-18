@@ -1,0 +1,280 @@
+dim_flt 8
+dim_act 14
+dim_frm 2
+findactor 0, ""
+findactor 1, "Tommy"
+//findactor 2, "zjisteni auta"
+findactor 3, "civil5"
+findactor 4, "doktoruv dum"
+findactor 5, "Lucas"
+findactor 6, "detekce narazu"
+findactor 7, "detekce healtu ranenyho"
+findactor 8, "prijeti k postrelenymu chlapkovi"
+findactor 9, "snizovani healtu chlapka"
+findactor 10, "detekce healtu kamose"
+findactor 11, "detekce ranenyho v aute"
+findactor 12, "null"
+findactor 13, "detekce ranenyho v aute2"
+
+findframe 0, "poloha kamery u doktora"
+findframe 1, "doktoruv dum"
+
+act_setstate 100, inactive
+
+enemy_ignore_corpse
+
+enemy_playanim "breath06a.i3d"
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+enemy_stopanim
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+human_looktoactor 1, 0, 1
+enemy_talk 15990431
+enemy_wait
+
+getactorsdist 0, 1, 6
+if flt[6] < 5, 19, -1
+gosub 23
+
+human_looktoactor 1, 0, 1
+
+label 19
+enemy_talk 1, 15990441
+enemy_wait
+
+getactorsdist 0, 1, 6
+if flt[6] < 5, 20, -1
+gosub 23
+
+human_looktoactor 1, 0, 1
+
+label 20
+enemy_talk 15990451
+enemy_wait
+human_looktoactor 0
+enemy_look 3
+enemy_wait
+enemy_playanim "breath06a.i3d"
+
+getactorsdist 0, 1, 6
+if flt[6] < 5, 14, -1
+gosub 23
+
+human_looktoactor 1, 0, 1
+
+label 14
+setevent 3, 2, 14
+
+enemy_talk 3, 15990461
+enemy_wait
+enemy_stopanim
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+
+getactorsdist 0, 1, 6
+if flt[6] < 5, 21, -1
+gosub 23
+
+human_looktoactor 1, 0, 1
+
+label 21
+enemy_talk 15990471
+enemy_wait
+
+getactorsdist 0, 1, 6
+if flt[6] < 5, 22, -1
+gosub 23
+
+human_looktoactor 1, 0, 1
+
+label 22
+enemy_talk 1, 15990481
+
+human_looktoactor 1
+
+{ up
+label 16
+get_remote_actor 2, 8, 1
+car_getseatcount 2, 3
+if flt[3] = 4, 17, -1
+if flt[4] = 1, 16, -1
+enemy_look 1
+enemy_wait
+human_looktoactor 0, 1, 1
+enemy_talk 0, 15990231, 1
+enemy_wait
+human_createab 0
+enemy_lookto 31
+enemy_wait
+let flt[4] = 1
+goto 16
+}
+
+label 17
+human_eraseab 0
+human_looktoactor 0
+
+enemy_move_to_car 2, 1, run
+
+label 4
+enemy_usecar 2, 1
+compareownerwith 2, -1, 4
+
+act_setstate 13, active
+
+enemy_vidim 0
+
+label 26
+compareownerwithex 3, 2, -1, 26
+
+label 15
+setevent 5, 4, 15
+
+act_setstate 6, active
+//act_setstate 7, active
+act_setstate 8, off
+act_setstate 11, active
+act_setstate 13, off
+setcompass 1
+
+label 5
+getactorsdist 0, 4, 0
+if flt[0] < 20, -1, 5
+
+policeitchforplayer 0
+if flt[0] = 1, -1, 13
+if flt[2] = 1, 5, -1
+enemy_talk 1, 00950224
+enemy_wait
+let flt[2] = 1
+goto 5
+
+label 13
+human_getproperty 1, 0, energy
+if flt[0] = 0, 13, -1
+
+compareownerwithex 1, 12, -1, 24
+let flt[7] = 1
+
+label 24
+commandblock 1
+setcompass -1
+timeroff
+act_setstate 9, off
+
+camera_lock 0
+
+if flt[7] = 1, 25, -1
+player_lockcontrols 1
+car_setspeed 2, 30
+
+label 25
+car_breakmotor 2, 1
+act_setstate 6, off
+commandblock 0
+
+enemy_talk 0, 15990671, 2
+enemy_wait
+wait 1000
+enemy_talk 0, 15990672, 2
+enemy_wait
+
+act_setstate 11, off
+
+label 6
+enemy_usecar
+compareownerwith 2, 6, -1
+
+human_looktoactor 0, 3, 1
+enemy_talk 0, 15990673, 2
+wait 2000
+
+player_lockcontrols 0
+
+label 7
+setevent 3, 3, 7
+
+enemy_move 14
+frm_seton 100, 0
+act_setstate 10, off
+
+label 9
+setevent 5, 2, 9
+
+car_breakmotor 2, 0
+
+act_setstate 100, off
+
+event 1
+human_getowner 1, 2
+return
+
+event 2
+event_use_cb 1
+return
+
+event 3
+detector_issignal 11, 10, -1
+enemy_talk 15990601
+enemy_wait
+
+car_breakmotor 2, 1
+
+label 10
+wingman_delindicator 3, 1
+enemy_usecar
+compareownerwith 2, 10, -1
+
+car_breakmotor 2, 0
+
+act_setstate 11, off
+
+enemy_vidim 1
+
+label 11
+enemy_action_fire 1
+goto 11
+
+label 12
+enemy_move 22, run
+enemy_move 23, run
+enemy_move 24, run
+enemy_move 25, run
+enemy_move 26, run
+enemy_move 27, run
+enemy_move 28, run
+enemy_move 29, run
+enemy_lookto 30
+enemy_wait
+frm_seton 100, 0
+act_setstate 100, off
+
+event use_ab
+event_use_cb 1
+if flt[5] = 1, 18, -1
+let flt[5] = 1
+human_eraseab 0
+return
+
+label 18
+enemy_look 1
+enemy_wait
+enemy_talk 0, 15990231, 1
+enemy_wait
+enemy_lookto 31
+enemy_wait
+return
+
+label 23
+human_looktoactor 1
+getactorsdist 0, 1, 6
+if flt[6] < 5, -1, 23
+return

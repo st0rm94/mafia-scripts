@@ -1,0 +1,122 @@
+commandblock 1
+dim_flt 2
+dim_act 13
+dim_frm 25
+findactor 0, "Tommy"
+//findactor 1, "zjisteni auta"
+findactor 2, "arrow"
+findactor 3, "load mise16-mesto"
+findactor 4, "vzdalenost player morello"
+findactor 5, "null"
+findactor 6, "Paulie"
+findactor 7, "Sam"
+findactor 8, "civil"
+findactor 9, "MorelloLOW"
+findactor 10, "detekce healtu morella"
+findactor 11, "Guard"
+
+findframe 0, "poloha playera po animaci 16.3"
+findframe 1, "arrow"
+findframe 2, "FMVarrow00-travis"
+findframe 3, "poloha playera behem animace 16.3"
+findframe 4, "poloha tommyho po animaci"
+findframe 5, "poloha paulieho po animaci"
+findframe 6, "poloha sama po animaci"
+findframe 15, "civil"
+findframe 16, "MorelloLOW"
+findframe 17, "poloha arrowa po filmecku"
+findframe 18, "load mise16-mesto"
+findframe 19, "Tommy"
+findframe 20, "Paulie"
+findframe 21, "Sam"
+findframe 22, "ohen"
+findframe 23, "ohen2"
+findframe 24, "Guard"
+
+stream_create 1, "sounds\music\20 - Carchase 2.ogg"
+stream_play 1
+stream_setloop 1, 1
+commandblock 0
+
+label 1
+detector_inrange 0, 70
+if flt[0] = 1, -1, 1
+
+compareownerwithex 0, 5, 4, -1
+human_getowner 0, 1
+
+zatmyse 1
+wait 500
+commandblock 1
+stream_stop 1
+stream_destroy 1
+player_lockcontrols 1
+car_forcestop 1
+actor_setplacement 1, 3
+carlight_main 2, 0
+actor_setplacement 2, 17 
+act_setstate 4, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 2, off
+act_setstate 10, off
+act_setstate 11, off
+
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 24, 0
+
+loaddifferences "dif16c.chg"
+recloadfull "record16c"
+recclear
+recaddactor 1, "car7"
+recload "record16c"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+act_setstate 3, active
+actor_setplacement 1, 0
+car_calm 1
+human_fromcar 0, 4
+human_fromcar 6, 5
+human_fromcar 7, 6
+human_reset 0
+human_reset 6
+human_reset 7
+player_lockcontrols 0
+frm_seton 2, 1
+frm_seton 19, 1
+frm_seton 20, 1
+frm_seton 21, 1
+emitparticle 22, 6
+emitparticle 23, 6
+
+mission_objectivesclear
+mission_objectives 9960007
+setcompass 18
+
+label 2
+setevent 6, 1, 2
+
+label 3
+setevent 7, 1, 3
+
+commandblock 0
+zatmyse 0
+
+act_setstate 100, off
+
+label 4
+setevent 9, 1, 4
+
+label 5
+setevent 8, 2, 5
+
+label 6
+setevent 11, 1, 6
+act_setstate 100, off

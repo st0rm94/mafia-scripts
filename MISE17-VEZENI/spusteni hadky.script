@@ -1,0 +1,18 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Hoolig10"
+findactor 1, "aktivace padajiciho"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 2
+if flt[0] = 1, -1, 1
+
+act_setstate 1, active
+
+human_talk 0, 01940011, 1
+human_talk 0, 02940015, 1
+human_talk 0, 01940017, 1
+
+act_setstate 100, off

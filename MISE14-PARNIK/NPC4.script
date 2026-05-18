@@ -1,0 +1,16 @@
+dim_flt 2
+dim_act 1
+findactor 0, "civil12"
+
+label 1
+wait 600
+detector_inrange 0, 3
+if flt[0] = 1, -1, 1
+getenemyaistate 0, 1
+if flt[1] ! 0, 3, -1
+detector_setsignal -1, 1
+label 2
+setevent 0, 2, 2
+
+label 3
+end

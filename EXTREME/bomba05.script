@@ -1,0 +1,35 @@
+act_setstate -1,inactive
+
+dim_act 2
+dim_frm 2
+
+findactor 0,"bomba05"
+findactor 1,"bomba06"
+
+findframe 0,"bomba05"
+findframe 1,"cam_bomba05"
+
+camera_lock 1
+citycaching_tick
+wait 3000
+camera_unlock
+citycaching_tick
+
+settimeoutevent 0,201
+
+timeron 0,0,30,150
+setcompass 0
+
+detector_waitforuse
+timeroff
+setcompass -1
+act_setstate 1,active
+end
+
+event 201
+timeroff
+setcompass -1
+explosion 20,5000
+mission_objectivesclear
+endofmission 0,22980001
+end

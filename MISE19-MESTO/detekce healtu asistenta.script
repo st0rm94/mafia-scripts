@@ -1,0 +1,19 @@
+dim_flt 1
+dim_act 3
+findactor 0, "1AsisPZ"
+findactor 1, "vyhodnoceni gunshopu"
+findactor 2, "1ProdZ"
+
+act_setstate 100, inactive
+
+label 1
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+human_getproperty 2, 0, energy
+if flt[0] = 0, -1, 1
+
+label 2
+setevent 1, 1, 2
+
+act_setstate 100, off

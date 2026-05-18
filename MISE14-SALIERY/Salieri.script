@@ -1,0 +1,48 @@
+dim_flt 1
+dim_act 4
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "nesahat merced500K"
+findactor 3, "SalMan"
+
+{ up
+enemy_move_to_car 2, 1
+human_eraseab 1
+enemy_usecar 2, 1
+label 3
+setevent 3, 1, 3
+label 4
+wait 30000
+goto 4
+}
+
+event use_ab, 7970000
+event_use_cb 1
+enemy_forcescript 1
+enemy_stop
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+if flt[0] = 0, 1, -1
+if flt[0] = 1, 2, -1
+enemy_talk 00950000
+enemy_wait
+human_looktoactor 1
+let flt[0] = 0
+return
+label 1
+enemy_talk 00950001
+enemy_wait
+human_looktoactor 1
+let flt[0] = 1
+return
+label 2
+enemy_talk 00950002
+enemy_wait
+human_looktoactor 1
+let flt[0] = 2
+return
+
+event 1000
+enemy_action_fire 0, 3
+return

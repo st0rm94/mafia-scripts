@@ -1,0 +1,20 @@
+commandblock 1
+dim_flt 1
+dim_act 5
+findactor 0, "Tommy"
+findactor 1, "Detektiv6"
+findactor 2, "Enemy12K"
+findactor 3, "Enemy11K"
+findactor 4, "Enemy08+"
+enemy_group_new 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+commandblock 0
+
+enemy_lockstate fight_guard_stand, 3
+{ up
+label 1
+goto 1
+}

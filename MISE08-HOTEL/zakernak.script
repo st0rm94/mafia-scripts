@@ -1,0 +1,44 @@
+dim_flt 1
+dim_act 4
+findactor 0,"Tommy"
+findactor 1,"zakernak"
+findactor 2,"detector_zakernak"
+findactor 3,"Bitch3"
+
+human_addweapon 1, 8, 6, 30
+human_holster 1
+enemy_vidim 0
+
+{ down
+enemy_playanim "Gestikulacenew02.I3D", 0
+label 1
+wait 1000
+human_getproperty 3,0,Energy
+if flt[0]<100,JMP1,-1
+human_getproperty 1,0,Energy
+if flt[0]<100,-1,1
+Label JMP1
+setevent 3,PANIKA,-1
+}
+
+{ up
+enemy_playanim "x panika drep dolu.I3D", 0
+let flt[0]=flt[0]-500
+label 2
+enemy_playanim "x panika drep stativ.I3D"
+wait 1000
+goto 2
+}
+
+event 202
+act_setstate 2,active
+return
+
+event 201
+human_activateweapon 1, 8
+enemy_vidim 1
+label 545
+enemy_action_fire 0
+goto 545
+return
+

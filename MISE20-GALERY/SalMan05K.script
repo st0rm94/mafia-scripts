@@ -1,0 +1,13 @@
+enemy_vidim 0
+wait 3000
+enemy_vidim 1
+enemy_move 18
+
+label 1
+enemy_lookto 2
+enemy_wait
+wait 3000
+enemy_lookto 6
+enemy_wait
+wait 3000
+goto 1

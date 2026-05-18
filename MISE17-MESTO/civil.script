@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 2
+findactor 0, "nesahat_TruckA"
+findactor 1, "Tommy"
+
+enemy_playanim "gesto_04a.i3d"
+
+label 1
+wait 2000
+compareownerwithex 1, 0, -1, 1
+
+label 2
+wait 2000
+enemy_look 0
+enemy_wait
+goto 2

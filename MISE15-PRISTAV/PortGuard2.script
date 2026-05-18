@@ -1,0 +1,13 @@
+enemy_lockstate fight_guard, 5
+enemy_vidim 0
+dim_act 1
+findactor 0, "Tommy"
+
+enemy_move 10, run
+enemy_lookto 11
+enemy_wait
+enemy_playanim "zradcezokna.i3d"
+wait 1700
+enemy_look 0
+enemy_wait
+enemy_vidim 1

@@ -1,0 +1,16 @@
+dim_act 1
+findactor 0, "Tommy"
+
+enemy_lockstate fight_guard_stand, 1
+{ down
+label 1
+goto 1
+}
+enemy_action_fire 0
+label 2
+goto 2
+
+event 1
+event_use_cb 1
+enemy_lockstate fight_dogfight
+return

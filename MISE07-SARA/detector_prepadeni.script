@@ -1,0 +1,79 @@
+dim_flt 1
+dim_act 7
+dim_frm 8
+findactor 0, "Sara"
+findactor 1, "Hoolig"
+findactor 2, "Hoolig3"
+findactor 3, "Hoolig2"
+findactor 4, "detector_end"
+findactor 5, "Tommy"
+findactor 6, "dialog_1"
+
+findframe 0, "Sara"
+findframe 1, "Hoolig"
+findframe 2, "Hoolig3"
+findframe 3, "Hoolig2"
+findframe 4, "Tommy"
+findframe 5, "position_1"
+findframe 6, "position_2"
+findframe 7, "2prkno2"
+
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+
+{ DOWN
+
+label DETECT
+detector_inrange 0, 3
+if flt[0] ! 0, -1, DETECT
+}
+
+// Prepinam detector_end na vetsi vzdalenost
+label SEND
+setevent 4, 2, SEND
+//zatmyse 1
+//wait 500
+commandblock 1
+act_setstate 6, off
+human_stoptalk 0
+human_stoptalk 5
+frm_seton 0, 0
+frm_seton 4, 0
+player_lockcontrols 1
+loaddifferences "dif07a2.chg"
+recloadfull "record07a2.rep"
+commandblock 0
+recwaitforend
+cleardifferences
+//zatmyse 1, 1
+commandblock 1
+recunload
+frm_seton 0, 1
+frm_seton 4, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+commandblock 0
+// Sara ma panikarit
+label SEND2
+setevent 0, 4, SEND2
+actor_setplacement 0, 6
+actor_setplacement 5, 5
+zatmyse 0
+wait 500
+// Save
+autosavegamefull 5131
+createweaponfromframe 7, 28
+player_lockcontrols 0
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+human_looktoactor 0
+human_looktoactor 5
+human_eraseab 0
+end
+
+event 1
+event_use_cb 1
+return

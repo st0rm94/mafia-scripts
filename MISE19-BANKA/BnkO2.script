@@ -1,0 +1,79 @@
+dim_flt 2
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "BnkO"
+
+enemy_narohysevyser
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event 1
+human_looktoactor 1, 0, 1
+if flt[1] = 1, 4, -1
+enemy_talk 19950011
+wait 5000
+human_looktoactor 1
+let flt[1] = 1
+return
+
+label 4
+enemy_talk 19950012
+wait 5000
+human_looktoactor 1
+return
+
+
+event 2
+enemy_move 17
+enemy_wait
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+return
+
+label 3
+wait 1000
+enemy_action_fire 0
+return
+
+event 3
+enemy_move 7
+enemy_wait
+
+label 2
+setevent 2, 1, 2
+human_looktoactor 1, 2, 1
+wait 4000
+human_looktoactor 1
+enemy_move 14
+enemy_wait
+enemy_lookto 27
+enemy_playanim "sezsed.i3d", 0
+wait flt[0]
+enemy_playanim "sezpoh01l.i3d"
+return
+
+event 4
+enemy_move 38
+enemy_wait
+enemy_lookto 18
+enemy_wait
+return
+
+event 5
+enemy_action_fire 0
+return
+
+event use_ab, 19970003
+human_looktoactor 1, 0, 1
+enemy_wait
+enemy_talk 19950014
+enemy_wait
+human_looktoactor 1
+return
+

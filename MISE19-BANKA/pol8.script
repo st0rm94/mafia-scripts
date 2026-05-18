@@ -1,0 +1,40 @@
+dim_act 3
+dim_frm 1
+findactor 0, "poli2"
+findactor 1, ""
+findactor 2, "Tommy"
+findframe 0, "1zastaveni pred bankou 1"
+
+enemy_vidim 0
+
+human_addweapon 1, 11, 8, 30
+human_addweapon 1, 8, 6, 30
+
+act_setstate 100, inactive
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+label 2
+enemy_usecar
+compareownerwith 0, 2, -1
+
+enemy_lookto 47
+enemy_wait
+
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3
+
+event 1
+event_use_cb 1
+return
+
+event 2
+enemy_naserse 2
+return

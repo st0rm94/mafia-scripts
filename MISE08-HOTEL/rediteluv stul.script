@@ -1,0 +1,114 @@
+dim_flt 3
+dim_act 8
+dim_frm 13
+findactor 0,"bad end"
+findactor 1,"Cop01"
+findactor 2,"Cop02"
+findactor 3,"okno"
+findactor 4,"rediteluv stul"
+findactor 5,"Tommy"
+findactor 6,"Cop03"
+findactor 7,"tudy_ne"
+
+findframe 0,"Cop01"
+findframe 1,"Cop02"
+findframe 2, "xkniha"
+findframe 3,"Cop03"
+findframe 4, "placement_tommyb"
+findframe 5, "camera01"
+findframe 6, "placement_tommyd"
+findframe 7, "camera02"
+findframe 8, "penize"
+findframe 9, "anim1"
+findframe 10, "anim2"
+findframe 11, "tik tak"
+findframe 12, "bomba"
+
+frm_seton 2, 1
+frm_seton 8, 1
+frm_seton 12, 0
+
+{ up
+label 1
+detector_waitforuse 08970002
+if flt[0] = 1,-1,2
+if flt[1] = 1,-1,2
+human_isweapon 5,2,22
+if flt[2] = 1,-1,1
+}
+PLAYER_LOCKCONTROLS 1
+human_anyweaponinhand 5,0
+if flt[0]=1,-1,NOWEAPON
+human_holster 5
+wait 1000
+label NOWEAPON
+setnoanimhit 5,1
+camera_lock 7
+actor_setplacement 5,6
+person_playanim 5,"sbirani zurovne.i3d",0
+wait 500
+frm_seton 9,1
+frm_seton 2,0
+frm_seton 8,0
+
+let flt[0]=flt[0]-823
+wait flt[0]
+person_stopanim 5
+commandblock 1
+camera_unlock
+camera_lock 5
+actor_setplacement 5,4
+commandblock 0
+person_playanim 5,"BombaPodStul.i3d",0
+frm_seton 10,1
+wait 4000
+human_activateweapon 5,22
+wait 1500
+human_delweapon 5,22
+frm_seton 12, 1
+//human_addweapon 5,19,0,0
+human_holster 5
+let flt[0]=flt[0]-6823
+wait flt[0]
+person_stopanim 5
+camera_unlock
+setnoanimhit 5,0
+PLAYER_LOCKCONTROLS 0
+
+mission_objectivesremove 08960004
+
+timeron 0, 0, 40, 20
+frm_seton 11,1
+settimeoutevent 4,222
+
+act_setstate 0, off
+act_setstate 3, active
+wait 10000
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 3, 1
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 6, active
+act_setstate 7, active
+wait 100000
+end
+
+label 2
+human_talk 5,08990091
+wait 3000
+goto 1
+
+event 201
+let flt[1] = 1
+return
+
+event 202
+let flt[0] = 1
+return
+
+event 222
+timeroff
+explosion 25, 3000
+human_setproperty 5,0,Energy
+return

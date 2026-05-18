@@ -1,0 +1,6 @@
+wait 5000
+//label 101
+enemy_playanim "Ralph stativ pod autem.I3D"
+label 101
+wait 100000
+goto 101

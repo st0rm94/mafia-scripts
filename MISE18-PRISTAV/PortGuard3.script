@@ -1,0 +1,33 @@
+dim_act 2
+dim_flt 1
+dim_frm 1
+findframe 0, "18_worker3"
+frm_seton 0, 1
+findactor 0
+findactor 1, "Tommy"
+human_addweapon 0, 8, 6, 30
+human_holster 0
+enemy_lockstate FIGHT_GUARD_STAND
+enemy_playanim "PolSt02.I3D"
+
+label FREESTATE
+human_looktoactor 0, 1, 1
+gosub WAIT
+human_looktoactor 0
+gosub WAIT
+goto FREESTATE
+
+label WAIT
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 1500
+wait flt[0]
+return
+
+event ENEMY_TO_AI
+enemy_getstate 0
+if flt[0] > 1, -1, RET
+frm_seton 0, 0
+return
+label RET
+return

@@ -1,0 +1,34 @@
+dim_act 3
+dim_flt 1
+findactor 0,"Enemy"
+findactor 1,"Tommy"
+findactor 2,"cad_ford"
+
+label 101
+wait 1000
+iscarusable 2,0
+if flt[0]=0, NEPOJIZDNE,-1
+label 102
+
+car_getspeed 2,0
+if flt[0]<5,-1,103
+getactorsdist 0,1,0
+if flt[0]<10,-1,103
+setevent 0,201,-1
+end
+
+
+label 103
+goto 101
+end
+
+label NEPOJIZDNE
+wait 1000
+iscarusable 2,0
+if flt[0]=0, -1,102
+wait 1000
+iscarusable 2,0
+if flt[0]=0, -1,102
+setevent 0,201,-1
+end
+

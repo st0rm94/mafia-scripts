@@ -1,0 +1,10 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Guard2"
+findactor 1, ""
+
+label 1
+wait 3000
+getactorsdist 0, 1, 0
+if flt[0] > 10, -1, 1
+endofmission 0, 14980002

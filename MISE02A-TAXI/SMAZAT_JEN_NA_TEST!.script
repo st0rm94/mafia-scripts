@@ -1,0 +1,11 @@
+act_setstate -1, inactive
+dim_act 1
+findactor 0, "SalMan"
+dim_flt 1
+
+label DETECT
+getenemyaistate 0, 0
+if flt[0] > 1, -1, DETECT
+debug_text "Salman je v AIcku. Hodnota AI=%n", 0
+wait 1000
+goto DETECT

@@ -1,0 +1,70 @@
+  // inicializace
+dim_frm 4
+findframe 0, "primary_ambitown"
+getactivecamera 1
+findframe 2, "area_out"
+sound_setvolume 0, 0.55
+findframe 3, "ambi_letiste"
+sound_setvolume 3, 0
+dim_flt 4
+
+
+  // kontrola na pritomnost mimo sector
+label _out
+wait 471
+frm_getworldpos 1, 0
+ispointinarea 0, 2, 3
+if flt[3] = 0, _out, -1
+
+  // fade zvuku dolu mesto, nahoru krajina
+sound_getvolume 0, 0
+sound_getvolume 3, 3
+label _out_fade
+commandblock 0
+commandblock 1
+
+getticktime 1
+let flt[1] = flt[1] * 0.0003
+let flt[0] = flt[0] - flt[1]
+sound_setvolume 0, flt[0]
+
+let flt[3] = flt[3] + flt[1]
+sound_setvolume 3, flt[3]
+if flt[3] > 1, -1, _out_fade
+if flt[0] < 0, -1, _out_fade
+
+commandblock 0
+sound_setvolume 0, 0
+sound_setvolume 3, 1
+
+  // kontrola na pritomnost v sectoru
+label _in
+wait 471
+frm_getworldpos 1, 0
+ispointinarea 0, 2, 3
+if flt[3] = 1, _in, -1
+
+  // fade zvuku nahoru mesto, dolu krajina
+sound_getvolume 0, 0
+sound_getvolume 3, 3
+
+label _in_fade
+commandblock 0
+commandblock 1
+
+getticktime 1
+let flt[1] = flt[1] * 0.0003
+let flt[0] = flt[0] + flt[1]
+sound_setvolume 0, flt[0]
+
+let flt[3] = flt[3] - flt[1]
+sound_setvolume 3, flt[3]
+if flt[3] < 0, -1, _in_fade
+if flt[0] > 0.55, -1, _in_fade
+
+commandblock 0
+sound_setvolume 0, 0.55
+sound_setvolume 3, 0
+
+  // cyklus
+goto _out

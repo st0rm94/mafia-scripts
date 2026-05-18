@@ -1,0 +1,473 @@
+DIM_FRM 166
+dim_act 13
+
+commandblock 1
+findactor 0, "Tommy"
+findactor 1, "Salieri"
+findactor 2, "Enemy04K"
+findactor 3, "Enemy10K2"
+findactor 4, "Enemy08K"
+findactor 5, "Enemy10K"
+findactor 6, "Enemy12K"
+findactor 7, "Enemy11K"
+findactor 8, "Enemy12K2"
+findactor 9, "cad_phaeton2"
+findactor 10, "chemaFor"
+findactor 11, "chemaFor2"
+findactor 12, "civil2"
+
+settankhitcount 9, 1000
+settankhitcount 10, 1000
+settankhitcount 11, 1000
+player_lockcontrols 1
+
+// new
+FINDFRAME 0, "qq vyloha01"
+FINDFRAME 1, "qq vyloha_dvere"
+FINDFRAME 2, "qq sklo 7"
+FINDFRAME 3, "qq Object09"
+FINDFRAME 4, "qq Object10"
+FINDFRAME 5, "qq Object11"
+FINDFRAME 6, "qq Object12"
+FINDFRAME 7, "qq Object13"
+FINDFRAME 8, "qq Object14"
+FINDFRAME 9, "qq Object15"
+FINDFRAME 10, "qq Object16"
+FINDFRAME 11, "qq Object17"
+FINDFRAME 12, "qq sklo 1"
+FINDFRAME 13, "qq sklo 2"
+FINDFRAME 14, "qq sklo 3"
+FINDFRAME 15, "qq sklo 4"
+FINDFRAME 16, "qq sklo 5"
+FINDFRAME 17, "qq sklo 6"
+FINDFRAME 18, "qq rest_zas2"
+FINDFRAME 19, "qq Object19"
+FINDFRAME 80, "@rstul"
+FINDFRAME 81, "@rstul2"
+FINDFRAME 82, "@rstul3"
+FINDFRAME 83, "@zidle4"
+FINDFRAME 84, "@zidle5"
+FINDFRAME 85, "@zidle6"
+FINDFRAME 86, "@zidle7"
+FINDFRAME 87, "@zidle8"
+FINDFRAME 88, "@zidle9"
+FINDFRAME 89, "@zidle10"
+FINDFRAME 90, "@zidle11"
+FINDFRAME 91, "@zidle12"
+FINDFRAME 92, "@zidle13"
+FINDFRAME 93, "xubrus 5"
+FINDFRAME 94, "xjidlo3"
+FINDFRAME 95, "xjidlo4"
+FINDFRAME 96, "xjidlo5"
+FINDFRAME 97, "xpopelnik"
+FINDFRAME 98, "@flasa4"
+FINDFRAME 99, "@flasa"
+FINDFRAME 100, "xubrus 6"
+FINDFRAME 101, "@flasa5"
+FINDFRAME 102, "@flasa6"
+FINDFRAME 104, "xkniha 4"
+FINDFRAME 105, "xubrus 7"
+FINDFRAME 106, "xubrus 8"
+FINDFRAME 107, "xubrus 9"
+FINDFRAME 108, "xjidlo8"
+FINDFRAME 109, "xjidlo9"
+FINDFRAME 110, "xjidlo10"
+FINDFRAME 111, "xpopelnik4"
+FINDFRAME 112, "xjidlo11"
+FINDFRAME 113, "xjidlo12"
+FINDFRAME 114, "xjidlo13"
+FINDFRAME 115, "@flasa7"
+FINDFRAME 116, "@flasa8"
+FINDFRAME 117, "xjidlo14"
+FINDFRAME 118, "xjidlo15"
+FINDFRAME 119, "xobraz"
+FINDFRAME 120, "xobraz2"
+FINDFRAME 121, "@rstul4"
+FINDFRAME 122, "@zidle14"
+FINDFRAME 123, "@zidle15"
+FINDFRAME 124, "@zidle16"
+FINDFRAME 125, "@zidle17"
+FINDFRAME 126, "@HQsvtl6"
+FINDFRAME 127, "xkniha 5"
+FINDFRAME 128, "xubrus 10"
+FINDFRAME 129, "xjidlo16"
+FINDFRAME 130, "xjidlo17"
+FINDFRAME 131, "xpopelnik5"
+FINDFRAME 132, "@flasa9"
+FINDFRAME 133, "xobraz3"
+FINDFRAME 134, "xrohozka2"
+FINDFRAME 135, "@rbstol"
+FINDFRAME 136, "@rbstol2"
+FINDFRAME 137, "@rbstol3"
+FINDFRAME 139, "@HQsvtl"
+FINDFRAME 141, "stol"
+FINDFRAME 143, "&&rest_podl"
+FINDFRAME 144, "Object26"
+FINDFRAME 145, "Object27"
+findframe 164, "@rbstol18010"
+
+
+// destroy
+FINDFRAME 20, "Object19"
+FINDFRAME 21, "vyloha_dvere"
+FINDFRAME 22, "Object09"
+FINDFRAME 23, "polut"
+FINDFRAME 24, "Object16"
+FINDFRAME 25, "@rstul1"
+FINDFRAME 26, "@rstul6215"
+FINDFRAME 27, "Object56"
+FINDFRAME 28, "sklo 14"
+FINDFRAME 29, "sklo 4"
+FINDFRAME 30, "@zidle122"
+FINDFRAME 31, "Object14"
+FINDFRAME 32, "@zidle3"
+FINDFRAME 33, "@zidle7197"
+FINDFRAME 34, "@zidle16839"
+FINDFRAME 35, "xobraz09"
+FINDFRAME 36, "@HQsvtl4"
+FINDFRAME 37, "xkniha "
+FINDFRAME 38, "xubrus 7222"
+FINDFRAME 39, "xv spina2"
+FINDFRAME 41, "@zidle3901"
+FINDFRAME 42, "@zidle5122"
+FINDFRAME 43, "@zidle6664"
+FINDFRAME 44, "@zidle9393"
+FINDFRAME 45, "civil3"
+FINDFRAME 46, "civil"
+FINDFRAME 47, "@rbstol1"
+FINDFRAME 48, "@rbstol15084"
+FINDFRAME 49, "@rbstol15086"
+FINDFRAME 50, "xrohozka"
+FINDFRAME 51, "xubrus 3939"
+FINDFRAME 52, "xubrus 2"
+FINDFRAME 53, "xv spina"
+FINDFRAME 54, "xubrus"
+FINDFRAME 55, "@rstul14092"
+FINDFRAME 56, "@rstul7242"
+FINDFRAME 57, "@zidle18952"
+FINDFRAME 58, "xobraz02"
+FINDFRAME 59, "@zidle01"
+FINDFRAME 60, "@zidle2872"
+FINDFRAME 61, "xkniha 2"
+FINDFRAME 62, "xpopelnik3"
+FINDFRAME 63, "xjidlo6"
+FINDFRAME 64, "xjidlo"
+FINDFRAME 65, "xjidlo7"
+FINDFRAME 66, "@zidle2"
+FINDFRAME 67, "xubrus 4"
+FINDFRAME 68, "xubrus 3"
+FINDFRAME 69, "xjidlo2"
+FINDFRAME 71, "xpopelnik2"
+FINDFRAME 72, "xubrus "
+FINDFRAME 73, "Object15"
+FINDFRAME 74, "@zidle10789"
+FINDFRAME 75, "@zidle3362"
+FINDFRAME 76, "@zidle15313"
+FINDFRAME 77, "xobraz01"
+FINDFRAME 78, "rest_zas2"
+FINDFRAME 79, "blood"
+FINDFRAME 138, "blood2"
+FINDFRAME 140, "HQsvtl7"
+FINDFRAME 146, "dum_c3"
+findframe 147, "Tommy"
+findframe 148, "Salieri"
+findframe 149, "Enemy04K"
+findframe 150, "Enemy10K2"
+findframe 151, "Enemy08K"
+findframe 152, "Enemy10K"
+findframe 153, "Enemy12K"
+findframe 154, "Enemy11K"
+findframe 155, "Enemy12K2"
+findframe 156, "cad_phaeton2"
+findframe 157, "chemaFor"
+findframe 158, "chemaFor2"
+findframe 159, "fire point"
+findframe 160, "ohen"
+findframe 161, "cmoud"
+findframe 162, "cmoud2"
+findframe 163, "xjidlo14"
+findframe 165, "civil2"
+
+frm_seton 165, 0
+frm_seton 147, 0
+frm_seton 148, 0
+frm_seton 149, 0
+frm_seton 150, 0
+frm_seton 151, 0
+frm_seton 152, 0
+frm_seton 153, 0
+frm_seton 154, 0
+frm_seton 155, 0
+frm_seton 156, 0
+frm_seton 157, 0
+frm_seton 158, 0
+act_setstate 10, active
+act_setstate 11, active
+frm_seton 160, 0
+frm_seton 163, 0
+
+
+FRM_SETON 146, 0
+FRM_SETON 20, 0
+FRM_SETON 21, 0
+FRM_SETON 22, 0
+FRM_SETON 23, 0
+FRM_SETON 24, 0
+FRM_SETON 25, 0
+FRM_SETON 26, 0
+FRM_SETON 27, 0
+FRM_SETON 28, 0
+FRM_SETON 29, 0
+FRM_SETON 30, 0
+FRM_SETON 31, 0
+FRM_SETON 32, 0
+FRM_SETON 33, 0
+FRM_SETON 34, 0
+FRM_SETON 35, 0
+FRM_SETON 36, 0
+FRM_SETON 37, 0
+FRM_SETON 38, 0
+FRM_SETON 39, 0
+FRM_SETON 40, 0
+FRM_SETON 41, 0
+FRM_SETON 42, 0
+FRM_SETON 43, 0
+FRM_SETON 44, 0
+FRM_SETON 45, 0
+FRM_SETON 46, 0
+FRM_SETON 47, 0
+FRM_SETON 48, 0
+FRM_SETON 49, 0
+FRM_SETON 50, 0
+FRM_SETON 51, 0
+FRM_SETON 52, 0
+FRM_SETON 53, 0
+FRM_SETON 54, 0
+FRM_SETON 55, 0
+FRM_SETON 56, 0
+FRM_SETON 57, 0
+FRM_SETON 58, 0
+FRM_SETON 59, 0
+FRM_SETON 60, 0
+FRM_SETON 61, 0
+FRM_SETON 62, 0
+FRM_SETON 63, 0
+FRM_SETON 64, 0
+FRM_SETON 65, 0
+FRM_SETON 66, 0
+FRM_SETON 67, 0
+FRM_SETON 68, 0
+FRM_SETON 69, 0
+FRM_SETON 70, 0
+FRM_SETON 71, 0
+FRM_SETON 72, 0
+FRM_SETON 73, 0
+FRM_SETON 74, 0
+FRM_SETON 75, 0
+FRM_SETON 76, 0
+FRM_SETON 77, 0
+FRM_SETON 78, 0
+FRM_SETON 79, 0
+FRM_SETON 138, 0
+FRM_SETON 140, 0
+SETLMLEVEL 143, 0
+SETLMLEVEL 144, 0
+SETLMLEVEL 145, 0
+
+zatmyse 1, 100
+loaddifferences "dif13b.chg"
+recloadfull "record13b.rep"
+commandblock 0
+
+autosavegame 5315
+
+recwaitforend
+recunload
+cleardifferences
+garage_addcar 9
+
+commandblock 1
+FRM_SETON 0, 0
+FRM_SETON 1, 0
+FRM_SETON 2, 0
+FRM_SETON 3, 0
+FRM_SETON 4, 0
+FRM_SETON 5, 0
+FRM_SETON 6, 0
+FRM_SETON 7, 0
+FRM_SETON 8, 0
+FRM_SETON 9, 0
+FRM_SETON 10, 0
+FRM_SETON 11, 0
+FRM_SETON 12, 0
+FRM_SETON 13, 0
+FRM_SETON 14, 0
+FRM_SETON 15, 0
+FRM_SETON 16, 0
+FRM_SETON 17, 0
+FRM_SETON 18, 0
+FRM_SETON 19, 0
+FRM_SETON 80, 0
+FRM_SETON 81, 0
+FRM_SETON 82, 0
+FRM_SETON 83, 0
+FRM_SETON 84, 0
+FRM_SETON 85, 0
+FRM_SETON 86, 0
+FRM_SETON 87, 0
+FRM_SETON 88, 0
+FRM_SETON 89, 0
+FRM_SETON 90, 0
+FRM_SETON 91, 0
+FRM_SETON 92, 0
+FRM_SETON 93, 0
+FRM_SETON 94, 0
+FRM_SETON 95, 0
+FRM_SETON 96, 0
+FRM_SETON 97, 0
+FRM_SETON 98, 0
+FRM_SETON 99, 0
+FRM_SETON 100, 0
+FRM_SETON 101, 0
+FRM_SETON 102, 0
+FRM_SETON 103, 0
+FRM_SETON 104, 0
+FRM_SETON 105, 0  
+FRM_SETON 106, 0
+FRM_SETON 107, 0
+FRM_SETON 108, 0
+FRM_SETON 109, 0
+FRM_SETON 110, 0
+FRM_SETON 111, 0
+FRM_SETON 112, 0
+FRM_SETON 113, 0
+FRM_SETON 114, 0
+FRM_SETON 115, 0
+FRM_SETON 116, 0
+FRM_SETON 117, 0
+FRM_SETON 118, 0
+FRM_SETON 119, 0
+FRM_SETON 120, 0
+frm_seton 121, 0
+FRM_SETON 122, 0
+FRM_SETON 123, 0
+FRM_SETON 124, 0
+FRM_SETON 125, 0
+FRM_SETON 126, 0
+FRM_SETON 127, 0
+FRM_SETON 128, 0
+FRM_SETON 129, 0
+FRM_SETON 130, 0
+FRM_SETON 131, 0
+FRM_SETON 132, 0
+FRM_SETON 133, 0
+FRM_SETON 134, 0
+FRM_SETON 135, 0
+frm_seton 164, 0
+FRM_SETON 136, 0
+FRM_SETON 137, 0
+FRM_SETON 139, 0
+FRM_SETON 140, 0
+
+FRM_SETON 20, 1
+FRM_SETON 21, 1
+FRM_SETON 22, 1
+FRM_SETON 23, 1
+FRM_SETON 24, 1
+FRM_SETON 25, 1
+FRM_SETON 26, 1
+FRM_SETON 27, 1
+FRM_SETON 28, 1
+FRM_SETON 29, 1
+FRM_SETON 30, 1
+FRM_SETON 31, 1
+FRM_SETON 32, 1
+FRM_SETON 33, 1
+FRM_SETON 34, 1
+FRM_SETON 35, 1
+FRM_SETON 36, 1
+FRM_SETON 37, 1
+FRM_SETON 38, 1
+FRM_SETON 39, 1
+FRM_SETON 40, 1
+FRM_SETON 41, 1
+FRM_SETON 42, 1
+FRM_SETON 43, 1
+FRM_SETON 44, 1
+FRM_SETON 45, 1
+FRM_SETON 46, 1
+FRM_SETON 47, 1
+FRM_SETON 48, 1
+FRM_SETON 49, 1
+FRM_SETON 50, 1
+FRM_SETON 51, 1
+FRM_SETON 52, 1
+FRM_SETON 53, 1
+FRM_SETON 54, 1
+FRM_SETON 55, 1
+FRM_SETON 56, 1
+FRM_SETON 57, 1
+FRM_SETON 58, 1
+FRM_SETON 59, 1
+FRM_SETON 60, 1
+FRM_SETON 61, 1
+FRM_SETON 62, 1
+FRM_SETON 63, 1
+FRM_SETON 64, 1
+FRM_SETON 65, 1
+FRM_SETON 66, 1
+FRM_SETON 67, 1
+FRM_SETON 68, 1
+FRM_SETON 69, 1
+FRM_SETON 70, 1
+FRM_SETON 71, 1
+FRM_SETON 72, 1
+FRM_SETON 73, 1
+FRM_SETON 74, 1
+FRM_SETON 75, 1
+FRM_SETON 76, 1
+FRM_SETON 77, 1
+FRM_SETON 78, 1
+FRM_SETON 79, 1
+FRM_SETON 138, 1
+FRM_SETON 140, 1
+FRM_SETON 141, 1
+frm_seton 163, 1
+SETLMLEVEL 143, 1
+SETLMLEVEL 144, 1
+SETLMLEVEL 145, 1
+
+frm_seton 147, 1
+frm_seton 148, 1
+frm_seton 149, 1
+frm_seton 150, 1
+frm_seton 151, 1
+frm_seton 152, 1
+frm_seton 153, 1
+frm_seton 154, 1
+frm_seton 155, 1
+frm_seton 156, 1
+frm_seton 157, 1
+frm_seton 158, 1
+frm_seton 160, 1
+frm_seton 165, 1
+
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 6, active
+act_setstate 7, active
+act_setstate 8, active
+act_setstate 12, active
+emitparticle 161, 34
+emitparticle 162, 34
+emitparticle 159, 6
+COMMANDBLOCK 0
+zatmyse 0, 500
+human_activateweapon 0, 9
+player_lockcontrols 0
+end
+label 10
+goto 10

@@ -1,0 +1,11 @@
+dim_act 2
+findactor 0, "letadlo start"
+findactor 1, "prijiti na plochu"
+
+wait 50000
+
+act_setstate 1, off
+act_setstate 0, active
+//wait 3000
+//wait 4000
+//endofmission 0, 16980005

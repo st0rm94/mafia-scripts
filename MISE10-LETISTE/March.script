@@ -1,0 +1,69 @@
+commandblock 1
+dim_act 3
+dim_flt 3
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "FrankHIGH"
+enemy_vidim 0
+commandblock 0
+
+label 1
+enemy_playanim "GestZamStativ.I3D"
+wait 1500
+rnd 0, 4
+if flt[0] = 1, -1, 1
+enemy_playanim "GestZamOtoceni.I3D", 0
+wait flt[0]
+goto 1
+
+event 1
+enemy_move 11
+end
+
+event use_ab, 10970009
+if flt[1] = 1, 2, -1
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+human_talk 0, 10990560
+enemy_wait
+enemy_talk 10990570
+enemy_wait
+human_talk 0, 10990580
+enemy_wait
+wait 2000
+human_looktoactor 1
+human_eraseab 1
+human_createab 2
+let flt[1] = 1
+return
+label 2
+human_looktoactor 1, 0, 1
+if flt[2] = 0, 3, -1
+if flt[2] = 1, 4, -1
+if flt[2] = 2, 5, -1
+enemy_talk 10990661
+enemy_wait
+let flt[2] = 0
+human_looktoactor 1
+return
+label 3
+enemy_talk 10990671
+enemy_wait
+enemy_talk 10990672
+enemy_wait
+let flt[2] = 1
+human_looktoactor 1
+return
+label 4
+enemy_talk 10990681
+enemy_wait
+let flt[2] = 2
+human_looktoactor 1
+return
+label 5
+enemy_talk 10990691
+enemy_wait
+let flt[2] = 3
+human_looktoactor 1
+return

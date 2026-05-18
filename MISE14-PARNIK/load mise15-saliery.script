@@ -1,0 +1,49 @@
+dim_act 3
+dim_flt 2
+dim_frm 4
+findactor 0, "Radni"
+findactor 1, "dvirka"
+findactor 2, "TommySAILOR"
+findframe 0, "TommySAILOR"
+findframe 1, "xclun"
+findframe 2, "Paulie"
+findframe 3, "pevny"
+
+act_setstate -1, inactive
+
+
+door_enableus 1, 0
+label 1
+detector_waitforuse 10970000
+human_getproperty 0, 1, energy
+if flt[1] = 0, -1, 2
+door_open 1, 0
+zatmyse 1, 300
+wait 300
+player_lockcontrols 1
+commandblock 1
+camera_setswing 0, 0, 3
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+loaddifferences "dif14d.chg"
+recloadfull "record14d.rep"
+commandblock 0
+recwaitforend
+commandblock 1
+setfreeride 2
+recunload
+cleardifferences
+mission_objectivesclear
+commandblock 0
+setfreeride 2
+subtitle_add 7210
+wait 5500
+garage_show
+change_mission "mise15-saliery", "", 0
+
+
+label 2
+human_talk 2, 00950202, 2
+wait 5000
+goto 1

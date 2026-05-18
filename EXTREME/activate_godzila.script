@@ -1,0 +1,40 @@
+dim_act 3
+dim_frm 1
+findactor 0,"detector_godzila"
+findactor 1,"activate_godzila"
+findactor 2,"AKTIVNI_SUBQUEST"
+
+findframe 0,"magnum"
+
+enemy_vidim 0
+
+label START
+{ down
+label 101
+enemy_playanim "Mavani01.I3D"
+wait 30000
+goto 101
+}
+detector_issignal 2,START,-1
+
+detector_setsignal 2,1
+
+createweaponfromframe 0,7,6,0
+
+act_setstate 0,active
+human_eraseab 11
+enemy_stopanim
+label 102
+wait 50000
+goto 102
+end
+
+event use_ab,10970007
+detector_issignal 2,NELZE,-1
+autosavegamefull 5590
+goto JMP01
+label NELZE
+console_addtext 3474
+label JMP01
+return
+

@@ -1,0 +1,56 @@
+enemy_vidim 0
+enemy_blastfire
+dim_flt 1
+dim_act 8
+dim_frm 1
+
+findactor 0
+findactor 1, "posledni_grupa_Enemy2"
+findactor 2, "posledni_grupa_Enemy3"
+findactor 3, "posledni_grupa_Enemy4"
+findactor 4, "posledni_grupa_Enemy5"
+findactor 5, "posledni_grupa_Enemy6"
+getactiveplayer 6
+setnullactor 7
+
+let flt[0] = 3
+enemy_group_new 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+enemy_group_add 0, 5
+let flt[0] = 0
+
+getactorframe 0, 0
+
+human_addweapon 0, 9, 7, 50
+frm_seton 0, 0
+
+enemy_lockstate FIGHT_GUARD_NOHOSTILE
+
+act_setstate -1, inactive
+
+commandblock 1
+   compareownerwithex 6, 7, SKIP, -1
+      let flt[0] = 3
+      enemy_group_chcipni_hajzle 0, 6
+      let flt[0] = 0
+   label SKIP
+commandblock 0
+
+frm_seton 0, 1
+enemy_move 19
+enemy_lookto 23
+enemy_wait
+enemy_vidim 1
+goto FINISH
+
+event HIT_FROM_PLAYER
+if flt[0] ! 0, RET, -1
+let flt[0] = 1
+enemy_vidim 1
+label RET
+return
+
+label FINISH

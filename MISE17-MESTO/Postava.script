@@ -1,0 +1,103 @@
+dim_act 11
+dim_frm 3
+dim_flt 3
+
+findframe 0, ""
+findframe 1, "Lucas"
+findframe 2, "poloha chlapka na zidli"
+
+findactor 0, ""
+findactor 1, "Tommy"
+// nechat actora 2 free !!!
+findactor 3, "detector_Lucas"
+findactor 4, "detector_svestky"
+findactor 5, "Lucas"
+findactor 6, "SDGSDFGFEGSDGSGSDGS"
+findactor 7, "null"
+findactor 8, "chlapikova hlaska"
+findactor 9, "detekce osloveni chlapka"
+findactor 10, "detekce vzdalenosti od agentu"
+
+frm_seton 0, 0
+act_setstate -1, inactive
+frm_seton 0, 1
+
+human_addweapon 0, 9, 7, 55
+human_holster 0
+
+{ up
+label DETECT
+wait 1000
+getactorsdist 0, 1, 0
+if flt[0] < 10, -1, DETECT
+}
+setcompass -1
+enemy_vidim 0
+enemy_look 1
+enemy_wait
+human_looktoactor 1, 0, 1
+human_looktoactor 0, 1, 1
+
+compareownerwithex 1, 7, 1, -1
+
+enemy_talk 1, 17990241, 1
+enemy_wait
+
+label 1
+enemy_talk 1, 17990242, 1
+enemy_wait
+enemy_talk 0, 17990251, 1
+enemy_vidim 1
+
+label NASTUP
+mission_objectivesclear
+mission_objectives 17960101
+human_looktoactor 0
+human_looktoactor 1
+act_setstate 3, active
+act_setstate 8, active
+act_setstate 10, active
+detector_setsignal 9, 1
+
+enemy_action_follow 1, 4, nonext
+
+act_setstate 8, off
+compareownerwithex 0, 7, 3, -1
+
+human_getowner 0, 2
+
+label 2
+enemy_usecar
+compareownerwith 2, 2, -1
+
+label 3
+enemy_move 14
+enemy_look 5
+enemy_wait
+detector_setsignal 4, 1
+
+{ DOWN
+label WAIT
+wait 10000
+goto WAIT
+}
+
+enemy_vidim 0
+enemy_move 17
+
+actor_setplacement 0, 2
+enemy_playanim "x sed1.i3d"
+goto FINISH
+
+event 1
+event_use_cb 0
+enemy_forcescript 0
+enemy_vidim 0
+return
+
+event 2
+event_use_cb 1
+return
+
+label FINISH
+enemy_vidim 1

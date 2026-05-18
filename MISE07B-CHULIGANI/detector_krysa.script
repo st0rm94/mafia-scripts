@@ -1,0 +1,19 @@
+dim_frm 2
+findframe 0, "17_rat"
+findframe 1, "17_rat2"
+dim_flt 1
+frm_seton 0, 0
+frm_seton 1, 0
+act_setstate -1, inactive
+
+label DETECT
+wait 1000
+detector_inrange 0, 2
+if flt[0] ! 0, -1, DETECT
+debug_text "Krysa spustena"
+frm_seton 0, 1
+wait 5000
+frm_seton 0, 0
+frm_seton 1, 1
+wait 5000
+frm_seton 1, 0

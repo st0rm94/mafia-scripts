@@ -1,0 +1,35 @@
+dim_flt 1
+dim_act 2
+dim_frm 1
+findactor 0, ""
+findactor 1, "Tommy"
+findframe 0, "sklenky"
+
+human_addweapon 0, 3, 0, 0
+human_holster 0
+
+enemy_playanim "sezlehl.i3d" 
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+frm_seton 0, 1
+enemy_look 1
+enemy_wait 
+enemy_move 8
+enemy_wait
+enemy_playanim "chulgesto04.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+human_activateweapon 0, 3
+enemy_action_fire 1 
+
+label 3
+goto 3
+
+event 1
+event_use_cb 1
+return

@@ -1,0 +1,69 @@
+//[debug_me]
+dim_act 12
+dim_flt 1
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Sam"
+findactor 3, "Guard"
+findactor 4, "Guard2"
+findactor 5, "Guard3"
+findactor 6, "Guard4"
+findactor 7, "Guard5"
+findactor 8, "Guard6"
+findactor 9, "TruckB"
+findactor 10, "Vratny"
+findactor 11, "TruckBx"
+
+label DETECT
+//iscarusable 9, 0
+//if flt[0] = 1, -1, CARDESTROYED
+getcardamage 9, 0
+if flt[0] < 0.25, CARDESTROYED, -1
+label SKIPCARS
+human_getproperty 0, 0, Energy
+if flt[0] = 0, TOMMYDEATH, -1
+human_getproperty 1, 0, Energy
+if flt[0] = 0, PAULIEDEATH, -1
+human_getproperty 2, 0, Energy
+if flt[0] = 0, SAMDEATH, -1
+getenemyaistate 3, 0
+if flt[0] < 1, -1, PROZRAZEN
+getenemyaistate 4, 0
+if flt[0] < 1, -1, PROZRAZEN
+getenemyaistate 5, 0
+if flt[0] < 1, -1, PROZRAZEN
+getenemyaistate 6, 0
+if flt[0] < 1, -1, PROZRAZEN
+getenemyaistate 7, 0
+if flt[0] < 1, -1, PROZRAZEN
+getenemyaistate 8, 0
+if flt[0] < 1, DETECT, PROZRAZEN
+//getenemyaistate 10, 0
+//if flt[0] < 1, DETECT, PROZRAZEN
+
+label TOMMYDEATH
+endofmission 0, 18980050
+goto FINISH
+
+label PAULIEDEATH
+endofmission 0, 18980052
+goto FINISH
+
+label SAMDEATH
+endofmission 0, 18980051
+goto FINISH
+
+label PROZRAZEN
+if flt[0] = 10, DETECT, -1
+endofmission 0, 18980002
+goto FINISH
+
+label CARDESTROYED
+wait 5000
+// druhy test pro jistotu!
+//iscarusable 9, 0
+//if flt[0] = 1, SKIPCARS, -1
+endofmission 0, 18980055
+goto FINISH
+
+label FINISH

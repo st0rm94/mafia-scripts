@@ -1,0 +1,10 @@
+dim_act 2
+findactor 0, ""
+findactor 1, "Tommy"
+human_addweapon 0, 6, 6, 12
+enemy_podvadim_jak Tretera
+enemy_lockstate fight_guard
+
+act_setstate 100, inactive
+
+

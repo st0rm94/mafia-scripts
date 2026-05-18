@@ -1,0 +1,5 @@
+enemy_vidim 0
+enemy_move 21, run
+enemy_lookto 22
+enemy_wait
+enemy_vidim 1

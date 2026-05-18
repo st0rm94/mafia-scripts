@@ -1,0 +1,9 @@
+enemy_vidim 0
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, "civil9"
+
+enemy_playanim "RuceVzhuru02Loop.i3d"
+human_looktoactor 1, 0, 1
+label 1
+goto 1

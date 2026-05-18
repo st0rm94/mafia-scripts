@@ -1,0 +1,6 @@
+dim_frm 1
+FindFrame 0
+frm_seton 0, 0
+act_setstate -1, inactive
+frm_seton 0, 1
+end

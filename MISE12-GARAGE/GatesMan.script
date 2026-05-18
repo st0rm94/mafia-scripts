@@ -1,0 +1,39 @@
+enemy_vidim 0
+dim_act 2
+dim_flt 1
+dim_frm 1
+findactor 0
+findactor 1, "Tommy"
+findframe 0
+human_addweapon 0, 7, 6, 30
+human_holster 0
+
+{ DOWN
+label LOOP
+enemy_playanim "Mise12B_W1strelba.I3D"
+wait 7000
+goto LOOP
+}
+let flt[0] = 10
+human_setproperty 0, flt[0], Energy
+enemy_move 17, run
+playsound "S&W 27_1.wav", 0, 50, 1
+human_setproperty 0, 0, Energy
+enemy_lockstate FIGHT_GUARD
+enemy_vidim 1
+goto FINISH
+
+event 1
+//debug_text "GatesMan: Nasral jsem se na playera..."
+//enemy_naserse 1, 70
+//event_use_cb 1
+//enemy_vidim 1
+return
+
+event 2
+//debug_text "GatesMan: Vidim 1"
+//event_use_cb 1
+//enemy_vidim 1
+return
+
+label FINISH

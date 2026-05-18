@@ -1,0 +1,65 @@
+dim_frm 3
+findframe 0, "venek"
+findframe 1, "Tommy"
+findframe 2, "doprava"
+dim_flt 7
+// flt[0] - flt[3] = vektor souradnic Tommyho
+// flt[3] = je/neni v arei
+// flt[4] = dalsi gametime pro hlasku
+// flt[5] = posledni recena hlaska
+// flt[6] = trafika zapnuta/vypnuta
+let flt[6] = 1
+dim_act 2
+getactiveplayer 0
+findactor 1, "manhatan people"
+
+label DETECT
+wait 1000
+frm_getpos 1, 0
+ispointinarea 0, 0, 3
+if flt[3] ! 0, -1, DOPRAVA
+getgametime 3
+if flt[3] > flt[4],  -1, DETECT
+let flt[4] = flt[3] + 7000
+label RERAND
+rnd 0, 5
+if flt[0] = flt[5], RERAND, -1
+goto flt[0]
+label 0
+human_talk 0, 950202, 4
+goto UPDATE
+label 1
+human_talk 0, 950203, 4
+goto UPDATE
+label 2
+human_talk 0, 950204, 4
+goto UPDATE
+label 3
+human_talk 0, 950205, 4
+goto UPDATE
+label 4
+human_talk 0, 950206, 4
+
+label UPDATE
+let flt[5] = flt[0]
+
+label DOPRAVA
+frm_getpos 1, 0
+ispointinarea 0, 2, 3
+if flt[3] = 1, -1, VYPNI
+label ZAPNI
+if flt[6] = 1, RET, -1
+act_setstate 1, active
+setcitytrafficvisible 1
+debug_text "Trafika zapnuta"
+let flt[6] = 1
+label RET
+goto DETECT
+
+label VYPNI
+if flt[6] = 0, DETECT, -1
+act_setstate 1, inactive
+setcitytrafficvisible 0
+debug_text "Trafika vypnuta"
+let flt[6] = 0
+goto DETECT

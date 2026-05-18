@@ -1,0 +1,142 @@
+dim_flt 3
+dim_act 10
+dim_frm 26
+
+findactor 0, "vagcisterna4"
+findactor 1, "vagcisterna3"
+findactor 2, "aktivace vagonu 1"
+findactor 3, "Tommy"
+findactor 4, "aktivace enemy ve skladu"
+findactor 5, "Delnik8"
+findactor 6, "null"
+//findactor 7, "zjisteni prekazejiciho auta"
+findactor 8, ""
+findactor 9, "paleni vrata"
+
+findframe 0, "vratpr3"
+findframe 1, "poloha vagonu po animaci"
+findframe 2, "poloha playera po animaci"
+findframe 3, "Vrata02"
+findframe 4, "Tommy"
+findframe 5, "vagcisterna4"
+findframe 6, "vagcisterna3"
+findframe 7, "vratpr"
+findframe 8, "vratpr2"
+findframe 9, "vytok"
+findframe 10, "Vrata02"
+findframe 11, "ohen"
+findframe 12, "ohen1"
+findframe 13, "ohen2"
+findframe 14, "ohen3"
+findframe 15, "fmv 15icist"
+findframe 16, "poloha prekazejiciho auta"
+findframe 17, "horici_wagon"
+findframe 18, "horici_vrata"
+findframe 19, "naraz2"
+findframe 20, "agon2"
+findframe 21, "agon1"
+findframe 22, "Vrata02"
+findframe 23, "vratpr3"
+findframe 24, "csii3"
+findframe 25, "Vrata01"
+
+act_setstate 100, inactive
+
+emitparticle 9, 49, 2
+
+wait 3000
+
+label 1
+detector_inrange 0, 10
+if flt[0] = 1, -1, 1
+
+compareownerwithex 3, 6, 6, -1
+let flt[1] = 1
+goto 1
+
+label 6
+if flt[1] = 1, -1, 7
+wait 3000
+
+label 7
+zatmyse 1
+wait 500 
+
+autosavegamefull 5385
+
+commandblock 1
+zatmyse 1, 1
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 21, 0
+frm_seton 22, 1
+frm_seton 23, 1
+frm_seton 24, 0
+commandblock 0
+
+findnearactor 8, 7, car
+getactorsdist 8, 7, 0
+if flt[0] < 7, -1, 5
+actor_setplacement 7, 16
+car_calm 7
+
+label 5
+commandblock 1
+player_lockcontrols 1
+frm_seton 4, 0
+detector_issignal 2, -1, 2
+frm_seton 5, 0
+detector_setsignal 100, 1
+goto 3
+
+label 2
+frm_seton 6, 0
+
+label 3
+stopparticle 2
+actor_setplacement 3, 2
+loaddifferences "dif15i.chg"
+recloadfull "record15i"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+disablecolls 0
+disablecolls 3
+disablecolls 25
+frm_seton 0, 0
+frm_seton 3, 0
+
+detector_issignal 100, 4, -1
+frm_seton 5, 1
+goto 8
+
+label 4
+frm_seton 6, 1
+
+label 8
+frm_seton 4, 1
+frm_seton 7, 1
+frm_seton 8, 1
+
+frm_seton 10, 0
+frm_seton 15, 1
+
+frm_seton 17, 1
+frm_seton 18, 1
+
+emitparticle 11, 6
+emitparticle 12, 6
+emitparticle 13, 6
+emitparticle 14, 6
+
+act_setstate 4, active
+act_setstate 5, active
+act_setstate 9, active
+player_lockcontrols 0
+commandblock 0
+zatmyse 0
+act_setstate 100, off

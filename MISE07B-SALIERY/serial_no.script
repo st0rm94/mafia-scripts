@@ -1,0 +1,7 @@
+dim_act 1
+findactor 0, "Tommy"
+label SERIAL
+detector_waitforuse
+human_talk 0, 07997777
+wait 5000
+goto SERIAL

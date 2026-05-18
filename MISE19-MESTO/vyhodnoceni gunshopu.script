@@ -1,0 +1,12 @@
+dim_flt 1
+
+{ up
+label 1
+wait 1000000
+goto 1
+}
+
+event 1
+event_use_cb 1
+let flt[0] = flt[0] + 1
+return

@@ -1,0 +1,75 @@
+commandblock 1
+//[debug_me]
+dim_act 10
+dim_flt 4
+findactor 0, "Vratpr"
+findactor 1, "Vratpr3"
+findactor 2, "Vratny2"
+findactor 3, "detector_honicka"
+findactor 4, "Guard"
+findactor 5, "Guard2"
+findactor 6, "Guard3"
+findactor 7, "Guard4"
+findactor 8, "Guard5"
+findactor 9, "Guard6"
+dim_frm 8
+findframe 0, "pristav_inside"
+getactorframe 2, 1
+getactorframe 4, 2
+getactorframe 5, 3
+getactorframe 6, 4
+getactorframe 7, 5
+getactorframe 8, 6
+getactorframe 9, 7
+commandblock 0
+
+label DETECT
+wait 100
+detector_inrange 0, 80
+if flt[0] = 0, -1, DETECT
+wait 10000
+label DETECT2
+detector_inrange 0, 80
+if flt[0] = 0, -1, DETECT
+// NEzavreni pristavu dokud jsou tam Guardi
+
+frm_getworldpos 2, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, DETECT2, -1
+
+frm_getworldpos 3, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, DETECT2, -1
+
+frm_getworldpos 4, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, DETECT2, -1
+
+frm_getworldpos 5, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, DETECT2, -1
+
+frm_getworldpos 6, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, DETECT2, -1
+
+frm_getworldpos 7, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, DETECT2, -1
+
+door_open 0, 0
+door_lock 0, 1
+door_open 1, 0
+door_lock 1, 1
+
+frm_getworldpos 1, 1
+ispointinarea 1, 0, 0
+if flt[0] = 1, -1, NEXT
+act_setstate 2, off
+frm_seton 1, 0
+label NEXT
+
+
+label FINISH
+debug_text "Detector_zavreni: Vrata zavrena!"
+end

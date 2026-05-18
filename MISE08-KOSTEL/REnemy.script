@@ -1,0 +1,6 @@
+commandblock 1
+dim_act 1
+findactor 0, "REnemy"
+
+human_addweapon 0,9,1,14
+commandblock 0

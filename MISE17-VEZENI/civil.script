@@ -1,0 +1,33 @@
+dim_flt 1
+dim_act 5
+dim_frm 1
+findactor 0, "cad_ford"
+findactor 1, "civil"
+findactor 2, "Politik"
+findactor 3, "Bguard"
+findactor 4, "Bguard2"
+findframe 0, "politik utek"
+
+enemy_vidim 0  
+
+{ up
+label 1
+if flt[0] = 3, -1, 1
+}
+
+enemy_car_moveto 0, 0
+
+human_getproperty 2, 0, energy
+if flt[0] = 0, -1, 2 
+end
+
+label 2 
+endofmission 0, 17980001
+end
+
+event 1
+let flt[0] = flt[0] + 1
+return
+
+
+

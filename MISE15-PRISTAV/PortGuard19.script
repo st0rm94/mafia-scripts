@@ -1,0 +1,72 @@
+enemy_vidim 0
+dim_flt 3
+dim_act 2
+dim_frm 4
+findactor 0, ""
+findactor 1, "chcipnuti chlapka"
+
+findframe 0, "PortGuard19.back1"
+findframe 1, "PortGuard19.l_shin"
+findframe 2, "PortGuard19.r_foot"
+findframe 3, "kricici_muz1"
+
+human_candie 0
+
+human_addweapon 0, 10, 50, 200
+
+enemy_lockstate fight_guard, 1
+
+enemy_vidim 1
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+commandblock 0
+
+human_throwitem 0, 10
+human_holster 0
+
+version_is_germany 2
+if flt[2] = 1, -1, 3
+human_setproperty 0, 0, energy
+end
+
+label 3
+human_changemodel 0, "ohorelec01.i3d"
+
+findframe 0, "PortGuard19.back1"
+findframe 1, "PortGuard19.l_shin"
+findframe 2, "PortGuard19.r_foot"
+
+emitparticle 0, 21
+emitparticle 1, 9
+emitparticle 2, 9
+
+enemy_changeanim "run1.i3d", "panika run01a.i3d"
+
+act_setstate 1, active
+
+enemy_move 41, run
+enemy_move 42, run
+
+label 2
+wait 1000000
+goto 2
+
+event 1
+event_use_cb 1
+commandblock 1
+enemy_vidim 0
+enemy_brainwash
+enemy_forcescript 0
+enemy_actionsclear
+commandblock 0
+return

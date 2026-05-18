@@ -1,0 +1,28 @@
+[debug_me]
+dim_act 2
+findactor 0
+findactor 1, "Tommy"
+human_addweapon 0, 10, 50, 200
+
+{ DOWN
+label GUARD
+enemy_move 10
+enemy_action_backlook 5000
+enemy_action_sidelook 1, 2000
+enemy_move 11
+enemy_action_backlook 5000
+enemy_action_sidelook 1, 2000
+enemy_move 12
+enemy_action_backlook 5000
+enemy_action_sidelook 1, 2000
+goto GUARD
+}
+enemy_naserse 1
+goto FINISH
+
+event 1
+event_use_cb 1
+enemy_forcescript 0
+return
+
+label FINISH

@@ -1,0 +1,38 @@
+dim_flt 1
+dim_act 4
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "1pol"
+findactor 3, "1pol2"
+
+wait 1000
+human_looktoactor 0, 1, 1
+wait 500
+enemy_look 1
+enemy_wait
+enemy_playanim "breath02a.i3d"
+enemy_talk 0, 17990141, 6
+enemy_wait
+enemy_talk 0, 17990142, 6
+
+label 2
+setevent 2, 1, 2
+setevent 3, 1, 2
+
+enemy_wait
+enemy_stopanim
+
+label 3
+wait 1000000
+goto 3
+
+event 1
+wait 1000
+enemy_playanim "x panika drep dolu.i3d", 0, simple
+let flt[0] = flt[0] - 83
+wait flt[0]
+enemy_playanim "x panika drep stativ.i3d"
+
+label 4
+wait 1000000
+goto 4

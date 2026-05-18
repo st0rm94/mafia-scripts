@@ -1,0 +1,36 @@
+dim_flt 1
+dim_act 7
+findactor 0, "Politik"
+findactor 1, "load mise17-mesto"
+findactor 2, "civil"
+findactor 3, "detekce odchodu z veze"
+findactor 4, "Bguard"
+findactor 5, "Bguard2"
+findactor 6, "pol"
+
+act_setstate 100, inactive
+
+label 1
+wait 1000
+human_getproperty 0, 0, energy
+if flt[0] = 0, -1, 1
+
+mission_objectivesclear
+mission_objectives 17960001
+
+act_setstate 3, active
+
+label 2
+setevent 1, 1, 2
+
+label 3
+setevent 2, 1, 3  
+
+label 4
+setevent 4, 2, 4
+
+label 5
+setevent 5, 2, 5
+
+label 6
+setevent 6, 2, 6

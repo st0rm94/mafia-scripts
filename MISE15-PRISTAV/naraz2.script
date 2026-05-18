@@ -1,0 +1,18 @@
+dim_flt 1
+dim_act 3
+findactor 0, "vagcisterna4"
+findactor 1, "vagcisterna3"
+findactor 2, ""
+
+act_setstate 100, inactive
+
+label 1
+getactorsdist 0, 2, 0
+if flt[0] < 6, 2, -1
+getactorsdist 1, 2, 0
+if flt[0] < 6, 2, 1
+
+label 2
+frm_seton 100, 1
+act_setstate 100, off
+

@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Milenka"
+findactor 1, "spusteni akce guardu"
+
+act_setstate 100, inactive
+
+label 1
+wait 200
+human_getproperty 0, 0, energy
+if flt[0] < 100, -1, 1
+
+act_setstate 1, active

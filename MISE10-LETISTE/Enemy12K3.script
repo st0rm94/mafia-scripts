@@ -1,0 +1,12 @@
+{ down
+label 1
+goto 1
+}
+enemy_move 28, run
+label 2
+goto 2
+
+event 1
+enemy_brainwash
+event_use_cb 1
+return

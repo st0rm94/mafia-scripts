@@ -1,0 +1,60 @@
+dim_flt 3
+dim_act 2
+findactor 0, "Tommy"
+findactor 1, ""
+//human_returnfrompanic 1, 1
+
+label 1
+let flt[1] = 0
+{ down
+enemy_playanim "Gestikulace05.I3D", 0
+let flt[0] = flt[0] - 83
+wait flt[0]
+goto 1
+}
+{ up
+label 2
+if flt[1] = 1, 1, 2
+}
+
+event 1
+event_use_cb 1
+wait 200
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+return
+
+event 2
+human_looktoactor 1
+enemy_lookto 1
+let flt[1] = 1
+return
+
+event 3
+wait 2000
+human_looktoactor 1
+enemy_move 11
+enemy_wait
+enemy_look 0
+return
+
+event use_ab, 10970007
+enemy_look 0
+enemy_wait
+if flt[2] = 0, 3, -1
+if flt[2] = 1, 4, -1
+enemy_talk 10950005
+enemy_wait
+let flt[2] = 0
+return
+label 3
+enemy_talk 10950006
+enemy_wait
+let flt[2] = 1
+return
+label 4
+enemy_talk 10950007
+enemy_wait
+let flt[2] = 2
+return

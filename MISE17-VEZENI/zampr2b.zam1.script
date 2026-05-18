@@ -1,0 +1,20 @@
+dim_act 1
+dim_frm 2
+findactor 0, "load mise17-mesto"
+findframe 0, "zampr2b"
+findframe 1, "pad zamek"
+
+detector_waitforhit
+detector_waitforhit
+
+label 1
+setevent 0, 2, 1
+
+create_physicalobject 0, 1, 1, 1
+
+wait 500
+
+frm_seton 1, 0
+
+
+act_setstate 100, off

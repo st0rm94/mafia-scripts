@@ -1,0 +1,32 @@
+dim_flt 1
+dim_act 9
+findactor 0, "SalieriHIGH"
+findactor 1, "VincenzoHIGH"
+findactor 2, "Luigi"
+findactor 3, "Ralph"
+findactor 4, "SalieriHIGH2"
+findactor 5, "VincenzoHIGH2"
+findactor 6, "Ralph2"
+findactor 7, "load mise15-mesto"
+findactor 8, "1load mise15-mesto"
+
+label 1
+getenemyaistate 0, 0
+if flt[0] = 3, 2, -1
+getenemyaistate 1, 0
+if flt[0] = 3, 2, -1
+getenemyaistate 2, 0
+if flt[0] = 3, 2, -1
+getenemyaistate 3, 0
+if flt[0] = 4, 2, -1
+getenemyaistate 4, 0
+if flt[0] = 3, 2, -1
+getenemyaistate 5, 0
+if flt[0] = 3, 2, -1
+getenemyaistate 6, 0
+if flt[0] = 4, 2, 1
+
+label 2
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 100, off

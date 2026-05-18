@@ -1,0 +1,13 @@
+act_setstate -1, inactive
+dim_flt 1
+stream_create 0, "sounds\music\09 - Fighting theme 1.ogg"
+stream_setloop 0, 1
+stream_fadevol 0, 1, 0, 0.7
+wait 100
+stream_play 0
+act_setstate -1, inactive
+stream_fadevol 0, 3000, 0.7, 0
+wait 3000
+stream_stop 0
+stream_destroy 0
+end

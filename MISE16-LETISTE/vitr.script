@@ -1,0 +1,21 @@
+//nahodny vitr
+
+dim_flt 1
+dim_frm 1
+FindFrame 0, "vitr"
+
+sound_setvolume 0, 0.3
+
+label 10
+  rnd 0, 8                   
+  let flt[0] = flt[0] * 2864
+  let flt[0] = flt[0] + 4210
+  wait flt[0]
+ soundfade 0, 3000, 0.3, 1
+rnd 0, 10                   
+  let flt[0] = flt[0] * 876
+  let flt[0] = flt[0] + 1875
+  wait flt[0]
+ soundfade 0, 7123, 1, 0.3
+goto 10
+end

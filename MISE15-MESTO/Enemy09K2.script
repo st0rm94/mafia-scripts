@@ -1,0 +1,78 @@
+enemy_vidim 0
+enemy_podvadim_jak Tretera
+enemy_naprdelivaute yes
+dim_flt 2
+dim_act 6
+findactor 0, "buikFor"
+findactor 1, "Tommy"
+findactor 2, ""
+findactor 3, "Delnik3"
+findactor 4, "Delnik4"
+findactor 5, "detekce playera v aute italian"
+
+human_addweapon 2, 9, 7, 30
+
+enemy_move_to_car 0, 0, run
+
+enemy_talk 2, 06940042, 1
+
+label 2
+enemy_usecar 0, 0
+compareownerwith 0, -1, 2
+
+wait 4000
+
+act_setstate 5, active
+
+label 9
+{ down
+label 3
+enemy_car_hunt 0, 1, bokovka, 10, 0.5
+goto 3
+}
+
+car_remove_driver 0
+
+{ down
+enemy_vidim 1
+label 10
+wait 1000000
+goto 10
+}
+
+let flt[1] = 0
+
+label 4
+compareownerwithex 3, 0, 5, -1
+human_getproperty 3, 0, energy
+if flt[0] = 0, -1, 4
+let flt[1] = flt[1] + 1
+
+label 5
+compareownerwithex 4, 0, 6, -1
+human_getproperty 4, 0, energy
+if flt[0] = 0, -1, 5
+let flt[1] = flt[1] + 1
+
+label 6
+if flt[1] = 2, -1, 9
+
+label 7
+enemy_usecar
+compareownerwith 2, 7, -1
+
+enemy_vidim 1
+enemy_action_fire 1
+
+label 8
+wait 1000000
+goto 8
+
+
+event 1
+event_use_cb 1
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 2
+return

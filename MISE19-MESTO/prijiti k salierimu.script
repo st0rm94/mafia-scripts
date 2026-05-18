@@ -1,0 +1,6 @@
+dim_act 1
+findactor 0, "Tommy"
+
+detector_waitforuse 19970000, 1
+human_talk 0, 19990231
+act_setstate 100, off

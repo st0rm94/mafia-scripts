@@ -1,0 +1,31 @@
+dim_flt 1
+dim_act 5
+dim_frm 7
+findframe 0, "pos 3"
+findframe 1, "pos 4"
+findframe 2, "pos 5"
+findframe 3, "xtaska 9"
+findframe 4, "xtaska 8"
+findframe 5, "xtaska "
+findframe 6, "xtaska 2"
+findactor 0, "FrankHIGH"
+findactor 1, "March"
+findactor 2, "Alice"
+findactor 3, "Box211"
+findactor 4, "posledni fmv"
+
+act_setstate -1, inactive
+label 1
+wait 1000
+DETECTOR_INRANGE 0, 10
+if flt[0] = 1, -1, 1
+door_lock 3, 0
+door_open 3, 1
+actor_setplacement 0, 0
+actor_setplacement 1, 1
+actor_setplacement 2, 2
+frm_seton 3, 1
+frm_seton 4, 1
+frm_seton 5, 0
+frm_seton 6, 0
+act_setstate 4, active

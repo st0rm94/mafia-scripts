@@ -1,0 +1,7 @@
+act_setstate -1,inactive
+
+dim_act 1
+findactor 0,"bomba09"
+
+detector_waitforuse
+setevent 0,202,-1

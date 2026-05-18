@@ -1,0 +1,44 @@
+dim_act 4
+dim_frm 4
+findactor 0, "polimFor"
+findactor 1, ""
+findactor 2, "pol5"
+findactor 3, "Tommy"
+findframe 0, "1zastaveni pred bankou 4"
+findframe 1, "1zastaveni pred bankou 3"
+findframe 2, "polimFor.WHR0"
+findframe 3, "sirene3"
+
+enemy_vidim 0
+
+human_addweapon 1, 11, 8, 30
+human_addweapon 1, 8, 6, 30
+
+act_setstate 100, inactive
+
+frm_seton 3, 1
+
+enemy_car_escape 0, 3, 0, 50, 1, 1
+enemy_car_escape 0, 3, 1, 20, 1, 1
+
+setevent 2, 1, -1
+
+label 2
+enemy_usecar
+compareownerwith 0, 2, -1
+frm_seton 3, 0
+enemy_move_to_frame 2, 1.5, run
+enemy_lookto 47
+enemy_wait
+
+enemy_lockstate fight_guard
+
+enemy_vidim 1
+
+label 3
+wait 1000000
+goto 3
+
+event 1
+enemy_naserse 3
+return

@@ -1,0 +1,23 @@
+dim_act 1
+dim_flt 1
+findactor 0,"Tommy"
+
+label 101
+wait 2000
+detector_inrange 0,20
+if flt[0]=1,-1,101
+
+rnd 0,2
+  if flt[0]=0,-1,113
+  human_talk 0,04990311
+  label 113
+  if flt[0]=1,-1,114
+  human_talk 0,04990321
+  label 114
+
+label 102
+wait 2000
+detector_inrange 0,22
+if flt[0]=0,101,102
+
+

@@ -1,0 +1,74 @@
+dim_flt 1
+dim_act 11
+dim_frm 16
+findactor 0, "Paulie"
+findactor 1, "zastavka 2"
+findactor 2, "civil3"
+findactor 3, "civil4"
+findactor 4, "civil"
+findactor 5, "civil16M"
+findactor 6, "civil2"
+findactor 7, "Czena"
+findactor 8, "Czena2"
+findactor 9, "civil5"
+findactor 10, "civil6"
+
+findframe 0, "xleseni"
+findframe 1, "xbedna 7"
+findframe 2, "civil3"
+findframe 3, "civil4"
+findframe 4, "civil"
+findframe 5, "civil16M"
+findframe 6, "civil2"
+findframe 7, "Czena"
+findframe 8, "Czena2"
+findframe 9, "civil5"
+findframe 10, "civil6"
+findframe 11, "2bucket"
+findframe 12, "xkoste "
+findframe 13, "2bucket2"
+findframe 14, "bednka"
+findframe 15, "bednka.Box01"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 10
+if flt[0] = 1, -1, 1
+
+label 2
+setevent 0, 2, 2
+act_setstate 1, active
+
+wait 10000
+
+act_setstate 2, off
+act_setstate 3, off
+act_setstate 4, off
+act_setstate 5, off
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, off
+
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0
+frm_seton 3, 0
+frm_seton 4, 0
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+
+disablecolls 0
+disablecolls 15
+
+act_setstate 100, off

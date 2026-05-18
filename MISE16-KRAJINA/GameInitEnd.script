@@ -1,0 +1,73 @@
+dim_flt 1
+dim_act 14
+dim_frm 10
+findactor 0, "arrow"
+findactor 1, "civil"
+findactor 2, "Tommy"
+findactor 3, "Paulie"
+findactor 4, "Sam"
+//findactor 5, "zjisteni auta"
+findactor 6, "load mise16-letiste"
+findactor 7, "load mise16-mesto"
+findactor 8, "Guard"
+findactor 10, "load animace 16.3"
+findactor 11, "vzdalenost player morello"
+findactor 12, "MorelloLOW"
+findactor 13, "detekce healtu morella"
+
+findframe 0, "arrow"
+findframe 1, "civil"
+findframe 2, "Paulie"
+findframe 3, "Sam"
+findframe 4, "poloha paulieho v druhe casti"
+findframe 5, "poloha sama v druhe casti"
+findframe 6, "FMVarrow00-travis"
+findframe 7, "MorelloLOW"
+findframe 8, "Guard"
+findframe 9, "drvrat"
+
+frm_seton 6, 0
+
+getmissionnumber 0
+if flt[0] = 0, -1, 1
+
+act_setstate 7, inactive
+
+human_addweapon 1, 6, 6, 30
+human_addweapon 12, 9, 7, 30
+human_addweapon 8, 9, 7, 30
+
+human_force_settocar 1, 0, 0
+human_force_settocar 12, 0, 3
+human_force_settocar 8, 0, 1
+mission_objectivesclear
+mission_objectives 16960001
+setcompass 7
+settankhitcount 0, 100
+car_setspeed 0, 60
+car_unbreakable 0, 1 
+end
+
+label 1
+act_setstate 0, off
+act_setstate 1, off
+act_setstate 6, off
+act_setstate 8, off
+act_setstate 10, off
+act_setstate 11, off
+act_setstate 12, off
+act_setstate 13, off
+
+frm_seton 0, 0
+frm_seton 1, 0
+
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+disablecolls 9
+
+actor_setplacement 3, 4
+actor_setplacement 4, 5
+mission_objectivesclear
+disablecolls 6
+end

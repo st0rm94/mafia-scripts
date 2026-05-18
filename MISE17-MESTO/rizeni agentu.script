@@ -1,0 +1,38 @@
+dim_flt 1
+dim_act 7
+findactor 0, "Tommy"
+findactor 1, "null"
+findactor 2, "Detektiv"
+findactor 3, "Detektiv2"
+findactor 4, "Detektiv3"
+findactor 5, "Detektiv4"
+//findactor 6, "zjisteni auta"
+
+label 3
+act_setstate 100, inactive
+
+label 1
+compareownerwithex 0, 1, -1, 1
+
+getactorsdist 0, 2, 0
+if flt[0] < 15, -1, 1
+
+setevent 2, 1, -1
+setevent 3, 1, -1
+setevent 4, 1, -1
+setevent 5, 1, -1
+
+wait 5000
+
+label 2
+compareownerwithex 0, 1, 2, -1
+
+human_getowner 0, 6
+car_getspeed 6, 0
+if flt[0] > 0, -1, 2
+
+setevent 2, 1, -1
+setevent 3, 1, -1
+setevent 4, 1, -1
+setevent 5, 1, -1
+goto 3

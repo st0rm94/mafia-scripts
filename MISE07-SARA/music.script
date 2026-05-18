@@ -1,0 +1,26 @@
+dim_flt 1
+stream_create 0, "sounds\music\17 - Saras Theme.ogg"
+stream_fadevol 0, 1, 1, 0.4
+act_setstate -1, inactive
+{ DOWN
+wait 100000
+stream_play 0
+wait 65200
+commandblock 1
+stream_stop 0
+stream_destroy 0
+stream_create 0, "sounds\music\17 - Saras Theme.ogg"
+stream_play 0
+commandblock 0
+label WAIT
+wait 10000
+goto WAIT
+}
+stream_stop 0
+stream_destroy 0
+end
+
+
+event 1
+event_use_cb 1
+return

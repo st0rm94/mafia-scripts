@@ -1,0 +1,48 @@
+act_setstate -1,inactive
+commandblock 1
+dim_act 3
+dim_flt 1
+dim_frm 1
+findactor 0,"nitro_car"
+findactor 1,"nitro_end"
+findactor 2,"detector_nitro"
+
+findframe 0,"cam_nitro"
+
+act_setstate 1,active
+mission_objectivesclear
+mission_objectives 22930025
+camera_lock 0
+citycaching_tick
+commandblock 0
+wait 3000
+camera_unlock
+
+
+timeron 0,0,0,240
+settimeoutevent 2,201
+
+car_switchshowenergy 0,2
+
+label 101
+wait 500
+getcardamage 0,0
+if flt[0]<1,-1,101
+
+settimeoutevent -1,201
+timeroff
+mission_objectivesclear
+car_explosion 0
+wait 3000
+endofmission 0,22980001
+end
+
+event 201
+mission_objectivesclear
+endofmission 0,22980001
+end
+
+event 202
+settimeoutevent -1,201
+timeroff
+end

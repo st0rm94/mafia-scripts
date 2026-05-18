@@ -1,0 +1,15 @@
+dim_frm 1
+findframe 0
+
+dim_flt 2
+
+label SOUND
+soundfade 0, 5000, 0, 1
+wait 10000
+soundfade 0, 5000, 1, 0.5
+wait 5000
+soundfade 0, 5000,  0.5, 1
+wait 5000
+soundfade 0, 5000,  1, 0.4
+wait 5000
+goto SOUND

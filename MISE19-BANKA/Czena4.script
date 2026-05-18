@@ -1,0 +1,113 @@
+dim_flt 1
+dim_act 5
+dim_frm 4
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "Bclerk"
+findactor 3, "open door 1"
+findactor 4, "open door 2"
+findframe 0, "xkniha 34"
+findframe 1, "xkniha 35"
+findframe 2, "xkniha 36"
+findframe 3, "tuzkanim"
+
+enemy_changeanim "walk1.i3d", "walk woman1.i3d" 
+
+enemy_move 47
+
+commandblock 1
+detector_issignal 3, 2, -1
+enemy_use_detector 3
+
+label 2
+commandblock 0
+
+enemy_move 23
+
+commandblock 1
+detector_issignal 4, 3, -1
+enemy_use_detector 4
+
+label 3
+commandblock 0
+
+enemy_move 28
+enemy_move 19
+enemy_lookto 20
+enemy_wait
+
+label 4
+setevent 2, 1, 4
+
+{ down
+label 5
+wait 1000000
+goto 5
+}
+
+enemy_talk 19950030
+enemy_wait
+
+label 6
+setevent 2, 1, 6
+
+{ down
+label 7
+wait 1000000
+goto 7
+}
+
+enemy_talk 19950032
+enemy_wait
+
+label 8
+setevent 2, 1, 8
+
+{ down
+label 9
+wait 1000000
+goto 9
+}
+
+enemy_talk 19950034
+enemy_wait
+
+label 10
+setevent 2, 1, 10
+
+{ down
+label 11
+wait 1000000
+goto 11
+}
+
+enemy_talk 19950036
+enemy_playanim "bankacivilbere.i3d"
+wait 1500
+commandblock 1
+frm_seton 0, 0
+frm_seton 1, 1
+commandblock 0
+wait 3000
+enemy_move 52
+enemy_lookto 53
+enemy_wait
+enemy_playanim "breath-recepcni.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+commandblock 1
+enemy_playanim "recepcniletistestativ.i3d"
+frm_seton 1, 0
+frm_seton 2, 1
+frm_seton 3, 1
+commandblock 0
+
+{ up
+label 12
+wait 1000000
+goto 12
+}
+
+event 1
+event_use_cb 1
+return

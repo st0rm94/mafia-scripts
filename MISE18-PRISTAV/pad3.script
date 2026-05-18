@@ -1,0 +1,30 @@
+// kdyby nekdy nahodou byla animacka padu :)
+act_setstate -1, off
+dim_act 2
+dim_flt 1
+dim_frm 1
+findactor 0, "Sniper3"
+findactor 1
+findframe 0
+
+label DETECT
+wait 200
+human_getproperty 0, 0, Energy
+if flt[0] < 80, -1, DETECT
+getactorsdist 0, 1, 0
+if flt[0] < 2, -1, END
+label SEND
+setevent 0, 1, SEND
+person_playanim 0, "smrt drep hlava zezadu f.I3D", 0, SIMPLE
+wait flt[0]
+commandblock 1
+   actor_setplacement 0, 0
+   human_forcefall 0
+commandblock 0
+debug_text "Pad1: Sniper pada"
+label DEATH
+wait 2000
+human_death 0
+debug_text "Pad1: Sniper mrtev"
+label END
+end

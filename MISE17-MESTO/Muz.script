@@ -1,0 +1,157 @@
+enemy_vidim 0
+dim_flt 2
+dim_act 7
+findactor 0, ""
+findactor 1, "Muz2"
+findactor 2, "Tommy"
+findactor 3, "Guard"
+findactor 4, "Bguard"
+findactor 5, "detekce kradeni auta"
+findactor 6, "prudici hlaska"
+
+act_setstate 100, inactive
+
+enemy_playanim "gesto_4a.i3d"
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+{ down
+human_looktoactor 0, 1, 1
+
+label 10
+getactorsdist 0, 2, 0
+if flt[0] < 10, -1, 10
+enemy_talk 17990381
+enemy_wait
+human_looktoactor 0
+wait 250
+human_looktoframe 0, 0, 1
+wait 4000
+human_looktoactor 1, 0, 1
+
+label 11
+getactorsdist 0, 2, 0
+if flt[0] < 11, -1, 10
+enemy_talk 1, 17990391
+human_looktoactor 0, 1, 1
+enemy_wait
+enemy_talk 17990401
+enemy_wait
+human_looktoactor 0
+human_looktoframe 0, 0, 1
+enemy_talk 1, 17990411
+enemy_wait
+human_looktoactor 1
+wait 250
+human_looktoframe 1, 0, 1
+wait 4000
+
+label 12
+getactorsdist 0, 2, 0
+if flt[0] < 10, -1, 12
+enemy_talk 17990421
+enemy_wait
+
+label 13
+getactorsdist 0, 2, 0
+if flt[0] < 10, -1, 13
+enemy_talk 1, 17990431
+enemy_wait 
+enemy_talk 17990441
+enemy_wait
+wait 4000
+
+label 14
+getactorsdist 0, 2, 0
+if flt[0] < 10, -1, 14
+enemy_talk 1, 17990451 
+
+label 2
+wait 1000000
+goto 2
+}
+
+enemy_talk 2, 17990461
+enemy_wait
+enemy_look 2
+enemy_wait
+
+label 4
+setevent 1, 1, 4
+
+human_looktoactor 0, 2, 1
+enemy_talk 2, 17990471
+enemy_wait
+person_playanim 1, "gesto2 nogun1b.I3D"
+enemy_talk 1, 17990481
+enemy_wait
+person_playanim 1, "breath01a.I3D"
+enemy_talk 17990491
+enemy_playanim "gesto2 nogun1a.I3D"
+enemy_wait
+enemy_playanim  "breath01a.I3D"
+enemy_talk 2, 17990501
+enemy_wait
+enemy_talk 1, 17990511
+person_playanim 1, "gesto2 nogun1a.I3D"
+enemy_wait
+act_setstate 6, active
+
+label 3
+setevent 1, 1, 3
+
+act_setstate 5, off
+human_looktoactor 0
+enemy_vidim 1
+enemy_move 15
+enemy_lookto 16
+enemy_wait
+
+label 5
+wait 1000000
+goto 5
+
+event 1
+event_use_cb 1
+return
+
+event use_ab
+event_use_cb 1
+return
+
+event 2
+enemy_action_runaway 2, 20
+
+label 9
+wait 1000000
+goto 9
+
+event 3
+human_stoptalk 0
+human_stoptalk 1
+enemy_vidim 1
+
+label 9
+wait 1000000
+goto 9
+
+event hit_from_player
+commandblock 1
+human_stoptalk 0
+human_stoptalk 1
+act_setstate 5, off
+
+label 6
+setevent 3, 1, 6
+
+label 7
+setevent 4, 1, 7
+
+label 8
+setevent 1, 2, 8
+commandblock 0
+enemy_action_runaway 2, 20

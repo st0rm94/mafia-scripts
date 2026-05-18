@@ -1,0 +1,121 @@
+# .dnc extraction summary
+# source        : INTRO.dnc  (2372 bytes, main)
+# source        : INTRO-InitScripts.dnc  (1808 bytes, init)
+# actors_total  : 28
+# init_records  : 15
+# scripts_found : 16
+
+# main-container actor type-code distribution
+#   type    1  count=12  
+#   type    2  count=15  
+#   type    5  count=1  script
+
+# ---- command keyword totals (across all scripts, case-insensitive) ----
+# unique commands  : 16
+# total invocations: 83
+# (counts are case-insensitive; observed source casings shown in brackets)
+
+    26  findframe
+    26  frm_seton
+    13  dim_frm
+     4  commandblock
+     2  dim_flt
+     2  stream_fadevol
+     1  endofmission
+     1  getfilmmusic
+     1  play_avi_intro
+     1  recloadfull
+     1  recunload
+     1  recwaitforend
+     1  setfilmmusic
+     1  stream_create
+     1  stream_play
+     1  zatmyse
+
+# ---- per-script command listing ----
+
+[ChangeVesak]  type=init  lines=8  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[FMVstart]  type=5  lines=20  commands=7
+    commandblock
+    endofmission
+    play_avi_intro
+    recloadfull
+    recunload
+    recwaitforend
+    zatmyse
+
+[MusicFadeOut]  type=init  lines=3  commands=3
+    dim_flt
+    getfilmmusic
+    stream_fadevol
+
+[MusicPlay]  type=init  lines=5  commands=5
+    dim_flt
+    setfilmmusic
+    stream_create
+    stream_fadevol
+    stream_play
+
+[Salky2Off3on]  type=init  lines=11  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[Salky2On]  type=init  lines=7  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[SalkyOff]  type=init  lines=11  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[hide Tuzka2show3]  type=init  lines=7  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[hide Tuzka3]  type=init  lines=5  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[hide hadra]  type=init  lines=5  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[hide taget]  type=init  lines=9  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[hideAllSklen]  type=init  lines=8  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[hideSklen]  type=init  lines=5  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[hideSklen1show2]  type=init  lines=8  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[show hadra]  type=init  lines=5  commands=3
+    dim_frm
+    findframe
+    frm_seton
+
+[show1Sklen]  type=init  lines=5  commands=3
+    dim_frm
+    findframe
+    frm_seton

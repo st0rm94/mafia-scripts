@@ -1,0 +1,11 @@
+enemy_vidim 0
+frm_seton 100, 1
+dim_flt 1
+
+enemy_playanim "gestopojdsem01.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+enemy_lookto 2
+enemy_wait
+enemy_vidim 1

@@ -1,0 +1,34 @@
+dim_act 2
+dim_flt 2
+dim_frm 1
+
+findactor 0, "Tommy"
+findactor 1, "9lekarna2.Box02"
+
+findframe 0, "placement_lekarna2"
+
+door_enableus 1,0
+
+detector_waitforuse 08970005
+
+PLAYER_LOCKCONTROLS 1
+setnoanimhit 0,1
+actor_setplacement 0,0
+person_playanim 0,  "sbirani zvrchu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+door_open 1,1
+wait flt[0]
+person_stopanim 0
+human_getproperty 0, 1, Energy
+let flt[1] = flt[1] + 100
+if flt[1] > 100, 2, -1
+human_setproperty 0, flt[1], Energy
+setnoanimhit 0,0
+PLAYER_LOCKCONTROLS 0
+end
+
+label 2
+human_setproperty 0, 100, Energy
+setnoanimhit 0,0
+PLAYER_LOCKCONTROLS 0
+end

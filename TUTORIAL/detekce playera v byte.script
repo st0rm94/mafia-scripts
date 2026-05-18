@@ -1,0 +1,28 @@
+dim_flt 4
+dim_frm 3
+dim_act 3
+findactor 0, "Tommy"
+findactor 1, "Enemy"
+findactor 2, "Enemy10K"
+
+findframe 0, "Tommy"
+findframe 1, "paulieho byt"
+findframe 2, "paulieho byt 1"
+
+
+act_setstate 100, inactive
+
+label 1
+frm_getworldpos 0, 1
+ispointinarea 1, 1, 0
+if flt[0] = 1, 2, -1
+ispointinarea 1, 2, 0
+if flt[0] = 1, -1, 1
+
+label 2
+setevent 1, 2, 2
+
+label 3
+setevent 2, 2, 3
+
+act_setstate 100, off

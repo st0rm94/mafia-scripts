@@ -1,0 +1,27 @@
+dim_flt 1
+dim_act 1
+findactor 0, ""
+
+enemy_vidim 0
+
+act_setstate 100, inactive
+
+setnoanimhit 0, 1
+
+label 1
+enemy_playanim "mechkolo.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+goto 1
+
+event hit_from_player
+enemy_playanim "smrt pad dozadu.I3D", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_stopanim
+human_forcefall 0
+
+wait 5000
+
+frm_seton 100, 0
+act_setstate 100, off

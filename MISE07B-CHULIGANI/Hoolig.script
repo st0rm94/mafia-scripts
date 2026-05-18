@@ -1,0 +1,53 @@
+enemy_vidim 0
+dim_frm 1
+dim_flt 1
+dim_act 1
+dim_frm 2
+findactor 0, "Hoolig"
+findframe 0, "Hoolig"
+findframe 1, "7b_zip"
+
+act_setstate -1, inactive
+
+{ DOWN
+label FREESTATE
+enemy_playanim "Gesto_07a.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Gesto_07b.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Gesto_07a.I3D", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+enemy_playanim "Gesto_07c.I3D", 0
+let flt[0] = flt[0] - 249
+wait flt[0]
+goto FREESTATE
+}
+
+enemy_move 19, RUN
+frm_seton 1,1
+enemy_lookto 20
+enemy_wait
+frm_seton 1,0
+enemy_playanim "ChulGesto04.I3D" , 0, 1
+let flt[0] = flt[0] - 581
+let flt[0] = flt[0] /3
+wait flt[0]
+enemy_talk 3940020
+wait flt[0]
+wait flt[0]
+enemy_talk 0, 3940007, 1
+enemy_move 29, RUN
+goto FINISH
+
+// Event od Paulie-ho
+event 1
+event_use_cb 1
+return
+
+label FINISH
+frm_seton 0, 0
+//debug_text "Hoolig: SCRIPT FINISHED AND SET OFF"
+act_setstate -1, off

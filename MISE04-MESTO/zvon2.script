@@ -1,0 +1,20 @@
+//pravidelny zvon2
+
+dim_frm 2
+dim_flt 2
+FindFrame 0, "zvon1"
+findframe 1, "zvon2"
+  frm_seton 1, 0
+
+label 10
+  let flt[0] = 8 * 4875
+  let flt[0] = flt[0] - 4000
+  let flt[1] = 300000 - flt[0]
+  let flt[1] = flt[1] - 581
+  wait flt[1]
+  frm_seton 0, 1
+  wait 3000  
+  soundfade 1, 1, 0, 1
+  wait flt[0]
+  soundfade 1, 1000, 1, 0
+goto 10

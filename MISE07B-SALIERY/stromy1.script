@@ -1,0 +1,19 @@
+//nahodne stromy1
+
+dim_flt 1
+dim_frm 1
+FindFrame 0, "stromy1"
+
+label 10
+  rnd 0, 4              
+  let flt[0] = flt[0] * 1000
+  let flt[0] = flt[0] + 5000  
+  wait flt[0]
+ soundfade 0, 3000, 1, 0.1
+  rnd 0, 6              
+  let flt[0] = flt[0] * 1000
+  let flt[0] = flt[0] + 3000  
+  wait flt[0]
+ soundfade 0, 800, 0.1, 1
+goto 10
+end

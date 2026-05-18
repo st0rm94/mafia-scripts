@@ -1,0 +1,8 @@
+zatmyse 1, 10
+wait 500
+subtitle_add 7201
+wait 4000
+loaddifferences "difi04.chg"
+recloadfull "recordi04.rep"
+recwaitforend
+change_mission "mise13-mesto", "", -1

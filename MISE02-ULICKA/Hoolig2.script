@@ -1,0 +1,30 @@
+dim_act 1
+dim_flt 1
+findactor 0,"TommyTAXIDRIVER"
+
+enemy_vidim 0
+
+{ down
+label 101
+enemy_move 8
+enemy_lookto 9
+enemy_wait
+enemy_playanim "MechKolo.i3d", 0
+enemy_talk 02950005
+let flt[0]=flt[0]-83
+wait flt[0]
+enemy_move 10
+enemy_lookto 11
+enemy_wait
+enemy_playanim "MechTrhani.i3d", 0
+enemy_talk 02950006
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101
+}
+
+enemy_action_runaway 0,100
+end
+
+event 201
+return

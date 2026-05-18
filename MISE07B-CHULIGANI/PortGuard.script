@@ -1,0 +1,17 @@
+enemy_vidim 0
+dim_act 1
+dim_flt 1
+findactor 0
+human_addweapon 0, 6, 6, 20
+enemy_lockstate FIGHT_GUARD
+act_setstate -1, inactive
+enemy_vidim 1
+
+label FREESTATE
+enemy_playanim "breath07b.I3D", 0
+let flt[0] = flt[0] - 100
+wait flt[0]
+enemy_playanim "breath07c.I3D", 0
+let flt[0] = flt[0] - 100
+wait flt[0]
+goto FREESTATE

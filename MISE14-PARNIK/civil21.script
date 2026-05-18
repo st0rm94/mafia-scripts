@@ -1,0 +1,7 @@
+wait 1000
+label 1
+enemy_playanim "kapela zpev N.I3D"
+wait 13000
+enemy_playanim "kapela zpev A.I3D"
+wait 13000
+goto 1

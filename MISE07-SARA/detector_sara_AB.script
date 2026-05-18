@@ -1,0 +1,64 @@
+[debug_me]
+dim_act 20
+dim_flt 4
+dim_frm 2
+getactiveplayer 0
+findactor 1, "Sara"
+findactor 2, "Hoolig"
+findactor 3, "Hoolig3"
+findactor 4, "Hoolig2"
+findactor 6, "Billy"
+findactor 7, "Hoolig4"
+findactor 11, "Hoolig7"
+findframe 0, "dvorek"
+
+act_setstate -1, inactive
+// Pepeho pridelavka na picu, oddelano
+act_setstate -1, off
+
+label DETECT
+human_getproperty 2, 0, Energy
+if flt[0] = 0, EN2, -1
+getenemyaistate 2, 0
+if flt[0] = 4, EN2, DETECT
+
+label EN2
+debug_text "detector_sara_AB: Hoolig je mimo hru!"
+human_getproperty 3, 0, Energy
+if flt[0] = 0, EN3, -1
+getenemyaistate 3, 0
+if flt[0] = 4, EN3, DETECT
+
+label EN3
+debug_text "detector_sara_AB: Hoolig3 je mimo hru!"
+human_getproperty 4, 0, Energy
+if flt[0] = 0, EN4, -1
+getenemyaistate 4, 0
+if flt[0] = 4, EN4, DETECT
+
+label EN4
+debug_text "detector_sara_AB: Hoolig2 je mimo hru!"
+human_getproperty 6, 0, Energy
+if flt[0] = 0, EN5, -1
+getenemyaistate 6, 0
+if flt[0] = 4, EN5, DETECT
+
+label EN5
+debug_text "detector_sara_AB: Billy je mimo hru!"
+human_getproperty 7, 0, Energy
+if flt[0] = 0, EN6, -1
+getenemyaistate 7, 0
+if flt[0] = 4, EN6, -1
+
+label EN6
+debug_text "detector_sara_AB: Hoolig4 je mimo hru!"
+human_getproperty 11, 0, Energy
+if flt[0] = 0, EN7, -1
+getenemyaistate 11, 0
+if flt[0] = 4, EN7, DETECT
+
+label EN7
+debug_text "detector_sara_AB: Hoolig7 je mimo hru!"
+debug_text "detector_sara_AB: Sara AB activovano!"
+findactor 1, "Sara"
+human_createab 1

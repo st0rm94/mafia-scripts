@@ -1,0 +1,16 @@
+dim_flt 1
+dim_act 1
+findactor 0, "enemy energymetr"
+
+label 1
+wait 1000
+DETECTOR_INRANGE 0, 7
+if flt[0] = 1, -1, 1
+detector_setsignal 0, 1
+
+label 2
+wait 1000
+DETECTOR_INRANGE 0, 7
+if flt[0] = 0, -1, 2
+detector_setsignal 0, 0
+goto 1

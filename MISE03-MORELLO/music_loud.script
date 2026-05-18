@@ -1,0 +1,45 @@
+act_setstate -1,inactive
+dim_act 3
+dim_frm 1
+findactor 0,"detector_niceni_aut"
+findactor 1,"music_loud"
+findactor 2,"supervisor"
+
+findframe 0,"hudba"
+soundfade 0,1,0,1
+
+setplayerfireevent 1,201
+
+// dvorek
+{ down
+label LOOP01
+wait 50000
+goto LOOP01
+}
+
+{ down
+wait 90000
+}
+
+label 101
+//misto pro ztiseni hudby
+soundfade 0,3000,1,0
+debug_text "hudba dohrala"
+setevent 0,201,101
+
+{ down
+label 102
+wait 50000
+goto 102
+}
+end
+
+
+event 201
+//player shoot
+setplayerfireevent -1,201
+setevent 2,201,-1
+return
+
+event 202
+return

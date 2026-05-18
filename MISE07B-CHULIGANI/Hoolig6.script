@@ -1,0 +1,13 @@
+enemy_vidim 0
+dim_act 3
+findactor 0, "Hoolig6"
+findactor 1, "Hoolig7"
+findactor 2, "detector_krysa"
+human_addweapon 0, 9, 7, 100
+enemy_lockstate FIGHT_GUARD
+act_setstate -1, inactive
+
+enemy_vidim 1
+
+act_setstate 1, active
+act_setstate 2, active

@@ -1,0 +1,44 @@
+dim_flt 1
+dim_act 5
+findactor 0, "Tommy"
+findactor 1, "Detektiv"
+findactor 2, "Detektiv7"
+findactor 3, "Detektiv4"
+findactor 4, "Detektiv2"
+
+enemy_group_new 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 3
+enemy_group_add 0, 4
+
+enemy_lockstate fight_guard, 4
+{ down
+label 1
+goto 1
+}
+{ down
+  wait 300
+  enemy_move 26, run
+}
+{ down
+enemy_lockstate fight_guard, 10
+enemy_vidim 1
+label 2
+goto 2
+}
+enemy_move 2, run
+human_setproperty 2, 70, Shooting
+//enemy_lockstate fight_guard, 10
+enemy_brainwash
+enemy_look 0
+enemy_vidim 1
+label 3
+goto 3
+
+event 1
+event_use_cb 1
+enemy_lockstate fight_dogfight
+enemy_brainwash
+enemy_vidim 0
+return

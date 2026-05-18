@@ -1,0 +1,51 @@
+dim_flt 1
+dim_act 3
+findactor 0, ""
+findactor 1, "prijiti do druheho patra"
+findactor 2, "Tommy"
+
+enemy_narohysevyser
+
+human_addweapon 0, 7, 6, 6
+human_addweapon 0, 3, 0, 0
+human_holster 0
+enemy_playanim "zidlesed02.i3d"
+
+label 1
+detector_issignal 1, -1, 1
+
+enemy_playanim "zidlesed02tonormal.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "zidlesezenistativ.i3d"
+wait 2000
+enemy_playanim "zidletosed03.i3d", 0
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "zidlesed03.i3d"
+
+{ down
+label 1
+wait 1000000
+goto 1
+}
+
+wait 1000
+enemy_look 2
+enemy_wait 
+human_looktoactor 0, 2, 1
+wait 1000
+enemy_move 7, run
+human_addweapon 0, 8, 6, 30
+enemy_move 9
+enemy_look 1
+enemy_wait
+wait 2000
+enemy_action_fire 2
+
+label 3
+goto 3
+
+event 1
+event_use_cb 1
+return

@@ -1,0 +1,96 @@
+enemy_vidim 0
+dim_act 2
+dim_flt 3
+findactor 0
+findactor 1, "Tommy"
+human_addweapon 0, 9, 35, 7
+human_holster 0
+enemy_shut_up yes
+dim_frm 2
+findframe 0, "luigi_anim1"
+findframe 1, "luigi_anim2"
+frm_seton 0, 0
+frm_seton 1, 0
+
+
+goto SKIP
+
+{ UP
+label FREESTATE
+enemy_stopanim
+enemy_move 7
+enemy_lookto 8
+enemy_wait
+label SKIP
+enemy_playanim "!M3_E_SaraSMycka.I3D", 0
+let flt[0] = flt[0] - 581
+let flt[0] = flt[0] / 3
+frm_seton 0, 1
+wait flt[0]
+wait flt[0]
+frm_seton 0, 0
+wait flt[0]
+enemy_stopanim
+enemy_move 9
+enemy_lookto 10
+enemy_wait
+enemy_playanim "!M3_E_SaraNaToma.I3D", 0
+frm_seton 1, 1
+let flt[0] = flt[0] - 500
+wait flt[0]
+goto FREESTATE
+}
+
+event USE_AB, 07970004
+enemy_look 1
+enemy_stopanim
+human_looktoactor 0, 1, 1
+rnd 0, 3
+let flt[0] = flt[0] + 1
+goto flt[0]
+label 1
+enemy_talk 00950060
+enemy_wait
+goto RET
+label 2
+enemy_talk 00950061
+enemy_wait
+goto RET
+label 3
+enemy_talk 00950062
+enemy_wait
+label RET
+human_looktoactor 0
+event_use_cb 1
+return
+
+event HIT_FROM_PLAYER
+enemy_stopanim
+if flt[2] > 3, RET2, -1
+human_looktoactor 0, 1, 1
+let flt[2] = flt[2] +1
+human_stoptalk 0
+human_getproperty 0, 0, Energy
+if flt[0] < 40, NASERSE, -1
+if flt[2] = 1, 18, -1
+if flt[2] = 2, 19, NASERSE
+label RERAND
+label 18
+enemy_talk 00950067
+goto RET2
+label 19
+enemy_talk 00950068
+goto RET2
+label NASERSE
+enemy_shut_up no
+human_looktoactor 0
+enemy_vidim 1
+enemy_naserse 1
+label RET2
+event_use_cb 0
+return
+
+event 1000
+enemy_shut_up no
+enemy_vidim 1
+return

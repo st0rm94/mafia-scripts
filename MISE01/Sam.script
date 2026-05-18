@@ -1,0 +1,142 @@
+commandblock 1
+dim_flt 1
+dim_act 3
+findactor 0,"Sam"
+findactor 1,"taxi"
+findactor 2,"TommyTAXIDRIVER"
+
+enemy_shut_up yes
+enemy_naprdelivaute yes
+
+human_addweapon 0,9,7,100
+commandblock 0
+
+act_setstate -1,inactive
+
+{ up
+label 101
+wait 50000
+goto 101
+}
+
+event 201
+// narazeni
+  rnd 0,8
+  if flt[0]=0,-1,303
+  human_talk 0,01990721,2
+  label 303
+  if flt[0]=1,-1,304
+  human_talk 0,01990731,2
+  label 304
+  if flt[0]=2,-1,305
+  human_talk 0,01990741,2
+  label 305
+  if flt[0]=3,-1,306
+  human_talk 0,01990751,2
+  label 306
+  if flt[0]=4,-1,307
+  human_talk 0,01990761,2
+  label 307
+  if flt[0]=5,-1,308
+  human_talk 0,01990771,2
+  label 308
+  if flt[0]=6,-1,309
+  human_talk 0,01990781,2
+  label 309
+  if flt[0]=7,-1,310
+  human_talk 0,01990791,2
+  label 310
+  enemy_wait
+return
+
+event 202
+// enemy strili
+  rnd 0,3
+  if flt[0]=0,-1,503
+  human_talk 0,01990521,2
+  label 503
+  if flt[0]=1,-1,504
+  human_talk 0,01990531,2
+  label 504
+  if flt[0]=2,-1,505
+  human_talk 0,01990541,2
+  label 505
+  //*****tommyho odpovedi******
+  rnd 0,10
+  if flt[0]=0,-1,530
+  human_talk 2,01990241,2
+  label 530
+  if flt[0]=1,-1,531
+  human_talk 2,01990251,2
+  label 531
+return
+
+event 203
+// hrac jede pomalu, enemy jsou blizko
+  rnd 0,5
+  if flt[0]=0,-1,403
+  human_talk 0,01990501,2
+  label 403
+  if flt[0]=1,-1,404
+  human_talk 0,01990511,2
+  label 404
+  if flt[0]=2,-1,405
+  human_talk 0,01990521,2
+  label 405
+  if flt[0]=3,-1,406
+  human_talk 0,01990531,2
+  label 406
+  if flt[0]=4,-1,407
+  human_talk 0,01990541,2
+  label 407
+  enemy_wait
+//*****tommyho odpovedi******
+rnd 0,15
+  if flt[0]=2,-1,437
+  human_talk 2,01990271,2
+  label 437
+  if flt[0]=3,-1,438
+  human_talk 2,01990551,2
+  label 438
+  if flt[0]=4,-1,439
+  human_talk 2,01990561,2
+  label 439
+  if flt[0]=5,-1,440
+  human_talk 2,01990571,2
+  label 440
+  if flt[0]=6,-1,441
+  human_talk 2,01990581,2
+  label 441
+  if flt[0]=7,-1,442
+  human_talk 2,01990591,2
+  label 442
+  if flt[0]=8,-1,443
+  human_talk 2,01990601,2
+  label 443
+  enemy_wait
+return
+
+event 209
+// Paulie nebo Sam strili
+  rnd 0,6
+  if flt[0]=0,-1,608
+  human_talk 0,01990211,2
+  label 608
+  if flt[0]=1,-1,609
+  human_talk 0,01990221,2
+  label 609
+  if flt[0]=2,-1,610
+  human_talk 0,01990231,2
+  label 610
+  if flt[0]=3,-1,612
+  human_talk 0,01990841,2
+  label 612
+  if flt[0]=4,-1,613
+  human_talk 0,01990851,2
+  label 613
+  if flt[0]=5,-1,614
+  human_talk 0,01990861,2
+  label 614
+  enemy_wait
+return
+

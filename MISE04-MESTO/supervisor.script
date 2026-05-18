@@ -1,0 +1,22 @@
+dim_flt 1
+dim_act 3
+findactor 0,"Sam"
+findactor 1,"Paulie"
+findactor 2,"Tommy"
+
+mission_objectivesclear
+mission_objectives 04960001
+
+label 111
+wait 1000
+human_getproperty 0,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 1,0,Energy
+if flt[0]=0, 101, -1
+human_getproperty 2,0,Energy
+if flt[0]=0, 101, -1
+goto 111
+
+label 101
+endofmission 0,04980002
+end

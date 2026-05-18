@@ -1,0 +1,17 @@
+zatmyse 1,1
+subtitle_add 7201
+wait 5000
+
+commandblock 1
+loaddifferences "difI02.chg"
+recloadfull "recordI02.rep"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+commandblock 0
+
+change_mission "mise05-saliery","",-1

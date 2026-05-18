@@ -1,0 +1,14 @@
+DIM_FLT 1
+DIM_FRM 2
+FINDFRAME 0, "dog"
+FINDFRAME 1, "pes in"		
+
+label 1
+wait 7500
+DETECTOR_INRANGE 0, 35
+IF flt[0]>0, 2, 1 
+
+label 2
+FRM_SETON 0, 1
+FRM_SETON 1, 1
+goto 1

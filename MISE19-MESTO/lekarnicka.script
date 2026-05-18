@@ -1,0 +1,27 @@
+dim_flt 2
+dim_act 2
+dim_frm 1
+findactor 0, "Tommy"
+findactor 1, "9lekarna.Box02"
+findframe 0, "poloha playera u lekarnicky"
+
+door_enableus 1, 0
+
+detector_waitforuse 8970005
+player_lockcontrols 1
+actor_setplacement 0, 0
+door_open 1, 1
+person_playanim 0,  "sbirani zvrchu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+person_stopanim 0
+player_lockcontrols 0
+human_getproperty 0, 0, energy
+let flt[0] = flt[0] + 50
+if flt[0] > 100, -1, 2
+human_setproperty 0, 100, energy
+act_setstate 100, off
+
+label 2
+human_setproperty 0, flt[0], energy
+act_setstate 100, off

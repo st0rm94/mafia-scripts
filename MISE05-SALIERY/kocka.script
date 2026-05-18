@@ -1,0 +1,14 @@
+//nahodny cat1
+
+dim_flt 1
+dim_frm 1
+FindFrame 0, "kocka"
+
+label 10
+  rnd 0, 10                   
+  let flt[0] = flt[0] * 2174
+  let flt[0] = flt[0] + 10587
+  wait flt[0]
+  frm_seton 0, 1
+goto 10
+end

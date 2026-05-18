@@ -1,0 +1,10 @@
+dim_act 1
+findactor 0, "Muz"
+
+act_setstate 100, inactive
+
+wait 3000
+
+human_talk 0, 17990521
+
+act_setstate 100, off

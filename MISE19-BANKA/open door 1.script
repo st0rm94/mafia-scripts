@@ -1,0 +1,19 @@
+dim_act 1
+dim_frm 1
+findactor 0, "Box262"
+findframe 0, "mesto_door"
+findframe 1, "ambitownd1"
+
+label 1
+detector_waitforuse 19970001, 1
+door_open 0, 0
+soundfade 0, 1000, 0.3, 0
+soundfade 1, 1000, 0, 0.4
+detector_setsignal 100, 0
+
+detector_waitforuse 19970000, 1
+door_open 0, 1
+soundfade 0, 1000, 0, 0.3
+frm_seton 1, 0
+detector_setsignal 100, 1
+goto 1

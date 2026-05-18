@@ -1,0 +1,24 @@
+act_setstate 100, inactive
+dim_flt 1
+dim_act 1
+findactor 0, "Tommy"
+enemy_vidim 0
+
+label 1
+wait 5300
+enemy_playanim "xtleskani01c.i3d"
+wait 5000
+enemy_stopanim
+goto 1
+
+event 1
+wait 2000
+enemy_playanim "x panika drep dolu.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "x panika drep stativ.i3d"
+wait 7000
+enemy_move 29, run
+enemy_move 30, run
+frm_seton 100, 0
+act_setstate 100, off

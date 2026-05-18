@@ -1,0 +1,49 @@
+act_setstate -1,inactive
+
+dim_frm 2
+dim_act 2
+findframe 0,"godzila"
+findframe 1,"Andromeda"
+
+findactor 0,"godzila"
+findactor 1,"zampr2b.zam1"
+act_setstate 0,active
+act_setstate 1,active
+
+timeron 0,0,0,180
+wait 120000
+//timeroff
+
+dim_flt 10
+
+let flt[0] = 0.0235625
+let flt[1] = 0.095085
+let flt[2] = 400
+let flt[3] = -110.026
+let flt[8] = -15.775
+let flt[9] = -799.848
+
+label 101
+commandblock 1
+let flt[2]=flt[2]-1
+let flt[6]=flt[2]*flt[0]
+let flt[4]=flt[8]-flt[6]
+let flt[7]=flt[2]*flt[1]
+let flt[5]=flt[9]-flt[7]
+frm_setpos 0,3
+commandblock 0
+if flt[2]=0,-1,101
+
+setevent 0,201,-1
+act_setstate -1,inactive
+
+label 102
+commandblock 1
+let flt[2]=flt[2]+1
+let flt[6]=flt[2]*flt[0]
+let flt[4]=flt[8]-flt[6]
+let flt[7]=flt[2]*flt[1]
+let flt[5]=flt[9]-flt[7]
+frm_setpos 0,3
+commandblock 0
+if flt[2]=400,-1,102

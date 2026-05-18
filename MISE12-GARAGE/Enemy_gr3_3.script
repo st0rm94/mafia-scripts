@@ -1,0 +1,29 @@
+enemy_vidim 0
+dim_act 2
+findactor 0
+findactor 1, "AUTO"
+human_force_settocar 0, 1, 1
+human_addweapon 0, 11, 8, 32
+enemy_blastfire
+act_setstate -1, inactive
+
+enemy_vidim 1
+{ DOWN
+label WAIT
+wait 100000
+goto WAIT
+}
+enemy_usecar
+enemy_vidim 1
+goto FINISH
+
+event 100
+enemy_vidim 0
+enemy_brainwash
+enemy_actionsclear
+enemy_forcescript 0
+event_use_cb 1
+return
+
+label FINISH
+

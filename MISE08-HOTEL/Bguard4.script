@@ -1,0 +1,26 @@
+dim_flt 1
+dim_act 2
+findactor 0,"Tommy"
+findactor 1,"Bguard4"
+
+human_addweapon 1, 8, 6, 30
+human_holster 1
+
+{ up
+enemy_playanim "SezCteni.I3D", 0
+label 100
+wait 16000
+goto 100
+}
+
+
+
+event use_ab,10970007
+getenemyaistate 1,0
+iffltinrange 0,2,5,120
+human_looktoactor 1, 0, 1
+enemy_talk 08950019
+enemy_wait
+human_looktoactor 1
+label 120
+return

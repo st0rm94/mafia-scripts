@@ -1,0 +1,50 @@
+dim_frm 3
+dim_act 2
+dim_flt 1
+findactor 0, "TruckB"
+findactor 1, "Tommy"
+findframe 0, "TruckB.Object02"
+//findframe 1, "TruckB.Object01"
+findframe 2, "TruckB.bocnice"
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 0
+act_setstate -1, inactive
+debug_text "prepinac_kolize_nakladak: Activated !"
+
+label CHECK
+compareownerwithex 1, 0, VYPNI, PREPNI
+wait 1000
+goto CHECK
+
+label PREPNI
+if flt[0] = 1, CHECK, -1
+wait 2800
+//zatmyse 1
+//wait 500
+commandblock 1
+frm_seton 0, 0
+//frm_seton 1, 0
+frm_seton 2, 1
+commandblock 0
+car_setspeccoll 0, 1
+//zatmyse 0
+let flt[0] = 1
+debug_text "Specialni kolize na aute zapnuty !"
+goto CHECK
+
+label VYPNI
+if flt[0] = 0, CHECK, -1
+//zatmyse 1
+//wait 500
+car_setspeccoll 0, 0
+commandblock 1
+frm_seton 0, 1
+//frm_seton 1, 1
+frm_seton 2, 0
+commandblock 0
+//zatmyse 0
+//wait 500
+let flt[0] = 0
+debug_text "Specialni kolize na aute vypnuty !"
+goto CHECK

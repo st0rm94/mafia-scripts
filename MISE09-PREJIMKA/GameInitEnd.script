@@ -1,0 +1,49 @@
+dim_act 7
+dim_frm 6
+findactor 0, "Tommy"
+findactor 1, "Enemy07+"
+findactor 2, "Enemy08K2"
+findactor 3, "TruckA"
+findactor 4, "TruckA2"
+findactor 5, "TruckB"
+findactor 6, "Enemy13C"
+
+
+findframe 0, "Enemy07+"
+findframe 1, "Enemy08K2"
+
+findframe 2,"2lighting"
+findframe 3,"2lighting2"
+findframe 4,"2lighting3"
+findframe 5,"2lighting4"
+
+human_set8slot 0, 1
+human_addweapon 0,9,7,21
+human_holster 0
+human_addweapon 0,11,8,16
+
+frm_seton 0,0
+frm_seton 1,0
+
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+
+person_playanim 1,"breath01a.I3D"
+person_playanim 2,"breath01a.I3D"
+
+act_setstate 1,inactive
+act_setstate 2,inactive
+
+car_enableus 3,0
+car_enableus 4,0
+car_enableus 5,0
+car_unbreakable 3,1
+car_unbreakable 4,1
+car_unbreakable 5,1
+
+//human_force_settocar 6,5,0
+
+mission_objectivesclear
+mission_objectives 09960002

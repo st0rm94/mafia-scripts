@@ -1,0 +1,10 @@
+dim_flt 1
+
+label 1
+detector_inrange 0,6
+wait 1500
+if flt[0] = 1,2,1
+
+label 2
+endofmission 0, 08980001
+end

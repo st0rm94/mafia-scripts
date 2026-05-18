@@ -1,0 +1,37 @@
+dim_flt 1
+dim_act 3
+findactor 0,"Tommy"
+findactor 1,"Bertone"
+findactor 2,"fordtco"
+
+car_enableus 2,0
+
+{ up
+label 101
+enemy_lookto 20
+enemy_wait
+enemy_playanim "MechSroubovani.i3d",0
+let flt[0]=flt[0]-83
+wait flt[0]
+goto 101
+}
+
+event use_ab, 10970006
+getenemyaistate 1,0
+iffltinrange 0,2,5,SKIP
+
+enemy_look 0
+human_looktoactor 1,0,1
+enemy_playanim "breath01a.I3D",0
+rnd 0,2
+  if flt[0]=0,-1,113
+  enemy_talk 0,09990601
+  label 113
+  if flt[0]=1,-1,114
+  enemy_talk 0,09990602
+  label 114
+enemy_wait
+human_looktoactor 1
+
+label SKIP
+return

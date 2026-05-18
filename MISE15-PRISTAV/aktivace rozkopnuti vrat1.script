@@ -1,0 +1,26 @@
+dim_flt 1
+dim_act 4
+dim_frm 2
+findactor 0, "Delnik6"
+findactor 1, "aktivace rozkopnuti vrat"
+findactor 2, "dvirkax4.Box663"
+findactor 3, "dvirkax4.Box664"
+findframe 0, "poloha chlapka u vrat"
+findframe 1, "vrata2"
+
+act_setstate 100, inactive
+
+label 1
+detector_inrange 0, 10
+if flt[0] = 1, -1, 1
+
+actor_setplacement 0, 0
+
+act_setstate 0, active
+act_setstate 1, off
+wait 500
+frm_seton 1, 1
+door_open 2, 1
+door_open 3, 1
+
+act_setstate 100, off

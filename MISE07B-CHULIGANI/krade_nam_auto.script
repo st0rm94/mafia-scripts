@@ -1,0 +1,39 @@
+commandblock 1
+dim_act 4
+findactor 0, "TruckA"
+findactor 1, "fordtco"
+findactor 2, "civil3"
+findactor 3, "Czena"
+dim_flt 3
+let flt[1] = 0
+let flt[2] = 0
+car_muststeal 0, 1
+car_muststeal 1, 1
+commandblock 0
+
+// zapne mne: bouracka_pod_kopcem
+act_setstate -1, inactive
+
+label DETECT
+if flt[1] = 1, -1, TEST
+if flt[2] = 1, FINISH, TEST
+label TEST
+ifplayerstealcar 0, 0
+if flt[0] ! 0, KRADETRUCK, -1
+ifplayerstealcar 1, 0
+if flt[0] ! 0, KRADEACKO, DETECT
+
+label KRADETRUCK
+if flt[1] ! 0, DETECT, -1
+setevent 2, 1, KRADETRUCK
+let flt[1] = 1
+goto DETECT
+
+label KRADEACKO
+if flt[2] ! 0, DETECT, -1
+setevent 3, 1, KRADEACKO
+let flt[2] = 1
+goto DETECT
+
+label FINISH
+end

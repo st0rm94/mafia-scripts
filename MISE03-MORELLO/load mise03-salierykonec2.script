@@ -1,0 +1,37 @@
+dim_flt 1
+dim_act 3
+findactor 0,"auto1_destroyed"
+findactor 1,"Tommy"
+findactor 2,"privezl_blackhawk"
+
+act_setstate -1, inactive
+
+label 101
+detector_waitforuse 02970001
+
+vlvp 0
+if flt[0]=1,-1,POLICIE_NEVIDI
+rnd 0,3
+  if flt[0]=0,-1,113
+  human_talk 1,00950223
+  label 113
+  if flt[0]=1,-1,114
+  human_talk 1,00950224
+  label 114
+  if flt[0]=2,-1,115
+  human_talk 1,00950225
+  label 115
+goto 101
+label POLICIE_NEVIDI
+detector_issignal 0,-1,103
+
+detector_issignal 2,-1,SKIP01
+setmissionnumber 1
+label SKIP01
+change_mission "mise03-salierykonec", "", 0
+debug_text "LOAD MISE03-saliery konec"
+end
+
+label 103
+endofmission 0,03980001
+

@@ -1,0 +1,69 @@
+dim_act 3
+dim_frm 4
+dim_flt 4
+findactor 0,"speedygonzales"
+findactor 1,"fire"
+findactor 2,"Tommy"
+
+findframe 0,"speedygonzales"
+findframe 1,"fire"
+findframe 2,"speedygonzales.l_foot"
+findframe 3,"speedygonzales.r_foot"
+
+frm_seton 1,0
+car_enableus 1,0
+car_invisible 1,1
+
+act_setstate -1,inactive
+
+mission_objectivesclear
+mission_objectives 22930009
+
+act_setstate 0,active
+emitparticle 2,9,1
+emitparticle 3,9,2
+
+setcompass 0
+
+label 101
+wait 1000
+getactorsdist 0,2,0
+if flt[0]>50,NESMRTELNOST,-1
+human_getproperty 0,0,Energy
+if flt[0]=0,-1,101
+
+stopparticle 1
+stopparticle 2
+
+setcompass -1
+
+frm_seton 1,1
+car_enableus 1,1
+car_invisible 1,0
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar P
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590
+end
+
+event 201
+setcompass -1
+mission_objectivesclear
+wait 5000
+endofmission 0,22980001
+end
+
+label NESMRTELNOST
+human_getproperty 0,3,Energy
+human_setproperty 0,2000,Energy
+label 102
+wait 1000
+getactorsdist 0,2,0
+if flt[0]<50,-1,102
+human_setproperty 0,flt[3],Energy
+goto 101

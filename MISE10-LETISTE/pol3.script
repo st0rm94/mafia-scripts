@@ -1,0 +1,41 @@
+commandblock 1
+dim_frm 2
+dim_flt 1
+dim_act 9
+findactor 0, "polimFor"
+findactor 1, "pol3"
+findactor 2, "pol2"
+findactor 3, "Tommy"
+findactor 4, "sirene"
+findactor 5, "pol"
+findactor 6, "pol4"
+findactor 7, "pol5"
+findactor 8, "pol6"
+
+findframe 0, "stopka"
+commandblock 0
+
+enemy_vidim 0
+human_addweapon 1, 11, 8, 16
+human_addweapon 2, 8, 6, 24
+enemy_group_new 0
+enemy_group_add 0, 1
+enemy_group_add 0, 2
+enemy_group_add 0, 5
+enemy_group_add 0, 6
+enemy_group_add 0, 7
+enemy_group_add 0, 8
+
+enemy_usecar 0, 0
+act_setstate 1, inactive
+wait 30000
+//enemy_car_moveto 0, 0
+enemy_car_escape 0, 3, 0
+enemy_usecar
+act_setstate 4, off
+setevent 2, 1, -1
+//enemy_action_fire 3, 10
+enemy_vidim 1
+enemy_podvadim_jak tretera
+label 1
+goto 1

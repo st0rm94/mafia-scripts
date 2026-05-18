@@ -1,0 +1,15 @@
+act_setstate -1,inactive
+dim_flt 2
+fuckingbox_add 0,"bednakl"
+fuckingbox_recompile
+fuckingbox_add_dest 0,"misto_pro_bednu"
+
+detector_setsignal -1,0
+
+label 101
+wait 500
+fuckingbox_getnumdest 0,1
+if flt[1]=0,-1,101
+
+detector_setsignal -1,1
+end

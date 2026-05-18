@@ -1,0 +1,11 @@
+dim_flt 1
+dim_act 1
+findactor 0,"Czena3"
+
+label 101
+wait 90
+detector_inrange 0,15
+if flt[0]=1,-1,101
+
+setevent 0,201,-1
+end

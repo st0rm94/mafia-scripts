@@ -1,0 +1,17 @@
+mission_objectivesclear
+//mission_objectives 02960000
+act_setstate -1, inactive
+mission_objectives 2960005
+act_setstate -1, inactive
+mission_objectivesremove 2960005
+mission_objectives 2960006
+act_setstate -1, inactive
+mission_objectivesremove 2960006
+mission_objectives 2960007
+act_setstate -1, inactive
+mission_objectivesremove 2960007
+mission_objectives 2960008
+act_setstate -1, inactive
+mission_objectivesremove 2960008
+mission_objectives 2960009
+act_setstate -1, inactive

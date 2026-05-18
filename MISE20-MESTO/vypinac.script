@@ -1,0 +1,117 @@
+dim_frm 34
+findframe 0, "&& chodba"
+findframe 1, "&& schodiste"
+findframe 2, "&& hala"
+findframe 3, "gunBox02"
+findframe 4, "gLoft01"
+findframe 5, "light07"
+findframe 6, "light08"
+findframe 7, "light05"
+findframe 8, "light06"
+findframe 9, "light09"
+findframe 10, "light03"
+findframe 11, "light04"
+findframe 12, "point radios2"
+findframe 13, "light02"
+findframe 14, "light01"
+findframe 15, "xsvetlo 02 on01.glow"
+findframe 16, "xsvetlo 02 on02.glow"
+findframe 17, "xsvetlo 01 on.glow"
+findframe 18, "xsvetlo 02 on00.glow"
+findframe 19, "xsvetlo 02 on3.glow"
+findframe 20, "xsvetlo 02 on2.glow"
+findframe 21, "Box27"
+findframe 22, "polick	"
+findframe 23, "Box40"
+findframe 24, "plot1"
+findframe 25, "plot2"
+findframe 26, "gLoft03"
+findframe 27, "Box101"
+findframe 28, "xsvetlo 02 on01.zarovka"
+findframe 29, "xsvetlo 02 on02.zarovka"
+findframe 30, "xsvetlo 01 on.Sphere01"
+findframe 31, "xsvetlo 02 on00.zarovka"
+findframe 32, "xsvetlo 02 on3.zarovka"
+findframe 33, "xsvetlo 02 on2.zarovka"
+
+label 1
+detector_waitforuse
+
+commandblock 1
+frm_seton 5, 1
+frm_seton 6, 1
+frm_seton 7, 1
+frm_seton 8, 1
+frm_seton 9, 1
+frm_seton 10, 1
+frm_seton 11, 1
+frm_seton 12, 1
+frm_seton 13, 1
+frm_seton 14, 1
+frm_seton 15, 1
+frm_seton 16, 1
+frm_seton 17, 1
+frm_seton 18, 1
+frm_seton 19, 1
+frm_seton 20, 1
+frm_seton 28, 1
+frm_seton 29, 1
+frm_seton 30, 1
+frm_seton 31, 1
+frm_seton 32, 1
+frm_seton 33, 1
+
+setlmlevel 0, 0
+setlmlevel 1, 0
+setlmlevel 2, 0
+setlmlevel 3, 0
+setlmlevel 4, 0
+setlmlevel 21, 0
+setlmlevel 22, 0
+setlmlevel 23, 0
+setlmlevel 24, 0
+setlmlevel 25, 0
+setlmlevel 26, 0
+setlmlevel 27, 0
+commandblock 0
+
+detector_waitforuse
+
+commandblock 1
+frm_seton 5, 0
+frm_seton 6, 0
+frm_seton 7, 0
+frm_seton 8, 0
+frm_seton 9, 0
+frm_seton 10, 0
+frm_seton 11, 0
+frm_seton 12, 0
+frm_seton 13, 0
+frm_seton 14, 0
+frm_seton 15, 0
+frm_seton 16, 0
+frm_seton 17, 0
+frm_seton 18, 0
+frm_seton 19, 0
+frm_seton 20, 0
+frm_seton 28, 0
+frm_seton 29, 0
+frm_seton 30, 0
+frm_seton 31, 0
+frm_seton 32, 0
+frm_seton 33, 0
+
+setlmlevel 0, 1
+setlmlevel 1, 1
+setlmlevel 2, 1
+setlmlevel 3, 1
+setlmlevel 4, 1
+setlmlevel 21, 1
+setlmlevel 22, 1
+setlmlevel 23, 1
+setlmlevel 24, 1
+setlmlevel 25, 1
+setlmlevel 26, 1
+setlmlevel 27, 1
+commandblock 0
+goto 1

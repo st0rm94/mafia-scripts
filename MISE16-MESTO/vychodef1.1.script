@@ -1,0 +1,24 @@
+//vychodef1
+
+DIM_FRM 3
+DIM_FLT 2
+
+FINDFRAME 0, "vychodef1.1"
+FINDFRAME 1, "vychodef1"
+
+label 1
+  rnd 0, 8  
+  let flt[0] = flt[0] * 6500 
+  let flt[0] = flt[0] + 22000
+  wait flt[0]
+ rnd 1, 10
+ IFFLTINRANGE 1, 0, 5, 2
+ IFFLTINRANGE 1, 6, 9, 3
+
+label 2
+ FRM_SETON 0, 1
+goto 1
+
+label 3
+ FRM_SETON 1, 1
+goto 1

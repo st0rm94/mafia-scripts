@@ -1,0 +1,29 @@
+commandblock 1
+enemy_vidim 0
+enemy_blastfire
+dim_act 1
+dim_flt 1
+findactor 0
+dim_frm 1
+getactorframe 0, 0
+human_addweapon 0, 10, 50, 200
+frm_seton 0, 0
+enemy_lockstate FIGHT_GUARD_NOHOSTILE
+commandblock 0
+act_setstate -1, inactive
+frm_seton 0, 1
+enemy_vidim 1
+enemy_move 21
+enemy_lookto 8
+enemy_wait
+enemy_vidim 1
+goto FINISH
+
+event HIT_FROM_PLAYER
+if flt[0] ! 0, RET, -1
+let flt[0] = 1
+enemy_vidim 1
+label RET
+return
+
+label FINISH

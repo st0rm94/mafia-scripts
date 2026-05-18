@@ -1,0 +1,24 @@
+callsubroutine "CreateBoxes"
+dim_act 2
+dim_flt 1
+findactor 0, "Organizator"
+findactor 1, "Tommy"
+
+label DETECT
+human_getproperty 0, 0, Energy
+if flt[0] = 0, OGRANIZERDEAD, -1
+wait 100
+getangleactortoactor 0, 1, 0
+if flt[0] < 80, -1, DETECT
+getactorsdist 0, 1, 0
+if flt[0] < 15, -1, DETECT
+human_havebox 1, 0, 1
+if flt[0] = 1, -1, DETECT
+debug_text "detector_corka: Organizator vidi playera jak nese bednu s diamanty"
+label SEND
+setevent 0, 3, SEND
+end
+
+label OGRANIZERDEAD
+debug_text "detector_corka: Organizator mrtvej - vypinam se"
+end

@@ -1,0 +1,21 @@
+commandblock 1
+dim_frm 1
+dim_flt 1
+dim_act 3
+findactor 0, "polimFor2"
+findactor 1, "Tommy"
+findactor 2, "pol"
+commandblock 0
+
+enemy_vidim 0
+enemy_usecar 0, 1
+act_setstate 2, inactive
+enemy_vidim 1
+enemy_podvadim_jak tretera
+label 1
+goto 1
+
+event 1
+enemy_usecar
+//enemy_action_fire 1, 10
+return

@@ -1,0 +1,19 @@
+commandblock 1
+zatmyse 1, 0
+loaddifferences "dif07a.chg"
+recloadfull "record07a.rep"
+zatmyse 0
+commandblock 0
+//############
+//# A N I M A C E #
+//############
+recwaitforend
+zatmyse 1, 0
+commandblock 1
+recunload
+cleardifferences
+//####################
+//# K O N E C  A N I M A C E #
+//####################
+commandblock 0
+change_mission "mise07-sara", "", -1

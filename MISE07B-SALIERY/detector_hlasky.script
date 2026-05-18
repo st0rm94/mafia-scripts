@@ -1,0 +1,171 @@
+//[debug_me]
+dim_act 3
+// flt[1] budou borci Ralph a Vincenzo a podle toho se bude zjistovat zda muze odjet
+dim_flt 3
+//oddelat je to pro misi 7B kde neni Ralph !
+findactor 0, "Tommy"
+findactor 1, "Paulie"
+findactor 2, "Salieri"
+
+
+label FREESTATE
+{ UP
+if flt[2] = 1, TOMMYPRYC, -1
+wait 100000
+goto FREESTATE
+}
+
+label TOMMYPRYC
+//[BREAK]
+getactorsdist 0, 1, 0
+if flt[0] < 6, PAULIE, -1
+if flt[1] = 0, VSE, -1
+if flt[1] = 1, ZBRANE, -1
+if flt[1] = 2, AUTO, -1
+if flt[1] = 3, NIC, FREESTATE
+label VSE
+rnd 0, 6
+let flt[0] = flt[0] +1
+goto flt[0]
+
+label 1
+human_talk 0, 00950100
+debug_text "TOMMY: 00950100"
+goto RET
+
+label 2
+human_talk 0, 00950101
+//enemy_wait
+debug_text "TOMMY: 00950101"
+goto RET
+
+label 3
+human_talk 0, 00950102
+//enemy_wait
+debug_text "TOMMY: 00950102"
+goto RET
+
+label 4
+human_talk 0, 00950103
+//enemy_wait
+debug_text "TOMMY: 00950103"
+goto RET
+
+label 5
+human_talk 0, 00950104
+//enemy_wait
+debug_text "TOMMY: 00950104"
+goto RET
+
+label 6
+human_talk 0, 00950105
+//enemy_wait
+debug_text "TOMMY: 00950105"
+goto RET
+
+label 7
+human_talk 0, 00950106
+//enemy_wait
+debug_text "TOMMY: 00950106"
+goto RET
+
+label ZBRANE
+rnd 0, 4
+let flt[0] = flt[0] +1
+goto flt[0]
+
+label AUTO
+commandblock 1
+human_getseatidx 1, 0
+if flt[0] = -1, P_AUTO, -1
+rnd 0, 3
+let flt[0] = flt[0] + 5
+commandblock 0
+goto flt[0]
+
+label PAULIE
+// Kdyz je Paulie dal jak sest metru reknu tohle
+if flt[1] = 0, P_VSE, -1
+if flt[1] = 1, P_ZBRANE, -1
+if flt[1] = 2, P_AUTO, -1
+if flt[1] = 3, P_NIC, FREESTATE
+
+label P_VSE
+rnd 0, 4
+let flt[0] = flt[0] + 11
+goto flt[0]
+
+label P_ZBRANE
+goto 12
+
+label P_AUTO
+rnd 0, 3
+let flt[0] = flt[0] + 12
+commandblock 0
+goto flt[0]
+
+label 11
+human_looktoactor 1, 0, 1
+human_talk 1, 00950012
+//enemy_wait
+debug_text "PAULIE: 00950012"
+human_looktoactor 1
+goto RET
+
+label 12
+human_looktoactor 1, 0, 1
+human_talk 1, 00950013
+//enemy_wait
+debug_text "PAULIE: 00950013"
+human_looktoactor 1
+goto RET
+
+label 13
+human_looktoactor 1, 0, 1
+human_talk 1, 00950014
+//enemy_wait
+debug_text "PAULIE: 00950014"
+human_looktoactor 1
+goto RET
+
+label 14
+human_looktoactor 1, 0, 1
+human_talk 1, 00950049
+//enemy_wait
+debug_text "PAULIE: 00950049"
+human_looktoactor 1
+goto RET
+
+// RET - vrati se zpet 
+
+label NIC
+label P_NIC
+debug_text "KURVA - PLAYER BYL VSUDE A PRESTO NEMUZE ODEJIT !"
+
+label RET
+let flt[2] = 0
+goto FREESTATE
+
+event 1
+debug_text "detector_hlasky: event 1 received"
+event_use_cb 1
+if flt[1] = 1, RET2, -1
+if flt[1] = 3, RET2, -1
+let flt[1] = flt[1] + 1
+label RET2
+return
+
+event 2
+debug_text "detector_hlasky: event 2 received"
+event_use_cb 1
+if flt[1] = 2, RET3, -1
+if flt[1] = 3, RET3, -1
+let flt[1] = flt[1] + 2
+label RET3
+return
+
+event 100
+debug_text "detector_hlasky: event 100 received"
+event_use_cb 1
+let flt[2] = 1
+return

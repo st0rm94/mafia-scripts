@@ -1,0 +1,14 @@
+dim_act 2
+findactor 0, "Bookmaker"
+findactor 1, "null"
+
+act_setstate 100, inactive
+
+label 1
+wait 1000
+compareownerwithex 0, 1, -1, 1
+
+label 2
+setevent 0, 1, 2
+
+act_setstate 100, off

@@ -1,0 +1,11 @@
+dim_frm 2
+
+commandblock 1
+
+findframe 0,"FMV foto-stul2"
+findframe 1,"FMV foto-Norman_ruka"
+
+frm_seton 0,1
+frm_seton 1,0
+
+commandblock 0

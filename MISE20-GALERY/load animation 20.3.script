@@ -1,0 +1,63 @@
+label 1
+autosavegame 5560
+
+commandblock 1
+dim_flt 1
+dim_act 9
+dim_frm 8
+findactor 0, "Sam" 
+findactor 1, "SalMan01K"
+findactor 2, "SalMan02K"
+findactor 3, "detekce healtu chlapku"
+findactor 4, "load animation 20.6"
+findactor 6, "Tommy"
+
+findactor 8, "aktivace prvni mistnosti"
+
+findframe 0, "Tommy"
+findframe 1, "Sam"
+findframe 2, "SalMan01K"
+findframe 3, "SalMan02K"
+findframe 4, "2dollar60"
+findframe 6, "poloha playera behem animace"
+findframe 7, "poloha playera po animaci"
+
+player_lockcontrols 1
+actor_setplacement 6, 7
+human_holster 6
+actor_setplacement 6, 6
+frm_seton 0, 0
+frm_seton 4, 0
+stream_create 0, "sounds\music\10 - Fighting theme 2.ogg"
+
+loaddifferences "dif20b.chg"
+recloadfull "record20b"
+commandblock 0
+
+recwaitforend
+
+commandblock 1
+recunload
+cleardifferences
+
+act_setstate 0, active
+act_setstate 1, active
+act_setstate 2, active
+act_setstate 3, active
+act_setstate 4, active
+act_setstate 8, active
+
+frm_seton 0, 1
+frm_seton 1, 1
+frm_seton 2, 1
+frm_seton 3, 1
+frm_seton 4, 1
+
+actor_setplacement 6, 7
+
+human_activateweapon 6, 6
+
+stream_play 0
+
+player_lockcontrols 0
+commandblock 0

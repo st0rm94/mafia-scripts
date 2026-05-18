@@ -1,0 +1,55 @@
+dim_flt 1
+dim_act 10
+dim_frm 3
+
+enablemap 1
+
+findactor 0,"load mise08-hotel"
+findactor 1,"start"
+findactor 2,"hearseA"
+findactor 3,"end"
+findactor 4,"chev"
+findactor 5,"Tommy"
+findactor 6,"animace_start"
+findactor 9,"end2"
+
+findframe 0,"hearseA"
+findframe 1,"chev"
+findframe 2,"load z mise08-kostel"
+
+policemanager_on
+police_speed_factor 0.53
+getmissionnumber 0
+//let flt[0]=80
+
+if flt[0] > 0, -1, 1
+act_setstate 6,off
+actor_setplacement 5,2
+policemanager_forcearrest 5,1,1
+act_setstate 0, inactive
+act_setstate 1, inactive
+act_setstate 2, active
+frm_seton 0, 1
+
+car_enableus 4,0
+frm_seton 1,0
+car_invisible 4,1
+car_calm 4
+
+act_setstate 3, active
+act_setstate 9, active
+act_setstate 4, inactive
+end
+
+label 1
+act_setstate 0, active
+act_setstate 1, active
+car_enableus 2,0
+frm_seton 0, 0
+car_invisible 2,1
+car_calm 2
+frm_seton 1, 1
+act_setstate 3, inactive
+act_setstate 9, inactive
+act_setstate 4, active
+end

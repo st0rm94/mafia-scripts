@@ -1,0 +1,29 @@
+dim_act 3
+dim_flt 2
+getactiveplayer 0
+setnullactor 1
+
+act_setstate -1, inactive
+
+debug_text "detector_TED_ZHEBNES_ZMRDE: Active!"
+
+label DETECT
+compareownerwithex 0, 1, DETECT, -1
+
+getgametime 0
+if flt[0] > flt[1], -1, DETECT2
+human_getowner 0, 2
+debug_text "detector_TED_ZHEBNES_ZMRDE: Autu %a nastaven jeden vystrel do nadrze do exploze", 2
+settankhitcount 2, 1
+getgametime 1
+let flt[1] = flt[1] + 10000
+
+
+label DETECT2
+detector_inrange 0, 10
+if flt[0] = 0, DETECT, -1
+compareownerwithex 0, 1, DETECT, -1
+human_getowner 0, 2
+car_explosion 2
+debug_text "detector_TED_ZHEBNES_ZMRDE: HEHE!!!"
+end

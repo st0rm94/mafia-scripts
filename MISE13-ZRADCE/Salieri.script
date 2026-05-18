@@ -1,0 +1,105 @@
+dim_flt 1
+dim_frm 2
+dim_act 4
+commandblock 1
+findactor 0, "Tommy"
+findactor 1, ""
+findactor 2, "dvere"
+findactor 3, "Czena2"
+findframe 0, "zabouchani"
+findframe 1, "utek"
+commandblock 0
+
+enemy_vidim 0
+human_eraseab 1
+//{ up
+enemy_move 2
+//}
+//{ up
+label 1
+if flt[0] = 1, -1, 1
+//}
+//{ up
+label 2
+let flt[0] = 0
+enemy_lookto 7
+enemy_wait
+enemy_talk 13990181
+enemy_playanim "BuseniNaDvere.i3d"
+wait 700
+frm_seton 0, 1
+enemy_wait
+enemy_talk 13990191
+frm_seton 1, 1
+enemy_move 3
+enemy_lookto 2
+enemy_wait
+human_looktoactor 1, 0, 1
+act_setstate 2, active
+enemy_playanim "gesto2 nogun1b.i3d"
+enemy_talk 13990192
+enemy_wait
+enemy_stopanim
+human_createab 1
+label 3
+if flt[0] = 1, -1, 3
+//}
+{ up
+wait 1000
+enemy_move 7, run
+human_talk 1, 13990211, 1
+enemy_wait
+enemy_stopanim
+human_looktoactor 1
+label 4
+wait 2000
+// ******************************
+// nadavani na carla
+goto 4
+}
+
+event use_ab, 10970004
+event_use_cb 0
+enemy_stop
+enemy_look 0
+enemy_wait
+human_looktoactor 1, 0, 1
+enemy_talk 00950121
+enemy_wait
+human_looktoactor 1
+return
+
+event 1
+event_use_cb 1
+let flt[0] = 1
+return
+
+event 2
+event_use_cb 0
+let flt[0] = 1
+return
+
+event 3
+event_use_cb 0
+wait 8500
+human_talk 1, 13990321, 2
+wait 4000
+human_talk 1, 13990221, 2
+wait 3000
+human_talk 1, 13990231, 2
+wait 4000
+human_talk 1, 13990241, 2
+wait 4000
+human_talk 1, 13990251, 2
+wait 10000
+human_talk 1, 13990252, 2
+wait 5000
+human_talk 1, 13990253, 2
+return
+
+event 4
+event_use_cb 0
+enemy_move 13
+enemy_look 3
+enemy_wait
+return

@@ -1,0 +1,64 @@
+dim_flt 1
+dim_act 4
+dim_frm 8
+findactor 0, "Tommy"
+findactor 1, "Delnik"
+findactor 2, "load mise17-vezeni"
+findactor 3, "delnikovi kecy"
+findframe 0, "poloha playera na zebriku"
+findframe 1, "poloha kamery v kanalu"
+findframe 2, "poloha kamery nad kanalem"
+findframe 3, "poloha playera nad kanalem"
+findframe 4, "Tommy"
+findframe 5, "xprkna "
+findframe 6, "17_tomin"
+findframe 7, "17_tomin2"
+
+detector_waitforuse 17970003
+
+getactorsdist 0, 1, 0
+if flt[0] < 10, -1, 4
+human_getproperty 1, 0, energy
+if flt[0] = 0, 4, -1
+getenemyaistate 1, 0
+if flt[0] > 1, 4, -1
+act_setstate 3, active
+
+label 4
+commandblock 1
+player_lockcontrols 1
+inventory_push 0
+inventory_clear 0
+setcompass -1
+disablecolls 5
+camera_lock 2
+actor_setplacement 0, 3
+commandblock 0
+person_playanim 0, "tomlezedokanalu.i3d", 0, simple
+frm_seton 6, 1
+wait 8700
+frm_seton 4, 0
+person_stopanim 0
+human_reset 0
+actor_setplacement 0, 0
+person_playanim 0, "tomlezedokanalu.i3d", 0, simple
+wait 2000
+commandblock 1
+frm_seton 4, 1
+camera_lock 1
+citymusic_off
+frm_seton 7, 1
+commandblock 0
+wait 6000
+human_forcefall 0
+wait 1000
+commandblock 1
+inventory_pop 0
+camera_unlock
+commandblock 0
+
+player_lockcontrols 0
+
+label 3
+setevent 1, 2, 3
+act_setstate 100, off

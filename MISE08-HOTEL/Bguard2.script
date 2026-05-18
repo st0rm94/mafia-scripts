@@ -1,0 +1,37 @@
+commandblock 1
+dim_flt 1
+dim_act 2
+findactor 0,"Tommy"
+findactor 1,"Bguard2"
+
+human_addweapon 1, 7, 6, 34
+human_holster 1
+commandblock 0
+
+DIM_FLT 2
+
+{ up
+LABEL 1
+ENEMY_PLAYANIM "breathA1.i3d"
+WAIT 21000
+ENEMY_PLAYANIM "breathB1.i3d", 0
+LET flt[0] = flt[0] + 83
+WAIT flt[0]
+ENEMY_PLAYANIM "breathA1.i3d"
+WAIT 24000
+ENEMY_PLAYANIM "breathD1.i3d", 1
+LET flt[1] = flt[1] - 500
+WAIT flt[1]
+Goto 1
+}
+
+event use_ab,10970007
+getenemyaistate 1,0
+iffltinrange 0,2,5,120
+HUMAN_LOOKTOACTOR 1, 0, 1
+enemy_talk 08950021
+enemy_wait
+HUMAN_LOOKTOACTOR 1
+label 120
+return
+

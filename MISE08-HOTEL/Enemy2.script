@@ -1,0 +1,42 @@
+dim_flt 2
+dim_act 2
+findactor 0,"Tommy"
+findactor 1,"Enemy2"
+
+human_returnfrompanic 1,1
+setnoanimhit 1,1
+
+{ up
+if flt[1]=1,2,-1
+enemy_playanim "Mise zidle01st.I3D", 0
+label 1
+wait 10000
+goto 1
+label 2
+}
+
+enemy_playanim "Mise zidle01 panika stativ.I3D", 0
+
+label 102
+wait 510
+human_getproperty 1,0,Energy
+if flt[0]<99,-1,102
+
+enemy_stopanim
+enemy_playanim "Mise zidle01 panika smrt.I3D", 0
+let flt[0]=flt[0]-500
+wait flt[0]
+enemy_playanim "Mise zidle01 panika smrt stativ.I3D"
+wait 1000
+end
+
+event enemy_to_ai
+commandblock 1
+enemy_vidim 0
+enemy_actionsclear
+enemy_brainwash
+human_eraseab 1
+let flt[1]=1
+enemy_forcescript 1
+commandblock 0
+return

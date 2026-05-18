@@ -1,0 +1,25 @@
+dim_act 2
+dim_frm 1
+findframe 0, "2shotgun"
+frm_seton 0, 1
+findactor 0
+findactor 1, "Tommy"
+{ DOWN
+label LOOP
+enemy_playanim "Mise12B_W2prichod.I3D"
+wait 12000
+goto LOOP
+}
+goto FINISH
+
+event ENEMY_TO_AI
+frm_seton 0, 0
+human_addweapon 0, 11, 8, 30
+return
+
+event 1
+//enemy_naserse 1, 70
+//event_use_cb 1
+return
+
+label FINISH

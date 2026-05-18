@@ -1,0 +1,23 @@
+dim_act 1
+dim_flt 1
+findactor 0,"zlodej"
+
+human_addweapon 0,20,0,0
+
+enemy_vidim 0
+
+{ down
+//enemy_move 1
+//enemy_lookto 2
+//enemy_wait
+label 101
+enemy_playanim "PaceniDveri.i3d",0
+let flt[0]=flt[0]-323
+wait flt[0]
+goto 101
+}
+end
+
+event 201
+enemy_move 3, run
+end

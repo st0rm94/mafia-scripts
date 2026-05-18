@@ -1,0 +1,56 @@
+weather_setparam MAX_CNT, 3900
+weather_setparam MAX_CNT, 0
+dim_act 1
+dim_flt 4
+findactor 0, "ambidest"
+act_setstate -1, inactive
+wait 10000
+act_setstate 0, active
+commandblock 1
+weather_reset
+weather_setparam SPEED, 35
+weather_setparam LEN, 0.9
+weather_setparam WIDTH, 0.02
+weather_setparam MAX_DIST, 25
+weather_setparam MAX_HEIGHT, 12
+weather_setparam MAX_CNT, 100
+weather_setparam DIR_X, 0
+weather_setparam DIR_Y, -0.98
+weather_setparam DIR_Z, 0
+weather_setparam MODE, 0
+weather_setparam MAX_CNT, 0
+weather_setparam ON, 1
+label UPDATE
+weather_setparam MAX_CNT, flt[3]
+getgametime 1
+label 10
+commandblock 0
+wait 100
+commandblock 1
+getgametime 2
+let flt[0] = flt[2] - flt[1]
+if flt[0] < 1000, 10, -1
+let flt[3] = flt[3] + 50
+if flt[3] > 700, -1, UPDATE
+commandblock 0
+
+act_setstate -1, inactive
+// Zfejduje ambidest dolu
+act_setstate 0, active
+weather_setparam WIDTH, 0.05
+weather_setparam SPEED, 40
+// BIG DEST
+label UPDATE2
+weather_setparam MAX_CNT, flt[3]
+getgametime 1
+label 11
+commandblock 0
+wait 100
+commandblock 1
+getgametime 2
+let flt[0] = flt[2] - flt[1]
+if flt[0] < 500, 11, -1
+let flt[3] = flt[3] + 70
+if flt[3] > 3800, -1, UPDATE2
+debug_text "dest: Dest zvysen na max!"
+end

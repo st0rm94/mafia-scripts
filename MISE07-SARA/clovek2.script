@@ -1,0 +1,28 @@
+DIM_FRM 3
+DIM_FLT 2
+
+FINDFRAME 0, "clovek2"
+FINDFRAME 1, "clovek3"
+FINDFRAME 2, "clovek4"
+
+label 1
+  rnd 0, 6  
+  let flt[0] = flt[0] * 2500 
+  let flt[0] = flt[0] + 8000
+  wait flt[0]
+ rnd 1, 12
+ IFFLTINRANGE 1, 0, 3, 2
+ IFFLTINRANGE 1, 4, 7, 3
+ IFFLTINRANGE 1, 8, 11, 4
+
+label 2
+ FRM_SETON 0, 1
+goto 1
+
+label 3
+ FRM_SETON 1, 1
+goto 1
+
+label 4
+ FRM_SETON 2, 1
+goto 1

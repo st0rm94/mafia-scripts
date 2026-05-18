@@ -1,0 +1,58 @@
+wait 0
+wait 0
+commandblock 1
+zatmyse 1,1
+dim_act 5
+findactor 0,"Salieri"
+findactor 1,"frank"
+findactor 2,"Paulie"
+findactor 3,"Sam"
+findactor 4,"door_dvuX01"
+
+dim_frm 7
+findframe 0,"Salieri"
+findframe 1,"frank"
+findframe 2,"Paulie"
+findframe 3,"Sam"
+findframe 4,"Tommy"
+findframe 5,"@rstul12054"
+findframe 6,"zaluzie3"
+
+PLAYER_LOCKCONTROLS 1
+act_setstate 2,inactive
+act_setstate 3,inactive
+frm_seton 0,0
+frm_seton 1,0
+frm_seton 2,0
+frm_seton 3,0
+frm_seton 4,0
+frm_seton 5,0
+frm_seton 6,0
+
+loaddifferences "dif04a.chg"
+recloadfull "record04a.rep"
+commandblock 0
+recwaitforend
+commandblock 1
+recunload
+cleardifferences
+
+frm_seton 0,1
+frm_seton 1,1
+frm_seton 2,1
+frm_seton 3,1
+frm_seton 4,1
+frm_seton 5,1
+frm_seton 6,1
+
+act_setstate 2,active
+act_setstate 3,active
+PLAYER_LOCKCONTROLS 0
+zatmyse 0
+commandblock 0
+door_open 4,1
+
+mission_objectivesclear
+mission_objectives 04960011
+mission_objectives 04960012
+mission_objectives 04960013

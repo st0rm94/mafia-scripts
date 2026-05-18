@@ -1,0 +1,13 @@
+dim_flt 1
+dim_act 2
+findactor 0, "Ralph"
+findactor 1, "civil"
+
+label 1
+detector_inrange 0, 5
+if flt[0] = 1, -1, 1
+label 2
+setevent 0, 1, 2
+label 3
+setevent 1, 1, 3
+end

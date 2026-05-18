@@ -1,0 +1,24 @@
+enemy_vidim 0
+enemy_nevyhazuj
+
+dim_act 3
+findactor 0, "arrow"
+findactor 1, "MorelloLOW"
+findactor 2, "Tommy"
+
+{ down
+label 3
+wait 1000000
+goto 3
+}
+
+label 2
+enemy_usecar
+compareownerwith 0, 2, -1
+
+enemy_vidim 1
+enemy_action_fire 2
+
+event 1
+event_use_cb 1
+return

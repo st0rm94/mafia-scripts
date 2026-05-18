@@ -1,0 +1,19 @@
+//nahodny les2
+
+dim_flt 2
+dim_frm 1
+FindFrame 0, "les2"
+  soundfade 0, 2000, 0, 0.9
+label 10
+  rnd 0, 14                   
+  let flt[0] = flt[0] * 900
+  let flt[0] = flt[0] + 2000  
+  wait flt[0]
+  soundfade 0, 3000, 0.9, 0.25
+ rnd 1, 10                   
+  let flt[1] = flt[1] * 800  
+  let flt[1] = flt[1] + 3000  
+  wait flt[1]
+  soundfade 0, 1500, 0.9, 0.5
+goto 10
+end

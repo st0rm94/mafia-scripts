@@ -1,0 +1,7 @@
+dim_frm 3
+findframe 0, "Sarah2"
+findframe 1, "Tommy22"
+findframe 2, "Luigi2"
+frm_seton 0, 0
+frm_seton 1, 0
+frm_seton 2, 0

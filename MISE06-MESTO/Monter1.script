@@ -1,0 +1,6 @@
+label 1
+enemy_playanim "MechSroubovani.I3D"
+wait 10000
+enemy_playanim "MechSroubovani2.I3D"
+wait 10000
+goto 1

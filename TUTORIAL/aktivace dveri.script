@@ -1,0 +1,10 @@
+dim_act 1
+findactor 0, "Mesh10"
+
+door_enableus 0, 0
+
+detector_waitforuse 1 
+door_open 0, 1
+wait 2000
+human_talk 0, 20950001
+act_setstate 100, off

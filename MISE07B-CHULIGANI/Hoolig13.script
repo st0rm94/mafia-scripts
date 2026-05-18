@@ -1,0 +1,30 @@
+enemy_vidim 0
+dim_act 2
+findactor 0
+findactor 1, "Hoolig12"
+dim_flt 2
+enemy_group_new 1
+enemy_group_add 1, 0
+enemy_group_add 1, 1
+act_setstate -1, inactive
+
+{ DOWN
+label FREESTATE
+enemy_playanim "Gesto_07a.I3d"
+rnd 0, 5
+let flt[0] = flt[0] + 1
+let flt[0] = flt[0] * 2000
+wait flt[0]
+enemy_playanim "Gesto_07e.I3d", 0
+let flt[0] = flt[0] - 166
+wait flt[0]
+goto FREESTATE
+}
+enemy_vidim 1
+goto FINISH
+
+event 1
+event_use_cb 1
+return
+
+label FINISH

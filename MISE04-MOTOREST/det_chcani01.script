@@ -1,0 +1,34 @@
+dim_flt 1
+dim_act 1
+dim_frm 4
+findactor 0,"Tommy"
+findframe 0,"det_chcani01"
+findframe 1,"Tommy.base"
+findframe 2,"camera_chcani01"
+findframe 3,"sound_chcani"
+
+label LOOP
+detector_waitforuse 04970001
+
+setnoanimhit 0,1
+actor_setplacement 0,0
+PLAYER_LOCKCONTROLS 1
+person_stopanim 0
+camera_lock 2
+person_playanim 0,"ChcaniVyndani.I3D", 0
+let flt[0]=flt[0]-323
+wait flt[0]
+person_playanim 0,"ChcaniLoop.i3d", 0
+emitparticle 1,26,0
+soundfade 3,2000,0,1
+wait 9000
+soundfade 3,2000,1,0
+//stopparticle 0
+person_playanim 0,"ChcaniZandani.i3d", 0
+let flt[0]=flt[0]-323
+wait flt[0]
+camera_unlock
+setnoanimhit 0,0
+PLAYER_LOCKCONTROLS 0
+
+goto LOOP

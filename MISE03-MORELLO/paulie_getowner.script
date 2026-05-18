@@ -1,0 +1,7 @@
+dim_act 1
+findactor 0,"Paulie"
+
+label 101
+setevent 0,203,101
+wait 10000
+goto 101

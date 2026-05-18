@@ -1,0 +1,28 @@
+dim_act 2
+findactor 0, "Salieri"
+findactor 1, "Czena2"
+enemy_vidim 0
+
+wait 500
+enemy_playanim "x barman stativ.i3d"
+label 1
+wait 7000
+goto 1
+
+event 1
+label 3
+setevent 0, 3, 3
+enemy_playanim "JeciciZenska.i3d"
+enemy_talk 13990291
+enemy_wait
+wait 3000
+label 2
+human_talk 1, 13990261, 1
+wait 5000
+human_talk 1, 13990271, 1
+wait 5000
+human_talk 1, 13990281, 1
+wait 5000
+human_talk 1, 13990311, 1
+wait 5000
+goto 2

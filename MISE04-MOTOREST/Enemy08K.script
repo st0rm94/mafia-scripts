@@ -1,0 +1,36 @@
+dim_frm 1
+dim_act 2
+dim_frm 4
+findactor 0,"Tommy"
+findactor 1,"Enemy08K"
+
+findframe 0,"fireman"
+frm_seton 0,0
+
+enemy_lockstate fight_guard,1
+
+label 101
+wait 10000
+goto 101
+
+event 201
+enemy_changeanim  "run1.I3D" , "panika run01a.I3D"
+human_changemodel 1,"ohorelec01.I3D"
+
+enemy_talk 04990666
+
+findframe 0,"Enemy08K.back2"
+findframe 1,"Enemy08K.back3"
+findframe 2,"Enemy08K.l_foot"
+findframe 3,"Enemy08K.r_shin"
+
+emitparticle 0,9
+emitparticle 1,9
+emitparticle 2,9
+emitparticle 3,9
+frm_seton 0,1
+
+human_holster 1
+enemy_brainwash 1
+enemy_vidim 0
+enemy_move 3,run

@@ -1,0 +1,11 @@
+dim_act 4
+findactor 0, "Tommy"
+findactor 1, "Detektiv2"
+findactor 2, "Detektiv3"
+findactor 3, "NULL"
+
+label 1
+wait 500
+compareownerwithex 0, 3, -1, 1
+setevent 1, 2, -1
+setevent 2, 2, -1

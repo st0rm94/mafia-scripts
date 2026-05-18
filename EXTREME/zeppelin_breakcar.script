@@ -1,0 +1,14 @@
+act_setstate -1,inactive
+dim_act 1
+dim_flt 1
+findactor 0,"zeppelin_car"
+
+label 101
+wait 1000
+car_getspeed 0,0
+if flt[0]>60,-1,101
+
+car_breakmotor 0,1
+wait 3000
+car_breakmotor 0,0
+goto 101

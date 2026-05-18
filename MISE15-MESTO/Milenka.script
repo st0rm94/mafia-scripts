@@ -1,0 +1,67 @@
+dim_flt 2
+dim_act 9
+findactor 0, "cad_road"
+findactor 1, "bomba vybuch"
+findactor 2, "#dum06b00.dvere"
+findactor 3, "hlidani stavu milenky"
+findactor 4, "Tommy"
+findactor 5, "" 
+findactor 6, "Enemy12K2"
+findactor 7, "Guard2"
+findactor 8, "tomovy hlasky"
+
+frm_seton 100, 0
+act_setstate 100, inactive
+
+act_setstate 3, active
+
+door_lock 2, 0
+door_open 2, 1
+enemy_move 2
+label 10
+setevent 8, 1, 10
+enemy_lookto 1
+enemy_wait
+door_open 2, 0
+
+{ up
+enemy_move_to_car 0, 0
+}
+setevent 8, 1, 10
+label 2
+enemy_usecar 0, 0
+compareownerwith 0, -1, 2
+
+wait 2000
+act_setstate 1, active
+label 1
+setevent 8, 1, 11
+frm_seton 100, 0
+act_setstate 100, off
+
+event use_ab
+event_use_cb 1
+enemy_stop
+human_looktoactor 5, 4, 1
+enemy_look 4
+enemy_wait
+if flt[1] = 1, 3, -1
+enemy_talk 15990251
+enemy_wait
+let flt[1] = 1
+return
+
+label 3
+enemy_talk 15990261
+enemy_wait
+label 4
+setevent 6, 1, 4
+setevent 7, 1, 4
+wait 5000
+enemy_move 2, run
+door_open 2, 1
+enemy_move 1
+enemy_lookto 2
+enemy_wait
+door_open 2, 0
+act_setstate 100, inactive

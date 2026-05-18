@@ -1,0 +1,76 @@
+dim_flt 2
+dim_act 13
+findactor 0, ""
+findactor 1, "Tommy"
+findactor 2, "Hoolig"
+findactor 3, "Hoolig2"
+findactor 4, "Homeless"
+findactor 5, "priblizeni se k chuliganum"
+findactor 6, "houmles1.1"
+findactor 7, "houmles2.2"
+findactor 8, "houmles3.1"
+findactor 9, "houmles5.1"
+findactor 10, "houmles4.1"
+findactor 11, "flasa"
+findactor 12, "houmles7.1"
+
+human_addweapon 0, 7, 6, 18
+human_holster 0
+
+enemy_group_new 1
+enemy_group_add 1, 0
+enemy_group_add 1, 2
+enemy_group_add 1, 3
+enemy_group_add 1, 4
+
+act_setstate 100, inactive
+
+{ down
+enemy_move 13
+enemy_lookto 14
+enemy_wait
+enemy_playanim "gestikulacenew03.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "gestikulacenew04.i3d", 0, simple
+let flt[0] = flt[0] - 323
+wait flt[0]
+enemy_playanim "gestikulacenew05.i3d"
+
+label 10
+wait 1000000
+goto 10
+}
+act_setstate 6, off
+act_setstate 7, off
+act_setstate 8, off
+act_setstate 9, off
+act_setstate 10, off
+act_setstate 11, off
+act_setstate 12, off
+human_looktoactor 0, 1, 1
+enemy_look 1
+enemy_wait
+enemy_playanim "chulgesto01.i3d"
+enemy_talk 17990093
+label 3
+setevent 2, 1, 3
+setevent 3, 1, 3
+setevent 4, 1, 3
+wait 2500
+enemy_talk 17990091, 1
+wait 1200
+enemy_wait
+enemy_talk 17990092, 1
+wait 1000
+enemy_action_fire 1
+
+label 11
+wait 1000000
+goto 11
+
+event 1
+enemy_forcescript 0
+enemy_stop
+enemy_stopanim
+return

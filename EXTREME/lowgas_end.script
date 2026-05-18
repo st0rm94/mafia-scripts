@@ -1,0 +1,70 @@
+dim_act 4
+dim_frm 3
+dim_flt 1
+findactor 0,"lowgas_bonuscar"
+findactor 1,"Tommy"
+findactor 2,"lowgas_car"
+findactor 3,"lowgas_end"
+
+findframe 0,"lowgas_bonuscar"
+findframe 1,"lowgas_end"
+findframe 2,"cam_bomba06"
+
+frm_seton 0,0
+car_enableus 0,0
+car_invisible 0,1
+
+act_setstate -1,inactive
+
+commandblock 1
+frm_seton 0,1
+car_invisible 0,0
+let flt[1]=0
+
+mission_objectivesclear
+mission_objectives 22930023
+
+camera_lock 2
+citycaching_tick
+commandblock 0
+wait 3000
+camera_unlock
+
+setcompass 1
+
+label 101
+wait 1000
+iscarusable 2,0
+if flt[0]=0,KONEC,-1
+detector_inrange 0,30
+if flt[0]>0,-1,101
+compareownerwithex 1,2,-1,101
+
+car_enableus 0,1
+
+setcompass -1
+
+findactor 0,"AKTIVNI_SUBQUEST"
+detector_setsignal 0,0
+mission_objectivesclear
+mission_objectives 22930000
+freeride_enablecar L
+wait 5000
+mission_objectivesclear
+autosavegamefull 5590
+end
+
+label KONEC
+wait 3000
+iscarusable 2,0
+if flt[0]=0,-1,101
+wait 3000
+iscarusable 2,0
+if flt[0]=0,-1,101
+wait 3000
+iscarusable 2,0
+if flt[0]=0,-1,101
+
+mission_objectivesclear
+endofmission 0,22980001
+end
