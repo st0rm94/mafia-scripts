@@ -8,7 +8,6 @@ dependencies.
 ## TL;DR
 
 ```bash
-cd exe-re/scripts
 python3 dnc_extract_all.py        # batch: extract every .dnc in ./dnc/
 ```
 
